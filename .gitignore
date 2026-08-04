@@ -1,0 +1,35 @@
+# ---------------------------------------------------------------------------
+# CREDENTIALED DATA — never commit. PhysioNet MIMIC-IV is access-controlled
+# patient data and must not land in version control under any circumstance.
+# ---------------------------------------------------------------------------
+data/
+!data/.gitkeep
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Prototyping data (open-access MIMIC demos) — keep out of git too
+test files/
+*.zip
+
+# DuckDB database files (may contain materialized patient data)
+*.duckdb
+*.duckdb.wal
+*.db
+
+# Raw / derived data formats, wherever they land
+*.csv
+*.csv.gz
+*.parquet
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.python-version
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

@@ -1,0 +1,110 @@
+#!/usr/bin/env bash
+#
+# download_mimic.sh — fetch the MASLD-study subset of MIMIC-IV from PhysioNet,
+# then verify every file against the official SHA256SUMS.txt.
+#
+# SECURITY: your PhysioNet password is read interactively (silent), kept only in
+# a shell variable for the life of this process, and passed to curl via a config
+# on STDIN (printf is a bash builtin, so the password never appears in `ps`, in
+# the shell history, on disk, or on any command line). It is unset at the end.
+# Nothing here writes the password anywhere. Ctrl-C is safe.
+#
+# Usage:   cd ~/masld && bash scripts/download_mimic.sh
+#
+set -uo pipefail
+
+# Project root = parent of this script's directory (…/masld)
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+RAW="$ROOT/data/raw"
+
+# ---- file manifest -----------------------------------------------------------
+HOSP_BASE="https://physionet.org/files/mimiciv/3.1/hosp"
+NOTE_BASE="https://physionet.org/files/mimic-iv-note/2.2/note"
+ED_BASE="https://physionet.org/files/mimic-iv-ed/2.2/ed"
+
+HOSP_FILES=(patients admissions diagnoses_icd d_icd_diagnoses labevents d_labitems omr)
+NOTE_FILES=(discharge radiology discharge_detail radiology_detail)
+ED_FILES=(edstays diagnosis triage vitalsign)
+# ------------------------------------------------------------------------------
+
+# ---- credentials (interactive, never stored) ---------------------------------
+read -rp  "PhysioNet username: " PN_USER
+read -rsp "PhysioNet password: " PN_PASS; echo
+if [[ -z "$PN_USER" || -z "$PN_PASS" ]]; then
+  echo "ERROR: username and password are both required." >&2
+  exit 1
+fi
+
+# curl with credentials supplied via config on stdin (not argv, not a file)
+pn_get() {  # $1=url  $2=outfile
+  printf 'user = "%s:%s"\n' "$PN_USER" "$PN_PASS" \
+    | curl --fail --location --show-error --progress-bar \
+           --retry 3 --retry-delay 5 --create-dirs \
+           -K - -o "$2" "$1"
+}
+
+fail=0
+declare -a FAILED_DOWNLOADS=()
+
+fetch_module() {  # $1=base_url  $2=dest_dir  shift 2 -> file stems
+  local base="$1" dest="$2"; shift 2
+  echo
+  echo "### $base -> $dest"
+  mkdir -p "$dest"
+  # official checksums for this directory
+  if ! pn_get "$base/SHA256SUMS.txt" "$dest/SHA256SUMS.txt"; then
+    echo "  !! could not fetch SHA256SUMS.txt" >&2; fail=1
+  fi
+  local stem
+  for stem in "$@"; do
+    echo "  -> $stem.csv.gz"
+    if ! pn_get "$base/$stem.csv.gz" "$dest/$stem.csv.gz"; then
+      echo "  !! DOWNLOAD FAILED: $stem.csv.gz" >&2
+      FAILED_DOWNLOADS+=("$dest/$stem.csv.gz"); fail=1
+    fi
+  done
+}
+
+fetch_module "$HOSP_BASE" "$RAW/hosp" "${HOSP_FILES[@]}"
+fetch_module "$NOTE_BASE" "$RAW/note" "${NOTE_FILES[@]}"
+fetch_module "$ED_BASE"   "$RAW/ed"   "${ED_FILES[@]}"
+
+# credentials no longer needed
+unset PN_PASS PN_USER
+
+# ---- verification ------------------------------------------------------------
+echo
+echo "================ SHA256 VERIFICATION ================"
+verify_dir() {  # $1=dir
+  local dir="$1"
+  [[ -f "$dir/SHA256SUMS.txt" ]] || { echo "  (no SHA256SUMS.txt in $dir)"; fail=1; return; }
+  echo
+  echo "### $dir"
+  # --ignore-missing: only check the files we actually downloaded
+  if ! ( cd "$dir" && shasum -a 256 -c --ignore-missing SHA256SUMS.txt ); then
+    fail=1
+  fi
+}
+verify_dir "$RAW/hosp"
+verify_dir "$RAW/note"
+verify_dir "$RAW/ed"
+
+# ---- size report -------------------------------------------------------------
+echo
+echo "================ FILE SIZES ================"
+for d in hosp note ed; do
+  echo
+  echo "### $RAW/$d"
+  ls -lh "$RAW/$d"/*.csv.gz 2>/dev/null | awk '{printf "  %-8s  %s\n", $5, $NF}'
+done
+
+# ---- final status ------------------------------------------------------------
+echo
+if (( fail )); then
+  echo "RESULT: FAILURES DETECTED — see messages above. Do not proceed."
+  if (( ${#FAILED_DOWNLOADS[@]} )); then
+    printf '  failed download: %s\n' "${FAILED_DOWNLOADS[@]}"
+  fi
+  exit 1
+fi
+echo "RESULT: all files downloaded and SHA256-verified OK."

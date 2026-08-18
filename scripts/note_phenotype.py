@@ -33,8 +33,9 @@ import duckdb
 VERSION = "1.1.0"
 FROZEN_DATE = "2026-08-17"
 
+from scripts.masld_config import CLEAN_POP as POP   # canonical cleaned population
+
 NOTE = "data/raw/note"
-POP = "data/processed/analysis_population.parquet"
 OUTPATIENT_WINDOWS = {"primary": (365, 30), "sensitivity": (90, 30)}  # (days_before, days_after)
 
 # ===========================================================================

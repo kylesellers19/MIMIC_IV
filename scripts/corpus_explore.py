@@ -18,7 +18,7 @@ import pandas as pd
 import duckdb
 
 NOTE = "data/raw/note"
-POP = "data/processed/analysis_population.parquet"
+from scripts.masld_config import CLEAN_POP as POP   # canonical cleaned population
 OUT = "docs/corpus_exploration.md"
 con = duckdb.connect(); con.execute("SET memory_limit='24GB'")
 

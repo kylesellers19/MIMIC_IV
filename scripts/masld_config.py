@@ -21,6 +21,10 @@ Locked decisions
 
 DATA = "data/raw/hosp"
 
+# Canonical population parquets. Downstream analysis MUST read CLEAN_POP.
+LOCKED_POP = "data/processed/analysis_population.parquet"        # locked, uncleaned (produced by lock_population.py)
+CLEAN_POP = "data/processed/analysis_population_clean.parquet"   # locked + cleaned — CANONICAL for analysis
+
 # Pre-specified MASLD code set (version-aware, dotless, trimmed).
 MASLD_PREDICATE = (
     "((icd_version=10 AND trim(icd_code) IN ('K760','K7581')) "

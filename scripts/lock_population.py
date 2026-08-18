@@ -16,7 +16,7 @@ import duckdb
 from scripts.masld_config import DATA, analysis_admissions_sql
 
 NOTE = "data/raw/note"
-OUT = "data/processed/analysis_population.parquet"
+from scripts.masld_config import LOCKED_POP as OUT   # this script produces the uncleaned locked parquet
 WINDOW_COV_THRESHOLD = 0.20     # a year counts as "covered" if either% >= this
 pd.set_option("display.width", 200); pd.set_option("display.max_rows", 200)
 con = duckdb.connect(); con.execute("SET memory_limit='24GB'")

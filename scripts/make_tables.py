@@ -18,7 +18,7 @@ import pandas as pd
 import duckdb
 from scripts.masld_config import DATA, MASLD_PREDICATE, LAB_ITEMIDS
 
-OUTDIR = "docs/tables"
+OUTDIR = os.environ.get("TABLES_OUTDIR", "docs/tables")
 POP_PARQUET = os.environ.get("POP_PARQUET")   # if set, restrict to these hadm_ids
 SUPPRESS_N = 11           # our own threshold (see footnotes); suppress 0<n<11
 os.makedirs(OUTDIR, exist_ok=True)
@@ -38,6 +38,21 @@ GROUP_SPEC = "code_status"       # <-- change this one argument to regenerate
 
 # ----------------------------------------------------------------- build frame
 def build_frame():
+    frame_parquet = os.environ.get("FRAME_PARQUET")
+    if frame_parquet:
+        # Load a pre-built (e.g. cleaned) frame directly; skip raw recomputation.
+        df = con.execute(f"SELECT * FROM read_parquet('{frame_parquet}')").fetchdf()
+        g1 = r"'^\s*(\d+)\s*/\s*(\d+)'"
+        bpstat = con.execute(f"""
+          SELECT count(*),
+                 count(*) FILTER (WHERE regexp_matches(result_value,'^\\s*\\d+\\s*/\\s*\\d+\\s*$')),
+                 count(*) FILTER (WHERE nullif(try_cast(regexp_extract(result_value,{g1},2) AS INT),0) IS NULL
+                                  AND regexp_matches(result_value,'^\\s*\\d+\\s*/\\s*\\d+\\s*$'))
+          FROM read_csv_auto('{DATA}/omr.csv.gz') WHERE result_name='Blood Pressure'
+        """).fetchone()
+        print(f"[frame] loaded {len(df):,} admissions from {frame_parquet}")
+        return df, bpstat
+
     con.execute(f"""
     CREATE TEMP VIEW base AS
     WITH dx AS (
@@ -499,8 +514,8 @@ def main():
     masks = {g: (g_series == g).values for g in groups}
     print(f"GROUP_SPEC = {GROUP_SPEC}  groups = {groups}  N = {len(df):,}")
     print(f"BP parse: {bpstat[1]:,}/{bpstat[0]:,} ok; diastolic zeros excluded: {bpstat[2]:,}")
-    if not POP_PARQUET:
-        table0(df)      # skip when restricted; table0 maintained separately (locked flow)
+    if not (POP_PARQUET or os.environ.get("FRAME_PARQUET")):
+        table0(df)      # skip when restricted/framed; table0 maintained separately
     table1(df, masks, groups)
     table2(df, masks, groups)
     table3(df, masks, groups)

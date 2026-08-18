@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """FROZEN note-based hepatic-steatosis phenotype rule for MASLD / MIMIC-IV.
 
-VERSION = "1.0.0"  ·  FROZEN_DATE = "2026-08-17"
+VERSION = "1.1.0"  ·  FROZEN_DATE = "2026-08-17"
 
 This rule is FROZEN prior to 2x2 construction and chart adjudication (Aim 1a
 must be non-circular). Development on the full corpus is expected; iteration
@@ -30,7 +30,7 @@ from collections import Counter, defaultdict
 import pandas as pd
 import duckdb
 
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 FROZEN_DATE = "2026-08-17"
 
 NOTE = "data/raw/note"
@@ -38,42 +38,52 @@ POP = "data/processed/analysis_population.parquet"
 OUTPATIENT_WINDOWS = {"primary": (365, 30), "sensitivity": (90, 30)}  # (days_before, days_after)
 
 # ===========================================================================
-# LEXICON (approved). (name, compiled_regex, tier, self_anatomical)
-# self_anatomical=True -> trigger is inherently hepatic; skip anatomical scoping.
+# LEXICON (approved). (name, compiled_regex, tier, scope)
+#   scope="none"     -> inherently hepatic; skip anatomical scoping
+#   scope="standard" -> pass if liver/hepatic within 10 tokens OR sentence has
+#                       no competing organ (fallback); suppress if nearest is competing
+#   scope="strict"   -> pass ONLY with affirmative liver/hepatic within 10 tokens;
+#                       the "no competing organ" fallback does NOT apply
 # ===========================================================================
 def _rx(p):
     return re.compile(p, re.IGNORECASE)
 
 TRIGGERS = [
-    # Tier A — specific phrases / spelled-out (inherently hepatic)
-    ("hepatic steatosis",              _rx(r"\bhepatic steatosis\b"), "A", True),
-    ("fatty liver",                    _rx(r"\bfatty liver\b"), "A", True),
-    ("nonalcoholic fatty liver",       _rx(r"\bnon[- ]?alcoholic fatty liver( disease)?\b"), "A", True),
-    ("nonalcoholic steatohepatitis",   _rx(r"\bnon[- ]?alcoholic steatohepat\w*\b"), "A", True),
-    ("metabolic dysfunction-associated", _rx(r"\bmetabolic dysfunction[- ]associated\b"), "A", True),
+    # Tier A — inherently hepatic phrases / spelled-out
+    ("hepatic steatosis",              _rx(r"\bhepatic steatosis\b"), "A", "none"),
+    ("fatty liver",                    _rx(r"\bfatty liver\b"), "A", "none"),
+    ("nonalcoholic fatty liver",       _rx(r"\bnon[- ]?alcoholic fatty liver( disease)?\b"), "A", "none"),
+    ("nonalcoholic steatohepatitis",   _rx(r"\bnon[- ]?alcoholic steatohepat\w*\b"), "A", "none"),
+    ("metabolic dysfunction-associated", _rx(r"\bmetabolic dysfunction[- ]associated\b"), "A", "none"),
     # Tier A — abbreviations (inherently hepatic)
-    ("NAFLD", _rx(r"\bnafld\b"), "A", True),
-    ("NASH",  _rx(r"\bnash\b"), "A", True),
-    ("MASLD", _rx(r"\bmasld\b"), "A", True),
-    ("MASH",  _rx(r"\bmash\b"), "A", True),
-    ("NAFL",  _rx(r"\bnafl\b"), "A", True),
-    # Tier A — phrases requiring anatomical scoping
-    ("fatty infiltration", _rx(r"\bfatty infiltration\b"), "A", False),
-    ("fatty change",       _rx(r"\bfatty change\b"), "A", False),
-    ("fatty sparing",      _rx(r"\bfatty sparing\b"), "A", False),
-    ("focal fat",          _rx(r"\bfocal fat\b"), "A", False),
-    # Tier A — stems requiring scoping
-    ("steatohepatitis", _rx(r"\bsteatohepatit\w*\b"), "A", False),
-    ("steatosis",       _rx(r"\bsteatosis\b"), "A", False),
-    ("steatotic",       _rx(r"\bsteatotic\b"), "A", False),
-    # Tier A — bare "fatty" (scoping-only per approved rule)
-    ("fatty (bare)", _rx(r"\bfatty\b"), "A", False),
+    ("NAFLD", _rx(r"\bnafld\b"), "A", "none"),
+    ("NASH",  _rx(r"\bnash\b"), "A", "none"),
+    ("MASLD", _rx(r"\bmasld\b"), "A", "none"),
+    ("MASH",  _rx(r"\bmash\b"), "A", "none"),
+    ("NAFL",  _rx(r"\bnafl\b"), "A", "none"),
+    # Tier A — promoted plausible phrases (NEW in v1.1.0; STRICT scoping — affirmative liver required)
+    ("fatty replacement",  _rx(r"\bfatty replacement\b"), "A", "strict"),
+    ("fatty deposition",   _rx(r"\bfatty deposition\b"), "A", "strict"),
+    ("fatty degeneration", _rx(r"\bfatty degeneration\b"), "A", "strict"),
+    ("fatty metamorphosis", _rx(r"\bfatty metamorphosis\b"), "A", "strict"),
+    ("fatty infiltrate",   _rx(r"\bfatty infiltrate[sd]?\b"), "A", "strict"),
+    # Tier A — fatty infiltration: TIGHTENED to strict in v1.1.0 (researcher ruling, Step 2d)
+    ("fatty infiltration", _rx(r"\bfatty infiltration\b"), "A", "strict"),
+    # Tier A — organ-ambiguous phrases KEPT at STANDARD scoping (researcher ruling, Step 2d)
+    ("fatty change",       _rx(r"\bfatty change\b"), "A", "standard"),
+    ("fatty sparing",      _rx(r"\bfatty sparing\b"), "A", "standard"),
+    ("focal fat",          _rx(r"\bfocal fat\b"), "A", "standard"),
+    # Tier A — stems (self-evidently hepatic per researcher; kept at v1.0.0 STANDARD scoping)
+    ("steatohepatitis", _rx(r"\bsteatohepatit\w*\b"), "A", "standard"),
+    ("steatosis",       _rx(r"\bsteatosis\b"), "A", "standard"),
+    ("steatotic",       _rx(r"\bsteatotic\b"), "A", "standard"),
+    # NOTE: bare "fatty" REMOVED in v1.1.0 (see docs/fatty_trigger_diagnostic.md).
     # Tier B — imaging signs (sensitivity only)
-    ("increased hepatic echogenicity", _rx(r"\bincreased hepatic echogenicity\b"), "B", True),
-    ("echogenic liver",                _rx(r"\bechogenic liver\b"), "B", True),
-    ("increased echogenicity",         _rx(r"\bincreased echogenicity\b"), "B", False),
-    ("decreased hepatic attenuation",  _rx(r"\bdecreased hepatic attenuation\b"), "B", True),
-    ("low attenuation",                _rx(r"\blow attenuation\b"), "B", False),
+    ("increased hepatic echogenicity", _rx(r"\bincreased hepatic echogenicity\b"), "B", "none"),
+    ("echogenic liver",                _rx(r"\bechogenic liver\b"), "B", "none"),
+    ("increased echogenicity",         _rx(r"\bincreased echogenicity\b"), "B", "standard"),
+    ("decreased hepatic attenuation",  _rx(r"\bdecreased hepatic attenuation\b"), "B", "none"),
+    ("low attenuation",                _rx(r"\blow attenuation\b"), "B", "standard"),
 ]
 # fast substring pre-screen (skip notes with no possible trigger)
 SCREEN = ("steato", "fatty", "nafld", "nash", "masld", "mash", "nafl",
@@ -115,24 +125,40 @@ def _tokenize(s):
     return [(m.group(0), m.start()) for m in TOKEN_RE.finditer(s)]
 
 
-def _phrase_positions(low, phrases):
-    """Return list of (char_start, char_end) for any phrase occurrence."""
+def _totoks(phrases):
+    """Tokenize each cue phrase the same way notes are tokenized (word-boundary)."""
+    return [tuple(m.group(0) for m in TOKEN_RE.finditer(p.lower())) for p in phrases]
+
+
+# Precompute cue token-tuples once (token matching avoids substring false hits,
+# e.g. negation `no` must not match inside "normal"/"known").
+NEG_PRE_T = _totoks(NEG_PRE)
+NEG_POST_T = _totoks(NEG_POST)
+PSEUDO_T = _totoks(PSEUDO_NEG)
+HEDGE_T = _totoks(HEDGE)
+HIST_T = _totoks(HIST)
+FAMILY_T = _totoks(FAMILY)
+
+
+def _find(words, cue_tuples):
+    """Yield (start_idx, end_idx) for each token-exact cue occurrence."""
+    n = len(words)
     out = []
-    for ph in phrases:
-        start = 0
-        while True:
-            i = low.find(ph, start)
-            if i < 0:
-                break
-            out.append((i, i + len(ph)))
-            start = i + 1
+    for ct in cue_tuples:
+        L = len(ct)
+        if L == 0:
+            continue
+        for i in range(n - L + 1):
+            if tuple(words[i:i + L]) == ct:
+                out.append((i, i + L))
     return out
 
 
-def _anatomical(words, hit_ti):
-    """Return (pass:bool, organ_if_suppressed:str|None)."""
-    lo, hi = max(0, hit_ti - SCOPE_TOKENS), min(len(words), hit_ti + SCOPE_TOKENS + 1)
-    # nearest target and nearest competing within sentence (search whole sentence for comps)
+def _anatomical(words, hit_ti, strict=False):
+    """Return (ok:bool, organ_if_suppressed:str|None, reason:str).
+    reason in {affirmative, fallback, suppressed_competing, suppressed_strict,
+    suppressed_ambiguous}. strict=True requires affirmative liver/hepatic within
+    SCOPE_TOKENS and disables the 'no competing organ' fallback."""
     dt = None
     for j, w in enumerate(words):
         if w in TARGET_ORGANS:
@@ -149,79 +175,69 @@ def _anatomical(words, hit_ti):
     has_target10 = dt is not None and dt <= SCOPE_TOKENS
     nearest_competing = comp_in_sent and (dt is None or dc < dt)
     if nearest_competing:
-        return False, corg
+        return False, corg, "suppressed_competing"
     if has_target10:
-        return True, None
+        return True, None, "affirmative"
+    if strict:
+        return False, corg or "no_liver_evidence", "suppressed_strict"
     if not comp_in_sent:
-        return True, None
-    return False, corg  # target not within 10, competing present but not nearest -> ambiguous
+        return True, None, "fallback"
+    return False, corg, "suppressed_ambiguous"
 
 
-def _context(words, starts, sent_low, hit_ti, hit_char):
-    """Return dict of flags: negated, family, historical, hedged."""
-    # termination token indices
-    term_idx = sorted(j for j, w in enumerate(words) if w in TERMINATION)
+def _context(words, hit_ti):
+    """ConText assertion for a trigger at token index hit_ti. Token-level cue
+    matching (word-boundary correct). Returns flags: negated, family, historical,
+    hedged. Scope = segment bounded by termination terms; pre-cues act forward,
+    post-negation cues act backward."""
+    term_idx = [j for j, w in enumerate(words) if w in TERMINATION]
     seg_lo = max([j for j in term_idx if j < hit_ti], default=-1) + 1
     seg_hi = min([j for j in term_idx if j > hit_ti], default=len(words))
 
-    def cue_token_indices(phrases):
-        idxs = []
-        for cs, ce in _phrase_positions(sent_low, phrases):
-            ti = bisect.bisect_right(starts, cs) - 1
-            if 0 <= ti < len(words):
-                idxs.append((ti, cs, ce))
-        return idxs
-
-    pseudo_spans = _phrase_positions(sent_low, PSEUDO_NEG)
-    def in_pseudo(cs):
-        return any(a <= cs < b for a, b in pseudo_spans)
-
+    pseudo_starts = {i for i, e in _find(words, PSEUDO_T)}
     flags = {"negated": False, "family": False, "historical": False, "hedged": False}
-    # negation (pre, forward): cue before hit in segment, not pseudo
-    for ti, cs, ce in cue_token_indices(NEG_PRE):
-        if seg_lo <= ti < hit_ti and not in_pseudo(cs):
+    # negation (pre, forward) — skip pseudo-negation starts
+    for i, e in _find(words, NEG_PRE_T):
+        if seg_lo <= i < hit_ti and i not in pseudo_starts:
             flags["negated"] = True
-    for ti, cs, ce in cue_token_indices(NEG_POST):
-        if hit_ti < ti < seg_hi:
+    # negation (post, backward)
+    for i, e in _find(words, NEG_POST_T):
+        if hit_ti < i < seg_hi:
             flags["negated"] = True
     # hedge (pre, forward) — 'versus'/'differential' allowed either side in segment
-    for ti, cs, ce in cue_token_indices(HEDGE):
-        if seg_lo <= ti <= seg_hi:
-            if ti < hit_ti or sent_low[cs:ce] in ("versus", "differential includes",
-                                                  "differential diagnosis"):
-                flags["hedged"] = True
+    for i, e in _find(words, HEDGE_T):
+        if seg_lo <= i <= seg_hi and (i < hit_ti or words[i] in ("versus", "differential")):
+            flags["hedged"] = True
     # historical (pre)
-    for ti, cs, ce in cue_token_indices(HIST):
-        if seg_lo <= ti < hit_ti:
+    for i, e in _find(words, HIST_T):
+        if seg_lo <= i < hit_ti:
             flags["historical"] = True
-    # family (experiencer) — sentence-level, before hit
-    for ti, cs, ce in cue_token_indices(FAMILY):
-        if ti < hit_ti:
+    # family (experiencer) — before hit
+    for i, e in _find(words, FAMILY_T):
+        if i < hit_ti:
             flags["family"] = True
     return flags
 
 
-def classify_note(text):
-    """Classify one note. Returns aggregate flags/counters only (no text).
-    Keys: a_pos, b_pos, c_hedged (bool); triggers (set of positive trigger names);
-          excl (Counter: negation/family/historical); anat (Counter organ->n)."""
-    res = {"a_pos": False, "b_pos": False, "c_hedged": False,
-           "triggers": set(), "excl": Counter(), "anat": Counter()}
+def _iter_hits(text):
+    """Yield one record per KEPT trigger hit. Single source of truth for
+    classify_note and the scoping audit (scripts/scoping_audit.py). Each record:
+      {name, tier, scope, disp, ...} where disp in
+      {positive, tierC, negation, family, suppressed}; positives carry
+      reason (affirmative/fallback) and historical; suppressed carry organ."""
     if text is None:
-        return res
+        return
     low = text.lower()
     if not any(s in low for s in SCREEN):
-        return res
-
+        return
     for seg in SENT_SPLIT.split(text):
         slow = seg.lower()
         if not any(s in slow for s in SCREEN):
             continue
-        # collect raw hits in this sentence
         hits = []
-        for name, rgx, tier, self_anat in TRIGGERS:
+        for name, rgx, tier, scope in TRIGGERS:
             for m in rgx.finditer(seg):
-                hits.append((m.start(), m.end(), name, tier, self_anat))
+                hits.append((m.start(), m.end(), name, tier, scope))
         if not hits:
             continue
         # dedup overlaps: keep longer spans (more specific)
@@ -231,39 +247,59 @@ def classify_note(text):
             if any(k[0] <= h[0] and h[1] <= k[1] for k in kept):
                 continue
             kept.append(h)
-
         toks = _tokenize(slow)
         words = [w for w, _ in toks]; starts = [s for _, s in toks]
-        for cstart, cend, name, tier, self_anat in kept:
+        for cstart, cend, name, tier, scope in kept:
             hit_ti = bisect.bisect_right(starts, cstart) - 1
             if hit_ti < 0:
                 hit_ti = 0
-            # anatomical scoping
-            if not self_anat:
-                ok, organ = _anatomical(words, hit_ti)
+            reason = "none"
+            if scope != "none":
+                ok, organ, reason = _anatomical(words, hit_ti, strict=(scope == "strict"))
                 if not ok:
-                    res["anat"][organ or "ambiguous"] += 1
+                    yield {"name": name, "tier": tier, "scope": scope,
+                           "disp": "suppressed", "organ": organ or "ambiguous",
+                           "reason": reason}
                     continue
-            # context assertion
-            f = _context(words, starts, slow, hit_ti, cstart)
+            f = _context(words, hit_ti)
             if f["family"]:
-                res["excl"]["family"] += 1
+                yield {"name": name, "tier": tier, "scope": scope, "disp": "family"}
                 continue
             if f["negated"]:
-                res["excl"]["negation"] += 1
+                yield {"name": name, "tier": tier, "scope": scope, "disp": "negation"}
                 continue
             if f["hedged"]:
-                res["c_hedged"] = True
-                res["triggers"].add(name + " [C]")
+                yield {"name": name, "tier": tier, "scope": scope, "disp": "tierC"}
                 continue
-            # affirmed positive
-            if f["historical"]:
+            yield {"name": name, "tier": tier, "scope": scope, "disp": "positive",
+                   "reason": reason, "historical": f["historical"]}
+
+
+def classify_note(text):
+    """Classify one note. Aggregate flags/counters only (no text).
+    Keys: a_pos, b_pos, c_hedged (bool); triggers (set of positive trigger names);
+          excl (Counter: negation/family/historical); anat (Counter organ->n)."""
+    res = {"a_pos": False, "b_pos": False, "c_hedged": False,
+           "triggers": set(), "excl": Counter(), "anat": Counter()}
+    for h in _iter_hits(text):
+        d = h["disp"]
+        if d == "suppressed":
+            res["anat"][h["organ"]] += 1
+        elif d == "family":
+            res["excl"]["family"] += 1
+        elif d == "negation":
+            res["excl"]["negation"] += 1
+        elif d == "tierC":
+            res["c_hedged"] = True
+            res["triggers"].add(h["name"] + " [C]")
+        else:  # positive
+            if h["historical"]:
                 res["excl"]["historical"] += 1  # flagged, NOT excluded
-            if tier == "A":
+            if h["tier"] == "A":
                 res["a_pos"] = True
             else:
                 res["b_pos"] = True
-            res["triggers"].add(name)
+            res["triggers"].add(h["name"])
     return res
 
 

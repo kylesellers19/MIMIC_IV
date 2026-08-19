@@ -171,4 +171,27 @@ Disproportionate sampling → each cell reweighted to its population frequency. 
 
 ---
 
+## Pre-specified secondary analyses (SLD nomenclature)
+
+The primary 2×2 stays at the **steatosis** level (the code axis requires no
+cardiometabolic criterion, so gating note-positivity on CMRF would compare
+non-comparable constructs). Pre-specified secondary analyses — full detail,
+five-CMRF operationalization (Rinella et al. 2023), SLD subclassification
+(MASLD / MetALD / ALD / Cryptogenic / Unclassifiable), and the alcohol-proxy
+caveat — are in [docs/sld_subclassification.md](sld_subclassification.md).
+Recovery estimate (code−/note+ ÷ all note+) is robust across definitions:
+
+| definition | recovery % |
+| --- | --: |
+| PRIMARY: steatosis | 81.9% |
+| (i) steatosis excluding alcohol-related codes | 80.9% |
+| (ii) steatosis + ≥1 CMRF (MASLD-consistent) | 81.4% |
+| (iii) steatosis excl. all competing etiologies (NAFLD-era; NOT primary under current nomenclature) | 83.4% |
+
+MetALD-consistent admissions (steatosis + ≥1 CMRF + alcohol code) = 4,308 of
+note-positive (15.5%); MetALD has no ICD code, so it is invisible to the code axis
+by construction. See the linked doc for the alcohol-proxy limitation.
+
+---
+
 *This document reports a computable-phenotype comparison and a sampling design only. The Aim 1a recovery estimate is not final and requires the chart adjudication that this frame is built to enable.*

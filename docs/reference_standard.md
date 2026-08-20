@@ -30,21 +30,26 @@ Only an independent gold standard breaks both circularities and lets 1a measure 
 
 ## 2. Pre-registered adjudication criteria
 
-> **🚧 TODO — PLACEHOLDER. Must be finalized and pre-registered BEFORE any chart review begins.** No charts are adjudicated until this section is locked. This is the remaining gate (see Status).
+> **🚧 DRAFT 1 — drafted, NOT yet locked. Requires clinician sign-off before any
+> chart review begins.** Full criteria in
+> [docs/adjudication_criteria.md](adjudication_criteria.md). This remains the gate
+> (see Status): the criteria may be revised **only** at the 20-chart training set
+> (§9 of that doc); once formal review of the 400-chart sample begins they are frozen.
 
-Stub headings to specify:
+Draft 1 specifies, replacing the earlier stubs:
+- **2.1 Imaging / histology evidence** — an evidence hierarchy (biopsy / CT-MRI →
+  Definite; ultrasound echogenicity → Probable; note statement → Probable; hedged
+  imaging → Possible) on a Definite/Probable/Possible/Absent/Insufficient scale.
+- **2.2 Metabolic criteria** — secondary question 6a: ≥1 of BMI≥25, T2D/prediabetes,
+  BP≥130/85 or antihypertensive, TG≥150, HDL≤40/≤50, or lipid-lowering therapy
+  (matching the computable operationalization in docs/sld_subclassification.md).
+- **2.3 Alcohol** — secondary question 6b: MetALD g/wk bands vs a qualitative scale
+  (open decision; MIMIC lacks quantified intake — expect "not documented" to dominate).
+- **2.4 Ambiguous / insufficient** — an explicit *Insufficient information* level plus
+  a *Possible* tier; temporality (during/before/both) recorded separately.
 
-### 2.1 Imaging / histology evidence of steatosis
-- Acceptable evidence sources (US, CT, MRI/MRI-PDFF, biopsy); qualitative vs quantitative thresholds; how radiology-report language maps to a positive finding.
-
-### 2.2 Metabolic criteria
-- Cardiometabolic risk factors required for the "metabolic dysfunction" component (e.g., BMI/overweight, dysglycemia/T2DM, hypertension, dyslipidemia); how many, and measurement windows.
-
-### 2.3 Alcohol-exclusion thresholds
-- Alcohol-intake cutoffs separating MASLD from ALD/MetALD; data sources (notes, social history, labs); handling of missing intake data.
-
-### 2.4 Ambiguous / insufficient-evidence charts
-- Disposition rules for charts lacking imaging/metabolic/alcohol data; whether an explicit "indeterminate" label exists and how it flows into estimation.
+Open clinician decisions (D1–D8) and an analyst cross-consistency check are collated
+in the linked document.
 
 ---
 

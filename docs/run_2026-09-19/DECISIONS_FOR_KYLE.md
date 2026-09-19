@@ -106,3 +106,58 @@ The estimator's `--positive-levels` defaults to `Definite,Probable` (the draft).
 - *Timing: release at submission, at acceptance, or at publication.* Earlier release lets reviewers run the code; later release avoids a public artifact that changes after review.
 
 **What is blocked.** Nothing in this run. The decision is needed before the repository is made public, and the DUA clause should be quoted in the manuscript's data-availability statement either way.
+
+## D-04 · Public registration versus the repository's git audit trail (Phase 10.1)
+
+**Question.** This study has no entry in any public registry. Its claims about the *timing* of decisions currently rest entirely on the repository's own history. Do you create a public registration, or rely on the audit trail?
+
+**What the audit trail actually consists of.**
+- The note-phenotype rule and its specification were frozen and git-tagged — `note-phenotype-v1.0.0` and `note-phenotype-v1.1.0` — **before** the code × note cross-tabulation was built and before any chart was drawn. The v1.1.0 revision used only the rule's own behaviour on the corpus (`docs/fatty_trigger_diagnostic.md`); no adjudicated or reference-standard data existed at any point.
+- The seven hypotheses, the 14-row sensitivity registry and the seven dated amendments were committed at `e2a4e1e5b2bade9f7f8cb07a7d546a23e57b1b9b` (`docs/analysis_plan_prespecified.md`; hash in `docs/run_2026-09-19/STATE.json`, field `phase1_commit`) **before any model was trained and before any stratum-level rate was computed**. Each amendment carries the sentence "no result from this analysis had been seen when it was added."
+- The gold-holdout rule was fixed in that same commit, before any model existed.
+- Frozen-artefact SHA hashes were recorded at the start and at the end of the run and compared (`results/frozen_hashes_start.json`, `frozen_hashes_end.json`).
+- What the audit trail does **not** cover: the computable-stage results themselves (the 2×2, the recovery share of 81.9%, the equity tables) were already computed in sessions before this run. A registration created now would post-date them.
+
+**Options and what each changes.**
+
+- *Register the analysis plan publicly now* (for example on the Open Science Framework), with the dated hypotheses and the sensitivity registry.
+  - *Changes what the manuscript may claim:* it can state that the plan is publicly registered and give a registration identifier, and reviewers can verify the plan text independently of the repository.
+  - *Changes what must be disclosed:* the registration would be a **post-hoc registration of already-computed computable-stage results** and must be described as such — explicitly stating which analyses (the cross-tabulation, the recovery and corroboration shares, the Aim 1c stratum tables, the TF-IDF diagnostic) were already run at the time of registration, and which (the chart adjudication, the headline under-capture estimate, the gold-standard model comparison, equity levels 2 and 3) were not. A registration that does not say this would misrepresent the timing.
+  - *Cost:* a registry entry is immutable and public; anything it gets wrong is permanent and visible.
+
+- *Rely on the repository's audit trail alone.*
+  - *Changes what the manuscript may claim:* it may state that the rule was frozen and tagged before the cross-tabulation, and that hypotheses were committed before modelling, with the tag names and the commit hash given in the text. It may **not** use the word "pre-registered."
+  - *Verification by reviewers:* possible only by inspecting the repository, which requires the repository to be public at review time (interacting with **D-03**, the license and release-timing decision). Git history is also, in principle, rewritable by the author, so it is weaker evidence than a third-party timestamp — reviewers may or may not accept it.
+
+- *Both:* register the still-unrun components only — the adjudication criteria once signed off, the estimator and its primary/secondary handling of *Insufficient information*, and the gold-standard model comparison — and describe the computable stage as exploratory work that preceded registration.
+  - *Changes what the manuscript may claim:* a genuine, verifiable forward registration for the part of the study that has not happened, with no misrepresentation of the part that has. Requires the criteria to be signed off first, so it sits behind the clinician gate.
+
+**Blocked until decided.** Nothing computational. The wording of the manuscript's timing claims, and the correction described in **D-05**.
+
+## D-05 · The "pre-registered" wording that needs correcting (Phase 10.1)
+
+**Question.** An older methods draft held in the researcher's claude.ai project contains the sentence *"The finalized trigger lexicon and adjudication criteria are pre-registered."* **This is not true of any registry.** No registration exists. The same wording is present in this repository. How is it corrected?
+
+**Where the wording appears in this repository** (found by `git grep -n -i -E "pre-?regist(ered|ration|er)"`; these are the only three tracked occurrences):
+
+| file | line | text |
+| --- | --: | --- |
+| `docs/reference_standard.md` | 31 | `## 2. Pre-registered adjudication criteria` |
+| `docs/reference_standard.md` | 94 | ``3. **Pre-registration** — adjudication criteria (§2) are **finalized and pre-registered before review starts**.`` |
+| `docs/reference_standard.md` | 126 | ``This specification **resolves the reference-standard blocker at the design level.** The remaining gate before review can begin is **finalization and pre-registration of the adjudication criteria (§2).**`` |
+
+Two further notes. (i) `docs/adjudication_criteria.md` does **not** itself use the phrase, but its title is "Reference Standard §2 — Chart-Review Adjudication Criteria" and it is the document that `docs/reference_standard.md` §2 — the heading on line 31 — points to, so it inherits the claim by reference; its own header says only "DRAFT 1 — requires clinician review and sign-off before use." (ii) `docs/analysis_plan_prespecified.md` line 5 already states correctly: "This is not a public registration; see the decisions file for the registration question." No file in this repository was edited by Phase 10; the three lines above are untouched.
+
+A second inaccuracy in the same sentence, independent of the registry question: the adjudication criteria are **not finalized**. They are Draft 1 with eight open clinician decisions (D1–D8) and may still be revised once, at the 20-chart training round. Only the trigger lexicon is frozen.
+
+**Options and what each changes.**
+
+- *Correct the wording everywhere to describe the git audit trail.* Replace "pre-registered" with a factual statement of what was frozen, when, and how it can be checked — for example, that the criteria are finalized and **frozen in the repository** before review starts, with the freeze point and the commit identifiable in git history. Three lines in `docs/reference_standard.md`, plus the sentence in the researcher's older external draft, plus any slide or abstract reusing it.
+  - *Changes:* the manuscript's integrity claim becomes narrower but true. Nothing computational. Requires an editorial pass over material outside this repository, which this run cannot see.
+
+- *Create a registration that makes the statement true going forward.* See **D-04** for the forms this could take and what each would oblige the manuscript to disclose. Even then, the wording would have to distinguish the criteria (registrable going forward, once signed off) from the computable-stage results (already computed).
+  - *Changes:* the claim becomes literally true for the criteria, but only from the registration date, and the post-hoc disclosure in D-04 becomes mandatory.
+
+- *Do nothing.* The repository and any derived manuscript would assert a registration that does not exist. This is a factual misstatement about research integrity in exactly the section of the paper whose subject is research integrity.
+
+**Blocked until decided.** The manuscript's integrity and reference-standard sections. `docs/manuscript_methods_draft.md` was written with the corrected framing throughout and does not use the word "pre-registered" anywhere; if the three lines in `docs/reference_standard.md` are left as they are, the two documents will contradict each other.

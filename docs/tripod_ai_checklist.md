@@ -1,0 +1,104 @@
+# TRIPOD+AI reporting checklist — status of this study
+
+Reference: Collins GS, Moons KGM, Dhiman P, et al. *TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods.* BMJ. 2024;385:e078378. doi:10.1136/bmj-2023-078378. PMID 38626948. (Bibliographic fields confirmed against PubMed; see `docs/references/verified_references.md`, entry R13.)
+
+> **Read this once, then not again.** The official TRIPOD+AI item numbers and item wording were **not available to the drafter of this file**, so **no item numbers are asserted here**. Each row below is identified by a section and a local label (`T-1`, `A-1`, `I-1`, `M-1` …) and states the item's *topic* in the drafter's own words. **Before submission, every row must be mapped onto the published checklist's numbering and official item text, and any published item absent from this file must be added.** Treat this document as a completeness audit of the study's own artefacts, not as a substitute for the published checklist.
+>
+> Status vocabulary: **satisfied** — the content exists in a named document or section; **partial** — some of it exists and what is missing is named; **pending** — it cannot exist yet, and what must happen first is named (usually the chart adjudication, or the model jobs that were still running at draft time).
+>
+> A general caution that applies throughout: this study reports **three different kinds of quantity** — computable-phenotype comparisons (available now), silver-label model development diagnostics (partly available), and adjudicated gold-standard estimates (not available). Several checklist items are "satisfied" only for the first kind. Rows say which.
+
+---
+
+## Title and abstract
+
+| Label | Item topic | Status | Where / what is missing |
+| --- | --- | --- | --- |
+| T-1 | Title identifies the study as developing and/or evaluating a prediction model, names the target population and outcome, and names the modelling approach | **pending** | The manuscript title does not yet exist. Must state single-centre MIMIC-IV, admission-level documented hepatic steatosis, and that the primary aim is an ICD under-capture estimate against an adjudicated reference standard rather than a deployment model. |
+| A-1 | Structured abstract covering objective, data source, participants, outcome, predictors, analysis, results with uncertainty, and limitations | **pending** | Requires the adjudicated estimate and the completed model comparison. |
+
+## Introduction
+
+| Label | Item topic | Status | Where / what is missing |
+| --- | --- | --- | --- |
+| I-1 | Background, rationale and the clinical/scientific context, including what existing models or phenotypes do and why another is needed | **satisfied** (for the aims) | `docs/reference_standard.md` "Study context"; `docs/sld_subclassification.md` (why MASLD is defined positively, per Rinella et al. 2023); `docs/sensitivity_5719.md` (relation to the Hagström et al. 2021 coding consensus). Needs assembling into manuscript prose. |
+| I-2 | Study objectives and specific hypotheses, stated in advance | **satisfied** | `docs/analysis_plan_prespecified.md` §1 — seven hypotheses (H1a, H1b-i/ii/iii, H-calibration, H-silver-vs-gold, H1c), each with explicit disconfirmation criteria, committed at `e2a4e1e5b2bade9f7f8cb07a7d546a23e57b1b9b` before any model was trained. **Not a public registration**; see the Open-science section. |
+
+## Methods — data and participants
+
+| Label | Item topic | Status | Where / what is missing |
+| --- | --- | --- | --- |
+| M-1 | Data source, including provenance, setting, and whether the data were collected for this purpose | **satisfied** | `docs/manuscript_methods_draft.md` §1; `docs/note_coverage.md`. MIMIC-IV v3.1 `hosp` + MIMIC-IV-Note v2.2, single centre, de-identified, credentialed, routinely collected. |
+| M-2 | Eligibility criteria and the participant flow with numbers at each step | **satisfied** | `docs/run_2026-09-19/results/cohort_flow.json`; `docs/aim1a_loose_ends.md` §4.5; `docs/tables/table0.md`; methods §2. 546,028 → 545,497 → 373,992 with both exclusion components quantified. |
+| M-3 | Unit of analysis and how repeated observations per person are handled | **satisfied** | Admission grain throughout; subject-grain collapse reported as a pre-specified sensitivity (`docs/aim1a_crosstab.md`); all splitting and all bootstrapping are at subject level (`docs/aim1b_splits.md`, `docs/aim1c_level1.md`). |
+| M-4 | Study dates / time period and any temporal restriction | **satisfied, with a correction to an earlier internal claim** | Methods §2. No admission-year window is imposed; the earlier "2008–2019 window" statement in `docs/note_coverage.md` is superseded and the exclusion is decomposed by subject lineage. `docs/note_coverage.md` itself has not been edited and still carries the superseded claim — **flag for the manuscript: cite `docs/analysis_population.md` / `docs/tables/table0.md` / `cohort_flow.json`, not `note_coverage.md`, for the window question.** |
+| M-5 | Treatment of missing data, including whether missingness is itself informative | **satisfied (described), partial (handled)** | Missingness is *modelled as a feature*, not imputed: FS-AVAIL is an explicit availability/volume feature set and the FS-A vs FS-B contrast is a pre-committed result (`docs/run_2026-09-19/results/feature_classification.json`). Differential availability is quantified in `docs/analysis_population.md` and `docs/aim1a_loose_ends.md` §4.6. Missing: no multiple-imputation or complete-case comparator is offered, by design; that design choice should be stated as such in the manuscript. |
+| M-6 | Data-quality assessment | **satisfied** | `docs/data_quality_report.md`, using Kahn et al. 2016 conformance / completeness / plausibility; summarized in methods §3. |
+
+## Methods — outcome and predictors
+
+| Label | Item topic | Status | Where / what is missing |
+| --- | --- | --- | --- |
+| M-7 | Outcome definition, how and when it was measured, and by whom | **partial** | Two computable outcomes are fully defined (the ICD code set in `sql/masld_coded.sql`; the note rule in `docs/note_phenotype_spec.md` v1.1.0). The **reference-standard outcome is defined only in draft** (`docs/adjudication_criteria.md`, Draft 1) and requires clinician sign-off on eight open decisions (D1–D8). |
+| M-8 | Blinding of outcome assessment to predictor information | **satisfied by design, pending execution** | `docs/adjudication_criteria.md` §1 and `docs/adjudication/packet_specification.md`: reviewers see no ICD codes, no rule output, no trigger highlighting, no cell membership; race/insurance/language withheld from the packet and retained only at analysis level. Dry-run leak checks confirm zero structured-field leaks. Execution is pending adjudication. |
+| M-9 | Predictor definition, timing relative to the outcome, and assessment blinded to outcome | **satisfied** | `docs/run_2026-09-19/results/feature_classification.json`; methods §10.3. All features are time-bounded at discharge; only pre-admission outpatient imaging counts; predictors are derived by script with no knowledge of the label. |
+| M-10 | Explicit statement of measures taken to avoid information leakage between predictors and outcome | **satisfied** | The leakage audit records every exclusion with its reason: the phenotype code itself, the full Charlson index (Quan's mild-liver category contains K76.0 and 571.x), all note-rule outputs, discharge disposition and in-hospital mortality, and the sampling-design columns. The Charlson leak was quantified: a recovery-zone SMD of −0.356 collapses to +0.004 once liver categories are removed (`docs/charlson_validation.md`). |
+
+## Methods — sample size, splitting and analysis
+
+| Label | Item topic | Status | Where / what is missing |
+| --- | --- | --- | --- |
+| M-11 | Justification of sample size / number of events | **partial** | For the reference standard: a full pre-adjudication precision simulation exists (`docs/aim1a_precision_forecast.md`), including the finding that cell D carries 92–97% of the variance and that coverage fails at very low cell-D prevalence. For the models: no formal events-per-parameter or learning-curve justification is offered; the development sample is the whole population minus the gold holdout, and the notes subsample was sized by a **compute budget** measured from a pilot (33,414-admission ceiling), not by a precision target. State that plainly. |
+| M-12 | How the data were split into development and evaluation sets, and the rationale | **satisfied** | `docs/aim1b_splits.md`. Subject-level, never admission-level. GOLD_HOLDOUT = every admission of every subject appearing in the 400-chart sample or the 20-chart training round; then 20% TEST / 80% DEV (five folds) of the remainder. Zero overlap asserted in code. |
+| M-13 | Statement that the evaluation data were untouched during development | **satisfied** | The gold-holdout rule (amendment (c), committed before any model existed) forbids fitting, tuning, early stopping, threshold selection, recalibration, vocabulary building and dimensionality reduction on gold subjects. TEST is touched once per model. Vocabulary and PCA are fit inside training folds only. |
+| M-14 | Handling of class imbalance and its effect on calibration | **satisfied** | Three variants reported side by side for every learner and feature set — unweighted, weighted, and weighted with an analytic prior correction (a −log(w) logit shift) — as an amendment dated before any model was trained, precisely so the recorded calibration expectation is tested rather than assumed. Unit-tested in `tests/`. |
+| M-15 | Model-development procedure: learners, hyperparameters, tuning strategy, and selection rule | **partial** | Fully specified in code and methods §10.4 (CatBoost primary, XGBoost, LightGBM; four random configurations per learner; three-fold subject CV on DEV folds 0–2; early stopping on an inner 10% subject split). **The selected configurations and their tuning scores are `[PENDING — job still running at draft time]`** (`docs/run_2026-09-19/results/aim1b_structured.json`). |
+| M-16 | Any ensembling / stacking and how it was fitted | **partial** | Design specified: Layer 0 = structured FS-B (best-calibrated DEV out-of-fold variant; FS-A as a pre-specified sensitivity) plus the notes model on variant S; Layer 1 = logistic regression on the two out-of-fold logits fitted on subsample DEV only; code status never an input. **Results `[PENDING — job still running at draft time]`.** |
+| M-17 | Performance measures, including discrimination, calibration and clinical utility | **partial** | AUROC, AUPRC, Brier score, calibration intercept and slope are computed for every arm and variant. **No decision-curve or net-benefit analysis is performed**, and no decision threshold is proposed — appropriate here because the target is an epidemiological under-capture estimate rather than a deployed classifier, but it must be stated rather than left as an omission. |
+| M-18 | Uncertainty quantification | **satisfied** | Subject-cluster bootstrap, 500 replicates, for model metrics and for equity strata; stratified within-cell bootstrap plus linearized and logit-scale linearized intervals for the Aim 1a estimator. No p-values anywhere; SMDs used for descriptive contrasts. |
+| M-19 | Fairness / subgroup analysis plan stated in advance | **satisfied** | H1c in the pre-specification commit; implemented in `docs/aim1c_level1.md` with strata as recorded, a cell floor of 11, non-analyzable strata declared rather than merged, a stated 20-point interval-width threshold for claim support, and one exploratory GEE whose covariates were fixed in amendment (g) — with diagnosis count and laboratory availability deliberately excluded as mediators. |
+
+## Open science, ethics and reproducibility
+
+| Label | Item topic | Status | Where / what is missing |
+| --- | --- | --- | --- |
+| O-1 | Registration / protocol availability | **partial — and the most important row in this file** | **There is no registry entry.** What exists is a repository audit trail: the note rule frozen and git-tagged (`note-phenotype-v1.0.0`, `note-phenotype-v1.1.0`) before the cross-tabulation was built, and the hypotheses, sensitivity registry and amendments committed at `e2a4e1e5b2bade9f7f8cb07a7d546a23e57b1b9b` before any model was trained or any stratum-level rate computed. The manuscript must describe exactly this and must **not** use the word "pre-registered". Three tracked files still carry that wording (`docs/reference_standard.md` lines 31, 94 and 126) and need correcting; logged in `docs/run_2026-09-19/DECISIONS_FOR_KYLE.md`. The alternative — creating a registration now — would be a post-hoc registration of already-computed computable-stage results and must be described as such. |
+| O-2 | Funding and role of the funder | **pending** | Not recorded anywhere in the repository. |
+| O-3 | Conflicts of interest | **pending** | Not recorded anywhere in the repository. |
+| O-4 | Ethical approval / data use | **partial** | The PhysioNet credentialed data use agreement governs access; reviewers must each hold their own credentialing and signed DUA before seeing a packet, and access may not be shared (`docs/adjudication/reviewer_brief.md`). A data inventory of every credentialed and derived artefact on the analysis machine exists (`docs/admin/data_inventory.md`). **IRB/ethics determination for this specific analysis is not recorded in the repository.** |
+| O-5 | Data availability | **satisfied (as a statement to write)** | MIMIC-IV and MIMIC-IV-Note are available from PhysioNet to credentialed users under a DUA; no credentialed data or derivative — including embeddings, fitted models and predictions — may be shared, and none left the analysis machine. The DUA clause should be quoted in the statement. |
+| O-6 | Code availability and licensing | **partial** | The full pipeline is in the repository with a stage-by-stage manifest (`run_pipeline.sh`, `README.md`) and a pinned environment (`requirements.txt`, `requirements-run_2026-09-19.txt`). **No license file exists**; the choice and the release timing are open decision D-03, which also quotes the DUA's code-contribution obligation. |
+| O-7 | Computational reproducibility: seeds, environment, versions | **satisfied** | All seeds fixed and recorded (20260818 sample; 20260919 training draw and model fitting; 20260920 split; 20260921 reviewer assignment; 20260922 notes subsample; 20260925 precision simulation). Environment pinned from `pip freeze`. Frozen-artefact SHA hashes recorded at the start and end of the run and compared. 61 automated tests, plus an eight-check final audit (`docs/run_2026-09-19/results/final_audit.json`). |
+| O-8 | Patient and public involvement | **pending** | Nothing in the repository records any patient or public involvement. If there was none, the manuscript should say so explicitly rather than omit the item. |
+
+## Results
+
+| Label | Item topic | Status | Where / what is missing |
+| --- | --- | --- | --- |
+| R-1 | Participant flow diagram with numbers at each stage | **satisfied** | `docs/manuscript_results_skeleton.md` Table 1; `docs/tables/table0.md`; `cohort_flow.json`. |
+| R-2 | Participant characteristics, including predictor distributions and missingness, for each analysis set | **partial** | `docs/tables/table1.md`, `table2.md`, `docs/predefinition_descriptives.md`, `docs/aim1a_crosstab.md` Step 2 give characteristics by cell and for the population. **A characteristics table split by DEV / TEST / GOLD_HOLDOUT does not exist** and should be produced for the manuscript. |
+| R-3 | Number of participants and events in each analysis | **satisfied** | `phase2_splits.json` (partition and fold counts with silver prevalence); `integrity_gate.json` (all four 2×2 definitions); `aim1c_level1.json` (cell counts printed before every rate). |
+| R-4 | Full model specification sufficient for independent use (coefficients, or the artefact and how to obtain it) | **partial** | TF-IDF variant coefficients are published (top 25 positive and negative per variant, with document frequencies, in `docs/aim1b_notes.md`). **Gradient-boosted and fusion models are credentialed derivatives and cannot be released**; only their specification, hyperparameter search space and code can be. The selected hyperparameters are `[PENDING — job still running at draft time]`. This tension should be stated explicitly rather than presented as a satisfied item. |
+| R-5 | Model performance with uncertainty, on development and on untouched evaluation data | **partial** | Available now: the TF-IDF development diagnostic on DEV out-of-fold and TEST, with 95% intervals, for three text variants × three imbalance variants, plus a code-negative-only TEST subset (`docs/aim1b_notes.md`). `[PENDING — job still running at draft time]`: the structured arm, the embedding arm and the fusion stack. `[PENDING ADJUDICATION]`: every gold-standard performance estimate. |
+| R-6 | Explicit flagging of results that are not accuracy estimates | **satisfied** | Every notes-arm table carries the header "DEVELOPMENT DIAGNOSTIC — label and input share a source; not an accuracy estimate", and the cross-tabulation document opens by stating that it compares two computable phenotypes and that the code−/note+ cell is a sampling stratum, not a count of missed cases. |
+| R-7 | Subgroup / fairness results with uncertainty, including strata that could not be analysed | **satisfied at the computable stage; pending at levels 2 and 3** | `docs/aim1c_level1.md` and `docs/tables/aim1c_level1_*.md`: 33 race levels, 26 language levels, insurance, sex, age band; cell counts first; 500-replicate subject-cluster bootstraps; non-analyzable strata declared, never merged; interval-width honesty marker. Weighted PPV by stratum against the gold standard is `[PENDING ADJUDICATION]`; calibration by stratum is `[PENDING — models still running]`. |
+| R-8 | Agreement between reviewers for the reference standard | **pending** | Design and estimator exist (100 double-reviewed charts; binary Cohen's kappa plus linear- and quadratic-weighted four-level kappa, all computed; `scripts/aim1a_estimator.py`), but the values require the adjudication. |
+
+## Discussion
+
+| Label | Item topic | Status | Where / what is missing |
+| --- | --- | --- | --- |
+| D-1 | Interpretation, in the context of the objectives and other evidence | **pending** | Requires the adjudicated estimate. |
+| D-2 | Limitations | **satisfied (drafted)** | `docs/manuscript_methods_draft.md` §13, thirteen items, including the uncharacterized mechanism of note-module absence, the alcohol proxy, order-only medication exposure, the age cap, non-observation of the liver, approximately 60% unascertainability for triglycerides and HDL, the reimplemented context algorithm, single centre, silver-label circularity, chunked BERT, and the sampling-design limits on precision. |
+| D-3 | Generalizability / transportability | **partial** | Single-centre limitation stated; **no external validation is planned or performed**, and the manuscript should say so directly. |
+| D-4 | Implications for practice and future work | **pending** | Requires the adjudicated estimate. |
+
+---
+
+## Summary of what blocks completion
+
+1. **Clinician sign-off on the adjudication criteria** (D1–D8). Blocks the entire reference standard, and with it every gold-standard row above.
+2. **The 571.9 decision (D-01).** Must be settled before adjudication begins, because sampling weights are fixed at sampling time.
+3. **The model jobs that were still running when this file was written** — structured arm, embedding arm, fusion, locked predictions.
+4. **Administrative items absent from the repository entirely**: funding, conflicts of interest, IRB/ethics determination, patient and public involvement, license (D-03), and the registration-versus-audit-trail decision.
+5. **A mapping of every row in this file onto the published TRIPOD+AI item numbers and official item text**, plus the addition of any published item this file does not cover.

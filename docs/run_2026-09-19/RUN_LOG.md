@@ -148,3 +148,30 @@ GOLD_HOLDOUT prevalence is high by design (the sample over-draws note-positive c
 **Checks passed.** 61 tests; audit (a)–(h) all pass; frozen-artifact hashes identical to the start of the run; tags unchanged; no remote; `masld_config.py` +12 lines, −0.
 
 **What Kyle should look at.** `README.md`; **D-03** (license and release timing).
+
+## Phase 7 — Aim 1b, structured arm
+
+**Purpose.** Ask how well routinely collected structured data predicts *documented* hepatic steatosis, and — the point of the exercise — separate how much of that prediction comes from the patient's clinical picture and how much from the documentation process itself (who got tested, imaged, prescribed and written about). The label is the note rule's output, which is known to contain error; every table says so.
+
+**What was done.** `scripts/run0919_features.py` built 52 clinical and 42 availability/volume features, all time-bounded at discharge, reusing the project's own derivations (drug classes and the five cardiometabolic criteria from `cmrf.py`, etiology flags, `charlson_noliver` from Phase 4.2, first/last in-admission laboratory values and pre-admission outpatient HbA1c, triglycerides and HDL). The phenotype codes, the full Charlson index, and every note-rule output are excluded by construction and the exclusion list is published with its reasons. `scripts/run0919_aim1b_structured.py` then trained CatBoost (primary), XGBoost and LightGBM on three feature sets and three imbalance variants, tuned on DEV by subject-level cross-validation with early stopping on an inner split, and touched TEST once. Report: `docs/aim1b_structured.md` (702 lines, organized by the TRIPOD+AI development items), figures in `docs/figures/`.
+
+**Results (TEST, 75,124 admissions; CatBoost unweighted unless stated).**
+
+| feature set | contents | AUROC | AUPRC |
+| --- | --- | --: | --: |
+| FS-B | clinical values only | 0.787 | 0.282 |
+| FS-AVAIL | availability and volume only | 0.812 | 0.245 |
+| FS-A | everything | 0.857 | 0.380 |
+
+- **The headline is the middle row.** Knowing only what was measured, imaged, ordered and written — with no clinical value at all — discriminates better than the clinical values do. The silver label is a property of documentation, and the documentation process predicts itself.
+- **H1b-i is half borne out.** The single strongest FS-A attribution is whether the liver was imaged at all (mean |SHAP| 0.675, nearly twice the next feature). But only 28% of the top 25 are availability features, and the expectation named *laboratory* availability and diagnosis count specifically; neither is near the top. Age, body-mass index, the overweight criterion and first ALT are the strongest clinical contributors.
+- **The calibration amendment (b) is confirmed and the 7 September expectation disconfirmed.** Unweighted models are almost exactly calibrated (intercept +0.03, slope 1.02). Class weighting leaves the slope near 1 but drives the intercept to **−2.38** — a large systematic overprediction of risk, exactly as the amendment anticipated. The analytic prior correction restores the intercept to +0.18 at no cost to discrimination (AUROC unchanged to four decimals, since it is a monotone transform). LightGBM weighted is worse still (slope 3.48).
+- **Calibration differs by subgroup where discrimination does not.** 34 subgroup rows are flagged; among unweighted models the substantive ones are slope 0.48–0.77 for BLACK/CAPE VERDEAN and intercept +0.55 to +0.58 for HISPANIC OR LATINO, with AUROC broadly similar. This is the secondary H-calibration expectation borne out.
+- **Recovery zone in silver-label form** (code-negative TEST admissions only): FS-A AUROC 0.857, FS-B 0.777, FS-AVAIL 0.817.
+- **Imaging-observed secondary population** (DEV 109,220 / TEST 27,602): AUROC falls to 0.766 (FS-A) and 0.751 (FS-B). Restricting to admissions where the liver was actually imaged removes much of what the full-population model was using, which is consistent with the first bullet.
+
+**Checks passed.** GOLD_HOLDOUT never entered any fit, tuning, early-stopping or threshold selection; TEST scored once per model; every feature classified before training; no phenotype-derived feature present (asserted in `tests/test_run0919_invariants.py`).
+
+**Deviations.** The best configuration per learner was chosen once on FS-A (unweighted) and reused across feature sets and imbalance variants, rather than re-tuned for each of the 21 combinations — 4 configurations per learner rather than 20, to fit the run's time budget. Recorded as Tier 1 in the report.
+
+**What Kyle should look at.** `docs/aim1b_structured.md` — the section "What the attributions say", and the calibration columns across the three imbalance variants.

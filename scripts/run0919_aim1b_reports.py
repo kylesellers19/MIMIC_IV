@@ -49,8 +49,24 @@ def report7():
         for i, r in enumerate(S["shap"][fs], 1): L.append(f"| {i} | {r['feature']} | {r['class']} | {r['mean_abs_shap']:.4f} |")
         L.append("")
     if "FS-A" in S["shap"]:
-        top = S["shap"]["FS-A"][:5]; av = sum(r["class"] == "availability" for r in top)
-        L.append(f"Plain statement: {av} of the top 5 FS-A attributions are availability or volume indicators. " + ("The model is learning the documentation process — who gets tested, imaged and documented — which is a finding about the data, not a successful clinical model." if av >= 3 else "Clinical values dominate the top attributions in FS-A.") + " The FS-A minus FS-B gap and the FS-AVAIL row quantify how much of the silver label the documentation process alone predicts.\n")
+        top = S["shap"]["FS-A"]; av5 = sum(r["class"] == "availability" for r in top[:5]); share = S["shap"]["FS-A_availability_share_top25"]
+        first = top[0]
+        def pick(prefix):
+            c = {k: v for k, v in S["test"].items() if k.startswith(prefix)}
+            return c[min(c, key=lambda k: abs(c[k]["cal_intercept"]))] if c else None
+        a, b, av = pick("cat|FS-A|unweighted"), pick("cat|FS-B|unweighted"), pick("cat|FS-AVAIL|unweighted")
+        L += ["### What the attributions say\n",
+              f"The single strongest attribution in FS-A is **{first['feature']}** ({first['class']}, mean |SHAP| {first['mean_abs_shap']:.3f}) — whether the liver was imaged at all. "
+              f"Below it the ranking is mixed: {av5} of the top 5 and {share:.0%} of the top 25 are availability or volume features, with age, body-mass index and the overweight criterion among the strongest clinical contributors. "
+              "So the pre-specified expectation (H1b-i) is only half borne out: the top attribution is an availability feature, but it is **imaging availability, not laboratory availability or diagnosis count**, and clinical values are not displaced from the upper ranks.\n",
+              "The feature-set comparison is the sharper result:\n",
+              "| feature set | what it contains | TEST AUROC | TEST AUPRC |", "| --- | --- | --: | --: |",
+              f"| FS-B | clinical values only | {b['auroc']:.3f} | {b['auprc']:.3f} |",
+              f"| FS-AVAIL | availability and volume only, no clinical value | {av['auroc']:.3f} | {av['auprc']:.3f} |",
+              f"| FS-A | everything | {a['auroc']:.3f} | {a['auprc']:.3f} |", "",
+              f"**Knowing only what was measured, imaged, ordered and written — with no clinical value at all — discriminates better than the clinical values do** ({av['auroc']:.3f} versus {b['auroc']:.3f} AUROC). "
+              "That is a finding about the data, not a successful clinical model: the silver label is a property of documentation, and the documentation process predicts itself. "
+              "It also bounds the caveat that tree models see missingness natively — FS-B cannot be read as a clean 'clinical signal' estimate, because its own missingness pattern carries part of what FS-AVAIL measures directly.\n"]
     L += ["## Calibration plots\n", "Reliability diagrams (10 quantile bins, TEST) for every CatBoost row: `docs/figures/aim1b_cal_cat_*.png`.\n", f"Runtime {S.get('runtime_s', 0)/3600:.1f} h."]
     open("docs/aim1b_structured.md", "w").write("\n".join(L) + "\n"); print("wrote docs/aim1b_structured.md")
 

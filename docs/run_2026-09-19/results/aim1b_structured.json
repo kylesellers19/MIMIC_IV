@@ -1,0 +1,4086 @@
+{
+ "seed": 20260919,
+ "n_configs_per_learner": 4,
+ "tuning": {
+  "cat": {
+   "configs": [
+    {
+     "cfg": {
+      "lr": 0.05,
+      "depth": 6,
+      "l2": 3
+     },
+     "mean_auprc_oof": 0.3838350998082219
+    },
+    {
+     "cfg": {
+      "lr": 0.1,
+      "depth": 4,
+      "l2": 1
+     },
+     "mean_auprc_oof": 0.373567053723953
+    },
+    {
+     "cfg": {
+      "lr": 0.05,
+      "depth": 8,
+      "l2": 10
+     },
+     "mean_auprc_oof": 0.3869086674163089
+    },
+    {
+     "cfg": {
+      "lr": 0.08,
+      "depth": 6,
+      "l2": 10
+     },
+     "mean_auprc_oof": 0.3810720737697313
+    }
+   ],
+   "best": {
+    "lr": 0.05,
+    "depth": 8,
+    "l2": 10
+   }
+  },
+  "xgb": {
+   "configs": [
+    {
+     "cfg": {
+      "lr": 0.05,
+      "depth": 6,
+      "l2": 1,
+      "mcw": 5
+     },
+     "mean_auprc_oof": 0.3797529588221494
+    },
+    {
+     "cfg": {
+      "lr": 0.1,
+      "depth": 4,
+      "l2": 1,
+      "mcw": 1
+     },
+     "mean_auprc_oof": 0.37296628389391473
+    },
+    {
+     "cfg": {
+      "lr": 0.05,
+      "depth": 8,
+      "l2": 5,
+      "mcw": 10
+     },
+     "mean_auprc_oof": 0.38336796624205577
+    },
+    {
+     "cfg": {
+      "lr": 0.08,
+      "depth": 6,
+      "l2": 10,
+      "mcw": 5
+     },
+     "mean_auprc_oof": 0.3810373273248113
+    }
+   ],
+   "best": {
+    "lr": 0.05,
+    "depth": 8,
+    "l2": 5,
+    "mcw": 10
+   }
+  },
+  "lgb": {
+   "configs": [
+    {
+     "cfg": {
+      "lr": 0.05,
+      "depth": 6,
+      "l2": 1,
+      "mcw": 5
+     },
+     "mean_auprc_oof": 0.3832501814068941
+    },
+    {
+     "cfg": {
+      "lr": 0.1,
+      "depth": 4,
+      "l2": 1,
+      "mcw": 1
+     },
+     "mean_auprc_oof": 0.3756612968431216
+    },
+    {
+     "cfg": {
+      "lr": 0.05,
+      "depth": 8,
+      "l2": 5,
+      "mcw": 10
+     },
+     "mean_auprc_oof": 0.38067301616028687
+    },
+    {
+     "cfg": {
+      "lr": 0.08,
+      "depth": 6,
+      "l2": 10,
+      "mcw": 5
+     },
+     "mean_auprc_oof": 0.38378751852524595
+    }
+   ],
+   "best": {
+    "lr": 0.08,
+    "depth": 6,
+    "l2": 10,
+    "mcw": 5
+   }
+  }
+ },
+ "oof": {
+  "cat|FS-A|unweighted": {
+   "n": 296003,
+   "pos": 21239,
+   "auroc": 0.8593343590013904,
+   "auprc": 0.3833109861997489,
+   "brier": 0.05379949696940059,
+   "cal_intercept": 0.010509798569228505,
+   "cal_slope": 1.019112987851204
+  },
+  "cat|FS-A|weighted": {
+   "n": 296003,
+   "pos": 21239,
+   "auroc": 0.857673295019822,
+   "auprc": 0.37137193652845774,
+   "brier": 0.14495112009350225,
+   "cal_intercept": -2.383939764064969,
+   "cal_slope": 1.0624439669538779
+  },
+  "cat|FS-A|weighted+corrected": {
+   "n": 296003,
+   "pos": 21239,
+   "auroc": 0.8576535438757924,
+   "auprc": 0.3711432893272363,
+   "brier": 0.05472483021106247,
+   "cal_intercept": 0.17613981263397555,
+   "cal_slope": 1.0621188985814334
+  },
+  "cat|FS-B|unweighted": {
+   "n": 296003,
+   "pos": 21239,
+   "auroc": 0.7964684830753785,
+   "auprc": 0.30476067777700966,
+   "brier": 0.05797975184655914,
+   "cal_intercept": 0.017191598799337127,
+   "cal_slope": 1.0390851429267145
+  },
+  "cat|FS-B|weighted": {
+   "n": 296003,
+   "pos": 21239,
+   "auroc": 0.7955895919518652,
+   "auprc": 0.29170020657990803,
+   "brier": 0.17163311974014772,
+   "cal_intercept": -2.4241467463197752,
+   "cal_slope": 1.090222586977438
+  },
+  "cat|FS-B|weighted+corrected": {
+   "n": 296003,
+   "pos": 21239,
+   "auroc": 0.7955442346804702,
+   "auprc": 0.29160418799713783,
+   "brier": 0.058798533422775405,
+   "cal_intercept": 0.13904885942414713,
+   "cal_slope": 1.0900055789385266
+  },
+  "cat|FS-AVAIL|unweighted": {
+   "n": 296003,
+   "pos": 21239,
+   "auroc": 0.8098082243185234,
+   "auprc": 0.23823539047049233,
+   "brier": 0.059716101661443394,
+   "cal_intercept": 0.0008584748981318316,
+   "cal_slope": 1.0169501943786572
+  },
+  "cat|FS-AVAIL|weighted": {
+   "n": 296003,
+   "pos": 21239,
+   "auroc": 0.8092511092367717,
+   "auprc": 0.23501241314808285,
+   "brier": 0.17914458242643735,
+   "cal_intercept": -2.5085963293777174,
+   "cal_slope": 1.0251838196188026
+  },
+  "cat|FS-AVAIL|weighted+corrected": {
+   "n": 296003,
+   "pos": 21239,
+   "auroc": 0.8091828260591057,
+   "auprc": 0.23486588099209138,
+   "brier": 0.05984393636333771,
+   "cal_intercept": 0.05376572417958335,
+   "cal_slope": 1.0248161234191642
+  },
+  "xgb|FS-A|unweighted": {
+   "n": 296003,
+   "pos": 21239,
+   "auroc": 0.8599535000986536,
+   "auprc": 0.3815142412151904,
+   "brier": 0.05390443194321378,
+   "cal_intercept": 0.02193823772238776,
+   "cal_slope": 0.996972112865552
+  },
+  "xgb|FS-A|weighted": {
+   "n": 296003,
+   "pos": 21239,
+   "auroc": 0.843794309091777,
+   "auprc": 0.3577714241154357,
+   "brier": 0.08340428944498583,
+   "cal_intercept": -1.4993676141463004,
+   "cal_slope": 0.7709373621955758
+  },
+  "xgb|FS-A|weighted+corrected": {
+   "n": 296003,
+   "pos": 21239,
+   "auroc": 0.8437733606646588,
+   "auprc": 0.35771263121406144,
+   "brier": 0.05812942262886418,
+   "cal_intercept": 1.0602645781706985,
+   "cal_slope": 0.7708570643321149
+  },
+  "xgb|FS-B|unweighted": {
+   "n": 296003,
+   "pos": 21239,
+   "auroc": 0.7980874708758534,
+   "auprc": 0.3030352734232349,
+   "brier": 0.05800845613601011,
+   "cal_intercept": 0.019275800043505893,
+   "cal_slope": 1.0164260995028827
+  },
+  "xgb|FS-B|weighted": {
+   "n": 296003,
+   "pos": 21239,
+   "auroc": 0.7684425981796585,
+   "auprc": 0.2759662409882086,
+   "brier": 0.09842993857907258,
+   "cal_intercept": -1.6216509179710452,
+   "cal_slope": 0.745673159664613
+  },
+  "xgb|FS-B|weighted+corrected": {
+   "n": 296003,
+   "pos": 21239,
+   "auroc": 0.7683856770248664,
+   "auprc": 0.2759232360876231,
+   "brier": 0.06145696713721732,
+   "cal_intercept": 0.9345069409956315,
+   "cal_slope": 0.7454732349254432
+  },
+  "lgb|FS-A|unweighted": {
+   "n": 296003,
+   "pos": 21239,
+   "auroc": 0.8594337686262575,
+   "auprc": 0.3816127724289676,
+   "brier": 0.05392537682538685,
+   "cal_intercept": 0.014635043532739776,
+   "cal_slope": 0.9898905417297384
+  },
+  "lgb|FS-A|weighted": {
+   "n": 296003,
+   "pos": 21239,
+   "auroc": 0.8108353905645287,
+   "auprc": 0.21478784797931358,
+   "brier": 0.06324428319283391,
+   "cal_intercept": -0.4276609277312041,
+   "cal_slope": 3.014159224463508
+  },
+  "lgb|FS-A|weighted+corrected": {
+   "n": 296003,
+   "pos": 21239,
+   "auroc": 0.8109796915365433,
+   "auprc": 0.2149899197941795,
+   "brier": 0.06995316727363803,
+   "cal_intercept": 2.1348165502213123,
+   "cal_slope": 3.049336055606077
+  },
+  "lgb|FS-B|unweighted": {
+   "n": 296003,
+   "pos": 21239,
+   "auroc": 0.7974651974276219,
+   "auprc": 0.30180965734882137,
+   "brier": 0.05805547240947445,
+   "cal_intercept": 0.021336083652795365,
+   "cal_slope": 0.9946925328383773
+  },
+  "lgb|FS-B|weighted": {
+   "n": 296003,
+   "pos": 21239,
+   "auroc": 0.7441885847799897,
+   "auprc": 0.17785299257462112,
+   "brier": 0.06532694813214483,
+   "cal_intercept": -0.4275615431055087,
+   "cal_slope": 3.528700673297287
+  },
+  "lgb|FS-B|weighted+corrected": {
+   "n": 296003,
+   "pos": 21239,
+   "auroc": 0.743908851675738,
+   "auprc": 0.1771016120872237,
+   "brier": 0.07022783432404055,
+   "cal_intercept": 2.1288234978035936,
+   "cal_slope": 3.522729778697275
+  }
+ },
+ "test": {
+  "cat|FS-A|unweighted": {
+   "n": 75124,
+   "pos": 5426,
+   "auroc": 0.8571730116102922,
+   "auprc": 0.37978251739325586,
+   "brier": 0.05426322250180843,
+   "cal_intercept": 0.030525834085009494,
+   "cal_slope": 1.0182058515240506,
+   "auroc_ci": [
+    0.8490276931401365,
+    0.8660774093988027
+   ],
+   "auprc_ci": [
+    0.35822677397418534,
+    0.4005575320644976
+   ],
+   "brier_ci": [
+    0.05186866463895598,
+    0.056929299120984496
+   ]
+  },
+  "cat|FS-A|weighted": {
+   "n": 75124,
+   "pos": 5426,
+   "auroc": 0.8565418778929309,
+   "auprc": 0.3706359316616765,
+   "brier": 0.1451350498799687,
+   "cal_intercept": -2.3780380452974517,
+   "cal_slope": 1.0551530857658709,
+   "auroc_ci": [
+    0.8485699920817764,
+    0.8648050368543245
+   ],
+   "auprc_ci": [
+    0.3499091667057185,
+    0.39140117313882233
+   ],
+   "brier_ci": [
+    0.14228834550139477,
+    0.1482485794781282
+   ]
+  },
+  "cat|FS-A|weighted+corrected": {
+   "n": 75124,
+   "pos": 5426,
+   "auroc": 0.8565418778929309,
+   "auprc": 0.3706359316616765,
+   "brier": 0.05502313524945164,
+   "cal_intercept": 0.17513745524453048,
+   "cal_slope": 1.0551530857658704,
+   "auroc_ci": [
+    0.8485699920817764,
+    0.8648050368543245
+   ],
+   "auprc_ci": [
+    0.3499091667057185,
+    0.39140117313882233
+   ],
+   "brier_ci": [
+    0.05256416811468745,
+    0.057751575553567275
+   ]
+  },
+  "cat|FS-B|unweighted": {
+   "n": 75124,
+   "pos": 5426,
+   "auroc": 0.7867929541570093,
+   "auprc": 0.2821142049090707,
+   "brier": 0.059260673627329064,
+   "cal_intercept": 0.0268982081899228,
+   "cal_slope": 0.9802965057340814,
+   "auroc_ci": [
+    0.7776918812436987,
+    0.796480504571632
+   ],
+   "auprc_ci": [
+    0.2632183953888439,
+    0.2992180449196058
+   ],
+   "brier_ci": [
+    0.056572491314552394,
+    0.06237391554451201
+   ]
+  },
+  "cat|FS-B|weighted": {
+   "n": 75124,
+   "pos": 5426,
+   "auroc": 0.7858935919811677,
+   "auprc": 0.2767814943708002,
+   "brier": 0.1738635256267759,
+   "cal_intercept": -2.424804617208881,
+   "cal_slope": 1.0416753951279294,
+   "auroc_ci": [
+    0.7766511589399573,
+    0.795582136771353
+   ],
+   "auprc_ci": [
+    0.2575198470730611,
+    0.2949703235393578
+   ],
+   "brier_ci": [
+    0.17136137609294463,
+    0.17646271933238045
+   ]
+  },
+  "cat|FS-B|weighted+corrected": {
+   "n": 75124,
+   "pos": 5426,
+   "auroc": 0.7858935919811677,
+   "auprc": 0.2767814943708002,
+   "brier": 0.05971524333636618,
+   "cal_intercept": 0.140718839498657,
+   "cal_slope": 1.0416753951279285,
+   "auroc_ci": [
+    0.7766511589399573,
+    0.795582136771353
+   ],
+   "auprc_ci": [
+    0.2575198470730611,
+    0.2949703235393578
+   ],
+   "brier_ci": [
+    0.05708779676478028,
+    0.06286667703901494
+   ]
+  },
+  "cat|FS-AVAIL|unweighted": {
+   "n": 75124,
+   "pos": 5426,
+   "auroc": 0.8117282941727734,
+   "auprc": 0.2452434185688845,
+   "brier": 0.05983119992144894,
+   "cal_intercept": 0.013083954331052717,
+   "cal_slope": 1.0351117439708208,
+   "auroc_ci": [
+    0.8029212209451284,
+    0.8201063839981058
+   ],
+   "auprc_ci": [
+    0.22986495993076902,
+    0.2610642960268875
+   ],
+   "brier_ci": [
+    0.0574392497322312,
+    0.0627245447600729
+   ]
+  },
+  "cat|FS-AVAIL|weighted": {
+   "n": 75124,
+   "pos": 5426,
+   "auroc": 0.810517324878751,
+   "auprc": 0.23877161260554544,
+   "brier": 0.17737761590543838,
+   "cal_intercept": -2.495687774936627,
+   "cal_slope": 1.0165297232870456,
+   "auroc_ci": [
+    0.8020077439807506,
+    0.8190089006163321
+   ],
+   "auprc_ci": [
+    0.22375441369665147,
+    0.25516819701777854
+   ],
+   "brier_ci": [
+    0.17446688301544663,
+    0.18052851678869525
+   ]
+  },
+  "cat|FS-AVAIL|weighted+corrected": {
+   "n": 75124,
+   "pos": 5426,
+   "auroc": 0.810517324878751,
+   "auprc": 0.23877161260554544,
+   "brier": 0.06000905033809354,
+   "cal_intercept": 0.06288728368890298,
+   "cal_slope": 1.0165297232870452,
+   "auroc_ci": [
+    0.8020077439807506,
+    0.8190089006163321
+   ],
+   "auprc_ci": [
+    0.22375441369665147,
+    0.25516819701777854
+   ],
+   "brier_ci": [
+    0.05756492520511214,
+    0.06293767013078216
+   ]
+  },
+  "xgb|FS-A|unweighted": {
+   "n": 75124,
+   "pos": 5426,
+   "auroc": 0.8576375268512715,
+   "auprc": 0.3781987430081354,
+   "brier": 0.05427353456616402,
+   "cal_intercept": 0.04432014734235139,
+   "cal_slope": 0.97885790355215,
+   "auroc_ci": [
+    0.8498966771688331,
+    0.8655882796724856
+   ],
+   "auprc_ci": [
+    0.357520990419954,
+    0.397801657275999
+   ],
+   "brier_ci": [
+    0.05189118446485865,
+    0.05697596536991701
+   ]
+  },
+  "xgb|FS-A|weighted": {
+   "n": 75124,
+   "pos": 5426,
+   "auroc": 0.8413521546810924,
+   "auprc": 0.3598133759790876,
+   "brier": 0.08859061449766159,
+   "cal_intercept": -1.6065384292087401,
+   "cal_slope": 0.7896844600264725,
+   "auroc_ci": [
+    0.8319863357818783,
+    0.8499845032061175
+   ],
+   "auprc_ci": [
+    0.33958264500093194,
+    0.3781682816160963
+   ],
+   "brier_ci": [
+    0.08622414658669038,
+    0.09120379657408777
+   ]
+  },
+  "xgb|FS-A|weighted+corrected": {
+   "n": 75124,
+   "pos": 5426,
+   "auroc": 0.8413521546810925,
+   "auprc": 0.3598133759790875,
+   "brier": 0.057975517501770504,
+   "cal_intercept": 0.9453249326693047,
+   "cal_slope": 0.7896844600264724,
+   "auroc_ci": [
+    0.8319863357818783,
+    0.8499845032061175
+   ],
+   "auprc_ci": [
+    0.339582645000932,
+    0.3781682816160962
+   ],
+   "brier_ci": [
+    0.054969094345611307,
+    0.06125306759943719
+   ]
+  },
+  "xgb|FS-B|unweighted": {
+   "n": 75124,
+   "pos": 5426,
+   "auroc": 0.786884300544616,
+   "auprc": 0.28665514736235154,
+   "brier": 0.059157844632864,
+   "cal_intercept": 0.04667560816395211,
+   "cal_slope": 0.9584074257744116,
+   "auroc_ci": [
+    0.7776213230131853,
+    0.796648763962553
+   ],
+   "auprc_ci": [
+    0.26701784995172684,
+    0.30470381615587644
+   ],
+   "brier_ci": [
+    0.05642477239384253,
+    0.06227125095453181
+   ]
+  },
+  "xgb|FS-B|weighted": {
+   "n": 75124,
+   "pos": 5426,
+   "auroc": 0.7619934550553245,
+   "auprc": 0.26632659049365653,
+   "brier": 0.1055702343583107,
+   "cal_intercept": -1.7143296140968283,
+   "cal_slope": 0.7361982033016086,
+   "auroc_ci": [
+    0.7512941263853747,
+    0.7736796690052522
+   ],
+   "auprc_ci": [
+    0.24792653465748482,
+    0.2827938648178246
+   ],
+   "brier_ci": [
+    0.10316243225651785,
+    0.10808879566748775
+   ]
+  },
+  "xgb|FS-B|weighted+corrected": {
+   "n": 75124,
+   "pos": 5426,
+   "auroc": 0.7619934537332074,
+   "auprc": 0.2663265895489546,
+   "brier": 0.06190402480157208,
+   "cal_intercept": 0.852904220232762,
+   "cal_slope": 0.7361982033016086,
+   "auroc_ci": [
+    0.7512941252122604,
+    0.7736796677447165
+   ],
+   "auprc_ci": [
+    0.24792653247718835,
+    0.28279386305251514
+   ],
+   "brier_ci": [
+    0.05881065405123765,
+    0.06535419169762709
+   ]
+  },
+  "lgb|FS-A|unweighted": {
+   "n": 75124,
+   "pos": 5426,
+   "auroc": 0.8571100497531676,
+   "auprc": 0.3744597519532727,
+   "brier": 0.05444428944367485,
+   "cal_intercept": 0.039726127705504106,
+   "cal_slope": 0.978115391313391,
+   "auroc_ci": [
+    0.8494661931349119,
+    0.8652042868144456
+   ],
+   "auprc_ci": [
+    0.3524613205695953,
+    0.3956294336364341
+   ],
+   "brier_ci": [
+    0.052088454289806435,
+    0.05712431489673625
+   ]
+  },
+  "lgb|FS-A|weighted": {
+   "n": 75124,
+   "pos": 5426,
+   "auroc": 0.8313707700359669,
+   "auprc": 0.26749183678124716,
+   "brier": 0.06335614721077543,
+   "cal_intercept": -0.5981682673470242,
+   "cal_slope": 3.037750046425513,
+   "auroc_ci": [
+    0.823172826448127,
+    0.8408203450659097
+   ],
+   "auprc_ci": [
+    0.24996906643219202,
+    0.2863261035031718
+   ],
+   "brier_ci": [
+    0.061035442309330674,
+    0.06608947567252992
+   ]
+  },
+  "lgb|FS-A|weighted+corrected": {
+   "n": 75124,
+   "pos": 5426,
+   "auroc": 0.8313707700359669,
+   "auprc": 0.26749183678124716,
+   "brier": 0.0698744842533898,
+   "cal_intercept": 1.9685374645039184,
+   "cal_slope": 3.037750046425707,
+   "auroc_ci": [
+    0.823172826448127,
+    0.8408203450659097
+   ],
+   "auprc_ci": [
+    0.24996906643219202,
+    0.2863261035031718
+   ],
+   "brier_ci": [
+    0.06646261691111019,
+    0.0738682050637165
+   ]
+  },
+  "lgb|FS-B|unweighted": {
+   "n": 75124,
+   "pos": 5426,
+   "auroc": 0.787502543620951,
+   "auprc": 0.28594277786184275,
+   "brier": 0.05915409565824473,
+   "cal_intercept": 0.03079234960524717,
+   "cal_slope": 0.9688847055185923,
+   "auroc_ci": [
+    0.7779455003042905,
+    0.7970872357248043
+   ],
+   "auprc_ci": [
+    0.26673020908966777,
+    0.30334297740984734
+   ],
+   "brier_ci": [
+    0.056445679988546764,
+    0.0622615419475746
+   ]
+  },
+  "lgb|FS-B|weighted": {
+   "n": 75124,
+   "pos": 5426,
+   "auroc": 0.7382512225325296,
+   "auprc": 0.1797932362191111,
+   "brier": 0.06572970333245332,
+   "cal_intercept": -0.41885770104315456,
+   "cal_slope": 3.4777357754813987,
+   "auroc_ci": [
+    0.7288419911441226,
+    0.748350280721266
+   ],
+   "auprc_ci": [
+    0.16726594144251516,
+    0.19200328775810235
+   ],
+   "brier_ci": [
+    0.06310113709489566,
+    0.06885669837865337
+   ]
+  },
+  "lgb|FS-B|weighted+corrected": {
+   "n": 75124,
+   "pos": 5426,
+   "auroc": 0.7382512225325296,
+   "auprc": 0.1797932362191111,
+   "brier": 0.07071427154011851,
+   "cal_intercept": 2.1475030949648435,
+   "cal_slope": 3.4777357754803737,
+   "auroc_ci": [
+    0.7288419911441226,
+    0.748350280721266
+   ],
+   "auprc_ci": [
+    0.16726594144251516,
+    0.19200328775810235
+   ],
+   "brier_ci": [
+    0.06725898573897157,
+    0.07475267139283705
+   ]
+  }
+ },
+ "test_code_negative_only": {
+  "cat|FS-A|unweighted": {
+   "n": 74109,
+   "pos": 4555,
+   "auroc": 0.8571777301998839,
+   "auprc": 0.3226815732836899,
+   "brier": 0.048490073836017764,
+   "cal_intercept": -0.12498541875319959,
+   "cal_slope": 1.015824035495476
+  },
+  "cat|FS-A|weighted": {
+   "n": 74109,
+   "pos": 4555,
+   "auroc": 0.8564760381552249,
+   "auprc": 0.3124549651053665,
+   "brier": 0.14458469969736795,
+   "cal_intercept": -2.5355592441848622,
+   "cal_slope": 1.0528570698939257
+  },
+  "cat|FS-A|weighted+corrected": {
+   "n": 74109,
+   "pos": 4555,
+   "auroc": 0.8564760381552249,
+   "auprc": 0.3124549651053665,
+   "brier": 0.04872764474234112,
+   "cal_intercept": 0.017616256357123085,
+   "cal_slope": 1.052857069893924
+  },
+  "cat|FS-B|unweighted": {
+   "n": 74109,
+   "pos": 4555,
+   "auroc": 0.7773886241543935,
+   "auprc": 0.22760000628312346,
+   "brier": 0.05275401834958987,
+   "cal_intercept": -0.12982627077332087,
+   "cal_slope": 0.9398583631844672
+  },
+  "cat|FS-B|weighted": {
+   "n": 74109,
+   "pos": 4555,
+   "auroc": 0.7765435913505927,
+   "auprc": 0.2236100409748244,
+   "brier": 0.17367480444441996,
+   "cal_intercept": -2.583960365555683,
+   "cal_slope": 0.9972141109838473
+  },
+  "cat|FS-B|weighted+corrected": {
+   "n": 74109,
+   "pos": 4555,
+   "auroc": 0.7765435913505927,
+   "auprc": 0.2236100409748244,
+   "brier": 0.052664828007015156,
+   "cal_intercept": -0.018436908848144987,
+   "cal_slope": 0.9972141109838479
+  },
+  "cat|FS-AVAIL|unweighted": {
+   "n": 74109,
+   "pos": 4555,
+   "auroc": 0.8168245525584414,
+   "auprc": 0.21257740472829983,
+   "brier": 0.05229784744626788,
+   "cal_intercept": -0.15837102436613548,
+   "cal_slope": 1.0619048607011439
+  },
+  "cat|FS-AVAIL|weighted": {
+   "n": 74109,
+   "pos": 4555,
+   "auroc": 0.8152160083974903,
+   "auprc": 0.20684845052619372,
+   "brier": 0.17688264521493963,
+   "cal_intercept": -2.6674483123118446,
+   "cal_slope": 1.042375732601983
+  },
+  "cat|FS-AVAIL|weighted+corrected": {
+   "n": 74109,
+   "pos": 4555,
+   "auroc": 0.8152160083974903,
+   "auprc": 0.20684845052619372,
+   "brier": 0.05234504152044766,
+   "cal_intercept": -0.10887325368628045,
+   "cal_slope": 1.0423757326019838
+  },
+  "xgb|FS-A|unweighted": {
+   "n": 74109,
+   "pos": 4555,
+   "auroc": 0.8571200189180889,
+   "auprc": 0.3184281770601492,
+   "brier": 0.04866112396121025,
+   "cal_intercept": -0.11100226875905896,
+   "cal_slope": 0.9727421182103126
+  },
+  "xgb|FS-A|weighted": {
+   "n": 74109,
+   "pos": 4555,
+   "auroc": 0.8381988872050294,
+   "auprc": 0.29807883344228836,
+   "brier": 0.0862368494272232,
+   "cal_intercept": -1.7635018168251435,
+   "cal_slope": 0.77717636181327
+  },
+  "xgb|FS-A|weighted+corrected": {
+   "n": 74109,
+   "pos": 4555,
+   "auroc": 0.8381988872050294,
+   "auprc": 0.29807883344228836,
+   "brier": 0.05099013720828552,
+   "cal_intercept": 0.788361545052859,
+   "cal_slope": 0.7771763618132687
+  },
+  "xgb|FS-B|unweighted": {
+   "n": 74109,
+   "pos": 4555,
+   "auroc": 0.7774910803022311,
+   "auprc": 0.22953683395506616,
+   "brier": 0.052715644240379333,
+   "cal_intercept": -0.10935558017070252,
+   "cal_slope": 0.9184940127462617
+  },
+  "xgb|FS-B|weighted": {
+   "n": 74109,
+   "pos": 4555,
+   "auroc": 0.7502451293322641,
+   "auprc": 0.20899569716217611,
+   "brier": 0.103252112865448,
+   "cal_intercept": -1.8706515116463325,
+   "cal_slope": 0.6946183466585873
+  },
+  "xgb|FS-B|weighted+corrected": {
+   "n": 74109,
+   "pos": 4555,
+   "auroc": 0.7502451277540733,
+   "auprc": 0.20899569618363364,
+   "brier": 0.05423241437315722,
+   "cal_intercept": 0.6965823226832584,
+   "cal_slope": 0.6946183466585877
+  },
+  "lgb|FS-A|unweighted": {
+   "n": 74109,
+   "pos": 4555,
+   "auroc": 0.8565932598563463,
+   "auprc": 0.31467152079424837,
+   "brier": 0.048818169907649346,
+   "cal_intercept": -0.11550267359349228,
+   "cal_slope": 0.9719282325176926
+  },
+  "lgb|FS-A|weighted": {
+   "n": 74109,
+   "pos": 4555,
+   "auroc": 0.8351536938487203,
+   "auprc": 0.23425003126555283,
+   "brier": 0.05626050214659079,
+   "cal_intercept": -0.766755159676002,
+   "cal_slope": 3.117827279044832
+  },
+  "lgb|FS-A|weighted+corrected": {
+   "n": 74109,
+   "pos": 4555,
+   "auroc": 0.8351536938487203,
+   "auprc": 0.23425003126555283,
+   "brier": 0.05947262168336529,
+   "cal_intercept": 1.799950572174957,
+   "cal_slope": 3.117827279044691
+  },
+  "lgb|FS-B|unweighted": {
+   "n": 74109,
+   "pos": 4555,
+   "auroc": 0.777598613489927,
+   "auprc": 0.22967031694591644,
+   "brier": 0.052726568112096,
+   "cal_intercept": -0.12605659220787996,
+   "cal_slope": 0.9264917698052985
+  },
+  "lgb|FS-B|weighted": {
+   "n": 74109,
+   "pos": 4555,
+   "auroc": 0.7335731246981907,
+   "auprc": 0.1515107259146291,
+   "brier": 0.057691465674196085,
+   "cal_intercept": -0.5892090139834422,
+   "cal_slope": 3.392312619529616
+  },
+  "lgb|FS-B|weighted+corrected": {
+   "n": 74109,
+   "pos": 4555,
+   "auroc": 0.7335731246981907,
+   "auprc": 0.1515107259146291,
+   "brier": 0.06019553413070461,
+   "cal_intercept": 1.9771517820243436,
+   "cal_slope": 3.392312619529173
+  }
+ },
+ "subgroups": {
+  "cat|FS-A|unweighted": {
+   "race": {
+    "AMERICAN INDIAN/ALASKA NATIVE": "not estimable",
+    "ASIAN": {
+     "n": 863,
+     "pos": 58,
+     "auroc": 0.8625829942171771,
+     "auprc": 0.3702297437313084,
+     "brier": 0.051588970871237136,
+     "cal_intercept": 0.28216630675977483,
+     "cal_slope": 1.0462699995814835,
+     "material_calibration_difference": false
+    },
+    "ASIAN - ASIAN INDIAN": "not estimable",
+    "ASIAN - CHINESE": {
+     "n": 988,
+     "pos": 72,
+     "auroc": 0.8161390101892285,
+     "auprc": 0.26335158347972776,
+     "brier": 0.06362625249046652,
+     "cal_intercept": -0.20830087851040394,
+     "cal_slope": 0.7268275617634831,
+     "material_calibration_difference": true
+    },
+    "ASIAN - KOREAN": "not estimable",
+    "ASIAN - SOUTH EAST ASIAN": "not estimable",
+    "BLACK/AFRICAN": "not estimable",
+    "BLACK/AFRICAN AMERICAN": {
+     "n": 9834,
+     "pos": 568,
+     "auroc": 0.870282237348112,
+     "auprc": 0.34923883810558715,
+     "brier": 0.04535822191245711,
+     "cal_intercept": -0.345021219477565,
+     "cal_slope": 1.102477288368942,
+     "material_calibration_difference": false
+    },
+    "BLACK/CAPE VERDEAN": {
+     "n": 803,
+     "pos": 54,
+     "auroc": 0.7803243831281215,
+     "auprc": 0.17376531367689907,
+     "brier": 0.06547760621542298,
+     "cal_intercept": -0.4409166875764756,
+     "cal_slope": 0.639276346929228,
+     "material_calibration_difference": true
+    },
+    "BLACK/CARIBBEAN ISLAND": "not estimable",
+    "HISPANIC OR LATINO": {
+     "n": 1122,
+     "pos": 131,
+     "auroc": 0.8433535406444258,
+     "auprc": 0.4984292650398858,
+     "brier": 0.08143606147950579,
+     "cal_intercept": 0.5524841481992742,
+     "cal_slope": 0.9737775865971438,
+     "material_calibration_difference": true
+    },
+    "HISPANIC/LATINO - CENTRAL AMERICAN": "not estimable",
+    "HISPANIC/LATINO - COLUMBIAN": "not estimable",
+    "HISPANIC/LATINO - CUBAN": "not estimable",
+    "HISPANIC/LATINO - DOMINICAN": {
+     "n": 790,
+     "pos": 75,
+     "auroc": 0.8377062937062938,
+     "auprc": 0.4884599693670348,
+     "brier": 0.06545799990791282,
+     "cal_intercept": -0.018356327975184383,
+     "cal_slope": 1.0623412257830824,
+     "material_calibration_difference": false
+    },
+    "HISPANIC/LATINO - GUATEMALAN": {
+     "n": 264,
+     "pos": 57,
+     "auroc": 0.783710483939317,
+     "auprc": 0.4602075094717352,
+     "brier": 0.14730914085217814,
+     "cal_intercept": 0.48653980596761287,
+     "cal_slope": 0.7696170949389063,
+     "material_calibration_difference": false
+    },
+    "HISPANIC/LATINO - HONDURAN": "not estimable",
+    "HISPANIC/LATINO - MEXICAN": "not estimable",
+    "HISPANIC/LATINO - PUERTO RICAN": {
+     "n": 1468,
+     "pos": 167,
+     "auroc": 0.8371174637657812,
+     "auprc": 0.4888223317255265,
+     "brier": 0.07706674467150512,
+     "cal_intercept": 0.1379383089858396,
+     "cal_slope": 0.9691098727360955,
+     "material_calibration_difference": false
+    },
+    "HISPANIC/LATINO - SALVADORAN": "not estimable",
+    "MULTIPLE RACE/ETHNICITY": "not estimable",
+    "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER": "not estimable",
+    "OTHER": {
+     "n": 2491,
+     "pos": 169,
+     "auroc": 0.8790728254055624,
+     "auprc": 0.4660577924903505,
+     "brier": 0.048042140017081555,
+     "cal_intercept": 0.07734496948568866,
+     "cal_slope": 1.1731334437496403,
+     "material_calibration_difference": false
+    },
+    "PATIENT DECLINED TO ANSWER": "not estimable",
+    "PORTUGUESE": "not estimable",
+    "SOUTH AMERICAN": "not estimable",
+    "UNABLE TO OBTAIN": "not estimable",
+    "UNKNOWN": {
+     "n": 1885,
+     "pos": 117,
+     "auroc": 0.8524432455427932,
+     "auprc": 0.3823959295613887,
+     "brier": 0.04665988452389897,
+     "cal_intercept": 0.0063792331869557345,
+     "cal_slope": 1.0204988489618667,
+     "material_calibration_difference": false
+    },
+    "WHITE": {
+     "n": 48555,
+     "pos": 3444,
+     "auroc": 0.8573329676332515,
+     "auprc": 0.3748248031339677,
+     "brier": 0.053553740361959146,
+     "cal_intercept": 0.07461948334911873,
+     "cal_slope": 1.0157462206123875,
+     "material_calibration_difference": false
+    },
+    "WHITE - BRAZILIAN": "not estimable",
+    "WHITE - EASTERN EUROPEAN": "not estimable",
+    "WHITE - OTHER EUROPEAN": {
+     "n": 1532,
+     "pos": 146,
+     "auroc": 0.8616893000454645,
+     "auprc": 0.3952354256697239,
+     "brier": 0.06958801618817353,
+     "cal_intercept": 0.1528784280106942,
+     "cal_slope": 1.0767409243998571,
+     "material_calibration_difference": false
+    },
+    "WHITE - RUSSIAN": {
+     "n": 966,
+     "pos": 56,
+     "auroc": 0.8768445839874411,
+     "auprc": 0.5529473136715005,
+     "brier": 0.03923831800096993,
+     "cal_intercept": 0.11149729848897787,
+     "cal_slope": 1.31560833172263,
+     "material_calibration_difference": true
+    }
+   },
+   "insurance": {
+    "Medicaid": {
+     "n": 12839,
+     "pos": 1212,
+     "auroc": 0.8671407112329018,
+     "auprc": 0.4457368919999907,
+     "brier": 0.06611817463069687,
+     "cal_intercept": 0.06200891806245545,
+     "cal_slope": 1.1031212706758342,
+     "material_calibration_difference": false
+    },
+    "Medicare": {
+     "n": 36382,
+     "pos": 2046,
+     "auroc": 0.8423515236467127,
+     "auprc": 0.2980371682029196,
+     "brier": 0.04556182409162388,
+     "cal_intercept": -0.03248147284546182,
+     "cal_slope": 0.9451018703318116,
+     "material_calibration_difference": false
+    },
+    "No charge": "not estimable",
+    "Other": {
+     "n": 2027,
+     "pos": 168,
+     "auroc": 0.8789735905120521,
+     "auprc": 0.4441150618285889,
+     "brier": 0.058861395292993564,
+     "cal_intercept": 0.07547008463852195,
+     "cal_slope": 1.151399621392865,
+     "material_calibration_difference": false
+    },
+    "Private": {
+     "n": 22784,
+     "pos": 1950,
+     "auroc": 0.8568601127840832,
+     "auprc": 0.4154482966178243,
+     "brier": 0.062143678646078095,
+     "cal_intercept": 0.08620545359013365,
+     "cal_slope": 1.0343042200954642,
+     "material_calibration_difference": false
+    }
+   },
+   "gender": {
+    "F": {
+     "n": 38109,
+     "pos": 2528,
+     "auroc": 0.8613251601178128,
+     "auprc": 0.3693409233405746,
+     "brier": 0.050403366969205436,
+     "cal_intercept": 0.05410024737070383,
+     "cal_slope": 1.0403481660883405,
+     "material_calibration_difference": false
+    },
+    "M": {
+     "n": 37015,
+     "pos": 2898,
+     "auroc": 0.8524657355267112,
+     "auprc": 0.38969458109338684,
+     "brier": 0.05823715832490629,
+     "cal_intercept": 0.009511164419325778,
+     "cal_slope": 1.001005920096455,
+     "material_calibration_difference": false
+    }
+   },
+   "age_band": {
+    "18-39": {
+     "n": 10566,
+     "pos": 684,
+     "auroc": 0.9033016495228492,
+     "auprc": 0.467448441685448,
+     "brier": 0.04493657902250033,
+     "cal_intercept": 0.145408885254748,
+     "cal_slope": 1.1223448584845548,
+     "material_calibration_difference": false
+    },
+    "40-54": {
+     "n": 14702,
+     "pos": 1528,
+     "auroc": 0.8443114789800947,
+     "auprc": 0.44048553933011947,
+     "brier": 0.07349751143604182,
+     "cal_intercept": 0.1119396110313754,
+     "cal_slope": 1.012064860680051,
+     "material_calibration_difference": false
+    },
+    "55-64": {
+     "n": 15348,
+     "pos": 1408,
+     "auroc": 0.8303454537302725,
+     "auprc": 0.3485230833676527,
+     "brier": 0.07011910891064561,
+     "cal_intercept": -0.07610732770100397,
+     "cal_slope": 1.0050016971682156,
+     "material_calibration_difference": false
+    },
+    "65-74": {
+     "n": 14840,
+     "pos": 1121,
+     "auroc": 0.8280722952124518,
+     "auprc": 0.3566182793792045,
+     "brier": 0.05826678039496432,
+     "cal_intercept": -0.022934953297012863,
+     "cal_slope": 0.9924577340940872,
+     "material_calibration_difference": false
+    },
+    "75-88": {
+     "n": 15587,
+     "pos": 626,
+     "auroc": 0.8420793957793992,
+     "auprc": 0.2692774679360173,
+     "brier": 0.03361973738774991,
+     "cal_intercept": 0.10597920365528096,
+     "cal_slope": 1.002757337545426,
+     "material_calibration_difference": false
+    },
+    "89+": {
+     "n": 4081,
+     "pos": 59,
+     "auroc": 0.8665644042511947,
+     "auprc": 0.095435500852559,
+     "brier": 0.013774091854132184,
+     "cal_intercept": -0.21955299490150987,
+     "cal_slope": 1.0232430818879121,
+     "material_calibration_difference": false
+    }
+   }
+  },
+  "cat|FS-A|weighted": {
+   "race": {
+    "AMERICAN INDIAN/ALASKA NATIVE": "not estimable",
+    "ASIAN": {
+     "n": 863,
+     "pos": 58,
+     "auroc": 0.8678946241165132,
+     "auprc": 0.38655548876289353,
+     "brier": 0.11395820154490922,
+     "cal_intercept": -2.106522037480298,
+     "cal_slope": 1.0944549977868172,
+     "material_calibration_difference": false
+    },
+    "ASIAN - ASIAN INDIAN": "not estimable",
+    "ASIAN - CHINESE": {
+     "n": 988,
+     "pos": 72,
+     "auroc": 0.8221737020863658,
+     "auprc": 0.2627683286094241,
+     "brier": 0.1633097322087329,
+     "cal_intercept": -2.488746542338161,
+     "cal_slope": 0.806406619308913,
+     "material_calibration_difference": false
+    },
+    "ASIAN - KOREAN": "not estimable",
+    "ASIAN - SOUTH EAST ASIAN": "not estimable",
+    "BLACK/AFRICAN": "not estimable",
+    "BLACK/AFRICAN AMERICAN": {
+     "n": 9834,
+     "pos": 568,
+     "auroc": 0.8685218639703535,
+     "auprc": 0.33639048485231365,
+     "brier": 0.15605257263611258,
+     "cal_intercept": -2.7260709646134256,
+     "cal_slope": 1.1522240253740355,
+     "material_calibration_difference": false
+    },
+    "BLACK/CAPE VERDEAN": {
+     "n": 803,
+     "pos": 54,
+     "auroc": 0.7770360480640855,
+     "auprc": 0.15429863821490808,
+     "brier": 0.1978165310639155,
+     "cal_intercept": -2.810242803766498,
+     "cal_slope": 0.6524469933702175,
+     "material_calibration_difference": true
+    },
+    "BLACK/CARIBBEAN ISLAND": "not estimable",
+    "HISPANIC OR LATINO": {
+     "n": 1122,
+     "pos": 131,
+     "auroc": 0.84518683417937,
+     "auprc": 0.4877384343965607,
+     "brier": 0.1487231383944443,
+     "cal_intercept": -1.8362315359230597,
+     "cal_slope": 1.0124939837933646,
+     "material_calibration_difference": true
+    },
+    "HISPANIC/LATINO - CENTRAL AMERICAN": "not estimable",
+    "HISPANIC/LATINO - COLUMBIAN": "not estimable",
+    "HISPANIC/LATINO - CUBAN": "not estimable",
+    "HISPANIC/LATINO - DOMINICAN": {
+     "n": 790,
+     "pos": 75,
+     "auroc": 0.832074592074592,
+     "auprc": 0.509578265476763,
+     "brier": 0.1914896084915032,
+     "cal_intercept": -2.4181111574547494,
+     "cal_slope": 1.0649174850384913,
+     "material_calibration_difference": false
+    },
+    "HISPANIC/LATINO - GUATEMALAN": {
+     "n": 264,
+     "pos": 57,
+     "auroc": 0.7947283668107467,
+     "auprc": 0.4592613475961661,
+     "brier": 0.2412983866391555,
+     "cal_intercept": -1.9139426814476106,
+     "cal_slope": 0.8828432750626641,
+     "material_calibration_difference": false
+    },
+    "HISPANIC/LATINO - HONDURAN": "not estimable",
+    "HISPANIC/LATINO - MEXICAN": "not estimable",
+    "HISPANIC/LATINO - PUERTO RICAN": {
+     "n": 1468,
+     "pos": 167,
+     "auroc": 0.8381116322313099,
+     "auprc": 0.4973510640398925,
+     "brier": 0.18988397533576604,
+     "cal_intercept": -2.2750228397918777,
+     "cal_slope": 1.0128474154395066,
+     "material_calibration_difference": false
+    },
+    "HISPANIC/LATINO - SALVADORAN": "not estimable",
+    "MULTIPLE RACE/ETHNICITY": "not estimable",
+    "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER": "not estimable",
+    "OTHER": {
+     "n": 2491,
+     "pos": 169,
+     "auroc": 0.8706099108603581,
+     "auprc": 0.4477445358437486,
+     "brier": 0.13153853831948803,
+     "cal_intercept": -2.3441626518793734,
+     "cal_slope": 1.1596577695742618,
+     "material_calibration_difference": false
+    },
+    "PATIENT DECLINED TO ANSWER": "not estimable",
+    "PORTUGUESE": "not estimable",
+    "SOUTH AMERICAN": "not estimable",
+    "UNABLE TO OBTAIN": "not estimable",
+    "UNKNOWN": {
+     "n": 1885,
+     "pos": 117,
+     "auroc": 0.8582395482847972,
+     "auprc": 0.35752967970159416,
+     "brier": 0.127102378451552,
+     "cal_intercept": -2.405801200462476,
+     "cal_slope": 1.025153754546244,
+     "material_calibration_difference": false
+    },
+    "WHITE": {
+     "n": 48555,
+     "pos": 3444,
+     "auroc": 0.8569944041244913,
+     "auprc": 0.36577538388622455,
+     "brier": 0.1400796831382968,
+     "cal_intercept": -2.344315149984639,
+     "cal_slope": 1.0530922115040362,
+     "material_calibration_difference": false
+    },
+    "WHITE - BRAZILIAN": "not estimable",
+    "WHITE - EASTERN EUROPEAN": "not estimable",
+    "WHITE - OTHER EUROPEAN": {
+     "n": 1532,
+     "pos": 146,
+     "auroc": 0.8573652375022237,
+     "auprc": 0.3723575304849382,
+     "brier": 0.16886651744493983,
+     "cal_intercept": -2.2715963518157443,
+     "cal_slope": 1.0970180791674915,
+     "material_calibration_difference": false
+    },
+    "WHITE - RUSSIAN": {
+     "n": 966,
+     "pos": 56,
+     "auroc": 0.8760400313971742,
+     "auprc": 0.5743674090490682,
+     "brier": 0.10395235571789815,
+     "cal_intercept": -2.2314814135371996,
+     "cal_slope": 1.3770026160582145,
+     "material_calibration_difference": true
+    }
+   },
+   "insurance": {
+    "Medicaid": {
+     "n": 12839,
+     "pos": 1212,
+     "auroc": 0.8639762036752396,
+     "auprc": 0.4279768236037965,
+     "brier": 0.17092440826921237,
+     "cal_intercept": -2.332772466751977,
+     "cal_slope": 1.1420887441996155,
+     "material_calibration_difference": false
+    },
+    "Medicare": {
+     "n": 36382,
+     "pos": 2046,
+     "auroc": 0.8424261982555921,
+     "auprc": 0.2951469883803646,
+     "brier": 0.1273246197770497,
+     "cal_intercept": -2.4375757897839665,
+     "cal_slope": 0.9809196876798154,
+     "material_calibration_difference": false
+    },
+    "No charge": "not estimable",
+    "Other": {
+     "n": 2027,
+     "pos": 168,
+     "auroc": 0.8831264888957198,
+     "auprc": 0.44095755719817215,
+     "brier": 0.15274727845504835,
+     "cal_intercept": -2.3307266007492484,
+     "cal_slope": 1.245375418909732,
+     "material_calibration_difference": false
+    },
+    "Private": {
+     "n": 22784,
+     "pos": 1950,
+     "auroc": 0.8557108818671649,
+     "auprc": 0.4027622708775591,
+     "brier": 0.160556735895353,
+     "cal_intercept": -2.337060527687441,
+     "cal_slope": 1.0669567959482718,
+     "material_calibration_difference": false
+    }
+   },
+   "gender": {
+    "F": {
+     "n": 38109,
+     "pos": 2528,
+     "auroc": 0.861154018251812,
+     "auprc": 0.3588060391999679,
+     "brier": 0.13502253678260284,
+     "cal_intercept": -2.370233773028727,
+     "cal_slope": 1.0701263983625897,
+     "material_calibration_difference": false
+    },
+    "M": {
+     "n": 37015,
+     "pos": 2898,
+     "auroc": 0.8514186142182385,
+     "auprc": 0.3817068966516431,
+     "brier": 0.15554644422354602,
+     "cal_intercept": -2.3850022361196994,
+     "cal_slope": 1.0427454607372773,
+     "material_calibration_difference": false
+    }
+   },
+   "age_band": {
+    "18-39": {
+     "n": 10566,
+     "pos": 684,
+     "auroc": 0.9034843610747166,
+     "auprc": 0.45061984644790676,
+     "brier": 0.1059293095693013,
+     "cal_intercept": -2.2034842635415863,
+     "cal_slope": 1.1886800333283807,
+     "material_calibration_difference": false
+    },
+    "40-54": {
+     "n": 14702,
+     "pos": 1528,
+     "auroc": 0.8441886764108585,
+     "auprc": 0.4253544596770607,
+     "brier": 0.18446286536935744,
+     "cal_intercept": -2.304654377386333,
+     "cal_slope": 1.0630150673594865,
+     "material_calibration_difference": false
+    },
+    "55-64": {
+     "n": 15348,
+     "pos": 1408,
+     "auroc": 0.8270662314953697,
+     "auprc": 0.34769956499797766,
+     "brier": 0.2005392659774325,
+     "cal_intercept": -2.498441060443364,
+     "cal_slope": 1.0421037212086903,
+     "material_calibration_difference": false
+    },
+    "65-74": {
+     "n": 14840,
+     "pos": 1121,
+     "auroc": 0.82707223012369,
+     "auprc": 0.3506838862466493,
+     "brier": 0.16938301742031284,
+     "cal_intercept": -2.472270741152465,
+     "cal_slope": 1.028569147456508,
+     "material_calibration_difference": false
+    },
+    "75-88": {
+     "n": 15587,
+     "pos": 626,
+     "auroc": 0.8434055274277552,
+     "auprc": 0.27542438336479547,
+     "brier": 0.08562972138368458,
+     "cal_intercept": -2.2638344968534563,
+     "cal_slope": 1.0711053695188597,
+     "material_calibration_difference": false
+    },
+    "89+": {
+     "n": 4081,
+     "pos": 59,
+     "auroc": 0.8664548373774748,
+     "auprc": 0.10268226047858232,
+     "brier": 0.03569523539982102,
+     "cal_intercept": -2.412374067287031,
+     "cal_slope": 1.109889870202636,
+     "material_calibration_difference": false
+    }
+   }
+  },
+  "cat|FS-A|weighted+corrected": {
+   "race": {
+    "AMERICAN INDIAN/ALASKA NATIVE": "not estimable",
+    "ASIAN": {
+     "n": 863,
+     "pos": 58,
+     "auroc": 0.8678946241165132,
+     "auprc": 0.38655548876289353,
+     "brier": 0.052227026353161066,
+     "cal_intercept": 0.446653463061695,
+     "cal_slope": 1.0944549977868174,
+     "material_calibration_difference": false
+    },
+    "ASIAN - ASIAN INDIAN": "not estimable",
+    "ASIAN - CHINESE": {
+     "n": 988,
+     "pos": 72,
+     "auroc": 0.8221737020863658,
+     "auprc": 0.2627683286094241,
+     "brier": 0.061190355689745686,
+     "cal_intercept": 0.06442895820383156,
+     "cal_slope": 0.8064066193089128,
+     "material_calibration_difference": false
+    },
+    "ASIAN - KOREAN": "not estimable",
+    "ASIAN - SOUTH EAST ASIAN": "not estimable",
+    "BLACK/AFRICAN": "not estimable",
+    "BLACK/AFRICAN AMERICAN": {
+     "n": 9834,
+     "pos": 568,
+     "auroc": 0.8685218639703535,
+     "auprc": 0.33639048485231365,
+     "brier": 0.04537344780599283,
+     "cal_intercept": -0.17289546407143375,
+     "cal_slope": 1.1522240253740355,
+     "material_calibration_difference": false
+    },
+    "BLACK/CAPE VERDEAN": {
+     "n": 803,
+     "pos": 54,
+     "auroc": 0.7770360480640855,
+     "auprc": 0.15429863821490808,
+     "brier": 0.06378224876651084,
+     "cal_intercept": -0.25706730322450283,
+     "cal_slope": 0.6524469933702176,
+     "material_calibration_difference": true
+    },
+    "BLACK/CARIBBEAN ISLAND": "not estimable",
+    "HISPANIC OR LATINO": {
+     "n": 1122,
+     "pos": 131,
+     "auroc": 0.84518683417937,
+     "auprc": 0.4877384343965607,
+     "brier": 0.08451465714509517,
+     "cal_intercept": 0.7169439646189372,
+     "cal_slope": 1.0124939837933635,
+     "material_calibration_difference": true
+    },
+    "HISPANIC/LATINO - CENTRAL AMERICAN": "not estimable",
+    "HISPANIC/LATINO - COLUMBIAN": "not estimable",
+    "HISPANIC/LATINO - CUBAN": "not estimable",
+    "HISPANIC/LATINO - DOMINICAN": {
+     "n": 790,
+     "pos": 75,
+     "auroc": 0.832074592074592,
+     "auprc": 0.509578265476763,
+     "brier": 0.06655971437296117,
+     "cal_intercept": 0.13506434308724508,
+     "cal_slope": 1.0649174850384922,
+     "material_calibration_difference": false
+    },
+    "HISPANIC/LATINO - GUATEMALAN": {
+     "n": 264,
+     "pos": 57,
+     "auroc": 0.7947283668107467,
+     "auprc": 0.4592613475961661,
+     "brier": 0.14634980916927476,
+     "cal_intercept": 0.639232819094383,
+     "cal_slope": 0.8828432750626642,
+     "material_calibration_difference": false
+    },
+    "HISPANIC/LATINO - HONDURAN": "not estimable",
+    "HISPANIC/LATINO - MEXICAN": "not estimable",
+    "HISPANIC/LATINO - PUERTO RICAN": {
+     "n": 1468,
+     "pos": 167,
+     "auroc": 0.8381116322313099,
+     "auprc": 0.4973510640398925,
+     "brier": 0.07816715791320279,
+     "cal_intercept": 0.2781526607501164,
+     "cal_slope": 1.0128474154395066,
+     "material_calibration_difference": false
+    },
+    "HISPANIC/LATINO - SALVADORAN": "not estimable",
+    "MULTIPLE RACE/ETHNICITY": "not estimable",
+    "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER": "not estimable",
+    "OTHER": {
+     "n": 2491,
+     "pos": 169,
+     "auroc": 0.8706099108603581,
+     "auprc": 0.4477445358437486,
+     "brier": 0.04960725000992506,
+     "cal_intercept": 0.2090128486626169,
+     "cal_slope": 1.1596577695742636,
+     "material_calibration_difference": false
+    },
+    "PATIENT DECLINED TO ANSWER": "not estimable",
+    "PORTUGUESE": "not estimable",
+    "SOUTH AMERICAN": "not estimable",
+    "UNABLE TO OBTAIN": "not estimable",
+    "UNKNOWN": {
+     "n": 1885,
+     "pos": 117,
+     "auroc": 0.8582395482847972,
+     "auprc": 0.35752967970159416,
+     "brier": 0.04769240413745228,
+     "cal_intercept": 0.14737430007951732,
+     "cal_slope": 1.0251537545462441,
+     "material_calibration_difference": false
+    },
+    "WHITE": {
+     "n": 48555,
+     "pos": 3444,
+     "auroc": 0.8569944041244913,
+     "auprc": 0.36577538388622455,
+     "brier": 0.054325576889350406,
+     "cal_intercept": 0.20886035055734928,
+     "cal_slope": 1.0530922115040358,
+     "material_calibration_difference": false
+    },
+    "WHITE - BRAZILIAN": "not estimable",
+    "WHITE - EASTERN EUROPEAN": "not estimable",
+    "WHITE - OTHER EUROPEAN": {
+     "n": 1532,
+     "pos": 146,
+     "auroc": 0.8573652375022237,
+     "auprc": 0.3723575304849382,
+     "brier": 0.07138973460017398,
+     "cal_intercept": 0.2815791487262489,
+     "cal_slope": 1.097018079167491,
+     "material_calibration_difference": false
+    },
+    "WHITE - RUSSIAN": {
+     "n": 966,
+     "pos": 56,
+     "auroc": 0.8760400313971742,
+     "auprc": 0.5743674090490682,
+     "brier": 0.04048882693796594,
+     "cal_intercept": 0.3216940870047945,
+     "cal_slope": 1.3770026160582145,
+     "material_calibration_difference": true
+    }
+   },
+   "insurance": {
+    "Medicaid": {
+     "n": 12839,
+     "pos": 1212,
+     "auroc": 0.8639762036752396,
+     "auprc": 0.4279768236037965,
+     "brier": 0.06788341495699117,
+     "cal_intercept": 0.22040303379002021,
+     "cal_slope": 1.1420887441996148,
+     "material_calibration_difference": false
+    },
+    "Medicare": {
+     "n": 36382,
+     "pos": 2046,
+     "auroc": 0.8424261982555921,
+     "auprc": 0.2951469883803646,
+     "brier": 0.045705571842702256,
+     "cal_intercept": 0.11559971075802836,
+     "cal_slope": 0.9809196876798146,
+     "material_calibration_difference": false
+    },
+    "No charge": "not estimable",
+    "Other": {
+     "n": 2027,
+     "pos": 168,
+     "auroc": 0.8831264888957198,
+     "auprc": 0.44095755719817215,
+     "brier": 0.05983885909163124,
+     "cal_intercept": 0.22244889979274682,
+     "cal_slope": 1.245375418909734,
+     "material_calibration_difference": false
+    },
+    "Private": {
+     "n": 22784,
+     "pos": 1950,
+     "auroc": 0.8557108818671649,
+     "auprc": 0.4027622708775591,
+     "brier": 0.06330049604552597,
+     "cal_intercept": 0.21611497285454914,
+     "cal_slope": 1.0669567959482698,
+     "material_calibration_difference": false
+    }
+   },
+   "gender": {
+    "F": {
+     "n": 38109,
+     "pos": 2528,
+     "auroc": 0.861154018251812,
+     "auprc": 0.3588060391999679,
+     "brier": 0.051166115449232503,
+     "cal_intercept": 0.1829417275132685,
+     "cal_slope": 1.070126398362588,
+     "material_calibration_difference": false
+    },
+    "M": {
+     "n": 37015,
+     "pos": 2898,
+     "auroc": 0.8514186142182385,
+     "auprc": 0.3817068966516431,
+     "brier": 0.05899415152843453,
+     "cal_intercept": 0.1681732644223147,
+     "cal_slope": 1.042745460737277,
+     "material_calibration_difference": false
+    }
+   },
+   "age_band": {
+    "18-39": {
+     "n": 10566,
+     "pos": 684,
+     "auroc": 0.9034843610747166,
+     "auprc": 0.45061984644790676,
+     "brier": 0.046502214511785045,
+     "cal_intercept": 0.3496912370004052,
+     "cal_slope": 1.18868003332838,
+     "material_calibration_difference": false
+    },
+    "40-54": {
+     "n": 14702,
+     "pos": 1528,
+     "auroc": 0.8441886764108585,
+     "auprc": 0.4253544596770607,
+     "brier": 0.07519266820792428,
+     "cal_intercept": 0.2485211231556572,
+     "cal_slope": 1.0630150673594863,
+     "material_calibration_difference": false
+    },
+    "55-64": {
+     "n": 15348,
+     "pos": 1408,
+     "auroc": 0.8270662314953697,
+     "auprc": 0.34769956499797766,
+     "brier": 0.07024764538876449,
+     "cal_intercept": 0.05473444009862403,
+     "cal_slope": 1.0421037212086866,
+     "material_calibration_difference": false
+    },
+    "65-74": {
+     "n": 14840,
+     "pos": 1121,
+     "auroc": 0.82707223012369,
+     "auprc": 0.3506838862466493,
+     "brier": 0.05890998567044277,
+     "cal_intercept": 0.08090475938952424,
+     "cal_slope": 1.0285691474565082,
+     "material_calibration_difference": false
+    },
+    "75-88": {
+     "n": 15587,
+     "pos": 626,
+     "auroc": 0.8434055274277552,
+     "auprc": 0.27542438336479547,
+     "brier": 0.033924068286691186,
+     "cal_intercept": 0.28934100368853877,
+     "cal_slope": 1.071105369518861,
+     "material_calibration_difference": false
+    },
+    "89+": {
+     "n": 4081,
+     "pos": 59,
+     "auroc": 0.8664548373774748,
+     "auprc": 0.10268226047858232,
+     "brier": 0.013617619405684445,
+     "cal_intercept": 0.14080143325496305,
+     "cal_slope": 1.1098898702026356,
+     "material_calibration_difference": false
+    }
+   }
+  },
+  "cat|FS-B|unweighted": {
+   "race": {
+    "AMERICAN INDIAN/ALASKA NATIVE": "not estimable",
+    "ASIAN": {
+     "n": 863,
+     "pos": 58,
+     "auroc": 0.8098736346112658,
+     "auprc": 0.24586676283160022,
+     "brier": 0.056951670590998774,
+     "cal_intercept": 0.19868655733082163,
+     "cal_slope": 0.9821310664879419,
+     "material_calibration_difference": false
+    },
+    "ASIAN - ASIAN INDIAN": "not estimable",
+    "ASIAN - CHINESE": {
+     "n": 988,
+     "pos": 72,
+     "auroc": 0.7654961183891315,
+     "auprc": 0.21226141768451467,
+     "brier": 0.06499618477300649,
+     "cal_intercept": -0.03756271923932815,
+     "cal_slope": 0.7640577647611739,
+     "material_calibration_difference": false
+    },
+    "ASIAN - KOREAN": "not estimable",
+    "ASIAN - SOUTH EAST ASIAN": "not estimable",
+    "BLACK/AFRICAN": "not estimable",
+    "BLACK/AFRICAN AMERICAN": {
+     "n": 9834,
+     "pos": 568,
+     "auroc": 0.7921776151187289,
+     "auprc": 0.2612297117795218,
+     "brier": 0.04889264002911775,
+     "cal_intercept": -0.3473850284791383,
+     "cal_slope": 1.0965979764311915,
+     "material_calibration_difference": false
+    },
+    "BLACK/CAPE VERDEAN": {
+     "n": 803,
+     "pos": 54,
+     "auroc": 0.6608070019284973,
+     "auprc": 0.12907307927418682,
+     "brier": 0.06699847193102722,
+     "cal_intercept": -0.4012773326202647,
+     "cal_slope": 0.4770310392966393,
+     "material_calibration_difference": true
+    },
+    "BLACK/CARIBBEAN ISLAND": "not estimable",
+    "HISPANIC OR LATINO": {
+     "n": 1122,
+     "pos": 131,
+     "auroc": 0.7506566734195546,
+     "auprc": 0.3253266365441937,
+     "brier": 0.09458085155445095,
+     "cal_intercept": 0.5799823835580257,
+     "cal_slope": 0.8588156928996822,
+     "material_calibration_difference": true
+    },
+    "HISPANIC/LATINO - CENTRAL AMERICAN": "not estimable",
+    "HISPANIC/LATINO - COLUMBIAN": "not estimable",
+    "HISPANIC/LATINO - CUBAN": "not estimable",
+    "HISPANIC/LATINO - DOMINICAN": {
+     "n": 790,
+     "pos": 75,
+     "auroc": 0.7728857808857807,
+     "auprc": 0.26791270843934295,
+     "brier": 0.07857926768150754,
+     "cal_intercept": 0.11519160839928957,
+     "cal_slope": 0.9346861581050893,
+     "material_calibration_difference": false
+    },
+    "HISPANIC/LATINO - GUATEMALAN": {
+     "n": 264,
+     "pos": 57,
+     "auroc": 0.6771760318671073,
+     "auprc": 0.3917864114158136,
+     "brier": 0.16463555354991347,
+     "cal_intercept": 0.5738200836452193,
+     "cal_slope": 0.5323869919165494,
+     "material_calibration_difference": true
+    },
+    "HISPANIC/LATINO - HONDURAN": "not estimable",
+    "HISPANIC/LATINO - MEXICAN": "not estimable",
+    "HISPANIC/LATINO - PUERTO RICAN": {
+     "n": 1468,
+     "pos": 167,
+     "auroc": 0.7802841664863969,
+     "auprc": 0.37637175987684296,
+     "brier": 0.08664597268624687,
+     "cal_intercept": 0.23037194698712354,
+     "cal_slope": 0.9993316519403572,
+     "material_calibration_difference": false
+    },
+    "HISPANIC/LATINO - SALVADORAN": "not estimable",
+    "MULTIPLE RACE/ETHNICITY": "not estimable",
+    "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER": "not estimable",
+    "OTHER": {
+     "n": 2491,
+     "pos": 169,
+     "auroc": 0.8056995346798568,
+     "auprc": 0.36770612405218417,
+     "brier": 0.052621088501989426,
+     "cal_intercept": 0.010839872585946616,
+     "cal_slope": 1.1419324176594778,
+     "material_calibration_difference": false
+    },
+    "PATIENT DECLINED TO ANSWER": "not estimable",
+    "PORTUGUESE": "not estimable",
+    "SOUTH AMERICAN": "not estimable",
+    "UNABLE TO OBTAIN": "not estimable",
+    "UNKNOWN": {
+     "n": 1885,
+     "pos": 117,
+     "auroc": 0.7970133812893995,
+     "auprc": 0.31262056464486015,
+     "brier": 0.050138759258975936,
+     "cal_intercept": -0.08308750769717234,
+     "cal_slope": 0.9925167484598393,
+     "material_calibration_difference": false
+    },
+    "WHITE": {
+     "n": 48555,
+     "pos": 3444,
+     "auroc": 0.7883597926508341,
+     "auprc": 0.2778858483536451,
+     "brier": 0.05839072330342051,
+     "cal_intercept": 0.062444801288124865,
+     "cal_slope": 0.9747429939379999,
+     "material_calibration_difference": false
+    },
+    "WHITE - BRAZILIAN": "not estimable",
+    "WHITE - EASTERN EUROPEAN": "not estimable",
+    "WHITE - OTHER EUROPEAN": {
+     "n": 1532,
+     "pos": 146,
+     "auroc": 0.7748127063195557,
+     "auprc": 0.2790312190062202,
+     "brier": 0.07796331145643672,
+     "cal_intercept": 0.1901901338278177,
+     "cal_slope": 0.9347830234757395,
+     "material_calibration_difference": false
+    },
+    "WHITE - RUSSIAN": {
+     "n": 966,
+     "pos": 56,
+     "auroc": 0.7780023547880691,
+     "auprc": 0.36148867561040354,
+     "brier": 0.04596600218639654,
+     "cal_intercept": 0.14581801725224533,
+     "cal_slope": 1.1259308898154976,
+     "material_calibration_difference": false
+    }
+   },
+   "insurance": {
+    "Medicaid": {
+     "n": 12839,
+     "pos": 1212,
+     "auroc": 0.7917566118011992,
+     "auprc": 0.3266782399372012,
+     "brier": 0.07428552400700733,
+     "cal_intercept": 0.06273502283871912,
+     "cal_slope": 1.040359386926805,
+     "material_calibration_difference": false
+    },
+    "Medicare": {
+     "n": 36382,
+     "pos": 2046,
+     "auroc": 0.7688349477055678,
+     "auprc": 0.22400897533646452,
+     "brier": 0.048406810177333635,
+     "cal_intercept": -0.03423236313860586,
+     "cal_slope": 0.8999659127355097,
+     "material_calibration_difference": false
+    },
+    "No charge": "not estimable",
+    "Other": {
+     "n": 2027,
+     "pos": 168,
+     "auroc": 0.8178520197750968,
+     "auprc": 0.3951334100326355,
+     "brier": 0.06257454372851316,
+     "cal_intercept": -0.002127256308186185,
+     "cal_slope": 1.1621904156692298,
+     "material_calibration_difference": false
+    },
+    "Private": {
+     "n": 22784,
+     "pos": 1950,
+     "auroc": 0.7850813389356156,
+     "auprc": 0.30439040382701554,
+     "brier": 0.06894664496956468,
+     "cal_intercept": 0.08414853044804872,
+     "cal_slope": 1.0114867472959883,
+     "material_calibration_difference": false
+    }
+   },
+   "gender": {
+    "F": {
+     "n": 38109,
+     "pos": 2528,
+     "auroc": 0.791395519725184,
+     "auprc": 0.2756944206894166,
+     "brier": 0.05483289799060223,
+     "cal_intercept": 0.04912815410102795,
+     "cal_slope": 1.009864242158293,
+     "material_calibration_difference": false
+    },
+    "M": {
+     "n": 37015,
+     "pos": 2898,
+     "auroc": 0.7811502507720509,
+     "auprc": 0.28832044962591213,
+     "brier": 0.06381931476578709,
+     "cal_intercept": 0.007243465410047613,
+     "cal_slope": 0.9572334899774521,
+     "material_calibration_difference": false
+    }
+   },
+   "age_band": {
+    "18-39": {
+     "n": 10566,
+     "pos": 684,
+     "auroc": 0.8502431025279586,
+     "auprc": 0.3335768873215291,
+     "brier": 0.05080661605530538,
+     "cal_intercept": 0.10678919084242455,
+     "cal_slope": 1.1064410915821068,
+     "material_calibration_difference": false
+    },
+    "40-54": {
+     "n": 14702,
+     "pos": 1528,
+     "auroc": 0.7658900662656971,
+     "auprc": 0.33416473841970495,
+     "brier": 0.08159919984131936,
+     "cal_intercept": 0.10570713721348153,
+     "cal_slope": 1.0036158238732833,
+     "material_calibration_difference": false
+    },
+    "55-64": {
+     "n": 15348,
+     "pos": 1408,
+     "auroc": 0.7382991330539975,
+     "auprc": 0.2577655776641423,
+     "brier": 0.0764220377398553,
+     "cal_intercept": -0.07270924070219495,
+     "cal_slope": 0.9304197819807962,
+     "material_calibration_difference": false
+    },
+    "65-74": {
+     "n": 14840,
+     "pos": 1121,
+     "auroc": 0.743953556405069,
+     "auprc": 0.2621142869776854,
+     "brier": 0.0631240110105964,
+     "cal_intercept": -0.03472307688027255,
+     "cal_slope": 0.9473455750819204,
+     "material_calibration_difference": false
+    },
+    "75-88": {
+     "n": 15587,
+     "pos": 626,
+     "auroc": 0.7567745360514548,
+     "auprc": 0.2132188608378814,
+     "brier": 0.035149132755110196,
+     "cal_intercept": 0.12498319643180343,
+     "cal_slope": 0.9663341482872171,
+     "material_calibration_difference": false
+    },
+    "89+": {
+     "n": 4081,
+     "pos": 59,
+     "auroc": 0.7395679693887012,
+     "auprc": 0.06522490933778001,
+     "brier": 0.01417530345248293,
+     "cal_intercept": -0.12749877209658753,
+     "cal_slope": 0.8465267105855636,
+     "material_calibration_difference": false
+    }
+   }
+  },
+  "cat|FS-B|weighted": {
+   "race": {
+    "AMERICAN INDIAN/ALASKA NATIVE": "not estimable",
+    "ASIAN": {
+     "n": 863,
+     "pos": 58,
+     "auroc": 0.8221674876847291,
+     "auprc": 0.29573578361370073,
+     "brier": 0.13683046050361503,
+     "cal_intercept": -2.238042379963064,
+     "cal_slope": 1.1495311925789715,
+     "material_calibration_difference": false
+    },
+    "ASIAN - ASIAN INDIAN": "not estimable",
+    "ASIAN - CHINESE": {
+     "n": 988,
+     "pos": 72,
+     "auroc": 0.7640101892285299,
+     "auprc": 0.2100958246634876,
+     "brier": 0.17319958383641026,
+     "cal_intercept": -2.4011230286987453,
+     "cal_slope": 0.8600943951739846,
+     "material_calibration_difference": false
+    },
+    "ASIAN - KOREAN": "not estimable",
+    "ASIAN - SOUTH EAST ASIAN": "not estimable",
+    "BLACK/AFRICAN": "not estimable",
+    "BLACK/AFRICAN AMERICAN": {
+     "n": 9834,
+     "pos": 568,
+     "auroc": 0.7879822644044712,
+     "auprc": 0.27005839771342943,
+     "brier": 0.19626752127164301,
+     "cal_intercept": -2.790261779317585,
+     "cal_slope": 1.195570307042495,
+     "material_calibration_difference": false
+    },
+    "BLACK/CAPE VERDEAN": {
+     "n": 803,
+     "pos": 54,
+     "auroc": 0.667507293675518,
+     "auprc": 0.132644981925977,
+     "brier": 0.23357572037032967,
+     "cal_intercept": -2.8079775752085183,
+     "cal_slope": 0.5462432368214312,
+     "material_calibration_difference": true
+    },
+    "BLACK/CARIBBEAN ISLAND": "not estimable",
+    "HISPANIC OR LATINO": {
+     "n": 1122,
+     "pos": 131,
+     "auroc": 0.7404117977831014,
+     "auprc": 0.3154039750336641,
+     "brier": 0.18433963975892187,
+     "cal_intercept": -1.8721939480027145,
+     "cal_slope": 0.8926370362343566,
+     "material_calibration_difference": true
+    },
+    "HISPANIC/LATINO - CENTRAL AMERICAN": "not estimable",
+    "HISPANIC/LATINO - COLUMBIAN": "not estimable",
+    "HISPANIC/LATINO - CUBAN": "not estimable",
+    "HISPANIC/LATINO - DOMINICAN": {
+     "n": 790,
+     "pos": 75,
+     "auroc": 0.7580419580419581,
+     "auprc": 0.24471727187959685,
+     "brier": 0.21777653465594382,
+     "cal_intercept": -2.332647336242405,
+     "cal_slope": 0.9266256257137122,
+     "material_calibration_difference": false
+    },
+    "HISPANIC/LATINO - GUATEMALAN": {
+     "n": 264,
+     "pos": 57,
+     "auroc": 0.6753962200186456,
+     "auprc": 0.338141863614197,
+     "brier": 0.27733987499711715,
+     "cal_intercept": -1.8208463995662472,
+     "cal_slope": 0.5392493962001584,
+     "material_calibration_difference": true
+    },
+    "HISPANIC/LATINO - HONDURAN": "not estimable",
+    "HISPANIC/LATINO - MEXICAN": "not estimable",
+    "HISPANIC/LATINO - PUERTO RICAN": {
+     "n": 1468,
+     "pos": 167,
+     "auroc": 0.7693160949430886,
+     "auprc": 0.3687792082037025,
+     "brier": 0.21591342865110597,
+     "cal_intercept": -2.1968139727350957,
+     "cal_slope": 1.0582761774765548,
+     "material_calibration_difference": false
+    },
+    "HISPANIC/LATINO - SALVADORAN": "not estimable",
+    "MULTIPLE RACE/ETHNICITY": "not estimable",
+    "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER": "not estimable",
+    "OTHER": {
+     "n": 2491,
+     "pos": 169,
+     "auroc": 0.8041960358597211,
+     "auprc": 0.371953685941744,
+     "brier": 0.16151323893260622,
+     "cal_intercept": -2.4346786564989302,
+     "cal_slope": 1.2224860012304768,
+     "material_calibration_difference": false
+    },
+    "PATIENT DECLINED TO ANSWER": "not estimable",
+    "PORTUGUESE": "not estimable",
+    "SOUTH AMERICAN": "not estimable",
+    "UNABLE TO OBTAIN": "not estimable",
+    "UNKNOWN": {
+     "n": 1885,
+     "pos": 117,
+     "auroc": 0.7985410140387516,
+     "auprc": 0.2846882571679089,
+     "brier": 0.15651561727630808,
+     "cal_intercept": -2.507181026561298,
+     "cal_slope": 1.0348884046585927,
+     "material_calibration_difference": false
+    },
+    "WHITE": {
+     "n": 48555,
+     "pos": 3444,
+     "auroc": 0.7888084279193527,
+     "auprc": 0.27072644716753125,
+     "brier": 0.1670835281917956,
+     "cal_intercept": -2.398275542866509,
+     "cal_slope": 1.0321728708132747,
+     "material_calibration_difference": false
+    },
+    "WHITE - BRAZILIAN": "not estimable",
+    "WHITE - EASTERN EUROPEAN": "not estimable",
+    "WHITE - OTHER EUROPEAN": {
+     "n": 1532,
+     "pos": 146,
+     "auroc": 0.7772490067010616,
+     "auprc": 0.2724229164692348,
+     "brier": 0.20025036384006376,
+     "cal_intercept": -2.2692135529565776,
+     "cal_slope": 0.998990789889374,
+     "material_calibration_difference": false
+    },
+    "WHITE - RUSSIAN": {
+     "n": 966,
+     "pos": 56,
+     "auroc": 0.7735871271585557,
+     "auprc": 0.3972290300959568,
+     "brier": 0.12485279719388644,
+     "cal_intercept": -2.2800196312672485,
+     "cal_slope": 1.1497306833728786,
+     "material_calibration_difference": false
+    }
+   },
+   "insurance": {
+    "Medicaid": {
+     "n": 12839,
+     "pos": 1212,
+     "auroc": 0.7908933159162651,
+     "auprc": 0.32486876589452,
+     "brier": 0.20896723248626842,
+     "cal_intercept": -2.3735022225055027,
+     "cal_slope": 1.1254392635108559,
+     "material_calibration_difference": false
+    },
+    "Medicare": {
+     "n": 36382,
+     "pos": 2046,
+     "auroc": 0.767422635340113,
+     "auprc": 0.22010886204161215,
+     "brier": 0.1489679861847459,
+     "cal_intercept": -2.489775080423632,
+     "cal_slope": 0.9447833494921227,
+     "material_calibration_difference": false
+    },
+    "No charge": "not estimable",
+    "Other": {
+     "n": 2027,
+     "pos": 168,
+     "auroc": 0.8181914239606549,
+     "auprc": 0.38473204083760815,
+     "brier": 0.19080942023312286,
+     "cal_intercept": -2.4344543751208914,
+     "cal_slope": 1.2714994162277904,
+     "material_calibration_difference": false
+    },
+    "Private": {
+     "n": 22784,
+     "pos": 1950,
+     "auroc": 0.7841367045485313,
+     "auprc": 0.29566957127380766,
+     "brier": 0.1947108465999834,
+     "cal_intercept": -2.3756506120469805,
+     "cal_slope": 1.0743850247491427,
+     "material_calibration_difference": false
+    }
+   },
+   "gender": {
+    "F": {
+     "n": 38109,
+     "pos": 2528,
+     "auroc": 0.7908342891366783,
+     "auprc": 0.2721298723098325,
+     "brier": 0.15961381170880248,
+     "cal_intercept": -2.406888378079518,
+     "cal_slope": 1.066064784954087,
+     "material_calibration_difference": false
+    },
+    "M": {
+     "n": 37015,
+     "pos": 2898,
+     "auroc": 0.7798782608452912,
+     "auprc": 0.28171751358088704,
+     "brier": 0.1885343981838487,
+     "cal_intercept": -2.4405910777077136,
+     "cal_slope": 1.0231230912126166,
+     "material_calibration_difference": false
+    }
+   },
+   "age_band": {
+    "18-39": {
+     "n": 10566,
+     "pos": 684,
+     "auroc": 0.8495235740805835,
+     "auprc": 0.3294530579297959,
+     "brier": 0.13274424548034094,
+     "cal_intercept": -2.3192432292805516,
+     "cal_slope": 1.184023564715273,
+     "material_calibration_difference": false
+    },
+    "40-54": {
+     "n": 14702,
+     "pos": 1528,
+     "auroc": 0.7637258448538569,
+     "auprc": 0.3235386737712318,
+     "brier": 0.22762207919014646,
+     "cal_intercept": -2.3492542665110796,
+     "cal_slope": 1.0814148148229075,
+     "material_calibration_difference": false
+    },
+    "55-64": {
+     "n": 15348,
+     "pos": 1408,
+     "auroc": 0.7386625513564627,
+     "auprc": 0.26247290312090504,
+     "brier": 0.24039538991228349,
+     "cal_intercept": -2.520588467980381,
+     "cal_slope": 1.011767597100856,
+     "material_calibration_difference": false
+    },
+    "65-74": {
+     "n": 14840,
+     "pos": 1121,
+     "auroc": 0.7449649356242237,
+     "auprc": 0.25829211820259007,
+     "brier": 0.2024834062073548,
+     "cal_intercept": -2.513179778963899,
+     "cal_slope": 1.030675711750408,
+     "material_calibration_difference": false
+    },
+    "75-88": {
+     "n": 15587,
+     "pos": 626,
+     "auroc": 0.756285511659388,
+     "auprc": 0.19889288414040596,
+     "brier": 0.09436626152660159,
+     "cal_intercept": -2.316847398230631,
+     "cal_slope": 1.011718677320106,
+     "material_calibration_difference": false
+    },
+    "89+": {
+     "n": 4081,
+     "pos": 59,
+     "auroc": 0.7245151665837891,
+     "auprc": 0.058202032965161125,
+     "brier": 0.036000706268337644,
+     "cal_intercept": -2.4714366482562045,
+     "cal_slope": 0.8454519481724793,
+     "material_calibration_difference": false
+    }
+   }
+  },
+  "cat|FS-B|weighted+corrected": {
+   "race": {
+    "AMERICAN INDIAN/ALASKA NATIVE": "not estimable",
+    "ASIAN": {
+     "n": 863,
+     "pos": 58,
+     "auroc": 0.8221674876847291,
+     "auprc": 0.29573578361370073,
+     "brier": 0.055644805753040635,
+     "cal_intercept": 0.32748107674446103,
+     "cal_slope": 1.1495311925789717,
+     "material_calibration_difference": false
+    },
+    "ASIAN - ASIAN INDIAN": "not estimable",
+    "ASIAN - CHINESE": {
+     "n": 988,
+     "pos": 72,
+     "auroc": 0.7640101892285299,
+     "auprc": 0.2100958246634876,
+     "brier": 0.06357851395947196,
+     "cal_intercept": 0.16440042800877888,
+     "cal_slope": 0.8600943951739843,
+     "material_calibration_difference": false
+    },
+    "ASIAN - KOREAN": "not estimable",
+    "ASIAN - SOUTH EAST ASIAN": "not estimable",
+    "BLACK/AFRICAN": "not estimable",
+    "BLACK/AFRICAN AMERICAN": {
+     "n": 9834,
+     "pos": 568,
+     "auroc": 0.7879822644044712,
+     "auprc": 0.27005839771342943,
+     "brier": 0.048584294187729214,
+     "cal_intercept": -0.22473832261006577,
+     "cal_slope": 1.1955703070424946,
+     "material_calibration_difference": false
+    },
+    "BLACK/CAPE VERDEAN": {
+     "n": 803,
+     "pos": 54,
+     "auroc": 0.667507293675518,
+     "auprc": 0.132644981925977,
+     "brier": 0.06362273159354669,
+     "cal_intercept": -0.24245411850099025,
+     "cal_slope": 0.5462432368214316,
+     "material_calibration_difference": true
+    },
+    "BLACK/CARIBBEAN ISLAND": "not estimable",
+    "HISPANIC OR LATINO": {
+     "n": 1122,
+     "pos": 131,
+     "auroc": 0.7404117977831014,
+     "auprc": 0.3154039750336641,
+     "brier": 0.09666463424167368,
+     "cal_intercept": 0.6933295087048119,
+     "cal_slope": 0.892637036234357,
+     "material_calibration_difference": true
+    },
+    "HISPANIC/LATINO - CENTRAL AMERICAN": "not estimable",
+    "HISPANIC/LATINO - COLUMBIAN": "not estimable",
+    "HISPANIC/LATINO - CUBAN": "not estimable",
+    "HISPANIC/LATINO - DOMINICAN": {
+     "n": 790,
+     "pos": 75,
+     "auroc": 0.7580419580419581,
+     "auprc": 0.24471727187959685,
+     "brier": 0.07989397585064442,
+     "cal_intercept": 0.23287612046512476,
+     "cal_slope": 0.9266256257137127,
+     "material_calibration_difference": false
+    },
+    "HISPANIC/LATINO - GUATEMALAN": {
+     "n": 264,
+     "pos": 57,
+     "auroc": 0.6753962200186456,
+     "auprc": 0.338141863614197,
+     "brier": 0.16928684105499192,
+     "cal_intercept": 0.7446770571412792,
+     "cal_slope": 0.5392493962001588,
+     "material_calibration_difference": true
+    },
+    "HISPANIC/LATINO - HONDURAN": "not estimable",
+    "HISPANIC/LATINO - MEXICAN": "not estimable",
+    "HISPANIC/LATINO - PUERTO RICAN": {
+     "n": 1468,
+     "pos": 167,
+     "auroc": 0.7693160949430886,
+     "auprc": 0.3687792082037025,
+     "brier": 0.08859407428276156,
+     "cal_intercept": 0.3687094839724261,
+     "cal_slope": 1.0582761774765546,
+     "material_calibration_difference": false
+    },
+    "HISPANIC/LATINO - SALVADORAN": "not estimable",
+    "MULTIPLE RACE/ETHNICITY": "not estimable",
+    "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER": "not estimable",
+    "OTHER": {
+     "n": 2491,
+     "pos": 169,
+     "auroc": 0.8041960358597211,
+     "auprc": 0.371953685941744,
+     "brier": 0.0534613672533559,
+     "cal_intercept": 0.13084480020860012,
+     "cal_slope": 1.2224860012304761,
+     "material_calibration_difference": false
+    },
+    "PATIENT DECLINED TO ANSWER": "not estimable",
+    "PORTUGUESE": "not estimable",
+    "SOUTH AMERICAN": "not estimable",
+    "UNABLE TO OBTAIN": "not estimable",
+    "UNKNOWN": {
+     "n": 1885,
+     "pos": 117,
+     "auroc": 0.7985410140387516,
+     "auprc": 0.2846882571679089,
+     "brier": 0.05103194540215999,
+     "cal_intercept": 0.05834243014623035,
+     "cal_slope": 1.0348884046585924,
+     "material_calibration_difference": false
+    },
+    "WHITE": {
+     "n": 48555,
+     "pos": 3444,
+     "auroc": 0.7888084279193527,
+     "auprc": 0.27072644716753125,
+     "brier": 0.05888197915825839,
+     "cal_intercept": 0.16724791384101634,
+     "cal_slope": 1.032172870813276,
+     "material_calibration_difference": false
+    },
+    "WHITE - BRAZILIAN": "not estimable",
+    "WHITE - EASTERN EUROPEAN": "not estimable",
+    "WHITE - OTHER EUROPEAN": {
+     "n": 1532,
+     "pos": 146,
+     "auroc": 0.7772490067010616,
+     "auprc": 0.2724229164692348,
+     "brier": 0.07876919710685015,
+     "cal_intercept": 0.29630990375094446,
+     "cal_slope": 0.9989907898893742,
+     "material_calibration_difference": false
+    },
+    "WHITE - RUSSIAN": {
+     "n": 966,
+     "pos": 56,
+     "auroc": 0.7735871271585557,
+     "auprc": 0.3972290300959568,
+     "brier": 0.04662014452639135,
+     "cal_intercept": 0.28550382544028075,
+     "cal_slope": 1.1497306833728795,
+     "material_calibration_difference": false
+    }
+   },
+   "insurance": {
+    "Medicaid": {
+     "n": 12839,
+     "pos": 1212,
+     "auroc": 0.7908933159162651,
+     "auprc": 0.32486876589452,
+     "brier": 0.07501066206239791,
+     "cal_intercept": 0.19202123420201608,
+     "cal_slope": 1.1254392635108559,
+     "material_calibration_difference": false
+    },
+    "Medicare": {
+     "n": 36382,
+     "pos": 2046,
+     "auroc": 0.767422635340113,
+     "auprc": 0.22010886204161215,
+     "brier": 0.04853512758982852,
+     "cal_intercept": 0.0757483762838982,
+     "cal_slope": 0.9447833494921214,
+     "material_calibration_difference": false
+    },
+    "No charge": "not estimable",
+    "Other": {
+     "n": 2027,
+     "pos": 168,
+     "auroc": 0.8181914239606549,
+     "auprc": 0.38473204083760815,
+     "brier": 0.06416117349224293,
+     "cal_intercept": 0.13106908158663477,
+     "cal_slope": 1.2714994162277897,
+     "material_calibration_difference": false
+    },
+    "Private": {
+     "n": 22784,
+     "pos": 1950,
+     "auroc": 0.7841367045485313,
+     "auprc": 0.29566957127380766,
+     "brier": 0.0696631733036954,
+     "cal_intercept": 0.18987284466055795,
+     "cal_slope": 1.0743850247491422,
+     "material_calibration_difference": false
+    }
+   },
+   "gender": {
+    "F": {
+     "n": 38109,
+     "pos": 2528,
+     "auroc": 0.7908342891366783,
+     "auprc": 0.2721298723098325,
+     "brier": 0.05526958657949638,
+     "cal_intercept": 0.15863507862799514,
+     "cal_slope": 1.066064784954086,
+     "material_calibration_difference": false
+    },
+    "M": {
+     "n": 37015,
+     "pos": 2898,
+     "auroc": 0.7798782608452912,
+     "auprc": 0.28171751358088704,
+     "brier": 0.06429229408194369,
+     "cal_intercept": 0.12493237899980743,
+     "cal_slope": 1.0231230912126172,
+     "material_calibration_difference": false
+    }
+   },
+   "age_band": {
+    "18-39": {
+     "n": 10566,
+     "pos": 684,
+     "auroc": 0.8495235740805835,
+     "auprc": 0.3294530579297959,
+     "brier": 0.0515638906758566,
+     "cal_intercept": 0.24628022742697558,
+     "cal_slope": 1.184023564715273,
+     "material_calibration_difference": false
+    },
+    "40-54": {
+     "n": 14702,
+     "pos": 1528,
+     "auroc": 0.7637258448538569,
+     "auprc": 0.3235386737712318,
+     "brier": 0.08285405256803256,
+     "cal_intercept": 0.21626919019643903,
+     "cal_slope": 1.0814148148229095,
+     "material_calibration_difference": false
+    },
+    "55-64": {
+     "n": 15348,
+     "pos": 1408,
+     "auroc": 0.7386625513564627,
+     "auprc": 0.26247290312090504,
+     "brier": 0.076068036619315,
+     "cal_intercept": 0.04493498872712491,
+     "cal_slope": 1.0117675971008564,
+     "material_calibration_difference": false
+    },
+    "65-74": {
+     "n": 14840,
+     "pos": 1121,
+     "auroc": 0.7449649356242237,
+     "auprc": 0.25829211820259007,
+     "brier": 0.06344477315567928,
+     "cal_intercept": 0.052343677743605536,
+     "cal_slope": 1.0306757117504097,
+     "material_calibration_difference": false
+    },
+    "75-88": {
+     "n": 15587,
+     "pos": 626,
+     "auroc": 0.756285511659388,
+     "auprc": 0.19889288414040596,
+     "brier": 0.03571301844166199,
+     "cal_intercept": 0.24867605847691296,
+     "cal_slope": 1.0117186773201063,
+     "material_calibration_difference": false
+    },
+    "89+": {
+     "n": 4081,
+     "pos": 59,
+     "auroc": 0.7245151665837891,
+     "auprc": 0.058202032965161125,
+     "brier": 0.014073048897609602,
+     "cal_intercept": 0.09408680845131588,
+     "cal_slope": 0.8454519481724803,
+     "material_calibration_difference": false
+    }
+   }
+  },
+  "cat|FS-AVAIL|unweighted": {
+   "race": {
+    "AMERICAN INDIAN/ALASKA NATIVE": "not estimable",
+    "ASIAN": {
+     "n": 863,
+     "pos": 58,
+     "auroc": 0.8200257014349969,
+     "auprc": 0.2656634691839573,
+     "brier": 0.055894258592966324,
+     "cal_intercept": 0.005649392368959747,
+     "cal_slope": 1.010428990870564,
+     "material_calibration_difference": false
+    },
+    "ASIAN - ASIAN INDIAN": "not estimable",
+    "ASIAN - CHINESE": {
+     "n": 988,
+     "pos": 72,
+     "auroc": 0.794532387190684,
+     "auprc": 0.21896295199506716,
+     "brier": 0.06180958067576948,
+     "cal_intercept": -0.22259381782847676,
+     "cal_slope": 0.9955960600760434,
+     "material_calibration_difference": false
+    },
+    "ASIAN - KOREAN": "not estimable",
+    "ASIAN - SOUTH EAST ASIAN": "not estimable",
+    "BLACK/AFRICAN": "not estimable",
+    "BLACK/AFRICAN AMERICAN": {
+     "n": 9834,
+     "pos": 568,
+     "auroc": 0.8294608602402239,
+     "auprc": 0.23178299789841755,
+     "brier": 0.048822811508760285,
+     "cal_intercept": -0.1865499144658281,
+     "cal_slope": 1.1535993106620779,
+     "material_calibration_difference": false
+    },
+    "BLACK/CAPE VERDEAN": {
+     "n": 803,
+     "pos": 54,
+     "auroc": 0.7636601888938338,
+     "auprc": 0.14166321881695984,
+     "brier": 0.06243298069895735,
+     "cal_intercept": -0.26782528328962385,
+     "cal_slope": 0.7661641319022181,
+     "material_calibration_difference": true
+    },
+    "BLACK/CARIBBEAN ISLAND": "not estimable",
+    "HISPANIC OR LATINO": {
+     "n": 1122,
+     "pos": 131,
+     "auroc": 0.8023085633295075,
+     "auprc": 0.32482153916580786,
+     "brier": 0.09323075855066115,
+     "cal_intercept": 0.6283642906716057,
+     "cal_slope": 0.9314828876202671,
+     "material_calibration_difference": true
+    },
+    "HISPANIC/LATINO - CENTRAL AMERICAN": "not estimable",
+    "HISPANIC/LATINO - COLUMBIAN": "not estimable",
+    "HISPANIC/LATINO - CUBAN": "not estimable",
+    "HISPANIC/LATINO - DOMINICAN": {
+     "n": 790,
+     "pos": 75,
+     "auroc": 0.7737808857808859,
+     "auprc": 0.23954431109093569,
+     "brier": 0.07790268535864288,
+     "cal_intercept": 0.03011041453233618,
+     "cal_slope": 0.8785588062415082,
+     "material_calibration_difference": false
+    },
+    "HISPANIC/LATINO - GUATEMALAN": {
+     "n": 264,
+     "pos": 57,
+     "auroc": 0.7994745317399781,
+     "auprc": 0.46091484195362703,
+     "brier": 0.15257969994247286,
+     "cal_intercept": 0.8307817949060297,
+     "cal_slope": 1.137708601745771,
+     "material_calibration_difference": true
+    },
+    "HISPANIC/LATINO - HONDURAN": "not estimable",
+    "HISPANIC/LATINO - MEXICAN": "not estimable",
+    "HISPANIC/LATINO - PUERTO RICAN": {
+     "n": 1468,
+     "pos": 167,
+     "auroc": 0.7535566837117464,
+     "auprc": 0.27445667321112854,
+     "brier": 0.09243489819770156,
+     "cal_intercept": 0.3222770704641018,
+     "cal_slope": 0.7917528994884061,
+     "material_calibration_difference": false
+    },
+    "HISPANIC/LATINO - SALVADORAN": "not estimable",
+    "MULTIPLE RACE/ETHNICITY": "not estimable",
+    "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER": "not estimable",
+    "OTHER": {
+     "n": 2491,
+     "pos": 169,
+     "auroc": 0.8190526428451292,
+     "auprc": 0.270001794290897,
+     "brier": 0.056275470872867515,
+     "cal_intercept": 0.07751241755897795,
+     "cal_slope": 1.0501728436850786,
+     "material_calibration_difference": false
+    },
+    "PATIENT DECLINED TO ANSWER": "not estimable",
+    "PORTUGUESE": "not estimable",
+    "SOUTH AMERICAN": "not estimable",
+    "UNABLE TO OBTAIN": "not estimable",
+    "UNKNOWN": {
+     "n": 1885,
+     "pos": 117,
+     "auroc": 0.8268989055188151,
+     "auprc": 0.25715333369031596,
+     "brier": 0.051271568604401484,
+     "cal_intercept": 0.12565157468496552,
+     "cal_slope": 1.0922797552312642,
+     "material_calibration_difference": false
+    },
+    "WHITE": {
+     "n": 48555,
+     "pos": 3444,
+     "auroc": 0.8106568161678158,
+     "auprc": 0.23960054981557027,
+     "brier": 0.05898625072594185,
+     "cal_intercept": 0.0020232021089399855,
+     "cal_slope": 1.0296596678776375,
+     "material_calibration_difference": false
+    },
+    "WHITE - BRAZILIAN": "not estimable",
+    "WHITE - EASTERN EUROPEAN": "not estimable",
+    "WHITE - OTHER EUROPEAN": {
+     "n": 1532,
+     "pos": 146,
+     "auroc": 0.8003617387179032,
+     "auprc": 0.33766759067923063,
+     "brier": 0.07512689403585274,
+     "cal_intercept": 0.15234420389141104,
+     "cal_slope": 1.0457665895061283,
+     "material_calibration_difference": false
+    },
+    "WHITE - RUSSIAN": {
+     "n": 966,
+     "pos": 56,
+     "auroc": 0.8236067503924647,
+     "auprc": 0.22070850452320934,
+     "brier": 0.04927272363943469,
+     "cal_intercept": -0.2145545390911643,
+     "cal_slope": 1.2524822614898807,
+     "material_calibration_difference": false
+    }
+   },
+   "insurance": {
+    "Medicaid": {
+     "n": 12839,
+     "pos": 1212,
+     "auroc": 0.8157550026525832,
+     "auprc": 0.29326939930582546,
+     "brier": 0.07495887851331319,
+     "cal_intercept": 0.23875497539124207,
+     "cal_slope": 1.044987989360932,
+     "material_calibration_difference": false
+    },
+    "Medicare": {
+     "n": 36382,
+     "pos": 2046,
+     "auroc": 0.8015048399850958,
+     "auprc": 0.19895209397627045,
+     "brier": 0.04895762482139459,
+     "cal_intercept": -0.2608170736104356,
+     "cal_slope": 1.0323988235617212,
+     "material_calibration_difference": false
+    },
+    "No charge": "not estimable",
+    "Other": {
+     "n": 2027,
+     "pos": 168,
+     "auroc": 0.8625381029227184,
+     "auprc": 0.3673289763943284,
+     "brier": 0.06361059349528336,
+     "cal_intercept": 0.23418914106715988,
+     "cal_slope": 1.2694995458834335,
+     "material_calibration_difference": false
+    },
+    "Private": {
+     "n": 22784,
+     "pos": 1950,
+     "auroc": 0.8130476809357485,
+     "auprc": 0.2718983705783623,
+     "brier": 0.06942598941216518,
+     "cal_intercept": 0.22325247135040555,
+     "cal_slope": 0.986279593277821,
+     "material_calibration_difference": false
+    }
+   },
+   "gender": {
+    "F": {
+     "n": 38109,
+     "pos": 2528,
+     "auroc": 0.8189270919197026,
+     "auprc": 0.23903236325236346,
+     "brier": 0.05533471038838385,
+     "cal_intercept": -0.0578661178214894,
+     "cal_slope": 1.0938358275023998,
+     "material_calibration_difference": false
+    },
+    "M": {
+     "n": 37015,
+     "pos": 2898,
+     "auroc": 0.8050586306007866,
+     "auprc": 0.25202333018616296,
+     "brier": 0.06446058583568849,
+     "cal_intercept": 0.08025933308744983,
+     "cal_slope": 0.9836353472284718,
+     "material_calibration_difference": false
+    }
+   },
+   "age_band": {
+    "18-39": {
+     "n": 10566,
+     "pos": 684,
+     "auroc": 0.8644269189299228,
+     "auprc": 0.31383713065779306,
+     "brier": 0.051395662096762905,
+     "cal_intercept": 0.11535946980450652,
+     "cal_slope": 1.222059916998447,
+     "material_calibration_difference": false
+    },
+    "40-54": {
+     "n": 14702,
+     "pos": 1528,
+     "auroc": 0.8034325056811091,
+     "auprc": 0.2978248534371235,
+     "brier": 0.08259920843591753,
+     "cal_intercept": 0.3770234262519954,
+     "cal_slope": 0.9460843719391526,
+     "material_calibration_difference": false
+    },
+    "55-64": {
+     "n": 15348,
+     "pos": 1408,
+     "auroc": 0.7849431818181817,
+     "auprc": 0.24064324088003125,
+     "brier": 0.07564457076699903,
+     "cal_intercept": 0.12550094359491795,
+     "cal_slope": 0.9158487703270797,
+     "material_calibration_difference": false
+    },
+    "65-74": {
+     "n": 14840,
+     "pos": 1121,
+     "auroc": 0.7889082377858273,
+     "auprc": 0.23911275786684597,
+     "brier": 0.06318529305200152,
+     "cal_intercept": -0.010179933352409689,
+     "cal_slope": 0.9710742168865698,
+     "material_calibration_difference": false
+    },
+    "75-88": {
+     "n": 15587,
+     "pos": 626,
+     "auroc": 0.8122584107390611,
+     "auprc": 0.16455566330181912,
+     "brier": 0.03676638707350938,
+     "cal_intercept": -0.5294550526828078,
+     "cal_slope": 1.1230174030021125,
+     "material_calibration_difference": true
+    },
+    "89+": {
+     "n": 4081,
+     "pos": 59,
+     "auroc": 0.8706605196841103,
+     "auprc": 0.1080471390631399,
+     "brier": 0.016074157907689207,
+     "cal_intercept": -1.3863368849961109,
+     "cal_slope": 1.5252348576723982,
+     "material_calibration_difference": true
+    }
+   }
+  },
+  "cat|FS-AVAIL|weighted": {
+   "race": {
+    "AMERICAN INDIAN/ALASKA NATIVE": "not estimable",
+    "ASIAN": {
+     "n": 863,
+     "pos": 58,
+     "auroc": 0.8126793745984151,
+     "auprc": 0.27345635769274934,
+     "brier": 0.16569976302321837,
+     "cal_intercept": -2.4705857186979947,
+     "cal_slope": 0.9674498201377637,
+     "material_calibration_difference": false
+    },
+    "ASIAN - ASIAN INDIAN": "not estimable",
+    "ASIAN - CHINESE": {
+     "n": 988,
+     "pos": 72,
+     "auroc": 0.7940623483745755,
+     "auprc": 0.22103332155895952,
+     "brier": 0.21523520688568645,
+     "cal_intercept": -2.730696208660866,
+     "cal_slope": 0.9833909933642414,
+     "material_calibration_difference": false
+    },
+    "ASIAN - KOREAN": "not estimable",
+    "ASIAN - SOUTH EAST ASIAN": "not estimable",
+    "BLACK/AFRICAN": "not estimable",
+    "BLACK/AFRICAN AMERICAN": {
+     "n": 9834,
+     "pos": 568,
+     "auroc": 0.8259425835175092,
+     "auprc": 0.21841879977199308,
+     "brier": 0.1727502571957856,
+     "cal_intercept": -2.705942493107165,
+     "cal_slope": 1.124079329197683,
+     "material_calibration_difference": false
+    },
+    "BLACK/CAPE VERDEAN": {
+     "n": 803,
+     "pos": 54,
+     "auroc": 0.7553033674529002,
+     "auprc": 0.1365680957885197,
+     "brier": 0.21287495569077575,
+     "cal_intercept": -2.7764722265368955,
+     "cal_slope": 0.7410515713277951,
+     "material_calibration_difference": true
+    },
+    "BLACK/CARIBBEAN ISLAND": "not estimable",
+    "HISPANIC OR LATINO": {
+     "n": 1122,
+     "pos": 131,
+     "auroc": 0.8001671532340685,
+     "auprc": 0.3040605226281237,
+     "brier": 0.16919438965195727,
+     "cal_intercept": -1.872407887152034,
+     "cal_slope": 0.8955978537074823,
+     "material_calibration_difference": true
+    },
+    "HISPANIC/LATINO - CENTRAL AMERICAN": "not estimable",
+    "HISPANIC/LATINO - COLUMBIAN": "not estimable",
+    "HISPANIC/LATINO - CUBAN": "not estimable",
+    "HISPANIC/LATINO - DOMINICAN": {
+     "n": 790,
+     "pos": 75,
+     "auroc": 0.774993006993007,
+     "auprc": 0.2296819661289437,
+     "brier": 0.2210241300854272,
+     "cal_intercept": -2.484190577700912,
+     "cal_slope": 0.8661846585393143,
+     "material_calibration_difference": false
+    },
+    "HISPANIC/LATINO - GUATEMALAN": {
+     "n": 264,
+     "pos": 57,
+     "auroc": 0.7998982964658021,
+     "auprc": 0.4565693947142725,
+     "brier": 0.22623380752815964,
+     "cal_intercept": -1.6892032959496133,
+     "cal_slope": 1.1323602188843982,
+     "material_calibration_difference": true
+    },
+    "HISPANIC/LATINO - HONDURAN": "not estimable",
+    "HISPANIC/LATINO - MEXICAN": "not estimable",
+    "HISPANIC/LATINO - PUERTO RICAN": {
+     "n": 1468,
+     "pos": 167,
+     "auroc": 0.7527926468354605,
+     "auprc": 0.26120471434117987,
+     "brier": 0.21386621489247118,
+     "cal_intercept": -2.1935333873752345,
+     "cal_slope": 0.7797422416312262,
+     "material_calibration_difference": false
+    },
+    "HISPANIC/LATINO - SALVADORAN": "not estimable",
+    "MULTIPLE RACE/ETHNICITY": "not estimable",
+    "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER": "not estimable",
+    "OTHER": {
+     "n": 2491,
+     "pos": 169,
+     "auroc": 0.8163336034534603,
+     "auprc": 0.2561141761998121,
+     "brier": 0.15966907424609916,
+     "cal_intercept": -2.427664034612008,
+     "cal_slope": 1.0199345281375494,
+     "material_calibration_difference": false
+    },
+    "PATIENT DECLINED TO ANSWER": "not estimable",
+    "PORTUGUESE": "not estimable",
+    "SOUTH AMERICAN": "not estimable",
+    "UNABLE TO OBTAIN": "not estimable",
+    "UNKNOWN": {
+     "n": 1885,
+     "pos": 117,
+     "auroc": 0.8265653401400008,
+     "auprc": 0.26609364421111503,
+     "brier": 0.13586241072716893,
+     "cal_intercept": -2.3537729064400725,
+     "cal_slope": 1.0822954758090961,
+     "material_calibration_difference": false
+    },
+    "WHITE": {
+     "n": 48555,
+     "pos": 3444,
+     "auroc": 0.8101127812976797,
+     "auprc": 0.2352398272800044,
+     "brier": 0.17620264252085277,
+     "cal_intercept": -2.505500479245858,
+     "cal_slope": 1.013767439295651,
+     "material_calibration_difference": false
+    },
+    "WHITE - BRAZILIAN": "not estimable",
+    "WHITE - EASTERN EUROPEAN": "not estimable",
+    "WHITE - OTHER EUROPEAN": {
+     "n": 1532,
+     "pos": 146,
+     "auroc": 0.8061386862756726,
+     "auprc": 0.3259776467045883,
+     "brier": 0.2024290279426266,
+     "cal_intercept": -2.369276022514915,
+     "cal_slope": 1.0663922888503425,
+     "material_calibration_difference": false
+    },
+    "WHITE - RUSSIAN": {
+     "n": 966,
+     "pos": 56,
+     "auroc": 0.8227040816326531,
+     "auprc": 0.21552930731590936,
+     "brier": 0.1836470895390471,
+     "cal_intercept": -2.7523678940124623,
+     "cal_slope": 1.2406745138918078,
+     "material_calibration_difference": false
+    }
+   },
+   "insurance": {
+    "Medicaid": {
+     "n": 12839,
+     "pos": 1212,
+     "auroc": 0.8144537608916994,
+     "auprc": 0.284610789096324,
+     "brier": 0.18504969813306432,
+     "cal_intercept": -2.2733194791435865,
+     "cal_slope": 1.0280125288755724,
+     "material_calibration_difference": false
+    },
+    "Medicare": {
+     "n": 36382,
+     "pos": 2046,
+     "auroc": 0.7997095960544932,
+     "auprc": 0.19589074293353903,
+     "brier": 0.18101810943209168,
+     "cal_intercept": -2.77475196870459,
+     "cal_slope": 1.0157666229302609,
+     "material_calibration_difference": false
+    },
+    "No charge": "not estimable",
+    "Other": {
+     "n": 2027,
+     "pos": 168,
+     "auroc": 0.8596947923871001,
+     "auprc": 0.35165188511090506,
+     "brier": 0.15792041294741993,
+     "cal_intercept": -2.267142841849999,
+     "cal_slope": 1.2446775441351792,
+     "material_calibration_difference": false
+    },
+    "Private": {
+     "n": 22784,
+     "pos": 1950,
+     "auroc": 0.8122341685066078,
+     "auprc": 0.26304578993593775,
+     "brier": 0.17262152149934681,
+     "cal_intercept": -2.2777724274890447,
+     "cal_slope": 0.9655285865332561,
+     "material_calibration_difference": false
+    }
+   },
+   "gender": {
+    "F": {
+     "n": 38109,
+     "pos": 2528,
+     "auroc": 0.8187011577523773,
+     "auprc": 0.23287630414106392,
+     "brier": 0.1757147848756173,
+     "cal_intercept": -2.573018251527379,
+     "cal_slope": 1.0809844640556971,
+     "material_calibration_difference": false
+    },
+    "M": {
+     "n": 37015,
+     "pos": 2898,
+     "auroc": 0.8031636980630916,
+     "auprc": 0.24501874341703575,
+     "brier": 0.17908959288005544,
+     "cal_intercept": -2.4221284624156025,
+     "cal_slope": 0.9613732595289133,
+     "material_calibration_difference": false
+    }
+   },
+   "age_band": {
+    "18-39": {
+     "n": 10566,
+     "pos": 684,
+     "auroc": 0.8619364939029082,
+     "auprc": 0.3008134509663334,
+     "brier": 0.1394980218556521,
+     "cal_intercept": -2.372076125769557,
+     "cal_slope": 1.1820141776240503,
+     "material_calibration_difference": false
+    },
+    "40-54": {
+     "n": 14702,
+     "pos": 1528,
+     "auroc": 0.8032530708590695,
+     "auprc": 0.28928438832188574,
+     "brier": 0.18190170078993945,
+     "cal_intercept": -2.130937177603897,
+     "cal_slope": 0.9310643184050448,
+     "material_calibration_difference": false
+    },
+    "55-64": {
+     "n": 15348,
+     "pos": 1408,
+     "auroc": 0.7830735365446068,
+     "auprc": 0.23787290692795499,
+     "brier": 0.2014363237334659,
+     "cal_intercept": -2.383025836542385,
+     "cal_slope": 0.9019866910189093,
+     "material_calibration_difference": false
+    },
+    "65-74": {
+     "n": 14840,
+     "pos": 1121,
+     "auroc": 0.7888867474404543,
+     "auprc": 0.23188626822784927,
+     "brier": 0.19131007585962417,
+     "cal_intercept": -2.52728432485919,
+     "cal_slope": 0.9582965113092666,
+     "material_calibration_difference": false
+    },
+    "75-88": {
+     "n": 15587,
+     "pos": 626,
+     "auroc": 0.8100383681277391,
+     "auprc": 0.16602208133307728,
+     "brier": 0.17081365777233126,
+     "cal_intercept": -3.0435346526838387,
+     "cal_slope": 1.1030052714935237,
+     "material_calibration_difference": true
+    },
+    "89+": {
+     "n": 4081,
+     "pos": 59,
+     "auroc": 0.8648492612664245,
+     "auprc": 0.10716372831356995,
+     "brier": 0.14307826690131276,
+     "cal_intercept": -3.8966129704509616,
+     "cal_slope": 1.461443137076763,
+     "material_calibration_difference": true
+    }
+   }
+  },
+  "cat|FS-AVAIL|weighted+corrected": {
+   "race": {
+    "AMERICAN INDIAN/ALASKA NATIVE": "not estimable",
+    "ASIAN": {
+     "n": 863,
+     "pos": 58,
+     "auroc": 0.8126793745984151,
+     "auprc": 0.27345635769274934,
+     "brier": 0.05600813599610401,
+     "cal_intercept": 0.08798933992756464,
+     "cal_slope": 0.9674498201377632,
+     "material_calibration_difference": false
+    },
+    "ASIAN - ASIAN INDIAN": "not estimable",
+    "ASIAN - CHINESE": {
+     "n": 988,
+     "pos": 72,
+     "auroc": 0.7940623483745755,
+     "auprc": 0.22103332155895952,
+     "brier": 0.06194215892557844,
+     "cal_intercept": -0.17212115003530545,
+     "cal_slope": 0.9833909933642424,
+     "material_calibration_difference": false
+    },
+    "ASIAN - KOREAN": "not estimable",
+    "ASIAN - SOUTH EAST ASIAN": "not estimable",
+    "BLACK/AFRICAN": "not estimable",
+    "BLACK/AFRICAN AMERICAN": {
+     "n": 9834,
+     "pos": 568,
+     "auroc": 0.8259425835175092,
+     "auprc": 0.21841879977199308,
+     "brier": 0.04903160248699781,
+     "cal_intercept": -0.14736743448160522,
+     "cal_slope": 1.1240793291976814,
+     "material_calibration_difference": false
+    },
+    "BLACK/CAPE VERDEAN": {
+     "n": 803,
+     "pos": 54,
+     "auroc": 0.7553033674529002,
+     "auprc": 0.1365680957885197,
+     "brier": 0.06225762853440955,
+     "cal_intercept": -0.21789716791133637,
+     "cal_slope": 0.7410515713277951,
+     "material_calibration_difference": true
+    },
+    "BLACK/CARIBBEAN ISLAND": "not estimable",
+    "HISPANIC OR LATINO": {
+     "n": 1122,
+     "pos": 131,
+     "auroc": 0.8001671532340685,
+     "auprc": 0.3040605226281237,
+     "brier": 0.09377934013741904,
+     "cal_intercept": 0.6861671714735216,
+     "cal_slope": 0.8955978537074832,
+     "material_calibration_difference": true
+    },
+    "HISPANIC/LATINO - CENTRAL AMERICAN": "not estimable",
+    "HISPANIC/LATINO - COLUMBIAN": "not estimable",
+    "HISPANIC/LATINO - CUBAN": "not estimable",
+    "HISPANIC/LATINO - DOMINICAN": {
+     "n": 790,
+     "pos": 75,
+     "auroc": 0.774993006993007,
+     "auprc": 0.2296819661289437,
+     "brier": 0.07808347182177174,
+     "cal_intercept": 0.07438448092465043,
+     "cal_slope": 0.8661846585393141,
+     "material_calibration_difference": false
+    },
+    "HISPANIC/LATINO - GUATEMALAN": {
+     "n": 264,
+     "pos": 57,
+     "auroc": 0.7998982964658021,
+     "auprc": 0.4565693947142725,
+     "brier": 0.15372614653623645,
+     "cal_intercept": 0.8693717626759465,
+     "cal_slope": 1.1323602188843982,
+     "material_calibration_difference": true
+    },
+    "HISPANIC/LATINO - HONDURAN": "not estimable",
+    "HISPANIC/LATINO - MEXICAN": "not estimable",
+    "HISPANIC/LATINO - PUERTO RICAN": {
+     "n": 1468,
+     "pos": 167,
+     "auroc": 0.7527926468354605,
+     "auprc": 0.26120471434117987,
+     "brier": 0.09298583510269905,
+     "cal_intercept": 0.36504167125032744,
+     "cal_slope": 0.7797422416312264,
+     "material_calibration_difference": false
+    },
+    "HISPANIC/LATINO - SALVADORAN": "not estimable",
+    "MULTIPLE RACE/ETHNICITY": "not estimable",
+    "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER": "not estimable",
+    "OTHER": {
+     "n": 2491,
+     "pos": 169,
+     "auroc": 0.8163336034534603,
+     "auprc": 0.2561141761998121,
+     "brier": 0.05660462609026668,
+     "cal_intercept": 0.13091102401354823,
+     "cal_slope": 1.0199345281375494,
+     "material_calibration_difference": false
+    },
+    "PATIENT DECLINED TO ANSWER": "not estimable",
+    "PORTUGUESE": "not estimable",
+    "SOUTH AMERICAN": "not estimable",
+    "UNABLE TO OBTAIN": "not estimable",
+    "UNKNOWN": {
+     "n": 1885,
+     "pos": 117,
+     "auroc": 0.8265653401400008,
+     "auprc": 0.26609364421111503,
+     "brier": 0.05124337025280814,
+     "cal_intercept": 0.20480215218549003,
+     "cal_slope": 1.082295475809096,
+     "material_calibration_difference": false
+    },
+    "WHITE": {
+     "n": 48555,
+     "pos": 3444,
+     "auroc": 0.8101127812976797,
+     "auprc": 0.2352398272800044,
+     "brier": 0.05910974867540344,
+     "cal_intercept": 0.05307457937971846,
+     "cal_slope": 1.013767439295651,
+     "material_calibration_difference": false
+    },
+    "WHITE - BRAZILIAN": "not estimable",
+    "WHITE - EASTERN EUROPEAN": "not estimable",
+    "WHITE - OTHER EUROPEAN": {
+     "n": 1532,
+     "pos": 146,
+     "auroc": 0.8061386862756726,
+     "auprc": 0.3259776467045883,
+     "brier": 0.07539872848382388,
+     "cal_intercept": 0.1892990361106435,
+     "cal_slope": 1.0663922888503403,
+     "material_calibration_difference": false
+    },
+    "WHITE - RUSSIAN": {
+     "n": 966,
+     "pos": 56,
+     "auroc": 0.8227040816326531,
+     "auprc": 0.21552930731590936,
+     "brier": 0.04934832676984613,
+     "cal_intercept": -0.19379283538690156,
+     "cal_slope": 1.240674513891808,
+     "material_calibration_difference": false
+    }
+   },
+   "insurance": {
+    "Medicaid": {
+     "n": 12839,
+     "pos": 1212,
+     "auroc": 0.8144537608916994,
+     "auprc": 0.284610789096324,
+     "brier": 0.07537009467700868,
+     "cal_intercept": 0.28525557948198554,
+     "cal_slope": 1.0280125288755726,
+     "material_calibration_difference": false
+    },
+    "Medicare": {
+     "n": 36382,
+     "pos": 2046,
+     "auroc": 0.7997095960544932,
+     "auprc": 0.19589074293353903,
+     "brier": 0.04890810390624327,
+     "cal_intercept": -0.21617691007903037,
+     "cal_slope": 1.015766622930259,
+     "material_calibration_difference": false
+    },
+    "No charge": "not estimable",
+    "Other": {
+     "n": 2027,
+     "pos": 168,
+     "auroc": 0.8596947923871001,
+     "auprc": 0.35165188511090506,
+     "brier": 0.0642613719414693,
+     "cal_intercept": 0.29143221677556064,
+     "cal_slope": 1.244677544135179,
+     "material_calibration_difference": false
+    },
+    "Private": {
+     "n": 22784,
+     "pos": 1950,
+     "auroc": 0.8122341685066078,
+     "auprc": 0.26304578993593775,
+     "brier": 0.06981126495843627,
+     "cal_intercept": 0.2808026311365236,
+     "cal_slope": 0.9655285865332561,
+     "material_calibration_difference": false
+    }
+   },
+   "gender": {
+    "F": {
+     "n": 38109,
+     "pos": 2528,
+     "auroc": 0.8187011577523773,
+     "auprc": 0.23287630414106392,
+     "brier": 0.0554413184045395,
+     "cal_intercept": -0.014443192901807454,
+     "cal_slope": 1.0809844640556976,
+     "material_calibration_difference": false
+    },
+    "M": {
+     "n": 37015,
+     "pos": 2898,
+     "auroc": 0.8031636980630916,
+     "auprc": 0.24501874341703575,
+     "brier": 0.06471178426368616,
+     "cal_intercept": 0.13644659620997243,
+     "cal_slope": 0.9613732595289147,
+     "material_calibration_difference": false
+    }
+   },
+   "age_band": {
+    "18-39": {
+     "n": 10566,
+     "pos": 684,
+     "auroc": 0.8619364939029082,
+     "auprc": 0.3008134509663334,
+     "brier": 0.051849099334167405,
+     "cal_intercept": 0.18649893285600275,
+     "cal_slope": 1.1820141776240485,
+     "material_calibration_difference": false
+    },
+    "40-54": {
+     "n": 14702,
+     "pos": 1528,
+     "auroc": 0.8032530708590695,
+     "auprc": 0.28928438832188574,
+     "brier": 0.08310406215390646,
+     "cal_intercept": 0.4276378810216582,
+     "cal_slope": 0.9310643184050452,
+     "material_calibration_difference": false
+    },
+    "55-64": {
+     "n": 15348,
+     "pos": 1408,
+     "auroc": 0.7830735365446068,
+     "auprc": 0.23787290692795499,
+     "brier": 0.07579092607542173,
+     "cal_intercept": 0.17554922208317117,
+     "cal_slope": 0.90198669101891,
+     "material_calibration_difference": false
+    },
+    "65-74": {
+     "n": 14840,
+     "pos": 1121,
+     "auroc": 0.7888867474404543,
+     "auprc": 0.23188626822784927,
+     "brier": 0.06331520495269669,
+     "cal_intercept": 0.03129073376636617,
+     "cal_slope": 0.9582965113092659,
+     "material_calibration_difference": false
+    },
+    "75-88": {
+     "n": 15587,
+     "pos": 626,
+     "auroc": 0.8100383681277391,
+     "auprc": 0.16602208133307728,
+     "brier": 0.03662591951614899,
+     "cal_intercept": -0.48495959405827094,
+     "cal_slope": 1.1030052714935212,
+     "material_calibration_difference": true
+    },
+    "89+": {
+     "n": 4081,
+     "pos": 59,
+     "auroc": 0.8648492612664245,
+     "auprc": 0.10716372831356995,
+     "brier": 0.01586900510796086,
+     "cal_intercept": -1.3380379118254007,
+     "cal_slope": 1.4614431370767618,
+     "material_calibration_difference": true
+    }
+   }
+  }
+ },
+ "shap": {
+  "FS-A": [
+   {
+    "feature": "liver_imaging_any_pre",
+    "mean_abs_shap": 0.6751742100391943,
+    "class": "availability"
+   },
+   {
+    "feature": "age",
+    "mean_abs_shap": 0.3359553876645486,
+    "class": "clinical"
+   },
+   {
+    "feature": "omr_BMI",
+    "mean_abs_shap": 0.22543217829832193,
+    "class": "clinical"
+   },
+   {
+    "feature": "liver_imaging_out_pre365",
+    "mean_abs_shap": 0.20615258831951022,
+    "class": "availability"
+   },
+   {
+    "feature": "cmrf_overweight",
+    "mean_abs_shap": 0.1967024899189976,
+    "class": "clinical"
+   },
+   {
+    "feature": "icd_era",
+    "mean_abs_shap": 0.15739732673462792,
+    "class": "clinical"
+   },
+   {
+    "feature": "first_val_ALT",
+    "mean_abs_shap": 0.12423173967028604,
+    "class": "clinical"
+   },
+   {
+    "feature": "etio_alcohol",
+    "mean_abs_shap": 0.11198821934377251,
+    "class": "clinical"
+   },
+   {
+    "feature": "chars_dc",
+    "mean_abs_shap": 0.09370114300298076,
+    "class": "availability"
+   },
+   {
+    "feature": "pre365_Triglycerides",
+    "mean_abs_shap": 0.0863740728658239,
+    "class": "clinical"
+   },
+   {
+    "feature": "liver_imaging_inp",
+    "mean_abs_shap": 0.08506215032232209,
+    "class": "availability"
+   },
+   {
+    "feature": "chars_rad_inp",
+    "mean_abs_shap": 0.06378671801984324,
+    "class": "availability"
+   },
+   {
+    "feature": "pre365_HbA1c",
+    "mean_abs_shap": 0.0635244517263727,
+    "class": "clinical"
+   },
+   {
+    "feature": "omr_DBP",
+    "mean_abs_shap": 0.06268290360595144,
+    "class": "clinical"
+   },
+   {
+    "feature": "n_diagnoses",
+    "mean_abs_shap": 0.06165978788879886,
+    "class": "availability"
+   },
+   {
+    "feature": "etio_cirrhosis",
+    "mean_abs_shap": 0.06080343487405231,
+    "class": "clinical"
+   },
+   {
+    "feature": "last_val_Glucose",
+    "mean_abs_shap": 0.05933597238590208,
+    "class": "clinical"
+   },
+   {
+    "feature": "insulin",
+    "mean_abs_shap": 0.05850939160524263,
+    "class": "clinical"
+   },
+   {
+    "feature": "last_val_ALT",
+    "mean_abs_shap": 0.058430551851503705,
+    "class": "clinical"
+   },
+   {
+    "feature": "charlson_noliver",
+    "mean_abs_shap": 0.05449504794960303,
+    "class": "clinical"
+   },
+   {
+    "feature": "n_notes_rad_out_pre365",
+    "mean_abs_shap": 0.05118510051273061,
+    "class": "availability"
+   },
+   {
+    "feature": "marital_status",
+    "mean_abs_shap": 0.04738446683171362,
+    "class": "clinical"
+   },
+   {
+    "feature": "omr_SBP",
+    "mean_abs_shap": 0.045011363790531715,
+    "class": "clinical"
+   },
+   {
+    "feature": "cmrf_dysglycemia",
+    "mean_abs_shap": 0.04072384574483396,
+    "class": "clinical"
+   },
+   {
+    "feature": "cmrf_hypertension",
+    "mean_abs_shap": 0.04010365526998745,
+    "class": "clinical"
+   }
+  ],
+  "FS-A_availability_share_top25": 0.28,
+  "FS-B": [
+   {
+    "feature": "age",
+    "mean_abs_shap": 0.3556652894820682,
+    "class": "clinical"
+   },
+   {
+    "feature": "omr_BMI",
+    "mean_abs_shap": 0.180472390718418,
+    "class": "clinical"
+   },
+   {
+    "feature": "cmrf_overweight",
+    "mean_abs_shap": 0.1588133831951723,
+    "class": "clinical"
+   },
+   {
+    "feature": "icd_era",
+    "mean_abs_shap": 0.15700194266388842,
+    "class": "clinical"
+   },
+   {
+    "feature": "first_val_ALT",
+    "mean_abs_shap": 0.12437436183638087,
+    "class": "clinical"
+   },
+   {
+    "feature": "omr_SBP",
+    "mean_abs_shap": 0.12005068148550088,
+    "class": "clinical"
+   },
+   {
+    "feature": "pre365_Triglycerides",
+    "mean_abs_shap": 0.11608242005637867,
+    "class": "clinical"
+   },
+   {
+    "feature": "etio_alcohol",
+    "mean_abs_shap": 0.10618495688289241,
+    "class": "clinical"
+   },
+   {
+    "feature": "first_val_Bilirubin_total",
+    "mean_abs_shap": 0.09963473463479408,
+    "class": "clinical"
+   },
+   {
+    "feature": "omr_DBP",
+    "mean_abs_shap": 0.07801687981262437,
+    "class": "clinical"
+   },
+   {
+    "feature": "etio_cirrhosis",
+    "mean_abs_shap": 0.07739817826696649,
+    "class": "clinical"
+   },
+   {
+    "feature": "pre365_HbA1c",
+    "mean_abs_shap": 0.07007883949951373,
+    "class": "clinical"
+   },
+   {
+    "feature": "last_val_Glucose",
+    "mean_abs_shap": 0.06637885995941309,
+    "class": "clinical"
+   },
+   {
+    "feature": "first_val_AST",
+    "mean_abs_shap": 0.06349484320510304,
+    "class": "clinical"
+   },
+   {
+    "feature": "marital_status",
+    "mean_abs_shap": 0.06227222124929175,
+    "class": "clinical"
+   },
+   {
+    "feature": "last_val_ALT",
+    "mean_abs_shap": 0.056037456207667036,
+    "class": "clinical"
+   },
+   {
+    "feature": "htn_excl",
+    "mean_abs_shap": 0.05334218589767306,
+    "class": "clinical"
+   },
+   {
+    "feature": "insulin",
+    "mean_abs_shap": 0.05288639472940588,
+    "class": "clinical"
+   },
+   {
+    "feature": "admission_type",
+    "mean_abs_shap": 0.0463877859619194,
+    "class": "clinical"
+   },
+   {
+    "feature": "pre365_HDL",
+    "mean_abs_shap": 0.039531457992705764,
+    "class": "clinical"
+   },
+   {
+    "feature": "last_val_Alkaline_phosphatase",
+    "mean_abs_shap": 0.03550502419168428,
+    "class": "clinical"
+   },
+   {
+    "feature": "charlson_noliver",
+    "mean_abs_shap": 0.03523053176893942,
+    "class": "clinical"
+   },
+   {
+    "feature": "cmrf_dysglycemia",
+    "mean_abs_shap": 0.03353371252127919,
+    "class": "clinical"
+   },
+   {
+    "feature": "gender",
+    "mean_abs_shap": 0.033126628871523636,
+    "class": "clinical"
+   },
+   {
+    "feature": "bb",
+    "mean_abs_shap": 0.03245474199915224,
+    "class": "clinical"
+   }
+  ],
+  "FS-B_availability_share_top25": 0.0,
+  "FS-AVAIL": [
+   {
+    "feature": "liver_imaging_any_pre",
+    "mean_abs_shap": 0.4642189753940759,
+    "class": "availability"
+   },
+   {
+    "feature": "liver_imaging_out_pre365",
+    "mean_abs_shap": 0.2579364297476464,
+    "class": "availability"
+   },
+   {
+    "feature": "liver_imaging_inp",
+    "mean_abs_shap": 0.22319436190762784,
+    "class": "availability"
+   },
+   {
+    "feature": "chars_dc",
+    "mean_abs_shap": 0.1345914410930033,
+    "class": "availability"
+   },
+   {
+    "feature": "n_diagnoses",
+    "mean_abs_shap": 0.1284887010665143,
+    "class": "availability"
+   },
+   {
+    "feature": "n_Platelets",
+    "mean_abs_shap": 0.12157176142031322,
+    "class": "availability"
+   },
+   {
+    "feature": "n_notes_rad_out_pre365",
+    "mean_abs_shap": 0.10556421914230277,
+    "class": "availability"
+   },
+   {
+    "feature": "n_analytes_available",
+    "mean_abs_shap": 0.10505593344330562,
+    "class": "availability"
+   },
+   {
+    "feature": "chars_rad_inp",
+    "mean_abs_shap": 0.06383570154879814,
+    "class": "availability"
+   },
+   {
+    "feature": "has_BMI",
+    "mean_abs_shap": 0.0631608112378623,
+    "class": "availability"
+   },
+   {
+    "feature": "n_Bilirubin_total",
+    "mean_abs_shap": 0.060671983937663994,
+    "class": "availability"
+   },
+   {
+    "feature": "n_ALT",
+    "mean_abs_shap": 0.05768796208214141,
+    "class": "availability"
+   },
+   {
+    "feature": "n_AST",
+    "mean_abs_shap": 0.057635562699896864,
+    "class": "availability"
+   },
+   {
+    "feature": "miss_omr_DBP",
+    "mean_abs_shap": 0.043253528699359604,
+    "class": "availability"
+   },
+   {
+    "feature": "has_DBP",
+    "mean_abs_shap": 0.03929585964494013,
+    "class": "availability"
+   },
+   {
+    "feature": "n_Alkaline_phosphatase",
+    "mean_abs_shap": 0.035419381105698394,
+    "class": "availability"
+   },
+   {
+    "feature": "n_rx_distinct",
+    "mean_abs_shap": 0.031687226995903775,
+    "class": "availability"
+   },
+   {
+    "feature": "miss_omr_BMI",
+    "mean_abs_shap": 0.030051789721533356,
+    "class": "availability"
+   },
+   {
+    "feature": "n_Glucose",
+    "mean_abs_shap": 0.028222873738653034,
+    "class": "availability"
+   },
+   {
+    "feature": "n_rx_orders",
+    "mean_abs_shap": 0.027607026470796058,
+    "class": "availability"
+   },
+   {
+    "feature": "miss_lab_Albumin",
+    "mean_abs_shap": 0.026206018322581234,
+    "class": "availability"
+   },
+   {
+    "feature": "n_notes_rad_inp",
+    "mean_abs_shap": 0.02419332932521039,
+    "class": "availability"
+   },
+   {
+    "feature": "n_Albumin",
+    "mean_abs_shap": 0.023429739055478196,
+    "class": "availability"
+   },
+   {
+    "feature": "has_SBP",
+    "mean_abs_shap": 0.021504890414074156,
+    "class": "availability"
+   },
+   {
+    "feature": "n_lab_results_total",
+    "mean_abs_shap": 0.015793718479876484,
+    "class": "availability"
+   }
+  ],
+  "FS-AVAIL_availability_share_top25": 1.0
+ },
+ "thresholds": {
+  "cat|FS-A|unweighted": {
+   "threshold_maxF1_dev_oof": 0.20824008928870782,
+   "dev_oof_F1": 0.4083468395461912,
+   "test_sensitivity": 0.47899004791743455,
+   "test_specificity": 0.9358518178426928,
+   "test_ppv": 0.36760961810466763
+  },
+  "cat|FS-A|weighted": {
+   "threshold_maxF1_dev_oof": 0.7429694260048177,
+   "dev_oof_F1": 0.40247836349331234,
+   "test_sensitivity": 0.4894950239587173,
+   "test_specificity": 0.93062928634968,
+   "test_ppv": 0.3545588038980109
+  },
+  "cat|FS-A|weighted+corrected": {
+   "threshold_maxF1_dev_oof": 0.18257409272125005,
+   "dev_oof_F1": 0.402360346184107,
+   "test_sensitivity": 0.4918908956874309,
+   "test_specificity": 0.9298545151941232,
+   "test_ppv": 0.3531357501984652
+  },
+  "cat|FS-B|unweighted": {
+   "threshold_maxF1_dev_oof": 0.1563751034751804,
+   "dev_oof_F1": 0.33990825688073395,
+   "test_sensitivity": 0.4078510873571692,
+   "test_specificity": 0.918075124106861,
+   "test_ppv": 0.27931339139214945
+  },
+  "cat|FS-B|weighted": {
+   "threshold_maxF1_dev_oof": 0.6948830060218127,
+   "dev_oof_F1": 0.33658536585365856,
+   "test_sensitivity": 0.38942130482860304,
+   "test_specificity": 0.921963327498637,
+   "test_ppv": 0.2797934322033898
+  },
+  "cat|FS-B|weighted+corrected": {
+   "threshold_maxF1_dev_oof": 0.1492305970587983,
+   "dev_oof_F1": 0.3365460267505901,
+   "test_sensitivity": 0.38868411352746035,
+   "test_specificity": 0.9222502797784728,
+   "test_ppv": 0.28015409139213604
+  },
+  "cat|FS-AVAIL|unweighted": {
+   "threshold_maxF1_dev_oof": 0.1622131442952932,
+   "dev_oof_F1": 0.32362932061978544,
+   "test_sensitivity": 0.511979358643568,
+   "test_specificity": 0.8750466297454733,
+   "test_ppv": 0.2418386001566989
+  },
+  "cat|FS-AVAIL|weighted": {
+   "threshold_maxF1_dev_oof": 0.7107978898828975,
+   "dev_oof_F1": 0.3227949940405244,
+   "test_sensitivity": 0.5079248064872834,
+   "test_specificity": 0.8762661769347757,
+   "test_ppv": 0.2421792618629174
+  },
+  "cat|FS-AVAIL|weighted+corrected": {
+   "threshold_maxF1_dev_oof": 0.15935212380267166,
+   "dev_oof_F1": 0.3226758045292014,
+   "test_sensitivity": 0.5095834869148544,
+   "test_specificity": 0.8754196677092599,
+   "test_ppv": 0.2415269042627533
+  }
+ },
+ "secondary_imaging_observed": {
+  "sizes": {
+   "DEV": 109220,
+   "DEV_pos": 17559,
+   "TEST": 27602,
+   "TEST_pos": 4493
+  },
+  "cat|FS-A|unweighted": {
+   "n": 27602,
+   "pos": 4493,
+   "auroc": 0.766324211378975,
+   "auprc": 0.4264775522584694,
+   "brier": 0.11559733241678194,
+   "cal_intercept": 0.030102795758141135,
+   "cal_slope": 1.0390511237682925,
+   "auroc_ci": [
+    0.7541847848470512,
+    0.7777038260192646
+   ],
+   "auprc_ci": [
+    0.403376224499918,
+    0.45298294369610176
+   ],
+   "brier_ci": [
+    0.11118468227965876,
+    0.12049522766090594
+   ]
+  },
+  "cat|FS-A|weighted": {
+   "n": 27602,
+   "pos": 4493,
+   "auroc": 0.765101255156364,
+   "auprc": 0.42108722721523373,
+   "brier": 0.18444924970829488,
+   "cal_intercept": -1.5046710852211327,
+   "cal_slope": 1.067956751961119,
+   "auroc_ci": [
+    0.7532245971863462,
+    0.7773530433570112
+   ],
+   "auprc_ci": [
+    0.39663463697896983,
+    0.44733685167631393
+   ],
+   "brier_ci": [
+    0.1808599953030945,
+    0.18825110518215277
+   ]
+  },
+  "cat|FS-A|weighted+corrected": {
+   "n": 27602,
+   "pos": 4493,
+   "auroc": 0.765101255156364,
+   "auprc": 0.42108722721523373,
+   "brier": 0.11654392239806992,
+   "cal_intercept": 0.13800985555819437,
+   "cal_slope": 1.0679567519611186,
+   "auroc_ci": [
+    0.7532245971863462,
+    0.7773530433570112
+   ],
+   "auprc_ci": [
+    0.39663463697896983,
+    0.44733685167631393
+   ],
+   "brier_ci": [
+    0.11186234387930843,
+    0.12180250736673698
+   ]
+  },
+  "cat|FS-B|unweighted": {
+   "n": 27602,
+   "pos": 4493,
+   "auroc": 0.750460963422872,
+   "auprc": 0.40204458815897254,
+   "brier": 0.11817087448189055,
+   "cal_intercept": 0.02803628868770842,
+   "cal_slope": 0.997031204891676,
+   "auroc_ci": [
+    0.7383201387029439,
+    0.7634834404333266
+   ],
+   "auprc_ci": [
+    0.37834166909784356,
+    0.42658098362309554
+   ],
+   "brier_ci": [
+    0.11345385317675763,
+    0.12332860677166263
+   ]
+  },
+  "cat|FS-B|weighted": {
+   "n": 27602,
+   "pos": 4493,
+   "auroc": 0.750006647966834,
+   "auprc": 0.3965780165495835,
+   "brier": 0.19287708482152546,
+   "cal_intercept": -1.5361804066168452,
+   "cal_slope": 1.063224812322581,
+   "auroc_ci": [
+    0.7374285321448385,
+    0.7620550368785998
+   ],
+   "auprc_ci": [
+    0.37183739127398957,
+    0.4200241370971093
+   ],
+   "brier_ci": [
+    0.18965022994174516,
+    0.19657943044227605
+   ]
+  },
+  "cat|FS-B|weighted+corrected": {
+   "n": 27602,
+   "pos": 4493,
+   "auroc": 0.750006647966834,
+   "auprc": 0.3965780165495835,
+   "brier": 0.11898369581656935,
+   "cal_intercept": 0.12082965411097271,
+   "cal_slope": 1.0632248123225778,
+   "auroc_ci": [
+    0.7374285321448385,
+    0.7620550368785998
+   ],
+   "auprc_ci": [
+    0.37183739127398957,
+    0.4200241370971093
+   ],
+   "brier_ci": [
+    0.11403558336821283,
+    0.12455200837065224
+   ]
+  }
+ },
+ "sizes": {
+  "DEV": 296003,
+  "TEST": 75124,
+  "GOLD": 2865
+ },
+ "runtime_s": 3953
+}

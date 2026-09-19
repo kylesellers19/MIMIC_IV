@@ -1,0 +1,94 @@
+{
+ "results_files_scanned": 24,
+ "source_docs_scanned": 32,
+ "distinct_known_numeric_forms": 31885,
+ "docs": {
+  "docs/manuscript_methods_draft.md": {
+   "numeric_tokens": 735,
+   "unattributed_distinct": 3,
+   "unattributed": {
+    "02": [
+     245,
+     245
+    ],
+    "20,000": [
+     190
+    ],
+    "03": [
+     233
+    ]
+   }
+  },
+  "docs/manuscript_results_skeleton.md": {
+   "numeric_tokens": 1101,
+   "unattributed_distinct": 3,
+   "unattributed": {
+    "20,000": [
+     239
+    ],
+    "03": [
+     354
+    ],
+    "02": [
+     354
+    ]
+   }
+  },
+  "docs/tripod_ai_checklist.md": {
+   "numeric_tokens": 108,
+   "unattributed_distinct": 2,
+   "unattributed": {
+    "03": [
+     70,
+     103
+    ],
+    "01": [
+     101
+    ]
+   }
+  },
+  "docs/aim1b_structured.md": {
+   "numeric_tokens": 2551,
+   "unattributed_distinct": 1,
+   "unattributed": {
+    "20,000": [
+     604
+    ]
+   }
+  },
+  "docs/aim1c_level1.md": {
+   "numeric_tokens": 1727,
+   "unattributed_distinct": 0,
+   "unattributed": {}
+  },
+  "docs/sensitivity_5719.md": {
+   "numeric_tokens": 74,
+   "unattributed_distinct": 0,
+   "unattributed": {}
+  },
+  "docs/charlson_validation.md": {
+   "numeric_tokens": 101,
+   "unattributed_distinct": 0,
+   "unattributed": {}
+  },
+  "docs/aim1a_loose_ends.md": {
+   "numeric_tokens": 278,
+   "unattributed_distinct": 0,
+   "unattributed": {}
+  },
+  "docs/aim1b_splits.md": {
+   "numeric_tokens": 50,
+   "unattributed_distinct": 0,
+   "unattributed": {}
+  },
+  "docs/aim1b_notes.md": {
+   "numeric_tokens": 540,
+   "unattributed_distinct": 1,
+   "unattributed": {
+    "03": [
+     7
+    ]
+   }
+  }
+ }
+}

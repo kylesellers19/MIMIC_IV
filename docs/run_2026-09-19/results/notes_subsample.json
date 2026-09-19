@@ -1,0 +1,54 @@
+{
+ "script": "scripts/run0919_notes_text.py --subsample 13000",
+ "seed": 20260922,
+ "design": "simple random sample of DEV+TEST SUBJECTS (keeps their partition and fold), plus every GOLD_HOLDOUT admission",
+ "subjects_drawn": 13000,
+ "admissions": 32845,
+ "admissions_dev_test": 29980,
+ "by_partition": {
+  "DEV": 23816,
+  "TEST": 6164,
+  "GOLD_HOLDOUT": 2865
+ },
+ "subjects_by_partition": {
+  "DEV": 10363,
+  "GOLD_HOLDOUT": 411,
+  "TEST": 2637
+ },
+ "silver_prevalence_pct": {
+  "DEV": 7.22,
+  "GOLD_HOLDOUT": 40.52,
+  "TEST": 6.21
+ },
+ "assembled_length_chars": {
+  "U": {
+   "median": 9445,
+   "p95": 22000,
+   "max": 22000
+  },
+  "M": {
+   "median": 9441,
+   "p95": 21999,
+   "max": 22021
+  },
+  "S": {
+   "median": 9328,
+   "p95": 21668,
+   "max": 21933
+  }
+ },
+ "pct_at_char_budget": 7.2,
+ "char_budget": 22000,
+ "documents_per_admission": {
+  "discharge_median": 1,
+  "inpatient_radiology_median": 2,
+  "outpatient_radiology_in_window_median": 1,
+  "pct_with_liver_inclusive_report": 39.0
+ },
+ "masked_spans_per_admission": {
+  "median": 0.0,
+  "mean": 0.35,
+  "pct_with_at_least_one": 12.5
+ },
+ "assembly_seconds": 145
+}

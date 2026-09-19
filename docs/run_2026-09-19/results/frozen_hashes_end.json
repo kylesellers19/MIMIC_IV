@@ -1,0 +1,22 @@
+{
+ "scripts/note_phenotype.py": {
+  "sha256": "9bc69d128fb2b89024a4733ad08db0e3db7d10216d7090ab931fa7e002956282",
+  "bytes": 19376
+ },
+ "docs/note_phenotype_spec.md": {
+  "sha256": "4954823ae0a692a8b6c09a44663905daaac049fe386de42919f3be13a0367016",
+  "bytes": 9695
+ },
+ "sql/masld_coded.sql": {
+  "sha256": "26f0ca07b3b82d16d2ecda2e977f6beb5a5375c6350528426da8f9e562f2455e",
+  "bytes": 5065
+ },
+ "data/processed/analysis_population_clean.parquet": {
+  "sha256": "d0642bdf40851d28734e01e1baad0cfbe3dcc53a9c3b712bb758b9b21925fe81",
+  "bytes": 10979336
+ },
+ "data/processed/aim1a_sample.parquet": {
+  "sha256": "a23d903c0a5533318cbabbf66d410f44c410a75be001d69e9d20b16cf85151da",
+  "bytes": 7372
+ }
+}

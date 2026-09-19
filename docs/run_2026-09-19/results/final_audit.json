@@ -1,0 +1,56 @@
+{
+ "a_no_data_tracked": {
+  "status_lines_touching_data_models_logs": [],
+  "tracked_files_under_those_dirs": [],
+  "pass": true
+ },
+ "b_eight_digit_scan": {
+  "total_hits": 62,
+  "exempt": 62,
+  "unexplained": [],
+  "pass": true
+ },
+ "c_small_counts_in_tables": {
+  "hits": [],
+  "pass": true,
+  "note": "count-like columns only; a 1-10 here must read <11"
+ },
+ "d_note_text_windows": {
+  "quoted_lines_with_long_context": [],
+  "pass": true,
+  "note": "checks blockquoted lines containing a lexicon match; prose discussing the lexicon, and verbatim quotations of the study's own instrument documents, are expected and not findings"
+ },
+ "e_frozen_artifacts": {
+  "checked": [
+   "scripts/note_phenotype.py",
+   "docs/note_phenotype_spec.md",
+   "sql/masld_coded.sql",
+   "data/processed/analysis_population_clean.parquet",
+   "data/processed/aim1a_sample.parquet"
+  ],
+  "drift": [],
+  "pass": true
+ },
+ "f_tags": {
+  "tags": [
+   "note-phenotype-v1.0.0",
+   "note-phenotype-v1.1.0"
+  ],
+  "expected": [
+   "note-phenotype-v1.0.0",
+   "note-phenotype-v1.1.0"
+  ],
+  "pass": true
+ },
+ "g_remotes": {
+  "remotes": [],
+  "pass": true
+ },
+ "h_config_append_only": {
+  "lines_added": 12,
+  "lines_removed": 0,
+  "removed_lines": [],
+  "pass": true
+ },
+ "all_pass": true
+}

@@ -92,3 +92,17 @@ Format per the run file: question · options · what each changes · what is blo
 ## P6-06 · Which positive levels collapse to "positive" (criteria D1) — supported, not decided
 
 The estimator's `--positive-levels` defaults to `Definite,Probable` (the draft). Running it with `Definite,Probable,Possible` is a sensitivity analysis available at no cost once the criteria are signed off; the clinician's D1 decision remains the primary.
+
+## D-03 · License and the timing of a public code release (Phase 11.1)
+
+**Question.** The repository has no license file. One was not added by this run, because the choice and the timing are yours.
+
+**Background from the data use agreement.** The PhysioNet credentialed-data DUA commits the user to contributing code behind openly disseminated results to a repository open to the research community. That obliges a code release at publication; it does not choose a license, and it never permits releasing data or any derivative of it.
+
+**Options.**
+- *Permissive (MIT, BSD-3, Apache-2.0).* Maximum reuse; Apache-2.0 additionally grants patent rights and requires a change notice. Common for research code.
+- *Copyleft (GPL-3.0).* Derivative works must also be open. Rarely used for analysis pipelines; can deter reuse by groups with proprietary stacks.
+- *No license, public repository.* Default copyright applies and nobody may legally reuse the code. It satisfies "open to the research community" only in the weakest sense.
+- *Timing: release at submission, at acceptance, or at publication.* Earlier release lets reviewers run the code; later release avoids a public artifact that changes after review.
+
+**What is blocked.** Nothing in this run. The decision is needed before the repository is made public, and the DUA clause should be quoted in the manuscript's data-availability statement either way.

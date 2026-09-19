@@ -1,41 +1,35 @@
 {
- "results_files_scanned": 24,
- "source_docs_scanned": 32,
- "distinct_known_numeric_forms": 31885,
+ "results_files_scanned": 28,
+ "source_docs_scanned": 35,
+ "distinct_known_numeric_forms": 33245,
  "docs": {
   "docs/manuscript_methods_draft.md": {
-   "numeric_tokens": 735,
-   "unattributed_distinct": 3,
+   "numeric_tokens": 986,
+   "unattributed_distinct": 2,
    "unattributed": {
     "02": [
-     245,
-     245
+     279,
+     279
     ],
-    "20,000": [
-     190
-    ],
-    "03": [
-     233
+    "07": [
+     248
     ]
    }
   },
   "docs/manuscript_results_skeleton.md": {
-   "numeric_tokens": 1101,
-   "unattributed_distinct": 3,
+   "numeric_tokens": 1455,
+   "unattributed_distinct": 2,
    "unattributed": {
-    "20,000": [
-     239
-    ],
     "03": [
-     354
+     439
     ],
     "02": [
-     354
+     439
     ]
    }
   },
   "docs/tripod_ai_checklist.md": {
-   "numeric_tokens": 108,
+   "numeric_tokens": 148,
    "unattributed_distinct": 2,
    "unattributed": {
     "03": [
@@ -49,12 +43,8 @@
   },
   "docs/aim1b_structured.md": {
    "numeric_tokens": 2551,
-   "unattributed_distinct": 1,
-   "unattributed": {
-    "20,000": [
-     604
-    ]
-   }
+   "unattributed_distinct": 0,
+   "unattributed": {}
   },
   "docs/aim1c_level1.md": {
    "numeric_tokens": 1727,
@@ -82,10 +72,10 @@
    "unattributed": {}
   },
   "docs/aim1b_notes.md": {
-   "numeric_tokens": 540,
+   "numeric_tokens": 654,
    "unattributed_distinct": 1,
    "unattributed": {
-    "03": [
+    "07": [
      7
     ]
    }

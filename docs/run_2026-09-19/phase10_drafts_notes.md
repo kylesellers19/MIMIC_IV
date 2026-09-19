@@ -109,3 +109,69 @@ No disagreement was found between any number in `integrity_gate.json`, `cohort_f
 5. **The four unverified references.** The VA/VACS steatosis NLP algorithm underpins the anatomical-scoping design and is currently cited with no author at all. Bio_ClinicalBERT, Clinical-Longformer and MIMIC-IV-Note likewise need full citation strings added to the repository so `scripts/verify_citations.py` can confirm them.
 6. **Re-run the model section once the embedding, fusion and locked-prediction jobs finish.** Sections 10.5–10.7 of the methods, Tables 4c–4e of the results skeleton, and TRIPOD rows M-15/M-16/R-5 all have named placeholders waiting for exactly those files.
 7. **`docs/tripod_ai_checklist.md`, the note at the top.** The item numbering is the drafter's own and must be mapped onto the published TRIPOD+AI checklist before submission, with any published item this file omits added.
+
+---
+
+# Phase 10.4 — filling the drafts once the notes, fusion and locked-prediction results existed
+
+## Purpose
+
+The three Phase 10 deliverables were written while the embedding job, the fusion stack and the locked-prediction step were still running, so every claim about them was left as `[PENDING — job still running at draft time]`. Those files now exist. This pass resolved every placeholder those files can resolve and left untouched every placeholder that genuinely needs the chart adjudication. The governing rule was unchanged: **invent nothing**; no number written from memory; no bibliographic field written from memory; the word "pre-registered" not introduced; cells below 11 written `<11`.
+
+## Files edited
+
+| file | edit |
+| --- | --- |
+| `docs/manuscript_methods_draft.md` | §10 status box rewritten; §10.5 embedding arm, §10.6 fusion and §10.7 locked predictions filled; deviations 13–17 added; §11 equity level 3 updated; limitation 7 (ConText) rewritten around the measured agreement; limitations 11 and 12 added and 11–13 renumbered to 13–15. |
+| `docs/manuscript_results_skeleton.md` | Intro rewritten; Table 4b source line and Table 4b-v filled; Tables 4c, 4c-i, 4d, 4d-i, 4e filled; **Table 4g (hypothesis outcomes) added**; the Table 3 levels-2-and-3 line updated; provenance index rewritten for 4b–4g. |
+| `docs/tripod_ai_checklist.md` | Status-vocabulary note, A-1, M-11, M-15, M-16, R-4, R-5, R-7, D-2 and blocker item 3 updated. |
+| `docs/run_2026-09-19/DECISIONS_FOR_KYLE.md` | **D-06** appended (what the manuscript may claim from the transformer-versus-TF-IDF comparison). Continued from the last free number, D-05. |
+
+No other file was touched. Nothing was committed or tagged. No file under `data/` or `models/` was opened.
+
+## Sources read for this pass
+
+Results JSONs: `aim1b_notes_arm.json`, `aim1b_fusion.json`, `locked_predictions.json`, `context_agreement.json`, `notes_subsample.json`, `aim1b_notes_tfidf.json` (field `oof`, for the TF-IDF-versus-embedding comparison), `aim1b_structured.json` (field `subgroups`, for the level-3 equity counts), `doc_number_check.json`. Documents: `docs/aim1b_structured.md`, `docs/aim1b_notes.md`, `docs/aim1b_fusion.md`, `docs/aim1b_locked_predictions.md`, `docs/context_agreement.md`, `docs/run_2026-09-19/RUN_LOG.md` (Phases 3 stage 2, 6, 7, 8.1, 8.2/8.3, 9, stretch item 2), `STATE.json`, `docs/analysis_plan_prespecified.md` §1 and the amendment list, `DECISIONS_FOR_KYLE.md`, `scripts/run0919_verify_doc_numbers.py`, `scripts/run0919_embed.py`.
+
+## Placeholder counts
+
+| file | before | after | of which `[PENDING ADJUDICATION]` after |
+| --- | --: | --: | --: |
+| `docs/manuscript_methods_draft.md` | 17 | 14 | 6 |
+| `docs/tripod_ai_checklist.md` | 6 | 3 | 2 |
+| `docs/manuscript_results_skeleton.md` | 65 | 66 | 60 |
+
+The results skeleton's count **rose by one** rather than falling, and that is the correct behaviour: seven `[PENDING — job still running at draft time]` markers were removed across Tables 4b-v, 4c, 4d and 4e, and the new Table 4g (hypothesis outcomes) introduced eight new markers, every one of them an honest `[PENDING ADJUDICATION]` on a hypothesis that cannot be evaluated without the chart review (H1a, H1b-ii, H-silver-vs-gold, and the accuracy half of H1c).
+
+## Every `[PENDING]` that remains, and why
+
+**`docs/manuscript_methods_draft.md` (14).** One is the word `[PENDING]` inside the draft-status note explaining the convention. Four are researcher or clinician decisions that this run may not make: D-01 (571.9), whether to re-tag `note_phenotype.py` as v1.1.1, how the notes arm is ultimately trained, D-02 (chunked BERT). Two are `[PENDING clinician sign-off]` on the adjudication criteria. Six are `[PENDING ADJUDICATION]`: the headline under-capture quantity (§7 and §9), the gold-standard evaluation of the models (§10.7), equity level 2 (§11), and limitation 14. One is new and narrower: `[PENDING — the notes and fusion arms have no per-stratum metrics]` in §11, which is a real gap in what was computed, not a gap in what was available to write.
+
+**`docs/tripod_ai_checklist.md` (3).** R-5's gold-standard performance row and R-7's weighted-PPV-by-stratum row are `[PENDING ADJUDICATION]`; R-7 additionally carries the per-stratum gap for the notes and fusion arms. Eleven rows still carry the *status word* "pending" — title, abstract, funding, conflicts of interest, ethics determination, patient and public involvement, interpretation, implications, inter-rater agreement — and none of those can be resolved by a results file; they need the adjudication or administrative facts the repository does not hold.
+
+**`docs/manuscript_results_skeleton.md` (66).** Sixty are `[PENDING ADJUDICATION]`: the headline statement, Table 4f, the whole of Table 5 (5b adjudication outcome by cell, 5c the four weighted estimates under two interval types, 5d the four kappa statistics plus disagreement count and measured minutes, 5e the six secondary adjudicated analyses), and the four hypothesis rows in Table 4g that depend on gold labels. Four are named researcher or clinician decisions (P6-01, P6-03, D1, D8/P6-02). Two are the per-stratum gap for the notes and fusion arms.
+
+## What was written that the earlier draft got wrong, or could not know
+
+1. **The fusion stack's notes layer is TF-IDF, and the transformer lost.** The earlier draft described the Layer-0 notes model as "the better of TF-IDF and the embedding head by DEV out-of-fold AUPRC" and left the outcome pending. The outcome is that TF-IDF won, 0.444 against 0.274. The drafts now say so, name both reasons the run log gives (85% coverage; a frozen general-purpose encoder with a light head against a vocabulary fitted to this corpus), and state that fine-tuning was budgeted at zero — without using any of those to soften the result.
+2. **The encoder did not finish.** 28 of 33 shards; 27,845 of 32,845 admissions; **100% of the gold holdout**; DEV/TEST shards 24–28 never written. The gold shards (29–32) were encoded out of sequence and first, so the shortfall fell entirely on DEV and TEST and the missing 15% is not a random subset. This is now a deviation (§10.8 items 13 and 14) and a limitation (§13 item 12).
+3. **H1b-iii is partly supported and the two halves point opposite ways.** Fusion is more discriminating than either base learner (+0.060 AUROC, 95% CI +0.031 to +0.089) but is **not better calibrated** than the structured FS-B arm (slope 0.934 against 1.013), and against the FS-A structured arm it adds only +0.006 AUROC. Both halves are now stated wherever the hypothesis is mentioned.
+4. **The 7 September calibration expectation is not supported; amendment (b)'s competing expectation is.** The earlier draft already carried this for the structured arm; the notes-augmented model reproduces it exactly (weighted intercept −2.373, corrected +0.178, AUROC unchanged), so it is now a pattern across arms rather than a single learner's quirk.
+5. **The ConText limitation is now measured rather than asserted** — 90.76% over 35,268 mentions; negation 95.87%; hedging 61.59% — with the asymmetry named (1,556 project-affirmed mentions negated by ConText against 39 the other way) and with medspaCy stated to be an independent implementation, not a gold standard.
+6. **Equity level 3 is partly available.** It was `[PENDING — models still running]`. The structured arm's per-stratum calibration exists: 414 stratum rows, 225 estimable, 34 flagged. The notes and fusion arms were never stratified, so the placeholder narrowed rather than disappeared.
+
+## Discrepancies found in this pass
+
+1. **Affirmed-mention count in the ConText comparison.** `docs/run_2026-09-19/RUN_LOG.md` (stretch item 2) tabulates affirmed mentions as **32,867**. `results/context_agreement.json` gives `by_assertion_class.affirmed.project_n` = **33,049**, which is the value that makes the arithmetic close: 33,049 + 1,017 + 841 + 361 = 35,268 = `aligned_hits`, and 30,256 ÷ 33,049 = 91.55%, the agreement figure both documents print. `docs/context_agreement.md` also prints 33,049. **Resolution: the JSON's 33,049 is used; the RUN_LOG line appears to be a transcription slip and was not edited (it is outside this task's file list).**
+2. **Two different things are called D-03.** `docs/aim1b_notes.md` and methods §10.5 call the notes-arm training strategy "D-03", while `DECISIONS_FOR_KYLE.md` D-03 is the license and code-release decision. The methods draft already hedges this as "D-03 in the notes documentation"; the collision was not introduced by this pass and was not resolved by it, because renumbering would mean editing files outside this task's list. **Flagged for Kyle.**
+3. **`docs/aim1b_fusion.json` carries no per-arm confidence intervals**, only point estimates plus paired bootstrap differences. The results skeleton's Table 4d therefore reports point estimates without intervals and puts every interval in Table 4d-i, where the source actually has them. This is stated in the table rather than silently omitted.
+4. **The notes-augmented arm is scored on 5,108 TEST admissions, not 6,164**, because it needs embeddings. `docs/aim1b_fusion.md` puts those rows in the same table as the 6,164-admission arms; the results skeleton keeps them in the same table but says in the text immediately above it that they are not strictly comparable.
+5. **No software citation for medspaCy exists in this repository.** The methods draft names it and adds an explicit note that the citation must be added before submission, rather than writing a bibliographic field from memory. This is a fifth unverified reference in substance, though it is not listed in `docs/references/unresolved.md` (which was not edited).
+
+## Checks
+
+- `.venv/bin/python scripts/run0919_verify_doc_numbers.py` was run after the edits. Unattributed numeric tokens in the three drafts: **2, 2 and 2** — identical to the pre-edit baseline, and in every case a fragment of a decision identifier (`D-01`, `D-02`, `D-03`, `P6-02`, `P6-03`) that the tokenizer splits on the hyphen. **No unattributed number remains.** Token counts rose from 735 → 986 (methods), 1,101 → 1,455 (results skeleton) and 108 → 148 (checklist), which is the new content.
+- The word "pre-registered" was not introduced. It appears in these files only inside statements that it must not be used.
+- No count of 1–10 was written as an exact number. Every count added in this pass is a model-evaluation n (5,016 / 5,108 / 6,057 / 6,164 / 19,872 / 27,845 / 32,845 / 2,865) or a non-patient count (shards, model files, prediction columns, stratum rows).
+- No `subject_id`, `hadm_id`, `note_id`, patient-level row or note text appears in any edited file. No file under `data/` or `models/` was opened; the locked-prediction file is referred to by path and SHA-256 only.
+- No number was carried over from the RUN_LOG where the results JSON disagreed with it; see Discrepancy 1.

@@ -161,3 +161,46 @@ A second inaccuracy in the same sentence, independent of the registry question: 
 - *Do nothing.* The repository and any derived manuscript would assert a registration that does not exist. This is a factual misstatement about research integrity in exactly the section of the paper whose subject is research integrity.
 
 **Blocked until decided.** The manuscript's integrity and reference-standard sections. `docs/manuscript_methods_draft.md` was written with the corrected framing throughout and does not use the word "pre-registered" anywhere; if the three lines in `docs/reference_standard.md` are left as they are, the two documents will contradict each other.
+
+## D-06 · What the manuscript may claim from the transformer-versus-TF-IDF comparison (Phase 10.4)
+
+**Question.** The embedding arm lost to TF-IDF on the criterion that selected the fusion stack's notes layer: DEV out-of-fold AUPRC **0.274** (LightGBM head on 1,536-dimensional frozen Bio_ClinicalBERT vectors) against **0.444** (TF-IDF, same variant S, same subsample design), and TEST 0.788 / 0.246 against 0.826 / 0.407. The comparison is **not made on identical data**: the encoder stopped at its compute budget with 27,845 of 32,845 subsampled admissions embedded (5 of 33 shards unwritten, DEV/TEST shards 24–28), so the embedding arm saw 85% of what the TF-IDF arm saw, and the shortfall is the tail of the shard sequence rather than a random subset. Fine-tuning was budgeted at zero hours and not attempted. How strongly may the paper state the result?
+
+**What is not in question.** The selection itself was made by the pre-stated rule on measured DEV out-of-fold AUPRC, not by hand; the fusion stack's Layer-0 notes model is TF-IDF because of that rule. Nothing about the primary analysis changes under any option below.
+
+**Options and what each changes.**
+
+- *State the finding at face value* — "a frozen chunked clinical transformer did not beat a corpus-fitted bag of words on this task" — with the coverage gap and the absence of fine-tuning given as stated caveats in the same paragraph.
+  - *Changes:* the paper makes a substantive negative claim about transformer embeddings on this task, which is the kind of claim readers will generalize from. The caveats are present but subordinate.
+  - *Cost:* the claim is stronger than the design supports, because 15% coverage and a frozen encoder are both plausible causes of the whole gap.
+
+- *State the finding narrowly* — "on 85% of the subsample, a **frozen** chunked Bio_ClinicalBERT encoder with a light head reached DEV out-of-fold AUPRC 0.274 against 0.444 for a corpus-fitted TF-IDF model on the full subsample; this study does not establish what a fine-tuned or long-context clinical transformer could do."
+  - *Changes:* the paper reports what happened and explicitly declines the general claim. This is what `docs/manuscript_methods_draft.md` §13 item 11 and results Table 4c currently say.
+  - *Cost:* a reader may read the hedging as the study's own uncertainty about its result rather than as a limit of the design.
+
+- *Re-run the encoding to completion and re-report* (shards 24–28, same splits, same subsample, same variant), so the two arms are compared on identical admissions.
+  - *Changes:* removes the coverage confound entirely and makes either of the two statements above defensible on its own terms. Does not address fine-tuning.
+  - *Cost:* one further multi-hour CPU encoding pass plus a re-run of Phases 8.2/8.3 and 9; every locked-prediction hash in `docs/aim1b_locked_predictions.md` would be superseded and a second locked file would have to be written and dated, which weakens the "predictions predate the reference standard" trail unless the original file is retained alongside it.
+
+- *Drop the transformer arm from the manuscript* and report the notes arm as TF-IDF only.
+  - *Changes:* no transformer claim is made at all; the fusion Layer-0 selection is then reported as a single-candidate choice rather than as a measured comparison, which is a weaker statement about how the stack was built.
+  - *Cost:* discards a real negative result. This option is already listed under **D-02**, with which this decision interacts.
+
+**Blocked until decided.** Nothing computational. The wording of methods §10.5, limitation §13 item 11, and results Table 4c.
+
+## D-07 · How the notes arm is ultimately trained (Phase 8)
+
+**Question.** The silver label is produced by a lexical rule applied to the same text a notes model reads, so a notes model can score well by relearning the lexicon. Phase 8 was built to produce the evidence for this decision and deliberately selects nothing. How should the notes arm be trained for the paper?
+
+**What the evidence says** (`docs/aim1b_notes.md`, `docs/run_2026-09-19/results/aim1b_notes_tfidf.json`, `aim1b_notes_arm.json`).
+- Variant **U** (unmasked): TEST AUROC 0.896, and its top coefficients are the lexicon itself — the circularity demonstration.
+- Variant **M** (every lexicon match masked, regardless of assertion status): TEST AUROC 0.912, *higher* than U, because the mask token and its bigrams are themselves a perfect marker that a match occurred. Masking does not remove the leak; it relocates it.
+- Variant **S** (every lexicon-bearing sentence deleted): TEST AUROC 0.826. What survives is the company steatosis keeps — cirrhosis, fibrosis, liver disease — which is signal a notes model could legitimately learn.
+
+**Options.**
+- *Train on variant S and report it as the notes arm.* Removes the lexicon and the mask artefact. Costs discrimination (0.826 against 0.896) and still leaves indirect leakage: deleting a sentence changes document length and structure in a way that correlates with the label.
+- *Train on variant M.* Cheapest to compute, but the evidence above shows the mask token leaks at least as much as the raw lexicon, so this option is refuted by the run's own numbers rather than merely disfavoured.
+- *Cross-validate within the 400 adjudicated charts once they exist.* Removes circularity entirely, because the label no longer comes from the text. Costs statistical power: 400 charts, repeated subject-level folds, weights carried through. `scripts/aim1b_gold_cv.py` implements this and is tested on synthetic labels.
+- *Both: variant S for development, gold cross-validation for the reported estimate.* Most work; gives a development curve and an unbiased estimate, and makes the silver-minus-gold drop measurable, which H-silver-vs-gold asks for.
+
+**Blocked until decided.** Nothing in this run — every variant is computed and stored. The choice determines which number the paper reports as the notes arm's performance, and the gold options cannot start until the adjudication exists.

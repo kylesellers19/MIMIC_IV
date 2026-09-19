@@ -207,7 +207,7 @@ Both times the audit reported a failure, the flagged lines were inspected and tu
 
 | assertion class | mentions | agreement |
 | --- | --: | --: |
-| affirmed | 32,867 | 91.55% |
+| affirmed | 33,049 | 91.55% |
 | negated | 1,017 | 95.87% |
 | uncertain (hedged) | 841 | 61.59% |
 | historical | 361 | 72.30% |
@@ -218,6 +218,8 @@ The informative asymmetry: 1,556 mentions the project affirms are negated by Con
 **Deviations.** medspaCy ConText is treated as an independent implementation, not a gold standard; the document says so. The frozen rule, its tags and the 2×2 are untouched.
 
 **Incident.** This job initially wrote raw note text to a log via a third-party library's debug logging. See **B-04** in `BLOCKERS.md` — caught within about three minutes, nothing reached git, log deleted, logging silenced, regression test added.
+
+*(Correction, made when a later check caught it: the affirmed count in the table above was first written as 32,867, a number typed here rather than read from `context_agreement.json`. The correct value, which is also the one that closes the arithmetic against `aligned_hits`, is 33,049. The error was in this log only; `docs/context_agreement.md` and the results JSON always carried the right value.)*
 
 **Stretch item 1 (embed variant U): skipped.** Variant U embeddings would need a second multi-hour encoding pass, and the run file itself notes U "mostly demonstrates circularity, which TF-IDF shows at no cost" — Phase 8.1 already showed exactly that (variant U's top coefficients are the lexicon itself). The variant U text is assembled and stored, so the pass can be run later without redoing anything. **Stretch item 3 (fine-tuning): skipped**, FINETUNE_BUDGET_HOURS = 0.
 
@@ -263,3 +265,12 @@ Two smoke model files were written under `models/run_2026-09-19/` before the mod
 - **9.3 / 9.4** `scripts/aim1b_evaluate_gold.py` and `scripts/aim1b_gold_cv.py` are written and tested on synthetic labels, which are written to the scratch folder and carry SYNTHETIC in the filename and header. No synthetic result appears in `docs/`.
 
 **Deviations.** Five DEV/TEST shards (24–28) were not encoded before the budget expired, so the notes arm trains on 85% of the intended subsample. The gold holdout is complete, so nothing downstream of the adjudication is affected.
+
+## Corrections found by a verification pass (recorded, not quietly fixed)
+
+A checking pass over the manuscript drafts surfaced four defects in work this run had already committed. All four are fixed; they are listed because the point of the numbers discipline is that errors get found and named.
+
+1. **A number in this log was typed rather than read.** The stretch-item table gave the ConText "affirmed" mention count as 32,867; the results JSON says 33,049, which is also the value that closes the arithmetic against `aligned_hits` and reproduces the 91.55% agreement. The log is corrected and carries a note at the point of the error. `docs/context_agreement.md` and the JSON were always right — the error existed only in the hand-written summary, which is exactly the failure mode the rule against hand-typed numbers exists to prevent.
+2. **A decision was referenced but never written.** `docs/aim1b_notes.md` and the methods draft pointed at "D-03" for the notes-arm training strategy, but D-03 is the licence decision and the notes-arm entry had never been added to the decisions file. It is now **D-07**, with the variant U/M/S evidence costed against each option — including the finding that variant M (masking) leaks *more* than the raw lexicon, which refutes one of the options on the run's own numbers rather than on judgement.
+3. **The fusion table hid a comparability gap.** The notes-augmented rows are scored on 5,108 TEST admissions, the other rows on 6,164, because an arm that needs an embedding can only be evaluated where one exists. The table now carries an `n` column and says the rows are not strictly comparable.
+4. **The audit copied flagged tokens into a tracked file.** Check (b) wrote each flagged 8-digit integer verbatim into `results/final_audit.json`. Had it ever fired on a real identifier, the audit would have leaked it into `docs/` — the precise thing it exists to prevent. It now records a redacted form (`1XXXXXXX`) plus file and line, and a test asserts that no raw token is ever stored. The negative-control fixtures in the test suite were also changed from plausible-looking identifiers to obvious repdigits, each marked with an explicit `# audit-fixture` comment; the audit's exemption for them requires that marker on the same line, so a real identifier cannot be exempted by accident.

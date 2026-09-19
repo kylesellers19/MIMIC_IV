@@ -26,8 +26,8 @@ def test_a_pasted_radiology_span_trips_at_least_one_fingerprint():
 
 
 def test_eight_digit_identifier_shape_is_detected():
-    assert EIGHT_DIGIT.search("subject 10004235 admitted")
-    assert EIGHT_DIGIT.search("hadm 29079034")
+    assert EIGHT_DIGIT.search("subject 11111111 admitted")   # audit-fixture: synthetic, not a MIMIC id
+    assert EIGHT_DIGIT.search("hadm 22222222")               # audit-fixture: synthetic, not a MIMIC id
 
 
 # --- must NOT fire on the study's own prose ---------------------------------------------------
@@ -55,15 +55,15 @@ def test_size_key_exemption_only_covers_size_valued_fields():
     assert SIZE_KEY.search('  "bytes": 19928140,')
     assert SIZE_KEY.search('  "file_bytes_total": 10734498')
     assert SIZE_KEY.search('  "n_chars": 12345678')
-    assert not SIZE_KEY.search('  "subject_id": 10004235')
-    assert not SIZE_KEY.search('  "hadm_id": 29079034')
+    assert not SIZE_KEY.search('  "subject_id": 11111111')   # audit-fixture: synthetic, not a MIMIC id
+    assert not SIZE_KEY.search('  "hadm_id": 22222222')      # audit-fixture: synthetic, not a MIMIC id
 
 
 def test_seed_literal_exemption_matches_only_seed_usage():
     assert SEED_LITERAL.findall("rng = np.random.default_rng(20260919)") == ["20260919"]
     assert SEED_LITERAL.findall("SEED_SPLIT = 20260920") == ["20260920"]
     assert SEED_LITERAL.findall("random_state=20260921") == ["20260921"]
-    assert SEED_LITERAL.findall("subject_id = 10004235") == []
+    assert SEED_LITERAL.findall("subject_id = 11111111") == []   # audit-fixture: synthetic, not a MIMIC id
 
 
 # --- third-party logging must never emit note text -------------------------------------------
@@ -79,3 +79,17 @@ def test_medspacy_pipeline_emits_no_text_to_stdout_or_stderr():
     combined = out.getvalue() + err.getvalue()
     for marker in ("Token/tag mapping", "marked as sentence start", "steatosis", "fatty"):
         assert marker not in combined, marker
+
+
+def test_audit_results_file_never_stores_a_raw_identifier_shaped_token():
+    """If check (b) ever fires on a real subject_id or hadm_id, writing that value into the tracked
+    results file would itself leak it. The audit must record a redacted form plus file and line."""
+    import json, os, re
+    p = "docs/run_2026-09-19/results/final_audit.json"
+    if not os.path.exists(p):
+        return
+    raw = open(p).read()
+    a = json.loads(raw)
+    for h in a["b_eight_digit_scan"]["hits"] if "hits" in a["b_eight_digit_scan"] else a["b_eight_digit_scan"]["unexplained"]:
+        assert "token" not in h, "raw token stored"
+        assert re.fullmatch(r"[12]X{7}", h["token_redacted"]), h["token_redacted"]

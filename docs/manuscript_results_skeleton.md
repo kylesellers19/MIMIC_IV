@@ -1,6 +1,6 @@
 # Results skeleton — table shells with computable-stage numbers
 
-> **What this file is.** The manuscript's result tables, filled in wherever a tracked results file already contains the number, and marked `[PENDING ADJUDICATION]` or `[PENDING — job still running at draft time]` wherever it does not. Every filled cell is traceable to a file named beneath its table. **No number here was written from memory, rounded beyond what the source states, or inferred.**
+> **What this file is.** The manuscript's result tables, filled in wherever a tracked results file already contains the number, and marked `[PENDING ADJUDICATION]` wherever the number requires the chart adjudication. Every filled cell is traceable to a file named beneath its table. **No number here was written from memory, rounded beyond what the source states, or inferred.** Every Aim 1b model job has now completed, so Tables 4a–4e and 4g are filled; Table 4f (performance against the gold standard) and the whole of Table 5 remain `[PENDING ADJUDICATION]`.
 >
 > **Headline discipline.** The headline result of this study is the **inverse-probability-weighted, adjudicated under-capture estimate** (Table 5), which does not yet exist. The computable recovery share of 81.9% (Table 2) is a comparison of two computable phenotypes — an ICD code set against a frozen lexical rule — and is **never** to be presented as the headline, as a recovery estimate, or as a count of missed cases. The code−/note+ cell is a sampling stratum.
 
@@ -162,7 +162,7 @@ Analyzable: **17 of 26**; claim-supported on recovery: **10**. Nine strata are d
 
 One GEE among the 27,826 note-positive admissions, outcome code-positive, binomial link, exchangeable working correlation, clustered on subject; covariates fixed before fitting; **diagnosis count and laboratory availability deliberately not adjusted for, because they are the proposed mechanism**. Labelled exploratory: these are associations in the computable data, not estimates of adjudicated under-coding by group. Selected adjusted odds ratios (full table in `docs/aim1c_level1.md`): HISPANIC/LATINO – PUERTO RICAN 1.603 (1.308–1.964); HISPANIC/LATINO – GUATEMALAN 2.039 (1.276–3.257); HISPANIC/LATINO – SALVADORAN 2.081 (1.192–3.633); Private vs Medicare 1.351 (1.206–1.515); surgical same-day admission vs emergency 2.906 (2.561–3.298); elective admission 1.768 (1.397–2.238); ICD-10-only era 1.403 (1.279–1.540); discharge-summary note source 16.748 (14.649–19.147).
 
-**Levels 2 and 3 of the equity audit — weighted positive predictive value by stratum against the gold standard, and model calibration by stratum — are `[PENDING ADJUDICATION]` and `[PENDING — models still running at draft time]` respectively.**
+**Level 2 of the equity audit — weighted positive predictive value by stratum against the gold standard — is `[PENDING ADJUDICATION]`. Level 3 — model calibration by stratum — now exists for the structured arm (Table 4b-v: 414 stratum rows, 225 estimable, 34 flagged) and is `[PENDING — the notes and fusion arms have no per-stratum metrics]`.**
 
 ---
 
@@ -194,7 +194,7 @@ Top positive coefficients, variant U: `steatosis` 11.739 (df 917), `fatty` 11.45
 
 ### 4b. Structured arm — silver label, TEST
 
-Source: `docs/run_2026-09-19/results/aim1b_structured.json` (completed during drafting; the rendered document `docs/aim1b_structured.md` does not yet exist). TEST n = 75,124, 5,426 silver-positive. 95% intervals are 500-replicate subject-cluster bootstraps. FS-A = 94 features (clinical + availability), FS-B = 52 clinical, FS-AVAIL = 42 availability/volume.
+Source: `docs/run_2026-09-19/results/aim1b_structured.json`, rendered in `docs/aim1b_structured.md`. TEST n = 75,124, 5,426 silver-positive. 95% intervals are 500-replicate subject-cluster bootstraps. FS-A = 94 features (clinical + availability), FS-B = 52 clinical, FS-AVAIL = 42 availability/volume.
 
 | Learner | Feature set | Imbalance variant | AUROC (95% CI) | AUPRC (95% CI) | Brier (95% CI) | Calib. intercept | Calib. slope |
 | --- | --- | --- | --- | --- | --- | --: | --: |
@@ -276,23 +276,108 @@ The FS-A advantage over FS-B collapses from 0.070 AUROC in the full population t
 
 #### 4b-v. Subgroup performance
 
-Computed per race, insurance, language, sex and age-band stratum, with strata below the reporting minimum recorded as "not estimable" rather than merged, and a per-stratum `material_calibration_difference` flag. Full table in `docs/run_2026-09-19/results/aim1b_structured.json`, field `subgroups`; a rendered subgroup table is `[PENDING — `docs/aim1b_structured.md` not yet generated]`.
+Computed per race, insurance, language, sex and age-band stratum for all nine CatBoost rows, with a metric reported only where a stratum has at least 50 positives and at least 50 negatives, strata below that floor recorded as "not estimable" rather than merged, and a per-stratum `material_calibration_difference` flag (analyst threshold: calibration intercept differing from the overall model by more than 0.5, or slope by more than 0.25). **414 stratum rows; 225 estimable; 34 flagged.** Among the unweighted models the substantive flags are a slope of 0.48–0.77 for BLACK/CAPE VERDEAN and an intercept of +0.55 to +0.58 for HISPANIC OR LATINO, with AUROC broadly similar across strata. Full tables: `docs/run_2026-09-19/results/aim1b_structured.json`, field `subgroups`, rendered in `docs/aim1b_structured.md` §"Subgroups".
 
 ### 4c. Embedding-based notes arm
 
-`[PENDING — job still running at draft time]`. Expected file: `docs/run_2026-09-19/results/aim1b_notes_arm.json`. Frozen Bio_ClinicalBERT, 512-token chunks, stride 64, ≤ 12 chunks, mean+max pooled to 1,536 dimensions; heads = L2 logistic regression and LightGBM; notes-augmented model = CatBoost on FS-B plus the first 64 principal components (PCA fit inside training folds). Pilot throughput that sized the subsample: 0.539 s per admission on CPU, 5,694 tokens/s, 33,414-admission budget ceiling (`embed_pilot.json`).
+Source: `docs/run_2026-09-19/results/aim1b_notes_arm.json`. Frozen Bio_ClinicalBERT, 512-token chunks, stride 64, ≤ 12 chunks, mean+max pooled to 1,536 dimensions; heads = L2 logistic regression and LightGBM, the better on DEV out-of-fold AUPRC kept; notes-augmented model = CatBoost on FS-B plus the first 64 principal components (PCA fit inside training folds). Pilot throughput that sized the subsample: 0.539 s per admission on CPU, 5,694 tokens/s, 33,414-admission budget ceiling (`embed_pilot.json`). Runtime of the arm itself 301 s.
+
+**Encoder coverage — read this before the table.** Encoding stopped at its compute budget with **28 of 33 shards**: **27,845 of 32,845 subsampled admissions (84.8%)**, namely DEV 19,872, TEST 5,108 and **all 2,865 GOLD_HOLDOUT admissions (100%)**. DEV/TEST shards 24–28 were never encoded, and the gold shards (29–32) were deliberately encoded first. Only variant S was encoded; variant U has no embeddings. Every row below therefore rests on 85% of the intended subsample, and its n differs from Table 4a's.
+
+| Head on the 1,536-dim vectors (variant S) | DEV OOF AUROC | DEV OOF AUPRC | TEST AUROC (95% CI) | TEST AUPRC (95% CI) | Brier (95% CI) | Calib. intercept | Calib. slope |
+| --- | --: | --: | --- | --- | --- | --: | --: |
+| L2 logistic regression | 0.785 | 0.251 | 0.754 (0.704–0.799) | 0.216 (0.165–0.292) | 0.058 (0.050–0.068) | −0.254 | 0.511 |
+| LightGBM (**kept**) | 0.804 | 0.274 | 0.788 (0.742–0.832) | 0.246 (0.187–0.326) | 0.055 (0.046–0.065) | 0.804 | 0.589 |
+
+DEV 19,872 with 1,438 silver-positive; TEST 5,108 with 322. Within code-negative TEST admissions only (n = 5,016, 239 positive): logistic regression AUROC 0.760 / AUPRC 0.171; LightGBM 0.794 / 0.179.
+
+**The transformer embeddings lost to TF-IDF on the selection criterion itself.** The kept LightGBM head reached DEV out-of-fold AUPRC **0.274** against TF-IDF variant S's **0.444** (Table 4a's source JSON, field `oof`), and TEST 0.788 / 0.246 against 0.826 / 0.407. Two reasons are stated in the run record and neither is offered as a defence: the embeddings cover 85% of the subsample where the TF-IDF model covers all of it, and a frozen general-purpose clinical encoder with a light head is a weaker use of 1,536 dimensions than a vocabulary fitted to this corpus. Fine-tuning was budgeted at zero hours and not attempted. **Consequence for the fusion stack:** Layer 0's notes model was chosen as TF-IDF by the pre-stated DEV out-of-fold rule, not by hand (Table 4d).
+
+#### 4c-i. Notes-augmented model — CatBoost on FS-B + 64 embedding components
+
+DEV 19,872 (1,438 positive), TEST 5,108 (322 positive).
+
+| Imbalance variant | DEV OOF AUROC | DEV OOF AUPRC | TEST AUROC (95% CI) | TEST AUPRC (95% CI) | Brier (95% CI) | Calib. intercept | Calib. slope |
+| --- | --: | --: | --- | --- | --- | --: | --: |
+| unweighted | 0.840 | 0.305 | 0.829 (0.795–0.863) | 0.328 (0.246–0.436) | 0.050 (0.042–0.059) | −0.036 | 1.010 |
+| weighted | 0.835 | 0.298 | 0.813 (0.776–0.848) | 0.255 (0.182–0.366) | 0.143 (0.132–0.154) | −2.373 | 0.989 |
+| weighted + prior correction | 0.835 | 0.298 | 0.813 (0.776–0.848) | 0.255 (0.182–0.366) | 0.053 (0.044–0.062) | 0.178 | 0.989 |
+
+Within code-negative TEST admissions only (n = 5,016, 239 positive), unweighted: AUROC 0.826 / AUPRC 0.245. The weighting-and-correction pattern reproduces the structured arm's exactly: weighting drives the intercept to −2.373 at an unchanged AUROC, and the analytic prior correction returns it to +0.178.
 
 ### 4d. Stacked fusion
 
-`[PENDING — job still running at draft time]`. Expected file: `docs/run_2026-09-19/results/aim1b_fusion.json`; expected document: `docs/aim1b_fusion.md`. Layer 0 = structured FS-B (best-calibrated DEV out-of-fold variant; FS-A as sensitivity) + notes model variant S; Layer 1 = logistic regression on the two out-of-fold logits, fitted on subsample DEV only; code status never an input; paired subject-cluster bootstrap differences between arms.
+Source: `docs/run_2026-09-19/results/aim1b_fusion.json`, rendered in `docs/aim1b_fusion.md`. Layer 0 = structured FS-B (best-calibrated DEV out-of-fold variant, selected as `cat\|FS-B\|unweighted`; FS-A sensitivity input `cat\|FS-A\|unweighted`) + notes model variant S (selected as `tfidf\|S\|unweighted`, the better of TF-IDF and the embedding head on DEV out-of-fold AUPRC). Layer 1 = logistic regression on the two out-of-fold logits, fitted on subsample DEV only. **Code status is never an input to any layer.** Fitted Layer-1 coefficients: primary intercept 1.235, structured logit 0.519, notes logit 0.993; FS-A sensitivity intercept 0.760, structured 0.533, notes 0.793.
+
+All arms are scored on the same subsample TEST admissions, n = 6,164 with 383 silver-positive, **except** the notes-augmented rows, which are scored on the 5,108 of those admissions that have embeddings (322 positive) and are therefore not strictly comparable with the rest of the column.
+
+| Arm | n | positives | AUROC | AUPRC | Brier | Calib. intercept | Calib. slope | Code-negative AUROC | Code-negative AUPRC |
+| --- | --: | --: | --: | --: | --: | --: | --: | --: | --: |
+| **fusion (primary): FS-B + notes** | 6,164 | 383 | **0.853** | **0.435** | 0.046 | −0.207 | 0.934 | **0.847** | 0.353 |
+| structured (primary): `cat\|FS-B\|unweighted` | 6,164 | 383 | 0.793 | 0.291 | 0.051 | −0.139 | 1.013 | 0.763 | 0.188 |
+| fusion (sensitivity): FS-A + notes | 6,164 | 383 | 0.860 | 0.464 | 0.044 | −0.217 | 0.961 | 0.858 | 0.384 |
+| structured (sensitivity): `cat\|FS-A\|unweighted` | 6,164 | 383 | 0.854 | 0.392 | 0.047 | −0.167 | 1.021 | 0.842 | 0.276 |
+| notes: `tfidf\|S\|unweighted` | 6,164 | 383 | 0.826 | 0.407 | 0.047 | −0.180 | 1.126 | 0.833 | 0.352 |
+| notes-augmented: `aug\|FS-B+notes\|unweighted` | 5,108 | 322 | 0.829 | 0.328 | 0.050 | −0.036 | 1.010 | 0.826 | 0.245 |
+| notes-augmented: `aug\|FS-B+notes\|weighted` | 5,108 | 322 | 0.813 | 0.255 | 0.143 | −2.373 | 0.989 | 0.814 | 0.186 |
+| notes-augmented: `aug\|FS-B+notes\|weighted+corrected` | 5,108 | 322 | 0.813 | 0.255 | 0.053 | 0.178 | 0.989 | 0.814 | 0.186 |
+
+#### 4d-i. Paired differences against the primary structured arm (subject-cluster bootstrap, 500 replicates)
+
+| Comparison | ΔAUROC (95% CI) | ΔAUPRC (95% CI) | ΔBrier (95% CI) |
+| --- | --- | --- | --- |
+| fusion (primary) − structured (primary) | **+0.060 (+0.031, +0.089)** | +0.147 (+0.074, +0.223) | −0.006 (−0.009, −0.002) |
+| fusion (sensitivity FS-A) − structured (primary) | +0.067 (+0.034, +0.100) | +0.176 (+0.100, +0.254) | −0.007 (−0.010, −0.004) |
+| structured (sensitivity FS-A) − structured (primary) | +0.061 (+0.037, +0.086) | +0.100 (+0.068, +0.136) | −0.004 (−0.006, −0.003) |
+| notes − structured (primary) | +0.033 (−0.018, +0.080) | +0.121 (+0.019, +0.221) | −0.005 (−0.008, −0.001) |
+| notes-augmented (unweighted) − structured (primary) | +0.036 (+0.003, +0.068) | +0.042 (−0.021, +0.103) | −0.001 (−0.004, +0.002) |
+| notes-augmented (weighted) − structured (primary) | +0.021 (−0.016, +0.055) | −0.029 (−0.091, +0.034) | +0.091 (+0.079, +0.104) |
+| notes-augmented (weighted + corrected) − structured (primary) | +0.021 (−0.016, +0.055) | −0.029 (−0.091, +0.034) | +0.001 (−0.002, +0.005) |
+
+**Every row involving the notes model inherits the circularity caveat**: its silver-label advantage is partly the label's own lexicon. The paired differences are silver-label observations; the gold harness (`scripts/aim1b_evaluate_gold.py`) is what tests H1b-iii properly.
 
 ### 4e. Locked gold-holdout predictions (audit trail)
 
-`[PENDING — job still running at draft time]`. Expected file: `docs/run_2026-09-19/results/locked_predictions.json`; expected document: `docs/aim1b_locked_predictions.md`. Every GOLD_HOLDOUT admission scored by every arm and variant before any chart is adjudicated, with SHA-256 hashes of the prediction file and the model files recorded.
+Source: `docs/run_2026-09-19/results/locked_predictions.json`, rendered in `docs/aim1b_locked_predictions.md`. **This is not a performance table.** It is the audit trail establishing that every prediction on the gold holdout predates the reference standard.
+
+| Item | Value |
+| --- | --- |
+| Prediction file (untracked credentialed derivative) | `data/processed/gold_holdout_predictions_v1.parquet` |
+| Rows (GOLD_HOLDOUT admissions scored) | 2,865 |
+| Arm/variant columns | 37 |
+| Written (UTC) | 2026-09-19T21:49:43Z |
+| SHA-256 of the prediction file | `0b3d9a4d256568534772adef66435986b3fda96238cf146b9593f721601e7aca` |
+| Fitted model files hashed (SHA-256 + byte size each) | 16 |
+| Per-arm gold prediction files hashed | 3 (`structured_gold.parquet`, `notes_tfidf_gold.parquet`, `notes_arm_gold.parquet`) |
+| Model files excluded from the manifest, by name | 2 (`aug_FS-B_notes_unweighted_SMOKE.cbm`, `aug_FS-B_notes_weighted_SMOKE.cbm`) |
+
+The 37 columns are the three gradient-boosted learners × feature sets × imbalance variants as fitted (21), the three TF-IDF text variants × three imbalance variants (9), the two embedding heads (2), the three notes-augmented variants (3), and the two fusion arms (2). **No adjudicated label existed when the file was written.**
+
+The two excluded files were written by a partial-data smoke test of the notes-arm code path before its output location was corrected. They were not deleted — the run's deletion guardrail permits deletion only in two named locations — so the locking script excludes any `_SMOKE` file from the manifest and records it under `excluded_from_manifest`, and the manifest describes exactly the models that produced the locked predictions and nothing else. The smoke numbers are not results and appear in no tracked document. The full 16-row hash table is in `docs/aim1b_locked_predictions.md` and is not reproduced here.
 
 ### 4f. Model performance against the gold standard
 
 **Entirely `[PENDING ADJUDICATION]`.** This is the only part of Table 4 that is an accuracy estimate. It will report, for each arm, discrimination and calibration against adjudicated labels on the gold holdout, with the drop from the silver-label counterpart reported explicitly as a measure of silver-label error, and with the recovery-zone contrast (notes-augmented versus structured baseline within code−/note+ charts) as the pre-committed test of H1b-ii.
+
+---
+
+## Table 4g. Hypothesis outcomes as the evidence now stands
+
+> **Vocabulary.** "Partly supported", "not supported" and "consistent with" are used throughout. Nothing here is described as confirmed, and nothing that depends on adjudicated labels is described at all. The hypotheses were committed at `e2a4e1e5b2bade9f7f8cb07a7d546a23e57b1b9b` before any model was trained; that is a repository audit trail and **not** a public registration.
+
+| Hypothesis | Outcome | What the evidence is |
+| --- | --- | --- |
+| **H1a** (adjudicated under-capture; the headline) | `[PENDING ADJUDICATION]` | Requires the 400 chart reviews. No computable-stage share substitutes for it. |
+| **H1b-i** (structured discrimination; availability features dominate the attributions) | **partly supported** | The feature-set gap is large and in the predicted direction (TEST AUROC 0.857 FS-A vs 0.787 FS-B; AUPRC 0.380 vs 0.282), and FS-AVAIL alone reaches 0.812 AUROC — availability and volume information by itself out-discriminates the whole clinical feature set. But the attribution *ranking* is not dominated by availability: one availability feature leads (`liver_imaging_any_pre`, mean \|SHAP\| 0.675, roughly double the next), while availability features are 28% of the FS-A top 25, and the two the hypothesis named specifically — laboratory availability and diagnosis count — are not near the top (`n_diagnoses` fifteenth at 0.062). The dominant feature is *imaging* availability. See Tables 4b, 4b-ii. |
+| **H1b-ii** (notes-augmented arm beats the structured baseline in the recovery zone, **against the gold standard**) | `[PENDING ADJUDICATION]` | The gold-standard test does not exist. A **silver-label shadow** of it may be reported, explicitly labelled as not the test: within code-negative TEST admissions the fusion arm reaches AUROC **0.847** against the structured FS-B arm's **0.763**, and the notes-augmented arm reaches 0.826 (Table 4d). This is a development diagnostic on a label the notes arm partly relearned; it is not evidence about H1b-ii and must never be presented as such. |
+| **H1b-iii** (fusion at least as discriminating as the better base learner **and** better calibrated than either) | **partly supported — and both halves must be stated** | *Discrimination:* fusion is more discriminating than either base learner, +0.060 AUROC over the structured FS-B arm (95% CI +0.031 to +0.089), and +0.147 AUPRC (+0.074 to +0.223). *Calibration:* fusion is **not** better calibrated than that arm — slope **0.934** against **1.013**, intercept −0.207 against −0.139. The second half of the hypothesis is therefore not supported. The hypothesis's own caveat also applies: against the **FS-A** structured arm, fusion adds **+0.006 AUROC** (0.860 vs 0.854), which is almost nothing. See Tables 4d, 4d-i. |
+| **H-calibration**, as recorded 7 September (weighting plus threshold tuning gives slope near 1 and intercept near 0) | **not supported** | Class weighting leaves the slope near 1 but drives the calibration intercept far from 0: CatBoost weighted intercepts −2.378 (FS-A), −2.425 (FS-B), −2.496 (FS-AVAIL), and −2.373 for the notes-augmented model. LightGBM weighting additionally distorts the slope (3.038 FS-A, 3.478 FS-B) and loses AUPRC. |
+| **H-calibration**, amendment (b)'s competing expectation (weighting inflates predicted risk; the analytic prior correction repairs it without touching discrimination) | **supported** | The −log(w) logit shift returns the CatBoost intercepts to 0.175 / 0.141 / 0.063 and the notes-augmented intercept to 0.178, with AUROC and AUPRC unchanged to three decimals, as a monotone transform must. Unweighted models were already well calibrated (CatBoost FS-A intercept 0.031, slope 1.018). |
+| **H-calibration**, secondary (calibration differs by subgroup even where AUROC does not) | **consistent with** | 34 of 414 subgroup rows are flagged for a material calibration difference (225 estimable); among unweighted models, slope 0.48–0.77 for BLACK/CAPE VERDEAN and intercept +0.55 to +0.58 for HISPANIC OR LATINO, with AUROC broadly similar. Table 4b-v. |
+| **H-silver-vs-gold** (every gold-standard estimate is lower than its silver-label counterpart; the drop measures silver-label error) | **entirely `[PENDING ADJUDICATION]`** | Nothing in this study bears on it. Both sides of every comparison it names require the adjudication; the silver-label side alone says nothing about the size of the drop. |
+| **H1c** (coding rate among note-positive admissions differs across strata) | **consistent with, at the computable stage only** | Recovery shares range from roughly 61% to 96% across analyzable strata, with 33 of 33 race levels analyzable and 21 claim-supported, and the direction is not a uniform disadvantage gradient (Table 3). The accuracy half of the hypothesis — weighted PPV by stratum — is `[PENDING ADJUDICATION]`; the calibration half now exists for the structured arm only (Table 4b-v) and `[PENDING — the notes and fusion arms have no per-stratum metrics]`. |
+
+**The computable recovery share remains a comparison of two computable phenotypes and is never the headline.** Nothing in this table changes that.
 
 ---
 
@@ -375,7 +460,11 @@ Which weighting is reported as primary is `[PENDING researcher decision P6-03]`;
 | 2d | `docs/imaging_denominator.md` |
 | 3 | `docs/run_2026-09-19/results/aim1c_level1.json` → `docs/aim1c_level1.md`, `docs/tables/aim1c_level1_*.md` |
 | 4a | `docs/run_2026-09-19/results/aim1b_notes_tfidf.json` → `docs/aim1b_notes.md` |
-| 4b | `docs/run_2026-09-19/results/aim1b_structured.json` (rendered document `docs/aim1b_structured.md` not yet generated) |
-| 4c–4e | **absent at draft time**: `aim1b_notes_arm.json`, `aim1b_fusion.json`, `locked_predictions.json` |
+| 4b | `docs/run_2026-09-19/results/aim1b_structured.json` → `docs/aim1b_structured.md` |
+| 4c, 4c-i | `docs/run_2026-09-19/results/aim1b_notes_arm.json`, `notes_subsample.json`, `embed_pilot.json` |
+| 4d, 4d-i | `docs/run_2026-09-19/results/aim1b_fusion.json` → `docs/aim1b_fusion.md` |
+| 4e | `docs/run_2026-09-19/results/locked_predictions.json` → `docs/aim1b_locked_predictions.md` |
+| 4f | **does not exist**: requires the chart adjudication |
+| 4g | `aim1b_structured.json`, `aim1b_notes_arm.json`, `aim1b_fusion.json`, `aim1c_level1.json`, `docs/analysis_plan_prespecified.md` §1 |
 | 5a | `docs/run_2026-09-19/results/integrity_gate.json`, `reviewer_assignment.json` |
 | 5b–5e | **do not exist**: require the chart adjudication |

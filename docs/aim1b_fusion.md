@@ -8,7 +8,9 @@ Layer 0: structured FS-B best-calibrated variant on DEV OOF = `cat|FS-B|unweight
 
 Fusion coefficients: primary: intercept 1.235, w_structured 0.519, w_notes 0.993; sensitivity_FS-A: intercept 0.760, w_structured 0.533, w_notes 0.793.
 
-## Arms on the same subsample TEST admissions
+## Arms on the subsample TEST admissions
+
+**Not every arm is scored on the same admissions.** Arms that need an embedding are evaluated only on the TEST admissions that were encoded before the embedding budget expired; the `n` column makes this explicit and the rows are not strictly comparable with the full-TEST rows.
 
 | arm | n | positives | AUROC | AUPRC | Brier | intercept | slope | code-negative AUROC | code-negative AUPRC |
 | --- | --: | --: | --: | --: | --: | --: | --: | --: | --: |

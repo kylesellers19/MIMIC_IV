@@ -57,8 +57,16 @@ def instrument_lines():
     return out
 
 
+AUDIT_FIXTURE = re.compile(r"#\s*audit-fixture")
+
+
 def classify_token(line, tok, seeds):
     low = line.lower()
+    if AUDIT_FIXTURE.search(line):
+        # A negative control for these very detectors must contain identifier-shaped text. The
+        # exemption is deliberately narrow: it requires an explicit marker comment on the same line,
+        # so a real identifier cannot be exempted without someone writing that marker next to it.
+        return "audit negative-control fixture"
     if tok in seeds:
         return "seed"
     if "pmid" in low or "doi" in low or "pubmed" in low or "crossref" in low:
@@ -94,7 +102,12 @@ def main():
             for m in EIGHT_DIGIT.finditer(line):
                 tok = m.group(0)
                 reason = classify_token(line, tok, seeds)
-                hits.append({"file": f, "line": i, "token": tok, "exempt": reason != "UNEXPLAINED", "reason": reason})
+                # The token is REDACTED in the results file. If this check ever fires on a real
+                # subject_id or hadm_id, writing it here would copy a patient identifier into a
+                # tracked document - the very thing the check exists to prevent. The file and line
+                # are enough to find it; the exact value stays where it already is.
+                hits.append({"file": f, "line": i, "token_redacted": tok[0] + "X" * (len(tok) - 1),
+                             "exempt": reason != "UNEXPLAINED", "reason": reason})
     unexplained = [h for h in hits if not h["exempt"]]
     audit["b_eight_digit_scan"] = {"total_hits": len(hits), "exempt": len(hits) - len(unexplained),
                                    "unexplained": unexplained, "pass": not unexplained}

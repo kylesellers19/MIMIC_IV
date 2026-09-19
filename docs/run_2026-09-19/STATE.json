@@ -1,0 +1,11 @@
+{
+  "run_id": "run_2026-09-19",
+  "run_branch": "run/2026-09-19",
+  "base_branch": "main",
+  "started_utc": "2026-09-19T16:13:48Z",
+  "data_gate": "pending",
+  "network": null,
+  "torch_device": null,
+  "phases": {"0": {"status": "running", "start": "2026-09-19T16:13:48Z"}},
+  "background_jobs": {}
+}

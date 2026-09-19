@@ -1,0 +1,68 @@
+{
+ "script": "scripts/run0919_phase6_docs.py",
+ "inputs": [
+  "packet_feasibility.json",
+  "reviewer_assignment.json"
+ ],
+ "estimate": {
+  "assumptions": {
+   "chars_per_word": 6.0,
+   "words_per_minute": [
+    200,
+    250
+   ],
+   "fixed_overhead_min_per_chart": 5.0,
+   "full_read": "discharge summary + every linked radiology report",
+   "focused_read": "discharge summary + liver-inclusive radiology reports only (exam-name rule)"
+  },
+  "mean_chars_per_chart": {
+   "full": 19093.3225,
+   "focused": 13238.58,
+   "training_full": 18182.05
+  },
+  "words_per_chart": {
+   "full": 3182.2204166666666,
+   "focused": 2206.43
+  },
+  "minutes_per_chart": {
+   "full": [
+    17.728881666666666,
+    20.911102083333333
+   ],
+   "focused": [
+    13.825719999999999,
+    16.03215
+   ]
+  },
+  "hours_per_reviewer_sample": {
+   "full": [
+    73.87034027777779,
+    87.12959201388888
+   ],
+   "focused": [
+    57.607166666666664,
+    66.80062500000001
+   ]
+  },
+  "hours_per_reviewer_training": {
+   "full": [
+    5.707122222222222,
+    6.71723611111111
+   ]
+  },
+  "hours_total_all_adjudications": {
+   "full": [
+    147.74068055555557,
+    174.25918402777776
+   ],
+   "focused": [
+    115.21433333333333,
+    133.60125000000002
+   ]
+  },
+  "charts_per_reviewer": 250,
+  "training_charts": 20,
+  "adjudications_total": 500,
+  "prior_analyst_estimate_note": "docs/adjudication_criteria.md offered 10\u201318 min per chart before the packet contents were confirmed against the data"
+ }
+}

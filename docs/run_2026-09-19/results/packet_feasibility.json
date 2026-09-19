@@ -1,0 +1,857 @@
+{
+ "script": "scripts/run0919_packet_feasibility.py",
+ "window_days": {
+  "before_admission": 365,
+  "after_admission": 30
+ },
+ "lab_itemids": {
+  "ALT": 50861,
+  "AST": 50878,
+  "Platelets": 51265,
+  "Triglycerides": 51000,
+  "HDL": 50904,
+  "HbA1c": 50852,
+  "Glucose": 50931,
+  "Albumin": 50862,
+  "Bilirubin_total": 50885,
+  "Alkaline_phosphatase": 50863
+ },
+ "omr_result_names": {
+  "BMI": [
+   "BMI (kg/m2)",
+   "BMI"
+  ],
+  "BP": [
+   "Blood Pressure",
+   "Blood Pressure Sitting",
+   "Blood Pressure Standing (1 min)",
+   "Blood Pressure Lying",
+   "Blood Pressure Standing (3 mins)",
+   "Blood Pressure Standing"
+  ],
+  "weight": [
+   "Weight (Lbs)",
+   "Weight"
+  ],
+  "height": [
+   "Height (Inches)",
+   "Height"
+  ]
+ },
+ "in_admission_lab_definition": "labevents row with hadm_id = the admission, OR hadm_id NULL for the same subject with charttime in [admittime, dischtime]",
+ "sample_overall": {
+  "n": 400,
+  "availability_pct": {
+   "discharge_summary": 89.25,
+   "any_inpatient_radiology": 85.75,
+   "any_outpatient_radiology_window": 72.25,
+   "any_radiology": 95.75,
+   "any_liver_inclusive_radiology": 60.5,
+   "any_lab_row_inadm": 86.25,
+   "any_omr_window": 78.5,
+   "omr_BMI": 71.5,
+   "omr_BP": 66.75,
+   "omr_weight": 75.0,
+   "omr_height": 62.25000000000001,
+   "any_prescription": 92.5
+  },
+  "labs_present_pct_hadm_linked": {
+   "ALT": 52.25,
+   "AST": 52.5,
+   "Platelets": 83.0,
+   "Triglycerides": 11.5,
+   "HDL": 6.5,
+   "HbA1c": 5.75,
+   "Glucose": 82.75,
+   "Albumin": 42.75,
+   "Bilirubin_total": 51.5,
+   "Alkaline_phosphatase": 52.25
+  },
+  "labs_present_pct_in_admission": {
+   "ALT": 52.5,
+   "AST": 52.75,
+   "Platelets": 83.5,
+   "Triglycerides": 11.75,
+   "HDL": 6.75,
+   "HbA1c": 6.0,
+   "Glucose": 83.25,
+   "Albumin": 43.25,
+   "Bilirubin_total": 51.74999999999999,
+   "Alkaline_phosphatase": 52.5
+  },
+  "reading_burden": {
+   "discharge_chars": {
+    "median": 9515.0,
+    "p95": 19627.449999999975,
+    "mean": 10009.4,
+    "max": 31395.0,
+    "total": 4003760.0
+   },
+   "discharge_notes_per_admission": {
+    "median": 1.0,
+    "p95": 1.0,
+    "mean": 0.8925,
+    "max": 1.0,
+    "total": 357.0
+   },
+   "radiology_reports_inpatient": {
+    "median": 2.0,
+    "p95": 11.0,
+    "mean": 3.2675,
+    "max": 37.0,
+    "total": 1307.0
+   },
+   "radiology_reports_outpatient_window": {
+    "median": 2.0,
+    "p95": 11.049999999999955,
+    "mean": 3.3475,
+    "max": 52.0,
+    "total": 1339.0
+   },
+   "radiology_reports_total": {
+    "median": 5.0,
+    "p95": 18.0,
+    "mean": 6.615,
+    "max": 57.0,
+    "total": 2646.0
+   },
+   "radiology_chars_total": {
+    "median": 5895.5,
+    "p95": 27864.799999999952,
+    "mean": 9083.9225,
+    "max": 77229.0,
+    "total": 3633569.0
+   },
+   "packet_narrative_chars": {
+    "median": 16227.5,
+    "p95": 42208.39999999989,
+    "mean": 19093.3225,
+    "max": 93672.0,
+    "total": 7637329.0
+   },
+   "radiology_reports_liver_inclusive": {
+    "median": 1.0,
+    "p95": 4.0,
+    "mean": 1.27,
+    "max": 11.0,
+    "total": 508.0
+   },
+   "radiology_chars_liver_inclusive": {
+    "median": 1443.5,
+    "p95": 11858.55,
+    "mean": 3229.18,
+    "max": 36535.0,
+    "total": 1291672.0
+   },
+   "focused_read_chars_discharge_plus_liver_radiology": {
+    "median": 12273.0,
+    "p95": 27753.49999999999,
+    "mean": 13238.58,
+    "max": 55070.0,
+    "total": 5295432.0
+   },
+   "lab_rows_in_admission": {
+    "median": 10.0,
+    "p95": 87.09999999999991,
+    "mean": 22.27,
+    "max": 279.0,
+    "total": 8908.0
+   },
+   "omr_rows_window": {
+    "median": 8.0,
+    "p95": 75.19999999999982,
+    "mean": 19.9775,
+    "max": 239.0,
+    "total": 7991.0
+   },
+   "prescription_rows": {
+    "median": 28.0,
+    "p95": 131.19999999999982,
+    "mean": 44.595,
+    "max": 476.0,
+    "total": 17838.0
+   }
+  }
+ },
+ "sample_by_cell": {
+  "A": {
+   "n": 80,
+   "availability_pct": {
+    "discharge_summary": 98.75,
+    "any_inpatient_radiology": 81.25,
+    "any_outpatient_radiology_window": 77.5,
+    "any_radiology": 97.5,
+    "any_liver_inclusive_radiology": 72.5,
+    "any_lab_row_inadm": 86.25,
+    "any_omr_window": 91.25,
+    "omr_BMI": 85.0,
+    "omr_BP": 77.5,
+    "omr_weight": 85.0,
+    "omr_height": 71.25,
+    "any_prescription": 98.75
+   },
+   "labs_present_pct_hadm_linked": {
+    "ALT": 63.74999999999999,
+    "AST": 63.74999999999999,
+    "Platelets": 83.75,
+    "Triglycerides": 18.75,
+    "HDL": 7.5,
+    "HbA1c": 6.25,
+    "Glucose": 85.0,
+    "Albumin": 47.5,
+    "Bilirubin_total": 63.74999999999999,
+    "Alkaline_phosphatase": 63.74999999999999
+   },
+   "labs_present_pct_in_admission": {
+    "ALT": 63.74999999999999,
+    "AST": 63.74999999999999,
+    "Platelets": 83.75,
+    "Triglycerides": 18.75,
+    "HDL": 7.5,
+    "HbA1c": 6.25,
+    "Glucose": 85.0,
+    "Albumin": 47.5,
+    "Bilirubin_total": 63.74999999999999,
+    "Alkaline_phosphatase": 63.74999999999999
+   },
+   "reading_burden": {
+    "discharge_chars": {
+     "median": 10701.0,
+     "p95": 22427.55,
+     "mean": 11737.3375,
+     "max": 31395.0,
+     "total": 938987.0
+    },
+    "discharge_notes_per_admission": {
+     "median": 1.0,
+     "p95": 1.0,
+     "mean": 0.9875,
+     "max": 1.0,
+     "total": 79.0
+    },
+    "radiology_reports_inpatient": {
+     "median": 2.0,
+     "p95": 13.0,
+     "mean": 3.625,
+     "max": 37.0,
+     "total": 290.0
+    },
+    "radiology_reports_outpatient_window": {
+     "median": 2.0,
+     "p95": 9.099999999999994,
+     "mean": 3.4875,
+     "max": 52.0,
+     "total": 279.0
+    },
+    "radiology_reports_total": {
+     "median": 5.0,
+     "p95": 18.099999999999994,
+     "mean": 7.1125,
+     "max": 57.0,
+     "total": 569.0
+    },
+    "radiology_chars_total": {
+     "median": 6647.0,
+     "p95": 20776.69999999999,
+     "mean": 8827.2125,
+     "max": 77229.0,
+     "total": 706177.0
+    },
+    "packet_narrative_chars": {
+     "median": 16924.0,
+     "p95": 39191.1,
+     "mean": 20564.55,
+     "max": 86383.0,
+     "total": 1645164.0
+    },
+    "radiology_reports_liver_inclusive": {
+     "median": 1.0,
+     "p95": 4.0,
+     "mean": 1.4125,
+     "max": 6.0,
+     "total": 113.0
+    },
+    "radiology_chars_liver_inclusive": {
+     "median": 2151.0,
+     "p95": 9448.55,
+     "mean": 3111.275,
+     "max": 14893.0,
+     "total": 248902.0
+    },
+    "focused_read_chars_discharge_plus_liver_radiology": {
+     "median": 14134.0,
+     "p95": 25957.7,
+     "mean": 14848.6125,
+     "max": 33542.0,
+     "total": 1187889.0
+    },
+    "lab_rows_in_admission": {
+     "median": 14.0,
+     "p95": 102.64999999999996,
+     "mean": 27.6375,
+     "max": 179.0,
+     "total": 2211.0
+    },
+    "omr_rows_window": {
+     "median": 12.5,
+     "p95": 54.0,
+     "mean": 18.575,
+     "max": 72.0,
+     "total": 1486.0
+    },
+    "prescription_rows": {
+     "median": 32.5,
+     "p95": 129.1,
+     "mean": 48.8625,
+     "max": 360.0,
+     "total": 3909.0
+    }
+   }
+  },
+  "B": {
+   "n": 150,
+   "availability_pct": {
+    "discharge_summary": 89.33333333333333,
+    "any_inpatient_radiology": 90.66666666666666,
+    "any_outpatient_radiology_window": 74.66666666666667,
+    "any_radiology": 100.0,
+    "any_liver_inclusive_radiology": 83.33333333333334,
+    "any_lab_row_inadm": 89.33333333333333,
+    "any_omr_window": 77.33333333333333,
+    "omr_BMI": 70.0,
+    "omr_BP": 66.0,
+    "omr_weight": 74.0,
+    "omr_height": 64.66666666666666,
+    "any_prescription": 91.33333333333333
+   },
+   "labs_present_pct_hadm_linked": {
+    "ALT": 59.333333333333336,
+    "AST": 60.0,
+    "Platelets": 85.33333333333334,
+    "Triglycerides": 12.0,
+    "HDL": 5.333333333333334,
+    "HbA1c": 5.333333333333334,
+    "Glucose": 85.33333333333334,
+    "Albumin": 50.0,
+    "Bilirubin_total": 58.666666666666664,
+    "Alkaline_phosphatase": 59.333333333333336
+   },
+   "labs_present_pct_in_admission": {
+    "ALT": 59.333333333333336,
+    "AST": 60.0,
+    "Platelets": 86.66666666666667,
+    "Triglycerides": 12.0,
+    "HDL": 5.333333333333334,
+    "HbA1c": 6.0,
+    "Glucose": 86.66666666666667,
+    "Albumin": 50.66666666666667,
+    "Bilirubin_total": 58.666666666666664,
+    "Alkaline_phosphatase": 59.333333333333336
+   },
+   "reading_burden": {
+    "discharge_chars": {
+     "median": 10414.0,
+     "p95": 20887.25,
+     "mean": 10531.826666666666,
+     "max": 25432.0,
+     "total": 1579774.0
+    },
+    "discharge_notes_per_admission": {
+     "median": 1.0,
+     "p95": 1.0,
+     "mean": 0.8933333333333333,
+     "max": 1.0,
+     "total": 134.0
+    },
+    "radiology_reports_inpatient": {
+     "median": 2.0,
+     "p95": 12.099999999999966,
+     "mean": 3.78,
+     "max": 37.0,
+     "total": 567.0
+    },
+    "radiology_reports_outpatient_window": {
+     "median": 2.0,
+     "p95": 13.099999999999966,
+     "mean": 3.993333333333333,
+     "max": 25.0,
+     "total": 599.0
+    },
+    "radiology_reports_total": {
+     "median": 6.0,
+     "p95": 19.549999999999983,
+     "mean": 7.773333333333333,
+     "max": 37.0,
+     "total": 1166.0
+    },
+    "radiology_chars_total": {
+     "median": 7882.0,
+     "p95": 37696.99999999999,
+     "mean": 11787.973333333333,
+     "max": 75137.0,
+     "total": 1768196.0
+    },
+    "packet_narrative_chars": {
+     "median": 18567.5,
+     "p95": 53501.29999999999,
+     "mean": 22319.8,
+     "max": 93672.0,
+     "total": 3347970.0
+    },
+    "radiology_reports_liver_inclusive": {
+     "median": 1.0,
+     "p95": 6.0,
+     "mean": 1.8466666666666667,
+     "max": 11.0,
+     "total": 277.0
+    },
+    "radiology_chars_liver_inclusive": {
+     "median": 2800.0,
+     "p95": 15745.699999999997,
+     "mean": 4688.04,
+     "max": 36535.0,
+     "total": 703206.0
+    },
+    "focused_read_chars_discharge_plus_liver_radiology": {
+     "median": 14062.0,
+     "p95": 31850.649999999987,
+     "mean": 15219.866666666667,
+     "max": 55070.0,
+     "total": 2282980.0
+    },
+    "lab_rows_in_admission": {
+     "median": 12.5,
+     "p95": 103.09999999999997,
+     "mean": 27.213333333333335,
+     "max": 279.0,
+     "total": 4082.0
+    },
+    "omr_rows_window": {
+     "median": 8.0,
+     "p95": 95.24999999999974,
+     "mean": 22.8,
+     "max": 239.0,
+     "total": 3420.0
+    },
+    "prescription_rows": {
+     "median": 31.5,
+     "p95": 165.69999999999976,
+     "mean": 50.98,
+     "max": 476.0,
+     "total": 7647.0
+    }
+   }
+  },
+  "C": {
+   "n": 70,
+   "availability_pct": {
+    "discharge_summary": 84.28571428571429,
+    "any_inpatient_radiology": 77.14285714285715,
+    "any_outpatient_radiology_window": 77.14285714285715,
+    "any_radiology": 90.0,
+    "any_liver_inclusive_radiology": 45.714285714285715,
+    "any_lab_row_inadm": 88.57142857142857,
+    "any_omr_window": 84.28571428571429,
+    "omr_BMI": 78.57142857142857,
+    "omr_BP": 71.42857142857143,
+    "omr_weight": 81.42857142857143,
+    "omr_height": 70.0,
+    "any_prescription": 90.0
+   },
+   "labs_present_pct_hadm_linked": {
+    "ALT": 47.14285714285714,
+    "AST": 47.14285714285714,
+    "Platelets": 87.14285714285714,
+    "Triglycerides": 5.714285714285714,
+    "HDL": 5.714285714285714,
+    "HbA1c": 5.714285714285714,
+    "Glucose": 87.14285714285714,
+    "Albumin": 38.57142857142858,
+    "Bilirubin_total": 47.14285714285714,
+    "Alkaline_phosphatase": 47.14285714285714
+   },
+   "labs_present_pct_in_admission": {
+    "ALT": 47.14285714285714,
+    "AST": 47.14285714285714,
+    "Platelets": 87.14285714285714,
+    "Triglycerides": 7.142857142857142,
+    "HDL": 7.142857142857142,
+    "HbA1c": 5.714285714285714,
+    "Glucose": 87.14285714285714,
+    "Albumin": 38.57142857142858,
+    "Bilirubin_total": 47.14285714285714,
+    "Alkaline_phosphatase": 47.14285714285714
+   },
+   "reading_burden": {
+    "discharge_chars": {
+     "median": 8139.5,
+     "p95": 17783.099999999988,
+     "mean": 8577.92857142857,
+     "max": 26312.0,
+     "total": 600455.0
+    },
+    "discharge_notes_per_admission": {
+     "median": 1.0,
+     "p95": 1.0,
+     "mean": 0.8428571428571429,
+     "max": 1.0,
+     "total": 59.0
+    },
+    "radiology_reports_inpatient": {
+     "median": 1.5,
+     "p95": 10.84999999999998,
+     "mean": 2.5,
+     "max": 18.0,
+     "total": 175.0
+    },
+    "radiology_reports_outpatient_window": {
+     "median": 2.0,
+     "p95": 11.549999999999997,
+     "mean": 3.2142857142857144,
+     "max": 16.0,
+     "total": 225.0
+    },
+    "radiology_reports_total": {
+     "median": 4.0,
+     "p95": 16.549999999999997,
+     "mean": 5.714285714285714,
+     "max": 26.0,
+     "total": 400.0
+    },
+    "radiology_chars_total": {
+     "median": 4980.0,
+     "p95": 27634.95,
+     "mean": 7335.5,
+     "max": 34625.0,
+     "total": 513485.0
+    },
+    "packet_narrative_chars": {
+     "median": 14409.0,
+     "p95": 40543.299999999996,
+     "mean": 15913.42857142857,
+     "max": 45932.0,
+     "total": 1113940.0
+    },
+    "radiology_reports_liver_inclusive": {
+     "median": 0.0,
+     "p95": 3.549999999999997,
+     "mean": 0.9142857142857143,
+     "max": 8.0,
+     "total": 64.0
+    },
+    "radiology_chars_liver_inclusive": {
+     "median": 0.0,
+     "p95": 10862.499999999998,
+     "mean": 2714.5857142857144,
+     "max": 26404.0,
+     "total": 190021.0
+    },
+    "focused_read_chars_discharge_plus_liver_radiology": {
+     "median": 9814.5,
+     "p95": 24657.949999999997,
+     "mean": 11292.514285714286,
+     "max": 39025.0,
+     "total": 790476.0
+    },
+    "lab_rows_in_admission": {
+     "median": 9.0,
+     "p95": 64.49999999999997,
+     "mean": 17.414285714285715,
+     "max": 187.0,
+     "total": 1219.0
+    },
+    "omr_rows_window": {
+     "median": 14.5,
+     "p95": 95.14999999999996,
+     "mean": 22.057142857142857,
+     "max": 140.0,
+     "total": 1544.0
+    },
+    "prescription_rows": {
+     "median": 28.0,
+     "p95": 119.84999999999998,
+     "mean": 39.4,
+     "max": 286.0,
+     "total": 2758.0
+    }
+   }
+  },
+  "D": {
+   "n": 100,
+   "availability_pct": {
+    "discharge_summary": 85.0,
+    "any_inpatient_radiology": 88.0,
+    "any_outpatient_radiology_window": 61.0,
+    "any_radiology": 92.0,
+    "any_liver_inclusive_radiology": 27.0,
+    "any_lab_row_inadm": 80.0,
+    "any_omr_window": 66.0,
+    "omr_BMI": 57.99999999999999,
+    "omr_BP": 56.00000000000001,
+    "omr_weight": 64.0,
+    "omr_height": 46.0,
+    "any_prescription": 91.0
+   },
+   "labs_present_pct_hadm_linked": {
+    "ALT": 36.0,
+    "AST": 36.0,
+    "Platelets": 76.0,
+    "Triglycerides": 9.0,
+    "HDL": 8.0,
+    "HbA1c": 6.0,
+    "Glucose": 74.0,
+    "Albumin": 31.0,
+    "Bilirubin_total": 34.0,
+    "Alkaline_phosphatase": 36.0
+   },
+   "labs_present_pct_in_admission": {
+    "ALT": 37.0,
+    "AST": 37.0,
+    "Platelets": 76.0,
+    "Triglycerides": 9.0,
+    "HDL": 8.0,
+    "HbA1c": 6.0,
+    "Glucose": 74.0,
+    "Albumin": 32.0,
+    "Bilirubin_total": 35.0,
+    "Alkaline_phosphatase": 37.0
+   },
+   "reading_burden": {
+    "discharge_chars": {
+     "median": 8673.5,
+     "p95": 18704.45,
+     "mean": 8845.44,
+     "max": 23443.0,
+     "total": 884544.0
+    },
+    "discharge_notes_per_admission": {
+     "median": 1.0,
+     "p95": 1.0,
+     "mean": 0.85,
+     "max": 1.0,
+     "total": 85.0
+    },
+    "radiology_reports_inpatient": {
+     "median": 2.0,
+     "p95": 8.0,
+     "mean": 2.75,
+     "max": 12.0,
+     "total": 275.0
+    },
+    "radiology_reports_outpatient_window": {
+     "median": 1.0,
+     "p95": 8.0,
+     "mean": 2.36,
+     "max": 18.0,
+     "total": 236.0
+    },
+    "radiology_reports_total": {
+     "median": 4.0,
+     "p95": 14.0,
+     "mean": 5.11,
+     "max": 21.0,
+     "total": 511.0
+    },
+    "radiology_chars_total": {
+     "median": 4368.0,
+     "p95": 18847.05,
+     "mean": 6457.11,
+     "max": 65677.0,
+     "total": 645711.0
+    },
+    "packet_narrative_chars": {
+     "median": 13601.5,
+     "p95": 32761.75,
+     "mean": 15302.55,
+     "max": 72293.0,
+     "total": 1530255.0
+    },
+    "radiology_reports_liver_inclusive": {
+     "median": 0.0,
+     "p95": 3.0,
+     "mean": 0.54,
+     "max": 8.0,
+     "total": 54.0
+    },
+    "radiology_chars_liver_inclusive": {
+     "median": 0.0,
+     "p95": 5951.999999999996,
+     "mean": 1495.43,
+     "max": 34143.0,
+     "total": 149543.0
+    },
+    "focused_read_chars_discharge_plus_liver_radiology": {
+     "median": 9695.0,
+     "p95": 21017.699999999997,
+     "mean": 10340.87,
+     "max": 40759.0,
+     "total": 1034087.0
+    },
+    "lab_rows_in_admission": {
+     "median": 6.0,
+     "p95": 48.39999999999998,
+     "mean": 13.96,
+     "max": 190.0,
+     "total": 1396.0
+    },
+    "omr_rows_window": {
+     "median": 4.0,
+     "p95": 60.05,
+     "mean": 15.41,
+     "max": 170.0,
+     "total": 1541.0
+    },
+    "prescription_rows": {
+     "median": 24.0,
+     "p95": 111.0,
+     "mean": 35.24,
+     "max": 328.0,
+     "total": 3524.0
+    }
+   }
+  }
+ },
+ "training_overall": {
+  "n": 20,
+  "availability_pct": {
+   "discharge_summary": 90.0,
+   "any_inpatient_radiology": 90.0,
+   "any_outpatient_radiology_window": 70.0,
+   "any_radiology": 90.0,
+   "any_liver_inclusive_radiology": 65.0,
+   "any_lab_row_inadm": 85.0,
+   "any_omr_window": 70.0,
+   "omr_BMI": 70.0,
+   "omr_BP": 60.0,
+   "omr_weight": 70.0,
+   "omr_height": 60.0,
+   "any_prescription": 95.0
+  },
+  "labs_present_pct_hadm_linked": {
+   "ALT": 50.0,
+   "AST": 50.0,
+   "Platelets": 80.0,
+   "Triglycerides": 10.0,
+   "HDL": 0.0,
+   "HbA1c": 5.0,
+   "Glucose": 80.0,
+   "Albumin": 55.00000000000001,
+   "Bilirubin_total": 50.0,
+   "Alkaline_phosphatase": 50.0
+  },
+  "labs_present_pct_in_admission": {
+   "ALT": 50.0,
+   "AST": 50.0,
+   "Platelets": 80.0,
+   "Triglycerides": 10.0,
+   "HDL": 0.0,
+   "HbA1c": 5.0,
+   "Glucose": 80.0,
+   "Albumin": 55.00000000000001,
+   "Bilirubin_total": 50.0,
+   "Alkaline_phosphatase": 50.0
+  },
+  "reading_burden": {
+   "discharge_chars": {
+    "median": 10507.0,
+    "p95": 15025.25,
+    "mean": 9743.9,
+    "max": 16113.0,
+    "total": 194878.0
+   },
+   "discharge_notes_per_admission": {
+    "median": 1.0,
+    "p95": 1.0,
+    "mean": 0.9,
+    "max": 1.0,
+    "total": 18.0
+   },
+   "radiology_reports_inpatient": {
+    "median": 2.0,
+    "p95": 9.250000000000004,
+    "mean": 3.15,
+    "max": 14.0,
+    "total": 63.0
+   },
+   "radiology_reports_outpatient_window": {
+    "median": 1.5,
+    "p95": 10.600000000000009,
+    "mean": 3.4,
+    "max": 22.0,
+    "total": 68.0
+   },
+   "radiology_reports_total": {
+    "median": 6.0,
+    "p95": 14.75000000000001,
+    "mean": 6.55,
+    "max": 29.0,
+    "total": 131.0
+   },
+   "radiology_chars_total": {
+    "median": 6262.5,
+    "p95": 24834.7,
+    "mean": 8438.15,
+    "max": 25570.0,
+    "total": 168763.0
+   },
+   "packet_narrative_chars": {
+    "median": 17330.0,
+    "p95": 35762.65,
+    "mean": 18182.05,
+    "max": 36155.0,
+    "total": 363641.0
+   },
+   "radiology_reports_liver_inclusive": {
+    "median": 1.0,
+    "p95": 5.050000000000001,
+    "mean": 1.55,
+    "max": 6.0,
+    "total": 31.0
+   },
+   "radiology_chars_liver_inclusive": {
+    "median": 2230.0,
+    "p95": 15944.850000000004,
+    "mean": 3835.35,
+    "max": 21300.0,
+    "total": 76707.0
+   },
+   "focused_read_chars_discharge_plus_liver_radiology": {
+    "median": 12813.0,
+    "p95": 25882.95,
+    "mean": 13579.25,
+    "max": 26794.0,
+    "total": 271585.0
+   },
+   "lab_rows_in_admission": {
+    "median": 10.5,
+    "p95": 61.85000000000002,
+    "mean": 19.75,
+    "max": 97.0,
+    "total": 395.0
+   },
+   "omr_rows_window": {
+    "median": 11.0,
+    "p95": 56.750000000000014,
+    "mean": 18.05,
+    "max": 71.0,
+    "total": 361.0
+   },
+   "prescription_rows": {
+    "median": 22.5,
+    "p95": 192.60000000000002,
+    "mean": 54.1,
+    "max": 223.0,
+    "total": 1082.0
+   }
+  }
+ },
+ "not_suppliable_by_mimic": [
+  "quantified alcohol intake (g/week) \u2014 only narrative mentions in notes; no structured field",
+  "liver biopsy / pathology reports as a structured source \u2014 MIMIC-IV-Note has discharge and radiology notes only; biopsy results appear only if narrated in the discharge summary",
+  "waist circumference \u2014 not in omr (omr carries BMI, weight, height, blood pressure, eGFR)",
+  "structured diabetes / hypertension / dyslipidaemia diagnoses \u2014 ICD codes are stripped by design; reviewers infer from HbA1c, glucose, lipids, BP, medication orders and narrative",
+  "outpatient laboratory values in the -365/+30 window \u2014 labevents rows without hadm_id exist but are not part of the packet (criteria \u00a71 lists in-admission labs); computable later if the criteria ask",
+  "elastography / FIB-4 / imaging-derived fat fraction as structured values \u2014 only if narrated in a radiology report"
+ ],
+ "runtime_s": 64.7
+}

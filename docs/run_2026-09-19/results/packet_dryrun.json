@@ -1,0 +1,80 @@
+{
+ "script": "scripts/make_reviewer_packets.py",
+ "mode": "dryrun",
+ "n_charts": 420,
+ "n_sample": 400,
+ "n_training": 20,
+ "files_generated": 420,
+ "exceptions_by_class": {},
+ "discharge_text_verbatim_vs_index": {
+  "charts_matching_index_char_count": 420,
+  "charts_with_discharge_text": 375,
+  "charts_total": 420,
+  "discharge_chars_total": 4198638
+ },
+ "rows_pulled": {
+  "discharge_notes": 375,
+  "radiology_reports": 2777,
+  "radiology_inpatient": 1370,
+  "radiology_outpatient_window": 1407,
+  "lab_rows": 9303,
+  "omr_rows": 8352,
+  "prescription_rows": 18920
+ },
+ "leak_checks": {
+  "counts": {
+   "i_icd10_like_structured": 20,
+   "i_icd10_like_structured_excl_value_columns": 20,
+   "i_icd9_like_structured": 6725,
+   "i_icd9_like_structured_excl_value_columns": 5172,
+   "i_icd9_like_structured_excl_values_and_day_offsets": 0,
+   "ii_long_title_narrative": "<11",
+   "ii_long_title_structured": 0,
+   "iii_demographic_label_structured": 0,
+   "iv_8digit_narrative": 0,
+   "iv_8digit_structured": 0,
+   "v_cell_label_narrative": 65,
+   "v_cell_label_structured": 0,
+   "v_recovery_word_narrative_only": 65,
+   "vi_markup_narrative": 238,
+   "vi_markup_structured": 0,
+   "vii_own_identifier_narrative": 0,
+   "vii_own_identifier_structured": 0
+  },
+  "files_with_any_hit": {
+   "i_icd10_like_structured": "<11",
+   "i_icd10_like_structured_excl_value_columns": "<11",
+   "i_icd9_like_structured": 329,
+   "i_icd9_like_structured_excl_value_columns": 268,
+   "ii_long_title_narrative": "<11",
+   "v_cell_label_narrative": 53,
+   "v_recovery_word_narrative_only": 53,
+   "vi_markup_narrative": 80
+  },
+  "matched_tokens_structured_excl_values": {
+   "icd10-shaped: B32 (section 5)": 13,
+   "icd10-shaped: B22 (section 5)": "<11"
+  },
+  "small_count_rule": "counts of 1-10 are written as <11",
+  "n_files": 420,
+  "file_bytes_median": 21127.0,
+  "file_bytes_p95": 60464.2,
+  "file_bytes_max": 114390,
+  "file_bytes_total": 10734498
+ },
+ "check_definitions": {
+  "i": "ICD-code-like patterns in structured (non-narrative) text: ICD-10 \\b[A-TV-Z]\\d{2}(\\.\\d{1,4})?\\b and ICD-9 \\b\\d{3}\\.\\d{1,2}\\b; also reported with the numeric value/dose/reference columns of the lab, vitals and medication tables removed, since lab values (e.g. 145.0) legitimately match the ICD-9 shape and drug names such as 'Vitamin B12' match the ICD-10 shape",
+  "ii": "long titles of the four phenotype codes, case-insensitive, narrative and structured counted separately",
+  "iii": "demographic field labels (race, insurance, language, ethnicity, marital) as whole words in structured text",
+  "iv": "8-digit integers \\b[12]\\d{7}\\b, structured and narrative counted separately (narrative hits would be numbers inside de-identified note text, not leaked identifiers)",
+  "v": "cell labels 'code+/note', 'code-/note', 'recovery' anywhere; the plain word 'recovery' occurs in clinical narrative (e.g. 'recovery room') and is counted separately",
+  "vi": "markup/highlighting tokens '<mark', '**', '[MASK]', '[[' anywhere, structured and narrative counted separately",
+  "vii": "the chart's own hadm_id, subject_id and radiology note_ids as substrings, structured and narrative counted separately"
+ },
+ "timings_s": {
+  "load_inputs": 81.2,
+  "generate": 4.1,
+  "total": 86.1
+ },
+ "dryrun_dir_removed": true
+}

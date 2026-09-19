@@ -1,0 +1,40 @@
+{
+ "script": "scripts/assign_reviewers.py",
+ "seed": 20260921,
+ "n_reviewers": 2,
+ "double_review_total": 100,
+ "single_review_total": 300,
+ "per_reviewer": {
+  "reviewer1": {
+   "total": 250,
+   "by_cell": {
+    "A": 48,
+    "B": 96,
+    "C": 40,
+    "D": 66
+   },
+   "training_charts": 20
+  },
+  "reviewer2": {
+   "total": 250,
+   "by_cell": {
+    "A": 47,
+    "B": 97,
+    "C": 40,
+    "D": 66
+   },
+   "training_charts": 20
+  }
+ },
+ "shared_charts_between_reviewers": 100,
+ "adjudications_total": 500,
+ "order_independence": {
+  "reviewer1_spearman_order_vs_cell_index": -0.01,
+  "reviewer2_spearman_order_vs_cell_index": 0.038
+ },
+ "outputs_untracked": [
+  "data/processed/adjudication/reviewer_assignment.parquet",
+  "data/processed/adjudication/form_reviewer1.xlsx",
+  "data/processed/adjudication/form_reviewer2.xlsx"
+ ]
+}

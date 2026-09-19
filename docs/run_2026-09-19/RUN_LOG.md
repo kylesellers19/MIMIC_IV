@@ -117,3 +117,13 @@ GOLD_HOLDOUT prevalence is high by design (the sample over-draws note-positive c
 - Encoding (`scripts/run0919_embed.py`): 512-token chunks, stride 64, ≤ 12 chunks; attention-masked mean pooling per chunk; admission vector = concat(mean, max) over chunks = 1,536 dims, float16, shards of 1,000 admissions with an index Parquet under `data/processed/notes_embeddings_v1/S/` (untracked, resumable). Variant U only if budget remains.
 
 **Deviation.** Chunked Bio_ClinicalBERT instead of Clinical-Longformer (methods plan) — laptop hardware, no MPS. Recorded as D-02 in the decisions file.
+
+## Phase 6 — Reference-standard machinery (delegated to a subagent; full narrative in `phase6_notes.md`)
+
+**Purpose.** Everything the chart review needs short of a human reading a chart: the estimator that turns 400 adjudications into the headline number with honest intervals; a simulation showing how precise that number can be; a data-confirmed packet specification and reading burden; the blank instrument; reviewer assignment; a packet generator proven in a dry run and then deleted; and a one-page brief for the reviewers.
+
+**Results (aggregate; details and every number in `docs/aim1a_precision_forecast.md`, `docs/adjudication/*.md`, results JSONs).** Estimator unit tests hit the hand-checked targets exactly (under-capture 81.698%, PPV 87.08%, sensitivity 86.409%); the closed-form reference row for PPV_B = 0.85 reproduces exactly. The simulation's design finding: cell D (100 charts standing for ~345,000 admissions) carries 92–97% of the variance once D-prevalence ≥ 3 per 100, and at 1 per 100 bootstrap coverage drops to ~63–65% because a third of adjudications observe zero D positives (P6-05). Feasibility: discharge summary present in 89% of sampled charts, liver-inclusive imaging 61%, HbA1c 6%, HDL 7%. Reading burden: discharge median 9,515 characters (p95 19,627); a rough 74–87 reviewer-hours per reviewer for 250 charts at 200–250 wpm. Dry run: 420/420 packets generated, structured-field leak checks all zero except 20 ICD-10-shaped tokens that are drug-name fragments in the medication table (flagged for a grep at final generation); directory removed. `pytest -q`: 29 passed.
+
+**Deviations.** The simulated mean matches the exact expectation of the ratio estimator, which sits 0–0.5 points below the plug-in closed form (Jensen); documented, not hidden. Tier 1 choices listed in `phase6_notes.md`.
+
+**What Kyle should look at.** P6-05 in the decisions file; `docs/adjudication/reviewer_brief.md`; the [confirm]-tagged lines in `docs/admin/physionet_403_email_draft.md` (the repo's own record of the 403 problem is thinner than the run file's description).

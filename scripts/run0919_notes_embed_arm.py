@@ -4,15 +4,20 @@
     better on DEV OOF (AUPRC) is kept. 8.3 Notes-augmented model: CatBoost on FS-B + first 64 principal components of the
     embeddings (PCA fit inside training folds); if no embeddings, FS-B + the TF-IDF (variant S) OOF logit instead.
 Subsample DEV/TEST only; GOLD_HOLDOUT scored, never fitted. Missing shards (job stopped early) simply reduce the subsample."""
-import json, os, sys, time, warnings
+import argparse, json, os, sys, time, warnings
 import numpy as np, pandas as pd, duckdb
 from sklearn.linear_model import LogisticRegression
 from sklearn.decomposition import PCA
 from sklearn.metrics import roc_auc_score, average_precision_score, brier_score_loss
 import statsmodels.api as sm
 sys.path.insert(0, os.getcwd()); warnings.filterwarnings("ignore")
-SEED = 20260919; REPS = 500; THREADS = 4
-TXT = "data/processed/run_2026-09-19_notes_text/subsample.parquet"; EMB = "data/processed/notes_embeddings_v1"; PREDDIR = "data/processed/run_2026-09-19_preds"
+_ap = argparse.ArgumentParser(); _ap.add_argument("--smoke", action="store_true",
+    help="validate the code path on whatever shards exist; write to the scratch folder, not to the run's outputs")
+ARGS, _ = _ap.parse_known_args()
+SEED = 20260919; REPS = 50 if ARGS.smoke else 500; THREADS = 4
+TXT = "data/processed/run_2026-09-19_notes_text/subsample.parquet"; EMB = "data/processed/notes_embeddings_v1"; PREDDIR = "data/processed/run_2026-09-19_scratch/preds_smoke" if ARGS.smoke else "data/processed/run_2026-09-19_preds"
+RESULTS = "data/processed/run_2026-09-19_scratch/aim1b_notes_arm_SMOKE.json" if ARGS.smoke else "docs/run_2026-09-19/results/aim1b_notes_arm.json"
+os.makedirs(PREDDIR, exist_ok=True)
 FEAT = "data/processed/run_2026-09-19_features.parquet"; CAT = ["gender", "admission_type", "admission_location", "icd_era", "marital_status"]
 t0 = time.time(); log = lambda s: print(f"[{time.time()-t0:6.0f}s] {s}", flush=True)
 def logit(p): p = np.clip(p, 1e-6, 1 - 1e-6); return np.log(p / (1 - p))
@@ -70,7 +75,7 @@ con = duckdb.connect(); cls = json.load(open("docs/run_2026-09-19/results/featur
 feat = con.execute(f"SELECT hadm_id, {', '.join(FSB)} FROM read_parquet('{FEAT}')").fetchdf()
 for c in CAT: feat[c] = feat[c].astype("category")
 from catboost import CatBoostClassifier
-def cb(spw): return CatBoostClassifier(iterations=800, learning_rate=0.06, depth=6, l2_leaf_reg=3, thread_count=THREADS, verbose=0, random_seed=SEED, early_stopping_rounds=50, scale_pos_weight=spw, allow_writing_files=False)
+def cb(spw): return CatBoostClassifier(iterations=200 if ARGS.smoke else 800, learning_rate=0.06, depth=6, l2_leaf_reg=3, thread_count=THREADS, verbose=0, random_seed=SEED, early_stopping_rounds=50, scale_pos_weight=spw, allow_writing_files=False)
 if emb_used is not None:
     d, X, DEV, TEST, GOLD = emb_used; extra_name = "PC1-64 of Bio_ClinicalBERT (variant S)"
     def extra(tr_mask, ap_mask):  # PCA fit inside the training mask
@@ -101,7 +106,8 @@ for weighted in [False, True]:
     if weighted:
         v2 = {"oof": metrics(y[DEV], pc[DEV]), "test": metrics(y[TEST], sigmoid(logit(pt) - np.log(spw)), subj[TEST], REPS)}; res["augmented"]["variants"]["weighted+corrected"] = v2
         preds["oof"]["aug|FS-B+notes|weighted+corrected"] = pd.Series(pc[DEV], index=d.hadm_id[DEV]); preds["test"]["aug|FS-B+notes|weighted+corrected"] = pd.Series(sigmoid(logit(pt) - np.log(spw)), index=d.hadm_id[TEST]); preds["gold"]["aug|FS-B+notes|weighted+corrected"] = pd.Series(sigmoid(logit(pg) - np.log(spw)), index=d.hadm_id[GOLD])
-    m.save_model(f"models/run_2026-09-19/aug_FS-B_notes_{nm}.cbm"); log(f"augmented {nm} OOF AUROC {v['oof']['auroc']:.4f} TEST AUROC {v['test']['auroc']:.4f}")
+    _mdir = PREDDIR if ARGS.smoke else "models/run_2026-09-19"   # smoke artifacts stay in scratch
+    m.save_model(f"{_mdir}/aug_FS-B_notes_{nm}{'_SMOKE' if ARGS.smoke else ''}.cbm"); log(f"augmented {nm} OOF AUROC {v['oof']['auroc']:.4f} TEST AUROC {v['test']['auroc']:.4f}")
 for part in ["oof", "test", "gold"]:
     pd.DataFrame(preds[part]).rename_axis("hadm_id").reset_index().to_parquet(f"{PREDDIR}/notes_arm_{part}.parquet", index=False)
-res["runtime_s"] = round(time.time() - t0); json.dump(res, open("docs/run_2026-09-19/results/aim1b_notes_arm.json", "w"), indent=1); log("DONE")
+res["runtime_s"] = round(time.time() - t0); json.dump(res, open(RESULTS, "w"), indent=1); log("DONE")

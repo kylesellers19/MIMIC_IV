@@ -78,7 +78,9 @@ out = "data/processed/gold_holdout_predictions_v1.parquet"; G.to_parquet(out, in
 def sha(p):
     h = hashlib.sha256(); h.update(open(p, "rb").read()); return h.hexdigest()
 lock = {"file": out, "sha256": sha(out), "rows": int(len(G)), "columns": [c for c in G.columns if c != "hadm_id"], "written_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-        "models": {os.path.basename(f): {"sha256": sha(f), "bytes": os.path.getsize(f)} for f in sorted(glob.glob("models/run_2026-09-19/*"))},
+        "models": {os.path.basename(f): {"sha256": sha(f), "bytes": os.path.getsize(f)}
+                   for f in sorted(glob.glob("models/run_2026-09-19/*")) if "_SMOKE" not in f},
+        "excluded_from_manifest": [os.path.basename(f) for f in sorted(glob.glob("models/run_2026-09-19/*")) if "_SMOKE" in f],
         "prediction_files": {os.path.basename(f): sha(f) for f in sorted(glob.glob(f"{PREDDIR}/*_gold.parquet"))}}
 json.dump(lock, open(f"{R}/locked_predictions.json", "w"), indent=1); json.dump(res, open(f"{R}/aim1b_fusion.json", "w"), indent=1)
 L = ["# Aim 1b — locked GOLD_HOLDOUT predictions (run_2026-09-19, Phase 9.2)\n", f"Produced by `scripts/run0919_fusion_lock.py`; hashes in `docs/run_2026-09-19/results/locked_predictions.json`.\n",

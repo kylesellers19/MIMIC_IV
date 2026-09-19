@@ -1,0 +1,17 @@
+{
+ "device": "cpu",
+ "n": 200,
+ "tokens": 613456,
+ "seconds": 107.7,
+ "tokens_per_s": 5694.0,
+ "seconds_per_admission": 0.539,
+ "projected_hours": {
+  "8000": 1.2,
+  "12000": 1.8,
+  "20000": 2.99,
+  "30000": 4.49,
+  "60000": 8.98
+ },
+ "max_admissions_in_budget": 33414,
+ "chosen_subsample": 33414
+}

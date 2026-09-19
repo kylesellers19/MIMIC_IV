@@ -1,0 +1,3199 @@
+{
+ "windows": {
+  "365/30": {
+   "overall_pct": {
+    "ALT": 73.11,
+    "AST": 72.57,
+    "HbA1c": 27.27,
+    "Triglycerides": 27.47,
+    "HDL": 26.46,
+    "Platelets": 98.75,
+    "Glucose": 97.52,
+    "any_imaging": 93.53,
+    "liver_imaging": 37.06
+   },
+   "smd_code_pos_vs_neg": {
+    "ALT": 0.54,
+    "AST": 0.55,
+    "HbA1c": 0.377,
+    "Triglycerides": 0.288,
+    "HDL": 0.24,
+    "Platelets": 0.068,
+    "Glucose": 0.089,
+    "any_imaging": 0.123,
+    "liver_imaging": 0.736
+   },
+   "by_race": {
+    "AMERICAN INDIAN/ALASKA NATIVE": {
+     "n": 764,
+     "ALT": {
+      "pct": 75.3,
+      "smd_vs_rest": 0.049
+     },
+     "AST": {
+      "pct": 75.7,
+      "smd_vs_rest": 0.071
+     },
+     "HbA1c": {
+      "pct": 26.4,
+      "smd_vs_rest": -0.019
+     },
+     "Triglycerides": {
+      "pct": 27.7,
+      "smd_vs_rest": 0.006
+     },
+     "HDL": {
+      "pct": 26.3,
+      "smd_vs_rest": -0.003
+     },
+     "Platelets": {
+      "pct": 98.8,
+      "smd_vs_rest": 0.007
+     },
+     "Glucose": {
+      "pct": 97.5,
+      "smd_vs_rest": -0.0
+     },
+     "any_imaging": {
+      "pct": 92.1,
+      "smd_vs_rest": -0.054
+     },
+     "liver_imaging": {
+      "pct": 41.0,
+      "smd_vs_rest": 0.08
+     }
+    },
+    "ASIAN": {
+     "n": 4650,
+     "ALT": {
+      "pct": 72.7,
+      "smd_vs_rest": -0.009
+     },
+     "AST": {
+      "pct": 71.7,
+      "smd_vs_rest": -0.02
+     },
+     "HbA1c": {
+      "pct": 27.8,
+      "smd_vs_rest": 0.013
+     },
+     "Triglycerides": {
+      "pct": 32.2,
+      "smd_vs_rest": 0.104
+     },
+     "HDL": {
+      "pct": 30.8,
+      "smd_vs_rest": 0.097
+     },
+     "Platelets": {
+      "pct": 98.2,
+      "smd_vs_rest": -0.049
+     },
+     "Glucose": {
+      "pct": 95.8,
+      "smd_vs_rest": -0.096
+     },
+     "any_imaging": {
+      "pct": 90.4,
+      "smd_vs_rest": -0.118
+     },
+     "liver_imaging": {
+      "pct": 38.7,
+      "smd_vs_rest": 0.035
+     }
+    },
+    "ASIAN - ASIAN INDIAN": {
+     "n": 977,
+     "ALT": {
+      "pct": 76.5,
+      "smd_vs_rest": 0.077
+     },
+     "AST": {
+      "pct": 76.3,
+      "smd_vs_rest": 0.085
+     },
+     "HbA1c": {
+      "pct": 30.8,
+      "smd_vs_rest": 0.078
+     },
+     "Triglycerides": {
+      "pct": 28.1,
+      "smd_vs_rest": 0.015
+     },
+     "HDL": {
+      "pct": 25.5,
+      "smd_vs_rest": -0.022
+     },
+     "Platelets": {
+      "pct": 98.4,
+      "smd_vs_rest": -0.033
+     },
+     "Glucose": {
+      "pct": 96.8,
+      "smd_vs_rest": -0.042
+     },
+     "any_imaging": {
+      "pct": 93.2,
+      "smd_vs_rest": -0.012
+     },
+     "liver_imaging": {
+      "pct": 35.3,
+      "smd_vs_rest": -0.036
+     }
+    },
+    "ASIAN - CHINESE": {
+     "n": 4693,
+     "ALT": {
+      "pct": 84.1,
+      "smd_vs_rest": 0.272
+     },
+     "AST": {
+      "pct": 82.3,
+      "smd_vs_rest": 0.238
+     },
+     "HbA1c": {
+      "pct": 46.5,
+      "smd_vs_rest": 0.412
+     },
+     "Triglycerides": {
+      "pct": 48.2,
+      "smd_vs_rest": 0.444
+     },
+     "HDL": {
+      "pct": 47.5,
+      "smd_vs_rest": 0.453
+     },
+     "Platelets": {
+      "pct": 99.4,
+      "smd_vs_rest": 0.069
+     },
+     "Glucose": {
+      "pct": 97.5,
+      "smd_vs_rest": 0.002
+     },
+     "any_imaging": {
+      "pct": 94.9,
+      "smd_vs_rest": 0.06
+     },
+     "liver_imaging": {
+      "pct": 46.7,
+      "smd_vs_rest": 0.199
+     }
+    },
+    "ASIAN - KOREAN": {
+     "n": 373,
+     "ALT": {
+      "pct": 75.3,
+      "smd_vs_rest": 0.051
+     },
+     "AST": {
+      "pct": 75.1,
+      "smd_vs_rest": 0.057
+     },
+     "HbA1c": {
+      "pct": 22.3,
+      "smd_vs_rest": -0.116
+     },
+     "Triglycerides": {
+      "pct": 27.1,
+      "smd_vs_rest": -0.009
+     },
+     "HDL": {
+      "pct": 26.0,
+      "smd_vs_rest": -0.01
+     },
+     "Platelets": {
+      "pct": 97.9,
+      "smd_vs_rest": -0.069
+     },
+     "Glucose": {
+      "pct": 94.9,
+      "smd_vs_rest": -0.137
+     },
+     "any_imaging": {
+      "pct": 89.3,
+      "smd_vs_rest": -0.152
+     },
+     "liver_imaging": {
+      "pct": 44.5,
+      "smd_vs_rest": 0.152
+     }
+    },
+    "ASIAN - SOUTH EAST ASIAN": {
+     "n": 1262,
+     "ALT": {
+      "pct": 83.6,
+      "smd_vs_rest": 0.258
+     },
+     "AST": {
+      "pct": 82.9,
+      "smd_vs_rest": 0.251
+     },
+     "HbA1c": {
+      "pct": 28.8,
+      "smd_vs_rest": 0.035
+     },
+     "Triglycerides": {
+      "pct": 27.2,
+      "smd_vs_rest": -0.007
+     },
+     "HDL": {
+      "pct": 25.8,
+      "smd_vs_rest": -0.014
+     },
+     "Platelets": {
+      "pct": 99.8,
+      "smd_vs_rest": 0.131
+     },
+     "Glucose": {
+      "pct": 98.9,
+      "smd_vs_rest": 0.104
+     },
+     "any_imaging": {
+      "pct": 93.3,
+      "smd_vs_rest": -0.011
+     },
+     "liver_imaging": {
+      "pct": 50.4,
+      "smd_vs_rest": 0.272
+     }
+    },
+    "BLACK/AFRICAN": {
+     "n": 2015,
+     "ALT": {
+      "pct": 69.2,
+      "smd_vs_rest": -0.086
+     },
+     "AST": {
+      "pct": 69.2,
+      "smd_vs_rest": -0.074
+     },
+     "HbA1c": {
+      "pct": 25.9,
+      "smd_vs_rest": -0.032
+     },
+     "Triglycerides": {
+      "pct": 20.8,
+      "smd_vs_rest": -0.156
+     },
+     "HDL": {
+      "pct": 20.4,
+      "smd_vs_rest": -0.143
+     },
+     "Platelets": {
+      "pct": 98.7,
+      "smd_vs_rest": -0.004
+     },
+     "Glucose": {
+      "pct": 97.0,
+      "smd_vs_rest": -0.03
+     },
+     "any_imaging": {
+      "pct": 92.0,
+      "smd_vs_rest": -0.061
+     },
+     "liver_imaging": {
+      "pct": 32.6,
+      "smd_vs_rest": -0.094
+     }
+    },
+    "BLACK/AFRICAN AMERICAN": {
+     "n": 49641,
+     "ALT": {
+      "pct": 75.2,
+      "smd_vs_rest": 0.055
+     },
+     "AST": {
+      "pct": 74.7,
+      "smd_vs_rest": 0.056
+     },
+     "HbA1c": {
+      "pct": 37.7,
+      "smd_vs_rest": 0.26
+     },
+     "Triglycerides": {
+      "pct": 32.1,
+      "smd_vs_rest": 0.118
+     },
+     "HDL": {
+      "pct": 32.8,
+      "smd_vs_rest": 0.161
+     },
+     "Platelets": {
+      "pct": 98.8,
+      "smd_vs_rest": 0.009
+     },
+     "Glucose": {
+      "pct": 97.8,
+      "smd_vs_rest": 0.023
+     },
+     "any_imaging": {
+      "pct": 94.9,
+      "smd_vs_rest": 0.066
+     },
+     "liver_imaging": {
+      "pct": 35.4,
+      "smd_vs_rest": -0.04
+     }
+    },
+    "BLACK/CAPE VERDEAN": {
+     "n": 3987,
+     "ALT": {
+      "pct": 78.4,
+      "smd_vs_rest": 0.124
+     },
+     "AST": {
+      "pct": 78.1,
+      "smd_vs_rest": 0.13
+     },
+     "HbA1c": {
+      "pct": 36.1,
+      "smd_vs_rest": 0.193
+     },
+     "Triglycerides": {
+      "pct": 43.8,
+      "smd_vs_rest": 0.351
+     },
+     "HDL": {
+      "pct": 42.8,
+      "smd_vs_rest": 0.352
+     },
+     "Platelets": {
+      "pct": 99.2,
+      "smd_vs_rest": 0.042
+     },
+     "Glucose": {
+      "pct": 97.9,
+      "smd_vs_rest": 0.024
+     },
+     "any_imaging": {
+      "pct": 95.2,
+      "smd_vs_rest": 0.072
+     },
+     "liver_imaging": {
+      "pct": 40.4,
+      "smd_vs_rest": 0.068
+     }
+    },
+    "BLACK/CARIBBEAN ISLAND": {
+     "n": 2402,
+     "ALT": {
+      "pct": 78.0,
+      "smd_vs_rest": 0.114
+     },
+     "AST": {
+      "pct": 77.7,
+      "smd_vs_rest": 0.119
+     },
+     "HbA1c": {
+      "pct": 35.2,
+      "smd_vs_rest": 0.173
+     },
+     "Triglycerides": {
+      "pct": 29.1,
+      "smd_vs_rest": 0.036
+     },
+     "HDL": {
+      "pct": 28.7,
+      "smd_vs_rest": 0.051
+     },
+     "Platelets": {
+      "pct": 99.1,
+      "smd_vs_rest": 0.033
+     },
+     "Glucose": {
+      "pct": 98.1,
+      "smd_vs_rest": 0.042
+     },
+     "any_imaging": {
+      "pct": 94.3,
+      "smd_vs_rest": 0.032
+     },
+     "liver_imaging": {
+      "pct": 37.8,
+      "smd_vs_rest": 0.015
+     }
+    },
+    "HISPANIC OR LATINO": {
+     "n": 6169,
+     "ALT": {
+      "pct": 73.1,
+      "smd_vs_rest": -0.001
+     },
+     "AST": {
+      "pct": 72.4,
+      "smd_vs_rest": -0.004
+     },
+     "HbA1c": {
+      "pct": 29.7,
+      "smd_vs_rest": 0.054
+     },
+     "Triglycerides": {
+      "pct": 32.4,
+      "smd_vs_rest": 0.109
+     },
+     "HDL": {
+      "pct": 33.1,
+      "smd_vs_rest": 0.148
+     },
+     "Platelets": {
+      "pct": 98.6,
+      "smd_vs_rest": -0.013
+     },
+     "Glucose": {
+      "pct": 97.1,
+      "smd_vs_rest": -0.026
+     },
+     "any_imaging": {
+      "pct": 95.7,
+      "smd_vs_rest": 0.096
+     },
+     "liver_imaging": {
+      "pct": 40.1,
+      "smd_vs_rest": 0.063
+     }
+    },
+    "HISPANIC/LATINO - CENTRAL AMERICAN": {
+     "n": 382,
+     "ALT": {
+      "pct": 78.0,
+      "smd_vs_rest": 0.114
+     },
+     "AST": {
+      "pct": 77.7,
+      "smd_vs_rest": 0.12
+     },
+     "HbA1c": {
+      "pct": 39.0,
+      "smd_vs_rest": 0.252
+     },
+     "Triglycerides": {
+      "pct": 29.6,
+      "smd_vs_rest": 0.047
+     },
+     "HDL": {
+      "pct": 29.3,
+      "smd_vs_rest": 0.064
+     },
+     "Platelets": {
+      "pct": 98.4,
+      "smd_vs_rest": -0.027
+     },
+     "Glucose": {
+      "pct": 97.1,
+      "smd_vs_rest": -0.024
+     },
+     "any_imaging": {
+      "pct": 94.8,
+      "smd_vs_rest": 0.053
+     },
+     "liver_imaging": {
+      "pct": 49.7,
+      "smd_vs_rest": 0.258
+     }
+    },
+    "HISPANIC/LATINO - COLUMBIAN": {
+     "n": 506,
+     "ALT": {
+      "pct": 74.3,
+      "smd_vs_rest": 0.027
+     },
+     "AST": {
+      "pct": 74.1,
+      "smd_vs_rest": 0.035
+     },
+     "HbA1c": {
+      "pct": 35.0,
+      "smd_vs_rest": 0.167
+     },
+     "Triglycerides": {
+      "pct": 34.2,
+      "smd_vs_rest": 0.146
+     },
+     "HDL": {
+      "pct": 34.8,
+      "smd_vs_rest": 0.182
+     },
+     "Platelets": {
+      "pct": 98.0,
+      "smd_vs_rest": -0.058
+     },
+     "Glucose": {
+      "pct": 96.0,
+      "smd_vs_rest": -0.083
+     },
+     "any_imaging": {
+      "pct": 94.1,
+      "smd_vs_rest": 0.022
+     },
+     "liver_imaging": {
+      "pct": 38.1,
+      "smd_vs_rest": 0.022
+     }
+    },
+    "HISPANIC/LATINO - CUBAN": {
+     "n": 428,
+     "ALT": {
+      "pct": 73.6,
+      "smd_vs_rest": 0.011
+     },
+     "AST": {
+      "pct": 72.7,
+      "smd_vs_rest": 0.002
+     },
+     "HbA1c": {
+      "pct": 35.0,
+      "smd_vs_rest": 0.169
+     },
+     "Triglycerides": {
+      "pct": 30.4,
+      "smd_vs_rest": 0.064
+     },
+     "HDL": {
+      "pct": 28.0,
+      "smd_vs_rest": 0.035
+     },
+     "Platelets": {
+      "pct": 99.1,
+      "smd_vs_rest": 0.03
+     },
+     "Glucose": {
+      "pct": 97.9,
+      "smd_vs_rest": 0.026
+     },
+     "any_imaging": {
+      "pct": 96.0,
+      "smd_vs_rest": 0.113
+     },
+     "liver_imaging": {
+      "pct": 39.0,
+      "smd_vs_rest": 0.04
+     }
+    },
+    "HISPANIC/LATINO - DOMINICAN": {
+     "n": 3610,
+     "ALT": {
+      "pct": 73.9,
+      "smd_vs_rest": 0.018
+     },
+     "AST": {
+      "pct": 73.3,
+      "smd_vs_rest": 0.017
+     },
+     "HbA1c": {
+      "pct": 40.9,
+      "smd_vs_rest": 0.293
+     },
+     "Triglycerides": {
+      "pct": 34.2,
+      "smd_vs_rest": 0.148
+     },
+     "HDL": {
+      "pct": 33.4,
+      "smd_vs_rest": 0.154
+     },
+     "Platelets": {
+      "pct": 99.1,
+      "smd_vs_rest": 0.03
+     },
+     "Glucose": {
+      "pct": 98.1,
+      "smd_vs_rest": 0.039
+     },
+     "any_imaging": {
+      "pct": 94.3,
+      "smd_vs_rest": 0.033
+     },
+     "liver_imaging": {
+      "pct": 39.5,
+      "smd_vs_rest": 0.051
+     }
+    },
+    "HISPANIC/LATINO - GUATEMALAN": {
+     "n": 1179,
+     "ALT": {
+      "pct": 73.3,
+      "smd_vs_rest": 0.004
+     },
+     "AST": {
+      "pct": 72.9,
+      "smd_vs_rest": 0.008
+     },
+     "HbA1c": {
+      "pct": 27.7,
+      "smd_vs_rest": 0.009
+     },
+     "Triglycerides": {
+      "pct": 23.1,
+      "smd_vs_rest": -0.102
+     },
+     "HDL": {
+      "pct": 21.6,
+      "smd_vs_rest": -0.114
+     },
+     "Platelets": {
+      "pct": 98.3,
+      "smd_vs_rest": -0.037
+     },
+     "Glucose": {
+      "pct": 96.5,
+      "smd_vs_rest": -0.059
+     },
+     "any_imaging": {
+      "pct": 94.9,
+      "smd_vs_rest": 0.059
+     },
+     "liver_imaging": {
+      "pct": 46.4,
+      "smd_vs_rest": 0.191
+     }
+    },
+    "HISPANIC/LATINO - HONDURAN": {
+     "n": 425,
+     "ALT": {
+      "pct": 79.8,
+      "smd_vs_rest": 0.157
+     },
+     "AST": {
+      "pct": 79.1,
+      "smd_vs_rest": 0.152
+     },
+     "HbA1c": {
+      "pct": 35.8,
+      "smd_vs_rest": 0.184
+     },
+     "Triglycerides": {
+      "pct": 31.5,
+      "smd_vs_rest": 0.089
+     },
+     "HDL": {
+      "pct": 30.4,
+      "smd_vs_rest": 0.086
+     },
+     "Platelets": {
+      "pct": 98.4,
+      "smd_vs_rest": -0.033
+     },
+     "Glucose": {
+      "pct": 98.1,
+      "smd_vs_rest": 0.041
+     },
+     "any_imaging": {
+      "pct": 98.6,
+      "smd_vs_rest": 0.262
+     },
+     "liver_imaging": {
+      "pct": 41.4,
+      "smd_vs_rest": 0.089
+     }
+    },
+    "HISPANIC/LATINO - MEXICAN": {
+     "n": 511,
+     "ALT": {
+      "pct": 65.8,
+      "smd_vs_rest": -0.16
+     },
+     "AST": {
+      "pct": 65.8,
+      "smd_vs_rest": -0.148
+     },
+     "HbA1c": {
+      "pct": 27.6,
+      "smd_vs_rest": 0.007
+     },
+     "Triglycerides": {
+      "pct": 23.3,
+      "smd_vs_rest": -0.096
+     },
+     "HDL": {
+      "pct": 22.3,
+      "smd_vs_rest": -0.097
+     },
+     "Platelets": {
+      "pct": 97.8,
+      "smd_vs_rest": -0.07
+     },
+     "Glucose": {
+      "pct": 95.9,
+      "smd_vs_rest": -0.091
+     },
+     "any_imaging": {
+      "pct": 92.4,
+      "smd_vs_rest": -0.046
+     },
+     "liver_imaging": {
+      "pct": 37.4,
+      "smd_vs_rest": 0.007
+     }
+    },
+    "HISPANIC/LATINO - PUERTO RICAN": {
+     "n": 6820,
+     "ALT": {
+      "pct": 76.4,
+      "smd_vs_rest": 0.077
+     },
+     "AST": {
+      "pct": 76.2,
+      "smd_vs_rest": 0.084
+     },
+     "HbA1c": {
+      "pct": 38.0,
+      "smd_vs_rest": 0.234
+     },
+     "Triglycerides": {
+      "pct": 32.5,
+      "smd_vs_rest": 0.112
+     },
+     "HDL": {
+      "pct": 32.6,
+      "smd_vs_rest": 0.137
+     },
+     "Platelets": {
+      "pct": 98.8,
+      "smd_vs_rest": 0.002
+     },
+     "Glucose": {
+      "pct": 97.9,
+      "smd_vs_rest": 0.024
+     },
+     "any_imaging": {
+      "pct": 95.1,
+      "smd_vs_rest": 0.068
+     },
+     "liver_imaging": {
+      "pct": 43.9,
+      "smd_vs_rest": 0.143
+     }
+    },
+    "HISPANIC/LATINO - SALVADORAN": {
+     "n": 729,
+     "ALT": {
+      "pct": 73.3,
+      "smd_vs_rest": 0.003
+     },
+     "AST": {
+      "pct": 73.4,
+      "smd_vs_rest": 0.019
+     },
+     "HbA1c": {
+      "pct": 24.3,
+      "smd_vs_rest": -0.068
+     },
+     "Triglycerides": {
+      "pct": 28.0,
+      "smd_vs_rest": 0.012
+     },
+     "HDL": {
+      "pct": 27.4,
+      "smd_vs_rest": 0.022
+     },
+     "Platelets": {
+      "pct": 98.6,
+      "smd_vs_rest": -0.011
+     },
+     "Glucose": {
+      "pct": 97.0,
+      "smd_vs_rest": -0.033
+     },
+     "any_imaging": {
+      "pct": 96.0,
+      "smd_vs_rest": 0.112
+     },
+     "liver_imaging": {
+      "pct": 47.5,
+      "smd_vs_rest": 0.212
+     }
+    },
+    "MULTIPLE RACE/ETHNICITY": {
+     "n": 418,
+     "ALT": {
+      "pct": 65.1,
+      "smd_vs_rest": -0.175
+     },
+     "AST": {
+      "pct": 65.1,
+      "smd_vs_rest": -0.163
+     },
+     "HbA1c": {
+      "pct": 23.0,
+      "smd_vs_rest": -0.099
+     },
+     "Triglycerides": {
+      "pct": 30.4,
+      "smd_vs_rest": 0.064
+     },
+     "HDL": {
+      "pct": 29.9,
+      "smd_vs_rest": 0.077
+     },
+     "Platelets": {
+      "pct": 97.6,
+      "smd_vs_rest": -0.086
+     },
+     "Glucose": {
+      "pct": 94.7,
+      "smd_vs_rest": -0.145
+     },
+     "any_imaging": {
+      "pct": 91.9,
+      "smd_vs_rest": -0.064
+     },
+     "liver_imaging": {
+      "pct": 32.1,
+      "smd_vs_rest": -0.105
+     }
+    },
+    "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER": {
+     "n": 317,
+     "ALT": {
+      "pct": 74.1,
+      "smd_vs_rest": 0.023
+     },
+     "AST": {
+      "pct": 74.1,
+      "smd_vs_rest": 0.035
+     },
+     "HbA1c": {
+      "pct": 21.8,
+      "smd_vs_rest": -0.128
+     },
+     "Triglycerides": {
+      "pct": 18.6,
+      "smd_vs_rest": -0.212
+     },
+     "HDL": {
+      "pct": 14.8,
+      "smd_vs_rest": -0.291
+     },
+     "Platelets": {
+      "pct": 96.8,
+      "smd_vs_rest": -0.13
+     },
+     "Glucose": {
+      "pct": 94.6,
+      "smd_vs_rest": -0.149
+     },
+     "any_imaging": {
+      "pct": 89.0,
+      "smd_vs_rest": -0.162
+     },
+     "liver_imaging": {
+      "pct": 31.5,
+      "smd_vs_rest": -0.116
+     }
+    },
+    "OTHER": {
+     "n": 12528,
+     "ALT": {
+      "pct": 69.8,
+      "smd_vs_rest": -0.077
+     },
+     "AST": {
+      "pct": 69.1,
+      "smd_vs_rest": -0.078
+     },
+     "HbA1c": {
+      "pct": 27.3,
+      "smd_vs_rest": 0.002
+     },
+     "Triglycerides": {
+      "pct": 25.1,
+      "smd_vs_rest": -0.055
+     },
+     "HDL": {
+      "pct": 24.4,
+      "smd_vs_rest": -0.049
+     },
+     "Platelets": {
+      "pct": 98.1,
+      "smd_vs_rest": -0.053
+     },
+     "Glucose": {
+      "pct": 96.1,
+      "smd_vs_rest": -0.081
+     },
+     "any_imaging": {
+      "pct": 91.4,
+      "smd_vs_rest": -0.083
+     },
+     "liver_imaging": {
+      "pct": 34.7,
+      "smd_vs_rest": -0.051
+     }
+    },
+    "PATIENT DECLINED TO ANSWER": {
+     "n": 1523,
+     "ALT": {
+      "pct": 66.3,
+      "smd_vs_rest": -0.149
+     },
+     "AST": {
+      "pct": 65.5,
+      "smd_vs_rest": -0.153
+     },
+     "HbA1c": {
+      "pct": 26.8,
+      "smd_vs_rest": -0.011
+     },
+     "Triglycerides": {
+      "pct": 26.5,
+      "smd_vs_rest": -0.023
+     },
+     "HDL": {
+      "pct": 24.4,
+      "smd_vs_rest": -0.047
+     },
+     "Platelets": {
+      "pct": 98.2,
+      "smd_vs_rest": -0.043
+     },
+     "Glucose": {
+      "pct": 94.6,
+      "smd_vs_rest": -0.153
+     },
+     "any_imaging": {
+      "pct": 90.2,
+      "smd_vs_rest": -0.122
+     },
+     "liver_imaging": {
+      "pct": 32.5,
+      "smd_vs_rest": -0.096
+     }
+    },
+    "PORTUGUESE": {
+     "n": 1383,
+     "ALT": {
+      "pct": 79.5,
+      "smd_vs_rest": 0.15
+     },
+     "AST": {
+      "pct": 79.6,
+      "smd_vs_rest": 0.166
+     },
+     "HbA1c": {
+      "pct": 24.6,
+      "smd_vs_rest": -0.061
+     },
+     "Triglycerides": {
+      "pct": 22.8,
+      "smd_vs_rest": -0.107
+     },
+     "HDL": {
+      "pct": 21.0,
+      "smd_vs_rest": -0.128
+     },
+     "Platelets": {
+      "pct": 99.6,
+      "smd_vs_rest": 0.09
+     },
+     "Glucose": {
+      "pct": 98.4,
+      "smd_vs_rest": 0.064
+     },
+     "any_imaging": {
+      "pct": 95.0,
+      "smd_vs_rest": 0.064
+     },
+     "liver_imaging": {
+      "pct": 50.6,
+      "smd_vs_rest": 0.277
+     }
+    },
+    "SOUTH AMERICAN": {
+     "n": 443,
+     "ALT": {
+      "pct": 73.6,
+      "smd_vs_rest": 0.011
+     },
+     "AST": {
+      "pct": 72.0,
+      "smd_vs_rest": -0.013
+     },
+     "HbA1c": {
+      "pct": 32.3,
+      "smd_vs_rest": 0.11
+     },
+     "Triglycerides": {
+      "pct": 29.1,
+      "smd_vs_rest": 0.037
+     },
+     "HDL": {
+      "pct": 30.5,
+      "smd_vs_rest": 0.089
+     },
+     "Platelets": {
+      "pct": 98.2,
+      "smd_vs_rest": -0.045
+     },
+     "Glucose": {
+      "pct": 96.8,
+      "smd_vs_rest": -0.041
+     },
+     "any_imaging": {
+      "pct": 94.4,
+      "smd_vs_rest": 0.035
+     },
+     "liver_imaging": {
+      "pct": 35.2,
+      "smd_vs_rest": -0.038
+     }
+    },
+    "UNABLE TO OBTAIN": {
+     "n": 1392,
+     "ALT": {
+      "pct": 65.1,
+      "smd_vs_rest": -0.175
+     },
+     "AST": {
+      "pct": 64.7,
+      "smd_vs_rest": -0.17
+     },
+     "HbA1c": {
+      "pct": 24.4,
+      "smd_vs_rest": -0.067
+     },
+     "Triglycerides": {
+      "pct": 18.9,
+      "smd_vs_rest": -0.205
+     },
+     "HDL": {
+      "pct": 14.8,
+      "smd_vs_rest": -0.292
+     },
+     "Platelets": {
+      "pct": 97.6,
+      "smd_vs_rest": -0.089
+     },
+     "Glucose": {
+      "pct": 94.3,
+      "smd_vs_rest": -0.163
+     },
+     "any_imaging": {
+      "pct": 90.0,
+      "smd_vs_rest": -0.129
+     },
+     "liver_imaging": {
+      "pct": 30.1,
+      "smd_vs_rest": -0.148
+     }
+    },
+    "UNKNOWN": {
+     "n": 9726,
+     "ALT": {
+      "pct": 67.5,
+      "smd_vs_rest": -0.126
+     },
+     "AST": {
+      "pct": 67.5,
+      "smd_vs_rest": -0.114
+     },
+     "HbA1c": {
+      "pct": 25.0,
+      "smd_vs_rest": -0.052
+     },
+     "Triglycerides": {
+      "pct": 19.8,
+      "smd_vs_rest": -0.186
+     },
+     "HDL": {
+      "pct": 13.8,
+      "smd_vs_rest": -0.326
+     },
+     "Platelets": {
+      "pct": 97.9,
+      "smd_vs_rest": -0.066
+     },
+     "Glucose": {
+      "pct": 95.7,
+      "smd_vs_rest": -0.105
+     },
+     "any_imaging": {
+      "pct": 88.2,
+      "smd_vs_rest": -0.191
+     },
+     "liver_imaging": {
+      "pct": 30.6,
+      "smd_vs_rest": -0.14
+     }
+    },
+    "WHITE": {
+     "n": 240958,
+     "ALT": {
+      "pct": 72.5,
+      "smd_vs_rest": -0.042
+     },
+     "AST": {
+      "pct": 71.9,
+      "smd_vs_rest": -0.043
+     },
+     "HbA1c": {
+      "pct": 23.8,
+      "smd_vs_rest": -0.218
+     },
+     "Triglycerides": {
+      "pct": 25.7,
+      "smd_vs_rest": -0.108
+     },
+     "HDL": {
+      "pct": 24.5,
+      "smd_vs_rest": -0.126
+     },
+     "Platelets": {
+      "pct": 98.8,
+      "smd_vs_rest": 0.01
+     },
+     "Glucose": {
+      "pct": 97.6,
+      "smd_vs_rest": 0.024
+     },
+     "any_imaging": {
+      "pct": 93.4,
+      "smd_vs_rest": -0.013
+     },
+     "liver_imaging": {
+      "pct": 36.9,
+      "smd_vs_rest": -0.008
+     }
+    },
+    "WHITE - BRAZILIAN": {
+     "n": 950,
+     "ALT": {
+      "pct": 72.0,
+      "smd_vs_rest": -0.025
+     },
+     "AST": {
+      "pct": 71.7,
+      "smd_vs_rest": -0.02
+     },
+     "HbA1c": {
+      "pct": 18.2,
+      "smd_vs_rest": -0.218
+     },
+     "Triglycerides": {
+      "pct": 18.5,
+      "smd_vs_rest": -0.214
+     },
+     "HDL": {
+      "pct": 17.9,
+      "smd_vs_rest": -0.208
+     },
+     "Platelets": {
+      "pct": 98.2,
+      "smd_vs_rest": -0.044
+     },
+     "Glucose": {
+      "pct": 95.5,
+      "smd_vs_rest": -0.111
+     },
+     "any_imaging": {
+      "pct": 94.4,
+      "smd_vs_rest": 0.037
+     },
+     "liver_imaging": {
+      "pct": 48.3,
+      "smd_vs_rest": 0.23
+     }
+    },
+    "WHITE - EASTERN EUROPEAN": {
+     "n": 1045,
+     "ALT": {
+      "pct": 74.4,
+      "smd_vs_rest": 0.031
+     },
+     "AST": {
+      "pct": 73.6,
+      "smd_vs_rest": 0.023
+     },
+     "HbA1c": {
+      "pct": 26.7,
+      "smd_vs_rest": -0.013
+     },
+     "Triglycerides": {
+      "pct": 31.8,
+      "smd_vs_rest": 0.095
+     },
+     "HDL": {
+      "pct": 30.9,
+      "smd_vs_rest": 0.099
+     },
+     "Platelets": {
+      "pct": 98.9,
+      "smd_vs_rest": 0.009
+     },
+     "Glucose": {
+      "pct": 97.9,
+      "smd_vs_rest": 0.025
+     },
+     "any_imaging": {
+      "pct": 94.3,
+      "smd_vs_rest": 0.03
+     },
+     "liver_imaging": {
+      "pct": 39.8,
+      "smd_vs_rest": 0.057
+     }
+    },
+    "WHITE - OTHER EUROPEAN": {
+     "n": 7126,
+     "ALT": {
+      "pct": 75.3,
+      "smd_vs_rest": 0.051
+     },
+     "AST": {
+      "pct": 74.8,
+      "smd_vs_rest": 0.051
+     },
+     "HbA1c": {
+      "pct": 28.4,
+      "smd_vs_rest": 0.026
+     },
+     "Triglycerides": {
+      "pct": 27.2,
+      "smd_vs_rest": -0.006
+     },
+     "HDL": {
+      "pct": 26.2,
+      "smd_vs_rest": -0.006
+     },
+     "Platelets": {
+      "pct": 98.8,
+      "smd_vs_rest": 0.004
+     },
+     "Glucose": {
+      "pct": 97.4,
+      "smd_vs_rest": -0.005
+     },
+     "any_imaging": {
+      "pct": 94.1,
+      "smd_vs_rest": 0.025
+     },
+     "liver_imaging": {
+      "pct": 40.4,
+      "smd_vs_rest": 0.07
+     }
+    },
+    "WHITE - RUSSIAN": {
+     "n": 4660,
+     "ALT": {
+      "pct": 79.5,
+      "smd_vs_rest": 0.152
+     },
+     "AST": {
+      "pct": 78.9,
+      "smd_vs_rest": 0.15
+     },
+     "HbA1c": {
+      "pct": 39.4,
+      "smd_vs_rest": 0.263
+     },
+     "Triglycerides": {
+      "pct": 38.5,
+      "smd_vs_rest": 0.238
+     },
+     "HDL": {
+      "pct": 40.2,
+      "smd_vs_rest": 0.299
+     },
+     "Platelets": {
+      "pct": 99.3,
+      "smd_vs_rest": 0.058
+     },
+     "Glucose": {
+      "pct": 99.0,
+      "smd_vs_rest": 0.114
+     },
+     "any_imaging": {
+      "pct": 96.9,
+      "smd_vs_rest": 0.158
+     },
+     "liver_imaging": {
+      "pct": 35.4,
+      "smd_vs_rest": -0.035
+     }
+    }
+   },
+   "by_insurance": {
+    "(missing)": {
+     "n": 5193,
+     "ALT": {
+      "pct": 51.7,
+      "smd_vs_rest": -0.461
+     },
+     "AST": {
+      "pct": 51.6,
+      "smd_vs_rest": -0.449
+     },
+     "HbA1c": {
+      "pct": 14.9,
+      "smd_vs_rest": -0.312
+     },
+     "Triglycerides": {
+      "pct": 15.7,
+      "smd_vs_rest": -0.292
+     },
+     "HDL": {
+      "pct": 14.2,
+      "smd_vs_rest": -0.313
+     },
+     "Platelets": {
+      "pct": 93.9,
+      "smd_vs_rest": -0.264
+     },
+     "Glucose": {
+      "pct": 89.1,
+      "smd_vs_rest": -0.349
+     },
+     "any_imaging": {
+      "pct": 88.2,
+      "smd_vs_rest": -0.189
+     },
+     "liver_imaging": {
+      "pct": 28.6,
+      "smd_vs_rest": -0.183
+     }
+    },
+    "Medicaid": {
+     "n": 63027,
+     "ALT": {
+      "pct": 76.3,
+      "smd_vs_rest": 0.087
+     },
+     "AST": {
+      "pct": 76.0,
+      "smd_vs_rest": 0.093
+     },
+     "HbA1c": {
+      "pct": 28.6,
+      "smd_vs_rest": 0.036
+     },
+     "Triglycerides": {
+      "pct": 26.7,
+      "smd_vs_rest": -0.021
+     },
+     "HDL": {
+      "pct": 25.3,
+      "smd_vs_rest": -0.031
+     },
+     "Platelets": {
+      "pct": 98.6,
+      "smd_vs_rest": -0.02
+     },
+     "Glucose": {
+      "pct": 97.2,
+      "smd_vs_rest": -0.022
+     },
+     "any_imaging": {
+      "pct": 93.5,
+      "smd_vs_rest": -0.001
+     },
+     "liver_imaging": {
+      "pct": 39.4,
+      "smd_vs_rest": 0.058
+     }
+    },
+    "Medicare": {
+     "n": 180507,
+     "ALT": {
+      "pct": 75.4,
+      "smd_vs_rest": 0.1
+     },
+     "AST": {
+      "pct": 74.8,
+      "smd_vs_rest": 0.098
+     },
+     "HbA1c": {
+      "pct": 30.1,
+      "smd_vs_rest": 0.123
+     },
+     "Triglycerides": {
+      "pct": 29.2,
+      "smd_vs_rest": 0.075
+     },
+     "HDL": {
+      "pct": 28.7,
+      "smd_vs_rest": 0.1
+     },
+     "Platelets": {
+      "pct": 99.3,
+      "smd_vs_rest": 0.096
+     },
+     "Glucose": {
+      "pct": 98.7,
+      "smd_vs_rest": 0.152
+     },
+     "any_imaging": {
+      "pct": 94.9,
+      "smd_vs_rest": 0.11
+     },
+     "liver_imaging": {
+      "pct": 35.7,
+      "smd_vs_rest": -0.056
+     }
+    },
+    "No charge": {
+     "n": 73,
+     "ALT": {
+      "pct": 61.6,
+      "smd_vs_rest": -0.247
+     },
+     "AST": {
+      "pct": 60.3,
+      "smd_vs_rest": -0.263
+     },
+     "HbA1c": {
+      "pct": 15.1,
+      "smd_vs_rest": -0.302
+     },
+     "Triglycerides": {
+      "pct": 20.5,
+      "smd_vs_rest": -0.163
+     },
+     "HDL": {
+      "pct": 23.3,
+      "smd_vs_rest": -0.073
+     },
+     "Platelets": {
+      "pct": 95.9,
+      "smd_vs_rest": -0.178
+     },
+     "Glucose": {
+      "pct": 94.5,
+      "smd_vs_rest": -0.154
+     },
+     "any_imaging": {
+      "pct": 93.2,
+      "smd_vs_rest": -0.015
+     },
+     "liver_imaging": {
+      "pct": 35.6,
+      "smd_vs_rest": -0.03
+     }
+    },
+    "Other": {
+     "n": 9970,
+     "ALT": {
+      "pct": 66.9,
+      "smd_vs_rest": -0.14
+     },
+     "AST": {
+      "pct": 66.6,
+      "smd_vs_rest": -0.133
+     },
+     "HbA1c": {
+      "pct": 22.0,
+      "smd_vs_rest": -0.126
+     },
+     "Triglycerides": {
+      "pct": 23.0,
+      "smd_vs_rest": -0.105
+     },
+     "HDL": {
+      "pct": 21.5,
+      "smd_vs_rest": -0.121
+     },
+     "Platelets": {
+      "pct": 98.2,
+      "smd_vs_rest": -0.05
+     },
+     "Glucose": {
+      "pct": 96.0,
+      "smd_vs_rest": -0.089
+     },
+     "any_imaging": {
+      "pct": 91.8,
+      "smd_vs_rest": -0.068
+     },
+     "liver_imaging": {
+      "pct": 36.5,
+      "smd_vs_rest": -0.011
+     }
+    },
+    "Private": {
+     "n": 115222,
+     "ALT": {
+      "pct": 69.3,
+      "smd_vs_rest": -0.122
+     },
+     "AST": {
+      "pct": 68.6,
+      "smd_vs_rest": -0.126
+     },
+     "HbA1c": {
+      "pct": 23.1,
+      "smd_vs_rest": -0.137
+     },
+     "Triglycerides": {
+      "pct": 26.1,
+      "smd_vs_rest": -0.045
+     },
+     "HDL": {
+      "pct": 24.5,
+      "smd_vs_rest": -0.064
+     },
+     "Platelets": {
+      "pct": 98.3,
+      "smd_vs_rest": -0.06
+     },
+     "Glucose": {
+      "pct": 96.3,
+      "smd_vs_rest": -0.107
+     },
+     "any_imaging": {
+      "pct": 91.7,
+      "smd_vs_rest": -0.102
+     },
+     "liver_imaging": {
+      "pct": 38.4,
+      "smd_vs_rest": 0.04
+     }
+    }
+   }
+  },
+  "90/30": {
+   "overall_pct": {
+    "ALT": 65.69,
+    "AST": 65.44,
+    "HbA1c": 18.93,
+    "Triglycerides": 16.09,
+    "HDL": 14.25,
+    "Platelets": 98.18,
+    "Glucose": 96.61,
+    "any_imaging": 91.3,
+    "liver_imaging": 31.57
+   },
+   "smd_code_pos_vs_neg": {
+    "ALT": 0.439,
+    "AST": 0.442,
+    "HbA1c": 0.236,
+    "Triglycerides": 0.183,
+    "HDL": 0.127,
+    "Platelets": -0.1,
+    "Glucose": -0.059,
+    "any_imaging": 0.1,
+    "liver_imaging": 0.605
+   },
+   "by_race": {
+    "AMERICAN INDIAN/ALASKA NATIVE": {
+     "n": 764,
+     "ALT": {
+      "pct": 69.4,
+      "smd_vs_rest": 0.079
+     },
+     "AST": {
+      "pct": 70.0,
+      "smd_vs_rest": 0.098
+     },
+     "HbA1c": {
+      "pct": 19.4,
+      "smd_vs_rest": 0.011
+     },
+     "Triglycerides": {
+      "pct": 17.4,
+      "smd_vs_rest": 0.035
+     },
+     "HDL": {
+      "pct": 14.8,
+      "smd_vs_rest": 0.015
+     },
+     "Platelets": {
+      "pct": 98.4,
+      "smd_vs_rest": 0.019
+     },
+     "Glucose": {
+      "pct": 97.3,
+      "smd_vs_rest": 0.037
+     },
+     "any_imaging": {
+      "pct": 91.0,
+      "smd_vs_rest": -0.012
+     },
+     "liver_imaging": {
+      "pct": 37.4,
+      "smd_vs_rest": 0.124
+     }
+    },
+    "ASIAN": {
+     "n": 4650,
+     "ALT": {
+      "pct": 66.6,
+      "smd_vs_rest": 0.019
+     },
+     "AST": {
+      "pct": 66.1,
+      "smd_vs_rest": 0.013
+     },
+     "HbA1c": {
+      "pct": 18.8,
+      "smd_vs_rest": -0.002
+     },
+     "Triglycerides": {
+      "pct": 18.6,
+      "smd_vs_rest": 0.067
+     },
+     "HDL": {
+      "pct": 16.7,
+      "smd_vs_rest": 0.069
+     },
+     "Platelets": {
+      "pct": 97.8,
+      "smd_vs_rest": -0.026
+     },
+     "Glucose": {
+      "pct": 95.0,
+      "smd_vs_rest": -0.082
+     },
+     "any_imaging": {
+      "pct": 87.8,
+      "smd_vs_rest": -0.117
+     },
+     "liver_imaging": {
+      "pct": 35.0,
+      "smd_vs_rest": 0.074
+     }
+    },
+    "ASIAN - ASIAN INDIAN": {
+     "n": 977,
+     "ALT": {
+      "pct": 70.4,
+      "smd_vs_rest": 0.102
+     },
+     "AST": {
+      "pct": 70.6,
+      "smd_vs_rest": 0.112
+     },
+     "HbA1c": {
+      "pct": 21.5,
+      "smd_vs_rest": 0.064
+     },
+     "Triglycerides": {
+      "pct": 17.9,
+      "smd_vs_rest": 0.049
+     },
+     "HDL": {
+      "pct": 13.7,
+      "smd_vs_rest": -0.016
+     },
+     "Platelets": {
+      "pct": 98.2,
+      "smd_vs_rest": -0.002
+     },
+     "Glucose": {
+      "pct": 95.6,
+      "smd_vs_rest": -0.052
+     },
+     "any_imaging": {
+      "pct": 91.3,
+      "smd_vs_rest": 0.0
+     },
+     "liver_imaging": {
+      "pct": 32.8,
+      "smd_vs_rest": 0.025
+     }
+    },
+    "ASIAN - CHINESE": {
+     "n": 4693,
+     "ALT": {
+      "pct": 74.3,
+      "smd_vs_rest": 0.19
+     },
+     "AST": {
+      "pct": 73.4,
+      "smd_vs_rest": 0.175
+     },
+     "HbA1c": {
+      "pct": 25.7,
+      "smd_vs_rest": 0.166
+     },
+     "Triglycerides": {
+      "pct": 22.3,
+      "smd_vs_rest": 0.16
+     },
+     "HDL": {
+      "pct": 20.9,
+      "smd_vs_rest": 0.177
+     },
+     "Platelets": {
+      "pct": 98.9,
+      "smd_vs_rest": 0.058
+     },
+     "Glucose": {
+      "pct": 96.4,
+      "smd_vs_rest": -0.01
+     },
+     "any_imaging": {
+      "pct": 92.3,
+      "smd_vs_rest": 0.038
+     },
+     "liver_imaging": {
+      "pct": 39.9,
+      "smd_vs_rest": 0.177
+     }
+    },
+    "ASIAN - KOREAN": {
+     "n": 373,
+     "ALT": {
+      "pct": 72.1,
+      "smd_vs_rest": 0.139
+     },
+     "AST": {
+      "pct": 71.8,
+      "smd_vs_rest": 0.139
+     },
+     "HbA1c": {
+      "pct": 16.4,
+      "smd_vs_rest": -0.068
+     },
+     "Triglycerides": {
+      "pct": 18.0,
+      "smd_vs_rest": 0.05
+     },
+     "HDL": {
+      "pct": 16.4,
+      "smd_vs_rest": 0.058
+     },
+     "Platelets": {
+      "pct": 97.3,
+      "smd_vs_rest": -0.058
+     },
+     "Glucose": {
+      "pct": 93.0,
+      "smd_vs_rest": -0.162
+     },
+     "any_imaging": {
+      "pct": 87.7,
+      "smd_vs_rest": -0.119
+     },
+     "liver_imaging": {
+      "pct": 40.2,
+      "smd_vs_rest": 0.181
+     }
+    },
+    "ASIAN - SOUTH EAST ASIAN": {
+     "n": 1262,
+     "ALT": {
+      "pct": 79.1,
+      "smd_vs_rest": 0.304
+     },
+     "AST": {
+      "pct": 78.7,
+      "smd_vs_rest": 0.299
+     },
+     "HbA1c": {
+      "pct": 18.8,
+      "smd_vs_rest": -0.004
+     },
+     "Triglycerides": {
+      "pct": 16.9,
+      "smd_vs_rest": 0.021
+     },
+     "HDL": {
+      "pct": 14.7,
+      "smd_vs_rest": 0.014
+     },
+     "Platelets": {
+      "pct": 99.6,
+      "smd_vs_rest": 0.137
+     },
+     "Glucose": {
+      "pct": 98.3,
+      "smd_vs_rest": 0.111
+     },
+     "any_imaging": {
+      "pct": 90.6,
+      "smd_vs_rest": -0.023
+     },
+     "liver_imaging": {
+      "pct": 43.7,
+      "smd_vs_rest": 0.252
+     }
+    },
+    "BLACK/AFRICAN": {
+     "n": 2015,
+     "ALT": {
+      "pct": 62.7,
+      "smd_vs_rest": -0.063
+     },
+     "AST": {
+      "pct": 62.9,
+      "smd_vs_rest": -0.054
+     },
+     "HbA1c": {
+      "pct": 18.5,
+      "smd_vs_rest": -0.012
+     },
+     "Triglycerides": {
+      "pct": 14.3,
+      "smd_vs_rest": -0.05
+     },
+     "HDL": {
+      "pct": 13.0,
+      "smd_vs_rest": -0.038
+     },
+     "Platelets": {
+      "pct": 97.9,
+      "smd_vs_rest": -0.023
+     },
+     "Glucose": {
+      "pct": 96.2,
+      "smd_vs_rest": -0.023
+     },
+     "any_imaging": {
+      "pct": 89.8,
+      "smd_vs_rest": -0.052
+     },
+     "liver_imaging": {
+      "pct": 28.7,
+      "smd_vs_rest": -0.062
+     }
+    },
+    "BLACK/AFRICAN AMERICAN": {
+     "n": 49641,
+     "ALT": {
+      "pct": 65.1,
+      "smd_vs_rest": -0.013
+     },
+     "AST": {
+      "pct": 64.9,
+      "smd_vs_rest": -0.013
+     },
+     "HbA1c": {
+      "pct": 23.9,
+      "smd_vs_rest": 0.14
+     },
+     "Triglycerides": {
+      "pct": 17.0,
+      "smd_vs_rest": 0.029
+     },
+     "HDL": {
+      "pct": 16.3,
+      "smd_vs_rest": 0.064
+     },
+     "Platelets": {
+      "pct": 98.0,
+      "smd_vs_rest": -0.018
+     },
+     "Glucose": {
+      "pct": 96.5,
+      "smd_vs_rest": -0.007
+     },
+     "any_imaging": {
+      "pct": 92.1,
+      "smd_vs_rest": 0.034
+     },
+     "liver_imaging": {
+      "pct": 28.1,
+      "smd_vs_rest": -0.087
+     }
+    },
+    "BLACK/CAPE VERDEAN": {
+     "n": 3987,
+     "ALT": {
+      "pct": 67.6,
+      "smd_vs_rest": 0.041
+     },
+     "AST": {
+      "pct": 67.3,
+      "smd_vs_rest": 0.041
+     },
+     "HbA1c": {
+      "pct": 22.5,
+      "smd_vs_rest": 0.089
+     },
+     "Triglycerides": {
+      "pct": 21.5,
+      "smd_vs_rest": 0.14
+     },
+     "HDL": {
+      "pct": 19.5,
+      "smd_vs_rest": 0.143
+     },
+     "Platelets": {
+      "pct": 98.3,
+      "smd_vs_rest": 0.009
+     },
+     "Glucose": {
+      "pct": 96.3,
+      "smd_vs_rest": -0.015
+     },
+     "any_imaging": {
+      "pct": 92.2,
+      "smd_vs_rest": 0.032
+     },
+     "liver_imaging": {
+      "pct": 34.5,
+      "smd_vs_rest": 0.062
+     }
+    },
+    "BLACK/CARIBBEAN ISLAND": {
+     "n": 2402,
+     "ALT": {
+      "pct": 71.2,
+      "smd_vs_rest": 0.12
+     },
+     "AST": {
+      "pct": 70.9,
+      "smd_vs_rest": 0.117
+     },
+     "HbA1c": {
+      "pct": 24.3,
+      "smd_vs_rest": 0.131
+     },
+     "Triglycerides": {
+      "pct": 18.1,
+      "smd_vs_rest": 0.054
+     },
+     "HDL": {
+      "pct": 16.9,
+      "smd_vs_rest": 0.074
+     },
+     "Platelets": {
+      "pct": 98.8,
+      "smd_vs_rest": 0.05
+     },
+     "Glucose": {
+      "pct": 97.2,
+      "smd_vs_rest": 0.035
+     },
+     "any_imaging": {
+      "pct": 91.8,
+      "smd_vs_rest": 0.018
+     },
+     "liver_imaging": {
+      "pct": 32.6,
+      "smd_vs_rest": 0.023
+     }
+    },
+    "HISPANIC OR LATINO": {
+     "n": 6169,
+     "ALT": {
+      "pct": 63.7,
+      "smd_vs_rest": -0.042
+     },
+     "AST": {
+      "pct": 63.2,
+      "smd_vs_rest": -0.047
+     },
+     "HbA1c": {
+      "pct": 19.7,
+      "smd_vs_rest": 0.019
+     },
+     "Triglycerides": {
+      "pct": 17.9,
+      "smd_vs_rest": 0.05
+     },
+     "HDL": {
+      "pct": 17.6,
+      "smd_vs_rest": 0.092
+     },
+     "Platelets": {
+      "pct": 97.8,
+      "smd_vs_rest": -0.025
+     },
+     "Glucose": {
+      "pct": 95.6,
+      "smd_vs_rest": -0.053
+     },
+     "any_imaging": {
+      "pct": 93.4,
+      "smd_vs_rest": 0.079
+     },
+     "liver_imaging": {
+      "pct": 32.0,
+      "smd_vs_rest": 0.009
+     }
+    },
+    "HISPANIC/LATINO - CENTRAL AMERICAN": {
+     "n": 382,
+     "ALT": {
+      "pct": 66.8,
+      "smd_vs_rest": 0.023
+     },
+     "AST": {
+      "pct": 66.8,
+      "smd_vs_rest": 0.028
+     },
+     "HbA1c": {
+      "pct": 24.1,
+      "smd_vs_rest": 0.126
+     },
+     "Triglycerides": {
+      "pct": 11.5,
+      "smd_vs_rest": -0.133
+     },
+     "HDL": {
+      "pct": 11.3,
+      "smd_vs_rest": -0.09
+     },
+     "Platelets": {
+      "pct": 96.9,
+      "smd_vs_rest": -0.085
+     },
+     "Glucose": {
+      "pct": 95.3,
+      "smd_vs_rest": -0.067
+     },
+     "any_imaging": {
+      "pct": 92.9,
+      "smd_vs_rest": 0.061
+     },
+     "liver_imaging": {
+      "pct": 40.3,
+      "smd_vs_rest": 0.183
+     }
+    },
+    "HISPANIC/LATINO - COLUMBIAN": {
+     "n": 506,
+     "ALT": {
+      "pct": 64.2,
+      "smd_vs_rest": -0.031
+     },
+     "AST": {
+      "pct": 64.0,
+      "smd_vs_rest": -0.029
+     },
+     "HbA1c": {
+      "pct": 23.3,
+      "smd_vs_rest": 0.108
+     },
+     "Triglycerides": {
+      "pct": 18.2,
+      "smd_vs_rest": 0.055
+     },
+     "HDL": {
+      "pct": 16.8,
+      "smd_vs_rest": 0.07
+     },
+     "Platelets": {
+      "pct": 96.4,
+      "smd_vs_rest": -0.108
+     },
+     "Glucose": {
+      "pct": 93.9,
+      "smd_vs_rest": -0.129
+     },
+     "any_imaging": {
+      "pct": 90.5,
+      "smd_vs_rest": -0.027
+     },
+     "liver_imaging": {
+      "pct": 30.6,
+      "smd_vs_rest": -0.02
+     }
+    },
+    "HISPANIC/LATINO - CUBAN": {
+     "n": 428,
+     "ALT": {
+      "pct": 65.4,
+      "smd_vs_rest": -0.006
+     },
+     "AST": {
+      "pct": 64.5,
+      "smd_vs_rest": -0.02
+     },
+     "HbA1c": {
+      "pct": 20.8,
+      "smd_vs_rest": 0.047
+     },
+     "Triglycerides": {
+      "pct": 15.7,
+      "smd_vs_rest": -0.012
+     },
+     "HDL": {
+      "pct": 13.3,
+      "smd_vs_rest": -0.027
+     },
+     "Platelets": {
+      "pct": 97.4,
+      "smd_vs_rest": -0.051
+     },
+     "Glucose": {
+      "pct": 96.3,
+      "smd_vs_rest": -0.019
+     },
+     "any_imaging": {
+      "pct": 93.9,
+      "smd_vs_rest": 0.101
+     },
+     "liver_imaging": {
+      "pct": 30.1,
+      "smd_vs_rest": -0.031
+     }
+    },
+    "HISPANIC/LATINO - DOMINICAN": {
+     "n": 3610,
+     "ALT": {
+      "pct": 65.7,
+      "smd_vs_rest": -0.0
+     },
+     "AST": {
+      "pct": 65.2,
+      "smd_vs_rest": -0.005
+     },
+     "HbA1c": {
+      "pct": 25.8,
+      "smd_vs_rest": 0.168
+     },
+     "Triglycerides": {
+      "pct": 18.5,
+      "smd_vs_rest": 0.064
+     },
+     "HDL": {
+      "pct": 16.8,
+      "smd_vs_rest": 0.072
+     },
+     "Platelets": {
+      "pct": 98.2,
+      "smd_vs_rest": 0.001
+     },
+     "Glucose": {
+      "pct": 96.2,
+      "smd_vs_rest": -0.022
+     },
+     "any_imaging": {
+      "pct": 90.8,
+      "smd_vs_rest": -0.017
+     },
+     "liver_imaging": {
+      "pct": 32.8,
+      "smd_vs_rest": 0.027
+     }
+    },
+    "HISPANIC/LATINO - GUATEMALAN": {
+     "n": 1179,
+     "ALT": {
+      "pct": 65.3,
+      "smd_vs_rest": -0.008
+     },
+     "AST": {
+      "pct": 65.2,
+      "smd_vs_rest": -0.004
+     },
+     "HbA1c": {
+      "pct": 20.5,
+      "smd_vs_rest": 0.04
+     },
+     "Triglycerides": {
+      "pct": 13.1,
+      "smd_vs_rest": -0.084
+     },
+     "HDL": {
+      "pct": 11.2,
+      "smd_vs_rest": -0.092
+     },
+     "Platelets": {
+      "pct": 97.8,
+      "smd_vs_rest": -0.028
+     },
+     "Glucose": {
+      "pct": 95.7,
+      "smd_vs_rest": -0.049
+     },
+     "any_imaging": {
+      "pct": 92.5,
+      "smd_vs_rest": 0.046
+     },
+     "liver_imaging": {
+      "pct": 40.7,
+      "smd_vs_rest": 0.192
+     }
+    },
+    "HISPANIC/LATINO - HONDURAN": {
+     "n": 425,
+     "ALT": {
+      "pct": 72.0,
+      "smd_vs_rest": 0.137
+     },
+     "AST": {
+      "pct": 71.3,
+      "smd_vs_rest": 0.126
+     },
+     "HbA1c": {
+      "pct": 23.3,
+      "smd_vs_rest": 0.107
+     },
+     "Triglycerides": {
+      "pct": 16.5,
+      "smd_vs_rest": 0.01
+     },
+     "HDL": {
+      "pct": 14.6,
+      "smd_vs_rest": 0.01
+     },
+     "Platelets": {
+      "pct": 97.9,
+      "smd_vs_rest": -0.021
+     },
+     "Glucose": {
+      "pct": 97.6,
+      "smd_vs_rest": 0.062
+     },
+     "any_imaging": {
+      "pct": 95.3,
+      "smd_vs_rest": 0.16
+     },
+     "liver_imaging": {
+      "pct": 33.2,
+      "smd_vs_rest": 0.034
+     }
+    },
+    "HISPANIC/LATINO - MEXICAN": {
+     "n": 511,
+     "ALT": {
+      "pct": 60.3,
+      "smd_vs_rest": -0.112
+     },
+     "AST": {
+      "pct": 60.3,
+      "smd_vs_rest": -0.107
+     },
+     "HbA1c": {
+      "pct": 18.6,
+      "smd_vs_rest": -0.009
+     },
+     "Triglycerides": {
+      "pct": 13.5,
+      "smd_vs_rest": -0.073
+     },
+     "HDL": {
+      "pct": 12.3,
+      "smd_vs_rest": -0.057
+     },
+     "Platelets": {
+      "pct": 97.1,
+      "smd_vs_rest": -0.073
+     },
+     "Glucose": {
+      "pct": 94.9,
+      "smd_vs_rest": -0.084
+     },
+     "any_imaging": {
+      "pct": 89.8,
+      "smd_vs_rest": -0.051
+     },
+     "liver_imaging": {
+      "pct": 31.5,
+      "smd_vs_rest": -0.001
+     }
+    },
+    "HISPANIC/LATINO - PUERTO RICAN": {
+     "n": 6820,
+     "ALT": {
+      "pct": 67.1,
+      "smd_vs_rest": 0.03
+     },
+     "AST": {
+      "pct": 67.0,
+      "smd_vs_rest": 0.033
+     },
+     "HbA1c": {
+      "pct": 24.6,
+      "smd_vs_rest": 0.141
+     },
+     "Triglycerides": {
+      "pct": 17.4,
+      "smd_vs_rest": 0.036
+     },
+     "HDL": {
+      "pct": 16.5,
+      "smd_vs_rest": 0.062
+     },
+     "Platelets": {
+      "pct": 97.8,
+      "smd_vs_rest": -0.026
+     },
+     "Glucose": {
+      "pct": 96.6,
+      "smd_vs_rest": -0.002
+     },
+     "any_imaging": {
+      "pct": 92.2,
+      "smd_vs_rest": 0.033
+     },
+     "liver_imaging": {
+      "pct": 36.1,
+      "smd_vs_rest": 0.097
+     }
+    },
+    "HISPANIC/LATINO - SALVADORAN": {
+     "n": 729,
+     "ALT": {
+      "pct": 66.9,
+      "smd_vs_rest": 0.027
+     },
+     "AST": {
+      "pct": 67.6,
+      "smd_vs_rest": 0.046
+     },
+     "HbA1c": {
+      "pct": 17.7,
+      "smd_vs_rest": -0.032
+     },
+     "Triglycerides": {
+      "pct": 15.8,
+      "smd_vs_rest": -0.009
+     },
+     "HDL": {
+      "pct": 14.4,
+      "smd_vs_rest": 0.004
+     },
+     "Platelets": {
+      "pct": 98.2,
+      "smd_vs_rest": 0.003
+     },
+     "Glucose": {
+      "pct": 95.2,
+      "smd_vs_rest": -0.071
+     },
+     "any_imaging": {
+      "pct": 93.6,
+      "smd_vs_rest": 0.085
+     },
+     "liver_imaging": {
+      "pct": 41.4,
+      "smd_vs_rest": 0.206
+     }
+    },
+    "MULTIPLE RACE/ETHNICITY": {
+     "n": 418,
+     "ALT": {
+      "pct": 59.8,
+      "smd_vs_rest": -0.122
+     },
+     "AST": {
+      "pct": 59.8,
+      "smd_vs_rest": -0.117
+     },
+     "HbA1c": {
+      "pct": 18.4,
+      "smd_vs_rest": -0.013
+     },
+     "Triglycerides": {
+      "pct": 18.2,
+      "smd_vs_rest": 0.055
+     },
+     "HDL": {
+      "pct": 17.5,
+      "smd_vs_rest": 0.088
+     },
+     "Platelets": {
+      "pct": 97.4,
+      "smd_vs_rest": -0.055
+     },
+     "Glucose": {
+      "pct": 94.7,
+      "smd_vs_rest": -0.092
+     },
+     "any_imaging": {
+      "pct": 89.7,
+      "smd_vs_rest": -0.054
+     },
+     "liver_imaging": {
+      "pct": 27.0,
+      "smd_vs_rest": -0.1
+     }
+    },
+    "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER": {
+     "n": 317,
+     "ALT": {
+      "pct": 71.3,
+      "smd_vs_rest": 0.121
+     },
+     "AST": {
+      "pct": 71.6,
+      "smd_vs_rest": 0.133
+     },
+     "HbA1c": {
+      "pct": 20.2,
+      "smd_vs_rest": 0.032
+     },
+     "Triglycerides": {
+      "pct": 16.4,
+      "smd_vs_rest": 0.008
+     },
+     "HDL": {
+      "pct": 13.2,
+      "smd_vs_rest": -0.029
+     },
+     "Platelets": {
+      "pct": 96.5,
+      "smd_vs_rest": -0.103
+     },
+     "Glucose": {
+      "pct": 93.4,
+      "smd_vs_rest": -0.149
+     },
+     "any_imaging": {
+      "pct": 86.1,
+      "smd_vs_rest": -0.164
+     },
+     "liver_imaging": {
+      "pct": 30.0,
+      "smd_vs_rest": -0.035
+     }
+    },
+    "OTHER": {
+     "n": 12528,
+     "ALT": {
+      "pct": 62.8,
+      "smd_vs_rest": -0.063
+     },
+     "AST": {
+      "pct": 62.4,
+      "smd_vs_rest": -0.066
+     },
+     "HbA1c": {
+      "pct": 19.7,
+      "smd_vs_rest": 0.021
+     },
+     "Triglycerides": {
+      "pct": 15.6,
+      "smd_vs_rest": -0.014
+     },
+     "HDL": {
+      "pct": 14.1,
+      "smd_vs_rest": -0.006
+     },
+     "Platelets": {
+      "pct": 97.3,
+      "smd_vs_rest": -0.062
+     },
+     "Glucose": {
+      "pct": 94.9,
+      "smd_vs_rest": -0.089
+     },
+     "any_imaging": {
+      "pct": 88.7,
+      "smd_vs_rest": -0.089
+     },
+     "liver_imaging": {
+      "pct": 30.4,
+      "smd_vs_rest": -0.026
+     }
+    },
+    "PATIENT DECLINED TO ANSWER": {
+     "n": 1523,
+     "ALT": {
+      "pct": 60.8,
+      "smd_vs_rest": -0.102
+     },
+     "AST": {
+      "pct": 60.3,
+      "smd_vs_rest": -0.106
+     },
+     "HbA1c": {
+      "pct": 21.4,
+      "smd_vs_rest": 0.062
+     },
+     "Triglycerides": {
+      "pct": 17.5,
+      "smd_vs_rest": 0.037
+     },
+     "HDL": {
+      "pct": 15.3,
+      "smd_vs_rest": 0.03
+     },
+     "Platelets": {
+      "pct": 96.8,
+      "smd_vs_rest": -0.09
+     },
+     "Glucose": {
+      "pct": 92.6,
+      "smd_vs_rest": -0.18
+     },
+     "any_imaging": {
+      "pct": 88.4,
+      "smd_vs_rest": -0.097
+     },
+     "liver_imaging": {
+      "pct": 28.4,
+      "smd_vs_rest": -0.069
+     }
+    },
+    "PORTUGUESE": {
+     "n": 1383,
+     "ALT": {
+      "pct": 75.3,
+      "smd_vs_rest": 0.214
+     },
+     "AST": {
+      "pct": 75.2,
+      "smd_vs_rest": 0.216
+     },
+     "HbA1c": {
+      "pct": 17.4,
+      "smd_vs_rest": -0.041
+     },
+     "Triglycerides": {
+      "pct": 14.2,
+      "smd_vs_rest": -0.052
+     },
+     "HDL": {
+      "pct": 12.1,
+      "smd_vs_rest": -0.062
+     },
+     "Platelets": {
+      "pct": 99.4,
+      "smd_vs_rest": 0.115
+     },
+     "Glucose": {
+      "pct": 98.0,
+      "smd_vs_rest": 0.09
+     },
+     "any_imaging": {
+      "pct": 92.5,
+      "smd_vs_rest": 0.043
+     },
+     "liver_imaging": {
+      "pct": 43.9,
+      "smd_vs_rest": 0.257
+     }
+    },
+    "SOUTH AMERICAN": {
+     "n": 443,
+     "ALT": {
+      "pct": 62.3,
+      "smd_vs_rest": -0.071
+     },
+     "AST": {
+      "pct": 61.6,
+      "smd_vs_rest": -0.079
+     },
+     "HbA1c": {
+      "pct": 21.7,
+      "smd_vs_rest": 0.068
+     },
+     "Triglycerides": {
+      "pct": 16.0,
+      "smd_vs_rest": -0.002
+     },
+     "HDL": {
+      "pct": 16.3,
+      "smd_vs_rest": 0.056
+     },
+     "Platelets": {
+      "pct": 97.7,
+      "smd_vs_rest": -0.031
+     },
+     "Glucose": {
+      "pct": 95.5,
+      "smd_vs_rest": -0.058
+     },
+     "any_imaging": {
+      "pct": 90.7,
+      "smd_vs_rest": -0.019
+     },
+     "liver_imaging": {
+      "pct": 28.4,
+      "smd_vs_rest": -0.068
+     }
+    },
+    "UNABLE TO OBTAIN": {
+     "n": 1392,
+     "ALT": {
+      "pct": 64.5,
+      "smd_vs_rest": -0.025
+     },
+     "AST": {
+      "pct": 64.3,
+      "smd_vs_rest": -0.024
+     },
+     "HbA1c": {
+      "pct": 23.7,
+      "smd_vs_rest": 0.117
+     },
+     "Triglycerides": {
+      "pct": 18.0,
+      "smd_vs_rest": 0.052
+     },
+     "HDL": {
+      "pct": 13.9,
+      "smd_vs_rest": -0.011
+     },
+     "Platelets": {
+      "pct": 97.5,
+      "smd_vs_rest": -0.048
+     },
+     "Glucose": {
+      "pct": 94.3,
+      "smd_vs_rest": -0.113
+     },
+     "any_imaging": {
+      "pct": 89.8,
+      "smd_vs_rest": -0.052
+     },
+     "liver_imaging": {
+      "pct": 29.6,
+      "smd_vs_rest": -0.043
+     }
+    },
+    "UNKNOWN": {
+     "n": 9726,
+     "ALT": {
+      "pct": 66.5,
+      "smd_vs_rest": 0.018
+     },
+     "AST": {
+      "pct": 66.6,
+      "smd_vs_rest": 0.025
+     },
+     "HbA1c": {
+      "pct": 24.4,
+      "smd_vs_rest": 0.137
+     },
+     "Triglycerides": {
+      "pct": 18.6,
+      "smd_vs_rest": 0.069
+     },
+     "HDL": {
+      "pct": 12.6,
+      "smd_vs_rest": -0.049
+     },
+     "Platelets": {
+      "pct": 97.8,
+      "smd_vs_rest": -0.03
+     },
+     "Glucose": {
+      "pct": 95.3,
+      "smd_vs_rest": -0.07
+     },
+     "any_imaging": {
+      "pct": 87.7,
+      "smd_vs_rest": -0.12
+     },
+     "liver_imaging": {
+      "pct": 30.1,
+      "smd_vs_rest": -0.033
+     }
+    },
+    "WHITE": {
+     "n": 240958,
+     "ALT": {
+      "pct": 65.5,
+      "smd_vs_rest": -0.013
+     },
+     "AST": {
+      "pct": 65.2,
+      "smd_vs_rest": -0.014
+     },
+     "HbA1c": {
+      "pct": 17.0,
+      "smd_vs_rest": -0.139
+     },
+     "Triglycerides": {
+      "pct": 15.4,
+      "smd_vs_rest": -0.052
+     },
+     "HDL": {
+      "pct": 13.4,
+      "smd_vs_rest": -0.069
+     },
+     "Platelets": {
+      "pct": 98.3,
+      "smd_vs_rest": 0.024
+     },
+     "Glucose": {
+      "pct": 96.9,
+      "smd_vs_rest": 0.042
+     },
+     "any_imaging": {
+      "pct": 91.3,
+      "smd_vs_rest": 0.001
+     },
+     "liver_imaging": {
+      "pct": 31.7,
+      "smd_vs_rest": 0.008
+     }
+    },
+    "WHITE - BRAZILIAN": {
+     "n": 950,
+     "ALT": {
+      "pct": 66.3,
+      "smd_vs_rest": 0.013
+     },
+     "AST": {
+      "pct": 66.1,
+      "smd_vs_rest": 0.014
+     },
+     "HbA1c": {
+      "pct": 12.0,
+      "smd_vs_rest": -0.193
+     },
+     "Triglycerides": {
+      "pct": 11.2,
+      "smd_vs_rest": -0.145
+     },
+     "HDL": {
+      "pct": 9.7,
+      "smd_vs_rest": -0.141
+     },
+     "Platelets": {
+      "pct": 97.9,
+      "smd_vs_rest": -0.021
+     },
+     "Glucose": {
+      "pct": 94.2,
+      "smd_vs_rest": -0.115
+     },
+     "any_imaging": {
+      "pct": 91.8,
+      "smd_vs_rest": 0.018
+     },
+     "liver_imaging": {
+      "pct": 42.5,
+      "smd_vs_rest": 0.229
+     }
+    },
+    "WHITE - EASTERN EUROPEAN": {
+     "n": 1045,
+     "ALT": {
+      "pct": 66.1,
+      "smd_vs_rest": 0.009
+     },
+     "AST": {
+      "pct": 66.7,
+      "smd_vs_rest": 0.027
+     },
+     "HbA1c": {
+      "pct": 16.5,
+      "smd_vs_rest": -0.065
+     },
+     "Triglycerides": {
+      "pct": 16.0,
+      "smd_vs_rest": -0.003
+     },
+     "HDL": {
+      "pct": 14.8,
+      "smd_vs_rest": 0.016
+     },
+     "Platelets": {
+      "pct": 98.2,
+      "smd_vs_rest": 0.0
+     },
+     "Glucose": {
+      "pct": 96.7,
+      "smd_vs_rest": 0.002
+     },
+     "any_imaging": {
+      "pct": 90.9,
+      "smd_vs_rest": -0.014
+     },
+     "liver_imaging": {
+      "pct": 33.8,
+      "smd_vs_rest": 0.047
+     }
+    },
+    "WHITE - OTHER EUROPEAN": {
+     "n": 7126,
+     "ALT": {
+      "pct": 67.9,
+      "smd_vs_rest": 0.047
+     },
+     "AST": {
+      "pct": 67.7,
+      "smd_vs_rest": 0.049
+     },
+     "HbA1c": {
+      "pct": 19.3,
+      "smd_vs_rest": 0.011
+     },
+     "Triglycerides": {
+      "pct": 15.3,
+      "smd_vs_rest": -0.023
+     },
+     "HDL": {
+      "pct": 13.6,
+      "smd_vs_rest": -0.02
+     },
+     "Platelets": {
+      "pct": 98.1,
+      "smd_vs_rest": -0.006
+     },
+     "Glucose": {
+      "pct": 96.4,
+      "smd_vs_rest": -0.009
+     },
+     "any_imaging": {
+      "pct": 91.7,
+      "smd_vs_rest": 0.016
+     },
+     "liver_imaging": {
+      "pct": 34.6,
+      "smd_vs_rest": 0.066
+     }
+    },
+    "WHITE - RUSSIAN": {
+     "n": 4660,
+     "ALT": {
+      "pct": 67.4,
+      "smd_vs_rest": 0.038
+     },
+     "AST": {
+      "pct": 67.2,
+      "smd_vs_rest": 0.038
+     },
+     "HbA1c": {
+      "pct": 24.1,
+      "smd_vs_rest": 0.127
+     },
+     "Triglycerides": {
+      "pct": 20.0,
+      "smd_vs_rest": 0.102
+     },
+     "HDL": {
+      "pct": 20.0,
+      "smd_vs_rest": 0.155
+     },
+     "Platelets": {
+      "pct": 98.9,
+      "smd_vs_rest": 0.061
+     },
+     "Glucose": {
+      "pct": 98.3,
+      "smd_vs_rest": 0.109
+     },
+     "any_imaging": {
+      "pct": 94.9,
+      "smd_vs_rest": 0.143
+     },
+     "liver_imaging": {
+      "pct": 28.0,
+      "smd_vs_rest": -0.079
+     }
+    }
+   },
+   "by_insurance": {
+    "(missing)": {
+     "n": 5193,
+     "ALT": {
+      "pct": 49.6,
+      "smd_vs_rest": -0.334
+     },
+     "AST": {
+      "pct": 49.7,
+      "smd_vs_rest": -0.328
+     },
+     "HbA1c": {
+      "pct": 13.2,
+      "smd_vs_rest": -0.158
+     },
+     "Triglycerides": {
+      "pct": 13.4,
+      "smd_vs_rest": -0.077
+     },
+     "HDL": {
+      "pct": 11.7,
+      "smd_vs_rest": -0.076
+     },
+     "Platelets": {
+      "pct": 93.5,
+      "smd_vs_rest": -0.238
+     },
+     "Glucose": {
+      "pct": 88.6,
+      "smd_vs_rest": -0.316
+     },
+     "any_imaging": {
+      "pct": 86.8,
+      "smd_vs_rest": -0.146
+     },
+     "liver_imaging": {
+      "pct": 27.2,
+      "smd_vs_rest": -0.097
+     }
+    },
+    "Medicaid": {
+     "n": 63027,
+     "ALT": {
+      "pct": 68.7,
+      "smd_vs_rest": 0.076
+     },
+     "AST": {
+      "pct": 68.5,
+      "smd_vs_rest": 0.078
+     },
+     "HbA1c": {
+      "pct": 19.0,
+      "smd_vs_rest": 0.001
+     },
+     "Triglycerides": {
+      "pct": 15.3,
+      "smd_vs_rest": -0.025
+     },
+     "HDL": {
+      "pct": 13.3,
+      "smd_vs_rest": -0.034
+     },
+     "Platelets": {
+      "pct": 97.8,
+      "smd_vs_rest": -0.036
+     },
+     "Glucose": {
+      "pct": 95.9,
+      "smd_vs_rest": -0.045
+     },
+     "any_imaging": {
+      "pct": 90.8,
+      "smd_vs_rest": -0.021
+     },
+     "liver_imaging": {
+      "pct": 33.4,
+      "smd_vs_rest": 0.046
+     }
+    },
+    "Medicare": {
+     "n": 180507,
+     "ALT": {
+      "pct": 67.1,
+      "smd_vs_rest": 0.059
+     },
+     "AST": {
+      "pct": 66.9,
+      "smd_vs_rest": 0.061
+     },
+     "HbA1c": {
+      "pct": 20.9,
+      "smd_vs_rest": 0.097
+     },
+     "Triglycerides": {
+      "pct": 16.7,
+      "smd_vs_rest": 0.031
+     },
+     "HDL": {
+      "pct": 15.2,
+      "smd_vs_rest": 0.053
+     },
+     "Platelets": {
+      "pct": 98.9,
+      "smd_vs_rest": 0.108
+     },
+     "Glucose": {
+      "pct": 98.2,
+      "smd_vs_rest": 0.169
+     },
+     "any_imaging": {
+      "pct": 93.1,
+      "smd_vs_rest": 0.122
+     },
+     "liver_imaging": {
+      "pct": 29.7,
+      "smd_vs_rest": -0.076
+     }
+    },
+    "No charge": {
+     "n": 73,
+     "ALT": {
+      "pct": 57.5,
+      "smd_vs_rest": -0.168
+     },
+     "AST": {
+      "pct": 56.2,
+      "smd_vs_rest": -0.191
+     },
+     "HbA1c": {
+      "pct": 11.0,
+      "smd_vs_rest": -0.225
+     },
+     "Triglycerides": {
+      "pct": 15.1,
+      "smd_vs_rest": -0.028
+     },
+     "HDL": {
+      "pct": 15.1,
+      "smd_vs_rest": 0.023
+     },
+     "Platelets": {
+      "pct": 90.4,
+      "smd_vs_rest": -0.34
+     },
+     "Glucose": {
+      "pct": 90.4,
+      "smd_vs_rest": -0.254
+     },
+     "any_imaging": {
+      "pct": 89.0,
+      "smd_vs_rest": -0.076
+     },
+     "liver_imaging": {
+      "pct": 26.0,
+      "smd_vs_rest": -0.123
+     }
+    },
+    "Other": {
+     "n": 9970,
+     "ALT": {
+      "pct": 61.4,
+      "smd_vs_rest": -0.092
+     },
+     "AST": {
+      "pct": 61.3,
+      "smd_vs_rest": -0.088
+     },
+     "HbA1c": {
+      "pct": 16.8,
+      "smd_vs_rest": -0.058
+     },
+     "Triglycerides": {
+      "pct": 15.4,
+      "smd_vs_rest": -0.021
+     },
+     "HDL": {
+      "pct": 13.4,
+      "smd_vs_rest": -0.027
+     },
+     "Platelets": {
+      "pct": 97.3,
+      "smd_vs_rest": -0.06
+     },
+     "Glucose": {
+      "pct": 94.9,
+      "smd_vs_rest": -0.085
+     },
+     "any_imaging": {
+      "pct": 89.8,
+      "smd_vs_rest": -0.053
+     },
+     "liver_imaging": {
+      "pct": 32.7,
+      "smd_vs_rest": 0.025
+     }
+    },
+    "Private": {
+     "n": 115222,
+     "ALT": {
+      "pct": 62.9,
+      "smd_vs_rest": -0.085
+     },
+     "AST": {
+      "pct": 62.5,
+      "smd_vs_rest": -0.089
+     },
+     "HbA1c": {
+      "pct": 16.3,
+      "smd_vs_rest": -0.099
+     },
+     "Triglycerides": {
+      "pct": 15.8,
+      "smd_vs_rest": -0.013
+     },
+     "HDL": {
+      "pct": 13.5,
+      "smd_vs_rest": -0.032
+     },
+     "Platelets": {
+      "pct": 97.5,
+      "smd_vs_rest": -0.067
+     },
+     "Glucose": {
+      "pct": 95.1,
+      "smd_vs_rest": -0.118
+     },
+     "any_imaging": {
+      "pct": 89.1,
+      "smd_vs_rest": -0.108
+     },
+     "liver_imaging": {
+      "pct": 33.5,
+      "smd_vs_rest": 0.061
+     }
+    }
+   }
+  }
+ },
+ "note": "availability = in-admission result OR outpatient result within the window; imaging = any radiology / liver-inclusive radiology, inpatient-linked OR outpatient within the window",
+ "max_abs_smd_comparison": {
+  "by_race": {
+   "ALT": {
+    "max_abs_smd_90_30": 0.304,
+    "max_abs_smd_365_30": 0.272,
+    "shrinks_when_widened": true
+   },
+   "AST": {
+    "max_abs_smd_90_30": 0.299,
+    "max_abs_smd_365_30": 0.251,
+    "shrinks_when_widened": true
+   },
+   "HbA1c": {
+    "max_abs_smd_90_30": 0.193,
+    "max_abs_smd_365_30": 0.412,
+    "shrinks_when_widened": false
+   },
+   "Triglycerides": {
+    "max_abs_smd_90_30": 0.16,
+    "max_abs_smd_365_30": 0.444,
+    "shrinks_when_widened": false
+   },
+   "HDL": {
+    "max_abs_smd_90_30": 0.177,
+    "max_abs_smd_365_30": 0.453,
+    "shrinks_when_widened": false
+   },
+   "Platelets": {
+    "max_abs_smd_90_30": 0.137,
+    "max_abs_smd_365_30": 0.131,
+    "shrinks_when_widened": true
+   },
+   "Glucose": {
+    "max_abs_smd_90_30": 0.18,
+    "max_abs_smd_365_30": 0.163,
+    "shrinks_when_widened": true
+   },
+   "any_imaging": {
+    "max_abs_smd_90_30": 0.164,
+    "max_abs_smd_365_30": 0.262,
+    "shrinks_when_widened": false
+   },
+   "liver_imaging": {
+    "max_abs_smd_90_30": 0.257,
+    "max_abs_smd_365_30": 0.277,
+    "shrinks_when_widened": false
+   }
+  },
+  "by_insurance": {
+   "ALT": {
+    "max_abs_smd_90_30": 0.334,
+    "max_abs_smd_365_30": 0.461,
+    "shrinks_when_widened": false
+   },
+   "AST": {
+    "max_abs_smd_90_30": 0.328,
+    "max_abs_smd_365_30": 0.449,
+    "shrinks_when_widened": false
+   },
+   "HbA1c": {
+    "max_abs_smd_90_30": 0.225,
+    "max_abs_smd_365_30": 0.312,
+    "shrinks_when_widened": false
+   },
+   "Triglycerides": {
+    "max_abs_smd_90_30": 0.077,
+    "max_abs_smd_365_30": 0.292,
+    "shrinks_when_widened": false
+   },
+   "HDL": {
+    "max_abs_smd_90_30": 0.076,
+    "max_abs_smd_365_30": 0.313,
+    "shrinks_when_widened": false
+   },
+   "Platelets": {
+    "max_abs_smd_90_30": 0.34,
+    "max_abs_smd_365_30": 0.264,
+    "shrinks_when_widened": true
+   },
+   "Glucose": {
+    "max_abs_smd_90_30": 0.316,
+    "max_abs_smd_365_30": 0.349,
+    "shrinks_when_widened": false
+   },
+   "any_imaging": {
+    "max_abs_smd_90_30": 0.146,
+    "max_abs_smd_365_30": 0.189,
+    "shrinks_when_widened": false
+   },
+   "liver_imaging": {
+    "max_abs_smd_90_30": 0.123,
+    "max_abs_smd_365_30": 0.183,
+    "shrinks_when_widened": false
+   }
+  }
+ }
+}

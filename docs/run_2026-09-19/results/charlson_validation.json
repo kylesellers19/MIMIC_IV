@@ -1,0 +1,244 @@
+{
+ "leak_check_mild_liver_matches_phenotype_codes": {
+  "10:K760": true,
+  "10:K7581": false,
+  "9:5718": true,
+  "9:5719": true
+ },
+ "population_admissions": 373992,
+ "comorbidipy_weighting_options": [
+  "quan",
+  "charlson",
+  "shmi",
+  "shmi_modified",
+  "van_walraven",
+  "swiss"
+ ],
+ "comorbidipy_columns": [
+  "diab",
+  "dementia",
+  "rend",
+  "hp",
+  "msld",
+  "rheumd",
+  "pud",
+  "metacanc",
+  "chf",
+  "copd",
+  "ami",
+  "pvd",
+  "canc",
+  "diabwc",
+  "cevd",
+  "mld",
+  "aids",
+  "comorbidity_score"
+ ],
+ "compared_admissions": 373992,
+ "weighting_used": "charlson",
+ "pct_identical": 100.0,
+ "difference_distribution": {
+  "0": 373992
+ },
+ "mean_project": 2.1231,
+ "mean_comorbidipy": 2.1231,
+ "per_category": {
+  "mi": {
+   "comorbidipy_col": null
+  },
+  "chf": {
+   "comorbidipy_col": "chf",
+   "pct_agree": 100.0,
+   "n_project": 62515,
+   "n_comorbidipy": 62515
+  },
+  "pvd": {
+   "comorbidipy_col": "pvd",
+   "pct_agree": 100.0,
+   "n_project": 28389,
+   "n_comorbidipy": 28389
+  },
+  "cevd": {
+   "comorbidipy_col": "cevd",
+   "pct_agree": 100.0,
+   "n_project": 27885,
+   "n_comorbidipy": 27885
+  },
+  "dementia": {
+   "comorbidipy_col": "dementia",
+   "pct_agree": 100.0,
+   "n_project": 11200,
+   "n_comorbidipy": 11200
+  },
+  "copd": {
+   "comorbidipy_col": "copd",
+   "pct_agree": 100.0,
+   "n_project": 74531,
+   "n_comorbidipy": 74531
+  },
+  "rheum": {
+   "comorbidipy_col": "rheumd",
+   "pct_agree": 100.0,
+   "n_project": 12065,
+   "n_comorbidipy": 12065
+  },
+  "pud": {
+   "comorbidipy_col": "pud",
+   "pct_agree": 100.0,
+   "n_project": 5333,
+   "n_comorbidipy": 5333
+  },
+  "mild_liver": {
+   "comorbidipy_col": "mld",
+   "pct_agree": 100.0,
+   "n_project": 22458,
+   "n_comorbidipy": 22458
+  },
+  "dm": {
+   "comorbidipy_col": "diab",
+   "pct_agree": 100.0,
+   "n_project": 64707,
+   "n_comorbidipy": 64707
+  },
+  "dm_comp": {
+   "comorbidipy_col": "diabwc",
+   "pct_agree": 100.0,
+   "n_project": 33202,
+   "n_comorbidipy": 33202
+  },
+  "hemi": {
+   "comorbidipy_col": "hp",
+   "pct_agree": 100.0,
+   "n_project": 7050,
+   "n_comorbidipy": 7050
+  },
+  "renal": {
+   "comorbidipy_col": "rend",
+   "pct_agree": 100.0,
+   "n_project": 63543,
+   "n_comorbidipy": 63543
+  },
+  "malig": {
+   "comorbidipy_col": "canc",
+   "pct_agree": 100.0,
+   "n_project": 35525,
+   "n_comorbidipy": 35525
+  },
+  "severe_liver": {
+   "comorbidipy_col": "msld",
+   "pct_agree": 100.0,
+   "n_project": 10206,
+   "n_comorbidipy": 10206
+  },
+  "mets": {
+   "comorbidipy_col": "metacanc",
+   "pct_agree": 100.0,
+   "n_project": 20772,
+   "n_comorbidipy": 20772
+  },
+  "hiv": {
+   "comorbidipy_col": "aids",
+   "pct_agree": 100.0,
+   "n_project": 2968,
+   "n_comorbidipy": 2968
+  }
+ },
+ "smd_recovery_vs_concordant": {
+  "project": -0.3563,
+  "comorbidipy": -0.3563,
+  "project_noliver": 0.0037
+ },
+ "structural_self_check": {
+  "mi": {
+   "weight": 1,
+   "fires_icd10_on_first_prefix": true,
+   "fires_icd9_on_first_prefix": true
+  },
+  "chf": {
+   "weight": 1,
+   "fires_icd10_on_first_prefix": true,
+   "fires_icd9_on_first_prefix": true
+  },
+  "pvd": {
+   "weight": 1,
+   "fires_icd10_on_first_prefix": true,
+   "fires_icd9_on_first_prefix": true
+  },
+  "cevd": {
+   "weight": 1,
+   "fires_icd10_on_first_prefix": true,
+   "fires_icd9_on_first_prefix": true
+  },
+  "dementia": {
+   "weight": 1,
+   "fires_icd10_on_first_prefix": true,
+   "fires_icd9_on_first_prefix": true
+  },
+  "copd": {
+   "weight": 1,
+   "fires_icd10_on_first_prefix": true,
+   "fires_icd9_on_first_prefix": true
+  },
+  "rheum": {
+   "weight": 1,
+   "fires_icd10_on_first_prefix": true,
+   "fires_icd9_on_first_prefix": true
+  },
+  "pud": {
+   "weight": 1,
+   "fires_icd10_on_first_prefix": true,
+   "fires_icd9_on_first_prefix": true
+  },
+  "mild_liver": {
+   "weight": 1,
+   "fires_icd10_on_first_prefix": true,
+   "fires_icd9_on_first_prefix": true
+  },
+  "dm": {
+   "weight": 1,
+   "fires_icd10_on_first_prefix": true,
+   "fires_icd9_on_first_prefix": true
+  },
+  "dm_comp": {
+   "weight": 2,
+   "fires_icd10_on_first_prefix": true,
+   "fires_icd9_on_first_prefix": true
+  },
+  "hemi": {
+   "weight": 2,
+   "fires_icd10_on_first_prefix": true,
+   "fires_icd9_on_first_prefix": true
+  },
+  "renal": {
+   "weight": 2,
+   "fires_icd10_on_first_prefix": true,
+   "fires_icd9_on_first_prefix": true
+  },
+  "malig": {
+   "weight": 2,
+   "fires_icd10_on_first_prefix": true,
+   "fires_icd9_on_first_prefix": true
+  },
+  "severe_liver": {
+   "weight": 3,
+   "fires_icd10_on_first_prefix": true,
+   "fires_icd9_on_first_prefix": true
+  },
+  "mets": {
+   "weight": 6,
+   "fires_icd10_on_first_prefix": true,
+   "fires_icd9_on_first_prefix": true
+  },
+  "hiv": {
+   "weight": 6,
+   "fires_icd10_on_first_prefix": true,
+   "fires_icd9_on_first_prefix": true
+  }
+ },
+ "weights_match_charlson1987": true,
+ "noliver_summary": {
+  "mean_project": 2.1231,
+  "mean_noliver": 1.9812,
+  "pct_admissions_changed": 8.734
+ }
+}

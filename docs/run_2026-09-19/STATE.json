@@ -21,23 +21,32 @@
   },
   "2": {
    "name": "training draw + splits",
-   "status": "pending"
+   "status": "done",
+   "end": "2026-09-19T16:26:21Z",
+   "commit": "d760d983d8b172a0dc5fd2ed82868b9c0a6257c5"
   },
   "3": {
    "name": "notes text + embeddings (background)",
-   "status": "pending"
+   "status": "running",
+   "start": "2026-09-19T16:26:21Z",
+   "stage1_log": "logs/run_2026-09-19/notes_index.log",
+   "stage1_pid": 98755
   },
   "4": {
    "name": "Aim 1a loose ends",
-   "status": "pending"
+   "status": "done",
+   "end": "2026-09-19T16:39:32Z"
   },
   "5": {
    "name": "Aim 1c level 1",
-   "status": "pending"
+   "status": "done",
+   "end": "2026-09-19T16:39:32Z"
   },
   "6": {
    "name": "reference-standard machinery",
-   "status": "pending"
+   "status": "running",
+   "start": "2026-09-19T16:39:32Z",
+   "note": "delegated to subagent"
   },
   "7": {
    "name": "Aim 1b structured arm",
@@ -60,7 +69,16 @@
    "status": "pending"
   }
  },
- "background_jobs": {},
+ "background_jobs": {
+  "notes_index": {
+   "pid": 98755,
+   "log": "logs/run_2026-09-19/notes_index.log"
+  },
+  "embed_main": {
+   "pid": 4261,
+   "log": "logs/run_2026-09-19/embed_main.log"
+  }
+ },
  "prompt_A": "verified-existing",
  "prompt_B": "not run",
  "prompt_C": "not run",

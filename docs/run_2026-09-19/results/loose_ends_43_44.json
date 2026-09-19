@@ -1,0 +1,102 @@
+{
+ "discharge_only": {
+  "admissions": 331604,
+  "subjects": 145817,
+  "code_positive": 5552,
+  "a": {
+   "A": 4751,
+   "B": 12952,
+   "C": 801,
+   "D": 313100,
+   "recovery_share_pct": 73.16,
+   "corroboration_share_pct": 85.57
+  },
+  "b": {
+   "A": 4938,
+   "B": 21134,
+   "C": 614,
+   "D": 304918,
+   "recovery_share_pct": 81.06,
+   "corroboration_share_pct": 88.94
+  },
+  "full_population_for_reference": {
+   "a": {
+    "A": 4805,
+    "B": 13612,
+    "C": 935,
+    "D": 354640,
+    "recovery_share_pct": 73.91,
+    "corroboration_share_pct": 83.71
+   },
+   "b": {
+    "A": 5027,
+    "B": 22799,
+    "C": 713,
+    "D": 345453,
+    "recovery_share_pct": 81.93,
+    "corroboration_share_pct": 87.58
+   }
+  }
+ },
+ "check_index_note_a_matches_frame": true,
+ "check_mismatch_count": 0,
+ "check_index_note_b_matches_frame": true,
+ "tierC_positive": {
+  "a": {
+   "primary": {
+    "A": 4805,
+    "B": 13612,
+    "C": 935,
+    "D": 354640,
+    "recovery_share_pct": 73.91,
+    "corroboration_share_pct": 83.71
+   },
+   "tierC_counted_positive": {
+    "A": 4824,
+    "B": 13970,
+    "C": 916,
+    "D": 354282,
+    "recovery_share_pct": 74.33,
+    "corroboration_share_pct": 84.04
+   },
+   "admissions_added": 377
+  },
+  "b": {
+   "primary": {
+    "A": 5027,
+    "B": 22799,
+    "C": 713,
+    "D": 345453,
+    "recovery_share_pct": 81.93,
+    "corroboration_share_pct": 87.58
+   },
+   "tierC_counted_positive": {
+    "A": 5048,
+    "B": 23353,
+    "C": 692,
+    "D": 344899,
+    "recovery_share_pct": 82.23,
+    "corroboration_share_pct": 87.94
+   },
+   "admissions_added": 575
+  },
+  "any_tierC_b_by_primary_cell": {
+   "A": {
+    "n": 5027,
+    "with_tierC": 233
+   },
+   "B": {
+    "n": 22799,
+    "with_tierC": 879
+   },
+   "C": {
+    "n": 713,
+    "with_tierC": 21
+   },
+   "D": {
+    "n": 345453,
+    "with_tierC": 554
+   }
+  }
+ }
+}

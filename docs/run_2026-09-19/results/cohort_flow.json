@@ -1,0 +1,41 @@
+{
+ "all_admissions": 546028,
+ "all_subjects": 223452,
+ "zero_dx_excluded": 531,
+ "analysis_population": 545497,
+ "analysis_subjects": 223291,
+ "code_positive_pre_note_restriction": 9143,
+ "note_restriction": {
+  "removed_total": 171505,
+  "part_i_release_lineage_subject_absent_from_note_module": 100029,
+  "part_ii_encounter_level_subject_has_notes_elsewhere_not_this_admission": 71476,
+  "sum_check": true
+ },
+ "window_framing": {
+  "anchor_year_groups": {
+   "2008 - 2010": 227398,
+   "2011 - 2013": 114842,
+   "2014 - 2016": 91038,
+   "2017 - 2019": 69805,
+   "2020 - 2022": 42414
+  },
+  "removed_with_anchor_2020_2022": 42413,
+  "removed_with_anchor_before_2020": 129092,
+  "coverage_pct_by_anchor_group": {
+   "2008 - 2010": 76.38,
+   "2011 - 2013": 75.15,
+   "2014 - 2016": 73.97,
+   "2017 - 2019": 66.84,
+   "2020 - 2022": 0.0
+  }
+ },
+ "locked_population": 373992,
+ "locked_subjects": 161119,
+ "locked_code_positive": 5740,
+ "check_locked_equals_clean_pop": true,
+ "discharge_only": {
+  "admissions": 331604,
+  "subjects": 145817,
+  "code_positive": 5552
+ }
+}

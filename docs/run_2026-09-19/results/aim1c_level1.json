@@ -1,0 +1,2834 @@
+{
+ "reps": 500,
+ "floor": 11,
+ "seed": 20260919,
+ "wide_ci_threshold_pp": 20.0,
+ "population": 373992,
+ "subjects": 161119,
+ "strata": {
+  "race": [
+   {
+    "stratum": "AMERICAN INDIAN/ALASKA NATIVE",
+    "A": 10,
+    "B": 43,
+    "C": 2,
+    "D": 709,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 81.1,
+    "rec_ci": [
+     62.8,
+     98.4
+    ],
+    "rec_ci_width": 35.6,
+    "rec_claim_supported": false,
+    "corroboration_share_pct": 83.3,
+    "cor_ci": [
+     20.0,
+     100.0
+    ],
+    "cor_ci_width": 80.0,
+    "cor_claim_supported": false,
+    "recovery_share_no5719_pct": 81.1,
+    "rec_no5719_ci": [
+     62.8,
+     98.4
+    ],
+    "smd_coding_rate_vs_rest": 0.021,
+    "mech": {
+     "n": 764,
+     "ALT_avail_pct": 47.4,
+     "HbA1c_avail_pct": 7.3,
+     "TG_avail_pct": 7.7,
+     "HDL_avail_pct": 5.1,
+     "liver_imaging_in_window_pct": 41.0,
+     "cmrf_unascertainable_all_pct": 2.7
+    }
+   },
+   {
+    "stratum": "ASIAN",
+    "A": 49,
+    "B": 262,
+    "C": 9,
+    "D": 4330,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 84.2,
+    "rec_ci": [
+     78.8,
+     89.2
+    ],
+    "rec_ci_width": 10.4,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 84.5,
+    "cor_ci": [
+     73.5,
+     93.7
+    ],
+    "cor_ci_width": 20.2,
+    "cor_claim_supported": false,
+    "recovery_share_no5719_pct": 84.2,
+    "rec_no5719_ci": [
+     78.8,
+     89.2
+    ],
+    "smd_coding_rate_vs_rest": -0.062,
+    "mech": {
+     "n": 4650,
+     "ALT_avail_pct": 40.3,
+     "HbA1c_avail_pct": 7.3,
+     "TG_avail_pct": 7.7,
+     "HDL_avail_pct": 5.9,
+     "liver_imaging_in_window_pct": 38.7,
+     "cmrf_unascertainable_all_pct": 5.8
+    }
+   },
+   {
+    "stratum": "ASIAN - ASIAN INDIAN",
+    "A": 14,
+    "B": 81,
+    "C": 3,
+    "D": 879,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 85.3,
+    "rec_ci": [
+     77.8,
+     92.4
+    ],
+    "rec_ci_width": 14.6,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 82.4,
+    "cor_ci": [
+     55.6,
+     100.0
+    ],
+    "cor_ci_width": 44.4,
+    "cor_claim_supported": false,
+    "recovery_share_no5719_pct": 85.3,
+    "rec_no5719_ci": [
+     77.8,
+     92.4
+    ],
+    "smd_coding_rate_vs_rest": -0.09,
+    "mech": {
+     "n": 977,
+     "ALT_avail_pct": 44.6,
+     "HbA1c_avail_pct": 7.2,
+     "TG_avail_pct": 9.3,
+     "HDL_avail_pct": 5.1,
+     "liver_imaging_in_window_pct": 35.3,
+     "cmrf_unascertainable_all_pct": 3.3
+    }
+   },
+   {
+    "stratum": "ASIAN - CHINESE",
+    "A": 67,
+    "B": 374,
+    "C": 11,
+    "D": 4241,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 84.8,
+    "rec_ci": [
+     80.3,
+     88.6
+    ],
+    "rec_ci_width": 8.3,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 85.9,
+    "cor_ci": [
+     77.2,
+     92.7
+    ],
+    "cor_ci_width": 15.4,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 84.8,
+    "rec_no5719_ci": [
+     80.3,
+     88.6
+    ],
+    "smd_coding_rate_vs_rest": -0.078,
+    "mech": {
+     "n": 4693,
+     "ALT_avail_pct": 42.0,
+     "HbA1c_avail_pct": 6.4,
+     "TG_avail_pct": 6.4,
+     "HDL_avail_pct": 4.5,
+     "liver_imaging_in_window_pct": 46.7,
+     "cmrf_unascertainable_all_pct": 2.1
+    }
+   },
+   {
+    "stratum": "ASIAN - KOREAN",
+    "A": 1,
+    "B": 21,
+    "C": 1,
+    "D": 350,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 95.5,
+    "rec_ci": [
+     82.1,
+     100.0
+    ],
+    "rec_ci_width": 17.9,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "recovery_share_no5719_pct": 95.5,
+    "rec_no5719_ci": [
+     82.1,
+     100.0
+    ],
+    "smd_coding_rate_vs_rest": -0.437,
+    "mech": {
+     "n": 373,
+     "ALT_avail_pct": 46.6,
+     "HbA1c_avail_pct": 7.5,
+     "TG_avail_pct": 7.8,
+     "HDL_avail_pct": 5.9,
+     "liver_imaging_in_window_pct": 44.5,
+     "cmrf_unascertainable_all_pct": 4.3
+    }
+   },
+   {
+    "stratum": "ASIAN - SOUTH EAST ASIAN",
+    "A": 15,
+    "B": 114,
+    "C": 1,
+    "D": 1132,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 88.4,
+    "rec_ci": [
+     80.2,
+     94.7
+    ],
+    "rec_ci_width": 14.4,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 93.8,
+    "cor_ci": [
+     77.8,
+     100.0
+    ],
+    "cor_ci_width": 22.2,
+    "cor_claim_supported": false,
+    "recovery_share_no5719_pct": 88.4,
+    "rec_no5719_ci": [
+     80.2,
+     94.7
+    ],
+    "smd_coding_rate_vs_rest": -0.183,
+    "mech": {
+     "n": 1262,
+     "ALT_avail_pct": 53.6,
+     "HbA1c_avail_pct": 7.8,
+     "TG_avail_pct": 7.5,
+     "HDL_avail_pct": 5.4,
+     "liver_imaging_in_window_pct": 50.4,
+     "cmrf_unascertainable_all_pct": 2.4
+    }
+   },
+   {
+    "stratum": "BLACK/AFRICAN",
+    "A": 25,
+    "B": 92,
+    "C": 3,
+    "D": 1895,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 78.6,
+    "rec_ci": [
+     69.6,
+     87.7
+    ],
+    "rec_ci_width": 18.1,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 89.3,
+    "cor_ci": [
+     75.9,
+     100.0
+    ],
+    "cor_ci_width": 24.1,
+    "cor_claim_supported": false,
+    "recovery_share_no5719_pct": 78.6,
+    "rec_no5719_ci": [
+     69.6,
+     87.7
+    ],
+    "smd_coding_rate_vs_rest": 0.083,
+    "mech": {
+     "n": 2015,
+     "ALT_avail_pct": 39.4,
+     "HbA1c_avail_pct": 9.4,
+     "TG_avail_pct": 8.0,
+     "HDL_avail_pct": 6.2,
+     "liver_imaging_in_window_pct": 32.6,
+     "cmrf_unascertainable_all_pct": 3.5
+    }
+   },
+   {
+    "stratum": "BLACK/AFRICAN AMERICAN",
+    "A": 410,
+    "B": 2449,
+    "C": 76,
+    "D": 46706,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 85.7,
+    "rec_ci": [
+     84.1,
+     87.1
+    ],
+    "rec_ci_width": 3.0,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 84.4,
+    "cor_ci": [
+     80.6,
+     87.8
+    ],
+    "cor_ci_width": 7.2,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 85.7,
+    "rec_no5719_ci": [
+     84.1,
+     87.1
+    ],
+    "smd_coding_rate_vs_rest": -0.112,
+    "mech": {
+     "n": 49641,
+     "ALT_avail_pct": 35.2,
+     "HbA1c_avail_pct": 7.9,
+     "TG_avail_pct": 6.8,
+     "HDL_avail_pct": 5.4,
+     "liver_imaging_in_window_pct": 35.4,
+     "cmrf_unascertainable_all_pct": 2.4
+    }
+   },
+   {
+    "stratum": "BLACK/CAPE VERDEAN",
+    "A": 57,
+    "B": 235,
+    "C": 4,
+    "D": 3691,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 80.5,
+    "rec_ci": [
+     73.9,
+     86.8
+    ],
+    "rec_ci_width": 12.9,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 93.4,
+    "cor_ci": [
+     86.5,
+     98.8
+    ],
+    "cor_ci_width": 12.4,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 80.5,
+    "rec_no5719_ci": [
+     73.9,
+     86.8
+    ],
+    "smd_coding_rate_vs_rest": 0.038,
+    "mech": {
+     "n": 3987,
+     "ALT_avail_pct": 37.9,
+     "HbA1c_avail_pct": 7.0,
+     "TG_avail_pct": 7.1,
+     "HDL_avail_pct": 5.3,
+     "liver_imaging_in_window_pct": 40.4,
+     "cmrf_unascertainable_all_pct": 0.8
+    }
+   },
+   {
+    "stratum": "BLACK/CARIBBEAN ISLAND",
+    "A": 16,
+    "B": 101,
+    "C": 2,
+    "D": 2283,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 86.3,
+    "rec_ci": [
+     80.4,
+     91.5
+    ],
+    "rec_ci_width": 11.1,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 88.9,
+    "cor_ci": [
+     69.2,
+     100.0
+    ],
+    "cor_ci_width": 30.8,
+    "cor_claim_supported": false,
+    "recovery_share_no5719_pct": 86.3,
+    "rec_no5719_ci": [
+     80.4,
+     91.5
+    ],
+    "smd_coding_rate_vs_rest": -0.121,
+    "mech": {
+     "n": 2402,
+     "ALT_avail_pct": 42.9,
+     "HbA1c_avail_pct": 9.5,
+     "TG_avail_pct": 8.7,
+     "HDL_avail_pct": 7.0,
+     "liver_imaging_in_window_pct": 37.8,
+     "cmrf_unascertainable_all_pct": 1.6
+    }
+   },
+   {
+    "stratum": "HISPANIC OR LATINO",
+    "A": 92,
+    "B": 518,
+    "C": 16,
+    "D": 5543,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 84.9,
+    "rec_ci": [
+     80.6,
+     88.8
+    ],
+    "rec_ci_width": 8.2,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 85.2,
+    "cor_ci": [
+     77.4,
+     92.3
+    ],
+    "cor_ci_width": 14.9,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 85.1,
+    "rec_no5719_ci": [
+     80.7,
+     88.9
+    ],
+    "smd_coding_rate_vs_rest": -0.082,
+    "mech": {
+     "n": 6169,
+     "ALT_avail_pct": 33.7,
+     "HbA1c_avail_pct": 6.4,
+     "TG_avail_pct": 6.7,
+     "HDL_avail_pct": 5.3,
+     "liver_imaging_in_window_pct": 40.1,
+     "cmrf_unascertainable_all_pct": 6.8
+    }
+   },
+   {
+    "stratum": "HISPANIC/LATINO - CENTRAL AMERICAN",
+    "A": 27,
+    "B": 43,
+    "C": 2,
+    "D": 310,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 61.4,
+    "rec_ci": [
+     49.6,
+     80.8
+    ],
+    "rec_ci_width": 31.3,
+    "rec_claim_supported": false,
+    "corroboration_share_pct": 93.1,
+    "cor_ci": [
+     76.7,
+     100.0
+    ],
+    "cor_ci_width": 23.3,
+    "cor_claim_supported": false,
+    "recovery_share_no5719_pct": 61.4,
+    "rec_no5719_ci": [
+     49.6,
+     80.8
+    ],
+    "smd_coding_rate_vs_rest": 0.469,
+    "mech": {
+     "n": 382,
+     "ALT_avail_pct": 40.8,
+     "HbA1c_avail_pct": 7.9,
+     "TG_avail_pct": 3.4,
+     "HDL_avail_pct": 2.6,
+     "liver_imaging_in_window_pct": 49.7,
+     "cmrf_unascertainable_all_pct": 3.7
+    }
+   },
+   {
+    "stratum": "HISPANIC/LATINO - COLUMBIAN",
+    "A": 15,
+    "B": 46,
+    "C": 3,
+    "D": 442,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 75.4,
+    "rec_ci": [
+     62.4,
+     87.2
+    ],
+    "rec_ci_width": 24.8,
+    "rec_claim_supported": false,
+    "corroboration_share_pct": 83.3,
+    "cor_ci": [
+     59.4,
+     100.0
+    ],
+    "cor_ci_width": 40.6,
+    "cor_claim_supported": false,
+    "recovery_share_no5719_pct": 75.4,
+    "rec_no5719_ci": [
+     62.4,
+     87.2
+    ],
+    "smd_coding_rate_vs_rest": 0.16,
+    "mech": {
+     "n": 506,
+     "ALT_avail_pct": 35.2,
+     "HbA1c_avail_pct": 8.3,
+     "TG_avail_pct": 5.9,
+     "HDL_avail_pct": 4.3,
+     "liver_imaging_in_window_pct": 38.1,
+     "cmrf_unascertainable_all_pct": 3.2
+    }
+   },
+   {
+    "stratum": "HISPANIC/LATINO - CUBAN",
+    "A": 6,
+    "B": 22,
+    "C": 0,
+    "D": 400,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 78.6,
+    "rec_ci": [
+     64.2,
+     92.9
+    ],
+    "rec_ci_width": 28.6,
+    "rec_claim_supported": false,
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "recovery_share_no5719_pct": 78.6,
+    "rec_no5719_ci": [
+     64.2,
+     92.9
+    ],
+    "smd_coding_rate_vs_rest": 0.085,
+    "mech": {
+     "n": 428,
+     "ALT_avail_pct": 36.9,
+     "HbA1c_avail_pct": 7.5,
+     "TG_avail_pct": 7.2,
+     "HDL_avail_pct": 5.1,
+     "liver_imaging_in_window_pct": 39.0,
+     "cmrf_unascertainable_all_pct": 2.1
+    }
+   },
+   {
+    "stratum": "HISPANIC/LATINO - DOMINICAN",
+    "A": 79,
+    "B": 289,
+    "C": 13,
+    "D": 3229,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 78.5,
+    "rec_ci": [
+     73.0,
+     84.0
+    ],
+    "rec_ci_width": 11.0,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 85.9,
+    "cor_ci": [
+     77.3,
+     91.9
+    ],
+    "cor_ci_width": 14.6,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 78.5,
+    "rec_no5719_ci": [
+     73.0,
+     84.0
+    ],
+    "smd_coding_rate_vs_rest": 0.087,
+    "mech": {
+     "n": 3610,
+     "ALT_avail_pct": 38.9,
+     "HbA1c_avail_pct": 8.4,
+     "TG_avail_pct": 6.4,
+     "HDL_avail_pct": 4.5,
+     "liver_imaging_in_window_pct": 39.5,
+     "cmrf_unascertainable_all_pct": 1.9
+    }
+   },
+   {
+    "stratum": "HISPANIC/LATINO - GUATEMALAN",
+    "A": 55,
+    "B": 138,
+    "C": 4,
+    "D": 982,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 71.5,
+    "rec_ci": [
+     59.5,
+     82.4
+    ],
+    "rec_ci_width": 23.0,
+    "rec_claim_supported": false,
+    "corroboration_share_pct": 93.2,
+    "cor_ci": [
+     83.7,
+     98.5
+    ],
+    "cor_ci_width": 14.8,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 71.5,
+    "rec_no5719_ci": [
+     59.5,
+     82.4
+    ],
+    "smd_coding_rate_vs_rest": 0.251,
+    "mech": {
+     "n": 1179,
+     "ALT_avail_pct": 41.2,
+     "HbA1c_avail_pct": 8.8,
+     "TG_avail_pct": 5.7,
+     "HDL_avail_pct": 3.9,
+     "liver_imaging_in_window_pct": 46.4,
+     "cmrf_unascertainable_all_pct": 5.2
+    }
+   },
+   {
+    "stratum": "HISPANIC/LATINO - HONDURAN",
+    "A": 9,
+    "B": 44,
+    "C": 1,
+    "D": 371,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 83.0,
+    "rec_ci": [
+     66.1,
+     97.5
+    ],
+    "rec_ci_width": 31.4,
+    "rec_claim_supported": false,
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "recovery_share_no5719_pct": 83.0,
+    "rec_no5719_ci": [
+     66.1,
+     97.5
+    ],
+    "smd_coding_rate_vs_rest": -0.029,
+    "mech": {
+     "n": 425,
+     "ALT_avail_pct": 37.4,
+     "HbA1c_avail_pct": 6.1,
+     "TG_avail_pct": 7.5,
+     "HDL_avail_pct": 5.4,
+     "liver_imaging_in_window_pct": 41.4,
+     "cmrf_unascertainable_all_pct": 3.1
+    }
+   },
+   {
+    "stratum": "HISPANIC/LATINO - MEXICAN",
+    "A": 17,
+    "B": 53,
+    "C": 2,
+    "D": 439,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 75.7,
+    "rec_ci": [
+     64.4,
+     83.8
+    ],
+    "rec_ci_width": 19.4,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 89.5,
+    "cor_ci": [
+     79.1,
+     100.0
+    ],
+    "cor_ci_width": 20.9,
+    "cor_claim_supported": false,
+    "recovery_share_no5719_pct": 75.7,
+    "rec_no5719_ci": [
+     64.4,
+     83.8
+    ],
+    "smd_coding_rate_vs_rest": 0.153,
+    "mech": {
+     "n": 511,
+     "ALT_avail_pct": 37.0,
+     "HbA1c_avail_pct": 7.2,
+     "TG_avail_pct": 5.3,
+     "HDL_avail_pct": 3.7,
+     "liver_imaging_in_window_pct": 37.4,
+     "cmrf_unascertainable_all_pct": 7.6
+    }
+   },
+   {
+    "stratum": "HISPANIC/LATINO - PUERTO RICAN",
+    "A": 235,
+    "B": 622,
+    "C": 20,
+    "D": 5943,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 72.6,
+    "rec_ci": [
+     68.0,
+     76.5
+    ],
+    "rec_ci_width": 8.5,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 92.2,
+    "cor_ci": [
+     88.6,
+     95.9
+    ],
+    "cor_ci_width": 7.3,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 72.6,
+    "rec_no5719_ci": [
+     68.0,
+     76.5
+    ],
+    "smd_coding_rate_vs_rest": 0.232,
+    "mech": {
+     "n": 6820,
+     "ALT_avail_pct": 39.7,
+     "HbA1c_avail_pct": 8.2,
+     "TG_avail_pct": 6.6,
+     "HDL_avail_pct": 4.6,
+     "liver_imaging_in_window_pct": 43.9,
+     "cmrf_unascertainable_all_pct": 2.7
+    }
+   },
+   {
+    "stratum": "HISPANIC/LATINO - SALVADORAN",
+    "A": 34,
+    "B": 58,
+    "C": 0,
+    "D": 637,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 63.0,
+    "rec_ci": [
+     49.2,
+     80.3
+    ],
+    "rec_ci_width": 31.1,
+    "rec_claim_supported": false,
+    "corroboration_share_pct": 100.0,
+    "cor_ci": [
+     100.0,
+     100.0
+    ],
+    "cor_ci_width": 0.0,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 63.0,
+    "rec_no5719_ci": [
+     49.2,
+     80.3
+    ],
+    "smd_coding_rate_vs_rest": 0.434,
+    "mech": {
+     "n": 729,
+     "ALT_avail_pct": 38.7,
+     "HbA1c_avail_pct": 7.1,
+     "TG_avail_pct": 7.3,
+     "HDL_avail_pct": 5.9,
+     "liver_imaging_in_window_pct": 47.5,
+     "cmrf_unascertainable_all_pct": 4.1
+    }
+   },
+   {
+    "stratum": "MULTIPLE RACE/ETHNICITY",
+    "A": 4,
+    "B": 24,
+    "C": 0,
+    "D": 390,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 85.7,
+    "rec_ci": [
+     68.8,
+     100.0
+    ],
+    "rec_ci_width": 31.2,
+    "rec_claim_supported": false,
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "recovery_share_no5719_pct": 85.7,
+    "rec_no5719_ci": [
+     68.8,
+     100.0
+    ],
+    "smd_coding_rate_vs_rest": -0.103,
+    "mech": {
+     "n": 418,
+     "ALT_avail_pct": 36.4,
+     "HbA1c_avail_pct": 5.7,
+     "TG_avail_pct": 7.2,
+     "HDL_avail_pct": 5.7,
+     "liver_imaging_in_window_pct": 32.1,
+     "cmrf_unascertainable_all_pct": 10.0
+    }
+   },
+   {
+    "stratum": "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER",
+    "A": 4,
+    "B": 23,
+    "C": 0,
+    "D": 290,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 85.2,
+    "rec_ci": [
+     66.1,
+     100.0
+    ],
+    "rec_ci_width": 33.9,
+    "rec_claim_supported": false,
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "recovery_share_no5719_pct": 85.2,
+    "rec_no5719_ci": [
+     66.1,
+     100.0
+    ],
+    "smd_coding_rate_vs_rest": -0.088,
+    "mech": {
+     "n": 317,
+     "ALT_avail_pct": 47.9,
+     "HbA1c_avail_pct": 12.0,
+     "TG_avail_pct": 12.0,
+     "HDL_avail_pct": 9.8,
+     "liver_imaging_in_window_pct": 31.5,
+     "cmrf_unascertainable_all_pct": 5.0
+    }
+   },
+   {
+    "stratum": "OTHER",
+    "A": 185,
+    "B": 718,
+    "C": 27,
+    "D": 11598,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 79.5,
+    "rec_ci": [
+     75.5,
+     82.7
+    ],
+    "rec_ci_width": 7.2,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 87.3,
+    "cor_ci": [
+     81.9,
+     92.2
+    ],
+    "cor_ci_width": 10.3,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 79.5,
+    "rec_no5719_ci": [
+     75.5,
+     82.7
+    ],
+    "smd_coding_rate_vs_rest": 0.064,
+    "mech": {
+     "n": 12528,
+     "ALT_avail_pct": 39.3,
+     "HbA1c_avail_pct": 8.8,
+     "TG_avail_pct": 7.6,
+     "HDL_avail_pct": 5.9,
+     "liver_imaging_in_window_pct": 34.7,
+     "cmrf_unascertainable_all_pct": 3.4
+    }
+   },
+   {
+    "stratum": "PATIENT DECLINED TO ANSWER",
+    "A": 19,
+    "B": 70,
+    "C": 6,
+    "D": 1428,
+    "encounter_characteristic": true,
+    "recovery_share_pct": 78.7,
+    "rec_ci": [
+     68.9,
+     86.2
+    ],
+    "rec_ci_width": 17.4,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 76.0,
+    "cor_ci": [
+     58.7,
+     91.7
+    ],
+    "cor_ci_width": 33.0,
+    "cor_claim_supported": false,
+    "recovery_share_no5719_pct": 78.7,
+    "rec_no5719_ci": [
+     68.9,
+     86.2
+    ],
+    "smd_coding_rate_vs_rest": 0.083,
+    "mech": {
+     "n": 1523,
+     "ALT_avail_pct": 36.6,
+     "HbA1c_avail_pct": 8.5,
+     "TG_avail_pct": 8.3,
+     "HDL_avail_pct": 5.8,
+     "liver_imaging_in_window_pct": 32.5,
+     "cmrf_unascertainable_all_pct": 2.8
+    }
+   },
+   {
+    "stratum": "PORTUGUESE",
+    "A": 56,
+    "B": 119,
+    "C": 7,
+    "D": 1201,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 68.0,
+    "rec_ci": [
+     51.3,
+     85.6
+    ],
+    "rec_ci_width": 34.3,
+    "rec_claim_supported": false,
+    "corroboration_share_pct": 88.9,
+    "cor_ci": [
+     75.0,
+     96.0
+    ],
+    "cor_ci_width": 21.0,
+    "cor_claim_supported": false,
+    "recovery_share_no5719_pct": 68.0,
+    "rec_no5719_ci": [
+     51.3,
+     85.6
+    ],
+    "smd_coding_rate_vs_rest": 0.328,
+    "mech": {
+     "n": 1383,
+     "ALT_avail_pct": 54.3,
+     "HbA1c_avail_pct": 7.3,
+     "TG_avail_pct": 7.0,
+     "HDL_avail_pct": 4.7,
+     "liver_imaging_in_window_pct": 50.6,
+     "cmrf_unascertainable_all_pct": 1.3
+    }
+   },
+   {
+    "stratum": "SOUTH AMERICAN",
+    "A": 9,
+    "B": 46,
+    "C": 0,
+    "D": 388,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 83.6,
+    "rec_ci": [
+     69.9,
+     94.5
+    ],
+    "rec_ci_width": 24.6,
+    "rec_claim_supported": false,
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "recovery_share_no5719_pct": 83.6,
+    "rec_no5719_ci": [
+     69.9,
+     94.5
+    ],
+    "smd_coding_rate_vs_rest": -0.045,
+    "mech": {
+     "n": 443,
+     "ALT_avail_pct": 32.7,
+     "HbA1c_avail_pct": 7.0,
+     "TG_avail_pct": 5.4,
+     "HDL_avail_pct": 4.5,
+     "liver_imaging_in_window_pct": 35.2,
+     "cmrf_unascertainable_all_pct": 2.7
+    }
+   },
+   {
+    "stratum": "UNABLE TO OBTAIN",
+    "A": 9,
+    "B": 55,
+    "C": 2,
+    "D": 1326,
+    "encounter_characteristic": true,
+    "recovery_share_pct": 85.9,
+    "rec_ci": [
+     77.4,
+     93.6
+    ],
+    "rec_ci_width": 16.2,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 81.8,
+    "cor_ci": [
+     58.3,
+     100.0
+    ],
+    "cor_ci_width": 41.7,
+    "cor_claim_supported": false,
+    "recovery_share_no5719_pct": 85.9,
+    "rec_no5719_ci": [
+     77.4,
+     93.6
+    ],
+    "smd_coding_rate_vs_rest": -0.109,
+    "mech": {
+     "n": 1392,
+     "ALT_avail_pct": 54.1,
+     "HbA1c_avail_pct": 18.1,
+     "TG_avail_pct": 15.4,
+     "HDL_avail_pct": 11.2,
+     "liver_imaging_in_window_pct": 30.1,
+     "cmrf_unascertainable_all_pct": 5.2
+    }
+   },
+   {
+    "stratum": "UNKNOWN",
+    "A": 88,
+    "B": 493,
+    "C": 11,
+    "D": 9134,
+    "encounter_characteristic": true,
+    "recovery_share_pct": 84.9,
+    "rec_ci": [
+     81.8,
+     87.8
+    ],
+    "rec_ci_width": 5.9,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 88.9,
+    "cor_ci": [
+     82.9,
+     94.3
+    ],
+    "cor_ci_width": 11.4,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 85.0,
+    "rec_no5719_ci": [
+     82.1,
+     87.9
+    ],
+    "smd_coding_rate_vs_rest": -0.08,
+    "mech": {
+     "n": 9726,
+     "ALT_avail_pct": 56.1,
+     "HbA1c_avail_pct": 18.9,
+     "TG_avail_pct": 16.4,
+     "HDL_avail_pct": 10.5,
+     "liver_imaging_in_window_pct": 30.6,
+     "cmrf_unascertainable_all_pct": 1.9
+    }
+   },
+   {
+    "stratum": "WHITE",
+    "A": 3167,
+    "B": 14785,
+    "C": 447,
+    "D": 222559,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 82.4,
+    "rec_ci": [
+     81.5,
+     83.2
+    ],
+    "rec_ci_width": 1.7,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 87.6,
+    "cor_ci": [
+     86.5,
+     88.8
+    ],
+    "cor_ci_width": 2.3,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 82.4,
+    "rec_no5719_ci": [
+     81.5,
+     83.2
+    ],
+    "smd_coding_rate_vs_rest": -0.031,
+    "mech": {
+     "n": 240958,
+     "ALT_avail_pct": 40.4,
+     "HbA1c_avail_pct": 7.7,
+     "TG_avail_pct": 7.8,
+     "HDL_avail_pct": 5.6,
+     "liver_imaging_in_window_pct": 36.9,
+     "cmrf_unascertainable_all_pct": 2.8
+    }
+   },
+   {
+    "stratum": "WHITE - BRAZILIAN",
+    "A": 21,
+    "B": 69,
+    "C": 5,
+    "D": 855,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 76.7,
+    "rec_ci": [
+     62.1,
+     88.3
+    ],
+    "rec_ci_width": 26.2,
+    "rec_claim_supported": false,
+    "corroboration_share_pct": 80.8,
+    "cor_ci": [
+     60.0,
+     96.8
+    ],
+    "cor_ci_width": 36.8,
+    "cor_claim_supported": false,
+    "recovery_share_no5719_pct": 76.7,
+    "rec_no5719_ci": [
+     62.1,
+     88.3
+    ],
+    "smd_coding_rate_vs_rest": 0.131,
+    "mech": {
+     "n": 950,
+     "ALT_avail_pct": 42.7,
+     "HbA1c_avail_pct": 5.5,
+     "TG_avail_pct": 5.8,
+     "HDL_avail_pct": 3.9,
+     "liver_imaging_in_window_pct": 48.3,
+     "cmrf_unascertainable_all_pct": 3.8
+    }
+   },
+   {
+    "stratum": "WHITE - EASTERN EUROPEAN",
+    "A": 12,
+    "B": 54,
+    "C": 2,
+    "D": 977,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 81.8,
+    "rec_ci": [
+     72.3,
+     90.9
+    ],
+    "rec_ci_width": 18.6,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 85.7,
+    "cor_ci": [
+     65.6,
+     100.0
+    ],
+    "cor_ci_width": 34.4,
+    "cor_claim_supported": false,
+    "recovery_share_no5719_pct": 81.8,
+    "rec_no5719_ci": [
+     72.3,
+     90.9
+    ],
+    "smd_coding_rate_vs_rest": 0.003,
+    "mech": {
+     "n": 1045,
+     "ALT_avail_pct": 36.7,
+     "HbA1c_avail_pct": 7.6,
+     "TG_avail_pct": 6.0,
+     "HDL_avail_pct": 4.8,
+     "liver_imaging_in_window_pct": 39.8,
+     "cmrf_unascertainable_all_pct": 1.9
+    }
+   },
+   {
+    "stratum": "WHITE - OTHER EUROPEAN",
+    "A": 139,
+    "B": 524,
+    "C": 22,
+    "D": 6441,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 79.0,
+    "rec_ci": [
+     74.7,
+     83.0
+    ],
+    "rec_ci_width": 8.3,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 86.3,
+    "cor_ci": [
+     80.4,
+     91.7
+    ],
+    "cor_ci_width": 11.3,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 79.3,
+    "rec_no5719_ci": [
+     74.8,
+     83.2
+    ],
+    "smd_coding_rate_vs_rest": 0.075,
+    "mech": {
+     "n": 7126,
+     "ALT_avail_pct": 41.0,
+     "HbA1c_avail_pct": 7.3,
+     "TG_avail_pct": 6.6,
+     "HDL_avail_pct": 4.7,
+     "liver_imaging_in_window_pct": 40.4,
+     "cmrf_unascertainable_all_pct": 0.5
+    }
+   },
+   {
+    "stratum": "WHITE - RUSSIAN",
+    "A": 81,
+    "B": 214,
+    "C": 11,
+    "D": 4354,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 72.5,
+    "rec_ci": [
+     63.1,
+     82.5
+    ],
+    "rec_ci_width": 19.4,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 88.0,
+    "cor_ci": [
+     77.3,
+     95.2
+    ],
+    "cor_ci_width": 17.9,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 72.5,
+    "rec_no5719_ci": [
+     63.1,
+     82.5
+    ],
+    "smd_coding_rate_vs_rest": 0.228,
+    "mech": {
+     "n": 4660,
+     "ALT_avail_pct": 34.0,
+     "HbA1c_avail_pct": 6.9,
+     "TG_avail_pct": 5.8,
+     "HDL_avail_pct": 4.8,
+     "liver_imaging_in_window_pct": 35.4,
+     "cmrf_unascertainable_all_pct": 0.8
+    }
+   }
+  ],
+  "insurance": [
+   {
+    "stratum": "(missing)",
+    "A": 30,
+    "B": 207,
+    "C": 4,
+    "D": 4952,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 87.3,
+    "rec_ci": [
+     82.3,
+     91.5
+    ],
+    "rec_ci_width": 9.3,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 88.2,
+    "cor_ci": [
+     77.1,
+     97.6
+    ],
+    "cor_ci_width": 20.5,
+    "cor_claim_supported": false,
+    "recovery_share_no5719_pct": 87.3,
+    "rec_no5719_ci": [
+     82.3,
+     91.5
+    ],
+    "smd_coding_rate_vs_rest": -0.152,
+    "mech": {
+     "n": 5193,
+     "ALT_avail_pct": 32.1,
+     "HbA1c_avail_pct": 9.1,
+     "TG_avail_pct": 9.5,
+     "HDL_avail_pct": 7.7,
+     "liver_imaging_in_window_pct": 28.6,
+     "cmrf_unascertainable_all_pct": 20.4
+    }
+   },
+   {
+    "stratum": "Medicaid",
+    "A": 987,
+    "B": 5042,
+    "C": 124,
+    "D": 56874,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 83.6,
+    "rec_ci": [
+     82.4,
+     84.9
+    ],
+    "rec_ci_width": 2.5,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 88.8,
+    "cor_ci": [
+     87.0,
+     90.6
+    ],
+    "cor_ci_width": 3.6,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 83.7,
+    "rec_no5719_ci": [
+     82.4,
+     84.9
+    ],
+    "smd_coding_rate_vs_rest": -0.057,
+    "mech": {
+     "n": 63027,
+     "ALT_avail_pct": 42.1,
+     "HbA1c_avail_pct": 7.2,
+     "TG_avail_pct": 6.8,
+     "HDL_avail_pct": 4.6,
+     "liver_imaging_in_window_pct": 39.4,
+     "cmrf_unascertainable_all_pct": 3.8
+    }
+   },
+   {
+    "stratum": "Medicare",
+    "A": 1882,
+    "B": 8684,
+    "C": 327,
+    "D": 169614,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 82.2,
+    "rec_ci": [
+     80.9,
+     83.4
+    ],
+    "rec_ci_width": 2.5,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 85.2,
+    "cor_ci": [
+     83.6,
+     87.0
+    ],
+    "cor_ci_width": 3.4,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 82.2,
+    "rec_no5719_ci": [
+     80.9,
+     83.4
+    ],
+    "smd_coding_rate_vs_rest": -0.011,
+    "mech": {
+     "n": 180507,
+     "ALT_avail_pct": 40.8,
+     "HbA1c_avail_pct": 9.0,
+     "TG_avail_pct": 8.2,
+     "HDL_avail_pct": 6.2,
+     "liver_imaging_in_window_pct": 35.7,
+     "cmrf_unascertainable_all_pct": 0.7
+    }
+   },
+   {
+    "stratum": "No charge",
+    "A": 0,
+    "B": 6,
+    "C": 0,
+    "D": 67,
+    "encounter_characteristic": false,
+    "recovery_share_pct": null,
+    "rec_note": "not analyzable (B < 11)",
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "mech": {
+     "n": 73,
+     "ALT_avail_pct": 35.6,
+     "HbA1c_avail_pct": 6.8,
+     "TG_avail_pct": 8.2,
+     "HDL_avail_pct": 8.2,
+     "liver_imaging_in_window_pct": 35.6,
+     "cmrf_unascertainable_all_pct": 9.6
+    }
+   },
+   {
+    "stratum": "Other",
+    "A": 122,
+    "B": 724,
+    "C": 13,
+    "D": 9111,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 85.6,
+    "rec_ci": [
+     82.9,
+     88.2
+    ],
+    "rec_ci_width": 5.3,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 90.4,
+    "cor_ci": [
+     84.7,
+     95.1
+    ],
+    "cor_ci_width": 10.4,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 85.7,
+    "rec_no5719_ci": [
+     82.9,
+     88.3
+    ],
+    "smd_coding_rate_vs_rest": -0.102,
+    "mech": {
+     "n": 9970,
+     "ALT_avail_pct": 39.7,
+     "HbA1c_avail_pct": 8.4,
+     "TG_avail_pct": 8.4,
+     "HDL_avail_pct": 6.2,
+     "liver_imaging_in_window_pct": 36.5,
+     "cmrf_unascertainable_all_pct": 5.7
+    }
+   },
+   {
+    "stratum": "Private",
+    "A": 2006,
+    "B": 8136,
+    "C": 245,
+    "D": 104835,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 80.2,
+    "rec_ci": [
+     79.1,
+     81.3
+    ],
+    "rec_ci_width": 2.2,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 89.1,
+    "cor_ci": [
+     87.7,
+     90.5
+    ],
+    "cor_ci_width": 2.8,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 80.3,
+    "rec_no5719_ci": [
+     79.2,
+     81.3
+    ],
+    "smd_coding_rate_vs_rest": 0.07,
+    "mech": {
+     "n": 115222,
+     "ALT_avail_pct": 38.1,
+     "HbA1c_avail_pct": 6.8,
+     "TG_avail_pct": 7.6,
+     "HDL_avail_pct": 5.2,
+     "liver_imaging_in_window_pct": 38.4,
+     "cmrf_unascertainable_all_pct": 4.2
+    }
+   }
+  ],
+  "gender": [
+   {
+    "stratum": "F",
+    "A": 2494,
+    "B": 10724,
+    "C": 374,
+    "D": 177622,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 81.1,
+    "rec_ci": [
+     80.1,
+     82.0
+    ],
+    "rec_ci_width": 1.9,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 87.0,
+    "cor_ci": [
+     85.5,
+     88.2
+    ],
+    "cor_ci_width": 2.8,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 81.2,
+    "rec_no5719_ci": [
+     80.2,
+     82.1
+    ],
+    "smd_coding_rate_vs_rest": 0.04,
+    "mech": {
+     "n": 191214,
+     "ALT_avail_pct": 37.5,
+     "HbA1c_avail_pct": 6.9,
+     "TG_avail_pct": 7.1,
+     "HDL_avail_pct": 5.1,
+     "liver_imaging_in_window_pct": 37.1,
+     "cmrf_unascertainable_all_pct": 2.3
+    }
+   },
+   {
+    "stratum": "M",
+    "A": 2533,
+    "B": 12075,
+    "C": 339,
+    "D": 167831,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 82.7,
+    "rec_ci": [
+     81.6,
+     83.6
+    ],
+    "rec_ci_width": 2.0,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 88.2,
+    "cor_ci": [
+     86.9,
+     89.5
+    ],
+    "cor_ci_width": 2.7,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 82.7,
+    "rec_no5719_ci": [
+     81.7,
+     83.6
+    ],
+    "smd_coding_rate_vs_rest": -0.04,
+    "mech": {
+     "n": 182778,
+     "ALT_avail_pct": 42.7,
+     "HbA1c_avail_pct": 9.2,
+     "TG_avail_pct": 8.6,
+     "HDL_avail_pct": 6.2,
+     "liver_imaging_in_window_pct": 37.0,
+     "cmrf_unascertainable_all_pct": 3.2
+    }
+   }
+  ],
+  "language": [
+   {
+    "stratum": "(missing)",
+    "A": 3,
+    "B": 30,
+    "C": 1,
+    "D": 590,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 90.9,
+    "rec_ci": [
+     80.0,
+     100.0
+    ],
+    "rec_ci_width": 20.0,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "recovery_share_no5719_pct": 90.9,
+    "rec_no5719_ci": [
+     80.0,
+     100.0
+    ],
+    "smd_coding_rate_vs_rest": -0.265,
+    "mech": {
+     "n": 624,
+     "ALT_avail_pct": 54.8,
+     "HbA1c_avail_pct": 14.3,
+     "TG_avail_pct": 15.7,
+     "HDL_avail_pct": 10.4,
+     "liver_imaging_in_window_pct": 29.2,
+     "cmrf_unascertainable_all_pct": 2.6
+    }
+   },
+   {
+    "stratum": "American Sign Language",
+    "A": 3,
+    "B": 17,
+    "C": 2,
+    "D": 376,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 85.0,
+    "rec_ci": [
+     70.7,
+     100.0
+    ],
+    "rec_ci_width": 29.3,
+    "rec_claim_supported": false,
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "recovery_share_no5719_pct": 85.0,
+    "rec_no5719_ci": [
+     70.7,
+     100.0
+    ],
+    "smd_coding_rate_vs_rest": -0.083,
+    "mech": {
+     "n": 398,
+     "ALT_avail_pct": 40.5,
+     "HbA1c_avail_pct": 6.0,
+     "TG_avail_pct": 5.8,
+     "HDL_avail_pct": 2.8,
+     "liver_imaging_in_window_pct": 44.2,
+     "cmrf_unascertainable_all_pct": 1.0
+    }
+   },
+   {
+    "stratum": "Amharic",
+    "A": 4,
+    "B": 7,
+    "C": 0,
+    "D": 152,
+    "encounter_characteristic": false,
+    "recovery_share_pct": null,
+    "rec_note": "not analyzable (B < 11)",
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "smd_coding_rate_vs_rest": 0.42,
+    "mech": {
+     "n": 163,
+     "ALT_avail_pct": 33.7,
+     "HbA1c_avail_pct": 12.9,
+     "TG_avail_pct": 9.2,
+     "HDL_avail_pct": 8.0,
+     "liver_imaging_in_window_pct": 43.6,
+     "cmrf_unascertainable_all_pct": 1.2
+    }
+   },
+   {
+    "stratum": "Arabic",
+    "A": 0,
+    "B": 30,
+    "C": 1,
+    "D": 442,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 100.0,
+    "rec_ci": [
+     100.0,
+     100.0
+    ],
+    "rec_ci_width": 0.0,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "recovery_share_no5719_pct": 100.0,
+    "rec_no5719_ci": [
+     100.0,
+     100.0
+    ],
+    "smd_coding_rate_vs_rest": -0.665,
+    "mech": {
+     "n": 473,
+     "ALT_avail_pct": 48.8,
+     "HbA1c_avail_pct": 9.7,
+     "TG_avail_pct": 8.7,
+     "HDL_avail_pct": 5.3,
+     "liver_imaging_in_window_pct": 44.6,
+     "cmrf_unascertainable_all_pct": 1.7
+    }
+   },
+   {
+    "stratum": "Armenian",
+    "A": 1,
+    "B": 0,
+    "C": 0,
+    "D": 74,
+    "encounter_characteristic": false,
+    "recovery_share_pct": null,
+    "rec_note": "not analyzable (B < 11)",
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "mech": {
+     "n": 75,
+     "ALT_avail_pct": 40.0,
+     "HbA1c_avail_pct": 14.7,
+     "TG_avail_pct": 5.3,
+     "HDL_avail_pct": 6.7,
+     "liver_imaging_in_window_pct": 28.0,
+     "cmrf_unascertainable_all_pct": 1.3
+    }
+   },
+   {
+    "stratum": "Bengali",
+    "A": 5,
+    "B": 2,
+    "C": 1,
+    "D": 78,
+    "encounter_characteristic": false,
+    "recovery_share_pct": null,
+    "rec_note": "not analyzable (B < 11)",
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "mech": {
+     "n": 86,
+     "ALT_avail_pct": 45.3,
+     "HbA1c_avail_pct": 12.8,
+     "TG_avail_pct": 10.5,
+     "HDL_avail_pct": 5.8,
+     "liver_imaging_in_window_pct": 40.7,
+     "cmrf_unascertainable_all_pct": 0.0
+    }
+   },
+   {
+    "stratum": "Chinese",
+    "A": 55,
+    "B": 381,
+    "C": 10,
+    "D": 4559,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 87.4,
+    "rec_ci": [
+     83.3,
+     91.2
+    ],
+    "rec_ci_width": 7.9,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 84.6,
+    "cor_ci": [
+     75.4,
+     92.5
+    ],
+    "cor_ci_width": 17.1,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 87.4,
+    "rec_no5719_ci": [
+     83.3,
+     91.2
+    ],
+    "smd_coding_rate_vs_rest": -0.154,
+    "mech": {
+     "n": 5005,
+     "ALT_avail_pct": 43.5,
+     "HbA1c_avail_pct": 6.6,
+     "TG_avail_pct": 6.7,
+     "HDL_avail_pct": 5.1,
+     "liver_imaging_in_window_pct": 48.3,
+     "cmrf_unascertainable_all_pct": 1.8
+    }
+   },
+   {
+    "stratum": "English",
+    "A": 4428,
+    "B": 20342,
+    "C": 629,
+    "D": 310810,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 82.1,
+    "rec_ci": [
+     81.4,
+     82.9
+    ],
+    "rec_ci_width": 1.5,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 87.6,
+    "cor_ci": [
+     86.5,
+     88.6
+    ],
+    "cor_ci_width": 2.1,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 82.2,
+    "rec_no5719_ci": [
+     81.4,
+     82.9
+    ],
+    "smd_coding_rate_vs_rest": -0.044,
+    "mech": {
+     "n": 336209,
+     "ALT_avail_pct": 39.9,
+     "HbA1c_avail_pct": 7.9,
+     "TG_avail_pct": 7.8,
+     "HDL_avail_pct": 5.6,
+     "liver_imaging_in_window_pct": 36.6,
+     "cmrf_unascertainable_all_pct": 2.9
+    }
+   },
+   {
+    "stratum": "French",
+    "A": 0,
+    "B": 2,
+    "C": 0,
+    "D": 154,
+    "encounter_characteristic": false,
+    "recovery_share_pct": null,
+    "rec_note": "not analyzable (B < 11)",
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "mech": {
+     "n": 156,
+     "ALT_avail_pct": 44.2,
+     "HbA1c_avail_pct": 9.0,
+     "TG_avail_pct": 9.0,
+     "HDL_avail_pct": 7.1,
+     "liver_imaging_in_window_pct": 28.2,
+     "cmrf_unascertainable_all_pct": 3.8
+    }
+   },
+   {
+    "stratum": "Haitian",
+    "A": 7,
+    "B": 48,
+    "C": 2,
+    "D": 1637,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 87.3,
+    "rec_ci": [
+     76.4,
+     95.5
+    ],
+    "rec_ci_width": 19.0,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "recovery_share_no5719_pct": 87.3,
+    "rec_no5719_ci": [
+     76.4,
+     95.5
+    ],
+    "smd_coding_rate_vs_rest": -0.149,
+    "mech": {
+     "n": 1694,
+     "ALT_avail_pct": 45.3,
+     "HbA1c_avail_pct": 12.8,
+     "TG_avail_pct": 10.7,
+     "HDL_avail_pct": 8.7,
+     "liver_imaging_in_window_pct": 37.0,
+     "cmrf_unascertainable_all_pct": 0.7
+    }
+   },
+   {
+    "stratum": "Hindi",
+    "A": 1,
+    "B": 5,
+    "C": 0,
+    "D": 118,
+    "encounter_characteristic": false,
+    "recovery_share_pct": null,
+    "rec_note": "not analyzable (B < 11)",
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "mech": {
+     "n": 124,
+     "ALT_avail_pct": 52.4,
+     "HbA1c_avail_pct": 12.1,
+     "TG_avail_pct": 14.5,
+     "HDL_avail_pct": 10.5,
+     "liver_imaging_in_window_pct": 28.2,
+     "cmrf_unascertainable_all_pct": 1.6
+    }
+   },
+   {
+    "stratum": "Italian",
+    "A": 11,
+    "B": 38,
+    "C": 0,
+    "D": 743,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 77.6,
+    "rec_ci": [
+     64.3,
+     88.9
+    ],
+    "rec_ci_width": 24.6,
+    "rec_claim_supported": false,
+    "corroboration_share_pct": 100.0,
+    "cor_ci": [
+     100.0,
+     100.0
+    ],
+    "cor_ci_width": 0.0,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 77.6,
+    "rec_no5719_ci": [
+     64.3,
+     88.9
+    ],
+    "smd_coding_rate_vs_rest": 0.109,
+    "mech": {
+     "n": 792,
+     "ALT_avail_pct": 44.1,
+     "HbA1c_avail_pct": 8.0,
+     "TG_avail_pct": 6.4,
+     "HDL_avail_pct": 4.4,
+     "liver_imaging_in_window_pct": 38.4,
+     "cmrf_unascertainable_all_pct": 0.1
+    }
+   },
+   {
+    "stratum": "Japanese",
+    "A": 0,
+    "B": 0,
+    "C": 0,
+    "D": 93,
+    "encounter_characteristic": false,
+    "recovery_share_pct": null,
+    "rec_note": "not analyzable (B < 11)",
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "mech": {
+     "n": 93,
+     "ALT_avail_pct": 28.0,
+     "HbA1c_avail_pct": 1.1,
+     "TG_avail_pct": 3.2,
+     "HDL_avail_pct": 3.2,
+     "liver_imaging_in_window_pct": 32.3,
+     "cmrf_unascertainable_all_pct": 7.5
+    }
+   },
+   {
+    "stratum": "Kabuverdianu",
+    "A": 54,
+    "B": 192,
+    "C": 5,
+    "D": 3112,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 78.0,
+    "rec_ci": [
+     70.5,
+     85.8
+    ],
+    "rec_ci_width": 15.4,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 91.5,
+    "cor_ci": [
+     81.3,
+     98.3
+    ],
+    "cor_ci_width": 17.0,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 78.0,
+    "rec_no5719_ci": [
+     70.5,
+     85.8
+    ],
+    "smd_coding_rate_vs_rest": 0.098,
+    "mech": {
+     "n": 3363,
+     "ALT_avail_pct": 37.1,
+     "HbA1c_avail_pct": 8.6,
+     "TG_avail_pct": 8.1,
+     "HDL_avail_pct": 6.5,
+     "liver_imaging_in_window_pct": 38.2,
+     "cmrf_unascertainable_all_pct": 0.4
+    }
+   },
+   {
+    "stratum": "Khmer",
+    "A": 2,
+    "B": 8,
+    "C": 0,
+    "D": 193,
+    "encounter_characteristic": false,
+    "recovery_share_pct": null,
+    "rec_note": "not analyzable (B < 11)",
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "mech": {
+     "n": 203,
+     "ALT_avail_pct": 65.0,
+     "HbA1c_avail_pct": 12.3,
+     "TG_avail_pct": 12.8,
+     "HDL_avail_pct": 10.3,
+     "liver_imaging_in_window_pct": 53.2,
+     "cmrf_unascertainable_all_pct": 1.0
+    }
+   },
+   {
+    "stratum": "Korean",
+    "A": 1,
+    "B": 15,
+    "C": 1,
+    "D": 231,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 93.8,
+    "rec_ci": [
+     72.3,
+     100.0
+    ],
+    "rec_ci_width": 27.7,
+    "rec_claim_supported": false,
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "recovery_share_no5719_pct": 93.8,
+    "rec_no5719_ci": [
+     72.3,
+     100.0
+    ],
+    "smd_coding_rate_vs_rest": -0.368,
+    "mech": {
+     "n": 248,
+     "ALT_avail_pct": 46.8,
+     "HbA1c_avail_pct": 8.5,
+     "TG_avail_pct": 7.7,
+     "HDL_avail_pct": 6.0,
+     "liver_imaging_in_window_pct": 44.4,
+     "cmrf_unascertainable_all_pct": 3.6
+    }
+   },
+   {
+    "stratum": "Modern Greek (1453-)",
+    "A": 2,
+    "B": 20,
+    "C": 0,
+    "D": 695,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 90.9,
+    "rec_ci": [
+     69.2,
+     100.0
+    ],
+    "rec_ci_width": 30.8,
+    "rec_claim_supported": false,
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "recovery_share_no5719_pct": 90.9,
+    "rec_no5719_ci": [
+     69.2,
+     100.0
+    ],
+    "smd_coding_rate_vs_rest": -0.264,
+    "mech": {
+     "n": 717,
+     "ALT_avail_pct": 40.9,
+     "HbA1c_avail_pct": 8.9,
+     "TG_avail_pct": 8.4,
+     "HDL_avail_pct": 6.6,
+     "liver_imaging_in_window_pct": 38.6,
+     "cmrf_unascertainable_all_pct": 0.4
+    }
+   },
+   {
+    "stratum": "Other",
+    "A": 12,
+    "B": 53,
+    "C": 1,
+    "D": 850,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 81.5,
+    "rec_ci": [
+     68.7,
+     92.5
+    ],
+    "rec_ci_width": 23.9,
+    "rec_claim_supported": false,
+    "corroboration_share_pct": 92.3,
+    "cor_ci": [
+     71.4,
+     100.0
+    ],
+    "cor_ci_width": 28.6,
+    "cor_claim_supported": false,
+    "recovery_share_no5719_pct": 81.5,
+    "rec_no5719_ci": [
+     68.7,
+     92.5
+    ],
+    "smd_coding_rate_vs_rest": 0.01,
+    "mech": {
+     "n": 916,
+     "ALT_avail_pct": 47.7,
+     "HbA1c_avail_pct": 11.2,
+     "TG_avail_pct": 10.3,
+     "HDL_avail_pct": 8.7,
+     "liver_imaging_in_window_pct": 37.9,
+     "cmrf_unascertainable_all_pct": 2.1
+    }
+   },
+   {
+    "stratum": "Persian",
+    "A": 1,
+    "B": 17,
+    "C": 1,
+    "D": 316,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 94.4,
+    "rec_ci": [
+     77.8,
+     100.0
+    ],
+    "rec_ci_width": 22.2,
+    "rec_claim_supported": false,
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "recovery_share_no5719_pct": 94.4,
+    "rec_no5719_ci": [
+     77.8,
+     100.0
+    ],
+    "smd_coding_rate_vs_rest": -0.395,
+    "mech": {
+     "n": 335,
+     "ALT_avail_pct": 38.2,
+     "HbA1c_avail_pct": 8.4,
+     "TG_avail_pct": 7.2,
+     "HDL_avail_pct": 5.7,
+     "liver_imaging_in_window_pct": 40.0,
+     "cmrf_unascertainable_all_pct": 0.0
+    }
+   },
+   {
+    "stratum": "Polish",
+    "A": 3,
+    "B": 19,
+    "C": 2,
+    "D": 309,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 86.4,
+    "rec_ci": [
+     77.9,
+     100.0
+    ],
+    "rec_ci_width": 22.1,
+    "rec_claim_supported": false,
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "recovery_share_no5719_pct": 86.4,
+    "rec_no5719_ci": [
+     77.9,
+     100.0
+    ],
+    "smd_coding_rate_vs_rest": -0.122,
+    "mech": {
+     "n": 333,
+     "ALT_avail_pct": 46.5,
+     "HbA1c_avail_pct": 7.5,
+     "TG_avail_pct": 7.5,
+     "HDL_avail_pct": 6.3,
+     "liver_imaging_in_window_pct": 39.3,
+     "cmrf_unascertainable_all_pct": 0.9
+    }
+   },
+   {
+    "stratum": "Portuguese",
+    "A": 31,
+    "B": 150,
+    "C": 5,
+    "D": 1780,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 82.9,
+    "rec_ci": [
+     76.1,
+     89.2
+    ],
+    "rec_ci_width": 13.1,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 86.1,
+    "cor_ci": [
+     71.6,
+     100.0
+    ],
+    "cor_ci_width": 28.4,
+    "cor_claim_supported": false,
+    "recovery_share_no5719_pct": 82.9,
+    "rec_no5719_ci": [
+     76.1,
+     89.2
+    ],
+    "smd_coding_rate_vs_rest": -0.025,
+    "mech": {
+     "n": 1966,
+     "ALT_avail_pct": 49.1,
+     "HbA1c_avail_pct": 9.6,
+     "TG_avail_pct": 9.4,
+     "HDL_avail_pct": 6.6,
+     "liver_imaging_in_window_pct": 43.5,
+     "cmrf_unascertainable_all_pct": 2.2
+    }
+   },
+   {
+    "stratum": "Russian",
+    "A": 76,
+    "B": 227,
+    "C": 14,
+    "D": 6098,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 74.9,
+    "rec_ci": [
+     66.6,
+     84.0
+    ],
+    "rec_ci_width": 17.4,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 84.4,
+    "cor_ci": [
+     70.9,
+     94.4
+    ],
+    "cor_ci_width": 23.6,
+    "cor_claim_supported": false,
+    "recovery_share_no5719_pct": 74.9,
+    "rec_no5719_ci": [
+     66.6,
+     84.0
+    ],
+    "smd_coding_rate_vs_rest": 0.173,
+    "mech": {
+     "n": 6415,
+     "ALT_avail_pct": 32.7,
+     "HbA1c_avail_pct": 6.9,
+     "TG_avail_pct": 6.6,
+     "HDL_avail_pct": 5.7,
+     "liver_imaging_in_window_pct": 34.8,
+     "cmrf_unascertainable_all_pct": 0.6
+    }
+   },
+   {
+    "stratum": "Somali",
+    "A": 0,
+    "B": 7,
+    "C": 0,
+    "D": 127,
+    "encounter_characteristic": false,
+    "recovery_share_pct": null,
+    "rec_note": "not analyzable (B < 11)",
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "mech": {
+     "n": 134,
+     "ALT_avail_pct": 32.1,
+     "HbA1c_avail_pct": 7.5,
+     "TG_avail_pct": 5.2,
+     "HDL_avail_pct": 5.2,
+     "liver_imaging_in_window_pct": 50.0,
+     "cmrf_unascertainable_all_pct": 0.0
+    }
+   },
+   {
+    "stratum": "Spanish",
+    "A": 317,
+    "B": 1114,
+    "C": 38,
+    "D": 11023,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 77.8,
+    "rec_ci": [
+     74.4,
+     80.8
+    ],
+    "rec_ci_width": 6.5,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 89.3,
+    "cor_ci": [
+     85.6,
+     92.5
+    ],
+    "cor_ci_width": 6.8,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 77.9,
+    "rec_no5719_ci": [
+     74.4,
+     80.9
+    ],
+    "smd_coding_rate_vs_rest": 0.108,
+    "mech": {
+     "n": 12492,
+     "ALT_avail_pct": 39.9,
+     "HbA1c_avail_pct": 9.7,
+     "TG_avail_pct": 7.8,
+     "HDL_avail_pct": 5.8,
+     "liver_imaging_in_window_pct": 41.8,
+     "cmrf_unascertainable_all_pct": 2.7
+    }
+   },
+   {
+    "stratum": "Thai",
+    "A": 2,
+    "B": 9,
+    "C": 0,
+    "D": 178,
+    "encounter_characteristic": false,
+    "recovery_share_pct": null,
+    "rec_note": "not analyzable (B < 11)",
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "smd_coding_rate_vs_rest": 0.003,
+    "mech": {
+     "n": 189,
+     "ALT_avail_pct": 39.7,
+     "HbA1c_avail_pct": 7.4,
+     "TG_avail_pct": 6.3,
+     "HDL_avail_pct": 5.3,
+     "liver_imaging_in_window_pct": 40.7,
+     "cmrf_unascertainable_all_pct": 2.1
+    }
+   },
+   {
+    "stratum": "Vietnamese",
+    "A": 8,
+    "B": 66,
+    "C": 0,
+    "D": 715,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 89.2,
+    "rec_ci": [
+     77.8,
+     96.2
+    ],
+    "rec_ci_width": 18.4,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": null,
+    "cor_note": "not analyzable (A+C < 11)",
+    "recovery_share_no5719_pct": 89.2,
+    "rec_no5719_ci": [
+     77.8,
+     96.2
+    ],
+    "smd_coding_rate_vs_rest": -0.208,
+    "mech": {
+     "n": 789,
+     "ALT_avail_pct": 59.1,
+     "HbA1c_avail_pct": 10.5,
+     "TG_avail_pct": 8.4,
+     "HDL_avail_pct": 6.3,
+     "liver_imaging_in_window_pct": 52.0,
+     "cmrf_unascertainable_all_pct": 0.3
+    }
+   }
+  ],
+  "age_band": [
+   {
+    "stratum": "18-39",
+    "A": 583,
+    "B": 2666,
+    "C": 64,
+    "D": 50280,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 82.1,
+    "rec_ci": [
+     80.3,
+     83.8
+    ],
+    "rec_ci_width": 3.5,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 90.1,
+    "cor_ci": [
+     87.5,
+     92.2
+    ],
+    "cor_ci_width": 4.7,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 82.2,
+    "rec_no5719_ci": [
+     80.4,
+     83.8
+    ],
+    "smd_coding_rate_vs_rest": -0.004,
+    "mech": {
+     "n": 53593,
+     "ALT_avail_pct": 36.2,
+     "HbA1c_avail_pct": 4.2,
+     "TG_avail_pct": 5.6,
+     "HDL_avail_pct": 3.4,
+     "liver_imaging_in_window_pct": 34.2,
+     "cmrf_unascertainable_all_pct": 9.7
+    }
+   },
+   {
+    "stratum": "40-54",
+    "A": 1331,
+    "B": 6225,
+    "C": 162,
+    "D": 65872,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 82.4,
+    "rec_ci": [
+     81.1,
+     83.7
+    ],
+    "rec_ci_width": 2.6,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 89.1,
+    "cor_ci": [
+     87.4,
+     90.8
+    ],
+    "cor_ci_width": 3.4,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 82.4,
+    "rec_no5719_ci": [
+     81.1,
+     83.7
+    ],
+    "smd_coding_rate_vs_rest": -0.016,
+    "mech": {
+     "n": 73590,
+     "ALT_avail_pct": 40.2,
+     "HbA1c_avail_pct": 6.9,
+     "TG_avail_pct": 7.5,
+     "HDL_avail_pct": 4.9,
+     "liver_imaging_in_window_pct": 39.5,
+     "cmrf_unascertainable_all_pct": 3.9
+    }
+   },
+   {
+    "stratum": "55-64",
+    "A": 1365,
+    "B": 6384,
+    "C": 202,
+    "D": 67657,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 82.4,
+    "rec_ci": [
+     81.0,
+     83.8
+    ],
+    "rec_ci_width": 2.7,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 87.1,
+    "cor_ci": [
+     85.0,
+     88.9
+    ],
+    "cor_ci_width": 3.9,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 82.4,
+    "rec_no5719_ci": [
+     81.0,
+     83.8
+    ],
+    "smd_coding_rate_vs_rest": -0.016,
+    "mech": {
+     "n": 75608,
+     "ALT_avail_pct": 43.1,
+     "HbA1c_avail_pct": 8.6,
+     "TG_avail_pct": 8.2,
+     "HDL_avail_pct": 5.7,
+     "liver_imaging_in_window_pct": 41.0,
+     "cmrf_unascertainable_all_pct": 1.6
+    }
+   },
+   {
+    "stratum": "65-74",
+    "A": 1200,
+    "B": 4902,
+    "C": 162,
+    "D": 67564,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 80.3,
+    "rec_ci": [
+     78.6,
+     81.8
+    ],
+    "rec_ci_width": 3.2,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 88.1,
+    "cor_ci": [
+     86.0,
+     90.3
+    ],
+    "cor_ci_width": 4.3,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 80.4,
+    "rec_no5719_ci": [
+     78.6,
+     81.8
+    ],
+    "smd_coding_rate_vs_rest": 0.053,
+    "mech": {
+     "n": 73828,
+     "ALT_avail_pct": 42.3,
+     "HbA1c_avail_pct": 9.8,
+     "TG_avail_pct": 8.5,
+     "HDL_avail_pct": 6.3,
+     "liver_imaging_in_window_pct": 38.4,
+     "cmrf_unascertainable_all_pct": 0.7
+    }
+   },
+   {
+    "stratum": "75-88",
+    "A": 503,
+    "B": 2393,
+    "C": 106,
+    "D": 73714,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 82.6,
+    "rec_ci": [
+     80.3,
+     84.6
+    ],
+    "rec_ci_width": 4.3,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 82.6,
+    "cor_ci": [
+     79.2,
+     85.9
+    ],
+    "cor_ci_width": 6.7,
+    "cor_claim_supported": true,
+    "recovery_share_no5719_pct": 82.7,
+    "rec_no5719_ci": [
+     80.3,
+     84.7
+    ],
+    "smd_coding_rate_vs_rest": -0.02,
+    "mech": {
+     "n": 76716,
+     "ALT_avail_pct": 39.0,
+     "HbA1c_avail_pct": 9.7,
+     "TG_avail_pct": 8.7,
+     "HDL_avail_pct": 7.0,
+     "liver_imaging_in_window_pct": 33.7,
+     "cmrf_unascertainable_all_pct": 0.5
+    }
+   },
+   {
+    "stratum": "89+",
+    "A": 45,
+    "B": 229,
+    "C": 17,
+    "D": 20366,
+    "encounter_characteristic": false,
+    "recovery_share_pct": 83.6,
+    "rec_ci": [
+     76.6,
+     89.7
+    ],
+    "rec_ci_width": 13.2,
+    "rec_claim_supported": true,
+    "corroboration_share_pct": 72.6,
+    "cor_ci": [
+     56.1,
+     88.1
+    ],
+    "cor_ci_width": 32.0,
+    "cor_claim_supported": false,
+    "recovery_share_no5719_pct": 83.6,
+    "rec_no5719_ci": [
+     76.6,
+     89.7
+    ],
+    "smd_coding_rate_vs_rest": -0.044,
+    "mech": {
+     "n": 20657,
+     "ALT_avail_pct": 33.7,
+     "HbA1c_avail_pct": 7.2,
+     "TG_avail_pct": 7.2,
+     "HDL_avail_pct": 6.5,
+     "liver_imaging_in_window_pct": 28.6,
+     "cmrf_unascertainable_all_pct": 0.6
+    }
+   }
+  ]
+ },
+ "gee_exploratory": {
+  "label": "EXPLORATORY",
+  "outcome": "code-positive among note-positive admissions",
+  "n": 27826,
+  "note": "all categories",
+  "terms": [
+   {
+    "term": "race[T.BLACK/AFRICAN AMERICAN]",
+    "aOR": 0.901,
+    "ci_lo": 0.782,
+    "ci_hi": 1.037
+   },
+   {
+    "term": "race[T.OTHER]",
+    "aOR": 1.161,
+    "ci_lo": 0.947,
+    "ci_hi": 1.423
+   },
+   {
+    "term": "race[T.HISPANIC/LATINO - PUERTO RICAN]",
+    "aOR": 1.603,
+    "ci_lo": 1.308,
+    "ci_hi": 1.964
+   },
+   {
+    "term": "race[T.WHITE - OTHER EUROPEAN]",
+    "aOR": 1.238,
+    "ci_lo": 0.979,
+    "ci_hi": 1.567
+   },
+   {
+    "term": "race[T.HISPANIC OR LATINO]",
+    "aOR": 1.111,
+    "ci_lo": 0.807,
+    "ci_hi": 1.531
+   },
+   {
+    "term": "race[T.UNKNOWN]",
+    "aOR": 0.821,
+    "ci_lo": 0.639,
+    "ci_hi": 1.055
+   },
+   {
+    "term": "race[T.ASIAN - CHINESE]",
+    "aOR": 1.048,
+    "ci_lo": 0.751,
+    "ci_hi": 1.461
+   },
+   {
+    "term": "race[T.HISPANIC/LATINO - DOMINICAN]",
+    "aOR": 1.272,
+    "ci_lo": 0.88,
+    "ci_hi": 1.84
+   },
+   {
+    "term": "race[T.ASIAN]",
+    "aOR": 0.969,
+    "ci_lo": 0.679,
+    "ci_hi": 1.381
+   },
+   {
+    "term": "race[T.WHITE - RUSSIAN]",
+    "aOR": 1.36,
+    "ci_lo": 0.889,
+    "ci_hi": 2.08
+   },
+   {
+    "term": "race[T.BLACK/CAPE VERDEAN]",
+    "aOR": 1.245,
+    "ci_lo": 0.892,
+    "ci_hi": 1.737
+   },
+   {
+    "term": "race[T.HISPANIC/LATINO - GUATEMALAN]",
+    "aOR": 2.039,
+    "ci_lo": 1.276,
+    "ci_hi": 3.257
+   },
+   {
+    "term": "race[T.PORTUGUESE]",
+    "aOR": 1.029,
+    "ci_lo": 0.62,
+    "ci_hi": 1.709
+   },
+   {
+    "term": "race[T.ASIAN - SOUTH EAST ASIAN]",
+    "aOR": 1.02,
+    "ci_lo": 0.532,
+    "ci_hi": 1.955
+   },
+   {
+    "term": "race[T.BLACK/AFRICAN]",
+    "aOR": 1.491,
+    "ci_lo": 0.889,
+    "ci_hi": 2.501
+   },
+   {
+    "term": "race[T.BLACK/CARIBBEAN ISLAND]",
+    "aOR": 0.58,
+    "ci_lo": 0.318,
+    "ci_hi": 1.057
+   },
+   {
+    "term": "race[T.ASIAN - ASIAN INDIAN]",
+    "aOR": 0.844,
+    "ci_lo": 0.47,
+    "ci_hi": 1.518
+   },
+   {
+    "term": "race[T.HISPANIC/LATINO - SALVADORAN]",
+    "aOR": 2.081,
+    "ci_lo": 1.192,
+    "ci_hi": 3.633
+   },
+   {
+    "term": "race[T.WHITE - BRAZILIAN]",
+    "aOR": 1.878,
+    "ci_lo": 0.962,
+    "ci_hi": 3.667
+   },
+   {
+    "term": "race[T.PATIENT DECLINED TO ANSWER]",
+    "aOR": 1.359,
+    "ci_lo": 0.779,
+    "ci_hi": 2.373
+   },
+   {
+    "term": "race[T.HISPANIC/LATINO - CENTRAL AMERICAN]",
+    "aOR": 1.32,
+    "ci_lo": 0.543,
+    "ci_hi": 3.212
+   },
+   {
+    "term": "race[T.HISPANIC/LATINO - MEXICAN]",
+    "aOR": 1.357,
+    "ci_lo": 0.68,
+    "ci_hi": 2.707
+   },
+   {
+    "term": "race[T.WHITE - EASTERN EUROPEAN]",
+    "aOR": 1.095,
+    "ci_lo": 0.51,
+    "ci_hi": 2.351
+   },
+   {
+    "term": "race[T.UNABLE TO OBTAIN]",
+    "aOR": 1.033,
+    "ci_lo": 0.5,
+    "ci_hi": 2.136
+   },
+   {
+    "term": "race[T.HISPANIC/LATINO - COLUMBIAN]",
+    "aOR": 1.424,
+    "ci_lo": 0.625,
+    "ci_hi": 3.245
+   },
+   {
+    "term": "race[T.SOUTH AMERICAN]",
+    "aOR": 0.559,
+    "ci_lo": 0.216,
+    "ci_hi": 1.446
+   },
+   {
+    "term": "race[T.HISPANIC/LATINO - HONDURAN]",
+    "aOR": 1.201,
+    "ci_lo": 0.426,
+    "ci_hi": 3.388
+   },
+   {
+    "term": "race[T.AMERICAN INDIAN/ALASKA NATIVE]",
+    "aOR": 0.523,
+    "ci_lo": 0.105,
+    "ci_hi": 2.619
+   },
+   {
+    "term": "race[T.MULTIPLE RACE/ETHNICITY]",
+    "aOR": 0.653,
+    "ci_lo": 0.104,
+    "ci_hi": 4.099
+   },
+   {
+    "term": "race[T.HISPANIC/LATINO - CUBAN]",
+    "aOR": 0.919,
+    "ci_lo": 0.39,
+    "ci_hi": 2.165
+   },
+   {
+    "term": "race[T.NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER]",
+    "aOR": 0.767,
+    "ci_lo": 0.229,
+    "ci_hi": 2.567
+   },
+   {
+    "term": "race[T.ASIAN - KOREAN]",
+    "aOR": 0.548,
+    "ci_lo": 0.076,
+    "ci_hi": 3.929
+   },
+   {
+    "term": "insurance[T.Private]",
+    "aOR": 1.351,
+    "ci_lo": 1.206,
+    "ci_hi": 1.515
+   },
+   {
+    "term": "insurance[T.Medicaid]",
+    "aOR": 1.082,
+    "ci_lo": 0.945,
+    "ci_hi": 1.238
+   },
+   {
+    "term": "insurance[T.Other]",
+    "aOR": 0.972,
+    "ci_lo": 0.754,
+    "ci_hi": 1.252
+   },
+   {
+    "term": "insurance[T.(missing)]",
+    "aOR": 1.005,
+    "ci_lo": 0.648,
+    "ci_hi": 1.56
+   },
+   {
+    "term": "insurance[T.No charge]",
+    "aOR": 0.0,
+    "ci_lo": 0.0,
+    "ci_hi": 0.0
+   },
+   {
+    "term": "gender[T.F]",
+    "aOR": 1.04,
+    "ci_lo": 0.959,
+    "ci_hi": 1.128
+   },
+   {
+    "term": "age_band[T.40-54]",
+    "aOR": 1.002,
+    "ci_lo": 0.9,
+    "ci_hi": 1.116
+   },
+   {
+    "term": "age_band[T.65-74]",
+    "aOR": 1.208,
+    "ci_lo": 1.06,
+    "ci_hi": 1.378
+   },
+   {
+    "term": "age_band[T.18-39]",
+    "aOR": 1.059,
+    "ci_lo": 0.927,
+    "ci_hi": 1.209
+   },
+   {
+    "term": "age_band[T.75-88]",
+    "aOR": 1.104,
+    "ci_lo": 0.933,
+    "ci_hi": 1.307
+   },
+   {
+    "term": "age_band[T.89+]",
+    "aOR": 1.22,
+    "ci_lo": 0.797,
+    "ci_hi": 1.868
+   },
+   {
+    "term": "admission_type[T.OBSERVATION ADMIT]",
+    "aOR": 0.993,
+    "ci_lo": 0.892,
+    "ci_hi": 1.106
+   },
+   {
+    "term": "admission_type[T.EU OBSERVATION]",
+    "aOR": 1.066,
+    "ci_lo": 0.934,
+    "ci_hi": 1.216
+   },
+   {
+    "term": "admission_type[T.SURGICAL SAME DAY ADMISSION]",
+    "aOR": 2.906,
+    "ci_lo": 2.561,
+    "ci_hi": 3.298
+   },
+   {
+    "term": "admission_type[T.URGENT]",
+    "aOR": 0.934,
+    "ci_lo": 0.807,
+    "ci_hi": 1.083
+   },
+   {
+    "term": "admission_type[T.DIRECT EMER.]",
+    "aOR": 1.071,
+    "ci_lo": 0.904,
+    "ci_hi": 1.27
+   },
+   {
+    "term": "admission_type[T.DIRECT OBSERVATION]",
+    "aOR": 1.223,
+    "ci_lo": 1.003,
+    "ci_hi": 1.491
+   },
+   {
+    "term": "admission_type[T.ELECTIVE]",
+    "aOR": 1.768,
+    "ci_lo": 1.397,
+    "ci_hi": 2.238
+   },
+   {
+    "term": "admission_type[T.AMBULATORY OBSERVATION]",
+    "aOR": 1.512,
+    "ci_lo": 1.124,
+    "ci_hi": 2.034
+   },
+   {
+    "term": "icd_era[T.ICD-10 only]",
+    "aOR": 1.403,
+    "ci_lo": 1.279,
+    "ci_hi": 1.54
+   },
+   {
+    "term": "src_dc",
+    "aOR": 16.748,
+    "ci_lo": 14.649,
+    "ci_hi": 19.147
+   },
+   {
+    "term": "src_rad_inp",
+    "aOR": 0.778,
+    "ci_lo": 0.718,
+    "ci_hi": 0.844
+   },
+   {
+    "term": "src_rad_out",
+    "aOR": 1.306,
+    "ci_lo": 1.18,
+    "ci_hi": 1.446
+   }
+  ],
+  "reference_levels": {
+   "race": "WHITE",
+   "insurance": "Medicare",
+   "gender": "M",
+   "age_band": "55-64",
+   "admission_type": "EW EMER.",
+   "icd_era": "ICD-9 only"
+  }
+ }
+}

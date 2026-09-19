@@ -1,0 +1,120 @@
+{
+ "solely_5719_admissions": 40,
+ "solely_5719_subjects": 38,
+ "any_5719_admissions": 42,
+ "code_positive_current": 5740,
+ "code_positive_no5719": 5700,
+ "by_definition": {
+  "a": {
+   "current": {
+    "A": 4805,
+    "B": 13612,
+    "C": 935,
+    "D": 354640,
+    "recovery_share_pct": 73.91,
+    "corroboration_share_pct": 83.71
+   },
+   "no5719": {
+    "A": 4798,
+    "B": 13619,
+    "C": 902,
+    "D": 354673,
+    "recovery_share_pct": 73.95,
+    "corroboration_share_pct": 84.18
+   },
+   "solely_5719_cells": {
+    "A (->B)": 7,
+    "C (->D)": 33
+   }
+  },
+  "b": {
+   "current": {
+    "A": 5027,
+    "B": 22799,
+    "C": 713,
+    "D": 345453,
+    "recovery_share_pct": 81.93,
+    "corroboration_share_pct": 87.58
+   },
+   "no5719": {
+    "A": 5015,
+    "B": 22811,
+    "C": 685,
+    "D": 345481,
+    "recovery_share_pct": 81.98,
+    "corroboration_share_pct": 87.98
+   },
+   "solely_5719_cells": {
+    "A (->B)": 12,
+    "C (->D)": 28
+   }
+  },
+  "c": {
+   "current": {
+    "A": 4908,
+    "B": 17851,
+    "C": 832,
+    "D": 350401,
+    "recovery_share_pct": 78.43,
+    "corroboration_share_pct": 85.51
+   },
+   "no5719": {
+    "A": 4899,
+    "B": 17860,
+    "C": 801,
+    "D": 350432,
+    "recovery_share_pct": 78.47,
+    "corroboration_share_pct": 85.95
+   },
+   "solely_5719_cells": {
+    "A (->B)": 9,
+    "C (->D)": 31
+   }
+  },
+  "d": {
+   "current": {
+    "A": 4850,
+    "B": 22443,
+    "C": 890,
+    "D": 345809,
+    "recovery_share_pct": 82.23,
+    "corroboration_share_pct": 84.49
+   },
+   "no5719": {
+    "A": 4843,
+    "B": 22450,
+    "C": 857,
+    "D": 345842,
+    "recovery_share_pct": 82.26,
+    "corroboration_share_pct": 84.96
+   },
+   "solely_5719_cells": {
+    "A (->B)": 7,
+    "C (->D)": 33
+   }
+  }
+ },
+ "sample": {
+  "charts_changing_cell": "1\u201310",
+  "A_to_B": "0",
+  "C_to_D": "1\u201310",
+  "revised_allocation_if_dropped": {
+   "code+/note+": 80,
+   "code-/note+": 150,
+   "code+/note-": 66,
+   "code-/note-": 104
+  },
+  "revised_weights_if_dropped": {
+   "code+/note+": 62.6875,
+   "code-/note+": 152.0733,
+   "code+/note-": 10.3788,
+   "code-/note-": 3321.9327
+  },
+  "current_weights": {
+   "code+/note+": 62.8375,
+   "code-/note+": 151.9933,
+   "code+/note-": 10.1857,
+   "code-/note-": 3454.53
+  }
+ }
+}

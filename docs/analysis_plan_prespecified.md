@@ -30,11 +30,11 @@
 | S4 | Three etiology-based secondary recovery estimates (competing liver disease excluded under three code sets) | 2026-08-19 | done → `docs/predefinition_descriptives.md`, `docs/sld_subclassification.md` |
 | S5 | Historical-mention split under two operationalizations (ConText temporality flag; PMH-section placement) | 2026-08-19 | done → `docs/predefinition_descriptives.md` |
 | S6 | Subject grain (any-admission collapse) instead of admission grain | 2026-08-18 | done → `docs/aim1a_crosstab.md` |
-| S7 | ICD-9 571.9 removed from the code-positive set (consensus-table alignment) | 2026-09-19 (this run, Phase 4.1) | this run → `docs/sensitivity_5719.md` |
-| S8 | Discharge-summary-only population, definitions (a) and (b) | 2026-08-17 (population lock), never run as a 2×2 | this run → `docs/aim1a_loose_ends.md` |
-| S9 | Tier C (hedged) mentions counted as note-positive | 2026-09-19 (this run, Phase 4.4) | this run → `docs/aim1a_loose_ends.md` |
-| S10 | Availability differentials by race/insurance under both outpatient windows | 2026-09-19 (this run, Phase 4.6) | this run → `docs/aim1a_loose_ends.md` |
-| S11 | Charlson index validated against comorbidipy; liver-excluded index for modeling | 2026-09-19 (this run, Phase 4.2) | this run → `docs/charlson_validation.md` |
+| S7 | ICD-9 571.9 removed from the code-positive set (consensus-table alignment) | 2026-09-19 (this run, Phase 4.1) | done (this run) → `docs/sensitivity_5719.md` |
+| S8 | Discharge-summary-only population, definitions (a) and (b) | 2026-08-17 (population lock), never run as a 2×2 | done (this run) → `docs/aim1a_loose_ends.md` §4.3 |
+| S9 | Tier C (hedged) mentions counted as note-positive | 2026-09-19 (this run, Phase 4.4) | done (this run) → `docs/aim1a_loose_ends.md` §4.4 |
+| S10 | Availability differentials by race/insurance under both outpatient windows | 2026-09-19 (this run, Phase 4.6) | done (this run) → `docs/aim1a_loose_ends.md` §4.6 |
+| S11 | Charlson index validated against comorbidipy; liver-excluded index for modeling | 2026-09-19 (this run, Phase 4.2) | done (this run) → `docs/charlson_validation.md` |
 | S12 | Aim 1c headline stratum table recomputed with 571.9 removed | 2026-09-19 (this run, Phase 5) | this run → `docs/aim1c_level1.md` |
 | S13 | Aim 1b secondary modeling population: imaging-observed subset | 2026-09-19 (this run, Phase 7) | this run → `docs/aim1b_structured.md` |
 | S14 | Aim 1b FS-A as a sensitivity Layer-0 input to fusion | 2026-09-19 (this run, Phase 9) | this run → `docs/aim1b_fusion.md` |

@@ -1,0 +1,189 @@
+# Citation registry — run_2026-09-19 Phase 10.4
+#
+# Built from citation strings that appear in the repository's own tracked documents and
+# script docstrings (the run file's Appendix B was truncated in transmission and is not
+# available). `repo_string` is copied verbatim from the file(s) named in `repo_files`.
+# Entries whose `search_basis` is "brief" are items named in the Phase 10.4 task brief
+# (Collins 2024 TRIPOD+AI; Johnson MIMIC-IV / MIMIC-IV-Note; Alsentzer 2019; Li 2022)
+# for which the repo gives only a product/model name, not a bibliographic citation.
+# NO bibliographic field in this file was written from memory: every value comes from
+# the repo string or from the task brief, and `search_fields` says what the verifier
+# is allowed to search on. scripts/verify_citations.py consumes this file.
+entries:
+  - id: R01_hagstrom_2021
+    repo_string: "Hagström et al., Hepatology 2021;74(1):474–482, doi:10.1002/hep.31726, PMID 33486773"
+    repo_files: [docs/sensitivity_5719.md, docs/analysis_plan_prespecified.md, docs/run_2026-09-19/DECISIONS_FOR_KYLE.md]
+    search_basis: repo
+    doi: "10.1002/hep.31726"
+    pmid: "33486773"
+    title: null
+    first_author: "Hagström"
+    year: 2021
+    journal: "Hepatology"
+    search_fields: [pmid, doi]
+
+  - id: R02_rinella_2023
+    repo_string: "Rinella ME, Lazarus JV, Ratziu V, et al. A multisociety Delphi consensus statement on new fatty liver disease nomenclature. J Hepatol. 2023 Dec;79(6):1542–1556. doi:10.1016/j.jhep.2023.06.003. PMID: 37364790."
+    repo_files: [docs/sld_subclassification.md, scripts/sld_report.py, docs/aim1a_crosstab.md, scripts/cmrf.py]
+    search_basis: repo
+    doi: "10.1016/j.jhep.2023.06.003"
+    pmid: "37364790"
+    title: "A multisociety Delphi consensus statement on new fatty liver disease nomenclature"
+    first_author: "Rinella"
+    year: 2023
+    journal: "J Hepatol"
+    search_fields: [pmid, doi, title]
+
+  - id: R03_kahn_2016
+    repo_string: "Kahn MG, Callahan TJ, Barnard J, et al. \"A Harmonized Data Quality Assessment Terminology and Framework for the Secondary Use of Electronic Health Record Data.\" EGEMS (Wash DC). 2016;4(1):1244. doi:10.13063/2327-9214.1244"
+    repo_files: [docs/cleaning_spec.md, scripts/conformance.py, scripts/completeness_differential.py, scripts/plausibility_atemporal.py, scripts/plausibility_temporal.py, scripts/masld_config.py, scripts/make_tables.py]
+    search_basis: repo
+    doi: "10.13063/2327-9214.1244"
+    pmid: null
+    title: "A Harmonized Data Quality Assessment Terminology and Framework for the Secondary Use of Electronic Health Record Data"
+    first_author: "Kahn"
+    year: 2016
+    journal: "EGEMS (Wash DC)"
+    search_fields: [doi, title]
+
+  - id: R04_chapman_2001
+    repo_string: "Chapman WW, et al. A simple algorithm for identifying negated findings and diseases in discharge summaries. J Biomed Inform. 2001;34(5):301-310."
+    repo_files: [docs/note_phenotype_spec.md, scripts/note_phenotype.py]
+    search_basis: repo
+    doi: null
+    pmid: null
+    title: "A simple algorithm for identifying negated findings and diseases in discharge summaries"
+    first_author: "Chapman"
+    year: 2001
+    journal: "J Biomed Inform"
+    search_fields: [title]
+
+  - id: R05_harkema_2009
+    repo_string: "Harkema H, Dowling JN, Thornblade T, Chapman WW. ConText: An algorithm for determining negation, experiencer, and temporal status from clinical reports. J Biomed Inform. 2009;42(5):839-851."
+    repo_files: [docs/note_phenotype_spec.md, scripts/note_phenotype.py]
+    search_basis: repo
+    doi: null
+    pmid: null
+    title: "ConText: An algorithm for determining negation, experiencer, and temporal status from clinical reports"
+    first_author: "Harkema"
+    year: 2009
+    journal: "J Biomed Inform"
+    search_fields: [title]
+
+  - id: R06_quan_2005
+    repo_string: "Charlson computed from the Quan et al. (2005) ICD-9-CM/ICD-10 coding algorithm (Med Care 43:1130) with standard hierarchy rules and Charlson (1987) weights."
+    repo_files: [scripts/comorbid_cluster.py, docs/charlson_validation.md, docs/predefinition_descriptives.md]
+    search_basis: repo
+    doi: null
+    pmid: null
+    title: null
+    first_author: "Quan"
+    year: 2005
+    journal: "Med Care"
+    volume: "43"
+    first_page: "1130"
+    keywords: [ICD-9-CM, ICD-10, comorbidities]
+    search_fields: [author_year_journal]
+
+  - id: R07_charlson_1987
+    repo_string: "Charlson (1987) weights"
+    repo_files: [scripts/comorbid_cluster.py, docs/charlson_validation.md]
+    search_basis: repo
+    doi: null
+    pmid: null
+    title: null
+    first_author: "Charlson"
+    year: 1987
+    journal: null
+    keywords: [comorbidity, index]
+    search_fields: [author_year_keywords]
+    note: "Repo gives neither title, DOI, PMID nor journal; accepted only if PubMed returns exactly one candidate for first author + year + keywords."
+
+  - id: R08_vacs_steatosis_nlp_2024
+    repo_string: "VA/VACS-based hepatic-steatosis NLP algorithm (Hepatology Communications, 2024) — basis for anatomical scoping (exact reference to be confirmed by study team)."
+    repo_files: [docs/note_phenotype_spec.md]
+    search_basis: repo
+    doi: null
+    pmid: null
+    title: null
+    first_author: null
+    year: 2024
+    journal: "Hepatology Communications"
+    keywords: [hepatic steatosis, natural language processing, veterans]
+    search_fields: [journal_year_keywords]
+    note: "No author, title or identifier in the repo; the spec itself says the exact reference is to be confirmed. Cannot be accepted by rule; search recorded for the study team."
+
+  - id: R09_alsentzer_2019_bio_clinicalbert
+    repo_string: "emilyalsentzer/Bio_ClinicalBERT"
+    repo_files: [scripts/run0919_embed.py, docs/run_2026-09-19/RUN_LOG.md, docs/run_2026-09-19/DECISIONS_FOR_KYLE.md, scripts/aim1b_gold_cv.py]
+    search_basis: brief
+    brief_string: "Alsentzer et al. 2019 Bio_ClinicalBERT"
+    doi: null
+    pmid: null
+    title: null
+    first_author: "Alsentzer"
+    year: 2019
+    journal: null
+    keywords: [clinical, BERT, embeddings]
+    search_fields: [author_year_keywords]
+    note: "Repo names only the Hugging Face model id; author and year come from the task brief."
+
+  - id: R10_li_2022_clinical_longformer
+    repo_string: "Clinical-Longformer"
+    repo_files: [docs/run_2026-09-19/DECISIONS_FOR_KYLE.md, docs/run_2026-09-19/RUN_LOG.md]
+    search_basis: brief
+    brief_string: "Li et al. Clinical-Longformer 2022"
+    doi: null
+    pmid: null
+    title: null
+    first_author: "Li"
+    year: 2022
+    journal: null
+    keywords: [Clinical-Longformer]
+    search_fields: [author_year_keywords]
+    note: "Repo names only the model; author and year come from the task brief."
+
+  - id: R11_johnson_2023_mimic_iv
+    repo_string: "MIMIC-IV v3.1"
+    repo_files: [docs/aim1a_loose_ends.md, docs/data_quality_report.md, docs/note_coverage.md, scripts/make_tables.py, README.md]
+    search_basis: brief
+    brief_string: "Johnson et al. MIMIC-IV Scientific Data 2023"
+    doi: null
+    pmid: null
+    title: null
+    first_author: "Johnson"
+    year: 2023
+    journal: "Sci Data"
+    keywords: [MIMIC-IV]
+    search_fields: [author_year_journal_keywords]
+    note: "Repo names only the dataset and version; author, year and journal come from the task brief."
+
+  - id: R12_johnson_mimic_iv_note
+    repo_string: "MIMIC-IV-Note 2.2"
+    repo_files: [docs/note_coverage.md, README.md, docs/reference_standard.md, scripts/note_schema.py]
+    search_basis: brief
+    brief_string: "Johnson et al. MIMIC-IV-Note"
+    doi: null
+    pmid: null
+    title: null
+    first_author: "Johnson"
+    year: null
+    journal: null
+    keywords: [MIMIC-IV-Note]
+    search_fields: [author_keywords]
+    note: "PhysioNet resource; no year, title or identifier in the repo or the brief. Expected to be unresolvable by rule (no unique match criterion can be met without a year)."
+
+  - id: R13_collins_2024_tripod_ai
+    repo_string: null
+    repo_files: []
+    search_basis: brief
+    brief_string: "Collins et al. 2024 TRIPOD+AI BMJ"
+    doi: null
+    pmid: null
+    title: null
+    first_author: "Collins"
+    year: 2024
+    journal: "BMJ"
+    keywords: [TRIPOD]
+    search_fields: [author_year_journal_keywords]
+    note: "Not found anywhere in the repo (grep for TRIPOD/Collins returned nothing); included only because the task brief names it."

@@ -1,0 +1,81 @@
+{
+ "generated_utc": "2026-09-19T16:58:00+00:00",
+ "registry_size": 13,
+ "verified": 9,
+ "verified_by_source": {
+  "PubMed by PMID": 2,
+  "PubMed by DOI": 1,
+  "PubMed by title": 2,
+  "PubMed by author+year+journal (unique candidate; lower confidence)": 3,
+  "PubMed by author+year+keywords (unique candidate; lower confidence)": 1
+ },
+ "unresolved": 4,
+ "unresolved_ids": [
+  "R08_vacs_steatosis_nlp_2024",
+  "R09_alsentzer_2019_bio_clinicalbert",
+  "R10_li_2022_clinical_longformer",
+  "R12_johnson_mimic_iv_note"
+ ],
+ "verified_ids": {
+  "R01_hagstrom_2021": {
+   "confirmed_by": "PubMed by PMID",
+   "doi": "10.1002/hep.31726",
+   "pmid": "33486773"
+  },
+  "R02_rinella_2023": {
+   "confirmed_by": "PubMed by PMID",
+   "doi": "10.1016/j.jhep.2023.06.003",
+   "pmid": "37364790"
+  },
+  "R03_kahn_2016": {
+   "confirmed_by": "PubMed by DOI",
+   "doi": "10.13063/2327-9214.1244",
+   "pmid": "27713905"
+  },
+  "R04_chapman_2001": {
+   "confirmed_by": "PubMed by title",
+   "doi": "10.1006/jbin.2001.1029",
+   "pmid": "12123149"
+  },
+  "R05_harkema_2009": {
+   "confirmed_by": "PubMed by title",
+   "doi": "10.1016/j.jbi.2009.05.002",
+   "pmid": "19435614"
+  },
+  "R06_quan_2005": {
+   "confirmed_by": "PubMed by author+year+journal (unique candidate; lower confidence)",
+   "doi": "10.1097/01.mlr.0000182534.19832.83",
+   "pmid": "16224307"
+  },
+  "R07_charlson_1987": {
+   "confirmed_by": "PubMed by author+year+keywords (unique candidate; lower confidence)",
+   "doi": "10.1016/0021-9681(87)90171-8",
+   "pmid": "3558716"
+  },
+  "R11_johnson_2023_mimic_iv": {
+   "confirmed_by": "PubMed by author+year+journal (unique candidate; lower confidence)",
+   "doi": "10.1038/s41597-022-01899-x",
+   "pmid": "36596836"
+  },
+  "R13_collins_2024_tripod_ai": {
+   "confirmed_by": "PubMed by author+year+journal (unique candidate; lower confidence)",
+   "doi": "10.1136/bmj-2023-078378",
+   "pmid": "38626948"
+  }
+ },
+ "search_basis": {
+  "R01_hagstrom_2021": "repo",
+  "R02_rinella_2023": "repo",
+  "R03_kahn_2016": "repo",
+  "R04_chapman_2001": "repo",
+  "R05_harkema_2009": "repo",
+  "R06_quan_2005": "repo",
+  "R07_charlson_1987": "repo",
+  "R08_vacs_steatosis_nlp_2024": "repo",
+  "R09_alsentzer_2019_bio_clinicalbert": "brief",
+  "R10_li_2022_clinical_longformer": "brief",
+  "R11_johnson_2023_mimic_iv": "brief",
+  "R12_johnson_mimic_iv_note": "brief",
+  "R13_collins_2024_tripod_ai": "brief"
+ }
+}

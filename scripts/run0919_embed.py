@@ -48,7 +48,7 @@ def encode(model, tok, texts, dev):
     return res.astype(np.float16), ntok
 
 if __name__ == "__main__":
-    ap = argparse.ArgumentParser(); ap.add_argument("--pilot", action="store_true"); ap.add_argument("--variant", default="S"); ap.add_argument("--budget_hours", type=float, default=5.0)
+    ap = argparse.ArgumentParser(); ap.add_argument("--pilot", action="store_true"); ap.add_argument("--variant", default="S"); ap.add_argument("--budget_hours", type=float, default=5.0); ap.add_argument("--shards", default="", help="comma-separated shard ids to encode (default: all, in order)")
     a = ap.parse_args(); dev = device(); torch.set_num_threads(max(1, os.cpu_count() - 2))
     tok = AutoTokenizer.from_pretrained(MODEL); model = AutoModel.from_pretrained(MODEL).to(dev).eval()
     print(f"device {dev}; threads {torch.get_num_threads()}", flush=True)
@@ -69,7 +69,8 @@ if __name__ == "__main__":
     idx = df[["hadm_id"]].copy(); idx["shard"] = idx.index // SHARD; idx["row"] = idx.index % SHARD
     idx.to_parquet(f"{od}/index.parquet", index=False)
     t0 = time.time(); done = 0
-    for sh in range(int(idx.shard.max()) + 1):
+    todo = [int(x) for x in a.shards.split(",")] if a.shards else range(int(idx.shard.max()) + 1)
+    for sh in todo:
         f = f"{od}/shard_{sh:04d}.npy"
         if os.path.exists(f): continue
         part = df.iloc[sh * SHARD:(sh + 1) * SHARD]

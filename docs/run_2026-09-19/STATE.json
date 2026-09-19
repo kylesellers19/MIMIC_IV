@@ -35,12 +35,14 @@
   "4": {
    "name": "Aim 1a loose ends",
    "status": "done",
-   "end": "2026-09-19T16:39:32Z"
+   "end": "2026-09-19T16:39:32Z",
+   "commit": "816215bb1d780a5109af78633bca3c0fb51e00e9"
   },
   "5": {
    "name": "Aim 1c level 1",
    "status": "done",
-   "end": "2026-09-19T16:39:32Z"
+   "end": "2026-09-19T16:39:32Z",
+   "commit": "816215bb1d780a5109af78633bca3c0fb51e00e9"
   },
   "6": {
    "name": "reference-standard machinery",

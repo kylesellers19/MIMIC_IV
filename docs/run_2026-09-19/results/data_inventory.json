@@ -1,0 +1,1499 @@
+{
+ "generated_utc": "2026-09-19T16:58:50+00:00",
+ "machine_note": "paths relative to repository root unless absolute",
+ "locations": [
+  {
+   "path": "data/raw",
+   "classification": "credentialed",
+   "note": "PhysioNet MIMIC-IV v3.1 hosp, MIMIC-IV-Note v2.2 raw .csv.gz files (read-only); SHA256SUMS manifests are checksum text only",
+   "exists": true,
+   "n_files": 18,
+   "bytes": 5261353062,
+   "n_tracked": 0,
+   "files": [
+    {
+     "path": "data/raw/.gitkeep",
+     "bytes": 0,
+     "tracked": false
+    },
+    {
+     "path": "data/raw/SHA256SUMS.hosp.txt",
+     "bytes": 621,
+     "tracked": false
+    },
+    {
+     "path": "data/raw/SHA256SUMS.meds.txt",
+     "bytes": 179,
+     "tracked": false
+    },
+    {
+     "path": "data/raw/SHA256SUMS.note.txt",
+     "bytes": 444,
+     "tracked": false
+    },
+    {
+     "path": "data/raw/SHA256SUMS_mimiciv31_original.txt",
+     "bytes": 2884,
+     "tracked": false
+    },
+    {
+     "path": "data/raw/SHA256SUMS_note_original.txt",
+     "bytes": 439,
+     "tracked": false
+    },
+    {
+     "path": "data/raw/hosp/admissions.csv.gz",
+     "bytes": 19928140,
+     "tracked": false,
+     "checksum_status": "match"
+    },
+    {
+     "path": "data/raw/hosp/d_icd_diagnoses.csv.gz",
+     "bytes": 876360,
+     "tracked": false,
+     "checksum_status": "match"
+    },
+    {
+     "path": "data/raw/hosp/d_labitems.csv.gz",
+     "bytes": 13169,
+     "tracked": false,
+     "checksum_status": "match"
+    },
+    {
+     "path": "data/raw/hosp/diagnoses_icd.csv.gz",
+     "bytes": 33564802,
+     "tracked": false,
+     "checksum_status": "match"
+    },
+    {
+     "path": "data/raw/hosp/labevents.csv.gz",
+     "bytes": 2592909134,
+     "tracked": false,
+     "checksum_status": "match"
+    },
+    {
+     "path": "data/raw/hosp/omr.csv.gz",
+     "bytes": 44069351,
+     "tracked": false,
+     "checksum_status": "match"
+    },
+    {
+     "path": "data/raw/hosp/patients.csv.gz",
+     "bytes": 2835586,
+     "tracked": false,
+     "checksum_status": "match"
+    },
+    {
+     "path": "data/raw/hosp/prescriptions.csv.gz",
+     "bytes": 606298611,
+     "tracked": false,
+     "checksum_status": "match"
+    },
+    {
+     "path": "data/raw/note/discharge.csv.gz",
+     "bytes": 1139203149,
+     "tracked": false,
+     "checksum_status": "match"
+    },
+    {
+     "path": "data/raw/note/discharge_detail.csv.gz",
+     "bytes": 789351,
+     "tracked": false,
+     "checksum_status": "match"
+    },
+    {
+     "path": "data/raw/note/radiology.csv.gz",
+     "bytes": 781830996,
+     "tracked": false,
+     "checksum_status": "match"
+    },
+    {
+     "path": "data/raw/note/radiology_detail.csv.gz",
+     "bytes": 39029846,
+     "tracked": false,
+     "checksum_status": "match"
+    }
+   ],
+   "subtotals": [
+    {
+     "path": "data/raw/.gitkeep",
+     "n_files": 1,
+     "bytes": 0
+    },
+    {
+     "path": "data/raw/SHA256SUMS.hosp.txt",
+     "n_files": 1,
+     "bytes": 621
+    },
+    {
+     "path": "data/raw/SHA256SUMS.meds.txt",
+     "n_files": 1,
+     "bytes": 179
+    },
+    {
+     "path": "data/raw/SHA256SUMS.note.txt",
+     "n_files": 1,
+     "bytes": 444
+    },
+    {
+     "path": "data/raw/SHA256SUMS_mimiciv31_original.txt",
+     "n_files": 1,
+     "bytes": 2884
+    },
+    {
+     "path": "data/raw/SHA256SUMS_note_original.txt",
+     "n_files": 1,
+     "bytes": 439
+    },
+    {
+     "path": "data/raw/hosp",
+     "n_files": 8,
+     "bytes": 3300495153
+    },
+    {
+     "path": "data/raw/note",
+     "n_files": 4,
+     "bytes": 1960853342
+    }
+   ]
+  },
+  {
+   "path": "data/processed",
+   "classification": "credentialed derivative",
+   "note": "DuckDB/parquet extracts, note index and note text, embeddings, predictions, adjudication keys, private small-cell counts, scratch",
+   "exists": true,
+   "n_files": 58,
+   "bytes": 686058759,
+   "n_tracked": 0,
+   "files": [
+    {
+     "path": "data/processed/.gitkeep",
+     "bytes": 0,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/aim1a_frame.parquet",
+     "bytes": 6891805,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/aim1a_sample.parquet",
+     "bytes": 7372,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/aim1a_training_key.parquet",
+     "bytes": 1075,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/analysis_population.parquet",
+     "bytes": 12042275,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/analysis_population_clean.parquet",
+     "bytes": 10979336,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/cmrf.parquet",
+     "bytes": 2114766,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/note_historical.parquet",
+     "bytes": 2040760,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_charlson.parquet",
+     "bytes": 3365836,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_features.parquet",
+     "bytes": 20811679,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_lab_features.parquet",
+     "bytes": 7720564,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_outpt_labs.parquet",
+     "bytes": 19051256,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/splits_v1.parquet",
+     "bytes": 3762866,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/adjudication/form_reviewer1.xlsx",
+     "bytes": 17181,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/adjudication/form_reviewer2.xlsx",
+     "bytes": 17169,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/adjudication/reviewer_assignment.parquet",
+     "bytes": 5720,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/notes_embeddings_v1/S/index.parquet",
+     "bytes": 246078,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/notes_embeddings_v1/S/shard_0000.npy",
+     "bytes": 3072128,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_notes_index/discharge.parquet",
+     "bytes": 7705513,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_notes_index/radiology.parquet",
+     "bytes": 39780880,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_notes_text/pilot.parquet",
+     "bytes": 3229504,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_notes_text/pilot.parquet.summary.json",
+     "bytes": 235,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_notes_text/subsample.parquet",
+     "bytes": 542670061,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_notes_text/subsample.parquet.summary.json",
+     "bytes": 281,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_private/sens_5719_exact.json",
+     "bytes": 163,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/inventory.log",
+     "bytes": 0,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R01_hagstrom_2021_pubmed_pmid.xml",
+     "bytes": 32153,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R02_rinella_2023_pubmed_pmid.xml",
+     "bytes": 29501,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R03_kahn_2016_pubmed_doi_efetch.xml",
+     "bytes": 32460,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R03_kahn_2016_pubmed_doi_esearch.json",
+     "bytes": 296,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R04_chapman_2001_crossref_title.json",
+     "bytes": 14974,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R04_chapman_2001_pubmed_title_efetch.xml",
+     "bytes": 5714,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R04_chapman_2001_pubmed_title_esearch.json",
+     "bytes": 456,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R04_chapman_2001_pubmed_title_words_esearch.json",
+     "bytes": 358,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R05_harkema_2009_crossref_title.json",
+     "bytes": 38152,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R05_harkema_2009_pubmed_title_efetch.xml",
+     "bytes": 17352,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R05_harkema_2009_pubmed_title_esearch.json",
+     "bytes": 486,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R05_harkema_2009_pubmed_title_words_esearch.json",
+     "bytes": 382,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R06_quan_2005_pubmed_author_efetch.xml",
+     "bytes": 7568,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R06_quan_2005_pubmed_author_esearch.json",
+     "bytes": 481,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R07_charlson_1987_pubmed_author_efetch.xml",
+     "bytes": 5581,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R07_charlson_1987_pubmed_author_esearch.json",
+     "bytes": 417,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R08_vacs_steatosis_nlp_2024_pubmed_journal_kw_efetch.xml",
+     "bytes": 30540,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R08_vacs_steatosis_nlp_2024_pubmed_journal_kw_esearch.json",
+     "bytes": 493,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R09_alsentzer_2019_bio_clinicalbert_crossref_author.json",
+     "bytes": 22999,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R09_alsentzer_2019_bio_clinicalbert_crossref_keywords.json",
+     "bytes": 20796,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R09_alsentzer_2019_bio_clinicalbert_pubmed_author_esearch.json",
+     "bytes": 443,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R10_li_2022_clinical_longformer_crossref_author.json",
+     "bytes": 35586,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R10_li_2022_clinical_longformer_crossref_keywords.json",
+     "bytes": 50642,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R10_li_2022_clinical_longformer_pubmed_author_esearch.json",
+     "bytes": 411,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R11_johnson_2023_mimic_iv_crossref_author.json",
+     "bytes": 47031,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R11_johnson_2023_mimic_iv_pubmed_author_efetch.xml",
+     "bytes": 16447,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R11_johnson_2023_mimic_iv_pubmed_author_esearch.json",
+     "bytes": 419,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R12_johnson_mimic_iv_note_crossref_author.json",
+     "bytes": 9933,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R12_johnson_mimic_iv_note_crossref_keywords.json",
+     "bytes": 39992,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R12_johnson_mimic_iv_note_pubmed_author_esearch.json",
+     "bytes": 397,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R13_collins_2024_tripod_ai_pubmed_author_efetch.xml",
+     "bytes": 61384,
+     "tracked": false
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch/citations/R13_collins_2024_tripod_ai_pubmed_author_esearch.json",
+     "bytes": 412,
+     "tracked": false
+    }
+   ],
+   "subtotals": [
+    {
+     "path": "data/processed/.gitkeep",
+     "n_files": 1,
+     "bytes": 0
+    },
+    {
+     "path": "data/processed/adjudication",
+     "n_files": 3,
+     "bytes": 40070
+    },
+    {
+     "path": "data/processed/aim1a_frame.parquet",
+     "n_files": 1,
+     "bytes": 6891805
+    },
+    {
+     "path": "data/processed/aim1a_sample.parquet",
+     "n_files": 1,
+     "bytes": 7372
+    },
+    {
+     "path": "data/processed/aim1a_training_key.parquet",
+     "n_files": 1,
+     "bytes": 1075
+    },
+    {
+     "path": "data/processed/analysis_population.parquet",
+     "n_files": 1,
+     "bytes": 12042275
+    },
+    {
+     "path": "data/processed/analysis_population_clean.parquet",
+     "n_files": 1,
+     "bytes": 10979336
+    },
+    {
+     "path": "data/processed/cmrf.parquet",
+     "n_files": 1,
+     "bytes": 2114766
+    },
+    {
+     "path": "data/processed/note_historical.parquet",
+     "n_files": 1,
+     "bytes": 2040760
+    },
+    {
+     "path": "data/processed/notes_embeddings_v1",
+     "n_files": 2,
+     "bytes": 3318206
+    },
+    {
+     "path": "data/processed/run_2026-09-19_charlson.parquet",
+     "n_files": 1,
+     "bytes": 3365836
+    },
+    {
+     "path": "data/processed/run_2026-09-19_features.parquet",
+     "n_files": 1,
+     "bytes": 20811679
+    },
+    {
+     "path": "data/processed/run_2026-09-19_lab_features.parquet",
+     "n_files": 1,
+     "bytes": 7720564
+    },
+    {
+     "path": "data/processed/run_2026-09-19_notes_index",
+     "n_files": 2,
+     "bytes": 47486393
+    },
+    {
+     "path": "data/processed/run_2026-09-19_notes_text",
+     "n_files": 4,
+     "bytes": 545900081
+    },
+    {
+     "path": "data/processed/run_2026-09-19_outpt_labs.parquet",
+     "n_files": 1,
+     "bytes": 19051256
+    },
+    {
+     "path": "data/processed/run_2026-09-19_private",
+     "n_files": 1,
+     "bytes": 163
+    },
+    {
+     "path": "data/processed/run_2026-09-19_scratch",
+     "n_files": 33,
+     "bytes": 524256
+    },
+    {
+     "path": "data/processed/splits_v1.parquet",
+     "n_files": 1,
+     "bytes": 3762866
+    }
+   ]
+  },
+  {
+   "path": "models",
+   "classification": "credentialed derivative",
+   "note": "fitted model weights (git-ignored)",
+   "exists": true,
+   "n_files": 0,
+   "bytes": 0,
+   "n_tracked": 0,
+   "files": [],
+   "subtotals": []
+  },
+  {
+   "path": "logs/run_2026-09-19",
+   "classification": "credentialed derivative (policy)",
+   "note": "run logs; aggregate output only by guardrail, but git-ignored as credentialed derivatives under the project's logs/ rule",
+   "exists": true,
+   "n_files": 17,
+   "bytes": 9666,
+   "n_tracked": 0,
+   "files": [
+    {
+     "path": "logs/run_2026-09-19/aim1b_structured.log",
+     "bytes": 202,
+     "tracked": false
+    },
+    {
+     "path": "logs/run_2026-09-19/aim1c_level1.log",
+     "bytes": 143,
+     "tracked": false
+    },
+    {
+     "path": "logs/run_2026-09-19/embed_main.log",
+     "bytes": 1505,
+     "tracked": false
+    },
+    {
+     "path": "logs/run_2026-09-19/embed_main.sh",
+     "bytes": 333,
+     "tracked": false
+    },
+    {
+     "path": "logs/run_2026-09-19/embed_pilot.log",
+     "bytes": 1676,
+     "tracked": false
+    },
+    {
+     "path": "logs/run_2026-09-19/embed_pilot.sh",
+     "bytes": 195,
+     "tracked": false
+    },
+    {
+     "path": "logs/run_2026-09-19/lab_features.log",
+     "bytes": 60,
+     "tracked": false
+    },
+    {
+     "path": "logs/run_2026-09-19/notes_index.log",
+     "bytes": 1642,
+     "tracked": false
+    },
+    {
+     "path": "logs/run_2026-09-19/notes_tfidf.log",
+     "bytes": 234,
+     "tracked": false
+    },
+    {
+     "path": "logs/run_2026-09-19/outpt_labs.log",
+     "bytes": 39,
+     "tracked": false
+    },
+    {
+     "path": "logs/run_2026-09-19/packet_dryrun.log",
+     "bytes": 874,
+     "tracked": false
+    },
+    {
+     "path": "logs/run_2026-09-19/packet_feasibility.log",
+     "bytes": 185,
+     "tracked": false
+    },
+    {
+     "path": "logs/run_2026-09-19/pip_install.log",
+     "bytes": 787,
+     "tracked": false
+    },
+    {
+     "path": "logs/run_2026-09-19/pip_install.sh",
+     "bytes": 454,
+     "tracked": false
+    },
+    {
+     "path": "logs/run_2026-09-19/precision_forecast.log",
+     "bytes": 1314,
+     "tracked": false
+    },
+    {
+     "path": "logs/run_2026-09-19/pytest.log",
+     "bytes": 23,
+     "tracked": false
+    },
+    {
+     "path": "logs/run_2026-09-19/trivial.log",
+     "bytes": 0,
+     "tracked": false
+    }
+   ],
+   "subtotals": [
+    {
+     "path": "logs/run_2026-09-19/aim1b_structured.log",
+     "n_files": 1,
+     "bytes": 202
+    },
+    {
+     "path": "logs/run_2026-09-19/aim1c_level1.log",
+     "n_files": 1,
+     "bytes": 143
+    },
+    {
+     "path": "logs/run_2026-09-19/embed_main.log",
+     "n_files": 1,
+     "bytes": 1505
+    },
+    {
+     "path": "logs/run_2026-09-19/embed_main.sh",
+     "n_files": 1,
+     "bytes": 333
+    },
+    {
+     "path": "logs/run_2026-09-19/embed_pilot.log",
+     "n_files": 1,
+     "bytes": 1676
+    },
+    {
+     "path": "logs/run_2026-09-19/embed_pilot.sh",
+     "n_files": 1,
+     "bytes": 195
+    },
+    {
+     "path": "logs/run_2026-09-19/lab_features.log",
+     "n_files": 1,
+     "bytes": 60
+    },
+    {
+     "path": "logs/run_2026-09-19/notes_index.log",
+     "n_files": 1,
+     "bytes": 1642
+    },
+    {
+     "path": "logs/run_2026-09-19/notes_tfidf.log",
+     "n_files": 1,
+     "bytes": 234
+    },
+    {
+     "path": "logs/run_2026-09-19/outpt_labs.log",
+     "n_files": 1,
+     "bytes": 39
+    },
+    {
+     "path": "logs/run_2026-09-19/packet_dryrun.log",
+     "n_files": 1,
+     "bytes": 874
+    },
+    {
+     "path": "logs/run_2026-09-19/packet_feasibility.log",
+     "n_files": 1,
+     "bytes": 185
+    },
+    {
+     "path": "logs/run_2026-09-19/pip_install.log",
+     "n_files": 1,
+     "bytes": 787
+    },
+    {
+     "path": "logs/run_2026-09-19/pip_install.sh",
+     "n_files": 1,
+     "bytes": 454
+    },
+    {
+     "path": "logs/run_2026-09-19/precision_forecast.log",
+     "n_files": 1,
+     "bytes": 1314
+    },
+    {
+     "path": "logs/run_2026-09-19/pytest.log",
+     "n_files": 1,
+     "bytes": 23
+    },
+    {
+     "path": "logs/run_2026-09-19/trivial.log",
+     "n_files": 1,
+     "bytes": 0
+    }
+   ]
+  },
+  {
+   "path": "test files",
+   "classification": "not credentialed",
+   "note": "open-access MIMIC-IV demo data (per .gitignore comment); git-ignored",
+   "exists": true,
+   "n_files": 46,
+   "bytes": 32632568,
+   "n_tracked": 0,
+   "files": [
+    {
+     "path": "test files/.DS_Store",
+     "bytes": 6148,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2.zip",
+     "bytes": 16189661,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-ed-demo-2.2.zip",
+     "bytes": 97782,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/LICENSE.txt",
+     "bytes": 25815,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/README.txt",
+     "bytes": 978,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/SHA256SUMS.txt",
+     "bytes": 2966,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/demo_subject_id.csv",
+     "bytes": 911,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/hosp/admissions.csv.gz",
+     "bytes": 11072,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/hosp/d_hcpcs.csv.gz",
+     "bytes": 510070,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/hosp/d_icd_diagnoses.csv.gz",
+     "bytes": 1813533,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/hosp/d_icd_procedures.csv.gz",
+     "bytes": 1082613,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/hosp/d_labitems.csv.gz",
+     "bytes": 13520,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/hosp/diagnoses_icd.csv.gz",
+     "bytes": 24198,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/hosp/drgcodes.csv.gz",
+     "bytes": 7459,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/hosp/emar.csv.gz",
+     "bytes": 734347,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/hosp/emar_detail.csv.gz",
+     "bytes": 692290,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/hosp/hcpcsevents.csv.gz",
+     "bytes": 963,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/hosp/labevents.csv.gz",
+     "bytes": 1963979,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/hosp/microbiologyevents.csv.gz",
+     "bytes": 80991,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/hosp/omr.csv.gz",
+     "bytes": 17339,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/hosp/patients.csv.gz",
+     "bytes": 1083,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/hosp/pharmacy.csv.gz",
+     "bytes": 503956,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/hosp/poe.csv.gz",
+     "bytes": 611200,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/hosp/poe_detail.csv.gz",
+     "bytes": 26574,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/hosp/prescriptions.csv.gz",
+     "bytes": 606447,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/hosp/procedures_icd.csv.gz",
+     "bytes": 6602,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/hosp/provider.csv.gz",
+     "bytes": 151283,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/hosp/services.csv.gz",
+     "bytes": 5072,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/hosp/transfers.csv.gz",
+     "bytes": 23480,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/icu/caregiver.csv.gz",
+     "bytes": 43441,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/icu/chartevents.csv.gz",
+     "bytes": 5549389,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/icu/d_items.csv.gz",
+     "bytes": 57073,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/icu/datetimeevents.csv.gz",
+     "bytes": 119448,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/icu/icustays.csv.gz",
+     "bytes": 5667,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/icu/ingredientevents.csv.gz",
+     "bytes": 601205,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/icu/inputevents.csv.gz",
+     "bytes": 788253,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/icu/outputevents.csv.gz",
+     "bytes": 96413,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2/icu/procedureevents.csv.gz",
+     "bytes": 44817,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-ed-demo-2.2/LICENSE.txt",
+     "bytes": 25815,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-ed-demo-2.2/SHA256SUMS.txt",
+     "bytes": 577,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-ed-demo-2.2/ed/diagnosis.csv.gz",
+     "bytes": 8992,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-ed-demo-2.2/ed/edstays.csv.gz",
+     "bytes": 6258,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-ed-demo-2.2/ed/medrecon.csv.gz",
+     "bytes": 39662,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-ed-demo-2.2/ed/pyxis.csv.gz",
+     "bytes": 12430,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-ed-demo-2.2/ed/triage.csv.gz",
+     "bytes": 5489,
+     "tracked": false
+    },
+    {
+     "path": "test files/mimic-iv-ed-demo-2.2/ed/vitalsign.csv.gz",
+     "bytes": 15307,
+     "tracked": false
+    }
+   ],
+   "subtotals": [
+    {
+     "path": "test files/.DS_Store",
+     "n_files": 1,
+     "bytes": 6148
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2",
+     "n_files": 35,
+     "bytes": 16224447
+    },
+    {
+     "path": "test files/mimic-iv-clinical-database-demo-2.2.zip",
+     "n_files": 1,
+     "bytes": 16189661
+    },
+    {
+     "path": "test files/mimic-iv-ed-demo-2.2",
+     "n_files": 8,
+     "bytes": 114530
+    },
+    {
+     "path": "test files/mimic-iv-ed-demo-2.2.zip",
+     "n_files": 1,
+     "bytes": 97782
+    }
+   ]
+  },
+  {
+   "path": "docs/tables",
+   "classification": "aggregate derivative",
+   "note": "aggregate result tables; .md tracked, .csv git-ignored by the *.csv pattern; small cells suppressed by project rule",
+   "exists": true,
+   "n_files": 32,
+   "bytes": 102503,
+   "n_tracked": 16,
+   "files": [
+    {
+     "path": "docs/tables/aim1c_level1_age_band.csv",
+     "bytes": 2085,
+     "tracked": false
+    },
+    {
+     "path": "docs/tables/aim1c_level1_age_band.md",
+     "bytes": 2395,
+     "tracked": true
+    },
+    {
+     "path": "docs/tables/aim1c_level1_gender.csv",
+     "bytes": 848,
+     "tracked": false
+    },
+    {
+     "path": "docs/tables/aim1c_level1_gender.md",
+     "bytes": 1571,
+     "tracked": true
+    },
+    {
+     "path": "docs/tables/aim1c_level1_insurance.csv",
+     "bytes": 2092,
+     "tracked": false
+    },
+    {
+     "path": "docs/tables/aim1c_level1_insurance.md",
+     "bytes": 2509,
+     "tracked": true
+    },
+    {
+     "path": "docs/tables/aim1c_level1_language.csv",
+     "bytes": 8026,
+     "tracked": false
+    },
+    {
+     "path": "docs/tables/aim1c_level1_language.md",
+     "bytes": 6106,
+     "tracked": true
+    },
+    {
+     "path": "docs/tables/aim1c_level1_race.csv",
+     "bytes": 10836,
+     "tracked": false
+    },
+    {
+     "path": "docs/tables/aim1c_level1_race.md",
+     "bytes": 10714,
+     "tracked": true
+    },
+    {
+     "path": "docs/tables/table0.csv",
+     "bytes": 638,
+     "tracked": false
+    },
+    {
+     "path": "docs/tables/table0.md",
+     "bytes": 2131,
+     "tracked": true
+    },
+    {
+     "path": "docs/tables/table1.csv",
+     "bytes": 5888,
+     "tracked": false
+    },
+    {
+     "path": "docs/tables/table1.md",
+     "bytes": 7564,
+     "tracked": true
+    },
+    {
+     "path": "docs/tables/table2.csv",
+     "bytes": 2738,
+     "tracked": false
+    },
+    {
+     "path": "docs/tables/table2.md",
+     "bytes": 3889,
+     "tracked": true
+    },
+    {
+     "path": "docs/tables/table3.csv",
+     "bytes": 480,
+     "tracked": false
+    },
+    {
+     "path": "docs/tables/table3.md",
+     "bytes": 1051,
+     "tracked": true
+    },
+    {
+     "path": "docs/tables/table4.csv",
+     "bytes": 345,
+     "tracked": false
+    },
+    {
+     "path": "docs/tables/table4.md",
+     "bytes": 635,
+     "tracked": true
+    },
+    {
+     "path": "docs/tables/tableS1.csv",
+     "bytes": 1574,
+     "tracked": false
+    },
+    {
+     "path": "docs/tables/tableS1.md",
+     "bytes": 2110,
+     "tracked": true
+    },
+    {
+     "path": "docs/tables/clean/table1.csv",
+     "bytes": 5890,
+     "tracked": false
+    },
+    {
+     "path": "docs/tables/clean/table1.md",
+     "bytes": 7566,
+     "tracked": true
+    },
+    {
+     "path": "docs/tables/clean/table2.csv",
+     "bytes": 2738,
+     "tracked": false
+    },
+    {
+     "path": "docs/tables/clean/table2.md",
+     "bytes": 3889,
+     "tracked": true
+    },
+    {
+     "path": "docs/tables/clean/table3.csv",
+     "bytes": 480,
+     "tracked": false
+    },
+    {
+     "path": "docs/tables/clean/table3.md",
+     "bytes": 1051,
+     "tracked": true
+    },
+    {
+     "path": "docs/tables/clean/table4.csv",
+     "bytes": 345,
+     "tracked": false
+    },
+    {
+     "path": "docs/tables/clean/table4.md",
+     "bytes": 635,
+     "tracked": true
+    },
+    {
+     "path": "docs/tables/clean/tableS1.csv",
+     "bytes": 1574,
+     "tracked": false
+    },
+    {
+     "path": "docs/tables/clean/tableS1.md",
+     "bytes": 2110,
+     "tracked": true
+    }
+   ],
+   "subtotals": [
+    {
+     "path": "docs/tables/aim1c_level1_age_band.csv",
+     "n_files": 1,
+     "bytes": 2085
+    },
+    {
+     "path": "docs/tables/aim1c_level1_age_band.md",
+     "n_files": 1,
+     "bytes": 2395
+    },
+    {
+     "path": "docs/tables/aim1c_level1_gender.csv",
+     "n_files": 1,
+     "bytes": 848
+    },
+    {
+     "path": "docs/tables/aim1c_level1_gender.md",
+     "n_files": 1,
+     "bytes": 1571
+    },
+    {
+     "path": "docs/tables/aim1c_level1_insurance.csv",
+     "n_files": 1,
+     "bytes": 2092
+    },
+    {
+     "path": "docs/tables/aim1c_level1_insurance.md",
+     "n_files": 1,
+     "bytes": 2509
+    },
+    {
+     "path": "docs/tables/aim1c_level1_language.csv",
+     "n_files": 1,
+     "bytes": 8026
+    },
+    {
+     "path": "docs/tables/aim1c_level1_language.md",
+     "n_files": 1,
+     "bytes": 6106
+    },
+    {
+     "path": "docs/tables/aim1c_level1_race.csv",
+     "n_files": 1,
+     "bytes": 10836
+    },
+    {
+     "path": "docs/tables/aim1c_level1_race.md",
+     "n_files": 1,
+     "bytes": 10714
+    },
+    {
+     "path": "docs/tables/clean",
+     "n_files": 10,
+     "bytes": 26278
+    },
+    {
+     "path": "docs/tables/table0.csv",
+     "n_files": 1,
+     "bytes": 638
+    },
+    {
+     "path": "docs/tables/table0.md",
+     "n_files": 1,
+     "bytes": 2131
+    },
+    {
+     "path": "docs/tables/table1.csv",
+     "n_files": 1,
+     "bytes": 5888
+    },
+    {
+     "path": "docs/tables/table1.md",
+     "n_files": 1,
+     "bytes": 7564
+    },
+    {
+     "path": "docs/tables/table2.csv",
+     "n_files": 1,
+     "bytes": 2738
+    },
+    {
+     "path": "docs/tables/table2.md",
+     "n_files": 1,
+     "bytes": 3889
+    },
+    {
+     "path": "docs/tables/table3.csv",
+     "n_files": 1,
+     "bytes": 480
+    },
+    {
+     "path": "docs/tables/table3.md",
+     "n_files": 1,
+     "bytes": 1051
+    },
+    {
+     "path": "docs/tables/table4.csv",
+     "n_files": 1,
+     "bytes": 345
+    },
+    {
+     "path": "docs/tables/table4.md",
+     "n_files": 1,
+     "bytes": 635
+    },
+    {
+     "path": "docs/tables/tableS1.csv",
+     "n_files": 1,
+     "bytes": 1574
+    },
+    {
+     "path": "docs/tables/tableS1.md",
+     "n_files": 1,
+     "bytes": 2110
+    }
+   ]
+  }
+ ],
+ "checksums": {
+  "manifests": [
+   "SHA256SUMS.hosp.txt",
+   "SHA256SUMS.meds.txt",
+   "SHA256SUMS.note.txt",
+   "SHA256SUMS_mimiciv31_original.txt",
+   "SHA256SUMS_note_original.txt"
+  ],
+  "hashed": true,
+  "files": [
+   {
+    "path": "data/raw/hosp/admissions.csv.gz",
+    "status": "match",
+    "sha256": "a9584ed88e9ed664a2f66f86a5cf9fd175c8bb0af50e3b6115598b19e978384e",
+    "manifests_listing_file": [
+     "SHA256SUMS.hosp.txt",
+     "SHA256SUMS_mimiciv31_original.txt"
+    ],
+    "manifest_agree": true
+   },
+   {
+    "path": "data/raw/hosp/d_icd_diagnoses.csv.gz",
+    "status": "match",
+    "sha256": "a81065bf45ccf74f589bec855bbb0a07b5c014907b34ff76fe20583a2c87cc79",
+    "manifests_listing_file": [
+     "SHA256SUMS.hosp.txt",
+     "SHA256SUMS_mimiciv31_original.txt"
+    ],
+    "manifest_agree": true
+   },
+   {
+    "path": "data/raw/hosp/d_labitems.csv.gz",
+    "status": "match",
+    "sha256": "b7afdda77b637a7afe4f2ddfcce19e6c6becad41da397e95631cc1d416de548f",
+    "manifests_listing_file": [
+     "SHA256SUMS.hosp.txt",
+     "SHA256SUMS_mimiciv31_original.txt"
+    ],
+    "manifest_agree": true
+   },
+   {
+    "path": "data/raw/hosp/diagnoses_icd.csv.gz",
+    "status": "match",
+    "sha256": "47665a41b2a3ad990d6f314062d5bd6d29d467b0fd402dd94662044ec8b073d2",
+    "manifests_listing_file": [
+     "SHA256SUMS.hosp.txt",
+     "SHA256SUMS_mimiciv31_original.txt"
+    ],
+    "manifest_agree": true
+   },
+   {
+    "path": "data/raw/hosp/labevents.csv.gz",
+    "status": "match",
+    "sha256": "2cd5e09b7e48c0189828854221f97e2e8568268eda82157c6933bf8e674d08d5",
+    "manifests_listing_file": [
+     "SHA256SUMS.hosp.txt",
+     "SHA256SUMS_mimiciv31_original.txt"
+    ],
+    "manifest_agree": true
+   },
+   {
+    "path": "data/raw/hosp/omr.csv.gz",
+    "status": "match",
+    "sha256": "8280a8023203bddc6cc4419bd8cd253a015b8bc0bc53852ec92f98c7353f31e2",
+    "manifests_listing_file": [
+     "SHA256SUMS.hosp.txt",
+     "SHA256SUMS_mimiciv31_original.txt"
+    ],
+    "manifest_agree": true
+   },
+   {
+    "path": "data/raw/hosp/patients.csv.gz",
+    "status": "match",
+    "sha256": "4c7507de7ecad8c5ba7647ea4d26018e88ff6672c5fc22ab59c2a5697d687cdd",
+    "manifests_listing_file": [
+     "SHA256SUMS.hosp.txt",
+     "SHA256SUMS_mimiciv31_original.txt"
+    ],
+    "manifest_agree": true
+   },
+   {
+    "path": "data/raw/hosp/prescriptions.csv.gz",
+    "status": "match",
+    "sha256": "0d8481c7d5d7c9ec2fea3fc543ddaaadb5a933cd22c7b9dda4289361e4d77199",
+    "manifests_listing_file": [
+     "SHA256SUMS.meds.txt",
+     "SHA256SUMS_mimiciv31_original.txt"
+    ],
+    "manifest_agree": true
+   },
+   {
+    "path": "data/raw/note/discharge.csv.gz",
+    "status": "match",
+    "sha256": "27bc552edaf81c2af322040cb7e8eb36417173b23c79405bb92fcf73bef2dbc5",
+    "manifests_listing_file": [
+     "SHA256SUMS.note.txt",
+     "SHA256SUMS_note_original.txt"
+    ],
+    "manifest_agree": true
+   },
+   {
+    "path": "data/raw/note/discharge_detail.csv.gz",
+    "status": "match",
+    "sha256": "f35e969dc65805a0e59770ae7784c8c8cdd35595c12f861d3b490aaf9f5ad271",
+    "manifests_listing_file": [
+     "SHA256SUMS.note.txt",
+     "SHA256SUMS_note_original.txt"
+    ],
+    "manifest_agree": true
+   },
+   {
+    "path": "data/raw/note/radiology.csv.gz",
+    "status": "match",
+    "sha256": "2c09bc76ee12d5f3b8f572deb7218fbaf3e59b32eccfdae14686e05ae099eebb",
+    "manifests_listing_file": [
+     "SHA256SUMS.note.txt",
+     "SHA256SUMS_note_original.txt"
+    ],
+    "manifest_agree": true
+   },
+   {
+    "path": "data/raw/note/radiology_detail.csv.gz",
+    "status": "match",
+    "sha256": "9d3f6c44183c55ef8a0c511a2c72612568ad457fc53c035c8443c28a8cc53773",
+    "manifests_listing_file": [
+     "SHA256SUMS.note.txt",
+     "SHA256SUMS_note_original.txt"
+    ],
+    "manifest_agree": true
+   }
+  ],
+  "summary": {
+   "match": 12,
+   "match_some_manifests": 0,
+   "mismatch": 0,
+   "not_listed": 0,
+   "unreadable": 0
+  },
+  "listed_but_absent": [
+   "CHANGELOG.txt",
+   "LICENSE.txt",
+   "caregiver.csv.gz",
+   "chartevents.csv.gz",
+   "d_hcpcs.csv.gz",
+   "d_icd_procedures.csv.gz",
+   "d_items.csv.gz",
+   "datetimeevents.csv.gz",
+   "drgcodes.csv.gz",
+   "emar.csv.gz",
+   "emar_detail.csv.gz",
+   "hcpcsevents.csv.gz",
+   "icustays.csv.gz",
+   "ingredientevents.csv.gz",
+   "inputevents.csv.gz",
+   "microbiologyevents.csv.gz",
+   "outputevents.csv.gz",
+   "pharmacy.csv.gz",
+   "poe.csv.gz",
+   "poe_detail.csv.gz",
+   "procedureevents.csv.gz",
+   "procedures_icd.csv.gz",
+   "provider.csv.gz",
+   "services.csv.gz",
+   "transfers.csv.gz"
+  ]
+ },
+ "other": {
+  "huggingface_cache": {
+   "path": "/Users/betsylujan/.cache/huggingface/hub",
+   "classification": "not credentialed (public model checkpoints)",
+   "models": [
+    {
+     "path": "/Users/betsylujan/.cache/huggingface/hub/models--emilyalsentzer--Bio_ClinicalBERT",
+     "bytes": 871748573
+    }
+   ],
+   "bytes": 871748573,
+   "hub_total_bytes": 871749404
+  },
+  "venv": {
+   "path": ".venv",
+   "classification": "not credentialed (Python environment)",
+   "bytes": 1798945817
+  },
+  "docs_and_code": {
+   "classification": "not credentialed (tracked docs, scripts, sql, tests; aggregates only by guardrail)",
+   "n_tracked_files": 111
+  }
+ },
+ "elapsed_s": 4.1
+}

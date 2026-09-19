@@ -1,0 +1,346 @@
+{
+ "header": "Silver label \u2014 known error; not adjudicated truth; final performance requires the gold standard. Rows including the notes model carry the circularity caveat (label and input share a source).",
+ "layer0": {
+  "structured_FS-B": "cat|FS-B|unweighted",
+  "structured_FS-A": "cat|FS-A|unweighted",
+  "notes": "tfidf|S|unweighted",
+  "notes_source": "tfidf"
+ },
+ "arms_test": {
+  "fusion (primary)": {
+   "all": {
+    "n": 6164,
+    "pos": 383,
+    "auroc": 0.8528898349369028,
+    "auprc": 0.4347811358318324,
+    "brier": 0.04551721199435507,
+    "cal_intercept": -0.2074090631356181,
+    "cal_slope": 0.9336337262932809
+   },
+   "code_negative_only": {
+    "n": 6057,
+    "pos": 286,
+    "auroc": 0.8469681418910321,
+    "auprc": 0.35335348143260903,
+    "brier": 0.03857461923330614,
+    "cal_intercept": -0.47043847612380224,
+    "cal_slope": 0.914843857936696
+   }
+  },
+  "structured (primary: cat|FS-B|unweighted)": {
+   "all": {
+    "n": 6164,
+    "pos": 383,
+    "auroc": 0.7934428213789386,
+    "auprc": 0.2908367439378524,
+    "brier": 0.051310304835388065,
+    "cal_intercept": -0.1391852122354244,
+    "cal_slope": 1.0132903928404169
+   },
+   "code_negative_only": {
+    "n": 6057,
+    "pos": 286,
+    "auroc": 0.7630314582315968,
+    "auprc": 0.1879263685750954,
+    "brier": 0.04311550326401909,
+    "cal_intercept": -0.3929443021131149,
+    "cal_slope": 0.8919278064249491
+   }
+  },
+  "fusion (sensitivity_FS-A)": {
+   "all": {
+    "n": 6164,
+    "pos": 383,
+    "auroc": 0.8603293493631565,
+    "auprc": 0.46424586369624343,
+    "brier": 0.044401804308889334,
+    "cal_intercept": -0.2173152115744509,
+    "cal_slope": 0.9606151638390921
+   },
+   "code_negative_only": {
+    "n": 6057,
+    "pos": 286,
+    "auroc": 0.857551562975233,
+    "auprc": 0.3839474352491706,
+    "brier": 0.03753058460323229,
+    "cal_intercept": -0.47585724907313465,
+    "cal_slope": 0.9567650856548008
+   }
+  },
+  "structured (sensitivity_FS-A: cat|FS-A|unweighted)": {
+   "all": {
+    "n": 6164,
+    "pos": 383,
+    "auroc": 0.8538681003720209,
+    "auprc": 0.39152036726091205,
+    "brier": 0.04700169047418255,
+    "cal_intercept": -0.1669243889702152,
+    "cal_slope": 1.0205902473417436
+   },
+   "code_negative_only": {
+    "n": 6057,
+    "pos": 286,
+    "auroc": 0.8417206602096569,
+    "auprc": 0.276300282947538,
+    "brier": 0.04005494514094204,
+    "cal_intercept": -0.41363491223536253,
+    "cal_slope": 0.9684634872523835
+   }
+  },
+  "notes (tfidf|S|unweighted)": {
+   "all": {
+    "n": 6164,
+    "pos": 383,
+    "auroc": 0.8257847463758788,
+    "auprc": 0.40744121546277756,
+    "brier": 0.04655535104675502,
+    "cal_intercept": -0.18037573669330492,
+    "cal_slope": 1.1257454236851931
+   },
+   "code_negative_only": {
+    "n": 6057,
+    "pos": 286,
+    "auroc": 0.8331893370881415,
+    "auprc": 0.35152295378522946,
+    "brier": 0.03777532351464824,
+    "cal_intercept": -0.45508092868903627,
+    "cal_slope": 1.1520045372190912
+   }
+  },
+  "notes-augmented (aug|FS-B+notes|unweighted)": {
+   "all": {
+    "n": 5108,
+    "pos": 322,
+    "auroc": 0.828993986082596,
+    "auprc": 0.32826816088506133,
+    "brier": 0.05001536773350425,
+    "cal_intercept": -0.03649044661792307,
+    "cal_slope": 1.0101755101455012
+   },
+   "code_negative_only": {
+    "n": 5016,
+    "pos": 239,
+    "auroc": 0.8259345906947778,
+    "auprc": 0.24526181063784586,
+    "brier": 0.04084115680426408,
+    "cal_intercept": -0.3121175520866824,
+    "cal_slope": 0.9920100371349847
+   }
+  },
+  "notes-augmented (aug|FS-B+notes|weighted)": {
+   "all": {
+    "n": 5108,
+    "pos": 322,
+    "auroc": 0.8130397146958132,
+    "auprc": 0.2545847397868862,
+    "brier": 0.14251032743763142,
+    "cal_intercept": -2.372805365262735,
+    "cal_slope": 0.9892642634339328
+   },
+   "code_negative_only": {
+    "n": 5016,
+    "pos": 239,
+    "auroc": 0.8143168582372123,
+    "auprc": 0.18643567978517844,
+    "brier": 0.14099231356594333,
+    "cal_intercept": -2.662263930179813,
+    "cal_slope": 0.983387038278744
+   }
+  },
+  "notes-augmented (aug|FS-B+notes|weighted+corrected)": {
+   "all": {
+    "n": 5108,
+    "pos": 322,
+    "auroc": 0.8130397146958132,
+    "auprc": 0.2545847397868862,
+    "brier": 0.05269322002969776,
+    "cal_intercept": 0.17832331793889858,
+    "cal_slope": 0.9892642634339329
+   },
+   "code_negative_only": {
+    "n": 5016,
+    "pos": 239,
+    "auroc": 0.8143168582372123,
+    "auprc": 0.18643567978517844,
+    "brier": 0.04179404447190542,
+    "cal_intercept": -0.11113524697816525,
+    "cal_slope": 0.9833870382787431
+   }
+  }
+ },
+ "paired_differences": {
+  "fusion (primary) minus structured (primary: cat|FS-B|unweighted)": {
+   "auroc": {
+    "mean": 0.05980553802796537,
+    "ci": [
+     0.03107087234582024,
+     0.08871138103198095
+    ]
+   },
+   "auprc": {
+    "mean": 0.14731985583431023,
+    "ci": [
+     0.07426756391744545,
+     0.22290901295409554
+    ]
+   },
+   "brier": {
+    "mean": -0.005795551687119962,
+    "ci": [
+     -0.009050009883257404,
+     -0.0019939203788188276
+    ]
+   }
+  },
+  "fusion (sensitivity_FS-A) minus structured (primary: cat|FS-B|unweighted)": {
+   "auroc": {
+    "mean": 0.0674239840874793,
+    "ci": [
+     0.03404954024031911,
+     0.10015689069875074
+    ]
+   },
+   "auprc": {
+    "mean": 0.17590754863053457,
+    "ci": [
+     0.09995940771021385,
+     0.25371649555589115
+    ]
+   },
+   "brier": {
+    "mean": -0.00689181664988175,
+    "ci": [
+     -0.009978592134959679,
+     -0.0035297978199939125
+    ]
+   }
+  },
+  "structured (sensitivity_FS-A: cat|FS-A|unweighted) minus structured (primary: cat|FS-B|unweighted)": {
+   "auroc": {
+    "mean": 0.06073805791781835,
+    "ci": [
+     0.037352926144990445,
+     0.08573152220010927
+    ]
+   },
+   "auprc": {
+    "mean": 0.1000358309737824,
+    "ci": [
+     0.06781606402935668,
+     0.13636820758417506
+    ]
+   },
+   "brier": {
+    "mean": -0.004274550243833888,
+    "ci": [
+     -0.0059275883564064045,
+     -0.002643263774539257
+    ]
+   }
+  },
+  "notes (tfidf|S|unweighted) minus structured (primary: cat|FS-B|unweighted)": {
+   "auroc": {
+    "mean": 0.033397171803745906,
+    "ci": [
+     -0.01827007632623578,
+     0.08037487513226804
+    ]
+   },
+   "auprc": {
+    "mean": 0.1210756363067477,
+    "ci": [
+     0.018604008067023038,
+     0.22074460706378843
+    ]
+   },
+   "brier": {
+    "mean": -0.0047810525862448435,
+    "ci": [
+     -0.008195141309032974,
+     -0.000612590337079513
+    ]
+   }
+  },
+  "notes-augmented (aug|FS-B+notes|unweighted) minus structured (primary: cat|FS-B|unweighted)": {
+   "auroc": {
+    "mean": 0.036330072171696884,
+    "ci": [
+     0.002977828013440943,
+     0.06825768666021757
+    ]
+   },
+   "auprc": {
+    "mean": 0.04190206023636535,
+    "ci": [
+     -0.021129864452287234,
+     0.10276502263497726
+    ]
+   },
+   "brier": {
+    "mean": -0.00130851482693026,
+    "ci": [
+     -0.004442142138647034,
+     0.0021893830418209894
+    ]
+   }
+  },
+  "notes-augmented (aug|FS-B+notes|weighted) minus structured (primary: cat|FS-B|unweighted)": {
+   "auroc": {
+    "mean": 0.020861667123278676,
+    "ci": [
+     -0.01571620318766625,
+     0.05502051930434888
+    ]
+   },
+   "auprc": {
+    "mean": -0.029414934634862156,
+    "ci": [
+     -0.09051094426398759,
+     0.033975155408700795
+    ]
+   },
+   "brier": {
+    "mean": 0.09131434055321978,
+    "ci": [
+     0.07935986095827433,
+     0.10430997459067619
+    ]
+   }
+  },
+  "notes-augmented (aug|FS-B+notes|weighted+corrected) minus structured (primary: cat|FS-B|unweighted)": {
+   "auroc": {
+    "mean": 0.020861667123278676,
+    "ci": [
+     -0.01571620318766625,
+     0.05502051930434888
+    ]
+   },
+   "auprc": {
+    "mean": -0.029414934634862156,
+    "ci": [
+     -0.09051094426398759,
+     0.033975155408700795
+    ]
+   },
+   "brier": {
+    "mean": 0.001338289440763467,
+    "ci": [
+     -0.0021518810518060816,
+     0.0053378513263581595
+    ]
+   }
+  }
+ },
+ "fusion_coefficients": {
+  "primary": {
+   "intercept": 1.23546198619686,
+   "w_structured": 0.5189735566683744,
+   "w_notes": 0.9930161523490335
+  },
+  "sensitivity_FS-A": {
+   "intercept": 0.7604398234515093,
+   "w_structured": 0.5331386243641375,
+   "w_notes": 0.7928000196840205
+  }
+ }
+}

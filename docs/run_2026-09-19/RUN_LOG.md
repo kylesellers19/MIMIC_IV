@@ -226,3 +226,40 @@ The informative asymmetry: 1,556 mentions the project affirms are negated by Con
 Rather than discover a bug at the 21:39 deadline, the notes-arm script was given a `--smoke` mode and run on the shards available at 18:30 (9,000 admissions: DEV 5,541, TEST 1,439, GOLD 2,020). It completed end to end in 244 s: the logistic and LightGBM heads on the 1,536-dimensional vectors both fitted, LightGBM won on DEV out-of-fold AUPRC, and the notes-augmented CatBoost (FS-B plus the first 64 principal components, fitted inside training folds) produced out-of-fold and TEST predictions. **These numbers are not results** — they are a partial-data pipeline check, written to `data/processed/run_2026-09-19_scratch/` and superseded by the real run.
 
 Two smoke model files were written under `models/run_2026-09-19/` before the mode was corrected to keep artifacts in scratch. They were **not deleted** — guardrail 12 permits deleting only the packet dry-run directory and scratch files, and unlike the B-04 log there is no safety reason to override it. Instead `scripts/run0919_fusion_lock.py` now excludes any `_SMOKE` file from the locked-prediction manifest and lists it under `excluded_from_manifest`, so the Phase 9.2 audit trail records exactly the models that produced the locked predictions and nothing else.
+
+## Phase 8.2 / 8.3 — transformer embeddings and the notes-augmented model
+
+**Purpose.** Ask whether a dense representation of the note text adds anything beyond the lexical model, and whether combining text with clinical structured features beats either. Everything here is a development diagnostic: the silver label is a lexical rule over the same text, so a notes model can score well by relearning the lexicon.
+
+**What was done.** The encoder finished on budget at 21:40 UTC with **28 of 33 shards** — every gold-holdout shard (100% of 2,865 admissions) plus DEV 19,872 and TEST 5,108, giving 27,845 of 32,845 admissions embedded. Two heads were fitted on the 1,536-dimensional vectors (variant S) and the better on DEV out-of-fold AUPRC kept; then a notes-augmented CatBoost on FS-B plus the first 64 principal components, with the projection fitted inside training folds.
+
+**Results.**
+
+| model | TEST AUROC | TEST AUPRC |
+| --- | --: | --: |
+| embedding head, logistic regression | 0.754 | 0.217 |
+| embedding head, LightGBM (kept) | 0.788 | 0.246 |
+| TF-IDF variant S (Phase 8.1) | 0.826 | 0.407 |
+| notes-augmented CatBoost, FS-B + 64 components | 0.829 | 0.328 |
+
+**The transformer embeddings lost to TF-IDF**, on out-of-fold AUPRC (0.274 against 0.444) and on TEST. Two reasons are visible in the run and both are reported rather than explained away: the embeddings cover 85% of the subsample where TF-IDF covers all of it, and a frozen general clinical encoder with a light head is a weaker use of 1,536 dimensions than a vocabulary fitted to this corpus. Fine-tuning, which might close the gap, was budgeted at zero. The fusion stack therefore selected TF-IDF as its notes layer on DEV out-of-fold performance, not by hand.
+
+## Phase 9 — fusion, locked predictions, gold harness
+
+**Results** (`docs/aim1b_fusion.md`; paired subject-cluster bootstrap, 500 replicates).
+
+| arm | AUROC | AUPRC | intercept | slope | recovery-zone AUROC |
+| --- | --: | --: | --: | --: | --: |
+| structured, FS-B clinical only | 0.793 | 0.291 | −0.14 | 1.01 | 0.763 |
+| notes, TF-IDF variant S | 0.826 | 0.407 | −0.18 | 1.13 | 0.833 |
+| notes-augmented, FS-B + components | 0.829 | 0.328 | −0.04 | 1.01 | 0.826 |
+| **fusion, FS-B + notes** | **0.853** | **0.435** | −0.21 | 0.93 | 0.847 |
+| fusion, FS-A + notes (sensitivity) | 0.860 | 0.464 | −0.22 | 0.96 | 0.858 |
+| structured, FS-A (sensitivity) | 0.854 | 0.392 | −0.17 | 1.02 | 0.842 |
+
+- **H1b-iii is half borne out.** Fusion is more discriminating than either base learner (+0.060 AUROC over the structured arm, 95% CI +0.031 to +0.089), but it is **not better calibrated** than the structured arm (slope 0.93 against 1.01). The hypothesis's own caveat also applies in the other direction: against the FS-A structured arm, fusion adds +0.006 AUROC — almost nothing, because the availability features FS-A already contains carry much of what the notes model contributes.
+- The gain concentrates where the study cares: in code-negative admissions the fusion arm reaches 0.847 against the structured arm's 0.763. That is the silver-label shadow of H1b-ii; the real test needs the gold standard.
+- **9.2 Locked predictions.** All 2,865 gold-holdout admissions were scored by 37 arm/variant columns before any adjudication exists. `data/processed/gold_holdout_predictions_v1.parquet` (untracked) with its SHA-256 and the hashes of all 16 model files are recorded in `docs/aim1b_locked_predictions.md`. The two smoke-test models are listed separately as excluded, so the manifest describes exactly the models that produced the locked predictions.
+- **9.3 / 9.4** `scripts/aim1b_evaluate_gold.py` and `scripts/aim1b_gold_cv.py` are written and tested on synthetic labels, which are written to the scratch folder and carry SYNTHETIC in the filename and header. No synthetic result appears in `docs/`.
+
+**Deviations.** Five DEV/TEST shards (24–28) were not encoded before the budget expired, so the notes arm trains on 85% of the intended subsample. The gold holdout is complete, so nothing downstream of the adjudication is affected.

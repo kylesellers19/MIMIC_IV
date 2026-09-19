@@ -144,6 +144,31 @@ Within code-negative TEST admissions:
 
 Variant U's top terms are expected to be the lexicon itself — that table is the demonstration of circularity. What survives in S is the interesting result.
 
-## 8.2 / 8.3
+## 8.2 Transformer embeddings (chunked Bio_ClinicalBERT, 1,536-d admission vectors)
 
-Embedding-based heads and the notes-augmented model: not available (see RUN_LOG / BLOCKERS).
+**DEVELOPMENT DIAGNOSTIC — label and input share a source; not an accuracy estimate.**
+
+Variant S: 27,845 admissions embedded (DEV 19,872, TEST 5,108, GOLD 2,865); head kept by DEV OOF AUPRC: **lgbm**.
+
+| head · split | n | positives | AUROC (95% CI) | AUPRC (95% CI) | Brier (95% CI) | calibration intercept | calibration slope |
+| --- | --: | --: | --- | --- | --- | --: | --: |
+| lr · OOF | 19,872 | 1,438 | 0.785 | 0.251 | 0.064 | -0.018 | 0.553 |
+| lr · TEST | 5,108 | 322 | 0.754 (0.704–0.799) | 0.216 (0.165–0.292) | 0.058 (0.050–0.068) | -0.254 | 0.511 |
+| lgbm · OOF | 19,872 | 1,438 | 0.804 | 0.274 | 0.063 | 1.324 | 0.577 |
+| lgbm · TEST | 5,108 | 322 | 0.788 (0.742–0.832) | 0.246 (0.187–0.326) | 0.055 (0.046–0.065) | 0.804 | 0.589 |
+
+- Variant U: no embeddings available.
+## 8.3 Notes-augmented model — CatBoost on FS-B + PC1-64 of Bio_ClinicalBERT (variant S)
+
+**DEVELOPMENT DIAGNOSTIC — label and input share a source; not an accuracy estimate.** **Silver label — known error; not adjudicated truth; final performance requires the gold standard.**
+
+DEV 19,872 · TEST 5,108.
+
+| imbalance · split | n | positives | AUROC (95% CI) | AUPRC (95% CI) | Brier (95% CI) | calibration intercept | calibration slope |
+| --- | --: | --: | --- | --- | --- | --: | --: |
+| unweighted · OOF | 19,872 | 1,438 | 0.840 | 0.305 | 0.058 | 0.126 | 1.056 |
+| unweighted · TEST | 5,108 | 322 | 0.829 (0.795–0.863) | 0.328 (0.246–0.436) | 0.050 (0.042–0.059) | -0.036 | 1.010 |
+| weighted · OOF | 19,872 | 1,438 | 0.835 | 0.298 | 0.132 | -2.121 | 1.105 |
+| weighted · TEST | 5,108 | 322 | 0.813 (0.776–0.848) | 0.255 (0.182–0.366) | 0.143 (0.132–0.154) | -2.373 | 0.989 |
+| weighted+corrected · OOF | 19,872 | 1,438 | 0.835 | 0.298 | 0.059 | 0.440 | 1.106 |
+| weighted+corrected · TEST | 5,108 | 322 | 0.813 (0.776–0.848) | 0.255 (0.182–0.366) | 0.053 (0.044–0.062) | 0.178 | 0.989 |

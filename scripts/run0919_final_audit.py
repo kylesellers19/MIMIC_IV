@@ -16,6 +16,10 @@ SMALL_COUNT_COL = re.compile(r"^\s*\|")
 # scripts, so a newly introduced seed is exempted only because it is demonstrably used as a seed.
 SEED_LITERAL = re.compile(r"(?:default_rng\(|random_state\s*=\s*|seed\s*=\s*|SEED[A-Z_]*\s*=\s*)(\d{8})")
 # A JSON/table field that holds a byte count or a size can hold an 8-digit number that is not an identifier.
+# Fingerprints of MIMIC-IV-Note text (used by check (d); module-level so tests can exercise them).
+DEID = re.compile(r"_{3,}")
+REPORT_HEADER = re.compile(r"\b(FINDINGS|IMPRESSION|TECHNIQUE|COMPARISON|INDICATION|EXAMINATION|WET READ|HISTORY OF PRESENT ILLNESS|BRIEF HOSPITAL COURSE)\s*:", re.I)
+TALKS_ABOUT_DEID = re.compile(r"de-?identif|placeholder|redact|scrub|anonymi", re.I)
 SIZE_KEY = re.compile(r'"[a-z0-9_]*(bytes|size|chars|length)[a-z0-9_]*"\s*:', re.I)
 
 
@@ -126,26 +130,46 @@ def main():
     audit["c_small_counts_in_tables"] = {"hits": small, "pass": not small,
                                          "note": "count-like columns only; a 1-10 here must read <11"}
 
-    # (d) no note text in tracked docs beyond 8-word windows
+    # (d) no note text in tracked docs beyond 8-word windows.
+    # Three direct fingerprints of MIMIC-IV-Note text, rather than a heuristic on quoting style:
+    #   d1  the de-identification placeholder (three or more underscores) that MIMIC substitutes for
+    #       every removed identifier - essentially every real note span carries at least one;
+    #   d2  a clinical report section header inside a blockquote or fenced block;
+    #   d3  a quoted lexicon match carrying more than an 8-word window, where the quoted line is
+    #       neither a verbatim line of the study's own instrument documents nor explained by d1/d2.
     from scripts.note_phenotype import TRIGGERS
     instrument = instrument_lines()
-    longwin = []
+    d1, d2, d3 = [], [], []
     for f in changed_files():
-        if not f.endswith(".md"):
+        if not f.endswith((".md", ".txt")):
             continue
+        quoted = False
         for i, line in enumerate(open(f, encoding="utf-8", errors="replace").read().splitlines(), 1):
+            if line.strip().startswith("```"):
+                quoted = not quoted
+                continue
+            in_quote = quoted or line.strip().startswith(">") or line.startswith("    ")
+            if DEID.search(line) and not TALKS_ABOUT_DEID.search(line):
+                d1.append({"file": f, "line": i, "fingerprint": "de-identification placeholder"})
+            if in_quote and REPORT_HEADER.search(line) and any(rx.search(line) for _, rx, _, _ in TRIGGERS):
+                d2.append({"file": f, "line": i, "fingerprint": "report section header in a quoted block"})
+            if not in_quote:
+                continue
+            norm = " ".join(re.sub(r"[^a-z0-9 ]", " ", line.lower()).split())
+            if norm in instrument:
+                continue
             for name, rx, tier, scope in TRIGGERS:
                 m = rx.search(line)
                 if not m:
                     continue
-                before = line[:m.start()].split()
-                after = line[m.end():].split()
-                # a prose sentence about the lexicon is fine; a long verbatim window around a hit is not
-                norm = " ".join(re.sub(r"[^a-z0-9 ]", " ", line.lower()).split())
-                if len(before) + len(after) > 8 and line.strip().startswith(">") and norm not in instrument:
-                    longwin.append({"file": f, "line": i, "trigger": name})
-    audit["d_note_text_windows"] = {"quoted_lines_with_long_context": longwin, "pass": not longwin,
-                                    "note": "checks blockquoted lines containing a lexicon match; prose discussing the lexicon, and verbatim quotations of the study's own instrument documents, are expected and not findings"}
+                words = len(line[:m.start()].split()) + len(line[m.end():].split())
+                if words > 8 and (DEID.search(line) or REPORT_HEADER.search(line)):
+                    d3.append({"file": f, "line": i, "trigger": name, "context_words": words})
+                break
+    audit["d_note_text"] = {"deid_placeholders": d1, "report_headers_in_quotes": d2,
+                            "long_quoted_windows_with_note_fingerprint": d3,
+                            "pass": not (d1 or d2 or d3),
+                            "note": "flags the de-identification placeholder MIMIC leaves in every note span, report section headers inside quoted blocks, and quoted lexicon matches carrying more than an 8-word window that also show a note fingerprint. Prose about the lexicon, the study's own instrument text, and the manuscript's own sentences are not findings."}
 
     # (e) frozen-artifact hashes unchanged
     start = json.load(open(f"{RES}/frozen_hashes_start.json"))
@@ -192,7 +216,7 @@ def main():
         elif k.startswith("f_"): detail = ", ".join(v["tags"])
         elif k.startswith("h_"): detail = f"+{v['lines_added']} / -{v['lines_removed']}"
         elif k.startswith("a_"): detail = f"{len(v['tracked_files_under_those_dirs'])} tracked under data/models/logs"
-        elif k.startswith("d_"): detail = f"{len(v['quoted_lines_with_long_context'])} long quoted windows"
+        elif k.startswith("d_"): detail = f"{len(v['deid_placeholders'])} deid, {len(v['report_headers_in_quotes'])} headers, {len(v['long_quoted_windows_with_note_fingerprint'])} windows"
         elif k.startswith("g_"): detail = f"{len(v['remotes'])} remotes"
         print(f"{k:40s} {'PASS' if v.get('pass') else 'FAIL':6s} {detail}")
     print(f"\nALL PASS: {audit['all_pass']}")

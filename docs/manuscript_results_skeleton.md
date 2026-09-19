@@ -93,7 +93,7 @@ Source: `docs/imaging_denominator.md`. Under the primary −365/+30 window: no r
 
 Source: `docs/run_2026-09-19/results/aim1c_level1.json`, rendered in `docs/aim1c_level1.md` and `docs/tables/aim1c_level1_{race,insurance,gender,language,age_band}.md`. Definition (b). 95% CIs are subject-cluster bootstraps, 500 replicates. Floors: no recovery share where B < 11; no corroboration share where A + C < 11. **Strata are never merged**; non-analyzable strata are declared. A CI wider than 20 percentage points is marked as not supporting a claim.
 
-**This is an abbreviated table showing the largest strata only. The complete tables — all 33 race levels, all 26 language levels, every cell count, every mechanism measure, and the 571.9 sensitivity column — are in `docs/aim1c_level1.md` and must be cited there.**
+**Small-cell rule: any cell count of 1–10 is written `<11`.** **This is an abbreviated table showing the largest strata only. The complete tables — all 33 race levels, all 26 language levels, every cell count, every mechanism measure, and the 571.9 sensitivity column — are in `docs/aim1c_level1.md` and must be cited there.**
 
 ### 3a. Race (largest strata)
 
@@ -108,8 +108,8 @@ Source: `docs/run_2026-09-19/results/aim1c_level1.json`, rendered in `docs/aim1c
 | UNKNOWN † | 88 | 493 | 11 | 9,134 | 84.9 (81.8–87.8) | yes | 88.9 (82.9–94.3) | −0.080 |
 | ASIAN – CHINESE | 67 | 374 | 11 | 4,241 | 84.8 (80.3–88.6) | yes | 85.9 (77.2–92.7) | −0.078 |
 | HISPANIC/LATINO – DOMINICAN | 79 | 289 | 13 | 3,229 | 78.5 (73.0–84.0) | yes | 85.9 (77.3–91.9) | +0.087 |
-| ASIAN | 49 | 262 | 9 | 4,330 | 84.2 (78.8–89.2) | yes | 84.5 (73.5–93.7) — CI 20.2 pts, claim not supported | −0.062 |
-| BLACK/CAPE VERDEAN | 57 | 235 | 4 | 3,691 | 80.5 (73.9–86.8) | yes | 93.4 (86.5–98.8) | +0.038 |
+| ASIAN | 49 | 262 | <11 | 4,330 | 84.2 (78.8–89.2) | yes | 84.5 (73.5–93.7) — CI 20.2 pts, claim not supported | −0.062 |
+| BLACK/CAPE VERDEAN | 57 | 235 | <11 | 3,691 | 80.5 (73.9–86.8) | yes | 93.4 (86.5–98.8) | +0.038 |
 | WHITE – RUSSIAN | 81 | 214 | 11 | 4,354 | 72.5 (63.1–82.5) | yes | 88.0 (77.3–95.2) | +0.228 |
 
 † UNKNOWN, UNABLE TO OBTAIN and PATIENT DECLINED TO ANSWER are encounter characteristics, not population groups. Analyzable race strata: **33 of 33**; claim-supported on recovery: **21**. Non-analyzable: **none**.
@@ -122,8 +122,8 @@ Source: `docs/run_2026-09-19/results/aim1c_level1.json`, rendered in `docs/aim1c
 | Private | 2,006 | 8,136 | 245 | 104,835 | 80.2 (79.1–81.3) | 89.1 (87.7–90.5) | +0.070 |
 | Medicaid | 987 | 5,042 | 124 | 56,874 | 83.6 (82.4–84.9) | 88.8 (87.0–90.6) | −0.057 |
 | Other | 122 | 724 | 13 | 9,111 | 85.6 (82.9–88.2) | 90.4 (84.7–95.1) | −0.102 |
-| (missing) | 30 | 207 | 4 | 4,952 | 87.3 (82.3–91.5) | 88.2 (77.1–97.6) — CI 20.5 pts, claim not supported | −0.152 |
-| No charge | 0 | 6 | 0 | 67 | **not analyzable** (B < 11) | **not analyzable** | — |
+| (missing) | 30 | 207 | <11 | 4,952 | 87.3 (82.3–91.5) | 88.2 (77.1–97.6) — CI 20.5 pts, claim not supported | −0.152 |
+| No charge | 0 | <11 | 0 | 67 | **not analyzable** (B < 11) | **not analyzable** | — |
 
 ### 3c. Sex
 
@@ -153,10 +153,10 @@ Analyzable: **17 of 26**; claim-supported on recovery: **10**. Nine strata are d
 | --- | --: | --: | --: | --: | --- | --- |
 | English | 4,428 | 20,342 | 629 | 310,810 | 82.1 (81.4–82.9) | yes |
 | Spanish | 317 | 1,114 | 38 | 11,023 | 77.8 (74.4–80.8) | yes |
-| Chinese | 55 | 381 | 10 | 4,559 | 87.4 (83.3–91.2) | yes |
+| Chinese | 55 | 381 | <11 | 4,559 | 87.4 (83.3–91.2) | yes |
 | Russian | 76 | 227 | 14 | 6,098 | 74.9 (66.6–84.0) | yes |
-| Kabuverdianu | 54 | 192 | 5 | 3,112 | 78.0 (70.5–85.8) | yes |
-| Portuguese | 31 | 150 | 5 | 1,780 | 82.9 (76.1–89.2) | yes |
+| Kabuverdianu | 54 | 192 | <11 | 3,112 | 78.0 (70.5–85.8) | yes |
+| Portuguese | 31 | 150 | <11 | 1,780 | 82.9 (76.1–89.2) | yes |
 
 ### 3f. Exploratory adjusted model
 
@@ -192,19 +192,91 @@ Within code-negative TEST admissions only (n = 6,057, 286 positive), unweighted:
 
 Top positive coefficients, variant U: `steatosis` 11.739 (df 917), `fatty` 11.453 (df 1,709), `fatty liver` 9.427 (df 496), `hepatic steatosis` 9.087 (df 658), `nash` 5.901 (df 237) — **this row is the demonstration of circularity, not a finding.** Variant M: `mask` 22.772 (df 2,599) — masking every lexicon match still leaves the presence of a match as a feature. Variant S: `cirrhosis` 4.112, `liver disease` 4.018, `forms of` 3.728, `fibrosis` 3.625, `obesity` 1.717 — what the rest of the documentation carries, and the only row of this table that speaks to what a notes model could legitimately learn.
 
-### 4b. Structured arm
+### 4b. Structured arm — silver label, TEST
 
-`[PENDING — job still running at draft time]`. Expected file: `docs/run_2026-09-19/results/aim1b_structured.json`; expected document: `docs/aim1b_structured.md`.
+Source: `docs/run_2026-09-19/results/aim1b_structured.json` (completed during drafting; the rendered document `docs/aim1b_structured.md` does not yet exist). TEST n = 75,124, 5,426 silver-positive. 95% intervals are 500-replicate subject-cluster bootstraps. FS-A = 94 features (clinical + availability), FS-B = 52 clinical, FS-AVAIL = 42 availability/volume.
 
-| Learner | Feature set | Imbalance variant | AUROC (95% CI) | AUPRC (95% CI) | Brier | Calib. intercept | Calib. slope |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| CatBoost | FS-A (94 features) | unweighted / weighted / weighted+corrected | `[PENDING]` | `[PENDING]` | `[PENDING]` | `[PENDING]` | `[PENDING]` |
-| CatBoost | FS-B (52 clinical) | unweighted / weighted / weighted+corrected | `[PENDING]` | `[PENDING]` | `[PENDING]` | `[PENDING]` | `[PENDING]` |
-| CatBoost | FS-AVAIL (42 availability) | unweighted / weighted / weighted+corrected | `[PENDING]` | `[PENDING]` | `[PENDING]` | `[PENDING]` | `[PENDING]` |
-| XGBoost | FS-A / FS-B / FS-AVAIL | as above | `[PENDING]` | `[PENDING]` | `[PENDING]` | `[PENDING]` | `[PENDING]` |
-| LightGBM | FS-A / FS-B / FS-AVAIL | as above | `[PENDING]` | `[PENDING]` | `[PENDING]` | `[PENDING]` | `[PENDING]` |
+| Learner | Feature set | Imbalance variant | AUROC (95% CI) | AUPRC (95% CI) | Brier (95% CI) | Calib. intercept | Calib. slope |
+| --- | --- | --- | --- | --- | --- | --: | --: |
+| CatBoost | FS-A | unweighted | 0.857 (0.849–0.866) | 0.380 (0.358–0.401) | 0.0543 (0.0519–0.0569) | 0.031 | 1.018 |
+| CatBoost | FS-A | weighted | 0.857 (0.849–0.865) | 0.371 (0.350–0.391) | 0.1451 (0.1423–0.1482) | −2.378 | 1.055 |
+| CatBoost | FS-A | weighted + prior correction | 0.857 (0.849–0.865) | 0.371 (0.350–0.391) | 0.0550 (0.0526–0.0578) | 0.175 | 1.055 |
+| CatBoost | FS-B | unweighted | 0.787 (0.778–0.796) | 0.282 (0.263–0.299) | 0.0593 (0.0566–0.0624) | 0.027 | 0.980 |
+| CatBoost | FS-B | weighted | 0.786 (0.777–0.796) | 0.277 (0.258–0.295) | 0.1739 (0.1714–0.1765) | −2.425 | 1.042 |
+| CatBoost | FS-B | weighted + prior correction | 0.786 (0.777–0.796) | 0.277 (0.258–0.295) | 0.0597 (0.0571–0.0629) | 0.141 | 1.042 |
+| CatBoost | FS-AVAIL | unweighted | 0.812 (0.803–0.820) | 0.245 (0.230–0.261) | 0.0598 (0.0574–0.0627) | 0.013 | 1.035 |
+| CatBoost | FS-AVAIL | weighted | 0.811 (0.802–0.819) | 0.239 (0.224–0.255) | 0.1774 (0.1745–0.1805) | −2.496 | 1.017 |
+| CatBoost | FS-AVAIL | weighted + prior correction | 0.811 (0.802–0.819) | 0.239 (0.224–0.255) | 0.0600 (0.0576–0.0629) | 0.063 | 1.017 |
+| XGBoost | FS-A | unweighted | 0.858 (0.850–0.866) | 0.378 (0.358–0.398) | 0.0543 (0.0519–0.0570) | 0.044 | 0.979 |
+| XGBoost | FS-A | weighted | 0.841 (0.832–0.850) | 0.360 (0.340–0.378) | 0.0886 (0.0862–0.0912) | −1.607 | 0.790 |
+| XGBoost | FS-A | weighted + prior correction | 0.841 (0.832–0.850) | 0.360 (0.340–0.378) | 0.0580 (0.0550–0.0613) | 0.945 | 0.790 |
+| XGBoost | FS-B | unweighted | 0.787 (0.778–0.797) | 0.287 (0.267–0.305) | 0.0592 (0.0564–0.0623) | 0.047 | 0.958 |
+| XGBoost | FS-B | weighted | 0.762 (0.751–0.774) | 0.266 (0.248–0.283) | 0.1056 (0.1032–0.1081) | −1.714 | 0.736 |
+| XGBoost | FS-B | weighted + prior correction | 0.762 (0.751–0.774) | 0.266 (0.248–0.283) | 0.0619 (0.0588–0.0654) | 0.853 | 0.736 |
+| LightGBM | FS-A | unweighted | 0.857 (0.849–0.865) | 0.374 (0.352–0.396) | 0.0544 (0.0521–0.0571) | 0.040 | 0.978 |
+| LightGBM | FS-A | weighted | 0.831 (0.823–0.841) | 0.267 (0.250–0.286) | 0.0634 (0.0610–0.0661) | −0.598 | 3.038 |
+| LightGBM | FS-A | weighted + prior correction | 0.831 (0.823–0.841) | 0.267 (0.250–0.286) | 0.0699 (0.0665–0.0739) | 1.969 | 3.038 |
+| LightGBM | FS-B | unweighted | 0.788 (0.778–0.797) | 0.286 (0.267–0.303) | 0.0592 (0.0564–0.0623) | 0.031 | 0.969 |
+| LightGBM | FS-B | weighted | 0.738 (0.729–0.748) | 0.180 (0.167–0.192) | 0.0657 (0.0631–0.0689) | −0.419 | 3.478 |
+| LightGBM | FS-B | weighted + prior correction | 0.738 (0.729–0.748) | 0.180 (0.167–0.192) | 0.0707 (0.0673–0.0748) | 2.148 | 3.478 |
 
-Accompanying rows also `[PENDING]`: selected hyperparameters per learner; SHAP attribution ranking under FS-A versus FS-B (the pre-committed expectation being that availability and volume features dominate under FS-A); performance within code-negative TEST admissions only; the imaging-observed secondary population.
+DEV out-of-fold values for every row are in the results JSON (field `oof`) and agree with TEST to within about 0.01 AUROC throughout.
+
+**Selected hyperparameters** (four random configurations per learner, best by mean DEV out-of-fold AUPRC on FS-A unweighted; the four configurations spanned 0.373–0.387, so the choice is not consequential): CatBoost lr 0.05, depth 8, L2 10 (0.387); XGBoost lr 0.05, depth 8, L2 5, min child weight 10 (0.383); LightGBM lr 0.08, depth 6, L2 10, min child weight 5 (0.384). Runtime 3,953 s.
+
+#### 4b-i. Within code-negative TEST admissions only (n = 74,109, 4,555 positive)
+
+| Learner · feature set | AUROC | AUPRC |
+| --- | --: | --: |
+| CatBoost · FS-A, unweighted | 0.857 | 0.323 |
+| CatBoost · FS-B, unweighted | 0.777 | 0.228 |
+| CatBoost · FS-AVAIL, unweighted | 0.817 | 0.213 |
+| XGBoost · FS-A, unweighted | 0.857 | 0.318 |
+| XGBoost · FS-B, unweighted | 0.777 | 0.230 |
+| LightGBM · FS-A, unweighted | 0.857 | 0.315 |
+| LightGBM · FS-B, unweighted | 0.778 | 0.230 |
+
+#### 4b-ii. SHAP attribution (CatBoost unweighted; mean absolute SHAP on a 20,000-admission TEST subsample)
+
+| Rank | FS-A feature | mean \|SHAP\| | class | | FS-B feature | mean \|SHAP\| |
+| --: | --- | --: | --- | --- | --- | --: |
+| 1 | liver_imaging_any_pre | 0.675 | availability | | age | 0.356 |
+| 2 | age | 0.336 | clinical | | omr_BMI | 0.180 |
+| 3 | omr_BMI | 0.225 | clinical | | cmrf_overweight | 0.159 |
+| 4 | liver_imaging_out_pre365 | 0.206 | availability | | icd_era | 0.157 |
+| 5 | cmrf_overweight | 0.197 | clinical | | first_val_ALT | 0.124 |
+
+Availability share of the top 25 features: **FS-A 0.28**, FS-B 0.00 (by construction). `n_diagnoses` ranks fifteenth under FS-A (0.062). **Reading for the manuscript:** the single dominant attribution under FS-A is an availability feature and FS-AVAIL alone out-discriminates the full clinical set on AUROC (0.812 vs 0.787), but availability features do **not** dominate the attribution *ranking*, so the pre-committed expectation (H1b-i) is only partly supported and must be reported as partly supported.
+
+#### 4b-iii. Operating points at the DEV out-of-fold maximum-F1 threshold (descriptive; no threshold is proposed for use)
+
+| Model | Threshold | DEV OOF F1 | TEST sensitivity | TEST specificity | TEST PPV |
+| --- | --: | --: | --: | --: | --: |
+| CatBoost · FS-A · unweighted | 0.208 | 0.408 | 0.479 | 0.936 | 0.368 |
+| CatBoost · FS-A · weighted | 0.743 | 0.402 | 0.489 | 0.931 | 0.355 |
+| CatBoost · FS-A · weighted + corrected | 0.183 | 0.402 | 0.492 | 0.930 | 0.353 |
+| CatBoost · FS-B · unweighted | 0.156 | 0.340 | 0.408 | 0.918 | 0.279 |
+| CatBoost · FS-B · weighted | 0.695 | 0.337 | 0.389 | 0.922 | 0.280 |
+| CatBoost · FS-B · weighted + corrected | 0.149 | 0.337 | 0.389 | 0.922 | 0.280 |
+
+#### 4b-iv. Secondary population: imaging-observed admissions (pre-specified amendment (e))
+
+DEV 109,220 (17,559 positive); TEST 27,602 (4,493 positive). CatBoost only.
+
+| Feature set | Imbalance variant | AUROC (95% CI) | AUPRC (95% CI) | Calib. intercept | Calib. slope |
+| --- | --- | --- | --- | --: | --: |
+| FS-A | unweighted | 0.766 (0.754–0.778) | 0.426 (0.403–0.453) | 0.030 | 1.039 |
+| FS-A | weighted | 0.765 (0.753–0.777) | 0.421 (0.397–0.447) | −1.505 | 1.068 |
+| FS-A | weighted + prior correction | 0.765 (0.753–0.777) | 0.421 (0.397–0.447) | 0.138 | 1.068 |
+| FS-B | unweighted | 0.750 (0.738–0.763) | 0.402 (0.378–0.427) | 0.028 | 0.997 |
+| FS-B | weighted | 0.750 (0.737–0.762) | 0.397 (0.372–0.420) | −1.536 | 1.063 |
+| FS-B | weighted + prior correction | 0.750 (0.737–0.762) | 0.397 (0.372–0.420) | 0.121 | 1.063 |
+
+The FS-A advantage over FS-B collapses from 0.070 AUROC in the full population to 0.016 here, which is the comparison the manuscript should foreground when discussing what the availability features are actually carrying.
+
+#### 4b-v. Subgroup performance
+
+Computed per race, insurance, language, sex and age-band stratum, with strata below the reporting minimum recorded as "not estimable" rather than merged, and a per-stratum `material_calibration_difference` flag. Full table in `docs/run_2026-09-19/results/aim1b_structured.json`, field `subgroups`; a rendered subgroup table is `[PENDING — `docs/aim1b_structured.md` not yet generated]`.
 
 ### 4c. Embedding-based notes arm
 
@@ -303,6 +375,7 @@ Which weighting is reported as primary is `[PENDING researcher decision P6-03]`;
 | 2d | `docs/imaging_denominator.md` |
 | 3 | `docs/run_2026-09-19/results/aim1c_level1.json` → `docs/aim1c_level1.md`, `docs/tables/aim1c_level1_*.md` |
 | 4a | `docs/run_2026-09-19/results/aim1b_notes_tfidf.json` → `docs/aim1b_notes.md` |
-| 4b–4e | **absent at draft time**: `aim1b_structured.json`, `aim1b_notes_arm.json`, `aim1b_fusion.json`, `locked_predictions.json` |
+| 4b | `docs/run_2026-09-19/results/aim1b_structured.json` (rendered document `docs/aim1b_structured.md` not yet generated) |
+| 4c–4e | **absent at draft time**: `aim1b_notes_arm.json`, `aim1b_fusion.json`, `locked_predictions.json` |
 | 5a | `docs/run_2026-09-19/results/integrity_gate.json`, `reviewer_assignment.json` |
 | 5b–5e | **do not exist**: require the chart adjudication |

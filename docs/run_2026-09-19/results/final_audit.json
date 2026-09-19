@@ -5,8 +5,8 @@
   "pass": true
  },
  "b_eight_digit_scan": {
-  "total_hits": 62,
-  "exempt": 62,
+  "total_hits": 88,
+  "exempt": 88,
   "unexplained": [],
   "pass": true
  },
@@ -15,10 +15,12 @@
   "pass": true,
   "note": "count-like columns only; a 1-10 here must read <11"
  },
- "d_note_text_windows": {
-  "quoted_lines_with_long_context": [],
+ "d_note_text": {
+  "deid_placeholders": [],
+  "report_headers_in_quotes": [],
+  "long_quoted_windows_with_note_fingerprint": [],
   "pass": true,
-  "note": "checks blockquoted lines containing a lexicon match; prose discussing the lexicon, and verbatim quotations of the study's own instrument documents, are expected and not findings"
+  "note": "flags the de-identification placeholder MIMIC leaves in every note span, report section headers inside quoted blocks, and quoted lexicon matches carrying more than an 8-word window that also show a note fingerprint. Prose about the lexicon, the study's own instrument text, and the manuscript's own sentences are not findings."
  },
  "e_frozen_artifacts": {
   "checked": [

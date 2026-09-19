@@ -175,3 +175,24 @@ GOLD_HOLDOUT prevalence is high by design (the sample over-draws note-positive c
 **Deviations.** The best configuration per learner was chosen once on FS-A (unweighted) and reused across feature sets and imbalance variants, rather than re-tuned for each of the 21 combinations — 4 configurations per learner rather than 20, to fit the run's time budget. Recorded as Tier 1 in the report.
 
 **What Kyle should look at.** `docs/aim1b_structured.md` — the section "What the attributions say", and the calibration columns across the three imbalance variants.
+
+## Phase 10.1–10.3 — manuscript methods draft, TRIPOD+AI checklist, results skeleton (delegated; notes in `phase10_drafts_notes.md`)
+
+**Purpose.** Turn the run's outputs into the three documents a manuscript needs: a methods section that invents nothing, an item-by-item reporting-guideline checklist, and a results skeleton whose headline row is explicitly empty until the chart review happens.
+
+**Results.** `docs/manuscript_methods_draft.md` (304 lines, 14 `[PENDING]`), `docs/tripod_ai_checklist.md` (104 lines, 4 `[PENDING]` plus 11 rows whose status is "pending"), `docs/manuscript_results_skeleton.md` (381 lines, 31 `[PENDING]`). The structured-arm results landed mid-draft and were folded in; the notes, fusion and locked-prediction sections name the exact results file each placeholder is waiting on.
+
+**Five disagreements between existing documents and the recomputed results were found and flagged rather than silently resolved** (the results JSON was used in every case): the superseded "temporal window" claim in `docs/note_coverage.md`; a one-admission difference in a `table0.md` subtotal; rounded versus exact sampling weights; the superseded reviewer-time estimate in the criteria document; and two different cardiometabolic-unascertainability figures that turn out to be four- versus five-criterion operationalizations rather than a contradiction.
+
+**The word "pre-registered" is not used as a claim anywhere in the new drafts.** Timing is described as what is true: the rule frozen and tagged before the cross-tabulation, and the hypotheses committed at `e2a4e1e` before any model was trained. Three lines in `docs/reference_standard.md` (31, 94, 126) still carry the old wording; those are a tracked project document making a claim about the paper, so they were **not** edited — the correction is **D-05**, and public registration versus the git audit trail is **D-04**.
+
+**Deviation / correction by the lead.** An earlier `git add docs` swept two of these files into commit `877ead3` while they were still mid-draft; the finished versions are committed here.
+
+## Phase 11.3 (revisited) — the audit's own leak detectors were wrong twice, and were fixed rather than silenced
+
+Both times the audit reported a failure, the flagged lines were inspected and turned out to be benign, and both times the **rule** was tightened instead of the file being edited or the finding waved through:
+
+1. Fifteen 8-digit integers were file sizes and one seed. Seeds are now discovered by scanning tracked code for `default_rng(...)` / `seed = ...` literals; byte counts are exempt only when the enclosing key names a size. A subject or admission identifier in a JSON field would still fire.
+2. Blockquoted lines containing a lexicon term were flagged, including the manuscript's own headline sentence. The quoting heuristic was replaced with **direct fingerprints of MIMIC note text**: the de-identification placeholder that the corpus substitutes for every removed identifier, clinical report section headers inside quoted blocks, and over-8-word quoted windows that also carry one of those fingerprints.
+
+`tests/test_run0919_audit_rules.py` adds nine negative controls so the detectors cannot silently rot: they must fire on a synthetic pasted radiology span, on the de-identification placeholder and on identifier-shaped integers, and must not fire on the study's own prose or on size-valued fields. Full suite: **70 passed**. All eight audit checks pass.

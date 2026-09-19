@@ -27,10 +27,12 @@
   },
   "3": {
    "name": "notes text + embeddings (background)",
-   "status": "running",
+   "status": "done",
    "start": "2026-09-19T16:26:21Z",
    "stage1_log": "logs/run_2026-09-19/notes_index.log",
-   "stage1_pid": 98755
+   "stage1_pid": 98755,
+   "note": "stage 1 index + stage 2 text/variants; variant S encoding under a 5 h budget manager, GOLD shards 29-32 complete",
+   "end": "2026-09-19T18:37:47Z"
   },
   "4": {
    "name": "Aim 1a loose ends",
@@ -54,13 +56,16 @@
   },
   "7": {
    "name": "Aim 1b structured arm",
-   "status": "running",
-   "log": "logs/run_2026-09-19/aim1b_structured.log"
+   "status": "done",
+   "log": "logs/run_2026-09-19/aim1b_structured.log",
+   "note": "commit 877ead3",
+   "end": "2026-09-19T18:37:47Z"
   },
   "8": {
    "name": "Aim 1b notes arm",
    "status": "running",
-   "note": "8.1 TF-IDF running; 8.2/8.3 await embeddings"
+   "note": "8.1 TF-IDF done; 8.2/8.3 code path validated on partial shards, real run awaits the embedding budget",
+   "end": null
   },
   "9": {
    "name": "fusion + locked predictions + gold harness",
@@ -68,12 +73,15 @@
   },
   "10": {
    "name": "writing, citations, admin",
-   "status": "running",
-   "note": "10.4\u201310.6 done (commit db5a460); 10.1\u201310.3 pending model results"
+   "status": "done",
+   "note": "10.1-10.3 commit 3991128; 10.4-10.6 commit db5a460",
+   "end": "2026-09-19T18:37:47Z"
   },
   "11": {
    "name": "release-readiness, audit, final report",
-   "status": "pending"
+   "status": "running",
+   "note": "11.1-11.3 done; 11.4 generator written",
+   "end": null
   }
  },
  "background_jobs": {
@@ -97,5 +105,16 @@
   "mps_available": false,
   "libomp": "DYLD_LIBRARY_PATH via scripts/run0919_env.sh"
  },
- "phase1_commit": "e2a4e1e5b2bade9f7f8cb07a7d546a23e57b1b9b"
+ "phase1_commit": "e2a4e1e5b2bade9f7f8cb07a7d546a23e57b1b9b",
+ "stretch": {
+  "1_variant_U_embeddings": "skipped \u2014 circularity already shown by TF-IDF variant U; text assembled and stored for later",
+  "2_medspacy_context_agreement": "done \u2014 docs/context_agreement.md",
+  "3_finetuning": "skipped \u2014 FINETUNE_BUDGET_HOURS = 0"
+ },
+ "embed_budget": {
+  "hours": 5,
+  "encoder_start_utc": "16:39",
+  "budget_end_utc": "21:39",
+  "gold_shards": "29-32 complete at 18:35"
+ }
 }

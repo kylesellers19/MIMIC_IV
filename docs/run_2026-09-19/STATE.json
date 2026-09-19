@@ -1,11 +1,72 @@
 {
-  "run_id": "run_2026-09-19",
-  "run_branch": "run/2026-09-19",
-  "base_branch": "main",
-  "started_utc": "2026-09-19T16:13:48Z",
-  "data_gate": "pending",
-  "network": null,
-  "torch_device": null,
-  "phases": {"0": {"status": "running", "start": "2026-09-19T16:13:48Z"}},
-  "background_jobs": {}
+ "run_id": "run_2026-09-19",
+ "run_branch": "run/2026-09-19",
+ "base_branch": "main",
+ "started_utc": "2026-09-19T16:13:48Z",
+ "data_gate": "passed",
+ "network": true,
+ "torch_device": "cpu",
+ "phases": {
+  "0": {
+   "status": "done",
+   "start": "2026-09-19T16:13:48Z",
+   "end": "2026-09-19T16:23:13Z"
+  },
+  "1": {
+   "name": "pre-specification commit",
+   "status": "pending"
+  },
+  "2": {
+   "name": "training draw + splits",
+   "status": "pending"
+  },
+  "3": {
+   "name": "notes text + embeddings (background)",
+   "status": "pending"
+  },
+  "4": {
+   "name": "Aim 1a loose ends",
+   "status": "pending"
+  },
+  "5": {
+   "name": "Aim 1c level 1",
+   "status": "pending"
+  },
+  "6": {
+   "name": "reference-standard machinery",
+   "status": "pending"
+  },
+  "7": {
+   "name": "Aim 1b structured arm",
+   "status": "pending"
+  },
+  "8": {
+   "name": "Aim 1b notes arm",
+   "status": "pending"
+  },
+  "9": {
+   "name": "fusion + locked predictions + gold harness",
+   "status": "pending"
+  },
+  "10": {
+   "name": "writing, citations, admin",
+   "status": "pending"
+  },
+  "11": {
+   "name": "release-readiness, audit, final report",
+   "status": "pending"
+  }
+ },
+ "background_jobs": {},
+ "prompt_A": "verified-existing",
+ "prompt_B": "not run",
+ "prompt_C": "not run",
+ "env": {
+  "python": "3.14.4",
+  "arch": "arm64 Apple M1 Max",
+  "ram_gb": 32,
+  "free_disk_gb": 711,
+  "mps_available": false,
+  "libomp": "DYLD_LIBRARY_PATH via scripts/run0919_env.sh"
+ }
 }

@@ -64,3 +64,18 @@ def test_seed_literal_exemption_matches_only_seed_usage():
     assert SEED_LITERAL.findall("SEED_SPLIT = 20260920") == ["20260920"]
     assert SEED_LITERAL.findall("random_state=20260921") == ["20260921"]
     assert SEED_LITERAL.findall("subject_id = 10004235") == []
+
+
+# --- third-party logging must never emit note text -------------------------------------------
+def test_medspacy_pipeline_emits_no_text_to_stdout_or_stderr():
+    """PyRuSH logs per-token DEBUG records through loguru by default, which would write note text
+    into a log file. The agreement script must silence that before touching any note."""
+    import io, contextlib
+    from scripts.run0919_context_agreement import build_nlp
+    out, err = io.StringIO(), io.StringIO()
+    with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+        nlp, _ = build_nlp()
+        nlp("No evidence of hepatic steatosis. There is fatty liver.")
+    combined = out.getvalue() + err.getvalue()
+    for marker in ("Token/tag mapping", "marked as sentence start", "steatosis", "fatty"):
+        assert marker not in combined, marker

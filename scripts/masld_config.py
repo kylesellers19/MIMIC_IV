@@ -81,3 +81,15 @@ def analysis_admissions_sql(data=DATA):
 
 def lab_itemid_csv():
     return ",".join(str(i) for i in LAB_ITEMIDS.values())
+
+
+# ---- run_2026-09-19 additions (append-only) ----------------------------------
+# Subject-level splits with a gold holdout (Phase 2 of run_2026-09-19). Partition
+# in {GOLD_HOLDOUT, TEST, DEV}; fold 0-4 within DEV. Never fit anything on GOLD_HOLDOUT.
+SPLITS_V1 = "data/processed/splits_v1.parquet"
+# 20-chart reviewer-training key (blinded T001-T020), stored beside the master key.
+TRAINING_KEY = "data/processed/aim1a_training_key.parquet"
+SEED_TRAINING_DRAW = 20260919
+SEED_SPLIT = 20260920
+SEED_REVIEWER_ASSIGN = 20260921
+SEED_NOTES_SUBSAMPLE = 20260922

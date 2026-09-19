@@ -1,0 +1,81 @@
+{
+ "seed_training_draw": 20260919,
+ "seed_split": 20260920,
+ "training_alloc": {
+  "code-/note+": 8,
+  "code+/note+": 4,
+  "code+/note-": 3,
+  "code-/note-": 5
+ },
+ "training_n": 20,
+ "training_subjects": 20,
+ "gold_subjects": 411,
+ "sample_subjects": 391,
+ "partitions": {
+  "GOLD_HOLDOUT": {
+   "admissions": 2865,
+   "subjects": 411,
+   "note_positive": 1161,
+   "silver_prevalence_pct": 40.52,
+   "code_positive": 479
+  },
+  "TEST": {
+   "admissions": 75124,
+   "subjects": 32142,
+   "note_positive": 5426,
+   "silver_prevalence_pct": 7.22,
+   "code_positive": 1015
+  },
+  "DEV": {
+   "admissions": 296003,
+   "subjects": 128566,
+   "note_positive": 21239,
+   "silver_prevalence_pct": 7.18,
+   "code_positive": 4246
+  }
+ },
+ "dev_folds": {
+  "0": {
+   "admissions": 58048,
+   "subjects": 25714,
+   "note_positive": 3971,
+   "silver_prevalence_pct": 6.84,
+   "code_positive": 838
+  },
+  "1": {
+   "admissions": 59331,
+   "subjects": 25713,
+   "note_positive": 4288,
+   "silver_prevalence_pct": 7.23,
+   "code_positive": 815
+  },
+  "2": {
+   "admissions": 59358,
+   "subjects": 25713,
+   "note_positive": 4381,
+   "silver_prevalence_pct": 7.38,
+   "code_positive": 875
+  },
+  "3": {
+   "admissions": 59804,
+   "subjects": 25713,
+   "note_positive": 4201,
+   "silver_prevalence_pct": 7.02,
+   "code_positive": 833
+  },
+  "4": {
+   "admissions": 59462,
+   "subjects": 25713,
+   "note_positive": 4398,
+   "silver_prevalence_pct": 7.4,
+   "code_positive": 885
+  }
+ },
+ "gold_holdout_cells": {
+  "code-/note-": 1612,
+  "code-/note+": 774,
+  "code+/note+": 387,
+  "code+/note-": 92
+ },
+ "overlap_checks": "all zero (asserted)"
+}

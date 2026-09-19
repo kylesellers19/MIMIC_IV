@@ -35,3 +35,41 @@ SEED_TRAINING_DRAW=20260919, SEED_SPLIT=20260920, SEED_REVIEWER_ASSIGN=20260921,
 **Deviations.** None from the plan. Three environment notes above (tag diff explained, MPS unavailable, libomp workaround).
 
 **What Kyle should look at.** `results/integrity_gate.json`; the note about the two-line post-tag change to `note_phenotype.py` (decide whether to re-tag as v1.1.1 later — no tag was created here).
+
+## Phase 1 — Pre-specification commit
+
+**Purpose.** The project's discipline is that definitions and expectations are committed before the numbers they govern exist, so nobody can later claim a hypothesis was written after seeing a result. The 7 September hypotheses lived only in chat; this phase puts them in the repository with a timestamp.
+
+**What was done.** `docs/analysis_plan_prespecified.md` written with the seven hypotheses verbatim, a 14-row sensitivity registry (six existing, eight added by this run), the seven dated amendments (a)–(g) each carrying "no result from this analysis had been seen when it was added", and the run parameters. Committed as `e2a4e1e` (recorded in STATE.json as `phase1_commit`). No tag.
+
+**Deviations.** 1.2 (Appendix A into the reference standard) skipped: Phase 0.4 found Draft 1 already stored in `docs/adjudication_criteria.md` with every `[CLINICIAN]` flag inline and linked from `docs/reference_standard.md` §2.
+
+**What Kyle should look at.** The amendment list in §3 — especially (g), the covariate list for the exploratory GEE model, since it is now fixed.
+
+## Phase 2 — Reviewer-training draw and subject-level splits with a gold holdout
+
+**Purpose.** The 400 adjudicated charts will validate every model. If a model has seen those patients during training, even under silver labels, the validation is contaminated. So every subject who appears in the chart-review sample or the 20-chart training set is removed from all model fitting before any model exists. Splitting by subject (not admission) matters because one person can have many admissions; putting some in DEV and some in TEST would let the model memorize the person.
+
+**What was done.** `scripts/run0919_phase2_splits.py`. (2.1) Twenty admissions drawn under definition (b) in proportion to the main sample (B 8 / A 4 / C 3 / D 5), excluding every subject with any admission in the 400-chart sample, seed 20260919, blinded IDs T001–T020 after a seeded shuffle; key at `data/processed/aim1a_training_key.parquet` (untracked); aggregate doc `docs/adjudication/training_draw.md`. (2.2) GOLD_SUBJECTS = subjects in the sample or the training set; their admissions form GOLD_HOLDOUT. Remaining subjects: 20% TEST, 80% DEV in five subject-level folds, seed 20260920. `data/processed/splits_v1.parquet` (untracked). Constants appended to `scripts/masld_config.py`.
+
+**Results** (`docs/run_2026-09-19/results/phase2_splits.json`; doc `docs/aim1b_splits.md`).
+
+| partition | admissions | subjects | silver prevalence % |
+| --- | --: | --: | --: |
+| GOLD_HOLDOUT | 2,865 | 411 | 40.52 |
+| TEST | 75,124 | 32,142 | 7.22 |
+| DEV | 296,003 | 128,566 | 7.18 |
+
+GOLD_HOLDOUT prevalence is high by design (the sample over-draws note-positive cells). DEV and TEST prevalences agree to a tenth of a point, as expected from a random subject split.
+
+**Checks passed.** Zero subject overlap between partitions and between folds (asserted); all 400 sampled and 20 training subjects are in GOLD_HOLDOUT (asserted); no training subject overlaps the sample (asserted).
+
+**Deviations.** None.
+
+**What Kyle should look at.** `docs/aim1b_splits.md`. The training-draw allocation is revisable.
+
+## Phase 3 — Notes text preparation and background embedding job (stage 1 launched)
+
+**Purpose.** The notes arm needs each admission's text in a form a transformer can read. Stage 1 is a single streaming pass over every note that records per-note flags and lengths only (no text) — it also serves Phases 4.3 and 4.4, which need per-note Tier C and discharge-linkage facts that no stored derivative holds. Stage 2 (subsample text assembly, masking, pilot, encoding) follows once the splits exist and stage 1 is done.
+
+**What was done.** `scripts/run0919_notes_index.py` launched in the background (log `logs/run_2026-09-19/notes_index.log`; output `data/processed/run_2026-09-19_notes_index/`, untracked). Row-level exceptions are counted by class only.

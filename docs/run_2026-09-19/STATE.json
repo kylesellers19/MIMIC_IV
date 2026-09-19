@@ -14,7 +14,10 @@
   },
   "1": {
    "name": "pre-specification commit",
-   "status": "pending"
+   "status": "done",
+   "end": "2026-09-19T16:24:16Z",
+   "commit": "e2a4e1e5b2bade9f7f8cb07a7d546a23e57b1b9b",
+   "note": "1.2 skipped \u2014 criteria Draft 1 verified-existing in docs/adjudication_criteria.md"
   },
   "2": {
    "name": "training draw + splits",
@@ -68,5 +71,6 @@
   "free_disk_gb": 711,
   "mps_available": false,
   "libomp": "DYLD_LIBRARY_PATH via scripts/run0919_env.sh"
- }
+ },
+ "phase1_commit": "e2a4e1e5b2bade9f7f8cb07a7d546a23e57b1b9b"
 }

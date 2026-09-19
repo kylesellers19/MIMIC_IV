@@ -127,3 +127,11 @@ GOLD_HOLDOUT prevalence is high by design (the sample over-draws note-positive c
 **Deviations.** The simulated mean matches the exact expectation of the ratio estimator, which sits 0–0.5 points below the plug-in closed form (Jensen); documented, not hidden. Tier 1 choices listed in `phase6_notes.md`.
 
 **What Kyle should look at.** P6-05 in the decisions file; `docs/adjudication/reviewer_brief.md`; the [confirm]-tagged lines in `docs/admin/physionet_403_email_draft.md` (the repo's own record of the 403 problem is thinner than the run file's description).
+
+## Phase 8.1 — TF-IDF development diagnostic (done; 8.2/8.3 await the embeddings)
+
+**Purpose.** Show, cheaply, how much of the silver label a text model recovers by relearning the lexicon (variant U), what the mask token itself gives away (M), and what the *rest* of the documentation carries once every lexicon-bearing sentence is deleted (S). None of this is an accuracy estimate.
+
+**Results** (`docs/aim1b_notes.md`, `results/aim1b_notes_tfidf.json`; subsample DEV 23,816 / TEST 6,164). TEST AUROC / AUPRC, unweighted: U 0.896 / 0.596; M 0.912 / 0.616; S 0.826 / 0.407. U's top positive terms are the lexicon (steatosis, fatty, fatty liver, hepatic steatosis, nash). M's top terms are the mask token and its bigrams — masking every match regardless of assertion status still leaves *the presence of a match* as a feature, which is why M scores as high as U; this is the circularity demonstration in its purest form. S is the interesting row: with every lexicon sentence removed, the remaining text still discriminates (cirrhosis, fibrosis, liver disease, "other forms of" — the company steatosis keeps), which is what a notes model could legitimately learn. Class weighting moves the calibration slope from 1.13 to 0.95 on S.
+
+**Deviation.** None. Vocabulary was fit inside training folds; C fixed at 1 (Tier 1).

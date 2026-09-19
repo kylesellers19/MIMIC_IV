@@ -46,17 +46,21 @@
   },
   "6": {
    "name": "reference-standard machinery",
-   "status": "running",
+   "status": "done",
    "start": "2026-09-19T16:39:32Z",
-   "note": "delegated to subagent"
+   "note": "delegated to subagent",
+   "end": "2026-09-19T17:01:28Z",
+   "commit": "eeed2a9"
   },
   "7": {
    "name": "Aim 1b structured arm",
-   "status": "pending"
+   "status": "running",
+   "log": "logs/run_2026-09-19/aim1b_structured.log"
   },
   "8": {
    "name": "Aim 1b notes arm",
-   "status": "pending"
+   "status": "running",
+   "note": "8.1 TF-IDF running; 8.2/8.3 await embeddings"
   },
   "9": {
    "name": "fusion + locked predictions + gold harness",
@@ -64,7 +68,8 @@
   },
   "10": {
    "name": "writing, citations, admin",
-   "status": "pending"
+   "status": "running",
+   "note": "10.4\u201310.6 done (commit db5a460); 10.1\u201310.3 pending model results"
   },
   "11": {
    "name": "release-readiness, audit, final report",

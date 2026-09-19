@@ -1,0 +1,1159 @@
+{
+ "header": "DEVELOPMENT DIAGNOSTIC \u2014 label and input share a source; not an accuracy estimate.",
+ "seed": 20260919,
+ "C": 1.0,
+ "sizes": {
+  "DEV": 23816,
+  "TEST": 6164,
+  "GOLD": 2865
+ },
+ "variants": {
+  "U": {
+   "oof": {
+    "unweighted": {
+     "n": 23816,
+     "pos": 1719,
+     "auroc": 0.926300093698146,
+     "auprc": 0.6359570852990913,
+     "brier": 0.04327796793851273,
+     "cal_intercept": 0.06575483818065317,
+     "cal_slope": 1.6605737061521881
+    },
+    "weighted": {
+     "n": 23816,
+     "pos": 1719,
+     "auroc": 0.941081186201523,
+     "auprc": 0.6921259621268451,
+     "brier": 0.05996494138050384,
+     "cal_intercept": -1.6309110235451934,
+     "cal_slope": 1.5270097563327967
+    },
+    "weighted+corrected": {
+     "n": 23816,
+     "pos": 1719,
+     "auroc": 0.9408935582373165,
+     "auprc": 0.6914438116805053,
+     "brier": 0.0450721110358156,
+     "cal_intercept": 0.9235922612461848,
+     "cal_slope": 1.5249436145412418
+    }
+   },
+   "test": {
+    "unweighted": {
+     "n": 6164,
+     "pos": 383,
+     "auroc": 0.8962573443300125,
+     "auprc": 0.5961146112994123,
+     "brier": 0.038169667239505344,
+     "cal_intercept": -0.1438692067175836,
+     "cal_slope": 1.4440120500385614,
+     "auroc_ci": [
+      0.8624456221145199,
+      0.9366644349352954
+     ],
+     "auprc_ci": [
+      0.5178948894777197,
+      0.6739578512571147
+     ],
+     "brier_ci": [
+      0.03104168449712758,
+      0.045392132924455236
+     ]
+    },
+    "weighted": {
+     "n": 6164,
+     "pos": 383,
+     "auroc": 0.9092746879915885,
+     "auprc": 0.6456464537366418,
+     "brier": 0.06340727714509065,
+     "cal_intercept": -1.8338969018899662,
+     "cal_slope": 1.309796341534719,
+     "auroc_ci": [
+      0.8774079184703049,
+      0.9477912303650956
+     ],
+     "auprc_ci": [
+      0.5722422669765821,
+      0.7204919060204324
+     ],
+     "brier_ci": [
+      0.05563757675127577,
+      0.07232324791065477
+     ]
+    },
+    "weighted+corrected": {
+     "n": 6164,
+     "pos": 383,
+     "auroc": 0.9092746879915885,
+     "auprc": 0.6456464537366418,
+     "brier": 0.038414593357506126,
+     "cal_intercept": 0.7198022244122942,
+     "cal_slope": 1.309796341534718,
+     "auroc_ci": [
+      0.8774079184703049,
+      0.9477912303650956
+     ],
+     "auprc_ci": [
+      0.5722422669765821,
+      0.7204919060204324
+     ],
+     "brier_ci": [
+      0.030713881455212994,
+      0.046133813651176594
+     ]
+    }
+   },
+   "test_code_negative_only": {
+    "unweighted": {
+     "n": 6057,
+     "pos": 286,
+     "auroc": 0.9072878256728544,
+     "auprc": 0.5574443555149902,
+     "brier": 0.03061360320536147,
+     "cal_intercept": -0.40249914457505404,
+     "cal_slope": 1.5159377879755958
+    },
+    "weighted": {
+     "n": 6057,
+     "pos": 286,
+     "auroc": 0.918878816556862,
+     "auprc": 0.6134616429273602,
+     "brier": 0.06048200400644012,
+     "cal_intercept": -2.096165176359147,
+     "cal_slope": 1.3739542931035726
+    },
+    "weighted+corrected": {
+     "n": 6057,
+     "pos": 286,
+     "auroc": 0.918878816556862,
+     "auprc": 0.6134616429273602,
+     "brier": 0.029818076853483602,
+     "cal_intercept": 0.45753394994310564,
+     "cal_slope": 1.3739542931035726
+    }
+   },
+   "top_terms": {
+    "positive": [
+     {
+      "term": "steatosis",
+      "coef": 11.739,
+      "df": 917
+     },
+     {
+      "term": "fatty",
+      "coef": 11.453,
+      "df": 1709
+     },
+     {
+      "term": "fatty liver",
+      "coef": 9.427,
+      "df": 496
+     },
+     {
+      "term": "hepatic steatosis",
+      "coef": 9.087,
+      "df": 658
+     },
+     {
+      "term": "nash",
+      "coef": 5.901,
+      "df": 237
+     },
+     {
+      "term": "liver",
+      "coef": 5.046,
+      "df": 9647
+     },
+     {
+      "term": "fatty infiltration",
+      "coef": 4.735,
+      "df": 562
+     },
+     {
+      "term": "cirrhosis",
+      "coef": 4.255,
+      "df": 1970
+     },
+     {
+      "term": "hepatic",
+      "coef": 4.241,
+      "df": 5662
+     },
+     {
+      "term": "infiltration",
+      "coef": 3.837,
+      "df": 961
+     },
+     {
+      "term": "liver disease",
+      "coef": 3.782,
+      "df": 1318
+     },
+     {
+      "term": "with fatty",
+      "coef": 3.493,
+      "df": 340
+     },
+     {
+      "term": "nash cirrhosis",
+      "coef": 3.32,
+      "df": 138
+     },
+     {
+      "term": "echogenic",
+      "coef": 3.054,
+      "df": 1173
+     },
+     {
+      "term": "fibrosis",
+      "coef": 3.026,
+      "df": 1264
+     },
+     {
+      "term": "echogenic liver",
+      "coef": 2.871,
+      "df": 410
+     },
+     {
+      "term": "steatosis there",
+      "coef": 2.446,
+      "df": 171
+     },
+     {
+      "term": "steatohepatitis",
+      "coef": 2.419,
+      "df": 244
+     },
+     {
+      "term": "is diffusely",
+      "coef": 2.341,
+      "df": 639
+     },
+     {
+      "term": "liver consistent",
+      "coef": 2.312,
+      "df": 515
+     },
+     {
+      "term": "infiltration of",
+      "coef": 2.265,
+      "df": 255
+     },
+     {
+      "term": "with steatosis",
+      "coef": 2.264,
+      "df": 239
+     },
+     {
+      "term": "forms of",
+      "coef": 2.134,
+      "df": 360
+     },
+     {
+      "term": "diffusely",
+      "coef": 2.123,
+      "df": 2163
+     },
+     {
+      "term": "hepatic fibrosis",
+      "coef": 1.998,
+      "df": 309
+     }
+    ],
+    "negative": [
+     {
+      "term": "etoh cirrhosis",
+      "coef": -1.066,
+      "df": 306
+     },
+     {
+      "term": "parenchyma appears",
+      "coef": -0.96,
+      "df": 779
+     },
+     {
+      "term": "homogenous attenuation",
+      "coef": -0.909,
+      "df": 1751
+     },
+     {
+      "term": "hcv cirrhosis",
+      "coef": -0.901,
+      "df": 276
+     },
+     {
+      "term": "throughout there",
+      "coef": -0.812,
+      "df": 1861
+     },
+     {
+      "term": "no",
+      "coef": -0.756,
+      "df": 23533
+     },
+     {
+      "term": "alcoholic cirrhosis",
+      "coef": -0.744,
+      "df": 286
+     },
+     {
+      "term": "the",
+      "coef": -0.729,
+      "df": 23084
+     },
+     {
+      "term": "dementia",
+      "coef": -0.718,
+      "df": 1306
+     },
+     {
+      "term": "appears within",
+      "coef": -0.717,
+      "df": 1229
+     },
+     {
+      "term": "liver enhances",
+      "coef": -0.702,
+      "df": 697
+     },
+     {
+      "term": "assess for",
+      "coef": -0.702,
+      "df": 2561
+     },
+     {
+      "term": "the hepatic",
+      "coef": -0.7,
+      "df": 2174
+     },
+     {
+      "term": "chf",
+      "coef": -0.682,
+      "df": 3217
+     },
+     {
+      "term": "groin",
+      "coef": -0.68,
+      "df": 1488
+     },
+     {
+      "term": "calcifications",
+      "coef": -0.664,
+      "df": 4061
+     },
+     {
+      "term": "ckd",
+      "coef": -0.657,
+      "df": 2127
+     },
+     {
+      "term": "limits the",
+      "coef": -0.652,
+      "df": 2370
+     },
+     {
+      "term": "of",
+      "coef": -0.649,
+      "df": 23225
+     },
+     {
+      "term": "demonstrates homogenous",
+      "coef": -0.641,
+      "df": 1768
+     },
+     {
+      "term": "measures cm",
+      "coef": -0.634,
+      "df": 2141
+     },
+     {
+      "term": "transplant",
+      "coef": -0.627,
+      "df": 1690
+     },
+     {
+      "term": "the rectum",
+      "coef": -0.618,
+      "df": 1839
+     },
+     {
+      "term": "calcified",
+      "coef": -0.616,
+      "df": 2496
+     },
+     {
+      "term": "temporal",
+      "coef": -0.592,
+      "df": 1086
+     }
+    ],
+    "vocab_size": 44420
+   }
+  },
+  "M": {
+   "oof": {
+    "unweighted": {
+     "n": 23816,
+     "pos": 1719,
+     "auroc": 0.926503833394371,
+     "auprc": 0.6415205622704347,
+     "brier": 0.04305855472609336,
+     "cal_intercept": 0.06624558854786468,
+     "cal_slope": 1.6781657862621873
+    },
+    "weighted": {
+     "n": 23816,
+     "pos": 1719,
+     "auroc": 0.9433757127170769,
+     "auprc": 0.7005602066092284,
+     "brier": 0.05918358718927446,
+     "cal_intercept": -1.6221074814922467,
+     "cal_slope": 1.562694117004614
+    },
+    "weighted+corrected": {
+     "n": 23816,
+     "pos": 1719,
+     "auroc": 0.9431785282843694,
+     "auprc": 0.6998141335817414,
+     "brier": 0.04486903208525565,
+     "cal_intercept": 0.9324173835075439,
+     "cal_slope": 1.5603425198281973
+    }
+   },
+   "test": {
+    "unweighted": {
+     "n": 6164,
+     "pos": 383,
+     "auroc": 0.9119145593989133,
+     "auprc": 0.6156232339830869,
+     "brier": 0.03747402719501357,
+     "cal_intercept": -0.13683947949374028,
+     "cal_slope": 1.536179286046019,
+     "auroc_ci": [
+      0.8871395772797159,
+      0.9397434238533102
+     ],
+     "auprc_ci": [
+      0.5382084076445846,
+      0.6912788136319113
+     ],
+     "brier_ci": [
+      0.03086634248862633,
+      0.04442391420447521
+     ]
+    },
+    "weighted": {
+     "n": 6164,
+     "pos": 383,
+     "auroc": 0.9296195378486201,
+     "auprc": 0.6709945475809413,
+     "brier": 0.0611707974609088,
+     "cal_intercept": -1.821435151372538,
+     "cal_slope": 1.4234782153999497,
+     "auroc_ci": [
+      0.9080486110066264,
+      0.9534524980787048
+     ],
+     "auprc_ci": [
+      0.6029350178002485,
+      0.7415765218419242
+     ],
+     "brier_ci": [
+      0.05431232455721844,
+      0.06935944500571611
+     ]
+    },
+    "weighted+corrected": {
+     "n": 6164,
+     "pos": 383,
+     "auroc": 0.9296195378486201,
+     "auprc": 0.6709945475809413,
+     "brier": 0.03779970876011584,
+     "cal_intercept": 0.7322639749297142,
+     "cal_slope": 1.4234782153999508,
+     "auroc_ci": [
+      0.9080486110066264,
+      0.9534524980787048
+     ],
+     "auprc_ci": [
+      0.6029350178002485,
+      0.7415765218419242
+     ],
+     "brier_ci": [
+      0.03049421526410903,
+      0.04501170728866351
+     ]
+    }
+   },
+   "test_code_negative_only": {
+    "unweighted": {
+     "n": 6057,
+     "pos": 286,
+     "auroc": 0.9162662844000566,
+     "auprc": 0.5648575015627637,
+     "brier": 0.03048013771787076,
+     "cal_intercept": -0.3853303966737165,
+     "cal_slope": 1.5762376137071998
+    },
+    "weighted": {
+     "n": 6057,
+     "pos": 286,
+     "auroc": 0.9326745858542773,
+     "auprc": 0.6250536542059157,
+     "brier": 0.05897942530218632,
+     "cal_intercept": -2.06746197985819,
+     "cal_slope": 1.451678019313624
+    },
+    "weighted+corrected": {
+     "n": 6057,
+     "pos": 286,
+     "auroc": 0.9326745858542773,
+     "auprc": 0.6250536542059157,
+     "brier": 0.029800528202733653,
+     "cal_intercept": 0.48623714644406657,
+     "cal_slope": 1.4516780193136292
+    }
+   },
+   "top_terms": {
+    "positive": [
+     {
+      "term": "mask",
+      "coef": 22.772,
+      "df": 2599
+     },
+     {
+      "term": "with mask",
+      "coef": 6.119,
+      "df": 671
+     },
+     {
+      "term": "cirrhosis",
+      "coef": 4.217,
+      "df": 1970
+     },
+     {
+      "term": "mask there",
+      "coef": 3.134,
+      "df": 298
+     },
+     {
+      "term": "mask of",
+      "coef": 3.028,
+      "df": 288
+     },
+     {
+      "term": "fibrosis",
+      "coef": 3.02,
+      "df": 1264
+     },
+     {
+      "term": "mask cirrhosis",
+      "coef": 2.967,
+      "df": 147
+     },
+     {
+      "term": "liver disease",
+      "coef": 2.884,
+      "df": 1249
+     },
+     {
+      "term": "mask impression",
+      "coef": 2.873,
+      "df": 115
+     },
+     {
+      "term": "liver",
+      "coef": 2.765,
+      "df": 9530
+     },
+     {
+      "term": "of mask",
+      "coef": 2.754,
+      "df": 432
+     },
+     {
+      "term": "diffuse mask",
+      "coef": 2.535,
+      "df": 148
+     },
+     {
+      "term": "is diffusely",
+      "coef": 2.463,
+      "df": 639
+     },
+     {
+      "term": "mask no",
+      "coef": 2.32,
+      "df": 202
+     },
+     {
+      "term": "mask consistent",
+      "coef": 2.308,
+      "df": 304
+     },
+     {
+      "term": "diffusely",
+      "coef": 2.233,
+      "df": 2163
+     },
+     {
+      "term": "mask with",
+      "coef": 2.188,
+      "df": 160
+     },
+     {
+      "term": "forms of",
+      "coef": 2.147,
+      "df": 360
+     },
+     {
+      "term": "mild mask",
+      "coef": 2.128,
+      "df": 138
+     },
+     {
+      "term": "hepatic fibrosis",
+      "coef": 1.979,
+      "df": 309
+     },
+     {
+      "term": "forms",
+      "coef": 1.978,
+      "df": 462
+     },
+     {
+      "term": "liver is",
+      "coef": 1.881,
+      "df": 3630
+     },
+     {
+      "term": "cirrhosis cannot",
+      "coef": 1.859,
+      "df": 291
+     },
+     {
+      "term": "other forms",
+      "coef": 1.858,
+      "df": 302
+     },
+     {
+      "term": "disease including",
+      "coef": 1.854,
+      "df": 440
+     }
+    ],
+    "negative": [
+     {
+      "term": "homogenous attenuation",
+      "coef": -0.961,
+      "df": 1751
+     },
+     {
+      "term": "etoh cirrhosis",
+      "coef": -0.944,
+      "df": 306
+     },
+     {
+      "term": "parenchyma appears",
+      "coef": -0.927,
+      "df": 779
+     },
+     {
+      "term": "hcv cirrhosis",
+      "coef": -0.833,
+      "df": 276
+     },
+     {
+      "term": "throughout there",
+      "coef": -0.828,
+      "df": 1861
+     },
+     {
+      "term": "dementia",
+      "coef": -0.727,
+      "df": 1306
+     },
+     {
+      "term": "no",
+      "coef": -0.726,
+      "df": 23533
+     },
+     {
+      "term": "liver enhances",
+      "coef": -0.72,
+      "df": 697
+     },
+     {
+      "term": "the",
+      "coef": -0.719,
+      "df": 23084
+     },
+     {
+      "term": "groin",
+      "coef": -0.699,
+      "df": 1488
+     },
+     {
+      "term": "chf",
+      "coef": -0.694,
+      "df": 3217
+     },
+     {
+      "term": "demonstrates homogenous",
+      "coef": -0.683,
+      "df": 1768
+     },
+     {
+      "term": "appears within",
+      "coef": -0.673,
+      "df": 1229
+     },
+     {
+      "term": "assess for",
+      "coef": -0.667,
+      "df": 2561
+     },
+     {
+      "term": "ckd",
+      "coef": -0.659,
+      "df": 2127
+     },
+     {
+      "term": "calcifications",
+      "coef": -0.658,
+      "df": 4061
+     },
+     {
+      "term": "transplant",
+      "coef": -0.652,
+      "df": 1690
+     },
+     {
+      "term": "alcoholic cirrhosis",
+      "coef": -0.65,
+      "df": 286
+     },
+     {
+      "term": "limits the",
+      "coef": -0.637,
+      "df": 2370
+     },
+     {
+      "term": "measures cm",
+      "coef": -0.637,
+      "df": 2141
+     },
+     {
+      "term": "homogenous",
+      "coef": -0.633,
+      "df": 1918
+     },
+     {
+      "term": "of",
+      "coef": -0.632,
+      "df": 23225
+     },
+     {
+      "term": "the rectum",
+      "coef": -0.624,
+      "df": 1839
+     },
+     {
+      "term": "baseline",
+      "coef": -0.619,
+      "df": 7690
+     },
+     {
+      "term": "calcified",
+      "coef": -0.612,
+      "df": 2496
+     }
+    ],
+    "vocab_size": 44413
+   }
+  },
+  "S": {
+   "oof": {
+    "unweighted": {
+     "n": 23816,
+     "pos": 1719,
+     "auroc": 0.8590526201533073,
+     "auprc": 0.44430733379686865,
+     "brier": 0.05205573975720423,
+     "cal_intercept": 0.04128411734550577,
+     "cal_slope": 1.256431973657812
+    },
+    "weighted": {
+     "n": 23816,
+     "pos": 1719,
+     "auroc": 0.8635215460059845,
+     "auprc": 0.4560521369425547,
+     "brier": 0.09034618313833602,
+     "cal_intercept": -1.8205903249504192,
+     "cal_slope": 1.0556404484411637
+    },
+    "weighted+corrected": {
+     "n": 23816,
+     "pos": 1719,
+     "auroc": 0.8631314946635285,
+     "auprc": 0.45563905723359743,
+     "brier": 0.05352386114912407,
+     "cal_intercept": 0.7338577809319341,
+     "cal_slope": 1.0545031054909841
+    }
+   },
+   "test": {
+    "unweighted": {
+     "n": 6164,
+     "pos": 383,
+     "auroc": 0.8257847463758788,
+     "auprc": 0.40744121546277756,
+     "brier": 0.04655535104675502,
+     "cal_intercept": -0.18037573669330492,
+     "cal_slope": 1.1257454236851931,
+     "auroc_ci": [
+      0.7884585244378823,
+      0.8685306165364717
+     ],
+     "auprc_ci": [
+      0.32555244142732614,
+      0.4879380044181627
+     ],
+     "brier_ci": [
+      0.03894554807340992,
+      0.054555864602387844
+     ]
+    },
+    "weighted": {
+     "n": 6164,
+     "pos": 383,
+     "auroc": 0.8291070550281081,
+     "auprc": 0.4220018024324165,
+     "brier": 0.09637631973663459,
+     "cal_intercept": -2.0593016647645737,
+     "cal_slope": 0.950396698276118,
+     "auroc_ci": [
+      0.7943081648378447,
+      0.8700676756255404
+     ],
+     "auprc_ci": [
+      0.34582114500198535,
+      0.5028198433777015
+     ],
+     "brier_ci": [
+      0.08595232628231943,
+      0.10759760669130079
+     ]
+    },
+    "weighted+corrected": {
+     "n": 6164,
+     "pos": 383,
+     "auroc": 0.8291070550281081,
+     "auprc": 0.4220018024324165,
+     "brier": 0.046377486832456495,
+     "cal_intercept": 0.494397461537691,
+     "cal_slope": 0.9503966982761177,
+     "auroc_ci": [
+      0.7943081648378447,
+      0.8700676756255404
+     ],
+     "auprc_ci": [
+      0.34582114500198535,
+      0.5028198433777015
+     ],
+     "brier_ci": [
+      0.038322804020045925,
+      0.05478974662012282
+     ]
+    }
+   },
+   "test_code_negative_only": {
+    "unweighted": {
+     "n": 6057,
+     "pos": 286,
+     "auroc": 0.8331893370881415,
+     "auprc": 0.35152295378522946,
+     "brier": 0.03777532351464824,
+     "cal_intercept": -0.45508092868903627,
+     "cal_slope": 1.1520045372190912
+    },
+    "weighted": {
+     "n": 6057,
+     "pos": 286,
+     "auroc": 0.8355346784561825,
+     "auprc": 0.37111467683714133,
+     "brier": 0.09316271572707524,
+     "cal_intercept": -2.3421136655774015,
+     "cal_slope": 0.9741010952198922
+    },
+    "weighted+corrected": {
+     "n": 6057,
+     "pos": 286,
+     "auroc": 0.8355346784561825,
+     "auprc": 0.37111467683714133,
+     "brier": 0.036469110034723154,
+     "cal_intercept": 0.21158546072485107,
+     "cal_slope": 0.9741010952198922
+    }
+   },
+   "top_terms": {
+    "positive": [
+     {
+      "term": "cirrhosis",
+      "coef": 4.112,
+      "df": 1889
+     },
+     {
+      "term": "liver disease",
+      "coef": 4.018,
+      "df": 1229
+     },
+     {
+      "term": "forms of",
+      "coef": 3.728,
+      "df": 350
+     },
+     {
+      "term": "fibrosis",
+      "coef": 3.625,
+      "df": 1173
+     },
+     {
+      "term": "forms",
+      "coef": 3.458,
+      "df": 452
+     },
+     {
+      "term": "other forms",
+      "coef": 3.342,
+      "df": 293
+     },
+     {
+      "term": "is diffusely",
+      "coef": 2.904,
+      "df": 589
+     },
+     {
+      "term": "of liver",
+      "coef": 2.818,
+      "df": 1186
+     },
+     {
+      "term": "excluded on",
+      "coef": 2.445,
+      "df": 428
+     },
+     {
+      "term": "cirrhosis cannot",
+      "coef": 2.385,
+      "df": 207
+     },
+     {
+      "term": "diffusely",
+      "coef": 2.346,
+      "df": 2096
+     },
+     {
+      "term": "diffusely echogenic",
+      "coef": 2.272,
+      "df": 288
+     },
+     {
+      "term": "echogenic",
+      "coef": 2.233,
+      "df": 1057
+     },
+     {
+      "term": "liver",
+      "coef": 2.174,
+      "df": 9471
+     },
+     {
+      "term": "fibrosis cirrhosis",
+      "coef": 2.09,
+      "df": 174
+     },
+     {
+      "term": "more advanced",
+      "coef": 2.018,
+      "df": 148
+     },
+     {
+      "term": "hepatic fibrosis",
+      "coef": 1.981,
+      "df": 176
+     },
+     {
+      "term": "fatty",
+      "coef": 1.965,
+      "df": 815
+     },
+     {
+      "term": "impression other",
+      "coef": 1.953,
+      "df": 159
+     },
+     {
+      "term": "crohn",
+      "coef": 1.882,
+      "df": 437
+     },
+     {
+      "term": "excluded",
+      "coef": 1.796,
+      "df": 4087
+     },
+     {
+      "term": "advanced liver",
+      "coef": 1.795,
+      "df": 141
+     },
+     {
+      "term": "be excluded",
+      "coef": 1.741,
+      "df": 2363
+     },
+     {
+      "term": "adenoma",
+      "coef": 1.735,
+      "df": 888
+     },
+     {
+      "term": "obesity",
+      "coef": 1.717,
+      "df": 1880
+     }
+    ],
+    "negative": [
+     {
+      "term": "parenchyma appears",
+      "coef": -1.493,
+      "df": 779
+     },
+     {
+      "term": "homogenous attenuation",
+      "coef": -1.189,
+      "df": 1750
+     },
+     {
+      "term": "etoh cirrhosis",
+      "coef": -1.168,
+      "df": 302
+     },
+     {
+      "term": "appears within",
+      "coef": -1.067,
+      "df": 1229
+     },
+     {
+      "term": "hcv cirrhosis",
+      "coef": -1.057,
+      "df": 276
+     },
+     {
+      "term": "the hepatic",
+      "coef": -1.039,
+      "df": 2166
+     },
+     {
+      "term": "hepatic parenchyma",
+      "coef": -0.977,
+      "df": 1144
+     },
+     {
+      "term": "limits the",
+      "coef": -0.95,
+      "df": 2370
+     },
+     {
+      "term": "demonstrates homogenous",
+      "coef": -0.932,
+      "df": 1761
+     },
+     {
+      "term": "liver enhances",
+      "coef": -0.889,
+      "df": 697
+     },
+     {
+      "term": "alcoholic cirrhosis",
+      "coef": -0.874,
+      "df": 283
+     },
+     {
+      "term": "homogenous",
+      "coef": -0.873,
+      "df": 1910
+     },
+     {
+      "term": "throughout there",
+      "coef": -0.845,
+      "df": 1870
+     },
+     {
+      "term": "dementia",
+      "coef": -0.817,
+      "df": 1306
+     },
+     {
+      "term": "transplant",
+      "coef": -0.808,
+      "df": 1690
+     },
+     {
+      "term": "groin",
+      "coef": -0.795,
+      "df": 1488
+     },
+     {
+      "term": "calcifications",
+      "coef": -0.793,
+      "df": 4061
+     },
+     {
+      "term": "chf",
+      "coef": -0.788,
+      "df": 3217
+     },
+     {
+      "term": "assess for",
+      "coef": -0.786,
+      "df": 2559
+     },
+     {
+      "term": "baseline",
+      "coef": -0.745,
+      "df": 7669
+     },
+     {
+      "term": "the rectum",
+      "coef": -0.727,
+      "df": 1839
+     },
+     {
+      "term": "demonstrates",
+      "coef": -0.725,
+      "df": 5484
+     },
+     {
+      "term": "ckd",
+      "coef": -0.719,
+      "df": 2124
+     },
+     {
+      "term": "and there",
+      "coef": -0.719,
+      "df": 3766
+     },
+     {
+      "term": "measures cm",
+      "coef": -0.717,
+      "df": 2141
+     }
+    ],
+    "vocab_size": 44380
+   }
+  }
+ },
+ "runtime_s": 2130
+}

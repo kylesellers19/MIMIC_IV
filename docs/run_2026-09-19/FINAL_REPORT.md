@@ -13,17 +13,17 @@ The environment reproduced every anchor number from earlier sessions (14/14 inte
 | 0 —  | done | `1dfc52d` |  |
 | 1 — pre-specification commit | done | `e2a4e1e` | 1.2 skipped — criteria Draft 1 verified-existing in docs/adjudication_criteria.md |
 | 2 — training draw + splits | done | `d760d98` |  |
-| 3 — notes text + embeddings (background) | running | `79a016c` |  |
+| 3 — notes text + embeddings (background) | done | `79a016c` | done — 28/33 shards encoded within the 5 h budget; 100% of GOLD_HOLDOUT |
 | 4 — Aim 1a loose ends | done | `816215b` |  |
 | 5 — Aim 1c level 1 | done | `816215b` |  |
 | 6 — reference-standard machinery | done | `eeed2a9` | delegated to subagent |
-| 7 — Aim 1b structured arm | running | `877ead3` |  |
-| 8 — Aim 1b notes arm | running | `` | 8.1 TF-IDF running; 8.2/8.3 await embeddings |
-| 9 — fusion + locked predictions + gold harness | pending | `` |  |
-| 10 — writing, citations, admin | running | `` | 10.4–10.6 done (commit db5a460); 10.1–10.3 pending model results |
-| 11 — release-readiness, audit, final report | pending | `` |  |
+| 7 — Aim 1b structured arm | done | `877ead3` | commit 877ead3 |
+| 8 — Aim 1b notes arm | done | `` | done — 8.1 TF-IDF U/M/S; 8.2 embedding heads; 8.3 notes-augmented CatBoost |
+| 9 — fusion + locked predictions + gold harness | done | `` | done — fusion stack, 2,865 gold predictions locked and hashed, gold harness + CV scaffold tested on synthetic labels |
+| 10 — writing, citations, admin | done | `` | 10.1-10.3 commit 3991128; 10.4-10.6 commit db5a460 |
+| 11 — release-readiness, audit, final report | done | `` | done — 11.1 release files, 11.2 tests (72), 11.3 audit (8/8), 11.4 final report |
 
-Commits on this branch: **18**.
+Commits on this branch: **21**.
 
 ## The five things to read first
 
@@ -69,6 +69,8 @@ Full text, with options and stakes, in `docs/run_2026-09-19/DECISIONS_FOR_KYLE.m
 - D-03 · License and the timing of a public code release (Phase 11.1)
 - D-04 · Public registration versus the repository's git audit trail (Phase 10.1)
 - D-05 · The "pre-registered" wording that needs correcting (Phase 10.1)
+- D-06 · What the manuscript may claim from the transformer-versus-TF-IDF comparison (Phase 10.4)
+- D-07 · How the notes arm is ultimately trained (Phase 8)
 - P6-01 · "Insufficient information" in the headline estimate  *(`phase6_decisions.md`)*
 - P6-02 · Final label for double-reviewed charts that disagree (criteria D8)  *(`phase6_decisions.md`)*
 - P6-03 · Weighting scheme for the ordinal (4-level) kappa  *(`phase6_decisions.md`)*
@@ -83,7 +85,7 @@ Full text, with options and stakes, in `docs/run_2026-09-19/DECISIONS_FOR_KYLE.m
 | check | result | detail |
 | --- | --- | --- |
 | (a) nothing under data/, models/, logs/ is tracked | PASS | 0 tracked files |
-| (b) 8-digit integers on changed files | PASS | 88 hits, all exempt (seeds, byte counts, citation identifiers) |
+| (b) 8-digit integers on changed files | PASS | 110 hits, all exempt (seeds, byte counts, citation identifiers) |
 | (c) counts 1–10 in count columns | PASS | 0 found |
 | (d) note text in tracked documents | PASS | 0 de-identification placeholders, 0 report headers, 0 long windows |
 | (e) frozen-artifact hashes unchanged | PASS | 5 artifacts, 0 changed |
@@ -91,23 +93,24 @@ Full text, with options and stakes, in `docs/run_2026-09-19/DECISIONS_FOR_KYLE.m
 | (g) no remote | PASS | 0 configured |
 | (h) masld_config.py additions only | PASS | +12 lines, −0 |
 
-Test suite: `c4ac1ff` — run `.venv/bin/python -m pytest -q`.
+Test suite: `a9e26da` — run `.venv/bin/python -m pytest -q`.
 
 ## Disk used by new derivatives (all untracked)
 
 | path | size |
 | --- | --: |
 | `data/processed/run_2026-09-19_notes_text` | 528 MB |
-| `data/processed/run_2026-09-19_preds` | 59 MB |
+| `data/processed/notes_embeddings_v1` | 82 MB |
+| `data/processed/run_2026-09-19_preds` | 60 MB |
 | `models/run_2026-09-19` | 50 MB |
 | `data/processed/run_2026-09-19_notes_index` | 45 MB |
-| `data/processed/notes_embeddings_v1` | 29 MB |
 | `data/processed/run_2026-09-19_features.parquet` | 20 MB |
 | `data/processed/run_2026-09-19_outpt_labs.parquet` | 18 MB |
 | `data/processed/run_2026-09-19_lab_features.parquet` | 7 MB |
 | `data/processed/run_2026-09-19_charlson.parquet` | 3 MB |
 | `data/processed/run_2026-09-19_scratch` | 1 MB |
-| **total** | **0.74 GB** |
+| `data/processed/gold_holdout_predictions_v1.parquet` | 1 MB |
+| **total** | **0.80 GB** |
 
 ## Keeping or discarding this run
 

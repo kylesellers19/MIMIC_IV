@@ -31,8 +31,8 @@
    "start": "2026-09-19T16:26:21Z",
    "stage1_log": "logs/run_2026-09-19/notes_index.log",
    "stage1_pid": 98755,
-   "note": "stage 1 index + stage 2 text/variants; variant S encoding under a 5 h budget manager, GOLD shards 29-32 complete",
-   "end": "2026-09-19T18:37:47Z"
+   "note": "done \u2014 28/33 shards encoded within the 5 h budget; 100% of GOLD_HOLDOUT",
+   "end": "2026-09-19T22:08:41Z"
   },
   "4": {
    "name": "Aim 1a loose ends",
@@ -63,13 +63,15 @@
   },
   "8": {
    "name": "Aim 1b notes arm",
-   "status": "running",
-   "note": "8.1 TF-IDF done; 8.2/8.3 code path validated on partial shards, real run awaits the embedding budget",
-   "end": null
+   "status": "done",
+   "note": "done \u2014 8.1 TF-IDF U/M/S; 8.2 embedding heads; 8.3 notes-augmented CatBoost",
+   "end": "2026-09-19T22:08:41Z"
   },
   "9": {
    "name": "fusion + locked predictions + gold harness",
-   "status": "pending"
+   "status": "done",
+   "end": "2026-09-19T22:08:41Z",
+   "note": "done \u2014 fusion stack, 2,865 gold predictions locked and hashed, gold harness + CV scaffold tested on synthetic labels"
   },
   "10": {
    "name": "writing, citations, admin",
@@ -79,9 +81,9 @@
   },
   "11": {
    "name": "release-readiness, audit, final report",
-   "status": "running",
-   "note": "11.1-11.3 done; 11.4 generator written",
-   "end": null
+   "status": "done",
+   "note": "done \u2014 11.1 release files, 11.2 tests (72), 11.3 audit (8/8), 11.4 final report",
+   "end": "2026-09-19T22:08:41Z"
   }
  },
  "background_jobs": {
@@ -116,5 +118,6 @@
   "encoder_start_utc": "16:39",
   "budget_end_utc": "21:39",
   "gold_shards": "29-32 complete at 18:35"
- }
+ },
+ "finished_utc": "2026-09-19T22:08:41Z"
 }

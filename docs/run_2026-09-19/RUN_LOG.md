@@ -196,3 +196,27 @@ Both times the audit reported a failure, the flagged lines were inspected and tu
 2. Blockquoted lines containing a lexicon term were flagged, including the manuscript's own headline sentence. The quoting heuristic was replaced with **direct fingerprints of MIMIC note text**: the de-identification placeholder that the corpus substitutes for every removed identifier, clinical report section headers inside quoted blocks, and over-8-word quoted windows that also carry one of those fingerprints.
 
 `tests/test_run0919_audit_rules.py` adds nine negative controls so the detectors cannot silently rot: they must fire on a synthetic pasted radiology span, on the de-identification placeholder and on identifier-shaped integers, and must not fire on the study's own prose or on size-valued fields. Full suite: **70 passed**. All eight audit checks pass.
+
+## Stretch item 2 — context-handling agreement with medspaCy ConText (done)
+
+**Purpose.** The frozen note rule reimplements ConText rather than running the reference software, and the manuscript lists that as a limitation. This measures the limitation instead of asserting it.
+
+**What was done.** `scripts/run0919_context_agreement.py` ran both systems over the **same** lexicon matches on 20,000 radiology reports drawn at random (seed 20260926) from the 45,355 reports carrying at least one asserted match. The lexicon, sentence splitter and screen terms are imported from the frozen rule; only its hit-iteration order is replicated, and the alignment is verified by comparing trigger names position by position — **0 of 20,000 reports failed that check**. Anatomically suppressed hits (2,182) are excluded rather than counted as disagreement, because ConText has no scoping analogue. Report: `docs/context_agreement.md`.
+
+**Results.** 35,268 mentions compared; **overall agreement 90.76%**.
+
+| assertion class | mentions | agreement |
+| --- | --: | --: |
+| affirmed | 32,867 | 91.55% |
+| negated | 1,017 | 95.87% |
+| uncertain (hedged) | 841 | 61.59% |
+| historical | 361 | 72.30% |
+| family | 0 | not estimable |
+
+The informative asymmetry: 1,556 mentions the project affirms are negated by ConText, against 39 the other way — on this corpus the project's rule is the **more conservative negator**, asserting presence where the reference would not. Hedging is the weakest class, which is also the category the phenotype already reports separately (Tier C). Family attribution does not occur in radiology reports at all, so that class would need a discharge-summary sample to measure.
+
+**Deviations.** medspaCy ConText is treated as an independent implementation, not a gold standard; the document says so. The frozen rule, its tags and the 2×2 are untouched.
+
+**Incident.** This job initially wrote raw note text to a log via a third-party library's debug logging. See **B-04** in `BLOCKERS.md` — caught within about three minutes, nothing reached git, log deleted, logging silenced, regression test added.
+
+**Stretch item 1 (embed variant U): skipped.** Variant U embeddings would need a second multi-hour encoding pass, and the run file itself notes U "mostly demonstrates circularity, which TF-IDF shows at no cost" — Phase 8.1 already showed exactly that (variant U's top coefficients are the lexicon itself). The variant U text is assembled and stored, so the pass can be run later without redoing anything. **Stretch item 3 (fine-tuning): skipped**, FINETUNE_BUDGET_HOURS = 0.

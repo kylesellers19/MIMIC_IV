@@ -1,0 +1,61 @@
+{
+ "purpose": "measures a stated limitation; the frozen rule is unchanged",
+ "reference_implementation": "medspaCy ConText (default English rules), spaCy blank('en') + medspacy_pyrush sentence splitter",
+ "seed": 20260926,
+ "sampling": "random sample of radiology reports having >=1 asserted lexicon match in the per-note index",
+ "pool_reports": 45355,
+ "sampled_reports": 20000,
+ "reports_compared": 20000,
+ "reports_unalignable_excluded": 0,
+ "aligned_hits": 35268,
+ "anatomically_suppressed_hits_excluded": 2182,
+ "note_on_suppression": "anatomical scoping has no ConText analogue; suppressed hits are excluded from the comparison rather than counted as disagreement",
+ "overall_percent_agreement": 90.76,
+ "by_assertion_class": {
+  "affirmed": {
+   "project_n": 33049,
+   "agree_n": 30256,
+   "percent_agreement": 91.55
+  },
+  "negated": {
+   "project_n": 1017,
+   "agree_n": 975,
+   "percent_agreement": 95.87
+  },
+  "uncertain": {
+   "project_n": 841,
+   "agree_n": 518,
+   "percent_agreement": 61.59
+  },
+  "historical": {
+   "project_n": 361,
+   "agree_n": 261,
+   "percent_agreement": 72.3
+  },
+  "family": {
+   "project_n": 0,
+   "agree_n": 0,
+   "percent_agreement": null
+  }
+ },
+ "confusion_project_rows_medspacy_columns": {
+  "affirmed->affirmed": 30256,
+  "affirmed->negated": 1556,
+  "negated->negated": 975,
+  "affirmed->uncertain": 963,
+  "uncertain->uncertain": 518,
+  "affirmed->historical": 267,
+  "historical->historical": 261,
+  "uncertain->affirmed": 216,
+  "uncertain->negated": 103,
+  "historical->affirmed": 90,
+  "negated->affirmed": 39,
+  "affirmed->family": 7,
+  "historical->negated": 5,
+  "historical->uncertain": 5,
+  "uncertain->historical": 4,
+  "negated->uncertain": 3
+ },
+ "exceptions_by_class": {},
+ "runtime_s": 958
+}

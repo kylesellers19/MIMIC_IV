@@ -2,14 +2,18 @@
 """run_2026-09-19 Phase 8.1 — DEVELOPMENT DIAGNOSTIC: TF-IDF (word 1–2-grams, min_df=100, sublinear tf) + L2 logistic
 regression on text variants U/M/S of the Phase 3 subsample. Vocabulary fit inside training folds only. GOLD_HOLDOUT scored, never fitted.
 Label and input share a source (the silver label is a lexical rule over the same text): NOT an accuracy estimate.
-Writes results JSON, OOF/TEST/GOLD predictions (untracked), and top coefficients (alphabetic tokens, df>=100)."""
-import json, os, sys, time, re, warnings
+Writes results JSON, OOF/TEST/GOLD predictions (untracked), and top coefficients (alphabetic tokens, df>=100).
+Refuses to run once the GOLD_HOLDOUT predictions are locked (scripts/run0919_lock_guard.py) unless --force."""
+import argparse, json, os, sys, time, re, warnings
 import numpy as np, pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import roc_auc_score, average_precision_score, brier_score_loss
 import statsmodels.api as sm
 sys.path.insert(0, os.getcwd()); warnings.filterwarnings("ignore")
+from scripts.run0919_lock_guard import refuse_if_locked
+_ap = argparse.ArgumentParser(); _ap.add_argument("--force", action="store_true", help="overwrite GOLD predictions recorded in the lock"); ARGS = _ap.parse_args()
+refuse_if_locked(["notes_tfidf_gold.parquet"], ARGS.force)
 SEED = 20260919; REPS = 500; C = 1.0
 TXT = "data/processed/run_2026-09-19_notes_text/subsample.parquet"; PREDDIR = "data/processed/run_2026-09-19_preds"; os.makedirs(PREDDIR, exist_ok=True)
 t0 = time.time(); log = lambda s: print(f"[{time.time()-t0:6.0f}s] {s}", flush=True)

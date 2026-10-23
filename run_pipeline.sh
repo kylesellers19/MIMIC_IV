@@ -84,12 +84,14 @@ $RUN scripts/run0919_notes_text.py --subsample 13000
 $RUN scripts/run0919_embed.py --variant S                   # resumable; shards under data/processed/notes_embeddings_v1/
 
 # ---- 12. Models (hours) ---------------------------------------------------------------------------
+# Once the GOLD predictions are locked, the structured, TF-IDF and embedding-arm scripts refuse to overwrite any model or
+# GOLD prediction file the lock records (scripts/run0919_lock_guard.py); --force overrides, then re-lock with --force.
 $RUN scripts/run0919_lab_features.py
 $RUN scripts/run0919_features.py
 $RUN scripts/run0919_aim1b_structured.py
 $RUN scripts/run0919_notes_tfidf.py
 $RUN scripts/run0919_notes_embed_arm.py
-$RUN scripts/run0919_fusion_lock.py                         # also locks and hashes gold-holdout predictions
+$RUN scripts/run0919_fusion_lock.py                         # also locks and hashes gold-holdout predictions; refuses if a lock exists (--force replaces it)
 $RUN scripts/run0919_aim1b_reports.py all
 
 # ---- 13. Citations and admin ----------------------------------------------------------------------

@@ -3,7 +3,8 @@
 8.2 Heads on frozen Bio_ClinicalBERT admission vectors (variant S; U if present): L2 logistic regression and LightGBM; the
     better on DEV OOF (AUPRC) is kept. 8.3 Notes-augmented model: CatBoost on FS-B + first 64 principal components of the
     embeddings (PCA fit inside training folds); if no embeddings, FS-B + the TF-IDF (variant S) OOF logit instead.
-Subsample DEV/TEST only; GOLD_HOLDOUT scored, never fitted. Missing shards (job stopped early) simply reduce the subsample."""
+Subsample DEV/TEST only; GOLD_HOLDOUT scored, never fitted. Missing shards (job stopped early) simply reduce the subsample.
+Refuses to run once the GOLD_HOLDOUT predictions are locked (scripts/run0919_lock_guard.py) unless --force; --smoke is exempt."""
 import argparse, json, os, sys, time, warnings
 import numpy as np, pandas as pd, duckdb
 from sklearn.linear_model import LogisticRegression
@@ -13,7 +14,10 @@ import statsmodels.api as sm
 sys.path.insert(0, os.getcwd()); warnings.filterwarnings("ignore")
 _ap = argparse.ArgumentParser(); _ap.add_argument("--smoke", action="store_true",
     help="validate the code path on whatever shards exist; write to the scratch folder, not to the run's outputs")
+_ap.add_argument("--force", action="store_true", help="overwrite models and GOLD predictions recorded in the lock")
 ARGS, _ = _ap.parse_known_args()
+from scripts.run0919_lock_guard import refuse_if_locked
+if not ARGS.smoke: refuse_if_locked(["notes_arm_gold.parquet", "aug_FS-B_notes_*"], ARGS.force)
 SEED = 20260919; REPS = 50 if ARGS.smoke else 500; THREADS = 4
 TXT = "data/processed/run_2026-09-19_notes_text/subsample.parquet"; EMB = "data/processed/notes_embeddings_v1"; PREDDIR = "data/processed/run_2026-09-19_scratch/preds_smoke" if ARGS.smoke else "data/processed/run_2026-09-19_preds"
 RESULTS = "data/processed/run_2026-09-19_scratch/aim1b_notes_arm_SMOKE.json" if ARGS.smoke else "docs/run_2026-09-19/results/aim1b_notes_arm.json"

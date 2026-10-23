@@ -3,17 +3,21 @@
 Learners: CatBoost (primary), XGBoost, LightGBM. Feature sets FS-A (all), FS-B (clinical), FS-AVAIL (availability/volume).
 Imbalance variants: unweighted; weighted (scale_pos_weight = neg/pos in the training fold); weighted+corrected (weighted
 model's logit shifted by -log(w) — no extra fit). Tuning: random configs, subject-level CV on DEV with early stopping on an
-inner 10% subject split; TEST touched once. Writes results JSON, OOF/TEST/GOLD predictions (untracked), models (untracked)."""
-import json, os, sys, time, warnings
+inner 10% subject split; TEST touched once. Writes results JSON, OOF/TEST/GOLD predictions (untracked), models (untracked).
+Refuses to run once the GOLD_HOLDOUT predictions are locked (scripts/run0919_lock_guard.py) unless --force."""
+import argparse, json, os, sys, time, warnings
 import numpy as np, pandas as pd, duckdb
 from sklearn.metrics import roc_auc_score, average_precision_score, brier_score_loss
 import statsmodels.api as sm
 sys.path.insert(0, os.getcwd())
 from scripts.masld_config import SPLITS_V1, LOCKED_POP
+from scripts.run0919_lock_guard import refuse_if_locked
 warnings.filterwarnings("ignore")
+_ap = argparse.ArgumentParser(); _ap.add_argument("--force", action="store_true", help="overwrite models and GOLD predictions recorded in the lock"); ARGS = _ap.parse_args()
 SEED = 20260919; THREADS = 4; N_CFG = 4; REPS = 500; TUNE_FOLDS = 3
 FEAT = "data/processed/run_2026-09-19_features.parquet"; IDX = "data/processed/run_2026-09-19_notes_index"
 MODELDIR = "models/run_2026-09-19"; PREDDIR = "data/processed/run_2026-09-19_preds"; RES = "docs/run_2026-09-19/results/aim1b_structured.json"
+refuse_if_locked(["structured_gold.parquet", "cat_*", "xgb_*", "lgb_*"], ARGS.force)
 os.makedirs(MODELDIR, exist_ok=True); os.makedirs(PREDDIR, exist_ok=True)
 t0 = time.time(); log = lambda s: print(f"[{time.time()-t0:7.0f}s] {s}", flush=True)
 cls = json.load(open("docs/run_2026-09-19/results/feature_classification.json"))

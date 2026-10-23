@@ -4,15 +4,24 @@ Layer 0: structured FS-B (best-calibrated imbalance variant on DEV OOF; FS-A as 
 the better of TF-IDF and the embedding head on DEV OOF). Layer 1: logistic regression on the two OOF logits, fit on the
 subsample's DEV admissions. Code status is never an input. Arms evaluated on the same subsample TEST admissions with paired
 subject-cluster bootstrap differences. Then every GOLD_HOLDOUT admission is scored by every arm/variant and the file is
-hashed (SHA-256) with the model files — the audit trail that predictions predate the adjudication."""
-import json, os, sys, time, hashlib, glob, warnings
+hashed (SHA-256) with the model files — the audit trail that predictions predate the adjudication.
+Refuses to run if a lock already exists; --force replaces it and records the superseded hash in the new lock."""
+import argparse, json, os, sys, time, hashlib, glob, warnings
 import numpy as np, pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import roc_auc_score, average_precision_score, brier_score_loss
 import statsmodels.api as sm
 sys.path.insert(0, os.getcwd()); warnings.filterwarnings("ignore")
 SEED = 20260919; REPS = 500; PREDDIR = "data/processed/run_2026-09-19_preds"; R = "docs/run_2026-09-19/results"
+LOCKED = "data/processed/gold_holdout_predictions_v1.parquet"; LOCK_JSON = f"{R}/locked_predictions.json"
+ap = argparse.ArgumentParser(); ap.add_argument("--force", action="store_true", help="replace an existing lock; only legitimate before any adjudication exists"); ARGS = ap.parse_args()
+existing = [p for p in (LOCKED, LOCK_JSON) if os.path.exists(p)]
+if existing and not ARGS.force:
+    sys.exit(f"REFUSING: locked GOLD_HOLDOUT predictions already exist ({', '.join(existing)}). Re-running replaces them and the hashes that show "
+             "they predate the adjudication. Pass --force only if the lock must be redone and no adjudication exists yet.")
+prev = json.load(open(LOCK_JSON)) if os.path.exists(LOCK_JSON) else None
 t0 = time.time(); log = lambda s: print(f"[{time.time()-t0:6.0f}s] {s}", flush=True)
+if existing: log(f"--force: replacing lock written {prev['written_utc'] if prev else '(no lock record)'}")
 def logit(p): p = np.clip(np.asarray(p, float), 1e-6, 1 - 1e-6); return np.log(p / (1 - p))
 def calib(y, p):
     z = logit(p)
@@ -74,7 +83,7 @@ G = sub[sub.partition == "GOLD_HOLDOUT"][["hadm_id"]].merge(st_go, on="hadm_id",
 if na_go is not None: G = G.merge(na_go, on="hadm_id", how="left")
 for sens, skey in [("primary", "structured_FS-B"), ("sensitivity_FS-A", "structured_FS-A")]:
     sc = L0[skey]; c = res["fusion_coefficients"][sens]; G[f"fusion|{sens}"] = 1 / (1 + np.exp(-(c["intercept"] + c["w_structured"] * logit(G[sc]) + c["w_notes"] * logit(G[notes_col]))))
-out = "data/processed/gold_holdout_predictions_v1.parquet"; G.to_parquet(out, index=False)
+out = LOCKED; G.to_parquet(out, index=False)
 def sha(p):
     h = hashlib.sha256(); h.update(open(p, "rb").read()); return h.hexdigest()
 lock = {"file": out, "sha256": sha(out), "rows": int(len(G)), "columns": [c for c in G.columns if c != "hadm_id"], "written_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
@@ -82,10 +91,13 @@ lock = {"file": out, "sha256": sha(out), "rows": int(len(G)), "columns": [c for 
                    for f in sorted(glob.glob("models/run_2026-09-19/*")) if "_SMOKE" not in f},
         "excluded_from_manifest": [os.path.basename(f) for f in sorted(glob.glob("models/run_2026-09-19/*")) if "_SMOKE" in f],
         "prediction_files": {os.path.basename(f): sha(f) for f in sorted(glob.glob(f"{PREDDIR}/*_gold.parquet"))}}
-json.dump(lock, open(f"{R}/locked_predictions.json", "w"), indent=1); json.dump(res, open(f"{R}/aim1b_fusion.json", "w"), indent=1)
+if prev: lock["supersedes"] = {"sha256": prev["sha256"], "written_utc": prev["written_utc"]}
+json.dump(lock, open(LOCK_JSON, "w"), indent=1); json.dump(res, open(f"{R}/aim1b_fusion.json", "w"), indent=1)
 L = ["# Aim 1b — locked GOLD_HOLDOUT predictions (run_2026-09-19, Phase 9.2)\n", f"Produced by `scripts/run0919_fusion_lock.py`; hashes in `docs/run_2026-09-19/results/locked_predictions.json`.\n",
      "Every GOLD_HOLDOUT admission (all admissions of every subject in the 400-chart sample or the 20-chart training set) was scored by every arm and variant **before any adjudication exists**. The file below is untracked (credentialed derivative); its SHA-256 and the model-file hashes are recorded here so that, when the gold labels arrive, it can be shown that no model was tuned against them.\n",
-     f"- File: `{out}` · rows {lock['rows']:,} · written {lock['written_utc']}", f"- SHA-256: `{lock['sha256']}`", f"- Columns ({len(lock['columns'])}): " + ", ".join(f"`{c}`" for c in lock["columns"]), "", "| model file | bytes | SHA-256 |", "| --- | --: | --- |"]
+     f"- File: `{out}` · rows {lock['rows']:,} · written {lock['written_utc']}", f"- SHA-256: `{lock['sha256']}`"]
+if prev: L.append(f"- Supersedes the lock written {prev['written_utc']} (SHA-256 `{prev['sha256']}`), replaced with `--force`")
+L += [f"- Columns ({len(lock['columns'])}): " + ", ".join(f"`{c}`" for c in lock["columns"]), "", "| model file | bytes | SHA-256 |", "| --- | --: | --- |"]
 for k, v in lock["models"].items(): L.append(f"| {k} | {v['bytes']:,} | `{v['sha256']}` |")
 L += ["", "Per-arm gold prediction files:", ""] + [f"- `{k}`: `{v}`" for k, v in lock["prediction_files"].items()]
 open("docs/aim1b_locked_predictions.md", "w").write("\n".join(L) + "\n"); log("DONE")

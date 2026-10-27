@@ -94,7 +94,7 @@ Proposed:
   - "hard negatives": NO answers containing a fat or echogenicity word, and sentences the selection drops;
   - a random sample of NO answers;
   - inverse-probability weights to restore the population. Balanced 50/50 designs are avoided because they inflate PPV at low prevalence.
-- **Against the 400-chart gold standard (DECISION):** to evaluate the LLM's admission labels against adjudication, the LLM must score GOLD_HOLDOUT admissions. Its outputs must be hashed and locked before adjudication begins, as was done for the other model arms (`docs/aim1b_locked_predictions.md`).
+- **Against the 400-chart gold standard (decided 2026-10-27):** the LLM scores every GOLD_HOLDOUT admission with prompt v4 (all units, not a re-ask). Its sentence answers and admission labels are hashed and locked by `scripts/llm_gold_lock.py` (`docs/llm_gold_lock.md`) before adjudication begins, as was done for the other model arms (`docs/aim1b_locked_predictions.md`). No answer distribution on GOLD_HOLDOUT is looked at before the adjudication exists.
 - **Blinding:** reviewers never see LLM answers, LLM-based ordering, codes or note-rule results (TRIPOD+AI 8c; STARD 13b). If the LLM is used to rank charts, that ranking is never shown to gold reviewers.
 - **Fairness:** report sentence coverage and LLM error rates by race, insurance, sex, language and age, with intervals.
 - **Downstream use:** if LLM labels feed prevalence estimates or train a model, correct them with design-based methods using the known sampling weights (design-based supervised learning; prediction-powered inference). Never evaluate a model against LLM labels.

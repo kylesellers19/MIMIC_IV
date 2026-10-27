@@ -55,14 +55,9 @@ def _pathway(types):
     return PATHWAYS[2]
 
 
-def load(answers=ANSWERS):
-    sub = pd.read_parquet(SUBSAMPLE, columns=["hadm_id", "subject_id", "partition"])
-    sub = sub[sub.partition.isin(["DEV", "TEST"])]
-    fr = pd.read_parquet(FRAME, columns=["hadm_id", "note_b", "code_positive", "age", "gender", "race",
-                                         "insurance", "language"])
-    a = sub.merge(fr, on="hadm_id", how="left")
-    r = pd.read_parquet(answers)
-    r = r[r.hadm_id.isin(set(a.hadm_id))]
+def admission_labels(r):
+    """Sentence answers -> (admission labels indexed by hadm_id, YES-evidence pathway per admission).
+    Admissions with no kept sentence are absent; callers treat them as negative."""
     yes, unc = r.answer.eq("YES"), r.answer.eq("UNCLEAR")
     cp = r.timing.isin(["CURRENT", "PAST"])
     h = r.hadm_id
@@ -72,8 +67,19 @@ def load(answers=ANSWERS):
         "llm_current": (yes & r.timing.eq("CURRENT")).groupby(h).any(),
         "llm_anatomy": (yes & cp & r.reason.eq("anatomy")).groupby(h).any(),
     })
-    pos = r[yes & cp]
-    path = pos.groupby("hadm_id").note_type.agg(lambda s: _pathway(set(s)))
+    path = r[yes & cp].groupby("hadm_id").note_type.agg(lambda s: _pathway(set(s)))
+    return lab, path
+
+
+def load(answers=ANSWERS):
+    sub = pd.read_parquet(SUBSAMPLE, columns=["hadm_id", "subject_id", "partition"])
+    sub = sub[sub.partition.isin(["DEV", "TEST"])]
+    fr = pd.read_parquet(FRAME, columns=["hadm_id", "note_b", "code_positive", "age", "gender", "race",
+                                         "insurance", "language"])
+    a = sub.merge(fr, on="hadm_id", how="left")
+    r = pd.read_parquet(answers)
+    r = r[r.hadm_id.isin(set(a.hadm_id))]
+    lab, path = admission_labels(r)
     a = a.merge(lab, left_on="hadm_id", right_index=True, how="left")
     for c in lab.columns:
         a[c] = a[c].fillna(False).astype(bool)

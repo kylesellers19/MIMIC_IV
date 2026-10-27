@@ -36,9 +36,9 @@
 - **Output:** a plain-text two-word reply, parsed strictly. P(YES), P(NO) and P(UNCLEAR) are read from the first token's top-10 alternatives, and `done_reason` is stored.
   - JSON-schema output was tested and not used. On this Ollama version log probabilities come back for the first token only, and under a schema that token is "{".
 - **Deduplication:** a unit is the sentence text plus the context fields shown to the model. Each unit is asked once.
-- **Operator steps outside the script:**
-  - turn off the Ollama app's automatic updates;
-  - set `OLLAMA_NO_CLOUD=1` for the server;
+- **Operator steps outside the script** (the first two done 2026-10-27, after the GOLD_HOLDOUT run):
+  - turn off the Ollama app's automatic updates (Settings → "Auto-download updates");
+  - turn off Ollama cloud: `"disable_ollama_cloud": true` in `~/.ollama/server.json`, which is what the app's Cloud switch writes and what `OLLAMA_NO_CLOUD=1` does for one server session;
   - keep `OLLAMA_NUM_PARALLEL=1`;
   - rerun the determinism check on at least 1,000 sentences after any Ollama or model change.
 
@@ -71,9 +71,9 @@ Paraphrase B's first wording broke the reply format on the invented test set. It
 
 **Freeze:** the prompt used for any gold-standard evaluation is frozen, with its hash recorded, before gold labels are seen.
 
-## 5. Admission-level label (DECISION: pre-specify before unblinding)
+## 5. Admission-level label (signed off 2026-10-27)
 
-Proposed:
+Signed off on 2026-10-27, before any GOLD_HOLDOUT answer distribution or adjudication was seen. The primary definition is the one in amendment (h) of `docs/analysis_plan_prespecified.md` and the one `scripts/llm_gold_lock.py` locked.
 - **Primary:** an admission is positive when at least one kept sentence is YES with timing CURRENT or PAST. FAMILY never counts. UNCLEAR is not positive.
 - **Sensitivity analyses, all reported:**
   - UNCLEAR counted positive
@@ -98,7 +98,12 @@ Proposed:
 - **Blinding:** reviewers never see LLM answers, LLM-based ordering, codes or note-rule results (TRIPOD+AI 8c; STARD 13b). If the LLM is used to rank charts, that ranking is never shown to gold reviewers.
 - **Fairness:** report sentence coverage and LLM error rates by race, insurance, sex, language and age, with intervals.
 - **Downstream use:** if LLM labels feed prevalence estimates or train a model, correct them with design-based methods using the known sampling weights (design-based supervised learning; prediction-powered inference). Never evaluate a model against LLM labels.
-- **Quantization (pending approval to download a second model build):** rerun a stratified 1–2k sentences on Gemma 4's smaller quantization-aware build and report how many answers flip. The 8-bit build does not fit in this laptop's memory.
+- **Quantization (download approved 2026-10-27):** rerun a stratified 1–2k DEV/TEST sentences on Gemma 4's quantization-aware build (`gemma4:26b-a4b-it-qat`, 16 GB) and report how many answers flip.
+  - **Result (2026-10-27, `diagnostics/llm_review_audit/quant_check.py`):** 1,300 distinct DEV/TEST units, stratified by stored answer (seed 20261027), prompt v4. Each build answered them on the same day.
+  - **How much changed:** the QAT build's answer differed from the Q4_K_M build's for an estimated 0.5% of distinct units (conservative 95% bounds 0.3–1.9%). Whether a unit counts toward the primary label differed for 0.3% (0.2–1.7%), roughly evenly in each direction.
+  - **Where:** the changes were mostly in sentences the stored run had called UNCLEAR.
+  - **Rerun check:** the same-day Q4_K_M rerun matched the stored answers for over 99% of units. That includes v3's carried-over NO answers, now asked with v4, which supports the merged v4 design (§4).
+  - **Decision:** the study keeps the Q4_K_M build, and this is reported as a sensitivity result. The 8-bit build does not fit in this laptop's memory.
 
 ## 7. Contamination and privacy
 

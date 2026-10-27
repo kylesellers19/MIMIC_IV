@@ -1,0 +1,56 @@
+{
+ "purpose": "LLM phenotype answers on GOLD_HOLDOUT, hashed before chart review; no answer distribution is reported",
+ "written_utc": "2026-10-27T22:11:04Z",
+ "code_commit": "27618b1d0ffb694c27f461600402e5b98b63249d",
+ "files": {
+  "data/processed/llm_review/gold_v4/gold_admission_labels_v4.parquet": {
+   "sha256": "00e7454053184c8805bc298fca3dbf655d6ef5edbdaeed3a58c1186464cc72a1",
+   "rows": 2865
+  },
+  "data/processed/llm_review/gold_v4/run/sentence_answers.parquet": {
+   "sha256": "4e224981bcdaae046104bf741b331bb1cd1072260e93d2bb3dbbc24e9cd21e2d",
+   "rows": 41773
+  },
+  "data/processed/llm_review/gold_v4/liver_sentences_gold.parquet": {
+   "sha256": "53b068fc359d1030b0c534faa221c7eb646e4594c42316d3889b2358f8f74cce",
+   "rows": 41773
+  }
+ },
+ "manifest": {
+  "path": "data/processed/llm_review/gold_v4/run/manifest.json",
+  "sha256": "834b5df6e288787bd317a47f367902ab7a4c6c27d98b557e99ab3451b749211c"
+ },
+ "label_columns": [
+  "llm",
+  "llm_unclear",
+  "llm_current",
+  "llm_anatomy",
+  "has_sentence"
+ ],
+ "definition": "llm = >=1 kept sentence YES with timing CURRENT or PAST (amendment h); admissions without a kept sentence are negative",
+ "model": {
+  "name": "gemma4:26b",
+  "digest": "08ae7ec1744bd7f451c4a530afb39d2673ad9d07a8369b8a33a3613b41212a68",
+  "ollama_version": "0.34.2",
+  "quantization": "Q4_K_M",
+  "parameter_size": "25.2B"
+ },
+ "prompt": {
+  "variant": "v4",
+  "sha256": "fe3fada7db8c13d2531507cb37ef11c1616c08977d2ffb16e5802900faaec032",
+  "options": {
+   "temperature": 0,
+   "seed": 20260922,
+   "num_predict": 12
+  }
+ },
+ "run_counts": {
+  "gold_admissions": 2865,
+  "sentence_rows": 41773,
+  "distinct_units": 20200,
+  "errors": 0,
+  "unparsed": 37,
+  "not_two_word": 39
+ },
+ "note": "Dev/test labels (docs/llm_review_preliminary.md) merge v4 answers for units v3 called YES or UNCLEAR with v3's other answers; GOLD_HOLDOUT is answered by v4 throughout."
+}

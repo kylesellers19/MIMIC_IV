@@ -10,8 +10,8 @@ What was done and why. Numbers live in `results/`, written by the scripts named 
    - Only stratum admission counts are published. Percentages are withheld when the count behind them or its complement is 1–10.
 5. **Aim 1b.** `scripts/aim1b_llm_label.py` writes `results/aim1b_llm_label.json` and `docs/aim1b_llm_label.md`. The locked TEST predictions are scored against both labels; nothing is retrained and no locked file is touched.
 6. **README.** `scripts/readme_preliminary.py` writes the README's "Preliminary results" block from the results files.
+7. **GOLD_HOLDOUT lock.** `scripts/liver_sentences.py --partitions GOLD_HOLDOUT` extracted 41,773 sentence rows. Prompt v4 answered all 20,200 distinct units with `--include-gold` (0 errors), and `scripts/llm_gold_lock.py` wrote `results/llm_gold_lock.json` and `docs/llm_gold_lock.md` before any chart review. Only hashes and run counts are recorded; no answer distribution on GOLD_HOLDOUT was looked at.
 
 **Open decisions:**
-- Whether the LLM scores and locks GOLD_HOLDOUT before chart review.
 - Sign-off on the admission rule (protocol §5) and on the annotation guide's open questions.
 - Who the two annotators are.

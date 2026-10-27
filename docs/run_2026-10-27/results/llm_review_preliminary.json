@@ -1,0 +1,171 @@
+{
+ "status": "PRELIMINARY - not validated against human review",
+ "scope": "dev/test notes subsample",
+ "admissions": 29980,
+ "subjects": 13000,
+ "subject_scale_to_all_dev_test": 12.36,
+ "runs": {
+  "full_v3_devtest": {
+   "variant": "v3",
+   "model": "gemma4:26b",
+   "model_digest": "08ae7ec1744b",
+   "ollama_version": "0.34.2",
+   "units": 89928,
+   "errors": 0,
+   "unparsed": 71,
+   "compute_hours": 22.0
+  },
+  "full_v4_reask": {
+   "variant": "v4",
+   "model": "gemma4:26b",
+   "model_digest": "08ae7ec1744b",
+   "ollama_version": "0.34.2",
+   "units": 5785,
+   "errors": 0,
+   "unparsed": 0,
+   "compute_hours": 1.5
+  }
+ },
+ "pilot_dev": {
+  "n": 500,
+  "partition": "DEV",
+  "v3_answers": {
+   "NO": 469,
+   "YES": 22,
+   "UNCLEAR": "<11"
+  },
+  "rerun_identical": 499,
+  "kappa_v3_paraphrase_a": 0.808,
+  "kappa_v3_paraphrase_b": 0.811,
+  "kappa_v3_fewshot": 0.819,
+  "kappa_v3_context": 0.895
+ },
+ "filter": {
+  "anatomy_only": {
+   "selection": "anatomy only",
+   "admissions_strong_term_in_kept": 2157,
+   "admissions_strong_term_only_dropped": 367,
+   "rule_positive": 2102,
+   "rule_positive_no_term_in_kept": 145
+  },
+  "current": {
+   "selection": "current",
+   "admissions_strong_term_in_kept": 2531,
+   "admissions_strong_term_only_dropped": 0,
+   "rule_positive": 2102,
+   "rule_positive_no_term_in_kept": 22
+  }
+ },
+ "sentences": {
+  "rows": 167728,
+  "answers": {
+   "NO": 159756,
+   "YES": 6095,
+   "UNCLEAR": 1700,
+   "UNPARSED": 177
+  },
+  "yes_pct_by_note_type": {
+   "discharge": 5.3,
+   "radiology_inpatient": 3.2,
+   "radiology_outpatient": 3.1
+  },
+  "yes_pct_by_reason": {
+   "anatomy": 3.6,
+   "liver disease term": 93.2,
+   "liver heading": 0.4,
+   "steatosis term, no other organ": 32.9
+  },
+  "rows_by_reason": {
+   "anatomy": 142211,
+   "liver heading": 24305,
+   "liver disease term": 838,
+   "steatosis term, no other organ": 374
+  }
+ },
+ "admission_labels": {
+  "llm": 2252,
+  "llm_unclear": 2710,
+  "llm_current": 1953,
+  "llm_anatomy": 2075,
+  "rule": 2102
+ },
+ "llm_vs_rule_uncoded": {
+  "admissions": 29510,
+  "both": 1376,
+  "llm_only": 451,
+  "rule_only": 300,
+  "neither": 27383,
+  "rule_positive_confirmed_by_llm_pct": 82.1,
+  "rule_negative_llm_positive_pct": 1.6
+ },
+ "coded_admissions": {
+  "admissions": 470,
+  "llm_positive": 425,
+  "rule_positive": 426
+ },
+ "documented_not_coded": {
+  "rule": {
+   "admissions": 1676,
+   "subjects": 912,
+   "admissions_scaled": 20700,
+   "subjects_scaled": 11300,
+   "pct_uncoded_admissions": 79.7,
+   "pct_uncoded_subjects": 77.2
+  },
+  "llm": {
+   "admissions": 1827,
+   "subjects": 943,
+   "admissions_scaled": 22600,
+   "subjects_scaled": 11700,
+   "pct_uncoded_admissions": 81.1,
+   "pct_uncoded_subjects": 77.7
+  },
+  "either": {
+   "admissions": 2127,
+   "subjects": 1112,
+   "admissions_scaled": 26300,
+   "subjects_scaled": 13700,
+   "pct_uncoded_admissions": 83.1,
+   "pct_uncoded_subjects": 80.2
+  },
+  "both": {
+   "admissions": 1376,
+   "subjects": 737,
+   "admissions_scaled": 17000,
+   "subjects_scaled": 9100,
+   "pct_uncoded_admissions": 76.7,
+   "pct_uncoded_subjects": 73.6
+  },
+  "coded_subjects_scaled": 3700
+ },
+ "documentation_pathway": {
+  "uncoded": {
+   "n": 1827,
+   "discharge summary": 43.3,
+   "inpatient radiology only": 17.8,
+   "outpatient radiology only": 38.9,
+   "past_only_pct": 11.0
+  },
+  "coded": {
+   "n": 425,
+   "discharge summary": 92.2,
+   "inpatient radiology only": 2.6,
+   "outpatient radiology only": 5.2,
+   "past_only_pct": 23.1
+  }
+ },
+ "disagreement": {
+  "llm_only": {
+   "fat or imaging wording outside the rule's term list": 187,
+   "rule term present, rejected by the rule": 151,
+   "no fat-related word (unexplained)": 62,
+   "imaging sign only (outside the rule's primary definition)": 51
+  },
+  "rule_only": {
+   "model answered NO": 183,
+   "model answered UNCLEAR": 106,
+   "no rule term in any kept sentence": 11
+  }
+ },
+ "coverage_pct_with_sentence": 51.7
+}

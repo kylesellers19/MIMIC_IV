@@ -1,0 +1,496 @@
+{
+ "status": "exploratory (amendment j)",
+ "scope": "TEST admissions of the dev/test notes subsample",
+ "test_admissions": 6164,
+ "bootstrap": {
+  "reps": 500,
+  "seed": 20260919
+ },
+ "labels": {
+  "rule_positive": 383,
+  "llm_positive": 406,
+  "kappa_rule_llm": 0.82
+ },
+ "arms": {
+  "CatBoost FS-A (clinical + availability)": {
+   "all": {
+    "n": 6164,
+    "rule_pos": 383,
+    "llm_pos": 406,
+    "AUROC": {
+     "rule": 0.854,
+     "rule_ci": [
+      0.826,
+      0.882
+     ],
+     "llm": 0.846,
+     "llm_ci": [
+      0.818,
+      0.872
+     ],
+     "llm_minus_rule": -0.008,
+     "diff_ci": [
+      -0.022,
+      0.007
+     ]
+    },
+    "AUPRC": {
+     "rule": 0.392,
+     "rule_ci": [
+      0.305,
+      0.48
+     ],
+     "llm": 0.378,
+     "llm_ci": [
+      0.291,
+      0.472
+     ],
+     "llm_minus_rule": -0.013,
+     "diff_ci": [
+      -0.051,
+      0.021
+     ]
+    }
+   },
+   "code_negative": {
+    "n": 6057,
+    "rule_pos": 286,
+    "llm_pos": 309,
+    "AUROC": {
+     "rule": 0.842,
+     "rule_ci": [
+      0.813,
+      0.869
+     ],
+     "llm": 0.834,
+     "llm_ci": [
+      0.808,
+      0.858
+     ],
+     "llm_minus_rule": -0.007,
+     "diff_ci": [
+      -0.026,
+      0.012
+     ]
+    },
+    "AUPRC": {
+     "rule": 0.276,
+     "rule_ci": [
+      0.219,
+      0.339
+     ],
+     "llm": 0.27,
+     "llm_ci": [
+      0.215,
+      0.331
+     ],
+     "llm_minus_rule": -0.006,
+     "diff_ci": [
+      -0.049,
+      0.035
+     ]
+    }
+   }
+  },
+  "CatBoost FS-B (clinical)": {
+   "all": {
+    "n": 6164,
+    "rule_pos": 383,
+    "llm_pos": 406,
+    "AUROC": {
+     "rule": 0.793,
+     "rule_ci": [
+      0.758,
+      0.828
+     ],
+     "llm": 0.768,
+     "llm_ci": [
+      0.732,
+      0.806
+     ],
+     "llm_minus_rule": -0.025,
+     "diff_ci": [
+      -0.052,
+      0.002
+     ]
+    },
+    "AUPRC": {
+     "rule": 0.291,
+     "rule_ci": [
+      0.206,
+      0.382
+     ],
+     "llm": 0.285,
+     "llm_ci": [
+      0.207,
+      0.374
+     ],
+     "llm_minus_rule": -0.006,
+     "diff_ci": [
+      -0.027,
+      0.019
+     ]
+    }
+   },
+   "code_negative": {
+    "n": 6057,
+    "rule_pos": 286,
+    "llm_pos": 309,
+    "AUROC": {
+     "rule": 0.763,
+     "rule_ci": [
+      0.729,
+      0.796
+     ],
+     "llm": 0.733,
+     "llm_ci": [
+      0.695,
+      0.771
+     ],
+     "llm_minus_rule": -0.03,
+     "diff_ci": [
+      -0.063,
+      0.004
+     ]
+    },
+    "AUPRC": {
+     "rule": 0.188,
+     "rule_ci": [
+      0.14,
+      0.247
+     ],
+     "llm": 0.188,
+     "llm_ci": [
+      0.143,
+      0.251
+     ],
+     "llm_minus_rule": 0.001,
+     "diff_ci": [
+      -0.023,
+      0.027
+     ]
+    }
+   }
+  },
+  "CatBoost FS-AVAIL (availability only)": {
+   "all": {
+    "n": 6164,
+    "rule_pos": 383,
+    "llm_pos": 406,
+    "AUROC": {
+     "rule": 0.778,
+     "rule_ci": [
+      0.734,
+      0.82
+     ],
+     "llm": 0.782,
+     "llm_ci": [
+      0.739,
+      0.821
+     ],
+     "llm_minus_rule": 0.004,
+     "diff_ci": [
+      -0.011,
+      0.017
+     ]
+    },
+    "AUPRC": {
+     "rule": 0.196,
+     "rule_ci": [
+      0.151,
+      0.259
+     ],
+     "llm": 0.205,
+     "llm_ci": [
+      0.157,
+      0.268
+     ],
+     "llm_minus_rule": 0.009,
+     "diff_ci": [
+      -0.017,
+      0.032
+     ]
+    }
+   },
+   "code_negative": {
+    "n": 6057,
+    "rule_pos": 286,
+    "llm_pos": 309,
+    "AUROC": {
+     "rule": 0.782,
+     "rule_ci": [
+      0.744,
+      0.818
+     ],
+     "llm": 0.786,
+     "llm_ci": [
+      0.749,
+      0.82
+     ],
+     "llm_minus_rule": 0.004,
+     "diff_ci": [
+      -0.015,
+      0.021
+     ]
+    },
+    "AUPRC": {
+     "rule": 0.147,
+     "rule_ci": [
+      0.116,
+      0.193
+     ],
+     "llm": 0.156,
+     "llm_ci": [
+      0.122,
+      0.197
+     ],
+     "llm_minus_rule": 0.009,
+     "diff_ci": [
+      -0.018,
+      0.033
+     ]
+    }
+   }
+  },
+  "TF-IDF, lexicon sentences deleted (S)": {
+   "all": {
+    "n": 6164,
+    "rule_pos": 383,
+    "llm_pos": 406,
+    "AUROC": {
+     "rule": 0.826,
+     "rule_ci": [
+      0.782,
+      0.863
+     ],
+     "llm": 0.822,
+     "llm_ci": [
+      0.782,
+      0.856
+     ],
+     "llm_minus_rule": -0.004,
+     "diff_ci": [
+      -0.018,
+      0.009
+     ]
+    },
+    "AUPRC": {
+     "rule": 0.407,
+     "rule_ci": [
+      0.329,
+      0.487
+     ],
+     "llm": 0.37,
+     "llm_ci": [
+      0.3,
+      0.453
+     ],
+     "llm_minus_rule": -0.037,
+     "diff_ci": [
+      -0.075,
+      0.001
+     ]
+    }
+   },
+   "code_negative": {
+    "n": 6057,
+    "rule_pos": 286,
+    "llm_pos": 309,
+    "AUROC": {
+     "rule": 0.833,
+     "rule_ci": [
+      0.795,
+      0.867
+     ],
+     "llm": 0.827,
+     "llm_ci": [
+      0.793,
+      0.858
+     ],
+     "llm_minus_rule": -0.006,
+     "diff_ci": [
+      -0.023,
+      0.01
+     ]
+    },
+    "AUPRC": {
+     "rule": 0.352,
+     "rule_ci": [
+      0.281,
+      0.427
+     ],
+     "llm": 0.305,
+     "llm_ci": [
+      0.245,
+      0.38
+     ],
+     "llm_minus_rule": -0.047,
+     "diff_ci": [
+      -0.092,
+      0.0
+     ]
+    }
+   }
+  },
+  "Embedding head (S), logistic regression": {
+   "all": {
+    "n": 5108,
+    "rule_pos": 322,
+    "llm_pos": 340,
+    "AUROC": {
+     "rule": 0.754,
+     "rule_ci": [
+      0.699,
+      0.803
+     ],
+     "llm": 0.75,
+     "llm_ci": [
+      0.702,
+      0.794
+     ],
+     "llm_minus_rule": -0.003,
+     "diff_ci": [
+      -0.02,
+      0.013
+     ]
+    },
+    "AUPRC": {
+     "rule": 0.216,
+     "rule_ci": [
+      0.164,
+      0.284
+     ],
+     "llm": 0.209,
+     "llm_ci": [
+      0.159,
+      0.276
+     ],
+     "llm_minus_rule": -0.007,
+     "diff_ci": [
+      -0.048,
+      0.034
+     ]
+    }
+   },
+   "code_negative": {
+    "n": 5016,
+    "rule_pos": 239,
+    "llm_pos": 257,
+    "AUROC": {
+     "rule": 0.76,
+     "rule_ci": [
+      0.719,
+      0.802
+     ],
+     "llm": 0.754,
+     "llm_ci": [
+      0.717,
+      0.79
+     ],
+     "llm_minus_rule": -0.006,
+     "diff_ci": [
+      -0.026,
+      0.014
+     ]
+    },
+    "AUPRC": {
+     "rule": 0.171,
+     "rule_ci": [
+      0.125,
+      0.23
+     ],
+     "llm": 0.164,
+     "llm_ci": [
+      0.123,
+      0.216
+     ],
+     "llm_minus_rule": -0.007,
+     "diff_ci": [
+      -0.054,
+      0.039
+     ]
+    }
+   }
+  },
+  "Notes-augmented CatBoost (FS-B + notes)": {
+   "all": {
+    "n": 5108,
+    "rule_pos": 322,
+    "llm_pos": 340,
+    "AUROC": {
+     "rule": 0.829,
+     "rule_ci": [
+      0.798,
+      0.861
+     ],
+     "llm": 0.821,
+     "llm_ci": [
+      0.791,
+      0.854
+     ],
+     "llm_minus_rule": -0.008,
+     "diff_ci": [
+      -0.027,
+      0.008
+     ]
+    },
+    "AUPRC": {
+     "rule": 0.328,
+     "rule_ci": [
+      0.245,
+      0.416
+     ],
+     "llm": 0.318,
+     "llm_ci": [
+      0.238,
+      0.402
+     ],
+     "llm_minus_rule": -0.011,
+     "diff_ci": [
+      -0.053,
+      0.023
+     ]
+    }
+   },
+   "code_negative": {
+    "n": 5016,
+    "rule_pos": 239,
+    "llm_pos": 257,
+    "AUROC": {
+     "rule": 0.826,
+     "rule_ci": [
+      0.792,
+      0.858
+     ],
+     "llm": 0.816,
+     "llm_ci": [
+      0.783,
+      0.849
+     ],
+     "llm_minus_rule": -0.01,
+     "diff_ci": [
+      -0.035,
+      0.01
+     ]
+    },
+    "AUPRC": {
+     "rule": 0.245,
+     "rule_ci": [
+      0.19,
+      0.317
+     ],
+     "llm": 0.234,
+     "llm_ci": [
+      0.182,
+      0.304
+     ],
+     "llm_minus_rule": -0.011,
+     "diff_ci": [
+      -0.06,
+      0.028
+     ]
+    }
+   }
+  }
+ }
+}

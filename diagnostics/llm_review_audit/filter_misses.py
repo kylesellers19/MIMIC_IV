@@ -14,7 +14,7 @@ Same scope and linkage as liver_sentences.run(): DEV+TEST admissions, discharge 
 radiology by hadm_id, outpatient radiology by subject within -365/+30 days.
 
 PRIVACY: counts only. No text is printed or written.
-USAGE: scripts/run0919_env.sh diagnostics/llm_review_audit/filter_misses.py
+USAGE: scripts/run0919_env.sh diagnostics/llm_review_audit/filter_misses.py [--anatomy-only] [--json <path>]
 """
 import re
 import sys
@@ -163,6 +163,14 @@ def main():
     print(f"  with a strong term ONLY in dropped sentences     {int((pos.missed_strong.astype(bool) & ~pos.kept_strong.astype(bool)).sum()):,}")
     print(f"  with no steatosis/echo term in any kept sentence {int((~pos.kept_any.astype(bool)).sum()):,}")
     print(f"\nruntime {time.time() - t0:.0f}s")
+    if "--json" in sys.argv:          # counts for scripts/llm_review_results.py
+        import json
+        json.dump({"selection": "anatomy only" if LS.ANATOMY_ONLY else "current",
+                   "admissions_strong_term_in_kept": int(a.kept_strong.sum()),
+                   "admissions_strong_term_only_dropped": int(len(only)),
+                   "rule_positive": int(len(pos)),
+                   "rule_positive_no_term_in_kept": int((~pos.kept_any.astype(bool)).sum())},
+                  open(sys.argv[sys.argv.index("--json") + 1], "w"), indent=1)
 
 
 if __name__ == "__main__":

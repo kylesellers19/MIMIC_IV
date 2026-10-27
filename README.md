@@ -8,9 +8,31 @@ A cross-sectional study of **MASLD** (metabolic dysfunction–associated steatot
 
 | Aim | Question | Status |
 | --- | --- | --- |
-| 1a | Among admissions with documented hepatic steatosis, what population-weighted fraction carry no MASLD code? | Computable-stage 2×2 built; the headline estimate needs the 400-chart adjudication, which has not happened |
-| 1b | Can models predict documented steatosis from structured data, from notes, and from both? | Silver-label development complete; gold-standard evaluation awaits the adjudication |
-| 1c | Do recovery, its accuracy, and model calibration differ across race, insurance, sex, language and age? | Level 1 (computable stage) complete; levels 2–3 need the gold standard |
+| 1a | Among admissions with documented hepatic steatosis, what population-weighted fraction carry no MASLD code? | Computable-stage 2×2 built. A second computable phenotype, a local language model, gives the same gap (`docs/llm_review_preliminary.md`). The headline estimate needs the 400-chart adjudication, which has not happened |
+| 1b | Can models predict documented steatosis from structured data, from notes, and from both? | Silver-label development complete. The label-dependence check against the language-model label is done (`docs/aim1b_llm_label.md`). Gold-standard evaluation awaits the adjudication |
+| 1c | Do recovery, its accuracy, and model calibration differ across race, insurance, sex, language and age? | Level 1 (computable stage) complete, and repeated with the language-model phenotype (`docs/aim1c_llm_level1.md`). Levels 2–3 need the gold standard |
+
+## Preliminary results
+
+<!-- preliminary-results:start -->
+
+> **Computable stage only — not yet validated by chart review.** Exploratory. Every number in this block is written by `scripts/readme_preliminary.py` from the results files it cites; counts from 1 to 10 appear as <11. The 400-chart clinician review, which sets the headline estimates, has not happened.
+
+**Aim 1a: steatosis documented in notes but never coded.**
+
+- **Frozen keyword rule, full population:** 22,799 of 27,826 note-positive admissions (81.9%) carry no MASLD code. The population is 373,992 admissions of 161,119 patients (`docs/run_2026-09-19/results/integrity_gate.json`).
+- **A second reader gives the same gap.** A language model run locally reviewed every liver sentence for a random sample of 13,000 dev/test patients. Among patients it finds steatosis for, 77.7% have no code; the rule gives 77.2%.
+- **Scaled to all dev/test patients:** about 11,700 patients by the model and 11,300 by the rule have documented steatosis and no code, against about 3,700 with a code. That is 9,100 when both methods must agree and 13,700 when either is enough.
+- **Why the code is missing:** among coded cases the model finds, 92.2% are written in the discharge summary, against 43.3% of uncoded ones. Of the uncoded cases, 38.9% appear only on outpatient imaging and 17.8% only in inpatient radiology reports.
+- **Where the two readers disagree:** on uncoded admissions, the model confirms 82.1% of the rule's positives and finds steatosis in 1.6% of the rule's negatives. Those disagreements are where chart review is needed (`docs/llm_review_preliminary.md`).
+
+**Aim 1b: label dependence.** The locked TEST predictions were scored against the model's label instead of the rule's. AUROC changes by at most 0.025, and every interval includes zero. The models are not simply learning the rule's quirks (`docs/aim1b_llm_label.md`).
+
+**Aim 1c: equity at the computable stage.** Using the model instead of the rule raises the overall recovery share by 1.4 points (0.5–2.2). The two readers disagree more often for Medicare patients (36.3% [31.5–41.3] of admissions either calls positive) than for privately insured patients (26.1% [21.7–30.5]), and more for ages 75–88 (40.6% [31.5–50.7]) than for ages 40–54 (23.2% [18.9–28.0]). Note-based ascertainment is less consistent for older and Medicare patients, so the chart review should check those groups closely (`docs/aim1c_llm_level1.md`).
+
+**Method notes.** The sentence filter was widened to admit NAFLD-type abbreviations, unnamed steatosis and sentences under liver headings. That cut the admissions whose steatosis statement never reached the model from 367 to 0. Prompt rewordings agree with the main prompt at Cohen's kappa 0.808–0.895 on a 500-sentence development pilot (`docs/llm_review_protocol.md`).
+
+<!-- preliminary-results:end -->
 
 ## Obtaining and verifying the data
 
@@ -67,6 +89,7 @@ Stages in order, with the document each writes. See [run_pipeline.sh](run_pipeli
 | 12 | Notes text and embeddings | `run0919_notes_index.py`, `run0919_notes_text.py`, `run0919_embed.py` | (credentialed derivatives only) |
 | 13 | Models: structured, notes, fusion | `run0919_features.py`, `run0919_aim1b_structured.py`, `run0919_notes_tfidf.py`, `run0919_notes_embed_arm.py`, `run0919_fusion_lock.py` | `docs/aim1b_structured.md`, `docs/aim1b_notes.md`, `docs/aim1b_fusion.md`, `docs/aim1b_locked_predictions.md` |
 | 14 | Gold-standard evaluation (after adjudication) | `aim1b_evaluate_gold.py`, `aim1b_gold_cv.py` | pending the chart review |
+| 15 | Local-LLM sentence review (exploratory, amendments h–j) | `liver_sentences.py`, `llm_sentence_review.py`, `llm_annotation.py`, `llm_review_results.py`, `aim1c_llm_level1.py`, `aim1b_llm_label.py`, `readme_preliminary.py` | `docs/llm_review_protocol.md`, `docs/llm_review_preliminary.md`, `docs/aim1c_llm_level1.md`, `docs/aim1b_llm_label.md` |
 
 Runs are journalled under `docs/run_<date>/`: `RUN_LOG.md` (what was done and why), `STATE.json`, `DECISIONS_FOR_KYLE.md` (open protocol questions), `BLOCKERS.md`, `FINAL_REPORT.md`.
 

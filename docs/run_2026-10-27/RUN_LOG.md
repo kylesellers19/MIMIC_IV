@@ -1,0 +1,17 @@
+# Run log — run_2026-10-27 (local-LLM review, exploratory)
+
+What was done and why. Numbers live in `results/`, written by the scripts named here.
+
+1. **Amendment first.** Analysis-plan amendments (h)–(j) and registry entries S15–S17 were committed in `6338243`, before any stratum-level LLM result or any Aim 1b re-scoring existed. They say exactly what had already been seen.
+2. **LLM phenotype.** `scripts/llm_phenotype.py` defines the admission-level label from the merged v4 answers (`docs/llm_review_protocol.md`). The scope is the dev/test notes subsample; GOLD_HOLDOUT is untouched.
+3. **Preliminary results.** `scripts/llm_review_results.py` writes `results/llm_review_preliminary.json` and `docs/llm_review_preliminary.md`.
+   - The LLM-versus-rule comparison is restricted to uncoded admissions, because the coded group's rule-by-LLM cells include counts below 11 that could be recovered by subtraction.
+4. **Aim 1c.** `scripts/aim1c_llm_level1.py` writes `results/aim1c_llm_level1.json` and `docs/aim1c_llm_level1.md`: E1–E3 plus coverage, with a subject-cluster bootstrap.
+   - Only stratum admission counts are published. Percentages are withheld when the count behind them or its complement is 1–10.
+5. **Aim 1b.** `scripts/aim1b_llm_label.py` writes `results/aim1b_llm_label.json` and `docs/aim1b_llm_label.md`. The locked TEST predictions are scored against both labels; nothing is retrained and no locked file is touched.
+6. **README.** `scripts/readme_preliminary.py` writes the README's "Preliminary results" block from the results files.
+
+**Open decisions:**
+- Whether the LLM scores and locks GOLD_HOLDOUT before chart review.
+- Sign-off on the admission rule (protocol §5) and on the annotation guide's open questions.
+- Who the two annotators are.

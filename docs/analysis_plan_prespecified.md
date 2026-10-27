@@ -38,6 +38,9 @@
 | S12 | Aim 1c headline stratum table recomputed with 571.9 removed | 2026-09-19 (this run, Phase 5) | this run → `docs/aim1c_level1.md` |
 | S13 | Aim 1b secondary modeling population: imaging-observed subset | 2026-09-19 (this run, Phase 7) | this run → `docs/aim1b_structured.md` |
 | S14 | Aim 1b FS-A as a sensitivity Layer-0 input to fusion | 2026-09-19 (this run, Phase 9) | this run → `docs/aim1b_fusion.md` |
+| S15 | Local-LLM sentence review as a second computable note phenotype (amendment h) | 2026-10-27 | exploratory → `docs/llm_review_preliminary.md` |
+| S16 | Aim 1c level 1 repeated with the LLM phenotype and with rule-or-LLM (amendment i) | 2026-10-27 | exploratory → `docs/aim1c_llm_level1.md` |
+| S17 | Aim 1b TEST predictions re-scored against the LLM phenotype (amendment j) | 2026-10-27 | exploratory → `docs/aim1b_llm_label.md` |
 
 ## 3. Amendments dated 2026-09-19
 
@@ -54,3 +57,26 @@ Each amendment carries the statement: **no result from this analysis had been se
 ## 4. Run parameters fixed at this commit
 
 BOOTSTRAP_REPS = 500; CELL_FLOOR = 11; SEED_TRAINING_DRAW = 20260919; SEED_SPLIT = 20260920; SEED_REVIEWER_ASSIGN = 20260921; SEED_NOTES_SUBSAMPLE = 20260922. Age bands for Aim 1c: 18–39, 40–54, 55–64, 65–74, 75–88, 89 and over (MIMIC recodes ages ≥89 to 91). Subgroup metrics in Aim 1b are reported only where the subgroup has ≥50 positives and ≥50 negatives in TEST.
+
+## 5. Amendments dated 2026-10-27
+
+These analyses were not in the 7 September plan. They are exploratory throughout. Each amendment states exactly what had already been seen when it was written, because some LLM results were computed before this amendment.
+
+- **(h) Local-LLM sentence review as a second computable note phenotype (S15).** Method: `docs/llm_review_protocol.md` (prompt v4 merged over v3; Gemma 4 26B run locally).
+  - **Admission definition:** positive when at least one kept sentence is YES with timing CURRENT or PAST.
+  - **Sensitivity definitions:** UNCLEAR counted positive; CURRENT only; anatomy-only sentence selection.
+  - **Scope:** the dev/test notes subsample, a simple random sample of dev/test subjects (`SEED_NOTES_SUBSAMPLE`). GOLD_HOLDOUT is untouched.
+  - **Already seen:** the overall admission counts, the agreement with `note_b`, the code-by-note-rule cell counts, the documentation pathway of uncoded positives, and admission coverage by race, insurance, sex, language and age band.
+  - **Disclosed:** the prompt was revised twice on information that included TEST (the v1→v2 pilot and the v4 alcohol rule). TEST is therefore not independent of prompt development for this phenotype.
+- **(i) Aim 1c level 1 with the LLM phenotype (S16).** In the dev/test notes subsample, by race, insurance, sex, language and age band (the plan's bands). Encounter-characteristic strata are flagged as in level 1.
+  - **E1, recovery share:** B/(A+B) under the frozen rule, the LLM phenotype, and rule-or-LLM.
+  - **E2, discordance:** among admissions positive by either method, the share positive by exactly one, and each direction separately.
+  - **E3, documentation pathway:** among uncoded LLM-positive admissions, the share with the YES evidence in the discharge summary, in inpatient radiology only, and in outpatient radiology only.
+  - **Statistics:** subject-cluster bootstrap, 500 replicates, seed 20260919, 95% percentile intervals.
+  - **Floors:** a stratum is reported when its denominator is at least 11. A difference is described only when the interval is no wider than 20 percentage points (level 1's rule).
+  - **Already seen:** no stratum-level result from E1–E3. Only the coverage table in (h) had been seen at stratum level.
+- **(j) Aim 1b label dependence (S17).** The TEST-partition predictions already locked in `data/processed/run_2026-09-19_preds/` are re-scored on the TEST admissions of the notes subsample. Arms: CatBoost FS-A, FS-B and FS-AVAIL unweighted; TF-IDF S unweighted; embedding-head S (logistic regression); and the notes-augmented CatBoost unweighted.
+  - **Labels:** each arm is scored against the frozen rule (`note_b`) and against the LLM phenotype.
+  - **Metrics:** AUROC and AUPRC, with the paired difference (LLM label minus rule label) and subject-cluster bootstrap intervals (500 replicates, seed 20260919). Computed on all TEST admissions and on code-negative TEST admissions.
+  - **What it does not change:** no model is retrained, and no locked file is modified.
+  - **Already seen:** no result from this analysis.

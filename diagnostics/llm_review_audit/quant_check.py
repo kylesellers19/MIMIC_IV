@@ -21,6 +21,7 @@ PRIVACY: sentence text is read only to stratify and to build the run input; noth
 USAGE: scripts/run0919_env.sh diagnostics/llm_review_audit/quant_check.py sample|summary
 """
 import glob
+import json
 import os
 import re
 import sys
@@ -89,6 +90,14 @@ def weighted(flags, strata):
     return float((W * g.x / g.n).sum()), float((g.N * g.x / g.n).sum()), float((W * lo).sum()), float((W * hi).sum())
 
 
+def agree_pct(a, b):
+    """Percent agreeing; when 1-10 disagree (the cell floor), only 'over 99' or 'under 99' is published."""
+    off = int((a != b).sum())
+    if 0 < off < 11:
+        return "over 99" if off / len(a) < 0.01 else "under 99"
+    return round(100 * (1 - off / len(a)), 1)
+
+
 def summary():
     st = pd.read_parquet(f"{Q}/sample_strata.parquet")
     runs = {r: answers(r) for r in RUNS}
@@ -113,20 +122,40 @@ def summary():
         print(f"  {s:<14} n {len(g):>4} | same answer {int((g.q4 == g.qat).sum()):>4} | "
               f"same answer+timing {int(((g.q4 == g.qat) & (g.q4_t == g.qat_t)).sum()):>4} | changes {ch}")
     yes4, yesq = m.q4_lab.eq("YES (counts)"), m.qat_lab.eq("YES (counts)")
-    print(f"  {len(st):,} sampled of {int(st.groupby('stratum').population.first().sum()):,} distinct DEV/TEST units; "
-          "population-weighted, conservative 95% bounds:")
-    for name, flags in (("answer differs", m.q4 != m.qat), ("primary-rule status differs", yes4 != yesq),
-                        ("  of which QAT counts, Q4_K_M does not", yesq & ~yes4), ("  of which Q4_K_M counts, QAT does not", yes4 & ~yesq)):
+    pop = int(st.groupby("stratum").population.first().sum())
+    print(f"  {len(st):,} sampled of {pop:,} distinct DEV/TEST units; population-weighted, conservative 95% bounds:")
+    res = {}
+    for key, name, flags in (("answer_differs", "answer differs", m.q4 != m.qat),
+                             ("primary_status_differs", "primary-rule status differs", yes4 != yesq),
+                             ("qat_only_counts", "  of which QAT counts, Q4_K_M does not", yesq & ~yes4),
+                             ("q4_only_counts", "  of which Q4_K_M counts, QAT does not", yes4 & ~yesq)):
         est, units, lo, hi = weighted(flags, m)
+        res[key] = {"pct": round(100 * est, 2), "lo": round(100 * lo, 2), "hi": round(100 * hi, 2), "units_approx": int(round(units, -1))}
         print(f"  {name:<40} {100 * est:5.2f}% ({100 * lo:.2f}-{100 * hi:.2f}) | about {units:,.0f} units")
     print(f"  primary-rule YES in the sample: Q4_K_M {int(yes4.sum())}, QAT {int(yesq.sum())}, both {int((yes4 & yesq).sum())}")
 
     print("\n3. Q4_K_M rerun against the stored answers")
+    same = {}
     for src, txt in (("v4", "units re-asked with v4 in the full run"), ("v3", "units whose stored answer is v3's NO, carried over")):
         g = m[m.source == src]
         moves = pd.crosstab(g.answer, g.q4)
         ch = {f"{i}->{j}": int(moves.loc[i, j]) for i in moves.index for j in moves.columns if i != j and moves.loc[i, j]}
+        same[src] = agree_pct(g.answer, g.q4)
         print(f"  {txt}: n {len(g):,} | same answer {int((g.answer == g.q4).sum()):,} | changes {ch}")
+
+    # aggregate record for the public docs: percentages only, no unit counts below the floor
+    out = {"script": "diagnostics/llm_review_audit/quant_check.py", "prompt": "v4", "seed": SEED,
+           "models": {"study": "gemma4:26b (Q4_K_M)", "comparison": "gemma4:26b-a4b-it-qat (Q4_0)"},
+           "units_sampled": len(m), "units_population": pop, "strata": list(TARGET),
+           "bounds": "population-weighted per-stratum Wilson 95% bounds (conservative)",
+           "qat_vs_q4_rerun": res,
+           "q4_rerun_vs_stored_same_answer_pct": {"reasked_with_v4": same["v4"], "v3_no_carried_over": same["v3"],
+                                                  "all": agree_pct(m.answer, m.q4)},
+           "speed_per_s": {r: round(1 / runs[r].seconds.iloc[10:].mean(), 2) for r in RUNS}}
+    os.makedirs("docs/run_2026-10-27/results", exist_ok=True)
+    with open("docs/run_2026-10-27/results/quant_check.json", "w") as f:
+        json.dump(out, f, indent=1)
+    print("\nwrote docs/run_2026-10-27/results/quant_check.json")
 
 
 if __name__ == "__main__":

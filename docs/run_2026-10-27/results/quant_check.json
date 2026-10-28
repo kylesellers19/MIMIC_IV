@@ -1,0 +1,53 @@
+{
+ "script": "diagnostics/llm_review_audit/quant_check.py",
+ "prompt": "v4",
+ "seed": 20261027,
+ "models": {
+  "study": "gemma4:26b (Q4_K_M)",
+  "comparison": "gemma4:26b-a4b-it-qat (Q4_0)"
+ },
+ "units_sampled": 1300,
+ "units_population": 89857,
+ "strata": [
+  "YES",
+  "UNCLEAR",
+  "NO, fat word",
+  "NO, other"
+ ],
+ "bounds": "population-weighted per-stratum Wilson 95% bounds (conservative)",
+ "qat_vs_q4_rerun": {
+  "answer_differs": {
+   "pct": 0.47,
+   "lo": 0.32,
+   "hi": 1.86,
+   "units_approx": 430
+  },
+  "primary_status_differs": {
+   "pct": 0.29,
+   "lo": 0.17,
+   "hi": 1.65,
+   "units_approx": 260
+  },
+  "qat_only_counts": {
+   "pct": 0.16,
+   "lo": 0.09,
+   "hi": 1.48,
+   "units_approx": 150
+  },
+  "q4_only_counts": {
+   "pct": 0.13,
+   "lo": 0.07,
+   "hi": 1.43,
+   "units_approx": 110
+  }
+ },
+ "q4_rerun_vs_stored_same_answer_pct": {
+  "reasked_with_v4": "over 99",
+  "v3_no_carried_over": "over 99",
+  "all": "over 99"
+ },
+ "speed_per_s": {
+  "q4_rerun": 1.06,
+  "qat": 1.27
+ }
+}

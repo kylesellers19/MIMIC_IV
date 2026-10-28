@@ -1,16 +1,82 @@
 # MASLD phenotyping on MIMIC-IV — code repository
 
-A cross-sectional study of **MASLD** (metabolic dysfunction–associated steatotic liver disease) ascertainment in MIMIC-IV, asking how much documented hepatic steatosis the diagnosis codes miss, whether structured and note-based models can recover it, and whether recovery and its accuracy are even across patient groups.
+**How many hospital patients have fatty liver disease written in their chart but never coded? Can the rest of the record find them? And are the gap and the fix fair across patient groups?**
+
+This repository holds the code and aggregate results of a cross-sectional study of **MASLD** (metabolic dysfunction–associated steatotic liver disease, formerly NAFLD) in MIMIC-IV. MIMIC-IV is a credentialed research database of hospital admissions at Beth Israel Deaconess Medical Center in Boston.
 
 **No data of any kind lives in this repository.** Every input is credentialed PhysioNet data held locally; every tracked file here is code or an aggregate document.
 
+## Purpose
+
+Health-record research, disease registries, quality measures and many decision tools find patients by their diagnosis codes. Hepatic steatosis, the finding that defines MASLD, is often written in a radiology report or a discharge summary with no matching code.
+
+A patient like that is invisible to anything that counts codes:
+- they drop out of research cohorts and prevalence estimates;
+- they don't count in quality measures;
+- reminders or follow-up triggered by a code, such as fibrosis risk assessment, may never happen.
+
+This study measures how large that invisible group is. It then tests whether information already in the record can find these patients, and checks whether the gap and the fix fall evenly across patient groups.
+
+## Gaps this research fills
+
+1. **How big the coding gap is, measured against chart review.**
+   - **What exists:** standard code lists for the disease (Hagström et al., *Hepatology* 2021), and keyword and language-model tools that find steatosis in notes.
+   - **What's missing:** a well-established answer, for a general hospital population, to how many patients with documented steatosis carry no code. That answer has to be checked against clinicians reading the charts and weighted back to the whole population, not obtained by comparing one algorithm with another.
+2. **Whether the record can recover missed cases, tested honestly.**
+   - **The problem:** a model trained on labels taken from note keywords can score well just by relearning the keywords.
+   - **What's needed:** structured data (labs, vital signs, medications, imaging), note text, or both have to be judged on charts the models never saw. Every prediction must be locked before the review starts.
+3. **Whether ascertainment is fair.**
+   - **The risk:** if coding misses steatosis more often in some groups, every code-based study and quality measure inherits that bias. Finding cases in notes could narrow the bias or create a new one, because notes depend on who gets imaged and how thoroughly they are documented.
+   - **What's needed:** coding, recovery, the accuracy of recovery, and model calibration have to be compared across race, insurance, sex, language and age, with intervals, not assumed equal.
+4. **Reproducibility.**
+   - **The problem:** phenotyping results from private health-system data can't be rerun by others.
+   - **What this study does:** it uses MIMIC-IV, which any credentialed researcher can obtain, together with:
+     - an analysis plan committed before any model was trained;
+     - a frozen, git-tagged note phenotype;
+     - hashed and locked predictions;
+     - a language model run locally at a pinned version.
+
 ## Aims
 
-| Aim | Question | Status |
-| --- | --- | --- |
-| 1a | Among admissions with documented hepatic steatosis, what population-weighted fraction carry no MASLD code? | Computable-stage 2×2 built. A second computable phenotype, a local language model, gives the same gap (`docs/llm_review_preliminary.md`). The headline estimate needs the 400-chart adjudication, which has not happened |
-| 1b | Can models predict documented steatosis from structured data, from notes, and from both? | Silver-label development complete. The label-dependence check against the language-model label is done (`docs/aim1b_llm_label.md`). Gold-standard evaluation awaits the adjudication |
-| 1c | Do recovery, its accuracy, and model calibration differ across race, insurance, sex, language and age? | Level 1 (computable stage) complete, and repeated with the language-model phenotype (`docs/aim1c_llm_level1.md`). Levels 2–3 need the gold standard |
+### Aim 1a: measure the coding gap
+
+- **Question:** among admissions with documented hepatic steatosis, what population-weighted share carry no MASLD diagnosis code?
+- **Approach:**
+  - A frozen keyword phenotype reads every discharge summary and radiology report.
+  - Codes are crossed with it in a code × note 2×2 table.
+  - 400 charts, sampled from all four cells with the uncoded-but-documented cell largest, are reviewed by clinicians.
+  - Inverse-probability weights carry their verdicts back to the whole population.
+- **Hypothesis** (recorded 7 September 2026): most, probably more than three-quarters, carry no code.
+- **Status:**
+  - Computable-stage estimate done; a second phenotype, a local language model, gives the same gap.
+  - The headline estimate awaits the chart review.
+
+### Aim 1b: recover the missed cases
+
+- **Question:** can models predict documented steatosis from structured data, from note text, and from both?
+- **Approach:**
+  - **Structured data:** gradient-boosted trees, with clinical-only and availability-only feature sets to show what drives prediction.
+  - **Notes and both:** text models, and a stacked combination of the two.
+  - **Process:** trained on a development partition, checked once on a test partition, then evaluated against the chart review on a held-out set no model was fitted on.
+- **Hypothesis:** against the chart review, adding notes beats structured data alone among uncoded admissions.
+- **Status:**
+  - Development is complete against keyword labels.
+  - Predictions on the held-out charts are hashed and locked.
+  - Evaluation awaits the chart review.
+
+### Aim 1c: check fairness
+
+- **Question:** do coding, recovery, recovery accuracy and model calibration differ by race, insurance, sex, language and age?
+- **Approach,** at three levels:
+  1. coding and recovery rates by group at the computable stage;
+  2. recovery accuracy by group, against the chart review;
+  3. model calibration by group.
+- **Hypothesis:** coding rates differ across race and insurance groups (direction not assumed), and accuracy and calibration are less even than the recovery rate itself.
+- **Status:**
+  - Level 1 is done with both phenotypes.
+  - Levels 2 and 3 need the chart review.
+
+The hypotheses, sensitivity analyses and every later amendment are in [docs/analysis_plan_prespecified.md](docs/analysis_plan_prespecified.md), each committed before the analysis it governs.
 
 ## Preliminary results
 
@@ -26,9 +92,22 @@ A cross-sectional study of **MASLD** (metabolic dysfunction–associated steatot
 - **Why the code is missing:** among coded cases the model finds, 92.2% are written in the discharge summary, against 43.3% of uncoded ones. Of the uncoded cases, 38.9% appear only on outpatient imaging and 17.8% only in inpatient radiology reports.
 - **Where the two readers disagree:** on uncoded admissions, the model confirms 82.1% of the rule's positives and finds steatosis in 1.6% of the rule's negatives. Those disagreements are where chart review is needed (`docs/llm_review_preliminary.md`).
 
-**Aim 1b: label dependence.** The locked TEST predictions were scored against the model's label instead of the rule's. AUROC changes by at most 0.025, and every interval includes zero. The models are not simply learning the rule's quirks (`docs/aim1b_llm_label.md`).
+**Aim 1b: recovering missed cases.** These are scored against the keyword label, not chart review.
 
-**Aim 1c: equity at the computable stage.** Using the model instead of the rule raises the overall recovery share by 1.4 points (0.5–2.2). The two readers disagree more often for Medicare patients (36.3% [31.5–41.3] of admissions either calls positive) than for privately insured patients (26.1% [21.7–30.5]), and more for ages 75–88 (40.6% [31.5–50.7]) than for ages 40–54 (23.2% [18.9–28.0]). Note-based ascertainment is less consistent for older and Medicare patients, so the chart review should check those groups closely (`docs/aim1c_llm_level1.md`).
+- **Structured data predicts documented steatosis,** with gradient-boosted trees on the TEST partition (75,124 admissions): AUROC 0.857 (0.849–0.866) with every feature.
+- **Much of that is documentation, not physiology.** Clinical values alone (labs, blood pressure, BMI, medications, comorbidity) give 0.787 (0.778–0.796). Knowing only what was measured, imaged, ordered and written, with no clinical value at all, gives 0.812 (0.803–0.820). The keyword label partly reflects how thoroughly a patient was worked up, which is why the models must be judged against chart review (`docs/aim1b_structured.md`).
+- **Label dependence:** the locked TEST predictions were scored against the language model's label instead of the rule's. AUROC changes by at most 0.025, and every interval includes zero. The models are not simply learning the rule's quirks (`docs/aim1b_llm_label.md`).
+
+**Aim 1c: fairness at the computable stage.**
+
+- **The gap is large in every group.** Among note-positive admissions, the share with no code is 85.7% [84.1–87.1] for Black/African American patients against 82.4% [81.5–83.2] for White patients. It is 83.6% [82.4–84.9] for Medicaid against 80.2% [79.1–81.3] for private insurance, and 81.1% [80.1–82.0] for women against 82.7% [81.6–83.6] for men. Across age bands it ranges from 80.3% to 83.6%. The differences are a few points, and the intervals separate for race and insurance (`docs/aim1c_level1.md`).
+- **The two readers disagree unevenly.** Of the admissions either the rule or the language model calls positive, they disagree on 36.3% [31.5–41.3] for Medicare patients against 26.1% [21.7–30.5] for privately insured patients, and on 40.6% [31.5–50.7] for ages 75–88 against 23.2% [18.9–28.0] for ages 40–54. Note-based ascertainment is less consistent for older and Medicare patients, so the chart review should check those groups closely. Swapping the rule for the language model raises the overall recovery share by only 1.4 points (0.5–2.2) (`docs/aim1c_llm_level1.md`).
+
+**Ready for the chart review.**
+
+- **Every model's held-out predictions are hashed and locked** before any chart is reviewed (`docs/aim1b_locked_predictions.md`).
+- **So are the language model's answers:** it labelled all 2,865 held-out admissions (20,200 distinct sentences, 0 errors), and its answers were hashed. Nothing about those answers has been looked at (`docs/llm_gold_lock.md`). The rule turning sentence answers into admission labels was in the analysis plan before the run (amendment h).
+- **The language model's answers barely depend on how it is compressed.** A smaller build of the same model was run on a stratified sample of 1,300 dev/test sentences. Weighted back to all 89,857, it changed an estimated 0.47% of answers (conservative 95% bounds 0.32–1.86%). Whether a sentence counts toward the label changed for 0.29% (0.17–1.65%), about evenly in each direction (`docs/llm_review_protocol.md` §6).
 
 **Method notes.** The sentence filter was widened to admit NAFLD-type abbreviations, unnamed steatosis and sentences under liver headings. That cut the admissions whose steatosis statement never reached the model from 367 to 0. Prompt rewordings agree with the main prompt at Cohen's kappa 0.808–0.895 on a 500-sentence development pilot (`docs/llm_review_protocol.md`).
 
@@ -89,7 +168,7 @@ Stages in order, with the document each writes. See [run_pipeline.sh](run_pipeli
 | 12 | Notes text and embeddings | `run0919_notes_index.py`, `run0919_notes_text.py`, `run0919_embed.py` | (credentialed derivatives only) |
 | 13 | Models: structured, notes, fusion | `run0919_features.py`, `run0919_aim1b_structured.py`, `run0919_notes_tfidf.py`, `run0919_notes_embed_arm.py`, `run0919_fusion_lock.py` | `docs/aim1b_structured.md`, `docs/aim1b_notes.md`, `docs/aim1b_fusion.md`, `docs/aim1b_locked_predictions.md` |
 | 14 | Gold-standard evaluation (after adjudication) | `aim1b_evaluate_gold.py`, `aim1b_gold_cv.py` | pending the chart review |
-| 15 | Local-LLM sentence review (exploratory, amendments h–j) | `liver_sentences.py`, `llm_sentence_review.py`, `llm_annotation.py`, `llm_review_results.py`, `aim1c_llm_level1.py`, `aim1b_llm_label.py`, `readme_preliminary.py` | `docs/llm_review_protocol.md`, `docs/llm_review_preliminary.md`, `docs/aim1c_llm_level1.md`, `docs/aim1b_llm_label.md` |
+| 15 | Local-LLM sentence review (exploratory, amendments h–j) | `liver_sentences.py`, `llm_sentence_review.py`, `llm_phenotype.py`, `llm_annotation.py`, `llm_review_results.py`, `aim1c_llm_level1.py`, `aim1b_llm_label.py`, `llm_gold_lock.py`, `readme_preliminary.py` | `docs/llm_review_protocol.md`, `docs/llm_review_preliminary.md`, `docs/aim1c_llm_level1.md`, `docs/aim1b_llm_label.md`, `docs/llm_gold_lock.md` |
 
 Runs are journalled under `docs/run_<date>/`: `RUN_LOG.md` (what was done and why), `STATE.json`, `DECISIONS_FOR_KYLE.md` (open protocol questions), `BLOCKERS.md`, `FINAL_REPORT.md`.
 
@@ -107,4 +186,9 @@ git status --short | grep -E "data/|models/|logs/"   # must print nothing
 
 ## Reference standard
 
-The 400-chart adjudication has **not** been performed. The criteria are drafted but not signed off (`docs/adjudication_criteria.md` — every `[CLINICIAN]` flag is an open question), the blank instrument and reviewer assignment exist, and the packet generator has been dry-run and its output deleted. No performance number anywhere in this repository is validated against human adjudication; each is either a comparison of two computable phenotypes or a silver-label development diagnostic.
+The 400-chart adjudication has **not** been performed, and clinician reviewers join later.
+
+- **Ready:** the blank instrument and reviewer assignment exist, and the packet generator has been dry-run and its output deleted. Every model arm's predictions on the held-out charts (`docs/aim1b_locked_predictions.md`) and the local language model's answers (`docs/llm_gold_lock.md`) are hashed and locked, so it can be shown that nothing was tuned against the review.
+- **Still needed:** clinician sign-off on the criteria (`docs/adjudication_criteria.md`; every `[CLINICIAN]` flag is an open question) and the reviewers themselves.
+
+No performance number anywhere in this repository is validated against human adjudication. Each is either a comparison of two computable phenotypes or a silver-label development diagnostic.

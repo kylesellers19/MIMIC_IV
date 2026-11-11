@@ -1,0 +1,78 @@
+{
+ "script": "scripts/run1110_decisions.py",
+ "n01": {
+  "scope": "dev/test notes subsample; merged v4 answers; distinct units per admission; sentences with timing CURRENT or PAST",
+  "admissions": 29980,
+  "admissions_with_an_eligible_sentence": 2712,
+  "admissions_scored_zero_by_definition": 27268,
+  "eligible_sentences_per_admission_median": 2.0,
+  "admissions_with_two_or_more_eligible_sentences": 1694,
+  "options": {
+   "max_p": {
+    "quantiles_among_admissions_with_an_eligible_sentence": {
+     "p10": 0.0,
+     "p25": 1.0,
+     "p50": 1.0,
+     "p75": 1.0,
+     "p90": 1.0
+    },
+    "quantiles_primary_positive": {
+     "p10": 1.0,
+     "p25": 1.0,
+     "p50": 1.0,
+     "p75": 1.0,
+     "p90": 1.0
+    },
+    "quantiles_primary_negative_with_an_eligible_sentence": {
+     "p10": 0.0,
+     "p25": 0.0,
+     "p50": 0.0,
+     "p75": 0.0,
+     "p90": 0.003
+    },
+    "admissions_at_or_above_0_5": 2252,
+    "admissions_above_0_99": 2208,
+    "at_or_above_0_5_but_primary_negative": 0,
+    "below_0_5_but_primary_positive": 0,
+    "distinct_score_values_rounded_to_3_decimals": 73
+   },
+   "noisy_or": {
+    "quantiles_among_admissions_with_an_eligible_sentence": {
+     "p10": 0.0,
+     "p25": 1.0,
+     "p50": 1.0,
+     "p75": 1.0,
+     "p90": 1.0
+    },
+    "quantiles_primary_positive": {
+     "p10": 1.0,
+     "p25": 1.0,
+     "p50": 1.0,
+     "p75": 1.0,
+     "p90": 1.0
+    },
+    "quantiles_primary_negative_with_an_eligible_sentence": {
+     "p10": 0.0,
+     "p25": 0.0,
+     "p50": 0.0,
+     "p75": 0.0,
+     "p90": 0.003
+    },
+    "admissions_at_or_above_0_5": 2252,
+    "admissions_above_0_99": "withheld (within 10 of the maximum's count)",
+    "at_or_above_0_5_but_primary_negative": 0,
+    "below_0_5_but_primary_positive": 0,
+    "distinct_score_values_rounded_to_3_decimals": 71
+   }
+  },
+  "noisy_or_minus_max": {
+   "spearman": 0.996,
+   "admissions_where_noisy_or_exceeds_max_by_more_than_0_10": 0,
+   "admissions_where_they_are_equal": 2474
+  },
+  "classifier_only": {
+   "primary_positive_admissions": 2252,
+   "note": "no score; discrimination and calibration measures that need a probability are not reported for this arm"
+  }
+ }
+}

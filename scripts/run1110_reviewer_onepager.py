@@ -37,6 +37,8 @@ def main():
     L = [
         "# Chart review for a fatty-liver documentation study: one page for prospective reviewers", "",
         f"*Written by `scripts/run1110_reviewer_onepager.py` from the study's results files (`{RES}`). The hours are estimates from text length, not measured times.*", "",
+        "> **Hold before sending to a prospective reviewer.** This page states the study question and a result. The draft review criteria (§10) say reviewers are told only that a method for finding hepatic steatosis is being validated. "
+        "Which document gives way is decision N-10 in `docs/run_2026-11-10/DECISIONS_FOR_KYLE.md`. What reviewers are offered is decision N-08.", "",
         "## The question", "",
         "Fatty liver (hepatic steatosis; the disease is now called MASLD, formerly NAFLD) is often written in a hospital chart but left off the list of diagnosis codes. "
         "We want to know how often. That needs clinicians to read charts and say whether steatosis is documented, because a computer search of the text cannot settle it.", "",

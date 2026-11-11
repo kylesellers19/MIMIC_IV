@@ -65,6 +65,14 @@
    "start": "2026-11-11T03:42:09Z",
    "end": "2026-11-11T03:49:36Z",
    "commit": "113656df1d8aa1aa84c11318bf5455450758b216"
+  },
+  "9": {
+   "name": "decisions file",
+   "status": "done",
+   "start": "2026-11-11T03:54:32Z",
+   "end": "2026-11-11T03:58:16Z",
+   "commit": "bab3a4885e46c64137f177ebb3bd552dd255cbba",
+   "note": "N-02 cost figures pending Phase 4; regenerated when it finishes"
   }
  },
  "phase3_commit": "2b32fdee1ef57c8240fc2c6a88b22dbb6af59a48"

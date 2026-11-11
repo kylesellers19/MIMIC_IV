@@ -98,6 +98,15 @@ Written by `scripts/run1110_manuscript_llm.py`, between markers, from the protoc
 - Fixes: `scripts/run1110_gated_push.sh` is now the only way this run pushes; the gate no longer reads a file path used as a JSON key as a patient count (with a test); `scripts/run1110_exposure_audit.py` now always audits the remote head as it was at the start of the run, so F-01's file does not drift as the run pushes.
 - The gate was rerun over the whole range of the run so far and exits 0.
 
+## Phase 9 — decisions file
+
+- `scripts/run1110_decisions.py` wrote `DECISIONS_FOR_KYLE.md`: N-01 to N-08 from Appendix B, in the September format, with draft amendment text for every option and no recommendation, and the table of decisions still open from September with D-01 marked as blocking adjudication. Numbers computed for it are in `results/decisions_inputs.json`.
+- N-01 was described on dev/test only, as a distribution. No GOLD_HOLDOUT file was opened. The figure "80 of 400" in N-03 is quoted from the run file and was not recomputed, because that would mean opening a sealed file.
+- Two items were added that Appendix B does not list, because they came up during the run and are not this run's to decide:
+  - N-09, the material the push gate flags (B-01 and F-01);
+  - N-10, the one-pager stating the study question while the draft criteria (§10) say reviewers are not told it. The one-pager now carries a hold notice at its top.
+- N-02's cost and Phase 4 figures are written from Phase 4's results file and read as pending until it exists.
+
 ## Deviations
 
 - **Phase 1.2 — six files moved, not eight.** The run file says eight heading-text CSVs and names six. Six files in the folder have a `heading` field holding note headings; those were moved. The other two CSVs there are the aggregates Phase 1.3 names (one is keyed by the study's own sub-heading list, the other has no heading field).
@@ -110,3 +119,5 @@ Written by `scripts/run1110_manuscript_llm.py`, between markers, from the protoc
 - **Phase 5 (o).** Stage 2 counts a rule-positive radiology report among imaging-observed admissions. "Outpatient-only" means no report linked to the admission is rule-positive.
 - **Phase 6.2 — the draw.** The run file gives the seed and the allocation only. The draw follows the training draw of `scripts/run0919_phase2_splits.py`: a seeded draw within each cell from all DEV admissions, with no requirement that a note exists, then a seeded shuffle before the IDs are assigned. `make_reviewer_packets.py` itself is fixed to the sample and training keys, so its functions were called from a new script and the file was not edited.
 - **Phase 8 — a gate exemption was refined after the gate failed.** The gate failed the Phase 8 commit on one line of `docs/references/verified_references.md`: an article title copied from PubMed, where the matching window was a published disease name preceded by the word "with". The disease-name exemption had required the window to lie wholly inside the name. It now applies when fewer than ten of the window's thirty characters lie outside a listed name, with a test for both sides of that line. No term was added to the list. This is a change to a safety check made by the run that the check constrains, so it is listed among the things to read first in the final report. The two held-back files of B-01 still fail under the refined rule.
+- **Phase 6.1 and criteria §10.** The one-pager was written as the run file specifies, with the study question and the computable-stage share. The draft adjudication criteria say reviewers are told neither. The page was kept as specified, a hold notice was added to it, and the conflict is decision N-10.
+- **Phase 9 — two items beyond Appendix B.** N-09 and N-10 were added. Nothing in them is decided.

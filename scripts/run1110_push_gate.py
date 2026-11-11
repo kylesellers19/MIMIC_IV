@@ -2,8 +2,9 @@
 """run_2026-11-10 Phase 1.4 — the push gate. The repository is public; nothing is pushed unless this exits 0.
 
 WHAT IT INSPECTS
-    Every file that differs between the remote branch and the index (so: every unpushed commit plus
-    everything staged). Text checks run on the ADDED lines of those files.
+    Every file that differs between the remote branch and the index, and, for the text checks, the ADDED
+    lines of every unpushed commit taken one by one plus everything staged. A line added in one commit and
+    removed in the next would still be published in history, so each commit is checked on its own.
 
 CHECKS (exit status 1 if any fails)
     (a) a path under data/, models/ or logs/;
@@ -130,6 +131,41 @@ def collect(base):
 
 def index_text(path):
     return sh("git", "show", f":{path}")
+
+
+def collect_units(base):
+    """Every unit a push would publish, each checked on its own: one per unpushed commit (its diff against
+    its first parent) plus the staged changes. A line added in one commit and removed in the next is still
+    published in history, so the net difference alone is not enough.
+    -> [(label, changes, text_getter)]"""
+    units = []
+    for c in [x for x in sh("git", "rev-list", "--reverse", "--first-parent", f"{base}..HEAD").split() if x]:
+        diff = parse_diff(sh("git", "diff", "-U0", "--no-color", "--no-ext-diff", "--no-renames", f"{c}^", c))
+        for line in sh("git", "diff", "--name-status", "--no-renames", f"{c}^", c).splitlines():
+            parts = line.split("\t")
+            if len(parts) == 2:
+                diff.setdefault(parts[1], {"added": [], "removed": [], "binary": False})["status"] = parts[0]
+        for line in sh("git", "diff", "--numstat", "--no-renames", f"{c}^", c).splitlines():
+            parts = line.split("\t")
+            if len(parts) == 3 and parts[0] == "-":
+                diff.setdefault(parts[2], {"added": [], "removed": [], "binary": True})["binary"] = True
+        for rec in diff.values():
+            rec.setdefault("status", "M")
+        units.append((c[:7], diff, (lambda p, c=c: sh("git", "show", f"{c}:{p}"))))
+    staged = parse_diff(sh("git", "diff", "--cached", "-U0", "--no-color", "--no-ext-diff", "--no-renames", "HEAD"))
+    for line in sh("git", "diff", "--cached", "--name-status", "--no-renames", "HEAD").splitlines():
+        parts = line.split("\t")
+        if len(parts) == 2:
+            staged.setdefault(parts[1], {"added": [], "removed": [], "binary": False})["status"] = parts[0]
+    for line in sh("git", "diff", "--cached", "--numstat", "--no-renames", "HEAD").splitlines():
+        parts = line.split("\t")
+        if len(parts) == 3 and parts[0] == "-":
+            staged.setdefault(parts[2], {"added": [], "removed": [], "binary": True})["binary"] = True
+    for rec in staged.values():
+        rec.setdefault("status", "M")
+    if staged:
+        units.append(("staged", staged, index_text))
+    return units
 
 
 # ----------------------------------------------------------------------------- (a) (b)
@@ -426,24 +462,33 @@ def check_frozen(start):
 # ----------------------------------------------------------------------------- main
 def run_gate(base):
     from scripts.note_phenotype import TRIGGERS
-    changes = collect(base)
-    live = {p: r for p, r in changes.items() if r.get("status") != "D"}
+    net = collect(base)                                   # base against the index: paths, types, config
+    units = collect_units(base)                           # each commit and the staged changes: text checks
     res = {"base": sh("git", "rev-parse", base).strip(), "head": sh("git", "rev-parse", "HEAD").strip(),
-           "files_inspected": len(changes), "checks": {}}
-    res["checks"]["a_forbidden_paths"] = {"findings": check_paths(changes)}
-    res["checks"]["b_tabular_or_binary"] = {"findings": check_filetypes(changes)}
-    ids_bad, ids_stats = check_ids(live, load_ids(), known_seeds())
+           "files_inspected": len(net), "commits_inspected": len([u for u in units if u[0] != "staged"]), "checks": {}}
+    merged, paths, types, small, config = {}, set(net), dict(net), [], check_config(net)
+    for label, ch, text_of in units:
+        for p, rec in ch.items():
+            paths.add(p)
+            if rec.get("status") != "D":
+                merged[f"{label}::{p}"] = rec
+                if rec.get("binary") or (rec.get("status") == "A" and p.lower().endswith(TABULAR_EXT)):
+                    types.setdefault(p, rec)
+                    types[p] = dict(types[p], status=rec.get("status") if types[p].get("status") != "A" else "A",
+                                    binary=types[p].get("binary") or rec.get("binary"))
+                if p.endswith((".md", ".json")) and not rec.get("binary"):
+                    small += [dict(f, file=f"{label}::{p}") for f in check_small_counts(p, text_of(p), {n for n, _ in rec["added"]})]
+        config += [dict(f, file=f"{label}::{f['file']}") for f in check_config(ch)]
+    res["checks"]["a_forbidden_paths"] = {"findings": check_paths(paths)}
+    res["checks"]["b_tabular_or_binary"] = {"findings": check_filetypes(types)}
+    ids_bad, ids_stats = check_ids(merged, load_ids(), known_seeds())
     res["checks"]["c_identifiers"] = {"findings": ids_bad, **ids_stats}
-    found, stats = check_note_text(live, load_corpus(), load_private_headings(), base_blob(base),
+    found, stats = check_note_text(merged, load_corpus(), load_private_headings(), base_blob(base),
                                    lexicon=[rx for _, rx, _, _ in TRIGGERS])
     res["checks"]["d_note_text"] = {"findings": [dict(f, kind=k) for k, v in found.items() for f in v], **stats,
                                     **{k: len(v) for k, v in found.items()}}
-    small = []
-    for p, rec in live.items():
-        if p.endswith((".md", ".json")) and not rec.get("binary"):
-            small += check_small_counts(p, index_text(p), {n for n, _ in rec["added"]})
     res["checks"]["e_small_counts"] = {"findings": small}
-    res["checks"]["f_config_append_only"] = {"findings": check_config(changes)}
+    res["checks"]["f_config_append_only"] = {"findings": config}
     start = json.load(open(f"{RES}/frozen_hashes_start.json"))
     res["checks"]["g_frozen_hashes"] = {"findings": check_frozen(start),
                                         "artifacts_checked": len(start["frozen"]) + len(start["locked"])}
@@ -460,7 +505,7 @@ def main():
     a = ap.parse_args()
     res = run_gate(a.base)
     res["checked_utc"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
-    print(f"push gate: base {res['base'][:7]} -> head {res['head'][:7]} (+ staged) | files inspected {res['files_inspected']}")
+    print(f"push gate: base {res['base'][:7]} -> head {res['head'][:7]} (+ staged) | files inspected {res['files_inspected']} | commits checked one by one {res['commits_inspected']}")
     for name, c in res["checks"].items():
         print(f"  {name:<24} {'PASS' if c['pass'] else 'FAIL'}  findings {len(c['findings'])}")
         for f in c["findings"][:40]:

@@ -1,0 +1,65 @@
+{
+ "script": "scripts/run1110_preflight.py",
+ "branch": "run/2026-09-19",
+ "head": "ac58d5743541acec0220a99d3ca1378735a17f0b",
+ "origin_head": "ac58d5743541acec0220a99d3ca1378735a17f0b",
+ "local_contains_origin": true,
+ "uncommitted_paths": [
+  ".gitignore"
+ ],
+ "untracked_paths": [
+  "diagnostics/liver_sentence_cap/cap_sweep_summary.csv",
+  "diagnostics/liver_sentence_cap/liver_sentences_cap.py",
+  "diagnostics/llm_unclear_audit/unclear_audit_summary.csv",
+  "diagnostics/section_rule_v2/liver_sentences_baseline.py",
+  "diagnostics/section_rule_v2/step2_wellformedness.csv",
+  "diagnostics/section_rule_v2/step3_safety_check.csv",
+  "diagnostics/section_rule_v2/step4_dirty_openers.csv",
+  "diagnostics/section_rule_v2/step4_indings.csv",
+  "diagnostics/section_rule_v2/step5_optionA_moves.csv",
+  "diagnostics/section_rule_v2/step5_study_headers.csv",
+  "diagnostics/section_rule_v2/tableA_closing_headings.csv",
+  "diagnostics/section_rule_v2/tableB_continuing_headings.csv",
+  "diagnostics/section_rule_v2/whitelist_change.diff",
+  "docs/adjudication/criteria_revision_proposal.md",
+  "docs/run_2026-11-10/BLOCKERS.md",
+  "docs/run_2026-11-10/DECISIONS_FOR_KYLE.md",
+  "docs/run_2026-11-10/RUN_FILE.md",
+  "docs/run_2026-11-10/RUN_LOG.md",
+  "docs/run_2026-11-10/results/frozen_hashes_start.json",
+  "docs/run_2026-11-10/results/preflight.json",
+  "scripts/llm_timing_test.py",
+  "scripts/run1110_frozen_hashes.py",
+  "scripts/run1110_preflight.py",
+  "scripts/run1110_state.py"
+ ],
+ "frozen_hashes": {
+  "n_frozen": 11,
+  "n_locked": 24,
+  "lock_mismatches": 0,
+  "missing": 0,
+  "all_pass": true
+ },
+ "integrity_gate": {
+  "checks": 14,
+  "passed": 14,
+  "all_pass": true
+ },
+ "pytest": {
+  "passed": 83,
+  "failed": 0
+ },
+ "ollama": {
+  "version": "0.34.2",
+  "model": "gemma4:26b",
+  "digest": "08ae7ec1744bd7f451c4a530afb39d2673ad9d07a8369b8a33a3613b41212a68",
+  "matches_run_file": true,
+  "cloud_disabled_log_line": "Ollama cloud disabled: true",
+  "listeners_11434": [
+   "127.0.0.1:11434"
+  ],
+  "loopback_only": true
+ },
+ "filevault": "FileVault is On.",
+ "issues": []
+}

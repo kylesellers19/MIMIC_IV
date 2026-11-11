@@ -1,0 +1,181 @@
+{
+ "frozen": {
+  "scripts/note_phenotype.py": {
+   "sha256": "9bc69d128fb2b89024a4733ad08db0e3db7d10216d7090ab931fa7e002956282",
+   "bytes": 19376
+  },
+  "docs/note_phenotype_spec.md": {
+   "sha256": "4954823ae0a692a8b6c09a44663905daaac049fe386de42919f3be13a0367016",
+   "bytes": 9695
+  },
+  "sql/masld_coded.sql": {
+   "sha256": "26f0ca07b3b82d16d2ecda2e977f6beb5a5375c6350528426da8f9e562f2455e",
+   "bytes": 5065
+  },
+  "data/processed/analysis_population_clean.parquet": {
+   "sha256": "d0642bdf40851d28734e01e1baad0cfbe3dcc53a9c3b712bb758b9b21925fe81",
+   "bytes": 10979336
+  },
+  "data/processed/aim1a_sample.parquet": {
+   "sha256": "a23d903c0a5533318cbabbf66d410f44c410a75be001d69e9d20b16cf85151da",
+   "bytes": 7372
+  },
+  "data/processed/aim1a_training_key.parquet": {
+   "sha256": "6bde041948111e7ed076f8425a0a168acbd1866063be7ce274881f63f7777664",
+   "bytes": 1075
+  },
+  "data/processed/splits_v1.parquet": {
+   "sha256": "3802d725ca5b48566c862b45b0fcf6c8fad631fea178945075e82aa58e74b6e9",
+   "bytes": 3762866
+  },
+  "docs/run_2026-10-27/results/llm_gold_lock.json": {
+   "sha256": "5cbfcb52e701e5e8f8225a8d6183c1ba8d2db8b1f83e57db003afa6bacff0c09",
+   "bytes": 1897
+  },
+  "docs/run_2026-09-19/results/locked_predictions.json": {
+   "sha256": "b6e27a4b1cc41462c299f37d2c428196127fd9930ae3897be0c4c603bdbb8357",
+   "bytes": 3851
+  },
+  "docs/llm_gold_lock.md": {
+   "sha256": "17ea17a295ecda2834f988fb7e0f289065a95f35ee6a8c4ffc06cbd555b99269",
+   "bytes": 1734
+  },
+  "docs/aim1b_locked_predictions.md": {
+   "sha256": "518ada23edea3089fb5835b842ce05cdc6167ed233ce93cf2b390653a3418c6c",
+   "bytes": 3816
+  }
+ },
+ "append_only": {
+  "scripts/masld_config.py": {
+   "sha256": "ad452e0793580a86284171325e91abe5576201be7ceccc54597c8048606fcf75",
+   "bytes": 4060
+  }
+ },
+ "locked": {
+  "data/processed/gold_holdout_predictions_v1.parquet": {
+   "sha256": "0b3d9a4d256568534772adef66435986b3fda96238cf146b9593f721601e7aca",
+   "bytes": 904440,
+   "matches_lock": true
+  },
+  "data/processed/llm_review/gold_v4/gold_admission_labels_v4.parquet": {
+   "sha256": "00e7454053184c8805bc298fca3dbf655d6ef5edbdaeed3a58c1186464cc72a1",
+   "bytes": 30692,
+   "matches_lock": true
+  },
+  "data/processed/llm_review/gold_v4/liver_sentences_gold.parquet": {
+   "sha256": "53b068fc359d1030b0c534faa221c7eb646e4594c42316d3889b2358f8f74cce",
+   "bytes": 4119009,
+   "matches_lock": true
+  },
+  "data/processed/llm_review/gold_v4/run/manifest.json": {
+   "sha256": "834b5df6e288787bd317a47f367902ab7a4c6c27d98b557e99ab3451b749211c",
+   "bytes": 3158,
+   "matches_lock": true
+  },
+  "data/processed/llm_review/gold_v4/run/sentence_answers.parquet": {
+   "sha256": "4e224981bcdaae046104bf741b331bb1cd1072260e93d2bb3dbbc24e9cd21e2d",
+   "bytes": 3012850,
+   "matches_lock": true
+  },
+  "data/processed/run_2026-09-19_preds/notes_arm_gold.parquet": {
+   "sha256": "aa6e4dd4c57861d1d4ae41d63d9bc99845c0c35fc7fef66418886d1058a7889f",
+   "bytes": 148341,
+   "matches_lock": true
+  },
+  "data/processed/run_2026-09-19_preds/notes_tfidf_gold.parquet": {
+   "sha256": "fb32514dde344452b9dbd6bd144e6b909c4d33d193d1246f7a322ae1ab4ad642",
+   "bytes": 270850,
+   "matches_lock": true
+  },
+  "data/processed/run_2026-09-19_preds/structured_gold.parquet": {
+   "sha256": "9f410afee6908afabedd4ded0dd46143a03d38fc60b49456e081c3a3f771557e",
+   "bytes": 470443,
+   "matches_lock": true
+  },
+  "models/run_2026-09-19/aug_FS-B_notes_unweighted.cbm": {
+   "sha256": "5b0ef40e300c89210394564f590b6453022252f840e8edce095fba37f4251f54",
+   "bytes": 340904,
+   "matches_lock": true
+  },
+  "models/run_2026-09-19/aug_FS-B_notes_weighted.cbm": {
+   "sha256": "eb54b3b96e88c28528e11d69db7d62fa4f60a7dabf7ff6933c9287bc723dbf4e",
+   "bytes": 165964,
+   "matches_lock": true
+  },
+  "models/run_2026-09-19/cat_FS-AVAIL_unweighted.cbm": {
+   "sha256": "1f8dde32d6cf3b5dc06ac1c682b9afeb9e5e85fac71b3a296cc133aa9f3fda72",
+   "bytes": 1357800,
+   "matches_lock": true
+  },
+  "models/run_2026-09-19/cat_FS-AVAIL_weighted.cbm": {
+   "sha256": "7ab00cbf7098a36588e743715cf23732941358ac2fa08c90d70730c0d700d945",
+   "bytes": 1368872,
+   "matches_lock": true
+  },
+  "models/run_2026-09-19/cat_FS-A_unweighted.cbm": {
+   "sha256": "143c4e9e06002f47103fa991a3299d74959a2d9034bddbf240f1c4f8db753fca",
+   "bytes": 2254728,
+   "matches_lock": true
+  },
+  "models/run_2026-09-19/cat_FS-A_weighted.cbm": {
+   "sha256": "8e2e237f9837ad2cee717df2fdd62fe8b0dd7e279002832090e546c1c107c34b",
+   "bytes": 1566048,
+   "matches_lock": true
+  },
+  "models/run_2026-09-19/cat_FS-B_unweighted.cbm": {
+   "sha256": "1835e0ea5bb1ce1d1d31f91b702791b5d1ed4ef84421535b2c7d21a2eadf2d2b",
+   "bytes": 2163576,
+   "matches_lock": true
+  },
+  "models/run_2026-09-19/cat_FS-B_weighted.cbm": {
+   "sha256": "10b0eeb6bdb121fc111557689b73172cd6257ba6751dfafbbfffa006f6ee016f",
+   "bytes": 1242360,
+   "matches_lock": true
+  },
+  "models/run_2026-09-19/lgb_FS-A_unweighted.txt": {
+   "sha256": "2db2237cce4481b13c7d015c9c3082942fdf582e41f19f1508cbd77e4edd617e",
+   "bytes": 1126866,
+   "matches_lock": true
+  },
+  "models/run_2026-09-19/lgb_FS-A_weighted.txt": {
+   "sha256": "a20e15b29206a60ca177da7559e39f916ca89cc79b984ed91288859f4db47793",
+   "bytes": 19889,
+   "matches_lock": true
+  },
+  "models/run_2026-09-19/lgb_FS-B_unweighted.txt": {
+   "sha256": "f1d7f0fde99a4b3438c2189b320f3188606583f7a3c3361080a003d51c99ee9d",
+   "bytes": 817943,
+   "matches_lock": true
+  },
+  "models/run_2026-09-19/lgb_FS-B_weighted.txt": {
+   "sha256": "f81878dba15c556ad94b3b6e71a1bee899687698ef43f4be28ad21b7b0ad789d",
+   "bytes": 11783,
+   "matches_lock": true
+  },
+  "models/run_2026-09-19/xgb_FS-A_unweighted.json": {
+   "sha256": "a2dea04158fd21c5aee61857d62a60cb940d636288fd039d669013120cb22f89",
+   "bytes": 4124129,
+   "matches_lock": true
+  },
+  "models/run_2026-09-19/xgb_FS-A_weighted.json": {
+   "sha256": "402187c0ff73ab8e4bfc1a94c60707b1220efc24bf32177847f21f08958eb4d9",
+   "bytes": 16094475,
+   "matches_lock": true
+  },
+  "models/run_2026-09-19/xgb_FS-B_unweighted.json": {
+   "sha256": "606468812407330ce1ffa23175251ba7bc9a658ae23669df66bc5b8c5ac9442a",
+   "bytes": 3437993,
+   "matches_lock": true
+  },
+  "models/run_2026-09-19/xgb_FS-B_weighted.json": {
+   "sha256": "9cf008d5729fc77f72a2b9ddc83a880fcd2ba06ad8114c2df89e0ccabe973c64",
+   "bytes": 16080870,
+   "matches_lock": true
+  }
+ },
+ "lock_mismatches": [],
+ "missing": [],
+ "n_frozen": 11,
+ "n_locked": 24,
+ "all_pass": true
+}

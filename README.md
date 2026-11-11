@@ -1,33 +1,41 @@
 # MASLD phenotyping on MIMIC-IV — code repository
 
-**How many hospital patients have fatty liver disease written in their chart but never coded? Can the rest of the record find them? And are the gap and the fix fair across patient groups?**
+**How many hospital patients have fatty liver disease written in their chart but never coded? Can the rest of the record identify them? And do the gap, and the methods that identify these patients, fall evenly across patient groups?**
 
-This repository holds the code and aggregate results of a cross-sectional study of **MASLD** (metabolic dysfunction–associated steatotic liver disease, formerly NAFLD) in MIMIC-IV. MIMIC-IV is a credentialed research database of hospital admissions at Beth Israel Deaconess Medical Center in Boston.
+This repository holds the code and aggregate results of an observational, cross-sectional study of **MASLD** (metabolic dysfunction–associated steatotic liver disease, formerly NAFLD) in MIMIC-IV. MIMIC-IV is a credentialed research database of hospital admissions at Beth Israel Deaconess Medical Center in Boston.
 
 **No data of any kind lives in this repository.** Every input is credentialed PhysioNet data held locally; every tracked file here is code or an aggregate document.
 
 ## Purpose
 
-Health-record research, disease registries, quality measures and many decision tools find patients by their diagnosis codes. Hepatic steatosis, the finding that defines MASLD, is often written in a radiology report or a discharge summary with no matching code.
+Health-record research, disease registries, quality measures and many decision tools identify patients by their diagnosis codes. Hepatic steatosis, the finding that defines MASLD, is often written in a radiology report or a discharge summary with no matching code.
 
-A patient like that is invisible to anything that counts codes:
-- they drop out of research cohorts and prevalence estimates;
-- they don't count in quality measures;
-- reminders or follow-up triggered by a code, such as fibrosis risk assessment, may never happen.
+Anything that counts codes does not count a patient like that:
+- they are absent from research cohorts and prevalence estimates;
+- they are absent from quality measures;
+- a reminder or follow-up that is triggered by a code, such as fibrosis risk assessment, is not triggered.
 
-This study measures how large that invisible group is. It then tests whether information already in the record can find these patients, and checks whether the gap and the fix fall evenly across patient groups.
+This study estimates how large that uncounted group is. It then tests whether information already in the record can identify these patients, and compares the gap, and the accuracy of that identification, across patient groups.
+
+## What kind of study this is
+
+- **Observational.** Nothing is assigned to anyone, and no causal effect is estimated. The study estimates proportions, the accuracy of methods, and how both differ between groups.
+- **The unit** is one hospital admission. A patient can contribute several, so bootstrap intervals resample patients, not admissions.
+- **The population** is the admissions of one hospital that have at least one diagnosis and at least one linked note. Results carry to other hospitals only as far as one believes their coding and documentation resemble this one's. The study does not test that.
+- **A difference is a description.** Groups, periods and care settings differ in case mix, in how often the liver is imaged and in how much is written down. None of that is assigned at random, and nothing is adjusted for unless a result says so. A difference between two groups is therefore reported as a difference, with its interval, and no cause is attributed to it.
+- **What is fixed in advance.** The note rule was frozen before codes were crossed with it. The hypotheses and each later analysis were committed before they were run, and where something had already been seen, the plan says what. The study is not registered.
 
 ## Gaps this research fills
 
-1. **How big the coding gap is, measured against chart review.**
+1. **How big the coding gap is, estimated against chart review.**
    - **What exists:** standard code lists for the disease (Hagström et al., *Hepatology* 2021), and keyword and language-model tools that find steatosis in notes.
-   - **What's missing:** a well-established answer, for a general hospital population, to how many patients with documented steatosis carry no code. That answer has to be checked against clinicians reading the charts and weighted back to the whole population, not obtained by comparing one algorithm with another.
-2. **Whether the record can recover missed cases, tested honestly.**
+   - **What's missing:** a well-established estimate, for a general hospital population, of how many patients with documented steatosis carry no code. That estimate has to rest on clinicians reading a sample of charts, weighted back to the whole population. Comparing one algorithm with another cannot supply it.
+2. **Whether the record can identify the missed cases, tested without circularity.**
    - **The problem:** a model trained on labels taken from note keywords can score well just by relearning the keywords.
    - **What's needed:** structured data (labs, vital signs, medications, imaging), note text, or both have to be judged on charts the models never saw. Every prediction must be locked before the review starts.
 3. **Whether ascertainment is fair.**
    - **The risk:** if coding misses steatosis more often in some groups, every code-based study and quality measure inherits that bias. Finding cases in notes could narrow the bias or create a new one, because notes depend on who gets imaged and how thoroughly they are documented.
-   - **What's needed:** coding, recovery, the accuracy of recovery, and model calibration have to be compared across race, insurance, sex, language and age, with intervals, not assumed equal.
+   - **What's needed:** coding, recovery, the accuracy of recovery, and model calibration have to be compared across race, insurance, sex, language and age, with intervals, not assumed equal. A difference found this way describes the record; it does not say why the difference exists.
 4. **Reproducibility.**
    - **The problem:** phenotyping results from private health-system data can't be rerun by others.
    - **What this study does:** it uses MIMIC-IV, which any credentialed researcher can obtain, together with:
@@ -38,33 +46,33 @@ This study measures how large that invisible group is. It then tests whether inf
 
 ## Aims
 
-### Aim 1a: measure the coding gap
+### Aim 1a: estimate the coding gap
 
 - **Question:** among admissions with documented hepatic steatosis, what population-weighted share carry no MASLD diagnosis code?
 - **Approach:**
   - A frozen keyword phenotype reads every discharge summary and radiology report.
   - Codes are crossed with it in a code × note 2×2 table.
   - 400 charts, sampled from all four cells with the uncoded-but-documented cell largest, are reviewed by clinicians.
-  - Inverse-probability weights carry their verdicts back to the whole population.
+  - Each verdict is weighted by the inverse of its chart's sampling probability, so the estimate refers to the whole population and not to the sample.
 - **Hypothesis** (recorded 7 September 2026): most, probably more than three-quarters, carry no code.
 - **Status:**
-  - Computable-stage estimate done; a second phenotype, a local language model, gives the same gap.
+  - Computable-stage estimate done; a second phenotype, a local language model, gives a similar estimate.
   - The headline estimate awaits the chart review.
 
-### Aim 1b: recover the missed cases
+### Aim 1b: identify the missed cases
 
 - **Question:** can models predict documented steatosis from structured data, from note text, and from both?
 - **Approach:**
-  - **Structured data:** gradient-boosted trees, with clinical-only and availability-only feature sets to show what drives prediction.
+  - **Structured data:** gradient-boosted trees, with clinical-only and availability-only feature sets to show which inputs the prediction rests on.
   - **Notes and both:** text models, and a stacked combination of the two.
   - **Process:** trained on a development partition, checked once on a test partition, then evaluated against the chart review on a held-out set no model was fitted on.
-- **Hypothesis:** against the chart review, adding notes beats structured data alone among uncoded admissions.
+- **Hypothesis:** against the chart review, adding notes discriminates better than structured data alone among uncoded admissions.
 - **Status:**
   - Development is complete against keyword labels.
   - Predictions on the held-out charts are hashed and locked.
   - Evaluation awaits the chart review.
 
-### Aim 1c: check fairness
+### Aim 1c: compare across patient groups
 
 - **Question:** do coding, recovery, recovery accuracy and model calibration differ by race, insurance, sex, language and age?
 - **Approach,** at three levels:
@@ -72,6 +80,7 @@ This study measures how large that invisible group is. It then tests whether inf
   2. recovery accuracy by group, against the chart review;
   3. model calibration by group.
 - **Hypothesis:** coding rates differ across race and insurance groups (direction not assumed), and accuracy and calibration are less even than the recovery rate itself.
+- **What a difference means:** the groups are compared as they are found in the record. A difference is reported with its interval and is not attributed to a cause.
 - **Status:**
   - Level 1 is done with both phenotypes.
   - Levels 2 and 3 need the chart review.
@@ -87,36 +96,36 @@ The hypotheses, sensitivity analyses and every later amendment are in [docs/anal
 **Aim 1a: steatosis documented in notes but never coded.**
 
 - **Frozen keyword rule, full population:** 22,799 of 27,826 note-positive admissions (81.9%) carry no MASLD code. The population is 373,992 admissions of 161,119 patients (`docs/run_2026-09-19/results/integrity_gate.json`).
-- **A second reader gives the same gap.** A language model run locally reviewed every liver sentence for a random sample of 13,000 dev/test patients. Among patients it finds steatosis for, 77.7% have no code; the rule gives 77.2%.
+- **A second reader gives a similar estimate.** A language model run locally reviewed every liver sentence for a random sample of 13,000 dev/test patients. Among patients it finds steatosis for, 77.7% have no code; the rule gives 77.2%.
 - **Scaled to all dev/test patients:** about 11,700 patients by the model and 11,300 by the rule have documented steatosis and no code, against about 3,700 with a code. That is 9,100 when both methods must agree and 13,700 when either is enough.
-- **Why the code is missing:** among coded cases the model finds, 92.2% are written in the discharge summary, against 43.3% of uncoded ones. Of the uncoded cases, 38.9% appear only on outpatient imaging and 17.8% only in inpatient radiology reports.
-- **Where the two readers disagree:** on uncoded admissions, the model confirms 82.1% of the rule's positives and finds steatosis in 1.6% of the rule's negatives. Those disagreements are where chart review is needed (`docs/llm_review_preliminary.md`).
+- **Where the finding is written, by code status:** among coded cases the model finds, 92.2% are written in the discharge summary, against 43.3% of uncoded ones. Of the uncoded cases, 38.9% appear only on outpatient imaging and 17.8% only in inpatient radiology reports. This is an association. It does not show that where a finding is written decides whether it is coded.
+- **Where the two readers disagree:** on uncoded admissions, the model confirms 82.1% of the rule's positives and finds steatosis in 1.6% of the rule's negatives. Only chart review can settle those disagreements (`docs/llm_review_preliminary.md`).
 
 **Aim 1b: recovering missed cases.** These are scored against the keyword label, not chart review.
 
 - **Structured data predicts documented steatosis,** with gradient-boosted trees on the TEST partition (75,124 admissions): AUROC 0.857 (0.849–0.866) with every feature.
-- **Much of that is documentation, not physiology.** Clinical values alone (labs, blood pressure, BMI, medications, comorbidity) give 0.787 (0.778–0.796). Knowing only what was measured, imaged, ordered and written, with no clinical value at all, gives 0.812 (0.803–0.820). The keyword label partly reflects how thoroughly a patient was worked up, which is why the models must be judged against chart review (`docs/aim1b_structured.md`).
-- **Label dependence:** the locked TEST predictions were scored against the language model's label instead of the rule's. AUROC changes by at most 0.025, and every interval includes zero. The models are not simply learning the rule's quirks (`docs/aim1b_llm_label.md`).
+- **Much of the discrimination comes from what was recorded, not from the clinical values.** Clinical values alone (labs, blood pressure, BMI, medications, comorbidity) give 0.787 (0.778–0.796). Knowing only what was measured, imaged, ordered and written, with no clinical value at all, gives 0.812 (0.803–0.820). One reading is that the keyword label partly reflects how thoroughly a patient was worked up. That is why the models must be judged against chart review (`docs/aim1b_structured.md`).
+- **Label dependence:** the locked TEST predictions were scored against the language model's label instead of the rule's. AUROC changes by at most 0.025, and every interval includes zero. That is evidence against the models merely reproducing the rule's particulars. Neither label has been checked against chart review (`docs/aim1b_llm_label.md`).
 
 **Aim 1c: fairness at the computable stage.**
 
-- **The gap is large in every group.** Among note-positive admissions, the share with no code is 85.7% [84.1–87.1] for Black/African American patients against 82.4% [81.5–83.2] for White patients. It is 83.6% [82.4–84.9] for Medicaid against 80.2% [79.1–81.3] for private insurance, and 81.1% [80.1–82.0] for women against 82.7% [81.6–83.6] for men. Across age bands it ranges from 80.3% to 83.6%. The differences are a few points, and the intervals separate for race and insurance (`docs/aim1c_level1.md`).
+- **The gap is large in every group.** Among note-positive admissions, the share with no code is 85.7% [84.1–87.1] for Black/African American patients against 82.4% [81.5–83.2] for White patients. It is 83.6% [82.4–84.9] for Medicaid against 80.2% [79.1–81.3] for private insurance, and 81.1% [80.1–82.0] for women against 82.7% [81.6–83.6] for men. Across age bands it ranges from 80.3% to 83.6%. The differences are a few points, and the intervals separate for race and insurance. They are unadjusted: the groups also differ in case mix and in how often the liver is imaged, and no cause is attributed to the differences (`docs/aim1c_level1.md`).
 - **The two readers disagree unevenly.** Of the admissions either the rule or the language model calls positive, they disagree on 36.3% [31.5–41.3] for Medicare patients against 26.1% [21.7–30.5] for privately insured patients, and on 40.6% [31.5–50.7] for ages 75–88 against 23.2% [18.9–28.0] for ages 40–54. Note-based ascertainment is less consistent for older and Medicare patients, so the chart review should check those groups closely. Swapping the rule for the language model raises the overall recovery share by only 1.4 points (0.5–2.2) (`docs/aim1c_llm_level1.md`).
 
 **Ready for the chart review.**
 
 - **Every model's held-out predictions are hashed and locked** before any chart is reviewed (`docs/aim1b_locked_predictions.md`).
 - **So are the language model's answers:** it labelled all 2,865 held-out admissions (20,200 distinct sentences, 0 errors), and its answers were hashed. Nothing about those answers has been looked at (`docs/llm_gold_lock.md`). The rule turning sentence answers into admission labels was in the analysis plan before the run (amendment h). Against the chart review the language model will be scored as a classifier only: no admission-level probability is defined for it, a choice fixed on 11 November 2026 before any chart was reviewed (amendment p).
-- **The language model's answers barely depend on how it is compressed.** A smaller build of the same model was run on a stratified sample of 1,300 dev/test sentences. Weighted back to all 89,857, it changed an estimated 0.47% of answers (conservative 95% bounds 0.32–1.86%). Whether a sentence counts toward the label changed for 0.29% (0.17–1.65%), about evenly in each direction (`docs/llm_review_protocol.md` §6).
+- **The language model's answers change little with how it is compressed.** A smaller build of the same model was run on a stratified sample of 1,300 dev/test sentences. Weighted back to all 89,857, it changed an estimated 0.47% of answers (conservative 95% bounds 0.32–1.86%). Whether a sentence counts toward the label changed for 0.29% (0.17–1.65%), about evenly in each direction (`docs/llm_review_protocol.md` §6).
 
 **Method notes.** The sentence filter was widened to admit NAFLD-type abbreviations, unnamed steatosis and sentences under liver headings. That cut the admissions whose steatosis statement never reached the model from 367 to 0. Prompt rewordings agree with the main prompt at Cohen's kappa 0.808–0.895 on a 500-sentence development pilot (`docs/llm_review_protocol.md`).
 
 **Exploratory, added 10 November 2026.** Four analyses on the frozen keyword rule and one check of the language model's labels. Their definitions (amendments k–o) were committed before any of them was computed. None is validated against chart review; tables and limitations are in `docs/preliminary_2026-11-10.md`.
 
-- **Fibrosis index by cell.** FIB-4 can be computed for 61.5% of uncoded note-positive admissions and 64.2% of coded note-positive ones, against 37.5% where neither codes nor notes are positive. Among those, the share above 2.67 is 45.4% [44.3–46.6] uncoded, 54.9% [52.3–57.7] coded and 32.4% [32.0–32.8] where neither is positive. Inpatient values overstate fibrosis risk: with the most recent outpatient values the three shares are 32.8%, 42.5% and 23.5% (`docs/run_2026-11-10/results/fib4_by_cell.json`).
-- **Later outcomes.** 10,727 patients had a first note-positive admission with no code and no earlier code. 55.2% returned to this hospital. Of those, 8.4% [7.7–9.1] later carried a cirrhosis code and 11.6% [10.8–12.4] were later given a MASLD code, a median of 480 days after discharge. Among patients coded at that first admission who returned, 8.3% [6.7–10.3] later carried a cirrhosis code. Only returns to this hospital are seen, so each figure is a floor (`docs/run_2026-11-10/results/later_outcomes.json`).
-- **Coding by period.** The share of note-positive admissions with no code is 84.3% [83.4–85.2] in admissions coded in ICD-9 and 79.2% [78.1–80.2] in ICD-10. By the patient's anchor year group it runs from 84.5% [83.4–85.5] (2008–2010) to 79.0% [77.1–80.5] (2017–2019) (`docs/run_2026-11-10/results/icd_era.json`).
-- **Where the liver was imaged.** Of 138,603 admissions with liver imaging, a radiology report is rule-positive in 14.7% [14.3–15.1]. The discharge summary is also rule-positive in 39.7% [38.7–40.7] of those. When it is, 31.7% [30.4–33.1] are coded; when it is not, 2.8% [2.5–3.2] (`docs/run_2026-11-10/results/imaging_funnel.json`).
+- **Fibrosis index by cell.** FIB-4 can be computed for 61.5% of uncoded note-positive admissions and 64.2% of coded note-positive ones, against 37.5% where neither codes nor notes are positive. Among those, the share above 2.67 is 45.4% [44.3–46.6] uncoded, 54.9% [52.3–57.7] coded and 32.4% [32.0–32.8] where neither is positive. FIB-4 is validated in outpatients, and acute illness tends to raise it: with the most recent outpatient values the three shares are 32.8%, 42.5% and 23.5%. Each cell is described on the admissions where FIB-4 could be computed, a differently selected subset in each (`docs/run_2026-11-10/results/fib4_by_cell.json`).
+- **Later outcomes.** 10,727 patients had a first note-positive admission with no code and no earlier code. 55.2% returned to this hospital. Of those, 8.4% [7.7–9.1] later carried a cirrhosis code and 11.6% [10.8–12.4] were later given a MASLD code, a median of 480 days after discharge. Among patients coded at that first admission who returned, 8.3% [6.7–10.3] later carried a cirrhosis code. Only returns to this hospital are seen, so each figure is a floor. The two groups differ in more than coding and nothing is adjusted, so the comparison does not estimate what coding changes for a patient (`docs/run_2026-11-10/results/later_outcomes.json`).
+- **Coding by period.** The share of note-positive admissions with no code is 84.3% [83.4–85.2] in admissions coded in ICD-9 and 79.2% [78.1–80.2] in ICD-10. By the patient's anchor year group it runs from 84.5% [83.4–85.5] (2008–2010) to 79.0% [77.1–80.5] (2017–2019). Period and ICD version change together, so this table cannot separate one from the other (`docs/run_2026-11-10/results/icd_era.json`).
+- **Where the liver was imaged.** Of 138,603 admissions with liver imaging, a radiology report is rule-positive in 14.7% [14.3–15.1]. The discharge summary is also rule-positive in 39.7% [38.7–40.7] of those. When it is, 31.7% [30.4–33.1] are coded; when it is not, 2.8% [2.5–3.2]. The two go together; this does not show that the summary is what gets the admission coded (`docs/run_2026-11-10/results/imaging_funnel.json`).
 - **Carry-over check.** On dev/test, sentences the earlier prompt answered NO were not asked again with the final prompt. A stratified sample of 3,000 of them was asked: the answer was no longer NO for at most 0.67% (95% upper bound 1.23%), population-weighted. The expected number of admissions that would change label is at most 37 of 29,980 (95% upper bound 346). No stored label was changed (`docs/run_2026-11-10/results/carryover_check.json`).
 
 <!-- preliminary-results:end -->

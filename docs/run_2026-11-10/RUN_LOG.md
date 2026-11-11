@@ -162,3 +162,8 @@ The run itself ended with Phase 11. These entries record what was done afterward
 - `scripts/run1110_decisions.py` marks both items resolved, with the date, and keeps their options as the record of what was considered.
 - `FINAL_REPORT.md` was left as written at the end of the run.
 - **README, 2026-11-11.** Kyle asked for the README on GitHub to be updated. It was already identical to the local file. Three lines were brought up to date through the two README scripts and pushed through the gate: the classifier-only decision (amendment p) in the "Ready for the chart review" block; pipeline row 16; and, under "Reference standard", what blocks the start of the review (D-01) with a link to the open decisions. GitHub's web editor was not used.
+- **README wording, 2026-11-11.** Kyle supplied Rubin's 1972 ETS bulletin on estimating causal effects in experimental and observational studies and asked for the README's wording to follow its diction. No number changed. What changed:
+  - the study is named as observational, with a short section stating the unit, the population, what must be believed to carry results elsewhere, and that a difference between groups is reported as a difference with no cause attributed;
+  - "measure" became "estimate" where a quantity is estimated from a sample, and "find" and "fix" became "identify" and "the methods that identify";
+  - headings and sentences that read as explanations were reworded as descriptions ("Why the code is missing" became "Where the finding is written, by code status"), and the comparisons most open to a causal reading now say what they do not show.
+  - Static text was edited in `README.md`; the script-written block was edited in `scripts/readme_preliminary.py` and regenerated.

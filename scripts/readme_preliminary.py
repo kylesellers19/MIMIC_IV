@@ -53,22 +53,25 @@ def november_block():
          f"- **Fibrosis index by cell.** FIB-4 can be computed for {pc(p1['B']['computable'])} of uncoded note-positive admissions and "
          f"{pc(p1['A']['computable'])} of coded note-positive ones, against {pc(p1['D']['computable'])} where neither codes nor notes are positive. "
          f"Among those, the share above 2.67 is {pci(p1['B']['above_2_67'])} uncoded, {pci(p1['A']['above_2_67'])} coded and "
-         f"{pci(p1['D']['above_2_67'])} where neither is positive. Inpatient values overstate fibrosis risk: with the most recent outpatient "
-         f"values the three shares are {pc(p4['B']['above_2_67'])}, {pc(p4['A']['above_2_67'])} and {pc(p4['D']['above_2_67'])} "
+         f"{pci(p1['D']['above_2_67'])} where neither is positive. FIB-4 is validated in outpatients, and acute illness tends to raise it: with the most "
+         f"recent outpatient values the three shares are {pc(p4['B']['above_2_67'])}, {pc(p4['A']['above_2_67'])} and {pc(p4['D']['above_2_67'])}. "
+         "Each cell is described on the admissions where FIB-4 could be computed, a differently selected subset in each "
          f"(`{R11}/fib4_by_cell.json`).",
          f"- **Later outcomes.** {U['subjects']:,} patients had a first note-positive admission with no code and no earlier code. "
          f"{pc(U['with_a_later_admission'])} returned to this hospital. Of those, {pci(U['later_cirrhosis_flag'])} later carried a cirrhosis code "
          f"and {pci(U['later_coded'])} were later given a MASLD code, a median of {U['later_coded']['days_from_index_discharge']['median']:,.0f} days "
          f"after discharge. Among patients coded at that first admission who returned, {pci(C['later_cirrhosis_flag'])} later carried a cirrhosis code. "
-         f"Only returns to this hospital are seen, so each figure is a floor (`{R11}/later_outcomes.json`).",
+         f"Only returns to this hospital are seen, so each figure is a floor. The two groups differ in more than coding and nothing is adjusted, "
+         f"so the comparison does not estimate what coding changes for a patient (`{R11}/later_outcomes.json`).",
          f"- **Coding by period.** The share of note-positive admissions with no code is {pci(icd['ICD-9 only']['primary_code_set'])} in admissions coded in "
          f"ICD-9 and {pci(icd['ICD-10 only']['primary_code_set'])} in ICD-10. By the patient's anchor year group it runs from "
-         f"{pci(yr[0]['primary_code_set'])} ({yr[0]['stratum'].replace(' - ', '–')}) to {pci(yr[-1]['primary_code_set'])} ({yr[-1]['stratum'].replace(' - ', '–')}) "
-         f"(`{R11}/icd_era.json`).",
+         f"{pci(yr[0]['primary_code_set'])} ({yr[0]['stratum'].replace(' - ', '–')}) to {pci(yr[-1]['primary_code_set'])} ({yr[-1]['stratum'].replace(' - ', '–')}). "
+         f"Period and ICD version change together, so this table cannot separate one from the other (`{R11}/icd_era.json`).",
          f"- **Where the liver was imaged.** Of {fun['stage1_imaging_observed']['x']:,} admissions with liver imaging, a radiology report is "
          f"rule-positive in {pci(fun['stage2_radiology_report_rule_positive'])}. The discharge summary is also rule-positive in "
          f"{pci(fun['stage3_discharge_summary_also_rule_positive'])} of those. When it is, {pci(s4['discharge_summary_rule_positive'])} are coded; "
-         f"when it is not, {pci(s4['discharge_summary_not_rule_positive'])} (`{R11}/imaging_funnel.json`)."]
+         f"when it is not, {pci(s4['discharge_summary_not_rule_positive'])}. The two go together; this does not show that the summary is what gets "
+         f"the admission coded (`{R11}/imaging_funnel.json`)."]
     if car:
         w, a = car["new_sample"]["population_weighted"], car["admissions"]
         f = lambda s: (f"{s['pct']}% (95% upper bound {s['wilson_hi_pct']}%)" if isinstance(s["pct"], str) else f"{s['pct']}% [{s['wilson_lo_pct']}–{s['wilson_hi_pct']}]")
@@ -111,38 +114,40 @@ def main():
          f"note-positive admissions ({g['recovery_share_pct']}%) carry no MASLD code. The population is "
          f"{g['pop_admissions']:,} admissions of {g['pop_subjects']:,} patients "
          "(`docs/run_2026-09-19/results/integrity_gate.json`).",
-         f"- **A second reader gives the same gap.** A language model run locally reviewed every liver sentence for a random "
+         f"- **A second reader gives a similar estimate.** A language model run locally reviewed every liver sentence for a random "
          f"sample of {p['subjects']:,} dev/test patients. Among patients it finds steatosis for, "
          f"{u['llm']['pct_uncoded_subjects']}% have no code; the rule gives {u['rule']['pct_uncoded_subjects']}%.",
          f"- **Scaled to all dev/test patients:** about {u['llm']['subjects_scaled']:,} patients by the model and "
          f"{u['rule']['subjects_scaled']:,} by the rule have documented steatosis and no code, against about "
          f"{u['coded_subjects_scaled']:,} with a code. That is {u['both']['subjects_scaled']:,} when both methods must agree and "
          f"{u['either']['subjects_scaled']:,} when either is enough.",
-         f"- **Why the code is missing:** among coded cases the model finds, {pw['coded']['discharge summary']}% are written in the discharge "
+         f"- **Where the finding is written, by code status:** among coded cases the model finds, {pw['coded']['discharge summary']}% are written in the discharge "
          f"summary, against {pw['uncoded']['discharge summary']}% of uncoded ones. Of the uncoded cases, "
          f"{pw['uncoded']['outpatient radiology only']}% appear only on outpatient imaging and "
-         f"{pw['uncoded']['inpatient radiology only']}% only in inpatient radiology reports.",
+         f"{pw['uncoded']['inpatient radiology only']}% only in inpatient radiology reports. This is an association. It does not show that where a finding "
+         "is written decides whether it is coded.",
          f"- **Where the two readers disagree:** on uncoded admissions, the model confirms {lv['rule_positive_confirmed_by_llm_pct']}% of the "
          f"rule's positives and finds steatosis in {lv['rule_negative_llm_positive_pct']}% of the rule's negatives. "
-         "Those disagreements are where chart review is needed (`docs/llm_review_preliminary.md`).", "",
+         "Only chart review can settle those disagreements (`docs/llm_review_preliminary.md`).", "",
          "**Aim 1b: recovering missed cases.** These are scored against the keyword label, not chart review.", "",
          f"- **Structured data predicts documented steatosis,** with gradient-boosted trees on the TEST partition "
          f"({t['cat|FS-A|unweighted']['n']:,} admissions): AUROC {auc(t['cat|FS-A|unweighted'])} with every feature.",
-         f"- **Much of that is documentation, not physiology.** Clinical values alone (labs, blood pressure, BMI, medications, comorbidity) "
+         f"- **Much of the discrimination comes from what was recorded, not from the clinical values.** Clinical values alone (labs, blood pressure, BMI, medications, comorbidity) "
          f"give {auc(t['cat|FS-B|unweighted'])}. Knowing only what was measured, imaged, ordered and written, with no clinical "
-         f"value at all, gives {auc(t['cat|FS-AVAIL|unweighted'])}. The keyword label partly reflects how thoroughly a patient "
-         "was worked up, which is why the models must be judged against chart review (`docs/aim1b_structured.md`).",
+         f"value at all, gives {auc(t['cat|FS-AVAIL|unweighted'])}. One reading is that the keyword label partly reflects how thoroughly a patient "
+         "was worked up. That is why the models must be judged against chart review (`docs/aim1b_structured.md`).",
          f"- **Label dependence:** the locked TEST predictions were scored against the language model's label instead of the "
          f"rule's. AUROC changes by at most {max(diffs):.3f}"
-         + (", and every interval includes zero" if all_zero else "") + ". The models are not simply learning the rule's quirks "
-         "(`docs/aim1b_llm_label.md`).", "",
+         + (", and every interval includes zero" if all_zero else "") + ". That is evidence against the models merely reproducing the rule's "
+         "particulars. Neither label has been checked against chart review (`docs/aim1b_llm_label.md`).", "",
          "**Aim 1c: fairness at the computable stage.**", "",
          f"- **The gap is large in every group.** Among note-positive admissions, the share with no code is "
          f"{rec(lv1['race'], 'BLACK/AFRICAN AMERICAN')} for Black/African American patients against "
          f"{rec(lv1['race'], 'WHITE')} for White patients. It is {rec(lv1['insurance'], 'Medicaid')} for Medicaid against "
          f"{rec(lv1['insurance'], 'Private')} for private insurance, and {rec(lv1['gender'], 'F')} for women against "
          f"{rec(lv1['gender'], 'M')} for men. Across age bands it ranges from {age_lo}% to {age_hi}%. The differences are "
-         f"a few points{sep} (`docs/aim1c_level1.md`).",
+         f"a few points{sep}. They are unadjusted: the groups also differ in case mix and in how often the liver is imaged, and no cause is "
+         "attributed to the differences (`docs/aim1c_level1.md`).",
          f"- **The two readers disagree unevenly.** Of the admissions either the rule or the language model calls positive, "
          f"they disagree on {ci(e2('insurance', 'Medicare'))} for Medicare patients against {ci(e2('insurance', 'Private'))} "
          f"for privately insured patients, and on {ci(e2('age_band', '75-88'))} for ages 75–88 against "
@@ -161,7 +166,7 @@ def main():
          + (" Against the chart review the language model will be scored as a classifier only: no admission-level probability is defined "
             "for it, a choice fixed on 11 November 2026 before any chart was reviewed (amendment p)."
             if "## 7. Amendment dated 2026-11-11" in open("docs/analysis_plan_prespecified.md").read() else ""),
-         f"- **The language model's answers barely depend on how it is compressed.** A smaller build of the same model was run on "
+         f"- **The language model's answers change little with how it is compressed.** A smaller build of the same model was run on "
          f"a stratified sample of {qcj['units_sampled']:,} dev/test sentences. Weighted back to all {qcj['units_population']:,}, it "
          f"changed an estimated {qc['answer_differs']['pct']}% of answers (conservative 95% bounds {qc['answer_differs']['lo']}–"
          f"{qc['answer_differs']['hi']}%). Whether a sentence counts toward the label changed for "

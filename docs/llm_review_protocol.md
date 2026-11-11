@@ -76,6 +76,32 @@ Paraphrase B's first wording broke the reply format on the invented test set. It
 
 **Freeze:** the prompt used for any gold-standard evaluation is frozen, with its hash recorded, before gold labels are seen.
 
+<!-- carry-over check: start -->
+
+**Carry-over check (amendment k, S18; added 2026-11-10).** Would the dev/test units that v3 answered NO, and that were carried into the merged labels without being re-asked, still be NO under v4?
+
+- **Sample:** 3,000 distinct carried-over NO units, 1,500 in each of the quantization check's two NO strata, seed 20261110, excluding units already in the quantization-check sample. Eligible units: NO, fat word 1,807; NO, other 81,585.
+- **Run:** prompt v4, gemma4:26b at digest `08ae7ec1744b`, Ollama 0.34.2, the stored decoding settings. 3,000 answered; errors 0; unparsed <11; 1.66 hours.
+- **Result, population-weighted:** the v4 answer is not NO for at most 0.67% (95% upper bound 1.23%) of carried-over units. The unit would change whether its admission counts as positive for at most 0.02% (95% upper bound 0.28%).
+- **Admissions:** 13,185 currently negative dev/test admissions hold at least one carried-over NO. Expected to change label if every one were re-asked: at most 37 of 29,980 (upper bound 346; sentences within an admission treated as independent). A change can only be from negative to positive.
+- **What it changes:** nothing. No stored answer, label or result was modified. Whether to re-ask all carried-over units is decision N-02.
+
+| Source | Stratum | Units | v4 answer not NO | Admission-label status changes |
+| --- | --- | --: | --: | --: |
+| This run's sample | NO, fat word | 1,500 | under 0.73% (95% upper bound 1.22%) | under 0.73% (95% upper bound 1.22%) |
+| This run's sample | NO, other | 1,500 | under 0.73% (95% upper bound 1.22%) | 0.0% (0.0–0.26) |
+| This run's sample | population-weighted | 3,000 | at most 0.67% (95% upper bound 1.23%) | at most 0.02% (95% upper bound 0.28%) |
+| Quantization check's carried-over NO units | NO, fat word | 382 | under 2.88% (95% upper bound 4.75%) | under 2.88% (95% upper bound 4.75%) |
+| Quantization check's carried-over NO units | NO, other | 298 | 0.0% (0.0–1.27) | 0.0% (0.0–1.27) |
+| Quantization check's carried-over NO units | population-weighted | 680 | at most 0.07% (95% upper bound 1.37%) | at most 0.07% (95% upper bound 1.37%) |
+| Pooled | NO, fat word | 1,882 | under 0.58% (95% upper bound 0.98%) | under 0.58% (95% upper bound 0.98%) |
+| Pooled | NO, other | 1,798 | under 0.61% (95% upper bound 1.02%) | 0.0% (0.0–0.21) |
+| Pooled | population-weighted | 3,680 | at most 0.56% (95% upper bound 1.02%) | at most 0.02% (95% upper bound 0.24%) |
+
+Written by `scripts/run1110_carryover_check.py` from `docs/run_2026-11-10/results/carryover_check.json`. Bounds are Wilson 95%, population-weighted across strata as in `quant_check.py`. A count of 1 to 10 is shown as an upper bound computed at 10.
+
+<!-- carry-over check: end -->
+
 ## 5. Admission-level label (signed off 2026-10-27)
 
 Signed off on 2026-10-27, before any GOLD_HOLDOUT answer distribution or adjudication was seen. The primary definition is the one in amendment (h) of `docs/analysis_plan_prespecified.md` and the one `scripts/llm_gold_lock.py` locked.

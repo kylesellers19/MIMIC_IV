@@ -8,12 +8,13 @@
    "name": "preflight",
    "status": "done",
    "start": "2026-11-11T03:00:16Z",
-   "end": "2026-11-11T03:03:20Z"
+   "end": "2026-11-11T03:03:20Z",
+   "commit": "302c90846fb4409b71201cfbc1ef4bd88d98c977"
   },
   "1": {
    "name": "exposure risk closed + push gate",
    "status": "done",
-   "start": "2026-11-11T03:17:37Z",
+   "start": "2026-11-11T03:03:20Z",
    "end": "2026-11-11T03:17:37Z",
    "commit": "1791757357e3639f2c567f81d6c6c26e5effc954",
    "note": "two listed files held back by the gate (B-01); tag llm-gold-lock-v1 pushed"
@@ -70,9 +71,14 @@
    "name": "decisions file",
    "status": "done",
    "start": "2026-11-11T03:54:32Z",
-   "end": "2026-11-11T03:58:16Z",
-   "commit": "bab3a4885e46c64137f177ebb3bd552dd255cbba",
+   "end": "2026-11-11T03:59:56Z",
+   "commit": "896986f82ec7c01210917ee850d3049e53467846",
    "note": "N-02 cost figures pending Phase 4; regenerated when it finishes"
+  },
+  "10": {
+   "name": "README, push, check on GitHub",
+   "status": "running",
+   "start": "2026-11-11T04:00:02Z"
   }
  },
  "phase3_commit": "2b32fdee1ef57c8240fc2c6a88b22dbb6af59a48"

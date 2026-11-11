@@ -74,5 +74,12 @@
    "primary_positive_admissions": 2252,
    "note": "no score; discrimination and calibration measures that need a probability are not reported for this arm"
   }
+ },
+ "n02": {
+  "units_to_re_ask": 84072,
+  "speed_this_run_per_s": 0.51,
+  "hours_at_this_runs_speed": 45.8,
+  "speed_october_rerun_per_s": 1.06,
+  "hours_at_octobers_speed": 22.0
  }
 }

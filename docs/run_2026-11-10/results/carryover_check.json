@@ -1,0 +1,192 @@
+{
+ "script": "scripts/run1110_carryover_check.py",
+ "amendment": "k (S18)",
+ "prompt": "v4",
+ "seed": 20261110,
+ "model": {
+  "name": "gemma4:26b",
+  "digest": "08ae7ec1744bd7f451c4a530afb39d2673ad9d07a8369b8a33a3613b41212a68",
+  "ollama_version": "0.34.2",
+  "options": {
+   "temperature": 0,
+   "seed": 20260922,
+   "num_predict": 12
+  }
+ },
+ "strata": [
+  "NO, fat word",
+  "NO, other"
+ ],
+ "bounds": "Wilson 95%; population-weighted per-stratum bounds (conservative), as in quant_check.py",
+ "sample": {
+  "per_stratum_target": 1500,
+  "units_sampled": 3000,
+  "units_answered": 3000,
+  "errors": 0,
+  "unparsed": "<11",
+  "not_two_word": "<11",
+  "speed_per_s": 0.51,
+  "run_hours": 1.66
+ },
+ "new_sample": {
+  "per_stratum": {
+   "NO, fat word": {
+    "population_units": 1807,
+    "v4_answer_not_no": {
+     "n": 1500,
+     "x": "<11",
+     "pct": "under 0.73",
+     "wilson_hi_pct_at_10": 1.22
+    },
+    "primary_label_status_changes": {
+     "n": 1500,
+     "x": "<11",
+     "pct": "under 0.73",
+     "wilson_hi_pct_at_10": 1.22
+    }
+   },
+   "NO, other": {
+    "population_units": 81585,
+    "v4_answer_not_no": {
+     "n": 1500,
+     "x": "<11",
+     "pct": "under 0.73",
+     "wilson_hi_pct_at_10": 1.22
+    },
+    "primary_label_status_changes": {
+     "n": 1500,
+     "x": 0,
+     "pct": 0.0,
+     "wilson_lo_pct": 0.0,
+     "wilson_hi_pct": 0.26
+    }
+   }
+  },
+  "units_answered": 3000,
+  "population_weighted": {
+   "v4_answer_not_no": {
+    "pct": "at most 0.67",
+    "wilson_hi_pct": 1.23,
+    "units_approx": "at most 560",
+    "note": "a stratum count of 1-10 enters at 10, so these are upper bounds"
+   },
+   "primary_label_status_changes": {
+    "pct": "at most 0.02",
+    "wilson_hi_pct": 0.28,
+    "units_approx": "at most 20",
+    "note": "a stratum count of 1-10 enters at 10, so these are upper bounds"
+   }
+  }
+ },
+ "quantization_check_carried_over_no": {
+  "per_stratum": {
+   "NO, fat word": {
+    "population_units": 2189,
+    "v4_answer_not_no": {
+     "n": 382,
+     "x": "<11",
+     "pct": "under 2.88",
+     "wilson_hi_pct_at_10": 4.75
+    },
+    "primary_label_status_changes": {
+     "n": 382,
+     "x": "<11",
+     "pct": "under 2.88",
+     "wilson_hi_pct_at_10": 4.75
+    }
+   },
+   "NO, other": {
+    "population_units": 81883,
+    "v4_answer_not_no": {
+     "n": 298,
+     "x": 0,
+     "pct": 0.0,
+     "wilson_lo_pct": 0.0,
+     "wilson_hi_pct": 1.27
+    },
+    "primary_label_status_changes": {
+     "n": 298,
+     "x": 0,
+     "pct": 0.0,
+     "wilson_lo_pct": 0.0,
+     "wilson_hi_pct": 1.27
+    }
+   }
+  },
+  "units_answered": 680,
+  "population_weighted": {
+   "v4_answer_not_no": {
+    "pct": "at most 0.07",
+    "wilson_hi_pct": 1.37,
+    "units_approx": "at most 60",
+    "note": "a stratum count of 1-10 enters at 10, so these are upper bounds"
+   },
+   "primary_label_status_changes": {
+    "pct": "at most 0.07",
+    "wilson_hi_pct": 1.37,
+    "units_approx": "at most 60",
+    "note": "a stratum count of 1-10 enters at 10, so these are upper bounds"
+   }
+  }
+ },
+ "pooled": {
+  "per_stratum": {
+   "NO, fat word": {
+    "population_units": 2189,
+    "v4_answer_not_no": {
+     "n": 1882,
+     "x": "<11",
+     "pct": "under 0.58",
+     "wilson_hi_pct_at_10": 0.98
+    },
+    "primary_label_status_changes": {
+     "n": 1882,
+     "x": "<11",
+     "pct": "under 0.58",
+     "wilson_hi_pct_at_10": 0.98
+    }
+   },
+   "NO, other": {
+    "population_units": 81883,
+    "v4_answer_not_no": {
+     "n": 1798,
+     "x": "<11",
+     "pct": "under 0.61",
+     "wilson_hi_pct_at_10": 1.02
+    },
+    "primary_label_status_changes": {
+     "n": 1798,
+     "x": 0,
+     "pct": 0.0,
+     "wilson_lo_pct": 0.0,
+     "wilson_hi_pct": 0.21
+    }
+   }
+  },
+  "units_answered": 3680,
+  "population_weighted": {
+   "v4_answer_not_no": {
+    "pct": "at most 0.56",
+    "wilson_hi_pct": 1.02,
+    "units_approx": "at most 470",
+    "note": "a stratum count of 1-10 enters at 10, so these are upper bounds"
+   },
+   "primary_label_status_changes": {
+    "pct": "at most 0.02",
+    "wilson_hi_pct": 0.24,
+    "units_approx": "at most 20",
+    "note": "a stratum count of 1-10 enters at 10, so these are upper bounds"
+   }
+  }
+ },
+ "admissions": {
+  "admissions_currently_negative_with_a_carried_over_no": 13185,
+  "admissions_dev_test_subsample": 29980,
+  "assumption": "sentences within an admission treated as independent",
+  "expected_admissions_changing_label": "at most 37",
+  "note": "a stratum count of 1-10 enters at 10, so the estimate is an upper bound",
+  "upper_bound_wilson": 346,
+  "rates_from": "the new sample (this run)"
+ },
+ "changes_nothing": "no stored answer, label or result is modified"
+}

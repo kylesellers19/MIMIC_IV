@@ -62,8 +62,9 @@ def carryover_methods(c):
             f"To test that, {n(s['units_answered'])} of those units, drawn in two strata, were asked with v4 on the pinned model. "
             f"Population-weighted, the v4 answer was not NO for {pc(w['v4_answer_not_no'])} of carried-over units, and the unit would change "
             f"whether its admission counts as positive for {pc(w['primary_label_status_changes'])}. "
-            f"Applied to the admissions that are currently negative, that is an expected {n(a['expected_admissions_changing_label'])} "
-            f"of {n(a['admissions_dev_test_subsample'])} dev/test admissions changing label (upper bound {n(a['upper_bound_wilson'])}). "
+            f"Applied to the admissions that are currently negative, the expected number changing label is {n(a['expected_admissions_changing_label'])} "
+            f"of {n(a['admissions_dev_test_subsample'])} dev/test admissions (95% upper bound {n(a['upper_bound_wilson'])}). "
+            "Where a count in the sample was between 1 and 10, the figure is an upper bound computed at 10. "
             f"No stored answer or label was changed. Source: `{R11}/carryover_check.json`.")
 
 

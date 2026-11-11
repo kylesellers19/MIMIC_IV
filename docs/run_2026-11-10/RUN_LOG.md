@@ -50,6 +50,14 @@ Written by `scripts/run1110_phase2_docs.py`; facts in `results/signoff_timeline.
 - `scripts/run1110_carryover_check.py sample` drew the sample (amendment k): carried-over v3 NO units in the two NO strata, excluding the quantization-check sample. Counts are in `results/carryover_check.json` once the summary runs.
 - The model run started after the Phase 3 push, with prompt v4, the pinned model and the stored decoding settings, capped below LLM_BUDGET_HOURS. Its result is logged under "Phase 4 — result" below.
 
+## Phase 4 — result
+
+- The model run finished inside LLM_BUDGET_HOURS, on the pinned digest and Ollama version, with no errors. `scripts/run1110_carryover_check.py summary` wrote `results/carryover_check.json`; `... protocol` wrote the short section into protocol §4.
+- Every count of units whose answer changed is between 0 and 10 in each stratum, so the shares are published as upper bounds computed at 10, rounded upward, as the small-cell rule requires. The point estimates themselves are not published.
+- The pooled figures are withheld wherever they would give the quantization check's masked count back by subtraction. The admissions estimate uses this run's sample only.
+- The methods draft (§14), the results skeleton (Table 6f) and decision N-02 were regenerated from the results file.
+- Tier 1: the summary's code path was exercised once on partial answers with its output discarded and its file written to scratch and deleted, so no interim result was looked at.
+
 ## Phase 5 — exploratory analyses (l)–(o)
 
 One script per analysis, each writing one results file; one document, `docs/preliminary_2026-11-10.md`, written by `scripts/run1110_preliminary_doc.py`.

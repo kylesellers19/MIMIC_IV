@@ -36,7 +36,8 @@ from diagnostics.llm_review_audit.quant_check import FAT, INPUT, STORED, Q, wils
 
 D = "data/processed/llm_review"
 C = f"{D}/carryover_check"
-RES = "docs/run_2026-11-10/results/carryover_check.json"
+RES = os.environ.get("CARRYOVER_RES", "docs/run_2026-11-10/results/carryover_check.json")   # override only to test the code path
+PROTOCOL = "docs/llm_review_protocol.md"
 SEED_CARRYOVER = 20261110
 PER_STRATUM = 1500
 STRATA = ("NO, fat word", "NO, other")
@@ -106,8 +107,9 @@ def weighted(rows):
     lo = sum(N / Ntot * max(float(wilson(x, n)[0]), 0) for x, n, N in xs)
     hi = sum(N / Ntot * float(wilson(x, n)[1]) for x, n, N in xs)
     units = sum(N * x / n for x, n, N in xs)
-    if masked:
-        return {"pct": f"at most {100 * est:.2f}", "wilson_hi_pct": round(100 * hi, 2), "units_approx": f"at most {int(round(units, -1)):,}",
+    if masked:                                            # upper bounds are rounded up, never down
+        up = lambda v, step: int(-(-v // step) * step) if step >= 1 else -(-v * 100 // 1) / 100
+        return {"pct": f"at most {up(100 * est, 0.01):.2f}", "wilson_hi_pct": up(100 * hi, 0.01), "units_approx": f"at most {up(units, 10):,}",
                 "note": "a stratum count of 1-10 enters at 10, so these are upper bounds"}
     return {"pct": round(100 * est, 2), "wilson_lo_pct": round(100 * lo, 2), "wilson_hi_pct": round(100 * hi, 2),
             "units_approx": int(round(units, -1))}
@@ -157,12 +159,12 @@ def admissions_changing(rows_c):
     xs = [(FLOOR - 1 if 0 < x < FLOOR else x, n) for x, n, _ in rows_c]
     hi = expected([float(wilson(x, n)[1]) for x, n in xs])
     if masked:
-        res["expected_admissions_changing_label"] = f"at most {int(round(expected([x / n for x, n in xs]))):,}"
+        res["expected_admissions_changing_label"] = f"at most {int(-(-expected([x / n for x, n in xs]) // 1)):,}"
         res["note"] = "a stratum count of 1-10 enters at 10, so the estimate is an upper bound"
     else:
         res["expected_admissions_changing_label"] = int(round(expected([x / n for x, n in xs])))
         res["lower_bound_wilson"] = int(round(expected([max(float(wilson(x, n)[0]), 0) for x, n in xs])))
-    res["upper_bound_wilson"] = int(round(hi))
+    res["upper_bound_wilson"] = int(-(-hi // 1))
     return res
 
 
@@ -204,7 +206,8 @@ def summary():
            "sample": {"per_stratum_target": PER_STRATUM, "units_sampled": int(len(st)), "units_answered": int(len(m)),
                       "errors": int(a.error.notna().sum()), "unparsed": int(a.answer.eq("UNPARSED").sum()),
                       "not_two_word": int((a.strict == False).sum()),
-                      "speed_per_s": round(1 / a.seconds.iloc[10:].mean(), 2) if len(a) > 20 else None},
+                      "speed_per_s": round(1 / a.seconds.iloc[10:].mean(), 2) if len(a) > 20 else None,
+                      "run_hours": round(float(a.seconds.sum()) / 3600, 2)},
            "new_sample": new, "quantization_check_carried_over_no": quant, "pooled": pooled,
            "admissions": dict(admissions_changing(rows_new), rates_from="the new sample (this run)"),
            "changes_nothing": "no stored answer, label or result is modified"}
@@ -213,8 +216,55 @@ def summary():
             out["sample"][k] = "<11"
     os.makedirs(os.path.dirname(RES), exist_ok=True)
     json.dump(out, open(RES, "w"), indent=1)
-    print(json.dumps({k: out[k] for k in ("sample", "new_sample", "pooled", "admissions")}, indent=1))
+    if not os.environ.get("CARRYOVER_QUIET"):
+        print(json.dumps({k: out[k] for k in ("sample", "new_sample", "pooled", "admissions")}, indent=1))
+
+
+def fmt(s):
+    """A published share from the results file -> text."""
+    if isinstance(s.get("pct"), str):
+        hi = s.get("wilson_hi_pct_at_10", s.get("wilson_hi_pct"))
+        return f"{s['pct']}%" + (f" (95% upper bound {hi}%)" if hi is not None else "")
+    return f"{s['pct']}% ({s['wilson_lo_pct']}–{s['wilson_hi_pct']})"
+
+
+def protocol():
+    """Append the short result section to protocol §4 (after the Freeze paragraph), once; rerun replaces it."""
+    c = json.load(open(RES))
+    start, end = "<!-- carry-over check: start -->", "<!-- carry-over check: end -->"
+    w, a, s_ = c["new_sample"]["population_weighted"], c["admissions"], c["sample"]
+    rows = []
+    for name, blk in (("This run's sample", c["new_sample"]), ("Quantization check's carried-over NO units", c["quantization_check_carried_over_no"]), ("Pooled", c["pooled"])):
+        for st_ in STRATA:
+            r = blk["per_stratum"][st_]
+            rows.append(f"| {name} | {st_} | {r['v4_answer_not_no'].get('n', 0):,} | {fmt(r['v4_answer_not_no']) if r['v4_answer_not_no'].get('n') else '—'} | "
+                        f"{fmt(r['primary_label_status_changes']) if r['primary_label_status_changes'].get('n') else '—'} |")
+        pw = blk["population_weighted"]
+        rows.append(f"| {name} | population-weighted | {blk['units_answered']:,} | {fmt(pw['v4_answer_not_no']) if 'wilson_hi_pct' in pw['v4_answer_not_no'] or isinstance(pw['v4_answer_not_no'].get('pct'), (int, float)) else pw['v4_answer_not_no']['pct']} | "
+                    f"{fmt(pw['primary_label_status_changes']) if 'wilson_hi_pct' in pw['primary_label_status_changes'] or isinstance(pw['primary_label_status_changes'].get('pct'), (int, float)) else pw['primary_label_status_changes']['pct']} |")
+    pops = {st_: c["new_sample"]["per_stratum"][st_]["population_units"] for st_ in STRATA}
+    block = "\n".join([start, "",
+        "**Carry-over check (amendment k, S18; added 2026-11-10).** Would the dev/test units that v3 answered NO, and that were carried into the merged labels without being re-asked, still be NO under v4?", "",
+        f"- **Sample:** {s_['units_sampled']:,} distinct carried-over NO units, {s_['per_stratum_target']:,} in each of the quantization check's two NO strata, seed {c['seed']}, "
+        f"excluding units already in the quantization-check sample. Eligible units: " + "; ".join(f"{k} {v:,}" for k, v in pops.items()) + ".",
+        f"- **Run:** prompt v4, {c['model']['name']} at digest `{c['model']['digest'][:12]}`, Ollama {c['model']['ollama_version']}, the stored decoding settings. "
+        f"{s_['units_answered']:,} answered; errors {s_['errors']}; unparsed {s_['unparsed']}; {s_['run_hours']} hours.",
+        f"- **Result, population-weighted:** the v4 answer is not NO for {fmt(w['v4_answer_not_no'])} of carried-over units. The unit would change whether its admission counts as positive for {fmt(w['primary_label_status_changes'])}.",
+        f"- **Admissions:** {a['admissions_currently_negative_with_a_carried_over_no']:,} currently negative dev/test admissions hold at least one carried-over NO. "
+        f"Expected to change label if every one were re-asked: {a['expected_admissions_changing_label']} of {a['admissions_dev_test_subsample']:,} (upper bound {a['upper_bound_wilson']}; sentences within an admission treated as independent). A change can only be from negative to positive.",
+        "- **What it changes:** nothing. No stored answer, label or result was modified. Whether to re-ask all carried-over units is decision N-02.", "",
+        "| Source | Stratum | Units | v4 answer not NO | Admission-label status changes |", "| --- | --- | --: | --: | --: |", *rows, "",
+        f"Written by `scripts/run1110_carryover_check.py` from `{RES}`. Bounds are Wilson 95%, population-weighted across strata as in `quant_check.py`. A count of 1 to 10 is shown as an upper bound computed at 10.", "", end])
+    t = open(PROTOCOL).read()
+    if start in t:
+        t = t[:t.index(start)] + block + t[t.index(end) + len(end):]
+    else:
+        anchor = "**Freeze:** the prompt used for any gold-standard evaluation is frozen, with its hash recorded, before gold labels are seen.\n"
+        assert anchor in t
+        t = t.replace(anchor, anchor + "\n" + block + "\n", 1)
+    open(PROTOCOL, "w").write(t)
+    print("protocol §4: carry-over section written")
 
 
 if __name__ == "__main__":
-    {"sample": sample, "summary": summary}[sys.argv[1] if len(sys.argv) > 1 else "summary"]()
+    {"sample": sample, "summary": summary, "protocol": protocol}[sys.argv[1] if len(sys.argv) > 1 else "summary"]()

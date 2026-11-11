@@ -1,7 +1,7 @@
 {
- "results_files_scanned": 52,
+ "results_files_scanned": 53,
  "source_docs_scanned": 46,
- "distinct_known_numeric_forms": 36001,
+ "distinct_known_numeric_forms": 36043,
  "docs": {
   "docs/manuscript_methods_draft.md": {
    "numeric_tokens": 1010,
@@ -14,7 +14,7 @@
    }
   },
   "docs/manuscript_results_skeleton.md": {
-   "numeric_tokens": 2052,
+   "numeric_tokens": 2055,
    "unattributed_distinct": 2,
    "unattributed": {
     "03": [
@@ -49,34 +49,37 @@
    "unattributed": {}
   },
   "docs/llm_review_protocol.md": {
-   "numeric_tokens": 99,
-   "unattributed_distinct": 7,
+   "numeric_tokens": 176,
+   "unattributed_distinct": 8,
    "unattributed": {
+    "02": [
+     87
+    ],
     "06": [
-     82
+     108
     ],
     "6338243": [
-     84
+     110
     ],
     "03": [
-     84
+     110
     ],
     "385": [
-     150
+     176
     ],
     "2583": [
-     155
+     181
     ],
     "2310.11324": [
-     159
+     185
     ],
     "2306.04746": [
-     160
+     186
     ]
    }
   },
   "docs/run_2026-11-10/DECISIONS_FOR_KYLE.md": {
-   "numeric_tokens": 148,
+   "numeric_tokens": 146,
    "unattributed_distinct": 5,
    "unattributed": {
     "04": [
@@ -106,6 +109,52 @@
     "02": [
      235,
      237
+    ]
+   }
+  },
+  "docs/run_2026-11-10/FINAL_REPORT.md": {
+   "numeric_tokens": 172,
+   "unattributed_distinct": 8,
+   "unattributed": {
+    "03": [
+     18,
+     18,
+     18,
+     20
+    ],
+    "01": [
+     7,
+     12,
+     34,
+     34
+    ],
+    "04": [
+     28,
+     72,
+     75,
+     87
+    ],
+    "02": [
+     27,
+     38,
+     83,
+     85
+    ],
+    "06": [
+     35,
+     74,
+     89,
+     93
+    ],
+    "00": [
+     18,
+     28
+    ],
+    "852.6": [
+     112
+    ],
+    "734.8": [
+     115
     ]
    }
   }

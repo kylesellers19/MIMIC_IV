@@ -515,7 +515,9 @@ TEST admissions of the subsample: 6,164. No model was retrained.
 | Check | Units | Answer differs | Admission-label status differs |
 | --- | --: | --: | --: |
 | Quantization-aware build against the study build | 1,300 | 0.47% (0.32–1.86) | 0.29% (0.17–1.65) |
-| Carried-over v3 NO answers re-asked with v4 (amendment k) | [PENDING] | [PENDING] | [PENDING] |
+| Carried-over v3 NO answers re-asked with v4 (amendment k) | 3,000 | at most 0.67% (95% upper bound 1.23%) | at most 0.02% (95% upper bound 0.28%) |
+
+Carry-over check: expected dev/test admissions changing label if every carried-over NO were re-asked: at most 37 of 29,980 (upper bound 346).
 
 ### 6g. Language-model arm against the gold standard
 

@@ -55,10 +55,10 @@ Rank correlation between the two scores: 0.996. Admissions where noisy-OR exceed
 
 **Question.** On dev/test, units v3 answered NO were carried into the merged labels without being asked with v4. On GOLD_HOLDOUT, v4 answered every unit. What is done about the difference?
 
-**What Phase 4 found.** [PENDING] Phase 4 had not finished when this file was written; rerun `scripts/run1110_decisions.py` once `carryover_check.json` exists.
+**What Phase 4 found.** Phase 4 asked 3,000 carried-over NO units with v4 (`docs/run_2026-11-10/results/carryover_check.json`). Population-weighted, the answer was not NO for at most 0.67% (95% upper bound 1.23%) and the unit would change its admission's status for at most 0.02% (95% upper bound 0.28%). Expected dev/test admissions changing label if all were re-asked: at most 37 of 29,980 (upper bound 346).
 
 **Options and what each changes.**
-- *Re-ask all carried-over NO units with v4.* [PENDING] The unit count and hours are written from Phase 4's results file. Dev/test labels would then come from one prompt throughout, like GOLD_HOLDOUT. Every dev/test table that uses the language-model phenotype would be recomputed and dated, and the earlier figures kept beside them.
+- *Re-ask all carried-over NO units with v4.* About 84,072 units. At this run's measured speed (0.51 per second, with other jobs running) that is about 45.8 hours; at October's rerun speed (1.06 per second) about 22.0 hours. Dev/test labels would then come from one prompt throughout, like GOLD_HOLDOUT. Every dev/test table that uses the language-model phenotype would be recomputed and dated, and the earlier figures kept beside them.
 - *Keep the merged labels and report Phase 4.* Nothing is recomputed. The manuscript states the design, the estimated share of units and admissions affected, and its bounds.
 - *Keep language-model output out of stacked-model training.* Can be combined with either option above. The arm is then compared with the other arms but is never an input to a model evaluated on GOLD_HOLDOUT, so no model is trained on labels produced under one design and tested on labels produced under another.
 

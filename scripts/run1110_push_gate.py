@@ -68,7 +68,8 @@ TERMINOLOGY = (
     "metabolic dysfunction-associated steatohepatitis",
     "metabolic dysfunction-associated fatty liver disease",
 )
-COUNT_HEADER = re.compile(r"\bn\b|count|charts|admissions|subjects|positives|hits|units|sentences|patients")
+COUNT_HEADER = re.compile(r"\bn\b|count|charts|admissions|subjects|positives|hits|units|sentences|patients"
+                          r"|code[+−-]/note|nulled|affected|extreme|impossible|would move|notes|\badm\b")  # cell, cleaning and corpus tables (2026-11-11)
 COUNT_KEY_TOKENS = {"n", "x", "count", "counts", "charts", "admissions", "subjects", "positives", "hits", "units",
                     "sentences", "patients", "notes"}
 NOT_PATIENT_TOKENS = {"files", "checks", "phases", "replicates", "strata", "scripts", "commits", "tests", "seeds",

@@ -28,20 +28,20 @@ The frozen note phenotype reimplements ConText (Harkema et al. 2009, which exten
 
 ## Where the two systems part company
 
-Rows are the project's label, columns medspaCy's. Counts of mentions.
+Rows are the project's label, columns medspaCy's. Counts of mentions. Counts from 1 to 10 read <11; because each row's total is published above, the smallest other disagreement cell in that row is withheld.
 
 | project ↓ / ConText → | affirmed | negated | uncertain | historical | family |
 | --- | --: | --: | --: | --: | --: |
-| affirmed | 30,256 | 1,556 | 963 | 267 | 7 |
-| negated | 39 | 975 | 3 | 0 | 0 |
-| uncertain | 216 | 103 | 518 | 4 | 0 |
-| historical | 90 | 5 | 5 | 261 | 0 |
+| affirmed | 30,256 | 1,556 | 963 | withheld | <11 |
+| negated | withheld | 975 | <11 | 0 | 0 |
+| uncertain | 216 | withheld | 518 | <11 | 0 |
+| historical | withheld | <11 | <11 | 261 | 0 |
 | family | 0 | 0 | 0 | 0 | 0 |
 
 Reading the table:
 
-- **Negation is where the two agree most** (95.87% of the project's negated mentions). The larger asymmetry runs the other way: **1,556 mentions the project treats as affirmed are negated by ConText**, against 39 in the opposite direction. On this corpus the project's rule is the more conservative negator — it asserts presence where the reference implementation would not.
-- **Hedging is the weakest class** (61.59%). ConText marks 963 project-affirmed mentions as uncertain, while 216 project-hedged mentions come back affirmed and 103 come back negated. This matters for the study because hedged mentions are exactly the Tier C category the project reports separately, and because Phase 4.4 shows counting Tier C positive moves the primary recovery share by about a third of a point.
+- **Negation is where the two agree most** (95.87% of the project's negated mentions). The larger asymmetry runs the other way: **1,556 mentions the project treats as affirmed are negated by ConText**, against fewer in the opposite direction (count withheld beside a small cell). On this corpus the project's rule is the more conservative negator — it asserts presence where the reference implementation would not.
+- **Hedging is the weakest class** (61.59%). ConText marks 963 project-affirmed mentions as uncertain, while 216 project-hedged mentions come back affirmed and fewer come back negated (count withheld beside a small cell). This matters for the study because hedged mentions are exactly the Tier C category the project reports separately, and because Phase 4.4 shows counting Tier C positive moves the primary recovery share by about a third of a point.
 - **Historical** agrees 72.3% of the time; the project flags historical mentions but does not exclude them, so this difference does not propagate to note-positive status.
 - **Family history does not arise in this corpus**: the project found 0 family-attributed mentions in 20,000 radiology reports, which is expected — family history is a discharge-summary phenomenon, not a radiology one. The class is therefore not estimable here, and a discharge-summary sample would be needed to measure it.
 

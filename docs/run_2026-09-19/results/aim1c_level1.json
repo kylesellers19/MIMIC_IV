@@ -9,31 +9,22 @@
   "race": [
    {
     "stratum": "AMERICAN INDIAN/ALASKA NATIVE",
-    "A": 10,
+    "A": "<11",
     "B": 43,
-    "C": 2,
+    "C": "<11",
     "D": 709,
     "encounter_characteristic": false,
-    "recovery_share_pct": 81.1,
-    "rec_ci": [
-     62.8,
-     98.4
-    ],
-    "rec_ci_width": 35.6,
-    "rec_claim_supported": false,
-    "corroboration_share_pct": 83.3,
-    "cor_ci": [
-     20.0,
-     100.0
-    ],
-    "cor_ci_width": 80.0,
-    "cor_claim_supported": false,
-    "recovery_share_no5719_pct": 81.1,
-    "rec_no5719_ci": [
-     62.8,
-     98.4
-    ],
-    "smd_coding_rate_vs_rest": 0.021,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
+    "corroboration_share_pct": null,
+    "cor_ci": null,
+    "cor_ci_width": null,
+    "cor_claim_supported": null,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 764,
      "ALT_avail_pct": 47.4,
@@ -42,35 +33,39 @@
      "HDL_avail_pct": 5.1,
      "liver_imaging_in_window_pct": 41.0,
      "cmrf_unascertainable_all_pct": 2.7
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "ASIAN",
-    "A": 49,
+    "A": "withheld",
     "B": 262,
-    "C": 9,
+    "C": "<11",
     "D": 4330,
     "encounter_characteristic": false,
-    "recovery_share_pct": 84.2,
-    "rec_ci": [
-     78.8,
-     89.2
-    ],
-    "rec_ci_width": 10.4,
-    "rec_claim_supported": true,
-    "corroboration_share_pct": 84.5,
-    "cor_ci": [
-     73.5,
-     93.7
-    ],
-    "cor_ci_width": 20.2,
-    "cor_claim_supported": false,
-    "recovery_share_no5719_pct": 84.2,
-    "rec_no5719_ci": [
-     78.8,
-     89.2
-    ],
-    "smd_coding_rate_vs_rest": -0.062,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
+    "corroboration_share_pct": null,
+    "cor_ci": null,
+    "cor_ci_width": null,
+    "cor_claim_supported": null,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 4650,
      "ALT_avail_pct": 40.3,
@@ -79,35 +74,39 @@
      "HDL_avail_pct": 5.9,
      "liver_imaging_in_window_pct": 38.7,
      "cmrf_unascertainable_all_pct": 5.8
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "ASIAN - ASIAN INDIAN",
-    "A": 14,
+    "A": "withheld",
     "B": 81,
-    "C": 3,
+    "C": "<11",
     "D": 879,
     "encounter_characteristic": false,
-    "recovery_share_pct": 85.3,
-    "rec_ci": [
-     77.8,
-     92.4
-    ],
-    "rec_ci_width": 14.6,
-    "rec_claim_supported": true,
-    "corroboration_share_pct": 82.4,
-    "cor_ci": [
-     55.6,
-     100.0
-    ],
-    "cor_ci_width": 44.4,
-    "cor_claim_supported": false,
-    "recovery_share_no5719_pct": 85.3,
-    "rec_no5719_ci": [
-     77.8,
-     92.4
-    ],
-    "smd_coding_rate_vs_rest": -0.09,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
+    "corroboration_share_pct": null,
+    "cor_ci": null,
+    "cor_ci_width": null,
+    "cor_claim_supported": null,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 977,
      "ALT_avail_pct": 44.6,
@@ -116,7 +115,20 @@
      "HDL_avail_pct": 5.1,
      "liver_imaging_in_window_pct": 35.3,
      "cmrf_unascertainable_all_pct": 3.3
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "ASIAN - CHINESE",
@@ -157,26 +169,20 @@
    },
    {
     "stratum": "ASIAN - KOREAN",
-    "A": 1,
-    "B": 21,
-    "C": 1,
+    "A": "<11",
+    "B": "withheld",
+    "C": "<11",
     "D": 350,
     "encounter_characteristic": false,
-    "recovery_share_pct": 95.5,
-    "rec_ci": [
-     82.1,
-     100.0
-    ],
-    "rec_ci_width": 17.9,
-    "rec_claim_supported": true,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
     "corroboration_share_pct": null,
     "cor_note": "not analyzable (A+C < 11)",
-    "recovery_share_no5719_pct": 95.5,
-    "rec_no5719_ci": [
-     82.1,
-     100.0
-    ],
-    "smd_coding_rate_vs_rest": -0.437,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 373,
      "ALT_avail_pct": 46.6,
@@ -185,35 +191,39 @@
      "HDL_avail_pct": 5.9,
      "liver_imaging_in_window_pct": 44.5,
      "cmrf_unascertainable_all_pct": 4.3
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "ASIAN - SOUTH EAST ASIAN",
-    "A": 15,
+    "A": "withheld",
     "B": 114,
-    "C": 1,
+    "C": "<11",
     "D": 1132,
     "encounter_characteristic": false,
-    "recovery_share_pct": 88.4,
-    "rec_ci": [
-     80.2,
-     94.7
-    ],
-    "rec_ci_width": 14.4,
-    "rec_claim_supported": true,
-    "corroboration_share_pct": 93.8,
-    "cor_ci": [
-     77.8,
-     100.0
-    ],
-    "cor_ci_width": 22.2,
-    "cor_claim_supported": false,
-    "recovery_share_no5719_pct": 88.4,
-    "rec_no5719_ci": [
-     80.2,
-     94.7
-    ],
-    "smd_coding_rate_vs_rest": -0.183,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
+    "corroboration_share_pct": null,
+    "cor_ci": null,
+    "cor_ci_width": null,
+    "cor_claim_supported": null,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 1262,
      "ALT_avail_pct": 53.6,
@@ -222,35 +232,39 @@
      "HDL_avail_pct": 5.4,
      "liver_imaging_in_window_pct": 50.4,
      "cmrf_unascertainable_all_pct": 2.4
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "BLACK/AFRICAN",
-    "A": 25,
+    "A": "withheld",
     "B": 92,
-    "C": 3,
+    "C": "<11",
     "D": 1895,
     "encounter_characteristic": false,
-    "recovery_share_pct": 78.6,
-    "rec_ci": [
-     69.6,
-     87.7
-    ],
-    "rec_ci_width": 18.1,
-    "rec_claim_supported": true,
-    "corroboration_share_pct": 89.3,
-    "cor_ci": [
-     75.9,
-     100.0
-    ],
-    "cor_ci_width": 24.1,
-    "cor_claim_supported": false,
-    "recovery_share_no5719_pct": 78.6,
-    "rec_no5719_ci": [
-     69.6,
-     87.7
-    ],
-    "smd_coding_rate_vs_rest": 0.083,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
+    "corroboration_share_pct": null,
+    "cor_ci": null,
+    "cor_ci_width": null,
+    "cor_claim_supported": null,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 2015,
      "ALT_avail_pct": 39.4,
@@ -259,7 +273,20 @@
      "HDL_avail_pct": 6.2,
      "liver_imaging_in_window_pct": 32.6,
      "cmrf_unascertainable_all_pct": 3.5
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "BLACK/AFRICAN AMERICAN",
@@ -300,31 +327,22 @@
    },
    {
     "stratum": "BLACK/CAPE VERDEAN",
-    "A": 57,
+    "A": "withheld",
     "B": 235,
-    "C": 4,
+    "C": "<11",
     "D": 3691,
     "encounter_characteristic": false,
-    "recovery_share_pct": 80.5,
-    "rec_ci": [
-     73.9,
-     86.8
-    ],
-    "rec_ci_width": 12.9,
-    "rec_claim_supported": true,
-    "corroboration_share_pct": 93.4,
-    "cor_ci": [
-     86.5,
-     98.8
-    ],
-    "cor_ci_width": 12.4,
-    "cor_claim_supported": true,
-    "recovery_share_no5719_pct": 80.5,
-    "rec_no5719_ci": [
-     73.9,
-     86.8
-    ],
-    "smd_coding_rate_vs_rest": 0.038,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
+    "corroboration_share_pct": null,
+    "cor_ci": null,
+    "cor_ci_width": null,
+    "cor_claim_supported": null,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 3987,
      "ALT_avail_pct": 37.9,
@@ -333,35 +351,39 @@
      "HDL_avail_pct": 5.3,
      "liver_imaging_in_window_pct": 40.4,
      "cmrf_unascertainable_all_pct": 0.8
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "BLACK/CARIBBEAN ISLAND",
-    "A": 16,
+    "A": "withheld",
     "B": 101,
-    "C": 2,
+    "C": "<11",
     "D": 2283,
     "encounter_characteristic": false,
-    "recovery_share_pct": 86.3,
-    "rec_ci": [
-     80.4,
-     91.5
-    ],
-    "rec_ci_width": 11.1,
-    "rec_claim_supported": true,
-    "corroboration_share_pct": 88.9,
-    "cor_ci": [
-     69.2,
-     100.0
-    ],
-    "cor_ci_width": 30.8,
-    "cor_claim_supported": false,
-    "recovery_share_no5719_pct": 86.3,
-    "rec_no5719_ci": [
-     80.4,
-     91.5
-    ],
-    "smd_coding_rate_vs_rest": -0.121,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
+    "corroboration_share_pct": null,
+    "cor_ci": null,
+    "cor_ci_width": null,
+    "cor_claim_supported": null,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 2402,
      "ALT_avail_pct": 42.9,
@@ -370,7 +392,20 @@
      "HDL_avail_pct": 7.0,
      "liver_imaging_in_window_pct": 37.8,
      "cmrf_unascertainable_all_pct": 1.6
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "HISPANIC OR LATINO",
@@ -393,11 +428,8 @@
     ],
     "cor_ci_width": 14.9,
     "cor_claim_supported": true,
-    "recovery_share_no5719_pct": 85.1,
-    "rec_no5719_ci": [
-     80.7,
-     88.9
-    ],
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
     "smd_coding_rate_vs_rest": -0.082,
     "mech": {
      "n": 6169,
@@ -407,35 +439,30 @@
      "HDL_avail_pct": 5.3,
      "liver_imaging_in_window_pct": 40.1,
      "cmrf_unascertainable_all_pct": 6.8
-    }
+    },
+    "withheld": [
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct"
+    ]
    },
    {
     "stratum": "HISPANIC/LATINO - CENTRAL AMERICAN",
-    "A": 27,
+    "A": "withheld",
     "B": 43,
-    "C": 2,
+    "C": "<11",
     "D": 310,
     "encounter_characteristic": false,
-    "recovery_share_pct": 61.4,
-    "rec_ci": [
-     49.6,
-     80.8
-    ],
-    "rec_ci_width": 31.3,
-    "rec_claim_supported": false,
-    "corroboration_share_pct": 93.1,
-    "cor_ci": [
-     76.7,
-     100.0
-    ],
-    "cor_ci_width": 23.3,
-    "cor_claim_supported": false,
-    "recovery_share_no5719_pct": 61.4,
-    "rec_no5719_ci": [
-     49.6,
-     80.8
-    ],
-    "smd_coding_rate_vs_rest": 0.469,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
+    "corroboration_share_pct": null,
+    "cor_ci": null,
+    "cor_ci_width": null,
+    "cor_claim_supported": null,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 382,
      "ALT_avail_pct": 40.8,
@@ -444,35 +471,39 @@
      "HDL_avail_pct": 2.6,
      "liver_imaging_in_window_pct": 49.7,
      "cmrf_unascertainable_all_pct": 3.7
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "HISPANIC/LATINO - COLUMBIAN",
-    "A": 15,
+    "A": "withheld",
     "B": 46,
-    "C": 3,
+    "C": "<11",
     "D": 442,
     "encounter_characteristic": false,
-    "recovery_share_pct": 75.4,
-    "rec_ci": [
-     62.4,
-     87.2
-    ],
-    "rec_ci_width": 24.8,
-    "rec_claim_supported": false,
-    "corroboration_share_pct": 83.3,
-    "cor_ci": [
-     59.4,
-     100.0
-    ],
-    "cor_ci_width": 40.6,
-    "cor_claim_supported": false,
-    "recovery_share_no5719_pct": 75.4,
-    "rec_no5719_ci": [
-     62.4,
-     87.2
-    ],
-    "smd_coding_rate_vs_rest": 0.16,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
+    "corroboration_share_pct": null,
+    "cor_ci": null,
+    "cor_ci_width": null,
+    "cor_claim_supported": null,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 506,
      "ALT_avail_pct": 35.2,
@@ -481,30 +512,37 @@
      "HDL_avail_pct": 4.3,
      "liver_imaging_in_window_pct": 38.1,
      "cmrf_unascertainable_all_pct": 3.2
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "HISPANIC/LATINO - CUBAN",
-    "A": 6,
-    "B": 22,
+    "A": "<11",
+    "B": "withheld",
     "C": 0,
     "D": 400,
     "encounter_characteristic": false,
-    "recovery_share_pct": 78.6,
-    "rec_ci": [
-     64.2,
-     92.9
-    ],
-    "rec_ci_width": 28.6,
-    "rec_claim_supported": false,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
     "corroboration_share_pct": null,
     "cor_note": "not analyzable (A+C < 11)",
-    "recovery_share_no5719_pct": 78.6,
-    "rec_no5719_ci": [
-     64.2,
-     92.9
-    ],
-    "smd_coding_rate_vs_rest": 0.085,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 428,
      "ALT_avail_pct": 36.9,
@@ -513,7 +551,20 @@
      "HDL_avail_pct": 5.1,
      "liver_imaging_in_window_pct": 39.0,
      "cmrf_unascertainable_all_pct": 2.1
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "HISPANIC/LATINO - DOMINICAN",
@@ -554,31 +605,22 @@
    },
    {
     "stratum": "HISPANIC/LATINO - GUATEMALAN",
-    "A": 55,
+    "A": "withheld",
     "B": 138,
-    "C": 4,
+    "C": "<11",
     "D": 982,
     "encounter_characteristic": false,
-    "recovery_share_pct": 71.5,
-    "rec_ci": [
-     59.5,
-     82.4
-    ],
-    "rec_ci_width": 23.0,
-    "rec_claim_supported": false,
-    "corroboration_share_pct": 93.2,
-    "cor_ci": [
-     83.7,
-     98.5
-    ],
-    "cor_ci_width": 14.8,
-    "cor_claim_supported": true,
-    "recovery_share_no5719_pct": 71.5,
-    "rec_no5719_ci": [
-     59.5,
-     82.4
-    ],
-    "smd_coding_rate_vs_rest": 0.251,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
+    "corroboration_share_pct": null,
+    "cor_ci": null,
+    "cor_ci_width": null,
+    "cor_claim_supported": null,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 1179,
      "ALT_avail_pct": 41.2,
@@ -587,30 +629,37 @@
      "HDL_avail_pct": 3.9,
      "liver_imaging_in_window_pct": 46.4,
      "cmrf_unascertainable_all_pct": 5.2
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "HISPANIC/LATINO - HONDURAN",
-    "A": 9,
-    "B": 44,
-    "C": 1,
+    "A": "<11",
+    "B": "withheld",
+    "C": "<11",
     "D": 371,
     "encounter_characteristic": false,
-    "recovery_share_pct": 83.0,
-    "rec_ci": [
-     66.1,
-     97.5
-    ],
-    "rec_ci_width": 31.4,
-    "rec_claim_supported": false,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
     "corroboration_share_pct": null,
     "cor_note": "not analyzable (A+C < 11)",
-    "recovery_share_no5719_pct": 83.0,
-    "rec_no5719_ci": [
-     66.1,
-     97.5
-    ],
-    "smd_coding_rate_vs_rest": -0.029,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 425,
      "ALT_avail_pct": 37.4,
@@ -619,35 +668,39 @@
      "HDL_avail_pct": 5.4,
      "liver_imaging_in_window_pct": 41.4,
      "cmrf_unascertainable_all_pct": 3.1
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "HISPANIC/LATINO - MEXICAN",
-    "A": 17,
+    "A": "withheld",
     "B": 53,
-    "C": 2,
+    "C": "<11",
     "D": 439,
     "encounter_characteristic": false,
-    "recovery_share_pct": 75.7,
-    "rec_ci": [
-     64.4,
-     83.8
-    ],
-    "rec_ci_width": 19.4,
-    "rec_claim_supported": true,
-    "corroboration_share_pct": 89.5,
-    "cor_ci": [
-     79.1,
-     100.0
-    ],
-    "cor_ci_width": 20.9,
-    "cor_claim_supported": false,
-    "recovery_share_no5719_pct": 75.7,
-    "rec_no5719_ci": [
-     64.4,
-     83.8
-    ],
-    "smd_coding_rate_vs_rest": 0.153,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
+    "corroboration_share_pct": null,
+    "cor_ci": null,
+    "cor_ci_width": null,
+    "cor_claim_supported": null,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 511,
      "ALT_avail_pct": 37.0,
@@ -656,7 +709,20 @@
      "HDL_avail_pct": 3.7,
      "liver_imaging_in_window_pct": 37.4,
      "cmrf_unascertainable_all_pct": 7.6
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "HISPANIC/LATINO - PUERTO RICAN",
@@ -734,26 +800,20 @@
    },
    {
     "stratum": "MULTIPLE RACE/ETHNICITY",
-    "A": 4,
-    "B": 24,
+    "A": "<11",
+    "B": "withheld",
     "C": 0,
     "D": 390,
     "encounter_characteristic": false,
-    "recovery_share_pct": 85.7,
-    "rec_ci": [
-     68.8,
-     100.0
-    ],
-    "rec_ci_width": 31.2,
-    "rec_claim_supported": false,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
     "corroboration_share_pct": null,
     "cor_note": "not analyzable (A+C < 11)",
-    "recovery_share_no5719_pct": 85.7,
-    "rec_no5719_ci": [
-     68.8,
-     100.0
-    ],
-    "smd_coding_rate_vs_rest": -0.103,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 418,
      "ALT_avail_pct": 36.4,
@@ -762,30 +822,37 @@
      "HDL_avail_pct": 5.7,
      "liver_imaging_in_window_pct": 32.1,
      "cmrf_unascertainable_all_pct": 10.0
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER",
-    "A": 4,
-    "B": 23,
+    "A": "<11",
+    "B": "withheld",
     "C": 0,
     "D": 290,
     "encounter_characteristic": false,
-    "recovery_share_pct": 85.2,
-    "rec_ci": [
-     66.1,
-     100.0
-    ],
-    "rec_ci_width": 33.9,
-    "rec_claim_supported": false,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
     "corroboration_share_pct": null,
     "cor_note": "not analyzable (A+C < 11)",
-    "recovery_share_no5719_pct": 85.2,
-    "rec_no5719_ci": [
-     66.1,
-     100.0
-    ],
-    "smd_coding_rate_vs_rest": -0.088,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 317,
      "ALT_avail_pct": 47.9,
@@ -794,7 +861,20 @@
      "HDL_avail_pct": 9.8,
      "liver_imaging_in_window_pct": 31.5,
      "cmrf_unascertainable_all_pct": 5.0
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "OTHER",
@@ -835,31 +915,22 @@
    },
    {
     "stratum": "PATIENT DECLINED TO ANSWER",
-    "A": 19,
+    "A": "withheld",
     "B": 70,
-    "C": 6,
+    "C": "<11",
     "D": 1428,
     "encounter_characteristic": true,
-    "recovery_share_pct": 78.7,
-    "rec_ci": [
-     68.9,
-     86.2
-    ],
-    "rec_ci_width": 17.4,
-    "rec_claim_supported": true,
-    "corroboration_share_pct": 76.0,
-    "cor_ci": [
-     58.7,
-     91.7
-    ],
-    "cor_ci_width": 33.0,
-    "cor_claim_supported": false,
-    "recovery_share_no5719_pct": 78.7,
-    "rec_no5719_ci": [
-     68.9,
-     86.2
-    ],
-    "smd_coding_rate_vs_rest": 0.083,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
+    "corroboration_share_pct": null,
+    "cor_ci": null,
+    "cor_ci_width": null,
+    "cor_claim_supported": null,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 1523,
      "ALT_avail_pct": 36.6,
@@ -868,35 +939,39 @@
      "HDL_avail_pct": 5.8,
      "liver_imaging_in_window_pct": 32.5,
      "cmrf_unascertainable_all_pct": 2.8
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "PORTUGUESE",
-    "A": 56,
+    "A": "withheld",
     "B": 119,
-    "C": 7,
+    "C": "<11",
     "D": 1201,
     "encounter_characteristic": false,
-    "recovery_share_pct": 68.0,
-    "rec_ci": [
-     51.3,
-     85.6
-    ],
-    "rec_ci_width": 34.3,
-    "rec_claim_supported": false,
-    "corroboration_share_pct": 88.9,
-    "cor_ci": [
-     75.0,
-     96.0
-    ],
-    "cor_ci_width": 21.0,
-    "cor_claim_supported": false,
-    "recovery_share_no5719_pct": 68.0,
-    "rec_no5719_ci": [
-     51.3,
-     85.6
-    ],
-    "smd_coding_rate_vs_rest": 0.328,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
+    "corroboration_share_pct": null,
+    "cor_ci": null,
+    "cor_ci_width": null,
+    "cor_claim_supported": null,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 1383,
      "ALT_avail_pct": 54.3,
@@ -905,30 +980,37 @@
      "HDL_avail_pct": 4.7,
      "liver_imaging_in_window_pct": 50.6,
      "cmrf_unascertainable_all_pct": 1.3
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "SOUTH AMERICAN",
-    "A": 9,
-    "B": 46,
+    "A": "<11",
+    "B": "withheld",
     "C": 0,
     "D": 388,
     "encounter_characteristic": false,
-    "recovery_share_pct": 83.6,
-    "rec_ci": [
-     69.9,
-     94.5
-    ],
-    "rec_ci_width": 24.6,
-    "rec_claim_supported": false,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
     "corroboration_share_pct": null,
     "cor_note": "not analyzable (A+C < 11)",
-    "recovery_share_no5719_pct": 83.6,
-    "rec_no5719_ci": [
-     69.9,
-     94.5
-    ],
-    "smd_coding_rate_vs_rest": -0.045,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 443,
      "ALT_avail_pct": 32.7,
@@ -937,35 +1019,39 @@
      "HDL_avail_pct": 4.5,
      "liver_imaging_in_window_pct": 35.2,
      "cmrf_unascertainable_all_pct": 2.7
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "UNABLE TO OBTAIN",
-    "A": 9,
+    "A": "<11",
     "B": 55,
-    "C": 2,
+    "C": "<11",
     "D": 1326,
     "encounter_characteristic": true,
-    "recovery_share_pct": 85.9,
-    "rec_ci": [
-     77.4,
-     93.6
-    ],
-    "rec_ci_width": 16.2,
-    "rec_claim_supported": true,
-    "corroboration_share_pct": 81.8,
-    "cor_ci": [
-     58.3,
-     100.0
-    ],
-    "cor_ci_width": 41.7,
-    "cor_claim_supported": false,
-    "recovery_share_no5719_pct": 85.9,
-    "rec_no5719_ci": [
-     77.4,
-     93.6
-    ],
-    "smd_coding_rate_vs_rest": -0.109,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
+    "corroboration_share_pct": null,
+    "cor_ci": null,
+    "cor_ci_width": null,
+    "cor_claim_supported": null,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 1392,
      "ALT_avail_pct": 54.1,
@@ -974,7 +1060,20 @@
      "HDL_avail_pct": 11.2,
      "liver_imaging_in_window_pct": 30.1,
      "cmrf_unascertainable_all_pct": 5.2
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "UNKNOWN",
@@ -1052,31 +1151,22 @@
    },
    {
     "stratum": "WHITE - BRAZILIAN",
-    "A": 21,
+    "A": "withheld",
     "B": 69,
-    "C": 5,
+    "C": "<11",
     "D": 855,
     "encounter_characteristic": false,
-    "recovery_share_pct": 76.7,
-    "rec_ci": [
-     62.1,
-     88.3
-    ],
-    "rec_ci_width": 26.2,
-    "rec_claim_supported": false,
-    "corroboration_share_pct": 80.8,
-    "cor_ci": [
-     60.0,
-     96.8
-    ],
-    "cor_ci_width": 36.8,
-    "cor_claim_supported": false,
-    "recovery_share_no5719_pct": 76.7,
-    "rec_no5719_ci": [
-     62.1,
-     88.3
-    ],
-    "smd_coding_rate_vs_rest": 0.131,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
+    "corroboration_share_pct": null,
+    "cor_ci": null,
+    "cor_ci_width": null,
+    "cor_claim_supported": null,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 950,
      "ALT_avail_pct": 42.7,
@@ -1085,35 +1175,39 @@
      "HDL_avail_pct": 3.9,
      "liver_imaging_in_window_pct": 48.3,
      "cmrf_unascertainable_all_pct": 3.8
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "WHITE - EASTERN EUROPEAN",
-    "A": 12,
+    "A": "withheld",
     "B": 54,
-    "C": 2,
+    "C": "<11",
     "D": 977,
     "encounter_characteristic": false,
-    "recovery_share_pct": 81.8,
-    "rec_ci": [
-     72.3,
-     90.9
-    ],
-    "rec_ci_width": 18.6,
-    "rec_claim_supported": true,
-    "corroboration_share_pct": 85.7,
-    "cor_ci": [
-     65.6,
-     100.0
-    ],
-    "cor_ci_width": 34.4,
-    "cor_claim_supported": false,
-    "recovery_share_no5719_pct": 81.8,
-    "rec_no5719_ci": [
-     72.3,
-     90.9
-    ],
-    "smd_coding_rate_vs_rest": 0.003,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
+    "corroboration_share_pct": null,
+    "cor_ci": null,
+    "cor_ci_width": null,
+    "cor_claim_supported": null,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 1045,
      "ALT_avail_pct": 36.7,
@@ -1122,7 +1216,20 @@
      "HDL_avail_pct": 4.8,
      "liver_imaging_in_window_pct": 39.8,
      "cmrf_unascertainable_all_pct": 1.9
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "WHITE - OTHER EUROPEAN",
@@ -1145,11 +1252,8 @@
     ],
     "cor_ci_width": 11.3,
     "cor_claim_supported": true,
-    "recovery_share_no5719_pct": 79.3,
-    "rec_no5719_ci": [
-     74.8,
-     83.2
-    ],
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
     "smd_coding_rate_vs_rest": 0.075,
     "mech": {
      "n": 7126,
@@ -1159,7 +1263,11 @@
      "HDL_avail_pct": 4.7,
      "liver_imaging_in_window_pct": 40.4,
      "cmrf_unascertainable_all_pct": 0.5
-    }
+    },
+    "withheld": [
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct"
+    ]
    },
    {
     "stratum": "WHITE - RUSSIAN",
@@ -1202,31 +1310,22 @@
   "insurance": [
    {
     "stratum": "(missing)",
-    "A": 30,
-    "B": 207,
-    "C": 4,
-    "D": 4952,
+    "A": "withheld",
+    "B": "withheld",
+    "C": "<11",
+    "D": "withheld",
     "encounter_characteristic": false,
-    "recovery_share_pct": 87.3,
-    "rec_ci": [
-     82.3,
-     91.5
-    ],
-    "rec_ci_width": 9.3,
-    "rec_claim_supported": true,
-    "corroboration_share_pct": 88.2,
-    "cor_ci": [
-     77.1,
-     97.6
-    ],
-    "cor_ci_width": 20.5,
-    "cor_claim_supported": false,
-    "recovery_share_no5719_pct": 87.3,
-    "rec_no5719_ci": [
-     82.3,
-     91.5
-    ],
-    "smd_coding_rate_vs_rest": -0.152,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
+    "corroboration_share_pct": null,
+    "cor_ci": null,
+    "cor_ci_width": null,
+    "cor_claim_supported": null,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 5193,
      "ALT_avail_pct": 32.1,
@@ -1235,7 +1334,20 @@
      "HDL_avail_pct": 7.7,
      "liver_imaging_in_window_pct": 28.6,
      "cmrf_unascertainable_all_pct": 20.4
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "Medicaid",
@@ -1314,9 +1426,9 @@
    {
     "stratum": "No charge",
     "A": 0,
-    "B": 6,
+    "B": "<11",
     "C": 0,
-    "D": 67,
+    "D": "withheld",
     "encounter_characteristic": false,
     "recovery_share_pct": null,
     "rec_note": "not analyzable (B < 11)",
@@ -1330,35 +1442,35 @@
      "HDL_avail_pct": 8.2,
      "liver_imaging_in_window_pct": 35.6,
      "cmrf_unascertainable_all_pct": 9.6
-    }
+    },
+    "withheld": [
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "Other",
-    "A": 122,
+    "A": "withheld",
     "B": 724,
-    "C": 13,
+    "C": "withheld",
     "D": 9111,
     "encounter_characteristic": false,
-    "recovery_share_pct": 85.6,
-    "rec_ci": [
-     82.9,
-     88.2
-    ],
-    "rec_ci_width": 5.3,
-    "rec_claim_supported": true,
-    "corroboration_share_pct": 90.4,
-    "cor_ci": [
-     84.7,
-     95.1
-    ],
-    "cor_ci_width": 10.4,
-    "cor_claim_supported": true,
-    "recovery_share_no5719_pct": 85.7,
-    "rec_no5719_ci": [
-     82.9,
-     88.3
-    ],
-    "smd_coding_rate_vs_rest": -0.102,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
+    "corroboration_share_pct": null,
+    "cor_ci": null,
+    "cor_ci_width": null,
+    "cor_claim_supported": null,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 9970,
      "ALT_avail_pct": 39.7,
@@ -1367,7 +1479,20 @@
      "HDL_avail_pct": 6.2,
      "liver_imaging_in_window_pct": 36.5,
      "cmrf_unascertainable_all_pct": 5.7
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "Private",
@@ -1486,26 +1611,20 @@
   "language": [
    {
     "stratum": "(missing)",
-    "A": 3,
-    "B": 30,
-    "C": 1,
+    "A": "<11",
+    "B": "withheld",
+    "C": "<11",
     "D": 590,
     "encounter_characteristic": false,
-    "recovery_share_pct": 90.9,
-    "rec_ci": [
-     80.0,
-     100.0
-    ],
-    "rec_ci_width": 20.0,
-    "rec_claim_supported": true,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
     "corroboration_share_pct": null,
     "cor_note": "not analyzable (A+C < 11)",
-    "recovery_share_no5719_pct": 90.9,
-    "rec_no5719_ci": [
-     80.0,
-     100.0
-    ],
-    "smd_coding_rate_vs_rest": -0.265,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 624,
      "ALT_avail_pct": 54.8,
@@ -1514,30 +1633,37 @@
      "HDL_avail_pct": 10.4,
      "liver_imaging_in_window_pct": 29.2,
      "cmrf_unascertainable_all_pct": 2.6
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "American Sign Language",
-    "A": 3,
-    "B": 17,
-    "C": 2,
+    "A": "<11",
+    "B": "withheld",
+    "C": "<11",
     "D": 376,
     "encounter_characteristic": false,
-    "recovery_share_pct": 85.0,
-    "rec_ci": [
-     70.7,
-     100.0
-    ],
-    "rec_ci_width": 29.3,
-    "rec_claim_supported": false,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
     "corroboration_share_pct": null,
     "cor_note": "not analyzable (A+C < 11)",
-    "recovery_share_no5719_pct": 85.0,
-    "rec_no5719_ci": [
-     70.7,
-     100.0
-    ],
-    "smd_coding_rate_vs_rest": -0.083,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 398,
      "ALT_avail_pct": 40.5,
@@ -1546,12 +1672,25 @@
      "HDL_avail_pct": 2.8,
      "liver_imaging_in_window_pct": 44.2,
      "cmrf_unascertainable_all_pct": 1.0
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "Amharic",
-    "A": 4,
-    "B": 7,
+    "A": "<11",
+    "B": "<11",
     "C": 0,
     "D": 152,
     "encounter_characteristic": false,
@@ -1559,7 +1698,7 @@
     "rec_note": "not analyzable (B < 11)",
     "corroboration_share_pct": null,
     "cor_note": "not analyzable (A+C < 11)",
-    "smd_coding_rate_vs_rest": 0.42,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 163,
      "ALT_avail_pct": 33.7,
@@ -1568,30 +1707,37 @@
      "HDL_avail_pct": 8.0,
      "liver_imaging_in_window_pct": 43.6,
      "cmrf_unascertainable_all_pct": 1.2
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "Arabic",
     "A": 0,
-    "B": 30,
-    "C": 1,
+    "B": "withheld",
+    "C": "<11",
     "D": 442,
     "encounter_characteristic": false,
-    "recovery_share_pct": 100.0,
-    "rec_ci": [
-     100.0,
-     100.0
-    ],
-    "rec_ci_width": 0.0,
-    "rec_claim_supported": true,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
     "corroboration_share_pct": null,
     "cor_note": "not analyzable (A+C < 11)",
-    "recovery_share_no5719_pct": 100.0,
-    "rec_no5719_ci": [
-     100.0,
-     100.0
-    ],
-    "smd_coding_rate_vs_rest": -0.665,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 473,
      "ALT_avail_pct": 48.8,
@@ -1600,14 +1746,27 @@
      "HDL_avail_pct": 5.3,
      "liver_imaging_in_window_pct": 44.6,
      "cmrf_unascertainable_all_pct": 1.7
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "Armenian",
-    "A": 1,
+    "A": "<11",
     "B": 0,
     "C": 0,
-    "D": 74,
+    "D": "withheld",
     "encounter_characteristic": false,
     "recovery_share_pct": null,
     "rec_note": "not analyzable (B < 11)",
@@ -1621,14 +1780,27 @@
      "HDL_avail_pct": 6.7,
      "liver_imaging_in_window_pct": 28.0,
      "cmrf_unascertainable_all_pct": 1.3
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "Bengali",
-    "A": 5,
-    "B": 2,
-    "C": 1,
-    "D": 78,
+    "A": "<11",
+    "B": "<11",
+    "C": "<11",
+    "D": "withheld",
     "encounter_characteristic": false,
     "recovery_share_pct": null,
     "rec_note": "not analyzable (B < 11)",
@@ -1642,35 +1814,39 @@
      "HDL_avail_pct": 5.8,
      "liver_imaging_in_window_pct": 40.7,
      "cmrf_unascertainable_all_pct": 0.0
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "Chinese",
-    "A": 55,
+    "A": "withheld",
     "B": 381,
-    "C": 10,
+    "C": "<11",
     "D": 4559,
     "encounter_characteristic": false,
-    "recovery_share_pct": 87.4,
-    "rec_ci": [
-     83.3,
-     91.2
-    ],
-    "rec_ci_width": 7.9,
-    "rec_claim_supported": true,
-    "corroboration_share_pct": 84.6,
-    "cor_ci": [
-     75.4,
-     92.5
-    ],
-    "cor_ci_width": 17.1,
-    "cor_claim_supported": true,
-    "recovery_share_no5719_pct": 87.4,
-    "rec_no5719_ci": [
-     83.3,
-     91.2
-    ],
-    "smd_coding_rate_vs_rest": -0.154,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
+    "corroboration_share_pct": null,
+    "cor_ci": null,
+    "cor_ci_width": null,
+    "cor_claim_supported": null,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 5005,
      "ALT_avail_pct": 43.5,
@@ -1679,7 +1855,20 @@
      "HDL_avail_pct": 5.1,
      "liver_imaging_in_window_pct": 48.3,
      "cmrf_unascertainable_all_pct": 1.8
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "English",
@@ -1721,9 +1910,9 @@
    {
     "stratum": "French",
     "A": 0,
-    "B": 2,
+    "B": "<11",
     "C": 0,
-    "D": 154,
+    "D": "withheld",
     "encounter_characteristic": false,
     "recovery_share_pct": null,
     "rec_note": "not analyzable (B < 11)",
@@ -1737,30 +1926,33 @@
      "HDL_avail_pct": 7.1,
      "liver_imaging_in_window_pct": 28.2,
      "cmrf_unascertainable_all_pct": 3.8
-    }
+    },
+    "withheld": [
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "Haitian",
-    "A": 7,
-    "B": 48,
-    "C": 2,
+    "A": "<11",
+    "B": "withheld",
+    "C": "<11",
     "D": 1637,
     "encounter_characteristic": false,
-    "recovery_share_pct": 87.3,
-    "rec_ci": [
-     76.4,
-     95.5
-    ],
-    "rec_ci_width": 19.0,
-    "rec_claim_supported": true,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
     "corroboration_share_pct": null,
     "cor_note": "not analyzable (A+C < 11)",
-    "recovery_share_no5719_pct": 87.3,
-    "rec_no5719_ci": [
-     76.4,
-     95.5
-    ],
-    "smd_coding_rate_vs_rest": -0.149,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 1694,
      "ALT_avail_pct": 45.3,
@@ -1769,14 +1961,27 @@
      "HDL_avail_pct": 8.7,
      "liver_imaging_in_window_pct": 37.0,
      "cmrf_unascertainable_all_pct": 0.7
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "Hindi",
-    "A": 1,
-    "B": 5,
+    "A": "<11",
+    "B": "<11",
     "C": 0,
-    "D": 118,
+    "D": "withheld",
     "encounter_characteristic": false,
     "recovery_share_pct": null,
     "rec_note": "not analyzable (B < 11)",
@@ -1790,7 +1995,20 @@
      "HDL_avail_pct": 10.5,
      "liver_imaging_in_window_pct": 28.2,
      "cmrf_unascertainable_all_pct": 1.6
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "Italian",
@@ -1852,31 +2070,22 @@
    },
    {
     "stratum": "Kabuverdianu",
-    "A": 54,
+    "A": "withheld",
     "B": 192,
-    "C": 5,
+    "C": "<11",
     "D": 3112,
     "encounter_characteristic": false,
-    "recovery_share_pct": 78.0,
-    "rec_ci": [
-     70.5,
-     85.8
-    ],
-    "rec_ci_width": 15.4,
-    "rec_claim_supported": true,
-    "corroboration_share_pct": 91.5,
-    "cor_ci": [
-     81.3,
-     98.3
-    ],
-    "cor_ci_width": 17.0,
-    "cor_claim_supported": true,
-    "recovery_share_no5719_pct": 78.0,
-    "rec_no5719_ci": [
-     70.5,
-     85.8
-    ],
-    "smd_coding_rate_vs_rest": 0.098,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
+    "corroboration_share_pct": null,
+    "cor_ci": null,
+    "cor_ci_width": null,
+    "cor_claim_supported": null,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 3363,
      "ALT_avail_pct": 37.1,
@@ -1885,14 +2094,27 @@
      "HDL_avail_pct": 6.5,
      "liver_imaging_in_window_pct": 38.2,
      "cmrf_unascertainable_all_pct": 0.4
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "Khmer",
-    "A": 2,
-    "B": 8,
+    "A": "<11",
+    "B": "<11",
     "C": 0,
-    "D": 193,
+    "D": "withheld",
     "encounter_characteristic": false,
     "recovery_share_pct": null,
     "rec_note": "not analyzable (B < 11)",
@@ -1906,30 +2128,37 @@
      "HDL_avail_pct": 10.3,
      "liver_imaging_in_window_pct": 53.2,
      "cmrf_unascertainable_all_pct": 1.0
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "Korean",
-    "A": 1,
-    "B": 15,
-    "C": 1,
+    "A": "<11",
+    "B": "withheld",
+    "C": "<11",
     "D": 231,
     "encounter_characteristic": false,
-    "recovery_share_pct": 93.8,
-    "rec_ci": [
-     72.3,
-     100.0
-    ],
-    "rec_ci_width": 27.7,
-    "rec_claim_supported": false,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
     "corroboration_share_pct": null,
     "cor_note": "not analyzable (A+C < 11)",
-    "recovery_share_no5719_pct": 93.8,
-    "rec_no5719_ci": [
-     72.3,
-     100.0
-    ],
-    "smd_coding_rate_vs_rest": -0.368,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 248,
      "ALT_avail_pct": 46.8,
@@ -1938,30 +2167,37 @@
      "HDL_avail_pct": 6.0,
      "liver_imaging_in_window_pct": 44.4,
      "cmrf_unascertainable_all_pct": 3.6
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "Modern Greek (1453-)",
-    "A": 2,
-    "B": 20,
+    "A": "<11",
+    "B": "withheld",
     "C": 0,
     "D": 695,
     "encounter_characteristic": false,
-    "recovery_share_pct": 90.9,
-    "rec_ci": [
-     69.2,
-     100.0
-    ],
-    "rec_ci_width": 30.8,
-    "rec_claim_supported": false,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
     "corroboration_share_pct": null,
     "cor_note": "not analyzable (A+C < 11)",
-    "recovery_share_no5719_pct": 90.9,
-    "rec_no5719_ci": [
-     69.2,
-     100.0
-    ],
-    "smd_coding_rate_vs_rest": -0.264,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 717,
      "ALT_avail_pct": 40.9,
@@ -1970,35 +2206,39 @@
      "HDL_avail_pct": 6.6,
      "liver_imaging_in_window_pct": 38.6,
      "cmrf_unascertainable_all_pct": 0.4
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "Other",
-    "A": 12,
+    "A": "withheld",
     "B": 53,
-    "C": 1,
+    "C": "<11",
     "D": 850,
     "encounter_characteristic": false,
-    "recovery_share_pct": 81.5,
-    "rec_ci": [
-     68.7,
-     92.5
-    ],
-    "rec_ci_width": 23.9,
-    "rec_claim_supported": false,
-    "corroboration_share_pct": 92.3,
-    "cor_ci": [
-     71.4,
-     100.0
-    ],
-    "cor_ci_width": 28.6,
-    "cor_claim_supported": false,
-    "recovery_share_no5719_pct": 81.5,
-    "rec_no5719_ci": [
-     68.7,
-     92.5
-    ],
-    "smd_coding_rate_vs_rest": 0.01,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
+    "corroboration_share_pct": null,
+    "cor_ci": null,
+    "cor_ci_width": null,
+    "cor_claim_supported": null,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 916,
      "ALT_avail_pct": 47.7,
@@ -2007,30 +2247,37 @@
      "HDL_avail_pct": 8.7,
      "liver_imaging_in_window_pct": 37.9,
      "cmrf_unascertainable_all_pct": 2.1
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "Persian",
-    "A": 1,
-    "B": 17,
-    "C": 1,
+    "A": "<11",
+    "B": "withheld",
+    "C": "<11",
     "D": 316,
     "encounter_characteristic": false,
-    "recovery_share_pct": 94.4,
-    "rec_ci": [
-     77.8,
-     100.0
-    ],
-    "rec_ci_width": 22.2,
-    "rec_claim_supported": false,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
     "corroboration_share_pct": null,
     "cor_note": "not analyzable (A+C < 11)",
-    "recovery_share_no5719_pct": 94.4,
-    "rec_no5719_ci": [
-     77.8,
-     100.0
-    ],
-    "smd_coding_rate_vs_rest": -0.395,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 335,
      "ALT_avail_pct": 38.2,
@@ -2039,30 +2286,37 @@
      "HDL_avail_pct": 5.7,
      "liver_imaging_in_window_pct": 40.0,
      "cmrf_unascertainable_all_pct": 0.0
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "Polish",
-    "A": 3,
-    "B": 19,
-    "C": 2,
+    "A": "<11",
+    "B": "withheld",
+    "C": "<11",
     "D": 309,
     "encounter_characteristic": false,
-    "recovery_share_pct": 86.4,
-    "rec_ci": [
-     77.9,
-     100.0
-    ],
-    "rec_ci_width": 22.1,
-    "rec_claim_supported": false,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
     "corroboration_share_pct": null,
     "cor_note": "not analyzable (A+C < 11)",
-    "recovery_share_no5719_pct": 86.4,
-    "rec_no5719_ci": [
-     77.9,
-     100.0
-    ],
-    "smd_coding_rate_vs_rest": -0.122,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 333,
      "ALT_avail_pct": 46.5,
@@ -2071,35 +2325,39 @@
      "HDL_avail_pct": 6.3,
      "liver_imaging_in_window_pct": 39.3,
      "cmrf_unascertainable_all_pct": 0.9
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "Portuguese",
-    "A": 31,
+    "A": "withheld",
     "B": 150,
-    "C": 5,
+    "C": "<11",
     "D": 1780,
     "encounter_characteristic": false,
-    "recovery_share_pct": 82.9,
-    "rec_ci": [
-     76.1,
-     89.2
-    ],
-    "rec_ci_width": 13.1,
-    "rec_claim_supported": true,
-    "corroboration_share_pct": 86.1,
-    "cor_ci": [
-     71.6,
-     100.0
-    ],
-    "cor_ci_width": 28.4,
-    "cor_claim_supported": false,
-    "recovery_share_no5719_pct": 82.9,
-    "rec_no5719_ci": [
-     76.1,
-     89.2
-    ],
-    "smd_coding_rate_vs_rest": -0.025,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
+    "corroboration_share_pct": null,
+    "cor_ci": null,
+    "cor_ci_width": null,
+    "cor_claim_supported": null,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 1966,
      "ALT_avail_pct": 49.1,
@@ -2108,7 +2366,20 @@
      "HDL_avail_pct": 6.6,
      "liver_imaging_in_window_pct": 43.5,
      "cmrf_unascertainable_all_pct": 2.2
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "Russian",
@@ -2150,9 +2421,9 @@
    {
     "stratum": "Somali",
     "A": 0,
-    "B": 7,
+    "B": "<11",
     "C": 0,
-    "D": 127,
+    "D": "withheld",
     "encounter_characteristic": false,
     "recovery_share_pct": null,
     "rec_note": "not analyzable (B < 11)",
@@ -2166,7 +2437,16 @@
      "HDL_avail_pct": 5.2,
      "liver_imaging_in_window_pct": 50.0,
      "cmrf_unascertainable_all_pct": 0.0
-    }
+    },
+    "withheld": [
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "Spanish",
@@ -2207,8 +2487,8 @@
    },
    {
     "stratum": "Thai",
-    "A": 2,
-    "B": 9,
+    "A": "<11",
+    "B": "<11",
     "C": 0,
     "D": 178,
     "encounter_characteristic": false,
@@ -2216,7 +2496,7 @@
     "rec_note": "not analyzable (B < 11)",
     "corroboration_share_pct": null,
     "cor_note": "not analyzable (A+C < 11)",
-    "smd_coding_rate_vs_rest": 0.003,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 189,
      "ALT_avail_pct": 39.7,
@@ -2225,30 +2505,37 @@
      "HDL_avail_pct": 5.3,
      "liver_imaging_in_window_pct": 40.7,
      "cmrf_unascertainable_all_pct": 2.1
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    },
    {
     "stratum": "Vietnamese",
-    "A": 8,
-    "B": 66,
+    "A": "<11",
+    "B": "withheld",
     "C": 0,
     "D": 715,
     "encounter_characteristic": false,
-    "recovery_share_pct": 89.2,
-    "rec_ci": [
-     77.8,
-     96.2
-    ],
-    "rec_ci_width": 18.4,
-    "rec_claim_supported": true,
+    "recovery_share_pct": null,
+    "rec_ci": null,
+    "rec_ci_width": null,
+    "rec_claim_supported": null,
     "corroboration_share_pct": null,
     "cor_note": "not analyzable (A+C < 11)",
-    "recovery_share_no5719_pct": 89.2,
-    "rec_no5719_ci": [
-     77.8,
-     96.2
-    ],
-    "smd_coding_rate_vs_rest": -0.208,
+    "recovery_share_no5719_pct": null,
+    "rec_no5719_ci": null,
+    "smd_coding_rate_vs_rest": null,
     "mech": {
      "n": 789,
      "ALT_avail_pct": 59.1,
@@ -2257,7 +2544,20 @@
      "HDL_avail_pct": 6.3,
      "liver_imaging_in_window_pct": 52.0,
      "cmrf_unascertainable_all_pct": 0.3
-    }
+    },
+    "withheld": [
+     "cor_ci",
+     "cor_ci_width",
+     "cor_claim_supported",
+     "corroboration_share_pct",
+     "rec_ci",
+     "rec_ci_width",
+     "rec_claim_supported",
+     "rec_no5719_ci",
+     "recovery_share_no5719_pct",
+     "recovery_share_pct",
+     "smd_coding_rate_vs_rest"
+    ]
    }
   ],
   "age_band": [
@@ -2830,5 +3130,6 @@
    "admission_type": "EW EMER.",
    "icd_era": "ICD-9 only"
   }
- }
+ },
+ "disclosure": "Counts from 1 to 10 are published as '<11'; where a row or column total would give one back by subtraction a second cell is 'withheld'; shares computed from a hidden cell are null and listed under 'withheld'. Written by scripts/public_counts.py."
 }

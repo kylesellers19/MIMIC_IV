@@ -5,6 +5,8 @@ r = json.load(open("docs/run_2026-09-19/results/context_agreement.json"))
 bc = r["by_assertion_class"]; conf = r["confusion_project_rows_medspacy_columns"]
 CLASSES = ["affirmed", "negated", "uncertain", "historical", "family"]
 def g(p, m): return conf.get(f"{p}->{m}", 0)
+def n(v): return f"{v:,}" if isinstance(v, int) else v      # published counts may read <11 or withheld
+def few(v, what): return f"{v:,} {what}" if isinstance(v, int) else f"fewer {what} (count withheld beside a small cell)"
 L = ["# Agreement between this project's context handling and medspaCy ConText\n",
 "Produced by `scripts/run0919_context_agreement.py`; every number is read from `docs/run_2026-09-19/results/context_agreement.json`. Stretch item of run_2026-09-19. **The frozen note rule is unchanged by this analysis.**\n",
 "## Why this exists\n",
@@ -23,17 +25,17 @@ for c in CLASSES:
     L.append(f"| {c} | {v['project_n']:,} | {v['agree_n']:,} | {pa} |")
 L += [f"| **all classes** | **{r['aligned_hits']:,}** | | **{r['overall_percent_agreement']}%** |", "",
 "## Where the two systems part company\n",
-"Rows are the project's label, columns medspaCy's. Counts of mentions.\n",
+"Rows are the project's label, columns medspaCy's. Counts of mentions. Counts from 1 to 10 read <11; because each row's total is published above, the smallest other disagreement cell in that row is withheld.\n",
 "| project ↓ / ConText → | " + " | ".join(CLASSES) + " |", "| --- | " + " | ".join("--:" for _ in CLASSES) + " |"]
 for p in CLASSES:
-    L.append(f"| {p} | " + " | ".join(f"{g(p, m):,}" for m in CLASSES) + " |")
+    L.append(f"| {p} | " + " | ".join(n(g(p, m)) for m in CLASSES) + " |")
 L += ["", "Reading the table:\n",
-f"- **Negation is where the two agree most** ({bc['negated']['percent_agreement']}% of the project's negated mentions). The larger asymmetry runs the other way: **{g('affirmed','negated'):,} mentions the project treats as affirmed are negated by ConText**, against {g('negated','affirmed'):,} in the opposite direction. On this corpus the project's rule is the more conservative negator — it asserts presence where the reference implementation would not.",
-f"- **Hedging is the weakest class** ({bc['uncertain']['percent_agreement']}%). ConText marks {g('affirmed','uncertain'):,} project-affirmed mentions as uncertain, while {g('uncertain','affirmed'):,} project-hedged mentions come back affirmed and {g('uncertain','negated'):,} come back negated. This matters for the study because hedged mentions are exactly the Tier C category the project reports separately, and because Phase 4.4 shows counting Tier C positive moves the primary recovery share by about a third of a point.",
+f"- **Negation is where the two agree most** ({bc['negated']['percent_agreement']}% of the project's negated mentions). The larger asymmetry runs the other way: **{n(g('affirmed','negated'))} mentions the project treats as affirmed are negated by ConText**, against {few(g('negated','affirmed'), 'in the opposite direction')}. On this corpus the project's rule is the more conservative negator — it asserts presence where the reference implementation would not.",
+f"- **Hedging is the weakest class** ({bc['uncertain']['percent_agreement']}%). ConText marks {n(g('affirmed','uncertain'))} project-affirmed mentions as uncertain, while {n(g('uncertain','affirmed'))} project-hedged mentions come back affirmed and {few(g('uncertain','negated'), 'come back negated')}. This matters for the study because hedged mentions are exactly the Tier C category the project reports separately, and because Phase 4.4 shows counting Tier C positive moves the primary recovery share by about a third of a point.",
 f"- **Historical** agrees {bc['historical']['percent_agreement']}% of the time; the project flags historical mentions but does not exclude them, so this difference does not propagate to note-positive status.",
 f"- **Family history does not arise in this corpus**: the project found {bc['family']['project_n']} family-attributed mentions in {r['sampled_reports']:,} radiology reports, which is expected — family history is a discharge-summary phenomenon, not a radiology one. The class is therefore not estimable here, and a discharge-summary sample would be needed to measure it.\n",
 "## What this licenses the manuscript to say\n",
-f"The limitation can move from \"negation and context handling were reimplemented rather than run from the reference distribution\" to \"...; on {r['sampled_reports']:,} radiology reports the reimplementation agreed with medspaCy ConText on {r['overall_percent_agreement']}% of {r['aligned_hits']:,} lexicon mentions, with agreement highest for negation ({bc['negated']['percent_agreement']}%) and lowest for hedging ({bc['uncertain']['percent_agreement']}%)\". The disagreement is concentrated in the hedged category that the phenotype already reports separately, which is the reassuring part; the {g('affirmed','negated'):,} affirmed-versus-negated disagreements are the part that would change note-positive status and deserve a sentence of their own.\n",
+f"The limitation can move from \"negation and context handling were reimplemented rather than run from the reference distribution\" to \"...; on {r['sampled_reports']:,} radiology reports the reimplementation agreed with medspaCy ConText on {r['overall_percent_agreement']}% of {r['aligned_hits']:,} lexicon mentions, with agreement highest for negation ({bc['negated']['percent_agreement']}%) and lowest for hedging ({bc['uncertain']['percent_agreement']}%)\". The disagreement is concentrated in the hedged category that the phenotype already reports separately, which is the reassuring part; the {n(g('affirmed','negated'))} affirmed-versus-negated disagreements are the part that would change note-positive status and deserve a sentence of their own.\n",
 "This analysis changed nothing. The rule, its tags and the 2×2 are exactly as they were.\n"]
 open("docs/context_agreement.md", "w").write("\n".join(L) + "\n")
 print("wrote docs/context_agreement.md")

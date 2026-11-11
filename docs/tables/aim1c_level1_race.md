@@ -1,16 +1,6 @@
 # Aim 1c level 1 — by race (run_2026-09-19)
 
-Source: `docs/run_2026-09-19/results/aim1c_level1.json`.
-
-# Aim 1c, level 1 — equity of recovery at the computable stage (run_2026-09-19)
-
-Produced by `scripts/run0919_aim1c_level1.py`; every number is read from `docs/run_2026-09-19/results/aim1c_level1.json`. Pre-specification: `docs/analysis_plan_prespecified.md` (H1c; amendment g). Definition (b), v1.1.0, −365/+30 outpatient window.
-
-**What is measured.** Recovery share = B ÷ (A + B): among note-positive admissions, the share with no MASLD code. Corroboration share = A ÷ (A + C): among code-positive admissions, the share whose notes also document steatosis. Both are computable-stage quantities about *documentation and coding*, not adjudicated disease. 95% CIs are subject-cluster bootstraps (500 replicates; a subject's admissions are resampled together because one person can contribute several). Floors: no recovery share where B < 11; no corroboration share where A + C < 11; such strata are declared non-analyzable, not merged. A CI wider than 20 percentage points is marked as too wide to support a claim (an analyst threshold, stated here so it can be argued with). No p-values. The SMD column is the one-versus-rest standardized difference in the coding rate among note-positive admissions (A ÷ (A + B)), a descriptive contrast.
-
-Levels 2 and 3 of the audit (weighted PPV by stratum against the gold standard; model calibration by stratum) require the adjudication and the models and are not attempted here.
-
-UNKNOWN, UNABLE TO OBTAIN and PATIENT DECLINED TO ANSWER are reported but are **encounter characteristics, not population groups** (marked †). Ages ≥ 89 are recoded to 91 in MIMIC-IV, so the 89+ band is an aggregate.
+Source: `docs/run_2026-09-19/results/aim1c_level1.json`. Counts from 1 to 10 appear as <11; *withheld* cells and shares would otherwise give one back by subtraction.
 
 ## By race
 
@@ -27,30 +17,30 @@ Cell counts first:
 | HISPANIC OR LATINO | 92 | 518 | 16 | 5,543 |
 | ASIAN - CHINESE | 67 | 374 | 11 | 4,241 |
 | WHITE - RUSSIAN | 81 | 214 | 11 | 4,354 |
-| ASIAN | 49 | 262 | 9 | 4,330 |
-| BLACK/CAPE VERDEAN | 57 | 235 | 4 | 3,691 |
+| ASIAN | withheld | 262 | <11 | 4,330 |
+| BLACK/CAPE VERDEAN | withheld | 235 | <11 | 3,691 |
 | HISPANIC/LATINO - DOMINICAN | 79 | 289 | 13 | 3,229 |
-| BLACK/CARIBBEAN ISLAND | 16 | 101 | 2 | 2,283 |
-| BLACK/AFRICAN | 25 | 92 | 3 | 1,895 |
-| PATIENT DECLINED TO ANSWER † | 19 | 70 | 6 | 1,428 |
-| UNABLE TO OBTAIN † | 9 | 55 | 2 | 1,326 |
-| PORTUGUESE | 56 | 119 | 7 | 1,201 |
-| ASIAN - SOUTH EAST ASIAN | 15 | 114 | 1 | 1,132 |
-| HISPANIC/LATINO - GUATEMALAN | 55 | 138 | 4 | 982 |
-| WHITE - EASTERN EUROPEAN | 12 | 54 | 2 | 977 |
-| ASIAN - ASIAN INDIAN | 14 | 81 | 3 | 879 |
-| WHITE - BRAZILIAN | 21 | 69 | 5 | 855 |
-| AMERICAN INDIAN/ALASKA NATIVE | 10 | 43 | 2 | 709 |
+| BLACK/CARIBBEAN ISLAND | withheld | 101 | <11 | 2,283 |
+| BLACK/AFRICAN | withheld | 92 | <11 | 1,895 |
+| PATIENT DECLINED TO ANSWER † | withheld | 70 | <11 | 1,428 |
+| UNABLE TO OBTAIN † | <11 | 55 | <11 | 1,326 |
+| PORTUGUESE | withheld | 119 | <11 | 1,201 |
+| ASIAN - SOUTH EAST ASIAN | withheld | 114 | <11 | 1,132 |
+| HISPANIC/LATINO - GUATEMALAN | withheld | 138 | <11 | 982 |
+| WHITE - EASTERN EUROPEAN | withheld | 54 | <11 | 977 |
+| ASIAN - ASIAN INDIAN | withheld | 81 | <11 | 879 |
+| WHITE - BRAZILIAN | withheld | 69 | <11 | 855 |
+| AMERICAN INDIAN/ALASKA NATIVE | <11 | 43 | <11 | 709 |
 | HISPANIC/LATINO - SALVADORAN | 34 | 58 | 0 | 637 |
-| HISPANIC/LATINO - MEXICAN | 17 | 53 | 2 | 439 |
-| HISPANIC/LATINO - COLUMBIAN | 15 | 46 | 3 | 442 |
-| SOUTH AMERICAN | 9 | 46 | 0 | 388 |
-| HISPANIC/LATINO - CUBAN | 6 | 22 | 0 | 400 |
-| HISPANIC/LATINO - HONDURAN | 9 | 44 | 1 | 371 |
-| MULTIPLE RACE/ETHNICITY | 4 | 24 | 0 | 390 |
-| HISPANIC/LATINO - CENTRAL AMERICAN | 27 | 43 | 2 | 310 |
-| ASIAN - KOREAN | 1 | 21 | 1 | 350 |
-| NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER | 4 | 23 | 0 | 290 |
+| HISPANIC/LATINO - MEXICAN | withheld | 53 | <11 | 439 |
+| HISPANIC/LATINO - COLUMBIAN | withheld | 46 | <11 | 442 |
+| SOUTH AMERICAN | <11 | withheld | 0 | 388 |
+| HISPANIC/LATINO - CUBAN | <11 | withheld | 0 | 400 |
+| HISPANIC/LATINO - HONDURAN | <11 | withheld | <11 | 371 |
+| MULTIPLE RACE/ETHNICITY | <11 | withheld | 0 | 390 |
+| HISPANIC/LATINO - CENTRAL AMERICAN | withheld | 43 | <11 | 310 |
+| ASIAN - KOREAN | <11 | withheld | <11 | 350 |
+| NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER | <11 | withheld | 0 | 290 |
 
 Shares (analyzable strata only):
 
@@ -60,35 +50,35 @@ Shares (analyzable strata only):
 | BLACK/AFRICAN AMERICAN | 85.7 | 84.1–87.1 | 3.0 | yes | 84.4 | 80.6–87.8 | 7.2 | yes | -0.112 | 85.7 (84.1–87.1) |
 | OTHER | 79.5 | 75.5–82.7 | 7.2 | yes | 87.3 | 81.9–92.2 | 10.3 | yes | 0.064 | 79.5 (75.5–82.7) |
 | UNKNOWN † | 84.9 | 81.8–87.8 | 5.9 | yes | 88.9 | 82.9–94.3 | 11.4 | yes | -0.08 | 85.0 (82.1–87.9) |
-| WHITE - OTHER EUROPEAN | 79.0 | 74.7–83.0 | 8.3 | yes | 86.3 | 80.4–91.7 | 11.3 | yes | 0.075 | 79.3 (74.8–83.2) |
+| WHITE - OTHER EUROPEAN | 79.0 | 74.7–83.0 | 8.3 | yes | 86.3 | 80.4–91.7 | 11.3 | yes | 0.075 | withheld |
 | HISPANIC/LATINO - PUERTO RICAN | 72.6 | 68.0–76.5 | 8.5 | yes | 92.2 | 88.6–95.9 | 7.3 | yes | 0.232 | 72.6 (68.0–76.5) |
-| HISPANIC OR LATINO | 84.9 | 80.6–88.8 | 8.2 | yes | 85.2 | 77.4–92.3 | 14.9 | yes | -0.082 | 85.1 (80.7–88.9) |
+| HISPANIC OR LATINO | 84.9 | 80.6–88.8 | 8.2 | yes | 85.2 | 77.4–92.3 | 14.9 | yes | -0.082 | withheld |
 | ASIAN - CHINESE | 84.8 | 80.3–88.6 | 8.3 | yes | 85.9 | 77.2–92.7 | 15.4 | yes | -0.078 | 84.8 (80.3–88.6) |
 | WHITE - RUSSIAN | 72.5 | 63.1–82.5 | 19.4 | yes | 88.0 | 77.3–95.2 | 17.9 | yes | 0.228 | 72.5 (63.1–82.5) |
-| ASIAN | 84.2 | 78.8–89.2 | 10.4 | yes | 84.5 | 73.5–93.7 | 20.2 | no — too wide | -0.062 | 84.2 (78.8–89.2) |
-| BLACK/CAPE VERDEAN | 80.5 | 73.9–86.8 | 12.9 | yes | 93.4 | 86.5–98.8 | 12.4 | yes | 0.038 | 80.5 (73.9–86.8) |
+| ASIAN | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld |
+| BLACK/CAPE VERDEAN | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld |
 | HISPANIC/LATINO - DOMINICAN | 78.5 | 73.0–84.0 | 11.0 | yes | 85.9 | 77.3–91.9 | 14.6 | yes | 0.087 | 78.5 (73.0–84.0) |
-| BLACK/CARIBBEAN ISLAND | 86.3 | 80.4–91.5 | 11.1 | yes | 88.9 | 69.2–100.0 | 30.8 | no — too wide | -0.121 | 86.3 (80.4–91.5) |
-| BLACK/AFRICAN | 78.6 | 69.6–87.7 | 18.1 | yes | 89.3 | 75.9–100.0 | 24.1 | no — too wide | 0.083 | 78.6 (69.6–87.7) |
-| PATIENT DECLINED TO ANSWER † | 78.7 | 68.9–86.2 | 17.4 | yes | 76.0 | 58.7–91.7 | 33.0 | no — too wide | 0.083 | 78.7 (68.9–86.2) |
-| UNABLE TO OBTAIN † | 85.9 | 77.4–93.6 | 16.2 | yes | 81.8 | 58.3–100.0 | 41.7 | no — too wide | -0.109 | 85.9 (77.4–93.6) |
-| PORTUGUESE | 68.0 | 51.3–85.6 | 34.3 | no — too wide | 88.9 | 75.0–96.0 | 21.0 | no — too wide | 0.328 | 68.0 (51.3–85.6) |
-| ASIAN - SOUTH EAST ASIAN | 88.4 | 80.2–94.7 | 14.4 | yes | 93.8 | 77.8–100.0 | 22.2 | no — too wide | -0.183 | 88.4 (80.2–94.7) |
-| HISPANIC/LATINO - GUATEMALAN | 71.5 | 59.5–82.4 | 23.0 | no — too wide | 93.2 | 83.7–98.5 | 14.8 | yes | 0.251 | 71.5 (59.5–82.4) |
-| WHITE - EASTERN EUROPEAN | 81.8 | 72.3–90.9 | 18.6 | yes | 85.7 | 65.6–100.0 | 34.4 | no — too wide | 0.003 | 81.8 (72.3–90.9) |
-| ASIAN - ASIAN INDIAN | 85.3 | 77.8–92.4 | 14.6 | yes | 82.4 | 55.6–100.0 | 44.4 | no — too wide | -0.09 | 85.3 (77.8–92.4) |
-| WHITE - BRAZILIAN | 76.7 | 62.1–88.3 | 26.2 | no — too wide | 80.8 | 60.0–96.8 | 36.8 | no — too wide | 0.131 | 76.7 (62.1–88.3) |
-| AMERICAN INDIAN/ALASKA NATIVE | 81.1 | 62.8–98.4 | 35.6 | no — too wide | 83.3 | 20.0–100.0 | 80.0 | no — too wide | 0.021 | 81.1 (62.8–98.4) |
+| BLACK/CARIBBEAN ISLAND | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld |
+| BLACK/AFRICAN | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld |
+| PATIENT DECLINED TO ANSWER † | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld |
+| UNABLE TO OBTAIN † | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld |
+| PORTUGUESE | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld |
+| ASIAN - SOUTH EAST ASIAN | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld |
+| HISPANIC/LATINO - GUATEMALAN | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld |
+| WHITE - EASTERN EUROPEAN | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld |
+| ASIAN - ASIAN INDIAN | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld |
+| WHITE - BRAZILIAN | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld |
+| AMERICAN INDIAN/ALASKA NATIVE | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld |
 | HISPANIC/LATINO - SALVADORAN | 63.0 | 49.2–80.3 | 31.1 | no — too wide | 100.0 | 100.0–100.0 | 0.0 | yes | 0.434 | 63.0 (49.2–80.3) |
-| HISPANIC/LATINO - MEXICAN | 75.7 | 64.4–83.8 | 19.4 | yes | 89.5 | 79.1–100.0 | 20.9 | no — too wide | 0.153 | 75.7 (64.4–83.8) |
-| HISPANIC/LATINO - COLUMBIAN | 75.4 | 62.4–87.2 | 24.8 | no — too wide | 83.3 | 59.4–100.0 | 40.6 | no — too wide | 0.16 | 75.4 (62.4–87.2) |
-| SOUTH AMERICAN | 83.6 | 69.9–94.5 | 24.6 | no — too wide | — | — | — | n/a | -0.045 | 83.6 (69.9–94.5) |
-| HISPANIC/LATINO - CUBAN | 78.6 | 64.2–92.9 | 28.6 | no — too wide | — | — | — | n/a | 0.085 | 78.6 (64.2–92.9) |
-| HISPANIC/LATINO - HONDURAN | 83.0 | 66.1–97.5 | 31.4 | no — too wide | — | — | — | n/a | -0.029 | 83.0 (66.1–97.5) |
-| MULTIPLE RACE/ETHNICITY | 85.7 | 68.8–100.0 | 31.2 | no — too wide | — | — | — | n/a | -0.103 | 85.7 (68.8–100.0) |
-| HISPANIC/LATINO - CENTRAL AMERICAN | 61.4 | 49.6–80.8 | 31.3 | no — too wide | 93.1 | 76.7–100.0 | 23.3 | no — too wide | 0.469 | 61.4 (49.6–80.8) |
-| ASIAN - KOREAN | 95.5 | 82.1–100.0 | 17.9 | yes | — | — | — | n/a | -0.437 | 95.5 (82.1–100.0) |
-| NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER | 85.2 | 66.1–100.0 | 33.9 | no — too wide | — | — | — | n/a | -0.088 | 85.2 (66.1–100.0) |
+| HISPANIC/LATINO - MEXICAN | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld |
+| HISPANIC/LATINO - COLUMBIAN | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld |
+| SOUTH AMERICAN | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld |
+| HISPANIC/LATINO - CUBAN | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld |
+| HISPANIC/LATINO - HONDURAN | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld |
+| MULTIPLE RACE/ETHNICITY | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld |
+| HISPANIC/LATINO - CENTRAL AMERICAN | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld |
+| ASIAN - KOREAN | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld |
+| NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld | withheld |
 
 Mechanism measures (all admissions in the stratum):
 

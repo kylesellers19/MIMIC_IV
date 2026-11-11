@@ -63,7 +63,7 @@ Case-insensitive, word-boundary. 'section' = modal enclosing discharge section.
 | NAFLD | 637 | 0.19 | 637 | PAST MEDICAL HISTORY | 159 | 0.01 | 35 |
 | NASH | 3,116 | 0.94 | 3,116 | HISTORY OF PRESENT ILLNESS | 3,637 | 0.16 | 898 |
 | MASLD | 0 | 0.00 | 0 | - | 0 | 0.00 | 0 |
-| MASH | 11 | 0.00 | 11 | HISTORY OF PRESENT ILLNESS | 5 | 0.00 | 2 |
+| MASH | 11 | 0.00 | 11 | HISTORY OF PRESENT ILLNESS | <11 | 0.00 | <11 |
 | hepatic echogenicity | 49 | 0.01 | 49 | IMPRESSION | 252 | 0.01 | 90 |
 | fatty change | 111 | 0.03 | 111 | IMPRESSION | 620 | 0.03 | 199 |
 
@@ -406,13 +406,13 @@ Total seed hits scanned (first hit per note): 78,382.
 | --- | ---: | ---: |
 | no | 5,983 | 7.6 |
 | without | 1,007 | 1.3 |
-| denies | 10 | 0.0 |
+| denies | <11 | 0.0 |
 | versus | 71 | 0.1 |
 | vs | 134 | 0.2 |
-| negative for | 5 | 0.0 |
-| family history of | 1 | 0.0 |
+| negative for | <11 | 0.0 |
+| family history of | <11 | 0.0 |
 | history of | 1,258 | 1.6 |
-| ruled out | 2 | 0.0 |
+| ruled out | <11 | 0.0 |
 | rule out | 44 | 0.1 |
 
 ## Step 5 — Coverage sanity check (NOT a recovery estimate)

@@ -44,18 +44,19 @@
   "negated->negated": 975,
   "affirmed->uncertain": 963,
   "uncertain->uncertain": 518,
-  "affirmed->historical": 267,
+  "affirmed->historical": "withheld",
   "historical->historical": 261,
   "uncertain->affirmed": 216,
-  "uncertain->negated": 103,
-  "historical->affirmed": 90,
-  "negated->affirmed": 39,
-  "affirmed->family": 7,
-  "historical->negated": 5,
-  "historical->uncertain": 5,
-  "uncertain->historical": 4,
-  "negated->uncertain": 3
+  "uncertain->negated": "withheld",
+  "historical->affirmed": "withheld",
+  "negated->affirmed": "withheld",
+  "affirmed->family": "<11",
+  "historical->negated": "<11",
+  "historical->uncertain": "<11",
+  "uncertain->historical": "<11",
+  "negated->uncertain": "<11"
  },
  "exceptions_by_class": {},
- "runtime_s": 958
+ "runtime_s": 958,
+ "disclosure": "Counts 1-10 read <11; because each row's total is published, the smallest off-diagonal cell of at least 11 in that row is withheld (scripts/run1111_public_counts.py)."
 }

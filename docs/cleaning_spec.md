@@ -61,11 +61,11 @@ Reproducers: `scripts/conformance.py`, `scripts/plausibility_atemporal.py`,
 
 ### C1 — Non-numeric lab values (value conformance)
 **Finding.** Among the 10 analytes, `value` is non-numeric with null `valuenum`
-in **≤1 row each**: ALT `-` (1), AST `-` (1), Platelets `___` (1),
-Triglycerides `E` (1), Alk phos `-` (1); all others 0. Units are otherwise a
+in **fewer than 11 rows each** for ALT, AST, Platelets, Triglycerides and Alk phos
+(placeholder strings such as `-`); all others 0. Units are otherwise a
 single valid unit per analyte.
 **Rule (proposed).** Treat these specific rows as missing numeric results
-(`valuenum` already null); exclude from numeric summaries. **~5 rows.**
+(`valuenum` already null); exclude from numeric summaries. **Fewer than 11 rows.**
 **Alternative.** Leave untouched — they are already null in `valuenum` and never
 enter numeric features, so impact is nil either way.
 
@@ -109,15 +109,15 @@ range.
 | ALT | 0–10000 | 0 | 160 | 61,854 |
 | AST | 0–10000 | 0 | 701 | 42,606 |
 | Platelets | 0–2000 | 0 | 74 | 2,989 |
-| Triglycerides | 0–10000 | 0 | 5 | 12,496 |
+| Triglycerides | 0–10000 | 0 | <11 | 12,496 |
 | HDL | 0–200 | 0 | 32 | 335 |
-| HbA1c | 2–20 | 0 | 3 | 23.1 |
-| Glucose | 10–2000 | 3 | 260 | 23,200 |
+| HbA1c | 2–20 | 0 | <11 | 23.1 |
+| Glucose | 10–2000 | <11 | 260 | 23,200 |
 | Albumin | 0.5–7 | 0 | 25 | 36 |
 | Bilirubin total | 0–75 | 0 | 13 | 87.2 |
-| Alk phos | 0–5000 | 0 | 4 | 5,965 |
+| Alk phos | 0–5000 | 0 | <11 | 5,965 |
 
-**Rule (proposed).** Set **impossible** values to null (3 glucose ≤0). For
+**Rule (proposed).** Set **impossible** values to null (fewer than 11 glucose values ≤0). For
 **extreme** values, add a per-analyte out-of-range flag but do **not** delete —
 most are genuine critical-illness values (e.g., ALT/AST >10,000 in ischemic
 hepatitis); a few are clear errors (Glucose 23,200; Albumin 36 g/dL).
@@ -127,10 +127,10 @@ leave all raw (impossible values then pollute means/SDs).
 ### P2 — omr values
 | Measure | plausible | impossible | extreme | notable max |
 |---|---|--:|--:|--:|
-| BMI | 10–100 | 9 | 1,006 | 321,697 |
+| BMI | 10–100 | <11 | 1,006 | 321,697 |
 | Weight (lb) | 50–1000 | 197 | 557 | 2.10e8 |
-| Height (in) | 24–90 | 33 | 573 | 73,252 |
-| Systolic BP | 50–300 | 5 | 12 | 250 |
+| Height (in) | 24–90 | withheld | 573 | 73,252 |
+| Systolic BP | 50–300 | <11 | 12 | 250 |
 | Diastolic BP | 20–200 | 907 | 573 | 200 |
 
 **Rule (proposed).** Null the impossible values (incl. the **907 diastolic

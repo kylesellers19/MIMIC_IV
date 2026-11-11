@@ -2,11 +2,11 @@
 
 | Kahn category | Test | n affected | % of population | Proposed rule | Applied |
 | --- | --- | --- | --- | --- | --- |
-| Conformance · value | Lab value non-numeric (valuenum null) | ~5 | ≈0% (labevents) | Treat as missing (already null) | No |
+| Conformance · value | Lab value non-numeric (valuenum null) | <11 | ≈0% (labevents) | Treat as missing (already null) | No |
 | Conformance · value (units) | Multiple units per analyte | 0 | 0% | None needed | n/a |
 | Conformance · relational | labevents hadm_id null (outpatient) | 73,768,897 | 46.6% (labevents) | Keep; link by subject+window for outpatient labs | No |
 | Conformance · value | omr Blood Pressure non-atomic | 2,827,801 | 100% of BP rows | Parse NNN/NNN into sbp/dbp | Yes (this pass) |
-| Plausibility · atemporal | Lab impossible values (glucose ≤0) | 3 | ≈0% | Null impossible; flag extremes | No |
+| Plausibility · atemporal | Lab impossible values (glucose ≤0) | <11 | ≈0% | Null impossible; flag extremes | No |
 | Plausibility · atemporal | omr impossible (incl. 907 diastolic zeros) | 1,151 | row-level | Null impossible; diastolic zeros excluded | Partial (dbp zeros: Yes) |
 | Plausibility · temporal | admittime > dischtime (neg LOS) | 175 | 0.047% (adm) | Null/flag LOS | No |
 | Plausibility · temporal | deathtime outside stay | 771 | 0.206% (adm) | Accept midnight artifact; flag | No |

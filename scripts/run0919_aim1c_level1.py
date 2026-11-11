@@ -2,13 +2,18 @@
 """run_2026-09-19 Phase 5 — Aim 1c level 1: equity of recovery at the computable stage.
 Cell counts first; recovery share (B/(A+B)) and corroboration share (A/(A+C)) by stratum with subject-cluster
 bootstrap CIs; floors (B>=11; A+C>=11); one exploratory GEE among note-positive admissions (covariates fixed in
-docs/analysis_plan_prespecified.md amendment g). Writes docs/run_2026-09-19/results/aim1c_level1.json,
-docs/aim1c_level1.md, docs/tables/aim1c_*.md (+ .csv on disk, git-ignored)."""
+docs/analysis_plan_prespecified.md amendment g). Writes the raw results to data/processed/results_raw/aim1c_level1.json
+(git-ignored) and the published copy, with small cells suppressed by scripts/public_counts.py, to
+docs/run_2026-09-19/results/aim1c_level1.json; then docs/aim1c_level1.md, docs/tables/aim1c_*.md (+ raw .csv on disk,
+git-ignored) via scripts/aim1c_level1_docs.py."""
 import json, os, sys, time, warnings
 import duckdb, numpy as np, pandas as pd
 sys.path.insert(0, os.getcwd())
 from scripts.masld_config import CLEAN_POP, LOCKED_POP, DATA, RACE_NONINFORMATIVE
+from scripts.public_counts import aim1c_public
+from scripts import aim1c_level1_docs
 warnings.filterwarnings("ignore")
+RAW = "data/processed/results_raw/aim1c_level1.json"
 REPS = 500; FLOOR = 11; SEED = 20260919; WIDE = 20.0   # CI width in percentage points beyond which no claim is supported (Tier 1 threshold)
 IDX = "data/processed/run_2026-09-19_notes_index"
 ENCOUNTER_CHAR = {"UNKNOWN", "UNABLE TO OBTAIN", "PATIENT DECLINED TO ANSWER"}
@@ -121,44 +126,16 @@ except Exception as e:
     except Exception as e2:
         gee_res["restricted_model_error"] = type(e2).__name__
 res["gee_exploratory"] = gee_res
-json.dump(res, open("docs/run_2026-09-19/results/aim1c_level1.json", "w"), indent=1)
+os.makedirs(os.path.dirname(RAW), exist_ok=True)
+json.dump(res, open(RAW, "w"), indent=1)                     # raw counts: credentialed derivative, git-ignored
+pub, _ = aim1c_public(res)                                   # counts 1-10 and cells that give them back, withheld
+json.dump(pub, open("docs/run_2026-09-19/results/aim1c_level1.json", "w"), indent=1)
 print(f"GEE: {gee_res.get('note', gee_res)} — total {time.time()-t0:,.0f}s", flush=True)
 
 # ---- docs ----
 os.makedirs("docs/tables", exist_ok=True)
-def fmt(v): return "—" if v is None else (f"{v}" if not isinstance(v, list) else f"{v[0]}–{v[1]}")
-L = ["# Aim 1c, level 1 — equity of recovery at the computable stage (run_2026-09-19)\n",
-     "Produced by `scripts/run0919_aim1c_level1.py`; every number is read from `docs/run_2026-09-19/results/aim1c_level1.json`. Pre-specification: `docs/analysis_plan_prespecified.md` (H1c; amendment g). Definition (b), v1.1.0, −365/+30 outpatient window.\n",
-     "**What is measured.** Recovery share = B ÷ (A + B): among note-positive admissions, the share with no MASLD code. Corroboration share = A ÷ (A + C): among code-positive admissions, the share whose notes also document steatosis. Both are computable-stage quantities about *documentation and coding*, not adjudicated disease. 95% CIs are subject-cluster bootstraps "
-     f"({REPS} replicates; a subject's admissions are resampled together because one person can contribute several). Floors: no recovery share where B < {FLOOR}; no corroboration share where A + C < {FLOOR}; such strata are declared non-analyzable, not merged. A CI wider than {WIDE:.0f} percentage points is marked as too wide to support a claim (an analyst threshold, stated here so it can be argued with). No p-values. The SMD column is the one-versus-rest standardized difference in the coding rate among note-positive admissions (A ÷ (A + B)), a descriptive contrast.\n",
-     "Levels 2 and 3 of the audit (weighted PPV by stratum against the gold standard; model calibration by stratum) require the adjudication and the models and are not attempted here.\n",
-     "UNKNOWN, UNABLE TO OBTAIN and PATIENT DECLINED TO ANSWER are reported but are **encounter characteristics, not population groups** (marked †). Ages ≥ 89 are recoded to 91 in MIMIC-IV, so the 89+ band is an aggregate.\n"]
-for var, rows in res["strata"].items():
-    L += [f"## By {var}\n", "Cell counts first:\n", f"| {var} | A code+/note+ | B code−/note+ | C code+/note− | D code−/note− |", "| --- | --: | --: | --: | --: |"]
-    for r in sorted(rows, key=lambda x: -(x["A"] + x["B"] + x["C"] + x["D"])):
-        L.append(f"| {r['stratum']}{' †' if r['encounter_characteristic'] else ''} | {r['A']:,} | {r['B']:,} | {r['C']:,} | {r['D']:,} |")
-    L += ["", "Shares (analyzable strata only):\n", f"| {var} | recovery share % | 95% CI | width | claim supported? | corroboration share % | 95% CI | width | claim supported? | SMD coding rate vs rest | recovery share, 571.9 removed % (CI) |", "| --- | --: | --- | --: | --- | --: | --- | --: | --- | --: | --- |"]
-    for r in sorted(rows, key=lambda x: -(x["A"] + x["B"] + x["C"] + x["D"])):
-        if r.get("recovery_share_pct") is None and r.get("corroboration_share_pct") is None:
-            L.append(f"| {r['stratum']}{' †' if r['encounter_characteristic'] else ''} | not analyzable | | | | not analyzable | | | | | |"); continue
-        L.append(f"| {r['stratum']}{' †' if r['encounter_characteristic'] else ''} | {fmt(r.get('recovery_share_pct'))} | {fmt(r.get('rec_ci'))} | {fmt(r.get('rec_ci_width'))} | {('yes' if r.get('rec_claim_supported') else 'no — too wide') if r.get('recovery_share_pct') is not None else 'n/a'} "
-                 f"| {fmt(r.get('corroboration_share_pct'))} | {fmt(r.get('cor_ci'))} | {fmt(r.get('cor_ci_width'))} | {('yes' if r.get('cor_claim_supported') else 'no — too wide') if r.get('corroboration_share_pct') is not None else 'n/a'} | {fmt(r.get('smd_coding_rate_vs_rest'))} | {fmt(r.get('recovery_share_no5719_pct'))} ({fmt(r.get('rec_no5719_ci'))}) |")
-    L += ["", "Mechanism measures (all admissions in the stratum):\n", f"| {var} | n | ALT available % | HbA1c available % | triglycerides available % | HDL available % | liver-inclusive imaging in window % | CMRF unascertainable (all five) % |", "| --- | --: | --: | --: | --: | --: | --: | --: |"]
-    for r in sorted(rows, key=lambda x: -x["mech"]["n"]):
-        mm = r["mech"]; L.append(f"| {r['stratum']} | {mm['n']:,} | {mm['ALT_avail_pct']} | {mm['HbA1c_avail_pct']} | {mm['TG_avail_pct']} | {mm['HDL_avail_pct']} | {mm['liver_imaging_in_window_pct']} | {mm['cmrf_unascertainable_all_pct']} |")
-    L.append("")
-    tbl = pd.DataFrame([{k: (v if not isinstance(v, (list, dict)) else json.dumps(v)) for k, v in r.items()} for r in rows])
-    tbl.to_csv(f"docs/tables/aim1c_level1_{var}.csv", index=False)
-    with open(f"docs/tables/aim1c_level1_{var}.md", "w") as fh:
-        fh.write(f"# Aim 1c level 1 — by {var} (run_2026-09-19)\n\nSource: `docs/run_2026-09-19/results/aim1c_level1.json`.\n\n" + "\n".join(L[-(len(rows) * 3 + 20):]) + "\n")
-g = res["gee_exploratory"]
-L += ["## EXPLORATORY adjusted model (GEE) — among note-positive admissions, outcome = code-positive\n",
-      f"**Exploratory.** Covariates fixed before fitting (amendment g): race, insurance, sex, age band, admission type, ICD version of the admission, note source (discharge / inpatient radiology / outpatient radiology). GEE with a binomial link, exchangeable working correlation, clustered on subject. Diagnosis count and laboratory availability are deliberately not adjusted for: they are the proposed mechanism. Fit: {g.get('note', g.get('full_model_error', 'failed'))}; n = {g.get('n')}. Reference levels: {g.get('reference_levels')}.\n"]
-if "terms" in g:
-    L += ["| term | adjusted OR | 95% CI |", "| --- | --: | --- |"]
-    for t in g["terms"]: L.append(f"| {t['term']} | {t['aOR']} | {t['ci_lo']}–{t['ci_hi']} |")
-else:
-    L.append(f"Model did not fit: {g}")
-L += ["", "*Exploratory adjusted odds ratios describe association in the computable data; they are not estimates of adjudicated under-coding by group.*"]
-open("docs/aim1c_level1.md", "w").write("\n".join(L) + "\n")
+for var, rows in res["strata"].items():   # raw per-stratum CSVs stay on disk only (*.csv is git-ignored)
+    pd.DataFrame([{k: (v if not isinstance(v, (list, dict)) else json.dumps(v)) for k, v in r.items()} for r in rows]).to_csv(
+        f"docs/tables/aim1c_level1_{var}.csv", index=False)
+aim1c_level1_docs.write(pub)
 print("wrote docs/aim1c_level1.md", flush=True)

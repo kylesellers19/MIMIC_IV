@@ -23,7 +23,7 @@ modified and no `.csv.gz` was decompressed. Reproducers:
 - Notable NULL rates:
   - `admissions.discharge_location` **27.4%** · `edregtime`/`edouttime` **30.6%**
     (non-ED admissions) · `marital_status` **2.5%** · `insurance` **1.7%** ·
-    `language` 0.14% · `admission_location` 1 row · `admit_provider_id` 4 rows.
+    `language` 0.14% · `admission_location` <11 rows · `admit_provider_id` <11 rows.
   - `admissions.deathtime` 97.8% and `patients.dod` 89.5% — expected (deaths only).
 - `diagnoses_icd` and `omr` have no NULLs.
 

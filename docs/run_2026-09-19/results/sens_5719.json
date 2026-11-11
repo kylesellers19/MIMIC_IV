@@ -15,16 +15,16 @@
     "corroboration_share_pct": 83.71
    },
    "no5719": {
-    "A": 4798,
-    "B": 13619,
-    "C": 902,
-    "D": 354673,
-    "recovery_share_pct": 73.95,
-    "corroboration_share_pct": 84.18
+    "A": "withheld",
+    "B": "withheld",
+    "C": "withheld",
+    "D": "withheld",
+    "recovery_share_pct": "withheld",
+    "corroboration_share_pct": "withheld"
    },
    "solely_5719_cells": {
-    "A (->B)": 7,
-    "C (->D)": 33
+    "A (->B)": "<11",
+    "C (->D)": "withheld"
    }
   },
   "b": {
@@ -59,16 +59,16 @@
     "corroboration_share_pct": 85.51
    },
    "no5719": {
-    "A": 4899,
-    "B": 17860,
-    "C": 801,
-    "D": 350432,
-    "recovery_share_pct": 78.47,
-    "corroboration_share_pct": 85.95
+    "A": "withheld",
+    "B": "withheld",
+    "C": "withheld",
+    "D": "withheld",
+    "recovery_share_pct": "withheld",
+    "corroboration_share_pct": "withheld"
    },
    "solely_5719_cells": {
-    "A (->B)": 9,
-    "C (->D)": 31
+    "A (->B)": "<11",
+    "C (->D)": "withheld"
    }
   },
   "d": {
@@ -81,16 +81,16 @@
     "corroboration_share_pct": 84.49
    },
    "no5719": {
-    "A": 4843,
-    "B": 22450,
-    "C": 857,
-    "D": 345842,
-    "recovery_share_pct": 82.26,
-    "corroboration_share_pct": 84.96
+    "A": "withheld",
+    "B": "withheld",
+    "C": "withheld",
+    "D": "withheld",
+    "recovery_share_pct": "withheld",
+    "corroboration_share_pct": "withheld"
    },
    "solely_5719_cells": {
-    "A (->B)": 7,
-    "C (->D)": 33
+    "A (->B)": "<11",
+    "C (->D)": "withheld"
    }
   }
  },
@@ -116,5 +116,6 @@
    "code+/note-": 10.1857,
    "code-/note-": 3454.53
   }
- }
+ },
+ "disclosure": "For a definition where fewer than 11 solely-571.9 admissions move out of a cell, that move reads <11 and the other move and the 571.9-removed 2x2 are withheld, since either would give it back by subtraction (scripts/run1111_public_counts.py)."
 }

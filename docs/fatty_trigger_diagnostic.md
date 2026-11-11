@@ -53,25 +53,25 @@ Frozen rule v1.0.0. Read-only; no gold standard, no code changes. Scope = inpati
 | 29 | fatty fried | 11 |
 | 30 | fatty necrosis | 11 |
 | 31 | fatty density | 11 |
-| 32 | fatty infiltrates | 10 |
-| 33 | fatty tumors | 9 |
-| 34 | fatty stool | 9 |
-| 35 | fatty hepatic | 8 |
-| 36 | fatty diarrhea | 8 |
-| 37 | fatty but | 8 |
-| 38 | fatty tissues | 8 |
-| 39 | fatty diet | 8 |
-| 40 | fatty component | 7 |
-| 41 | fatty subcutaneous | 7 |
-| 42 | fatty lesions | 6 |
-| 43 | fatty unsweetened | 6 |
-| 44 | fatty in | 6 |
-| 45 | fatty appearing | 6 |
-| 46 | fatty liver | 6 |
-| 47 | fatty inflammatory | 6 |
-| 48 | fatty mural | 6 |
-| 49 | fatty liverdisease | 6 |
-| 50 | fatty greasy | 5 |
+| 32 | fatty infiltrates | <11 |
+| 33 | fatty tumors | <11 |
+| 34 | fatty stool | <11 |
+| 35 | fatty hepatic | <11 |
+| 36 | fatty diarrhea | <11 |
+| 37 | fatty but | <11 |
+| 38 | fatty tissues | <11 |
+| 39 | fatty diet | <11 |
+| 40 | fatty component | <11 |
+| 41 | fatty subcutaneous | <11 |
+| 42 | fatty lesions | <11 |
+| 43 | fatty unsweetened | <11 |
+| 44 | fatty in | <11 |
+| 45 | fatty appearing | <11 |
+| 46 | fatty liver | <11 |
+| 47 | fatty inflammatory | <11 |
+| 48 | fatty mural | <11 |
+| 49 | fatty liverdisease | <11 |
+| 50 | fatty greasy | <11 |
 
 ### preceding token + `fatty` (top 50)
 
@@ -126,7 +126,7 @@ Frozen rule v1.0.0. Read-only; no gold standard, no code changes. Scope = inpati
 | 47 | have fatty | 12 |
 | 48 | chocolate fatty | 11 |
 | 49 | all fatty | 11 |
-| 50 | showing fatty | 10 |
+| 50 | showing fatty | <11 |
 
 ### trigrams centered on `fatty` (top 30)
 
@@ -207,18 +207,18 @@ Frozen rule v1.0.0. Read-only; no gold standard, no code changes. Scope = inpati
 | 36 | fatty rest | 11 |
 | 37 | fatty muscular | 11 |
 | 38 | fatty muscle | 11 |
-| 39 | fatty inguinal | 10 |
-| 40 | fatty nodule | 10 |
-| 41 | fatty signal | 10 |
-| 42 | fatty infiltrates | 10 |
-| 43 | fatty degeneration | 10 |
-| 44 | fatty hepatic | 8 |
-| 45 | fatty center | 8 |
-| 46 | fatty streaking | 8 |
-| 47 | fatty structure | 7 |
-| 48 | fatty hemangiomas | 7 |
-| 49 | fatty metaplasia | 7 |
-| 50 | fatty lesions | 7 |
+| 39 | fatty inguinal | <11 |
+| 40 | fatty nodule | <11 |
+| 41 | fatty signal | <11 |
+| 42 | fatty infiltrates | <11 |
+| 43 | fatty degeneration | <11 |
+| 44 | fatty hepatic | <11 |
+| 45 | fatty center | <11 |
+| 46 | fatty streaking | <11 |
+| 47 | fatty structure | <11 |
+| 48 | fatty hemangiomas | <11 |
+| 49 | fatty metaplasia | <11 |
+| 50 | fatty lesions | <11 |
 
 ### preceding token + `fatty` (top 50)
 
@@ -370,11 +370,11 @@ Bare-`fatty` hits in ONLY admissions: 10,977.
 | b | clearly not steatosis | 5,026 |
 | c | ambiguous / organ-uncertain | 4,014 |
 
-**Class a (plausible steatosis phrasing) — phrases assigned:** fatty atrophy (826), fatty deposition (669), fatty replacement (294), fatty deposits (67), fatty infiltrate (31), fatty deposit (27), fatty infiltrates (11), fatty degeneration (11), fatty metamorphosis (1)
+**Class a (plausible steatosis phrasing) — phrases assigned:** fatty atrophy (826), fatty deposition (669), fatty replacement (294), fatty deposits (67), fatty infiltrate (31), fatty deposit (27), fatty infiltrates (11), fatty degeneration (11), fatty metamorphosis (<11)
 
-**Class b (clearly not steatosis) — phrases assigned:** fatty acids (3915), fatty foods (441), fatty acid (184), fatty meal (115), fatty tissue (100), fatty meals (82), fatty food (71), fatty tumor (35), fatty tissues (28), fatty necrosis (15), fatty tumors (10), fatty stools (10), fatty stool (9), fatty plaque (5), fatty diarrhea (4), fatty casts (1), fatty hernia (1)
+**Class b (clearly not steatosis) — phrases assigned:** fatty acids (3915), fatty foods (441), fatty acid (184), fatty meal (115), fatty tissue (100), fatty meals (82), fatty food (71), fatty tumor (35), fatty tissues (28), fatty necrosis (15), fatty tumors (<11), fatty stools (<11), fatty stool (<11), fatty plaque (<11), fatty diarrhea (<11), fatty casts (<11), fatty hernia (<11)
 
-**Class c (ambiguous / organ-uncertain) — phrases assigned:** fatty </s> (1283), fatty or (611), fatty hilum (316), fatty stranding (283), fatty lesion (120), fatty replaced (119), fatty hila (108), fatty mass (75), fatty changes (57), fatty infiltrated (49), fatty and (47), fatty density (46), fatty proliferation (39), fatty attenuation (37), fatty hilus (31), fatty in (26), fatty inflammatory (25), fatty rests (17), fatty component (16), fatty rest (15), fatty atrophied (15), fatty without (15), fatty acids/vitamin (14), fatty filum (14), fatty muscle (14), fatty but (13), fatty muscular (13), fatty mural (13), fatty hypertrophy (13), fatty with (10)
+**Class c (ambiguous / organ-uncertain) — phrases assigned:** fatty </s> (1283), fatty or (611), fatty hilum (316), fatty stranding (283), fatty lesion (120), fatty replaced (119), fatty hila (108), fatty mass (75), fatty changes (57), fatty infiltrated (49), fatty and (47), fatty density (46), fatty proliferation (39), fatty attenuation (37), fatty hilus (31), fatty in (26), fatty inflammatory (25), fatty rests (17), fatty component (16), fatty rest (15), fatty atrophied (15), fatty without (15), fatty acids/vitamin (14), fatty filum (14), fatty muscle (14), fatty but (13), fatty muscular (13), fatty mural (13), fatty hypertrophy (13), fatty with (<11)
 
 ## Step 4 — Stress the anatomical scoping
 

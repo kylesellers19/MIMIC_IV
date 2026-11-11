@@ -1,13 +1,6 @@
 # Aim 1c level 1 — by gender (run_2026-09-19)
 
-Source: `docs/run_2026-09-19/results/aim1c_level1.json`.
-
-| Medicare | 180,507 | 40.8 | 9.0 | 8.2 | 6.2 | 35.7 | 0.7 |
-| Private | 115,222 | 38.1 | 6.8 | 7.6 | 5.2 | 38.4 | 4.2 |
-| Medicaid | 63,027 | 42.1 | 7.2 | 6.8 | 4.6 | 39.4 | 3.8 |
-| Other | 9,970 | 39.7 | 8.4 | 8.4 | 6.2 | 36.5 | 5.7 |
-| (missing) | 5,193 | 32.1 | 9.1 | 9.5 | 7.7 | 28.6 | 20.4 |
-| No charge | 73 | 35.6 | 6.8 | 8.2 | 8.2 | 35.6 | 9.6 |
+Source: `docs/run_2026-09-19/results/aim1c_level1.json`. Counts from 1 to 10 appear as <11; *withheld* cells and shares would otherwise give one back by subtraction.
 
 ## By gender
 

@@ -17,22 +17,22 @@ The 2021 expert-panel consensus on administrative coding for fatty liver researc
 | definition | variant | A code+/note+ | B code−/note+ | C code+/note− | D code−/note− | recovery share % | corroboration share % |
 | --- | --- | --: | --: | --: | --: | --: | --: |
 | (a) v1.1.0 inpatient | current | 4,805 | 13,612 | 935 | 354,640 | 73.91 | 83.71 |
-| (a) v1.1.0 inpatient | 571.9 removed | 4,798 | 13,619 | 902 | 354,673 | 73.95 | 84.18 |
+| (a) v1.1.0 inpatient | 571.9 removed | withheld | withheld | withheld | withheld | withheld | withheld |
 | (b) PRIMARY −365/+30 | current | 5,027 | 22,799 | 713 | 345,453 | 81.93 | 87.58 |
 | (b) PRIMARY −365/+30 | 571.9 removed | 5,015 | 22,811 | 685 | 345,481 | 81.98 | 87.98 |
 | (c) −90/+30 | current | 4,908 | 17,851 | 832 | 350,401 | 78.43 | 85.51 |
-| (c) −90/+30 | 571.9 removed | 4,899 | 17,860 | 801 | 350,432 | 78.47 | 85.95 |
+| (c) −90/+30 | 571.9 removed | withheld | withheld | withheld | withheld | withheld | withheld |
 | (d) v1.0.0 inpatient | current | 4,850 | 22,443 | 890 | 345,809 | 82.23 | 84.49 |
-| (d) v1.0.0 inpatient | 571.9 removed | 4,843 | 22,450 | 857 | 345,842 | 82.26 | 84.96 |
+| (d) v1.0.0 inpatient | 571.9 removed | withheld | withheld | withheld | withheld | withheld | withheld |
 
 Solely-571.9 admissions by cell (they move A→B or C→D when the code is dropped):
 
 | definition | in A (would move to B) | in C (would move to D) |
 | --- | --: | --: |
-| (a) v1.1.0 inpatient | 7 | 33 |
+| (a) v1.1.0 inpatient | <11 | withheld |
 | (b) PRIMARY −365/+30 | 12 | 28 |
-| (c) −90/+30 | 9 | 31 |
-| (d) v1.0.0 inpatient | 7 | 33 |
+| (c) −90/+30 | <11 | withheld |
+| (d) v1.0.0 inpatient | <11 | withheld |
 
 ## Effect on the 400-chart sample
 

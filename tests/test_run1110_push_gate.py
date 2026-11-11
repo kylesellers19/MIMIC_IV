@@ -129,6 +129,13 @@ def test_e_small_count_in_a_markdown_count_column_fails_only_on_added_lines():
     assert [(b["line"], b["column"]) for b in bad] == [(3, "n")]
 
 
+
+def test_e_cell_and_cleaning_headers_are_count_columns():
+    md = "\n".join(["| race | A code+/note+ | C code+/note− | nulled (impossible) | RAD adm | rank |", "| --- | --: | --: | --: | --: | --: |",
+                    "| x | 1,204 | 4 | <11 | 2 | 3 |"])
+    bad = G.check_small_counts("docs/t.md", md, {3})
+    assert [b["column"] for b in bad] == ["c code+/note−", "rad adm"]
+
 def test_e_small_count_in_a_count_like_json_key_fails_and_non_patient_keys_pass():
     js = "\n".join(['{', ' "n_admissions": 4,', ' "subjects": 12,', ' "n_files": 3,', ' "checks": 7,', ' "units": "<11"', '}'])
     bad = G.check_small_counts("docs/r.json", js, set(range(1, 8)))

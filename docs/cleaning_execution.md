@@ -27,17 +27,17 @@ within bounds but outside typical reference were **retained** (extreme-but-real)
 | AST | 150,077 | 0 | – | 28,275 |
 | Platelets | 312,112 | 0 | – | 2,947 |
 | Triglycerides | 29,146 | 0 | – | 10,440 |
-| HDL | 21,114 | **3** | 244 | 167 |
-| HbA1c | 30,024 | **1** | 22.0 | 19.4 |
-| Glucose | 307,745 | **2** | 3,678 | 2,970 |
-| Albumin | 109,879 | **1** | 7.1 | 6.8 |
+| HDL | 21,114 | **<11** | withheld | 167 |
+| HbA1c | 30,024 | **<11** | withheld | 19.4 |
+| Glucose | 307,745 | **<11** | withheld | 2,970 |
+| Albumin | 109,879 | **<11** | withheld | 6.8 |
 | Bilirubin total | 146,509 | 0 | – | 60.5 |
 | Alk phosphatase | 146,516 | 0 | – | 3,593 |
 | GGT (descriptive) | 3,704 | 0 | – | 7,380 |
 
-**7 impossible lab values nulled in total.** ALT/AST extremes (to 28,275) are
+**Fewer than 11 impossible lab values nulled in total.** ALT/AST extremes (to 28,275) are
 genuine critical-illness values and were kept.
-**C1:** 5 non-numeric `value` strings with null `valuenum` — **left as-is, not
+**C1:** fewer than 11 non-numeric `value` strings with null `valuenum` — **left as-is, not
 coerced** (report only).
 
 ### omr (P2/C4) — parse BP, null impossible, drop dbp-zeros & post-death
@@ -45,14 +45,14 @@ coerced** (report only).
 - Reading-level nulls: **BMI 770**, Weight 687, Height 342 (out of possible ranges);
   **diastolic-zeros 907** nulled; **[T5] 216** post-`dod` readings excluded.
 - Admission-feature effect (subject-median): omr_BMI nulled for **175** admissions,
-  omr_SBP **3**, omr_DBP **4**.
+  omr_SBP and omr_DBP **<11** each.
 
 ### Temporal (T1–T5) — locked population
 | Item | Action | Count |
 |---|---|--:|
 | T1 admittime > dischtime | `los_days` → null; admission & timestamps kept | **89** |
 | T2 deathtime outside [admit,disch] | **flag** `flag_death_after_disch`; no null | **549** |
-| T3 dischtime > dod | **flag** `flag_disch_after_dod`; no null | **8** |
+| T3 dischtime > dod | **flag** `flag_disch_after_dod`; no null | **<11** |
 | T4 lab charttime outside window | **NOT nulled**; concentration checked (below) | 3,421,479 |
 | T5 omr chartdate > dod | readings excluded from omr features | 216 |
 
@@ -76,12 +76,12 @@ variable shows materially differential nulling** (flag threshold: n≥20 nulled 
 
 | variable | nulled | null% code+ | null% code− | SMD | race range | ins range |
 |---|--:|--:|--:|--:|--:|--:|
-| lab_HDL | 3 | 0.000 | 0.014 | −0.017 | 0.3 | 0.1 |
-| lab_HbA1c | 1 | 0.000 | 0.003 | −0.008 | 0.1 | 0.0 |
-| lab_Glucose | 2 | 0.000 | 0.001 | −0.004 | 0.0 | 0.0 |
-| lab_Albumin | 1 | 0.038 | 0.000 | +0.028 | 0.1 | 0.0 |
+| lab_HDL | <11 | withheld | withheld | withheld | withheld | withheld |
+| lab_HbA1c | <11 | withheld | withheld | withheld | withheld | withheld |
+| lab_Glucose | <11 | withheld | withheld | withheld | withheld | withheld |
+| lab_Albumin | <11 | withheld | withheld | withheld | withheld | withheld |
 | omr_BMI | 175 | 0.098 | 0.060 | +0.013 | 0.3 | 0.0 |
-| omr_SBP / omr_DBP | 3 / 4 | ~0 | ~0.001 | −0.005 | 0.1 | 0.0 |
+| omr_SBP / omr_DBP | <11 / <11 | withheld | withheld | withheld | withheld | withheld |
 | (all other labs) | 0 | – | – | 0.000 | 0.0 | 0.0 |
 
 The nulling volume is tiny and does **not** track coding status, race, or insurance

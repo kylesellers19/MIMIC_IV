@@ -1,13 +1,6 @@
 # Aim 1c level 1 — by age_band (run_2026-09-19)
 
-Source: `docs/run_2026-09-19/results/aim1c_level1.json`.
-
-| French | 156 | 44.2 | 9.0 | 9.0 | 7.1 | 28.2 | 3.8 |
-| Somali | 134 | 32.1 | 7.5 | 5.2 | 5.2 | 50.0 | 0.0 |
-| Hindi | 124 | 52.4 | 12.1 | 14.5 | 10.5 | 28.2 | 1.6 |
-| Japanese | 93 | 28.0 | 1.1 | 3.2 | 3.2 | 32.3 | 7.5 |
-| Bengali | 86 | 45.3 | 12.8 | 10.5 | 5.8 | 40.7 | 0.0 |
-| Armenian | 75 | 40.0 | 14.7 | 5.3 | 6.7 | 28.0 | 1.3 |
+Source: `docs/run_2026-09-19/results/aim1c_level1.json`. Counts from 1 to 10 appear as <11; *withheld* cells and shares would otherwise give one back by subtraction.
 
 ## By age_band
 

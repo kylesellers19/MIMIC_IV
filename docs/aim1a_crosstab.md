@@ -91,37 +91,37 @@ Using the primary (b) definition. **No recovery rates are computed.** Strata are
 
 | stratum | code+/note+ | code−/note+ | code+/note− | code−/note− | code−/note+ ≥11? |
 | --- | --: | --: | --: | --: | :--: |
-| AMERICAN INDIAN/ALASKA NATIVE | 10 | 43 | 2 | 709 | yes |
-| ASIAN | 49 | 262 | 9 | 4,330 | yes |
-| ASIAN - ASIAN INDIAN | 14 | 81 | 3 | 879 | yes |
+| AMERICAN INDIAN/ALASKA NATIVE | <11 | 43 | <11 | 709 | yes |
+| ASIAN | withheld | 262 | <11 | 4,330 | yes |
+| ASIAN - ASIAN INDIAN | withheld | 81 | <11 | 879 | yes |
 | ASIAN - CHINESE | 67 | 374 | 11 | 4,241 | yes |
-| ASIAN - KOREAN | 1 | 21 | 1 | 350 | yes |
-| ASIAN - SOUTH EAST ASIAN | 15 | 114 | 1 | 1,132 | yes |
-| BLACK/AFRICAN | 25 | 92 | 3 | 1,895 | yes |
+| ASIAN - KOREAN | <11 | withheld | <11 | 350 | yes |
+| ASIAN - SOUTH EAST ASIAN | withheld | 114 | <11 | 1,132 | yes |
+| BLACK/AFRICAN | withheld | 92 | <11 | 1,895 | yes |
 | BLACK/AFRICAN AMERICAN | 410 | 2,449 | 76 | 46,706 | yes |
-| BLACK/CAPE VERDEAN | 57 | 235 | 4 | 3,691 | yes |
-| BLACK/CARIBBEAN ISLAND | 16 | 101 | 2 | 2,283 | yes |
+| BLACK/CAPE VERDEAN | withheld | 235 | <11 | 3,691 | yes |
+| BLACK/CARIBBEAN ISLAND | withheld | 101 | <11 | 2,283 | yes |
 | HISPANIC OR LATINO | 92 | 518 | 16 | 5,543 | yes |
-| HISPANIC/LATINO - CENTRAL AMERICAN | 27 | 43 | 2 | 310 | yes |
-| HISPANIC/LATINO - COLUMBIAN | 15 | 46 | 3 | 442 | yes |
-| HISPANIC/LATINO - CUBAN | 6 | 22 | 0 | 400 | yes |
+| HISPANIC/LATINO - CENTRAL AMERICAN | withheld | 43 | <11 | 310 | yes |
+| HISPANIC/LATINO - COLUMBIAN | withheld | 46 | <11 | 442 | yes |
+| HISPANIC/LATINO - CUBAN | <11 | withheld | 0 | 400 | yes |
 | HISPANIC/LATINO - DOMINICAN | 79 | 289 | 13 | 3,229 | yes |
-| HISPANIC/LATINO - GUATEMALAN | 55 | 138 | 4 | 982 | yes |
-| HISPANIC/LATINO - HONDURAN | 9 | 44 | 1 | 371 | yes |
-| HISPANIC/LATINO - MEXICAN | 17 | 53 | 2 | 439 | yes |
+| HISPANIC/LATINO - GUATEMALAN | withheld | 138 | <11 | 982 | yes |
+| HISPANIC/LATINO - HONDURAN | <11 | withheld | <11 | 371 | yes |
+| HISPANIC/LATINO - MEXICAN | withheld | 53 | <11 | 439 | yes |
 | HISPANIC/LATINO - PUERTO RICAN | 235 | 622 | 20 | 5,943 | yes |
 | HISPANIC/LATINO - SALVADORAN | 34 | 58 | 0 | 637 | yes |
-| MULTIPLE RACE/ETHNICITY | 4 | 24 | 0 | 390 | yes |
-| NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDE | 4 | 23 | 0 | 290 | yes |
+| MULTIPLE RACE/ETHNICITY | <11 | withheld | 0 | 390 | yes |
+| NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDE | <11 | withheld | 0 | 290 | yes |
 | OTHER | 185 | 718 | 27 | 11,598 | yes |
-| PATIENT DECLINED TO ANSWER | 19 | 70 | 6 | 1,428 | yes |
-| PORTUGUESE | 56 | 119 | 7 | 1,201 | yes |
-| SOUTH AMERICAN | 9 | 46 | 0 | 388 | yes |
-| UNABLE TO OBTAIN | 9 | 55 | 2 | 1,326 | yes |
+| PATIENT DECLINED TO ANSWER | withheld | 70 | <11 | 1,428 | yes |
+| PORTUGUESE | withheld | 119 | <11 | 1,201 | yes |
+| SOUTH AMERICAN | <11 | withheld | 0 | 388 | yes |
+| UNABLE TO OBTAIN | <11 | 55 | <11 | 1,326 | yes |
 | UNKNOWN | 88 | 493 | 11 | 9,134 | yes |
 | WHITE | 3,167 | 14,785 | 447 | 222,559 | yes |
-| WHITE - BRAZILIAN | 21 | 69 | 5 | 855 | yes |
-| WHITE - EASTERN EUROPEAN | 12 | 54 | 2 | 977 | yes |
+| WHITE - BRAZILIAN | withheld | 69 | <11 | 855 | yes |
+| WHITE - EASTERN EUROPEAN | withheld | 54 | <11 | 977 | yes |
 | WHITE - OTHER EUROPEAN | 139 | 524 | 22 | 6,441 | yes |
 | WHITE - RUSSIAN | 81 | 214 | 11 | 4,354 | yes |
 
@@ -135,8 +135,8 @@ Using the primary (b) definition. **No recovery rates are computed.** Strata are
 | --- | --: | --: | --: | --: | :--: |
 | Medicaid | 987 | 5,042 | 124 | 56,874 | yes |
 | Medicare | 1,882 | 8,684 | 327 | 169,614 | yes |
-| No charge | 0 | 6 | 0 | 67 | NO |
-| Other | 122 | 724 | 13 | 9,111 | yes |
+| No charge | 0 | <11 | 0 | withheld | NO |
+| Other | withheld | 724 | withheld | 9,111 | yes |
 | Private | 2,006 | 8,136 | 245 | 104,835 | yes |
 
 **Analysable (insurance, code−/note+ ≥ 11):** Medicare (8684), Private (8136), Medicaid (5042), Other (724).

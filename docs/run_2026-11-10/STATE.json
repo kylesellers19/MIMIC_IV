@@ -27,8 +27,21 @@
   },
   "3": {
    "name": "amendments (k)-(o), S18-S22",
+   "status": "done",
+   "start": "2026-11-11T03:20:29Z",
+   "end": "2026-11-11T03:20:48Z",
+   "commit": "2b32fdee1ef57c8240fc2c6a88b22dbb6af59a48"
+  },
+  "4": {
+   "name": "carry-over check (background)",
    "status": "running",
-   "start": "2026-11-11T03:20:29Z"
+   "start": "2026-11-11T03:21:56Z"
+  },
+  "5": {
+   "name": "exploratory analyses (l)-(o)",
+   "status": "running",
+   "start": "2026-11-11T03:22:17Z"
   }
- }
+ },
+ "phase3_commit": "2b32fdee1ef57c8240fc2c6a88b22dbb6af59a48"
 }

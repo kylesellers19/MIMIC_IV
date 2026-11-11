@@ -1,0 +1,155 @@
+{
+ "script": "scripts/run1110_imaging_funnel.py",
+ "amendment": "o (S22)",
+ "exploratory": true,
+ "bootstrap": {
+  "replicates": 500,
+  "seed": 20260919,
+  "cluster": "subject",
+  "interval": "95% percentile"
+ },
+ "check_sources_reproduce_definition_b": true,
+ "population_admissions": 373992,
+ "stage1_imaging_observed": {
+  "n": 373992,
+  "x": 138603,
+  "pct": 37.1,
+  "reported": true,
+  "ci95": [
+   36.8,
+   37.3
+  ]
+ },
+ "stage2_radiology_report_rule_positive": {
+  "n": 138603,
+  "x": 20364,
+  "pct": 14.7,
+  "reported": true,
+  "ci95": [
+   14.3,
+   15.1
+  ]
+ },
+ "stage2_split": {
+  "inpatient_linked_report": {
+   "n": 20364,
+   "x": 9722,
+   "pct": 47.7,
+   "reported": true,
+   "ci95": [
+    46.8,
+    48.6
+   ]
+  },
+  "outpatient_window_report_only": {
+   "n": 20364,
+   "x": 10642,
+   "pct": 52.3,
+   "reported": true,
+   "ci95": [
+    51.4,
+    53.2
+   ]
+  }
+ },
+ "stage3_discharge_summary_also_rule_positive": {
+  "n": 20364,
+  "x": 8081,
+  "pct": 39.7,
+  "reported": true,
+  "ci95": [
+   38.7,
+   40.7
+  ]
+ },
+ "stage3_by_stage2_source": {
+  "inpatient_linked_report": {
+   "n": 9722,
+   "x": 5967,
+   "pct": 61.4,
+   "reported": true,
+   "ci95": [
+    60.2,
+    62.4
+   ]
+  },
+  "outpatient_window_report_only": {
+   "n": 10642,
+   "x": 2114,
+   "pct": 19.9,
+   "reported": true,
+   "ci95": [
+    18.7,
+    21.0
+   ]
+  }
+ },
+ "stage4_coded_share": {
+  "discharge_summary_rule_positive": {
+   "n": 8081,
+   "x": 2560,
+   "pct": 31.7,
+   "reported": true,
+   "ci95": [
+    30.4,
+    33.1
+   ]
+  },
+  "discharge_summary_not_rule_positive": {
+   "n": 12283,
+   "x": 349,
+   "pct": 2.8,
+   "reported": true,
+   "ci95": [
+    2.5,
+    3.2
+   ]
+  }
+ },
+ "stage4_coded_share_by_source": {
+  "inpatient_linked_report": {
+   "discharge_summary_rule_positive": {
+    "n": 5967,
+    "x": 1548,
+    "pct": 25.9,
+    "reported": true,
+    "ci95": [
+     24.6,
+     27.2
+    ]
+   },
+   "discharge_summary_not_rule_positive": {
+    "n": 3755,
+    "x": 140,
+    "pct": 3.7,
+    "reported": true,
+    "ci95": [
+     3.1,
+     4.4
+    ]
+   }
+  },
+  "outpatient_window_report_only": {
+   "discharge_summary_rule_positive": {
+    "n": 2114,
+    "x": 1012,
+    "pct": 47.9,
+    "reported": true,
+    "ci95": [
+     45.3,
+     50.5
+    ]
+   },
+   "discharge_summary_not_rule_positive": {
+    "n": 8528,
+    "x": 209,
+    "pct": 2.5,
+    "reported": true,
+    "ci95": [
+     2.1,
+     2.8
+    ]
+   }
+  }
+ }
+}

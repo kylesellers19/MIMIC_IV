@@ -1,0 +1,122 @@
+{
+ "script": "scripts/run1110_later_outcomes.py",
+ "amendment": "m (S20)",
+ "exploratory": true,
+ "grain": "subject",
+ "intervals": "Wilson 95%",
+ "flow": {
+  "subjects_with_a_note_positive_admission": 15001,
+  "index_uncoded_but_coded_earlier_in_neither_group": 46,
+  "excluded_cirrhosis_or_hcc_at_or_before_index": 1956,
+  "excluded_died_during_index_admission_only": 259
+ },
+ "groups": {
+  "U": {
+   "subjects": 10727,
+   "with_a_later_admission": {
+    "n": 10727,
+    "x": 5918,
+    "pct": 55.2,
+    "reported": true,
+    "ci95": [
+     54.2,
+     56.1
+    ]
+   },
+   "later_cirrhosis_flag": {
+    "n": 5918,
+    "x": 498,
+    "pct": 8.4,
+    "reported": true,
+    "ci95": [
+     7.7,
+     9.1
+    ],
+    "days_from_index_discharge": {
+     "median": 527.36,
+     "q1": 132.33,
+     "q3": 1301.39
+    }
+   },
+   "later_hcc_flag": {
+    "n": 5918,
+    "x": 31,
+    "pct": 0.5,
+    "reported": true,
+    "ci95": [
+     0.4,
+     0.7
+    ],
+    "days_from_index_discharge": {
+     "median": 826.15,
+     "q1": 190.23,
+     "q3": 2324.3
+    }
+   },
+   "later_coded": {
+    "n": 5918,
+    "x": 686,
+    "pct": 11.6,
+    "reported": true,
+    "ci95": [
+     10.8,
+     12.4
+    ],
+    "days_from_index_discharge": {
+     "median": 479.6,
+     "q1": 110.16,
+     "q3": 1261.8
+    },
+    "admissions_before_first_coded": {
+     "median": 1.0,
+     "q1": 0.0,
+     "q3": 2.0
+    }
+   }
+  },
+  "C": {
+   "subjects": 2013,
+   "with_a_later_admission": {
+    "n": 2013,
+    "x": 936,
+    "pct": 46.5,
+    "reported": true,
+    "ci95": [
+     44.3,
+     48.7
+    ]
+   },
+   "later_cirrhosis_flag": {
+    "n": 936,
+    "x": 78,
+    "pct": 8.3,
+    "reported": true,
+    "ci95": [
+     6.7,
+     10.3
+    ],
+    "days_from_index_discharge": {
+     "median": 521.3,
+     "q1": 85.38,
+     "q3": 1102.75
+    }
+   },
+   "later_hcc_flag": {
+    "n": 936,
+    "x": "<11",
+    "pct": "withheld",
+    "reported": false,
+    "why": "numerator or its complement is 1-10"
+   }
+  }
+ },
+ "definitions": {
+  "U": "index admission code-negative, no earlier code-positive admission",
+  "C": "index admission code-positive",
+  "index": "earliest note-positive admission (definition b)",
+  "later": "admitted after the index admission began",
+  "days": "from index discharge to admission of the first later admission with the event",
+  "admissions_before_first_coded": "admissions after the index and before the first coded admission (0 = the next admission was coded)"
+ },
+ "limitation": "only returns to this hospital are observed, so every figure is a floor"
+}

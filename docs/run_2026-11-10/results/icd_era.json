@@ -1,0 +1,215 @@
+{
+ "script": "scripts/run1110_icd_era.py",
+ "amendment": "n (S21)",
+ "exploratory": true,
+ "measure": "among note-positive admissions, the share with no MASLD code: B/(A+B)",
+ "bootstrap": {
+  "replicates": 500,
+  "seed": 20260919,
+  "cluster": "subject",
+  "interval": "95% percentile"
+ },
+ "note_positive_admissions": 27826,
+ "overall": {
+  "primary_code_set": {
+   "n": 27826,
+   "x": 22799,
+   "pct": 81.9,
+   "reported": true,
+   "ci95": [
+    81.2,
+    82.7
+   ]
+  },
+  "with_571_9_removed": {
+   "n": 27826,
+   "x": 22811,
+   "pct": 82.0,
+   "reported": true,
+   "ci95": [
+    81.3,
+    82.7
+   ]
+  }
+ },
+ "by_anchor_year_group": [
+  {
+   "stratum": "2008 - 2010",
+   "note_positive_admissions": 11995,
+   "primary_code_set": {
+    "n": 11995,
+    "x": 10132,
+    "pct": 84.5,
+    "reported": true,
+    "ci95": [
+     83.4,
+     85.5
+    ]
+   },
+   "with_571_9_removed": {
+    "n": 11995,
+    "x": "withheld",
+    "pct": 84.5,
+    "reported": true,
+    "ci95": [
+     83.4,
+     85.6
+    ],
+    "why_x_withheld": "differs from the primary count by fewer than 11"
+   }
+  },
+  {
+   "stratum": "2011 - 2013",
+   "note_positive_admissions": 6414,
+   "primary_code_set": {
+    "n": 6414,
+    "x": 5196,
+    "pct": 81.0,
+    "reported": true,
+    "ci95": [
+     79.6,
+     82.5
+    ]
+   },
+   "with_571_9_removed": {
+    "n": 6414,
+    "x": "withheld",
+    "pct": 81.1,
+    "reported": true,
+    "ci95": [
+     79.7,
+     82.5
+    ],
+    "why_x_withheld": "differs from the primary count by fewer than 11"
+   }
+  },
+  {
+   "stratum": "2014 - 2016",
+   "note_positive_admissions": 5358,
+   "primary_code_set": {
+    "n": 5358,
+    "x": 4266,
+    "pct": 79.6,
+    "reported": true,
+    "ci95": [
+     78.1,
+     81.3
+    ]
+   },
+   "with_571_9_removed": {
+    "n": 5358,
+    "x": "withheld",
+    "pct": 79.7,
+    "reported": true,
+    "ci95": [
+     78.2,
+     81.4
+    ],
+    "why_x_withheld": "differs from the primary count by fewer than 11"
+   }
+  },
+  {
+   "stratum": "2017 - 2019",
+   "note_positive_admissions": 4059,
+   "primary_code_set": {
+    "n": 4059,
+    "x": 3205,
+    "pct": 79.0,
+    "reported": true,
+    "ci95": [
+     77.1,
+     80.5
+    ]
+   },
+   "with_571_9_removed": {
+    "n": 4059,
+    "x": 3205,
+    "pct": 79.0,
+    "reported": true,
+    "ci95": [
+     77.1,
+     80.5
+    ]
+   }
+  },
+  {
+   "stratum": "2020 - 2022",
+   "note_positive_admissions": 0,
+   "primary_code_set": {
+    "n": 0,
+    "reported": false,
+    "why": "denominator below 11"
+   },
+   "with_571_9_removed": {
+    "n": 0,
+    "reported": false,
+    "why": "denominator below 11"
+   }
+  }
+ ],
+ "by_icd_version": [
+  {
+   "stratum": "Both",
+   "note_positive_admissions": 0,
+   "primary_code_set": {
+    "n": 0,
+    "reported": false,
+    "why": "denominator below 11"
+   },
+   "with_571_9_removed": {
+    "n": 0,
+    "reported": false,
+    "why": "denominator below 11"
+   }
+  },
+  {
+   "stratum": "ICD-10 only",
+   "note_positive_admissions": 12890,
+   "primary_code_set": {
+    "n": 12890,
+    "x": 10204,
+    "pct": 79.2,
+    "reported": true,
+    "ci95": [
+     78.1,
+     80.2
+    ]
+   },
+   "with_571_9_removed": {
+    "n": 12890,
+    "x": 10204,
+    "pct": 79.2,
+    "reported": true,
+    "ci95": [
+     78.1,
+     80.2
+    ]
+   }
+  },
+  {
+   "stratum": "ICD-9 only",
+   "note_positive_admissions": 14936,
+   "primary_code_set": {
+    "n": 14936,
+    "x": 12595,
+    "pct": 84.3,
+    "reported": true,
+    "ci95": [
+     83.4,
+     85.2
+    ]
+   },
+   "with_571_9_removed": {
+    "n": 14936,
+    "x": 12607,
+    "pct": 84.4,
+    "reported": true,
+    "ci95": [
+     83.5,
+     85.3
+    ]
+   }
+  }
+ ],
+ "limitation": "anchor_year_group is a three-year window assigned per patient"
+}

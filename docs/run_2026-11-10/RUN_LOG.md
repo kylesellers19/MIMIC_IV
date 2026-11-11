@@ -45,9 +45,30 @@ Written by `scripts/run1110_phase2_docs.py`; facts in `results/signoff_timeline.
 - Committed and pushed before Phase 4 or Phase 5 computed anything. The commit is `phase3_commit` in `STATE.json`.
 - What this session had looked at before that commit: the frozen-artifact hashes, the integrity gate, the extractor's cap line, the aggregate diagnostic tables of Phase 1, and overlap counts for the gate. None of it is a result of analyses (k)–(o).
 
+## Phase 4 — carry-over check (background)
+
+- `scripts/run1110_carryover_check.py sample` drew the sample (amendment k): carried-over v3 NO units in the two NO strata, excluding the quantization-check sample. Counts are in `results/carryover_check.json` once the summary runs.
+- The model run started after the Phase 3 push, with prompt v4, the pinned model and the stored decoding settings, capped below LLM_BUDGET_HOURS. Its result is logged under "Phase 4 — result" below.
+
+## Phase 5 — exploratory analyses (l)–(o)
+
+One script per analysis, each writing one results file; one document, `docs/preliminary_2026-11-10.md`, written by `scripts/run1110_preliminary_doc.py`.
+
+- **(l)** `scripts/run1110_fib4_by_cell.py` → `results/fib4_by_cell.json`. Outpatient inputs for sensitivity 4 come from one pass over the lab events (`scripts/run1110_outpt_fib4_inputs.py`, output under `data/`).
+- **(m)** `scripts/run1110_later_outcomes.py` → `results/later_outcomes.json`.
+- **(n)** `scripts/run1110_icd_era.py` → `results/icd_era.json`.
+- **(o)** `scripts/run1110_imaging_funnel.py` → `results/imaging_funnel.json`. The per-note rule flags reproduce definition (b) for every admission (`check_sources_reproduce_definition_b`).
+- Shared code: `scripts/run1110_common.py` (frame, cells, bootstrap, masking).
+- Tier 1: the bootstrap draws subject weights exactly as `scripts/run0919_aim1c_level1.py` does.
+- Tier 1: a count that sits 1–10 away from another published count for the same admissions is withheld, and its share is kept.
+
 ## Deviations
 
 - **Phase 1.2 — six files moved, not eight.** The run file says eight heading-text CSVs and names six. Six files in the folder have a `heading` field holding note headings; those were moved. The other two CSVs there are the aggregates Phase 1.3 names (one is keyed by the study's own sub-heading list, the other has no heading field).
 - **Phase 1.4 — three stated exemptions in gate check (d).** The run file lists none. A 30-character rule with no exemption fails on published disease names and on text the repository already shows. The exemptions are: text already at the remote base, lines marked as test fixtures, and matches lying inside a listed published disease name. This follows the September audit, which exempted the study's own instrument text. Anything else that is flagged is reworded.
 - **Phase 1.6 — two listed files not committed.** `scripts/llm_timing_test.py` and `docs/adjudication/criteria_revision_proposal.md` fail the gate (B-01).
 - **Phase 2.1 — the sign-off commit did not change documents only.** The run file says commit `16033d9` changed documents only. Git shows two documents and one new diagnostic script. The protocol and the appended clarification say what git shows.
+- **Phase 5 (l), details the amendment leaves open.** Sensitivity 3 removes the excluded admissions from each cell before anything is computed. Sensitivity 4 takes each analyte's most recent outpatient value in the window, which can fall on different days, and uses the age at the admission. Both follow `scripts/run0919_lab_features.py`.
+- **Phase 5 (m), details the amendment leaves open.** A later admission is one that begins after the index admission began. Days run from the index discharge to the start of the first later admission with the event. "Admissions before it" counts admissions after the index and before the first coded one. Subjects whose index is uncoded but who were coded earlier are in neither group and are counted in the flow. Death during the index admission is the hospital-expiry flag of that admission.
+- **Phase 5 (n).** Two strata have no note-positive admission and are shown as not reported.
+- **Phase 5 (o).** Stage 2 counts a rule-positive radiology report among imaging-observed admissions. "Outpatient-only" means no report linked to the admission is rule-positive.

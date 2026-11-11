@@ -60,6 +60,16 @@ def main():
                 "A fuller page for people who will not review charts is [docs/adjudication/study_onepager.md](docs/adjudication/study_onepager.md).")
     if old_line and old_line != new_line:
         s = s.replace(old_line, new_line, 1)
+    # 2026-11-11: amendment (p) in the pipeline row; what blocks the review, and where the open decisions are
+    s = s.replace("(run of 10 November 2026; amendments k–o) | `run1110_push_gate.py`",
+                  "(run of 10 November 2026; amendments k–p) | `run1110_push_gate.py`", 1)
+    if "`run1111_amendment_p.py`" not in s:
+        s = s.replace("`run1110_final_report.py` | `docs/preliminary_2026-11-10.md`", "`run1110_final_report.py`, `run1111_amendment_p.py` | `docs/preliminary_2026-11-10.md`", 1)
+    still = "- **Still needed:** clinician sign-off on the criteria (`docs/adjudication_criteria.md`; every `[CLINICIAN]` flag is an open question) and the reviewers themselves.\n"
+    blocks = ("- **Blocks the start:** the decision on ICD-9 571.9 (D-01): dropping the code would change the sampling weights, and that cannot be done once review has started. "
+              "Open decisions, with options: [docs/run_2026-11-10/DECISIONS_FOR_KYLE.md](docs/run_2026-11-10/DECISIONS_FOR_KYLE.md).\n")
+    if "**Blocks the start:**" not in s and still in s:
+        s = s.replace(still, still + blocks, 1)
     open(README, "w").write(s)
     print("README static edits applied")
 

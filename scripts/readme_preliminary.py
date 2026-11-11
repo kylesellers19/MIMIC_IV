@@ -157,7 +157,10 @@ def main():
          f"- **So are the language model's answers:** it labelled all {lock['gold_admissions']:,} held-out admissions "
          f"({lock['distinct_units']:,} distinct sentences, {lock['errors']} errors), and its answers were hashed. Nothing about those "
          "answers has been looked at (`docs/llm_gold_lock.md`). The rule turning sentence answers into admission labels was in the "
-         "analysis plan before the run (amendment h).",
+         "analysis plan before the run (amendment h)."
+         + (" Against the chart review the language model will be scored as a classifier only: no admission-level probability is defined "
+            "for it, a choice fixed on 11 November 2026 before any chart was reviewed (amendment p)."
+            if "## 7. Amendment dated 2026-11-11" in open("docs/analysis_plan_prespecified.md").read() else ""),
          f"- **The language model's answers barely depend on how it is compressed.** A smaller build of the same model was run on "
          f"a stratified sample of {qcj['units_sampled']:,} dev/test sentences. Weighted back to all {qcj['units_population']:,}, it "
          f"changed an estimated {qc['answer_differs']['pct']}% of answers (conservative 95% bounds {qc['answer_differs']['lo']}–"

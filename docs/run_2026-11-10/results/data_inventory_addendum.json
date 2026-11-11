@@ -1,6 +1,6 @@
 {
  "script": "scripts/run1110_data_inventory_addendum.py",
- "generated_utc": "2026-11-11T03:39:35Z",
+ "generated_utc": "2026-11-11T05:04:54Z",
  "locations": [
   {
    "location": "data/processed/pilot_packets_2026-11-10",
@@ -33,9 +33,9 @@
    "location": "data/processed/llm_review/carryover_check",
    "classification": "credentialed derivative",
    "what": "carry-over check (amendment k): sample input, strata, model answers, run log",
-   "n_files": 5,
-   "bytes": 752410,
-   "size": "734.8 KB",
+   "n_files": 10,
+   "bytes": 1021186,
+   "size": "997.3 KB",
    "tracked_files": 0
   },
   {
@@ -51,9 +51,9 @@
    "location": "data/processed/run_2026-11-10_scratch",
    "classification": "credentialed derivative",
    "what": "push-gate cache of normalised dev/test extractor text; safe to delete",
-   "n_files": 1,
-   "bytes": 17504423,
-   "size": "16.7 MB",
+   "n_files": 53,
+   "bytes": 18319472,
+   "size": "17.5 MB",
    "tracked_files": 0
   },
   {
@@ -61,11 +61,11 @@
    "classification": "credentialed derivative (policy)",
    "what": "this run's logs: counts and timings only",
    "n_files": 3,
-   "bytes": 2305,
-   "size": "2.3 KB",
+   "bytes": 7112,
+   "size": "6.9 KB",
    "tracked_files": 0
   }
  ],
- "total_bytes": 23020902,
- "total_size": "22.0 MB"
+ "total_bytes": 24109534,
+ "total_size": "23.0 MB"
 }

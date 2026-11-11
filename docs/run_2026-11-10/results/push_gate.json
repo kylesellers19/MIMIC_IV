@@ -1,0 +1,53 @@
+{
+ "base": "ac58d5743541acec0220a99d3ca1378735a17f0b",
+ "head": "f0db22bc3aefdf2f1a2f38e36271b37b1468f7ec",
+ "files_inspected": 74,
+ "commits_inspected": 12,
+ "checks": {
+  "a_forbidden_paths": {
+   "findings": [],
+   "pass": true
+  },
+  "b_tabular_or_binary": {
+   "findings": [],
+   "pass": true
+  },
+  "c_identifiers": {
+   "findings": [],
+   "eight_digit_tokens": 36,
+   "equal_to_an_id_but_exempt": 0,
+   "pass": true
+  },
+  "d_note_text": {
+   "findings": [],
+   "lines_scanned": 12414,
+   "d3_windows_matched": 150,
+   "d3_exempt_public": 141,
+   "d3_exempt_term": 9,
+   "d3_exempt_fixture": 0,
+   "d4_exempt_public": 0,
+   "d4_exempt_term": 0,
+   "d4_exempt_fixture": 0,
+   "d1_deid_marks": 0,
+   "d2_report_headers": 0,
+   "d3_sentence_windows": 0,
+   "d4_private_headings": 0,
+   "pass": true
+  },
+  "e_small_counts": {
+   "findings": [],
+   "pass": true
+  },
+  "f_config_append_only": {
+   "findings": [],
+   "pass": true
+  },
+  "g_frozen_hashes": {
+   "findings": [],
+   "artifacts_checked": 35,
+   "pass": true
+  }
+ },
+ "all_pass": true,
+ "checked_utc": "2026-11-11T05:04:44Z"
+}

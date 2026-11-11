@@ -123,7 +123,13 @@ def main():
     # ---- public / local
     L += ["## What is public now, and what stayed local\n",
           f"- **Public:** commits `{first[:7]}..{remote[:7]}` on `{BRANCH}` ({len(sh('git', 'log', '--oneline', f'{first}..origin/{BRANCH}').splitlines())} commits), and the tag(s) {', '.join('`' + t + '`' for t in tags_remote) or 'none'}.",
-          f"- **Local head:** `{head[:7]}`; remote head: `{remote[:7]}`" + (" (equal)." if head == remote else " (**differ** — the last commit is pushed after this report is written; see the final message).")]
+          f"- **Local head when this report was written:** `{head[:7]}`; remote head: `{remote[:7]}`" + (" (equal)." if head == remote else " (**they differ**).")
+          + " The commit that adds this report comes after both and is pushed through the gate like the others."]
+    gh = load("github_check.json")
+    if gh:
+        L.append(f"- **Check on GitHub (Phase 10.4):** remote head equal to local head: {gh['remote_equals_local']}; README on the remote shows the new sub-block: {gh['raw_readme_has_new_sub_block']}, "
+                 f"with the not-validated banner before it: {gh['banner_comes_before_the_sub_block']}; tabular files added during the run: {len(gh['tabular_files_added'])}; binary files changed: {gh['binary_files_changed']} "
+                 f"(`{R}/github_check.json`). The rendered page was also opened read-only in the browser; see the run log.")
     only_local = [t for t in tags_local if t not in tags_remote]
     if only_local:
         L.append(f"- **Tags that exist only on this machine:** {', '.join('`' + t + '`' for t in only_local)}. This run was told to push one tag and pushed one (decision N-07).")

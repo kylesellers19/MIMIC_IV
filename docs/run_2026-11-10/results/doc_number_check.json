@@ -1,7 +1,7 @@
 {
- "results_files_scanned": 53,
+ "results_files_scanned": 57,
  "source_docs_scanned": 46,
- "distinct_known_numeric_forms": 36043,
+ "distinct_known_numeric_forms": 36045,
  "docs": {
   "docs/manuscript_methods_draft.md": {
    "numeric_tokens": 1010,
@@ -113,7 +113,7 @@
    }
   },
   "docs/run_2026-11-10/FINAL_REPORT.md": {
-   "numeric_tokens": 172,
+   "numeric_tokens": 174,
    "unattributed_distinct": 8,
    "unattributed": {
     "03": [
@@ -124,37 +124,37 @@
     ],
     "01": [
      7,
-     12,
-     34,
-     34
+     35,
+     35,
+     35
     ],
     "04": [
      28,
-     72,
-     75,
-     87
+     28,
+     29,
+     29
     ],
     "02": [
      27,
-     38,
-     83,
-     85
+     39,
+     87,
+     89
     ],
     "06": [
-     35,
-     74,
-     89,
-     93
+     36,
+     78,
+     93,
+     97
     ],
     "00": [
      18,
      28
     ],
     "852.6": [
-     112
+     133
     ],
-    "734.8": [
-     115
+    "997.3": [
+     136
     ]
    }
   }

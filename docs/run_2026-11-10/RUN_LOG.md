@@ -107,6 +107,18 @@ Written by `scripts/run1110_manuscript_llm.py`, between markers, from the protoc
 - The aim status lines were left alone: this run changed no fact they state.
 - The check on GitHub is recorded below under "Phase 10.4".
 
+## Phase 10.4 — the check on GitHub
+
+- **Browser, read-only.** The repository page for `run/2026-09-19` was opened. The rendered README shows the sub-block "Exploratory, added 10 November 2026" with its carry-over line, below the banner "Computable stage only — not yet validated by chart review". The latest commit shown on the page is the Phase 10 commit, the same as local `HEAD` at that moment. The commit list for the branch was opened earlier in the run and listed this run's commits in order. Nothing was typed, clicked to edit, or changed; GitHub's web editor was not opened.
+- **File types.** The commit list does not show files, so the check that no tabular or binary file was added was made with git against the fetched remote and recorded by `scripts/run1110_github_check.py` in `results/github_check.json`, together with the remote head and a fetch of the raw README.
+
+## Phase 11 — final audit, report, notification
+
+- `scripts/run1110_frozen_hashes.py --when end` wrote `results/frozen_hashes_end.json`: no frozen or locked file changed during the run.
+- The gate was run over the whole range of the run, every commit one by one, and recorded in `results/push_gate.json`. The test suite's result is in `results/pytest_end.json`.
+- `scripts/run1110_data_inventory_addendum.py` was rerun for the final sizes.
+- `scripts/run1110_final_report.py` wrote `FINAL_REPORT.md`. The commit that adds it is pushed through the gated wrapper, then the notification is sent and `caffeinate` is stopped.
+
 ## Incident I-01 — a push without a passing gate (during Phase 8)
 
 - The Phase 8 push was chained to the exit status of `tail`, not of the gate, and went out while the gate was failing on a false positive. Nothing sensitive was published. Full account: `BLOCKERS.md`, I-01.

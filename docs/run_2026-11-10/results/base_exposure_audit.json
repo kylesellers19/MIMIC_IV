@@ -1,9 +1,9 @@
 {
  "script": "scripts/run1110_exposure_audit.py",
- "base": "ac58d5743541acec0220a99d3ca1378735a17f0b",
+ "base": "05ee62843cdd4c42e0510c0e4fd3c895e882ee62",
  "rule": "the push gate's checks (c) and (d), with no already-public exemption",
- "text_files_scanned": 213,
- "lines_scanned": 45130,
+ "text_files_scanned": 263,
+ "lines_scanned": 55287,
  "d1_deid_marks": {
   "lines_flagged": 5,
   "by_file": {
@@ -21,11 +21,13 @@
   }
  },
  "d3_sentence_windows": {
-  "lines_flagged": 151,
+  "lines_flagged": 166,
   "by_file": {
+   "diagnostics/liver_sentence_cap/liver_sentences_cap.py": 8,
    "diagnostics/llm_review_audit/filter_misses.py": 1,
    "diagnostics/llm_review_audit/merge_reask.py": 1,
    "diagnostics/llm_unclear_audit/unclear_audit.py": 2,
+   "diagnostics/section_rule_v2/liver_sentences_baseline.py": 8,
    "docs/adjudication/data_dictionary.md": 1,
    "docs/adjudication/llm_sentence_annotation_guide.md": 7,
    "docs/adjudication/reviewer_brief.md": 4,
@@ -35,7 +37,7 @@
    "docs/llm_review_protocol.md": 2,
    "docs/manuscript_methods_draft.md": 5,
    "docs/note_phenotype_spec.md": 2,
-   "docs/predefinition_descriptives.md": 52,
+   "docs/predefinition_descriptives.md": 50,
    "docs/run_2026-09-19/DECISIONS_FOR_KYLE.md": 1,
    "docs/run_2026-09-19/RUN_LOG.md": 2,
    "docs/sensitivity_5719.md": 1,
@@ -46,6 +48,7 @@
    "scripts/note_phenotype.py": 5,
    "scripts/run0919_notes_text.py": 1,
    "scripts/run0919_phase6_docs.py": 5,
+   "scripts/run1110_manuscript_llm.py": 1,
    "scripts/test_note_phenotype.py": 10,
    "sql/masld_coded.sql": 10,
    "tests/test_llm_sentence_review.py": 1,
@@ -53,6 +56,15 @@
    "tests/test_run0919_text_variants.py": 9
   },
   "per_file": {
+   "diagnostics/liver_sentence_cap/liver_sentences_cap.py": {
+    "lines_flagged": 8,
+    "longest_overlap_chars": 39,
+    "overlap_in_one_extractor_string": 2,
+    "overlap_in_2_to_10": 5,
+    "overlap_in_11_or_more": 1,
+    "one_string_and_40_or_more_chars": 0,
+    "whole_quoted_string_is_an_extractor_string": 3
+   },
    "diagnostics/llm_review_audit/filter_misses.py": {
     "lines_flagged": 1,
     "longest_overlap_chars": 58,
@@ -79,6 +91,15 @@
     "overlap_in_11_or_more": 1,
     "one_string_and_40_or_more_chars": 0,
     "whole_quoted_string_is_an_extractor_string": 0
+   },
+   "diagnostics/section_rule_v2/liver_sentences_baseline.py": {
+    "lines_flagged": 8,
+    "longest_overlap_chars": 39,
+    "overlap_in_one_extractor_string": 2,
+    "overlap_in_2_to_10": 5,
+    "overlap_in_11_or_more": 1,
+    "one_string_and_40_or_more_chars": 0,
+    "whole_quoted_string_is_an_extractor_string": 3
    },
    "docs/adjudication/data_dictionary.md": {
     "lines_flagged": 1,
@@ -147,8 +168,8 @@
     "lines_flagged": 5,
     "longest_overlap_chars": 48,
     "overlap_in_one_extractor_string": 2,
-    "overlap_in_2_to_10": 3,
-    "overlap_in_11_or_more": 0,
+    "overlap_in_2_to_10": 2,
+    "overlap_in_11_or_more": 1,
     "one_string_and_40_or_more_chars": 0,
     "whole_quoted_string_is_an_extractor_string": 0
    },
@@ -162,11 +183,11 @@
     "whole_quoted_string_is_an_extractor_string": 0
    },
    "docs/predefinition_descriptives.md": {
-    "lines_flagged": 52,
+    "lines_flagged": 50,
     "longest_overlap_chars": 46,
     "overlap_in_one_extractor_string": 36,
     "overlap_in_2_to_10": 13,
-    "overlap_in_11_or_more": 3,
+    "overlap_in_11_or_more": 1,
     "one_string_and_40_or_more_chars": 2,
     "whole_quoted_string_is_an_extractor_string": 0
    },
@@ -260,6 +281,15 @@
     "one_string_and_40_or_more_chars": 0,
     "whole_quoted_string_is_an_extractor_string": 0
    },
+   "scripts/run1110_manuscript_llm.py": {
+    "lines_flagged": 1,
+    "longest_overlap_chars": 31,
+    "overlap_in_one_extractor_string": 1,
+    "overlap_in_2_to_10": 0,
+    "overlap_in_11_or_more": 0,
+    "one_string_and_40_or_more_chars": 0,
+    "whole_quoted_string_is_an_extractor_string": 0
+   },
    "scripts/test_note_phenotype.py": {
     "lines_flagged": 10,
     "longest_overlap_chars": 43,
@@ -316,7 +346,7 @@
  },
  "identifiers": {
   "lines_flagged": 0,
-  "eight_digit_tokens": 132,
+  "eight_digit_tokens": 161,
   "equal_to_an_id_but_exempt": 0
  }
 }

@@ -109,7 +109,23 @@ def methods_block():
         carryover_methods(c), "",
         "**What the arm is used for.** A second computable note phenotype, compared with the frozen rule on the dev/test notes subsample (`docs/llm_review_preliminary.md`). "
         "It is scored against chart review only through the locked GOLD_HOLDOUT answers. Reviewers never see its output. "
-        "Sentence-level validation by two credentialed annotators has not started."])
+        "Sentence-level validation by two credentialed annotators has not started.", "",
+        reference_status()])
+
+
+def reference_status():
+    """Which registry entries the citation APIs confirm now, against September. From the two citations.json files."""
+    now, sep = load(f"{R11}/citations.json"), load("docs/run_2026-09-19/results/citations.json")
+    if not now:
+        return "**Reference status.** [PENDING] The citation check of this run has not been run."
+    short = lambda i: i.split("_")[0]
+    newly = sorted(short(i) for i in now["verified_ids"] if sep and i in sep.get("unresolved_ids", []))
+    left = sorted(short(i) for i in now["unresolved_ids"])
+    return (f"**Reference status (2026-11-10).** {now['verified']} of {now['registry_size']} registry entries are confirmed by PubMed or Crossref "
+            f"(`docs/references/verified_references.md`), by the verifier's existing rule. Confirmed since September: {', '.join(newly) or 'none'}. "
+            "Where an earlier section of this draft still marks one of those as an unverified reference, that note predates this check. "
+            f"Still unresolved: {', '.join(left) or 'none'} (`docs/references/unresolved.md`). "
+            "The protocol's references were confirmed on author, year and journal or on a DOI; none was checked on its title, because the protocol gives descriptions, not titles.")
 
 
 def demote(lines, tag):

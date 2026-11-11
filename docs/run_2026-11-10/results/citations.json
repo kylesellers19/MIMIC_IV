@@ -1,0 +1,147 @@
+{
+ "generated_utc": "2026-11-11T03:44:15+00:00",
+ "registry_size": 23,
+ "verified": 20,
+ "verified_by_source": {
+  "PubMed by PMID": 3,
+  "PubMed by DOI": 3,
+  "PubMed by title": 2,
+  "PubMed by author+year+journal (unique candidate; lower confidence)": 8,
+  "PubMed by author+year+keywords (unique candidate; lower confidence)": 1,
+  "Crossref by DOI": 2,
+  "Crossref by author+year+keywords (unique candidate; lower confidence)": 1
+ },
+ "unresolved": 3,
+ "unresolved_ids": [
+  "R12_johnson_mimic_iv_note",
+  "R16_physionet_2025_llm_guidance",
+  "R22_sclar_2024_prompt_formatting"
+ ],
+ "verified_ids": {
+  "R01_hagstrom_2021": {
+   "confirmed_by": "PubMed by PMID",
+   "doi": "10.1002/hep.31726",
+   "pmid": "33486773"
+  },
+  "R02_rinella_2023": {
+   "confirmed_by": "PubMed by PMID",
+   "doi": "10.1016/j.jhep.2023.06.003",
+   "pmid": "37364790"
+  },
+  "R03_kahn_2016": {
+   "confirmed_by": "PubMed by DOI",
+   "doi": "10.13063/2327-9214.1244",
+   "pmid": "27713905"
+  },
+  "R04_chapman_2001": {
+   "confirmed_by": "PubMed by title",
+   "doi": "10.1006/jbin.2001.1029",
+   "pmid": "12123149"
+  },
+  "R05_harkema_2009": {
+   "confirmed_by": "PubMed by title",
+   "doi": "10.1016/j.jbi.2009.05.002",
+   "pmid": "19435614"
+  },
+  "R06_quan_2005": {
+   "confirmed_by": "PubMed by author+year+journal (unique candidate; lower confidence)",
+   "doi": "10.1097/01.mlr.0000182534.19832.83",
+   "pmid": "16224307"
+  },
+  "R07_charlson_1987": {
+   "confirmed_by": "PubMed by author+year+keywords (unique candidate; lower confidence)",
+   "doi": "10.1016/0021-9681(87)90171-8",
+   "pmid": "3558716"
+  },
+  "R08_vacs_steatosis_nlp_2024": {
+   "confirmed_by": "PubMed by PMID",
+   "doi": "10.1097/HC9.0000000000000468",
+   "pmid": "38896066"
+  },
+  "R09_alsentzer_2019_bio_clinicalbert": {
+   "confirmed_by": "Crossref by DOI",
+   "doi": "10.18653/v1/w19-1909",
+   "pmid": null
+  },
+  "R10_li_2022_clinical_longformer": {
+   "confirmed_by": "Crossref by DOI",
+   "doi": "10.1093/jamia/ocac225",
+   "pmid": null
+  },
+  "R11_johnson_2023_mimic_iv": {
+   "confirmed_by": "PubMed by author+year+journal (unique candidate; lower confidence)",
+   "doi": "10.1038/s41597-022-01899-x",
+   "pmid": "36596836"
+  },
+  "R13_collins_2024_tripod_ai": {
+   "confirmed_by": "PubMed by author+year+journal (unique candidate; lower confidence)",
+   "doi": "10.1136/bmj-2023-078378",
+   "pmid": "38626948"
+  },
+  "R14_gallifant_2025_tripod_llm": {
+   "confirmed_by": "PubMed by DOI",
+   "doi": "10.1038/s41591-024-03425-5",
+   "pmid": "39779929"
+  },
+  "R15_miao_2025_mi_claim_gen": {
+   "confirmed_by": "PubMed by DOI",
+   "doi": "10.1038/s41591-024-03470-0",
+   "pmid": "39915678"
+  },
+  "R17_vong_2025_incidental_steatosis_llm": {
+   "confirmed_by": "PubMed by author+year+journal (unique candidate; lower confidence)",
+   "doi": "10.1097/HC9.0000000000000638",
+   "pmid": "39969431"
+  },
+  "R18_john_2025_masld_nlp_valid": {
+   "confirmed_by": "PubMed by author+year+journal (unique candidate; lower confidence)",
+   "doi": "10.14309/ajg.0000000000003321",
+   "pmid": "39950372"
+  },
+  "R19_van_vleck_2019_nlp_nafld": {
+   "confirmed_by": "PubMed by author+year+journal (unique candidate; lower confidence)",
+   "doi": "10.1016/j.ijmedinf.2019.06.028",
+   "pmid": "31445275"
+  },
+  "R20_wiest_2024_privacy_preserving_llm": {
+   "confirmed_by": "PubMed by author+year+journal (unique candidate; lower confidence)",
+   "doi": "10.1038/s41746-024-01233-2",
+   "pmid": "39304709"
+  },
+  "R21_mukherjee_2023_vicuna_radiology": {
+   "confirmed_by": "PubMed by author+year+journal (unique candidate; lower confidence)",
+   "doi": "10.1148/radiol.231147",
+   "pmid": "37815442"
+  },
+  "R23_egami_2023_imperfect_surrogates": {
+   "confirmed_by": "Crossref by author+year+keywords (unique candidate; lower confidence)",
+   "doi": "10.52202/075280-3000",
+   "pmid": null
+  }
+ },
+ "search_basis": {
+  "R01_hagstrom_2021": "repo",
+  "R02_rinella_2023": "repo",
+  "R03_kahn_2016": "repo",
+  "R04_chapman_2001": "repo",
+  "R05_harkema_2009": "repo",
+  "R06_quan_2005": "repo",
+  "R07_charlson_1987": "repo",
+  "R08_vacs_steatosis_nlp_2024": "repo",
+  "R09_alsentzer_2019_bio_clinicalbert": "brief",
+  "R10_li_2022_clinical_longformer": "brief",
+  "R11_johnson_2023_mimic_iv": "brief",
+  "R12_johnson_mimic_iv_note": "brief",
+  "R13_collins_2024_tripod_ai": "brief",
+  "R14_gallifant_2025_tripod_llm": "repo",
+  "R15_miao_2025_mi_claim_gen": "repo",
+  "R16_physionet_2025_llm_guidance": "repo",
+  "R17_vong_2025_incidental_steatosis_llm": "repo",
+  "R18_john_2025_masld_nlp_valid": "repo",
+  "R19_van_vleck_2019_nlp_nafld": "repo",
+  "R20_wiest_2024_privacy_preserving_llm": "repo",
+  "R21_mukherjee_2023_vicuna_radiology": "repo",
+  "R22_sclar_2024_prompt_formatting": "repo",
+  "R23_egami_2023_imperfect_surrogates": "repo"
+ }
+}

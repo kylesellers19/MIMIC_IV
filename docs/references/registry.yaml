@@ -9,6 +9,15 @@
 # NO bibliographic field in this file was written from memory: every value comes from
 # the repo string or from the task brief, and `search_fields` says what the verifier
 # is allowed to search on. scripts/verify_citations.py consumes this file.
+#
+# Extended 2026-11-10 (run_2026-11-10 Phase 8):
+#   * R14-R23: the references of docs/llm_review_protocol.md not already in this registry. Fields are
+#     copied from the protocol's reference list. That list gives short descriptions, not titles, so
+#     `title` is null and nothing can be accepted on a title.
+#   * R05, R08, R13: the protocol cites these too; `repo_files` extended.
+#   * R08, R09, R10, R12: `candidate_string` and identifiers added from Appendix C of
+#     docs/run_2026-11-10/RUN_FILE.md. They are CANDIDATES, not facts: an entry is accepted only when
+#     the API record agrees by the verifier's existing rule.
 entries:
   - id: R01_hagstrom_2021
     repo_string: "Hagström et al., Hepatology 2021;74(1):474–482, doi:10.1002/hep.31726, PMID 33486773"
@@ -60,7 +69,7 @@ entries:
 
   - id: R05_harkema_2009
     repo_string: "Harkema H, Dowling JN, Thornblade T, Chapman WW. ConText: An algorithm for determining negation, experiencer, and temporal status from clinical reports. J Biomed Inform. 2009;42(5):839-851."
-    repo_files: [docs/note_phenotype_spec.md, scripts/note_phenotype.py]
+    repo_files: [docs/note_phenotype_spec.md, scripts/note_phenotype.py, docs/llm_review_protocol.md]
     search_basis: repo
     doi: null
     pmid: null
@@ -101,47 +110,51 @@ entries:
 
   - id: R08_vacs_steatosis_nlp_2024
     repo_string: "VA/VACS-based hepatic-steatosis NLP algorithm (Hepatology Communications, 2024) — basis for anatomical scoping (exact reference to be confirmed by study team)."
-    repo_files: [docs/note_phenotype_spec.md]
+    repo_files: [docs/note_phenotype_spec.md, docs/llm_review_protocol.md]
+    protocol_string: "Torgersen J et al. Hepatic steatosis by NLP. Hepatol Commun 2024;8:e0468"
+    candidate_string: "Torgersen J, 2024, Hepatology Communications — DOI 10.1097/HC9.0000000000000468, PMID 38896066 (run_2026-11-10 run file, Appendix C; candidate)"
     search_basis: repo
-    doi: null
-    pmid: null
+    doi: "10.1097/HC9.0000000000000468"
+    pmid: "38896066"
     title: null
-    first_author: null
+    first_author: "Torgersen"
     year: 2024
     journal: "Hepatology Communications"
     keywords: [hepatic steatosis, natural language processing, veterans]
-    search_fields: [journal_year_keywords]
-    note: "No author, title or identifier in the repo; the spec itself says the exact reference is to be confirmed. Cannot be accepted by rule; search recorded for the study team."
+    search_fields: [pmid, doi]
+    note: "Until 2026-11-10 the repo gave no author, title or identifier. First author, DOI and PMID are candidates from the 10 November run file; accepted only if the PubMed record for that PMID carries that DOI, that first author and that year."
 
   - id: R09_alsentzer_2019_bio_clinicalbert
     repo_string: "emilyalsentzer/Bio_ClinicalBERT"
     repo_files: [scripts/run0919_embed.py, docs/run_2026-09-19/RUN_LOG.md, docs/run_2026-09-19/DECISIONS_FOR_KYLE.md, scripts/aim1b_gold_cv.py]
     search_basis: brief
     brief_string: "Alsentzer et al. 2019 Bio_ClinicalBERT"
-    doi: null
+    candidate_string: "Alsentzer E, 2019, Clinical NLP Workshop — DOI 10.18653/v1/W19-1909 (run_2026-11-10 run file, Appendix C; candidate)"
+    doi: "10.18653/v1/W19-1909"
     pmid: null
     title: null
     first_author: "Alsentzer"
     year: 2019
     journal: null
     keywords: [clinical, BERT, embeddings]
-    search_fields: [author_year_keywords]
-    note: "Repo names only the Hugging Face model id; author and year come from the task brief."
+    search_fields: [doi]
+    note: "Repo names only the Hugging Face model id; author and year come from the task brief; the DOI is a candidate from the 10 November run file."
 
   - id: R10_li_2022_clinical_longformer
     repo_string: "Clinical-Longformer"
     repo_files: [docs/run_2026-09-19/DECISIONS_FOR_KYLE.md, docs/run_2026-09-19/RUN_LOG.md]
     search_basis: brief
     brief_string: "Li et al. Clinical-Longformer 2022"
-    doi: null
+    candidate_string: "Li Y, Clinical-Longformer — try DOI 10.1093/jamia/ocac225 (run_2026-11-10 run file, Appendix C; candidate)"
+    doi: "10.1093/jamia/ocac225"
     pmid: null
     title: null
     first_author: "Li"
     year: 2022
     journal: null
     keywords: [Clinical-Longformer]
-    search_fields: [author_year_keywords]
-    note: "Repo names only the model; author and year come from the task brief."
+    search_fields: [doi]
+    note: "Repo names only the model; author and year (2022) come from the September task brief and were not changed; the DOI is a candidate from the 10 November run file."
 
   - id: R11_johnson_2023_mimic_iv
     repo_string: "MIMIC-IV v3.1"
@@ -163,19 +176,20 @@ entries:
     repo_files: [docs/note_coverage.md, README.md, docs/reference_standard.md, scripts/note_schema.py]
     search_basis: brief
     brief_string: "Johnson et al. MIMIC-IV-Note"
-    doi: null
+    candidate_string: "Johnson A, MIMIC-IV-Note v2.2, PhysioNet — try DOI 10.13026/1n74-ne17 (run_2026-11-10 run file, Appendix C; candidate)"
+    doi: "10.13026/1n74-ne17"
     pmid: null
     title: null
     first_author: "Johnson"
     year: null
     journal: null
     keywords: [MIMIC-IV-Note]
-    search_fields: [author_keywords]
-    note: "PhysioNet resource; no year, title or identifier in the repo or the brief. Expected to be unresolvable by rule (no unique match criterion can be met without a year)."
+    search_fields: [doi]
+    note: "PhysioNet resource; no year or title in the repo or the brief. The DOI is a candidate from the 10 November run file. PhysioNet DOIs may not be registered with Crossref, in which case the verifier's two APIs cannot confirm it."
 
   - id: R13_collins_2024_tripod_ai
-    repo_string: null
-    repo_files: []
+    repo_string: "Collins GS et al. TRIPOD+AI. BMJ 2024;385:e078378"
+    repo_files: [docs/llm_review_protocol.md, docs/tripod_ai_checklist.md]
     search_basis: brief
     brief_string: "Collins et al. 2024 TRIPOD+AI BMJ"
     doi: null
@@ -186,4 +200,153 @@ entries:
     journal: "BMJ"
     keywords: [TRIPOD]
     search_fields: [author_year_journal_keywords]
-    note: "Not found anywhere in the repo (grep for TRIPOD/Collins returned nothing); included only because the task brief names it."
+    note: "In September this was named only in the task brief. Since October the protocol and the checklist cite it; repo_string is the protocol's."
+
+  # ---- added 2026-11-10 from docs/llm_review_protocol.md (References) ----
+
+  - id: R14_gallifant_2025_tripod_llm
+    repo_string: "Gallifant J et al. TRIPOD-LLM. *Nat Med* 2025;31:60–69. doi:10.1038/s41591-024-03425-5"
+    repo_files: [docs/llm_review_protocol.md]
+    search_basis: repo
+    doi: "10.1038/s41591-024-03425-5"
+    pmid: null
+    title: null
+    first_author: "Gallifant"
+    year: 2025
+    journal: "Nat Med"
+    volume: "31"
+    first_page: "60"
+    keywords: [TRIPOD-LLM]
+    search_fields: [doi]
+
+  - id: R15_miao_2025_mi_claim_gen
+    repo_string: "Miao BY et al. MI-CLAIM-GEN. *Nat Med* 2025;31:1394–1398. doi:10.1038/s41591-024-03470-0"
+    repo_files: [docs/llm_review_protocol.md]
+    search_basis: repo
+    doi: "10.1038/s41591-024-03470-0"
+    pmid: null
+    title: null
+    first_author: "Miao"
+    year: 2025
+    journal: "Nat Med"
+    volume: "31"
+    first_page: "1394"
+    keywords: [MI-CLAIM-GEN]
+    search_fields: [doi]
+
+  - id: R16_physionet_2025_llm_guidance
+    repo_string: "PhysioNet. Use of MIMIC data with large language models and online services. 24 Sep 2025. https://physionet.org/news/post/llm-responsible-use/"
+    repo_files: [docs/llm_review_protocol.md]
+    search_basis: repo
+    doi: null
+    pmid: null
+    title: null
+    first_author: null
+    year: 2025
+    journal: null
+    keywords: [PhysioNet, large language models]
+    search_fields: []
+    note: "A news post with no author, DOI or PMID. Neither PubMed nor Crossref indexes it; it cannot be accepted by rule. The URL is as given in the protocol and was not fetched."
+
+  - id: R17_vong_2025_incidental_steatosis_llm
+    repo_string: "Vong T et al. Incidental hepatic steatosis on ED imaging using LLMs. *Hepatol Commun* 2025;9:e0638"
+    repo_files: [docs/llm_review_protocol.md]
+    search_basis: repo
+    doi: null
+    pmid: null
+    title: null
+    first_author: "Vong"
+    year: 2025
+    journal: "Hepatol Commun"
+    volume: "9"
+    first_page: "e0638"
+    keywords: [steatosis]
+    search_fields: [author_year_journal]
+
+  - id: R18_john_2025_masld_nlp_valid
+    repo_string: "John BV et al. MASLD by NLP (VALID). *Am J Gastroenterol* 2025;120:2583–91"
+    repo_files: [docs/llm_review_protocol.md]
+    search_basis: repo
+    doi: null
+    pmid: null
+    title: null
+    first_author: "John"
+    year: 2025
+    journal: "Am J Gastroenterol"
+    volume: "120"
+    first_page: "2583"
+    keywords: []
+    search_fields: [author_year_journal]
+
+  - id: R19_van_vleck_2019_nlp_nafld
+    repo_string: "Van Vleck TT et al. NLP for NAFLD. *Int J Med Inform* 2019;129:334–41"
+    repo_files: [docs/llm_review_protocol.md]
+    search_basis: repo
+    doi: null
+    pmid: null
+    title: null
+    first_author: "Van Vleck"
+    year: 2019
+    journal: "Int J Med Inform"
+    volume: "129"
+    first_page: "334"
+    keywords: []
+    search_fields: [author_year_journal]
+
+  - id: R20_wiest_2024_privacy_preserving_llm
+    repo_string: "Wiest IC et al. Privacy-preserving LLMs on MIMIC-IV. *npj Digit Med* 2024;7:257"
+    repo_files: [docs/llm_review_protocol.md]
+    search_basis: repo
+    doi: null
+    pmid: null
+    title: null
+    first_author: "Wiest"
+    year: 2024
+    journal: "NPJ Digit Med"
+    volume: "7"
+    first_page: "257"
+    keywords: []
+    search_fields: [author_year_journal]
+
+  - id: R21_mukherjee_2023_vicuna_radiology
+    repo_string: "Mukherjee P et al. Vicuna for labeling radiology reports. *Radiology* 2023;309:e231147"
+    repo_files: [docs/llm_review_protocol.md]
+    search_basis: repo
+    doi: null
+    pmid: null
+    title: null
+    first_author: "Mukherjee"
+    year: 2023
+    journal: "Radiology"
+    volume: "309"
+    first_page: "e231147"
+    keywords: []
+    search_fields: [author_year_journal]
+
+  - id: R22_sclar_2024_prompt_formatting
+    repo_string: "Sclar M et al. Prompt formatting sensitivity. ICLR 2024 (arXiv:2310.11324)"
+    repo_files: [docs/llm_review_protocol.md]
+    search_basis: repo
+    doi: null
+    pmid: null
+    title: null
+    first_author: "Sclar"
+    year: 2024
+    journal: null
+    keywords: [prompt]
+    search_fields: [author_year_keywords]
+    note: "Conference paper cited by arXiv identifier. arXiv identifiers are not registered with Crossref and the paper is not in PubMed, so the verifier's two APIs are unlikely to confirm it."
+
+  - id: R23_egami_2023_imperfect_surrogates
+    repo_string: "Egami N et al. Using imperfect surrogates for downstream inference. NeurIPS 2023 (arXiv:2306.04746)"
+    repo_files: [docs/llm_review_protocol.md]
+    search_basis: repo
+    doi: null
+    pmid: null
+    title: null
+    first_author: "Egami"
+    year: 2023
+    journal: null
+    keywords: [surrogates]
+    search_fields: [author_year_keywords]
+    note: "Conference paper cited by arXiv identifier; same limitation as R22."

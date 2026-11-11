@@ -102,8 +102,11 @@ def test_d3_exemptions_public_text_fixture_marker_and_terminology():
     assert note([line], public=SENTENCE)[0]["d3_sentence_windows"] == []
     assert note([line + "  # audit-fixture"])[0]["d3_sentence_windows"] == []
     assert note([line], terms=(SENTENCE,))[0]["d3_sentence_windows"] == []
-    # a term exempts only matches lying wholly inside it
+    # a term exempts a window only when fewer than ten of its characters lie outside the term
     assert len(note([line], terms=(SENTENCE[:40],))[0]["d3_sentence_windows"]) == 1
+    only_edge = f"x {SENTENCE[:36]} y"                 # 36 matching characters: the term covers the last 31
+    assert note([only_edge], terms=(SENTENCE[5:36],))[0]["d3_sentence_windows"] == []
+    assert len(note([only_edge], terms=(SENTENCE[20:36],))[0]["d3_sentence_windows"]) == 1
 
 
 def test_d4_private_heading_of_four_words_fails_three_words_never_loaded():

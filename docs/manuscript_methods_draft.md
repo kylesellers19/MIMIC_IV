@@ -370,6 +370,8 @@ This arm was not in the 7 September plan. Amendments (h)–(k) of `docs/analysis
 
 **What the arm is used for.** A second computable note phenotype, compared with the frozen rule on the dev/test notes subsample (`docs/llm_review_preliminary.md`). It is scored against chart review only through the locked GOLD_HOLDOUT answers. Reviewers never see its output. Sentence-level validation by two credentialed annotators has not started.
 
+**Reference status (2026-11-10).** 20 of 23 registry entries are confirmed by PubMed or Crossref (`docs/references/verified_references.md`), by the verifier's existing rule. Confirmed since September: R08, R09, R10. Where an earlier section of this draft still marks one of those as an unverified reference, that note predates this check. Still unresolved: R12, R16, R22 (`docs/references/unresolved.md`). The protocol's references were confirmed on author, year and journal or on a DOI; none was checked on its title, because the protocol gives descriptions, not titles.
+
 ---
 
 <!-- run_2026-11-10 language-model arm: end -->

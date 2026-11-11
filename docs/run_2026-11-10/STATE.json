@@ -53,8 +53,16 @@
   },
   "7": {
    "name": "manuscript drafts: language-model arm",
+   "status": "done",
+   "start": "2026-11-11T03:35:29Z",
+   "end": "2026-11-11T03:42:09Z",
+   "commit": "05ee62843cdd4c42e0510c0e4fd3c895e882ee62",
+   "note": "carry-over paragraph pending Phase 4; refilled when it finishes"
+  },
+  "8": {
+   "name": "citations",
    "status": "running",
-   "start": "2026-11-11T03:35:29Z"
+   "start": "2026-11-11T03:42:09Z"
   }
  },
  "phase3_commit": "2b32fdee1ef57c8240fc2c6a88b22dbb6af59a48"

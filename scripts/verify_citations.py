@@ -439,7 +439,15 @@ def fmt_ref(rec):
             f"\n- **Volume(issue):pages:** {vol}{iss}:{rec.get('pages') or '—'}\n- **DOI:** {rec.get('doi') or '—'}\n- **PMID:** {rec.get('pmid') or '—'}")
 
 
+RUN_LABEL = "run_2026-09-19 Phase 10.4"
+
+
 def main():
+    global OUT_JSON, RAW_DIR, RUN_LABEL
+    if "--run1110" in sys.argv:      # run_2026-11-10 Phase 8: same rule, this run's results folder and label
+        OUT_JSON = ROOT / "docs/run_2026-11-10/results/citations.json"
+        RAW_DIR = ROOT / "data/processed/run_2026-11-10_scratch/citations"
+        RUN_LABEL = "run_2026-11-10 Phase 8 (registry first built in run_2026-09-19 Phase 10.4)"
     RAW_DIR.mkdir(parents=True, exist_ok=True)
     reg = yaml.safe_load(REG.read_text())["entries"]
     verified, unresolved = [], []
@@ -479,10 +487,10 @@ def main():
 
     now = datetime.now(timezone.utc).isoformat(timespec="seconds")
     # ---- verified_references.md
-    L = [f"# Verified references — run_2026-09-19 Phase 10.4\n",
+    L = [f"# Verified references — {RUN_LABEL}\n",
          f"Generated {now} by `scripts/verify_citations.py` from `docs/references/registry.yaml`. Every field below is copied from the "
          "PubMed (efetch XML) or Crossref (REST JSON) response that confirmed the entry; nothing is written from memory. "
-         "Raw responses: `data/processed/run_2026-09-19_scratch/citations/` (untracked). Entries marked *lower confidence* were matched "
+         f"Raw responses: `{RAW_DIR.relative_to(ROOT)}/` (untracked). Entries marked *lower confidence* were matched "
          "on first author + year (+ journal / keywords) with exactly one candidate returned, because the repo gives no title or identifier; "
          "Kyle should eyeball those before they go in a manuscript.\n"]
     for v in verified:
@@ -493,7 +501,7 @@ def main():
         L.append("- **Trail:** " + " | ".join(v["attempts"]) + "\n")
     OUT_VERIFIED.write_text("\n".join(L))
     # ---- unresolved.md
-    U = [f"# Unresolved references — run_2026-09-19 Phase 10.4\n",
+    U = [f"# Unresolved references — {RUN_LABEL}\n",
          f"Generated {now} by `scripts/verify_citations.py`. Each entry lists exactly what was tried and what came back. "
          "No guess is recorded; these need a human decision or a fuller citation string in the source document.\n"]
     for u in unresolved:

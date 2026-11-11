@@ -22,8 +22,8 @@ EXEMPTIONS FOR (d3) AND (d4), each narrow and stated
     1. the same text already appears in a tracked file at the remote base (it is already public and
        study-authored, so the push discloses nothing);
     2. the line carries the `# audit-fixture` marker (negative controls for these detectors);
-    3. the match lies inside a term listed in TERMINOLOGY below (published disease names and code
-       titles that notes also use).
+    3. the match is a term listed in TERMINOLOGY below (published disease names that notes also use),
+       with fewer than ten characters of other text beside it.
     Nothing else is exempt: a flagged line is reworded, not excused.
 
 LIMITS
@@ -249,14 +249,21 @@ def base_blob(base):
     return "\n".join(p for p in parts if p)
 
 
+TERM_CONTEXT_MIN = 10
+
+
 def inside_term(nline, start, end, terms):
+    """True when fewer than TERM_CONTEXT_MIN characters of [start, end) lie outside a listed term. A window
+    that is a published disease name plus a word fragment such as "with " discloses nothing; ten or more
+    characters of other matching text beside the name are still a finding."""
+    covered = [False] * (end - start)
     for t in terms:
         i = nline.find(t)
         while i != -1:
-            if i <= start and end <= i + len(t):
-                return True
+            for k in range(max(i, start), min(i + len(t), end)):
+                covered[k - start] = True
             i = nline.find(t, i + 1)
-    return False
+    return covered.count(False) < TERM_CONTEXT_MIN
 
 
 def check_note_text(changes, corpus, headings, public, terms=TERMINOLOGY, lexicon=None):

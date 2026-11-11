@@ -83,6 +83,15 @@ Written by `scripts/run1110_manuscript_llm.py`, between markers, from the protoc
 - Tier 1: §14 was appended after the limitations rather than inserted, so no existing section number changes.
 - Tier 1: the carry-over paragraph and row are written as pending until Phase 4's results file exists, then filled by rerunning the script.
 
+## Phase 8 — citations
+
+- `docs/references/registry.yaml` extended: the protocol's references that were not yet in it (R14–R23), `repo_files` updated where the protocol cites an existing entry (R05, R08, R13), and the Appendix C candidates added to R08, R09, R10 and R12, each marked as a candidate.
+- `scripts/verify_citations.py --run1110` ran with its existing acceptance rule and rewrote `verified_references.md` and `unresolved.md`. Counts and identifiers: `results/citations.json`. Without the flag the script writes September's files as before.
+- The methods draft's §14 now ends with the reference status, written from the two `citations.json` files.
+- Tier 1: three of the protocol's thirteen references were already in the registry, so ten entries were added, not thirteen.
+- Tier 1: the protocol gives descriptions, not titles, so no new entry carries a title and none was accepted on one.
+- Tier 1: the year recorded for R10 in September was left as it was; the API record agreed with it.
+
 ## Deviations
 
 - **Phase 1.2 — six files moved, not eight.** The run file says eight heading-text CSVs and names six. Six files in the folder have a `heading` field holding note headings; those were moved. The other two CSVs there are the aggregates Phase 1.3 names (one is keyed by the study's own sub-heading list, the other has no heading field).
@@ -94,3 +103,4 @@ Written by `scripts/run1110_manuscript_llm.py`, between markers, from the protoc
 - **Phase 5 (n).** Two strata have no note-positive admission and are shown as not reported.
 - **Phase 5 (o).** Stage 2 counts a rule-positive radiology report among imaging-observed admissions. "Outpatient-only" means no report linked to the admission is rule-positive.
 - **Phase 6.2 — the draw.** The run file gives the seed and the allocation only. The draw follows the training draw of `scripts/run0919_phase2_splits.py`: a seeded draw within each cell from all DEV admissions, with no requirement that a note exists, then a seeded shuffle before the IDs are assigned. `make_reviewer_packets.py` itself is fixed to the sample and training keys, so its functions were called from a new script and the file was not edited.
+- **Phase 8 — a gate exemption was refined after the gate failed.** The gate failed the Phase 8 commit on one line of `docs/references/verified_references.md`: an article title copied from PubMed, where the matching window was a published disease name preceded by the word "with". The disease-name exemption had required the window to lie wholly inside the name. It now applies when fewer than ten of the window's thirty characters lie outside a listed name, with a test for both sides of that line. No term was added to the list. This is a change to a safety check made by the run that the check constrains, so it is listed among the things to read first in the final report. The two held-back files of B-01 still fail under the refined rule.

@@ -41,6 +41,11 @@
 | S15 | Local-LLM sentence review as a second computable note phenotype (amendment h) | 2026-10-27 | exploratory → `docs/llm_review_preliminary.md` |
 | S16 | Aim 1c level 1 repeated with the LLM phenotype and with rule-or-LLM (amendment i) | 2026-10-27 | exploratory → `docs/aim1c_llm_level1.md` |
 | S17 | Aim 1b TEST predictions re-scored against the LLM phenotype (amendment j) | 2026-10-27 | exploratory → `docs/aim1b_llm_label.md` |
+| S18 | Carry-over check for v3 answers (amendment k) | 2026-11-10 | exploratory; not run when this row was committed → `docs/run_2026-11-10/results/carryover_check.json`; `docs/llm_review_protocol.md` §4 |
+| S19 | Fibrosis index by cell (amendment l) | 2026-11-10 | exploratory; not run when this row was committed → `docs/preliminary_2026-11-10.md` |
+| S20 | Later outcomes after an uncoded mention (amendment m) | 2026-11-10 | exploratory; not run when this row was committed → `docs/preliminary_2026-11-10.md` |
+| S21 | Coding by period (amendment n) | 2026-11-10 | exploratory; not run when this row was committed → `docs/preliminary_2026-11-10.md` |
+| S22 | Documentation funnel where the liver was imaged (amendment o) | 2026-11-10 | exploratory; not run when this row was committed → `docs/preliminary_2026-11-10.md` |
 
 ## 3. Amendments dated 2026-09-19
 
@@ -80,3 +85,45 @@ These analyses were not in the 7 September plan. They are exploratory throughout
   - **Metrics:** AUROC and AUPRC, with the paired difference (LLM label minus rule label) and subject-cluster bootstrap intervals (500 replicates, seed 20260919). Computed on all TEST admissions and on code-negative TEST admissions.
   - **What it does not change:** no model is retrained, and no locked file is modified.
   - **Already seen:** no result from this analysis.
+
+## 6. Amendments dated 2026-11-10
+
+> *Assembled by Claude Code from the run file Kyle launched; not reviewed by Kyle at commit time; the purpose of this commit is the timestamp. Exploratory throughout.*
+
+These analyses were not in the 7 September plan. The text below is copied word for word from Appendix A of `docs/run_2026-11-10/RUN_FILE.md`. Each amendment states what had already been seen when it was written ("Already seen"). This section was committed before any of these analyses was computed; the commit is recorded in `docs/run_2026-11-10/STATE.json` as `phase3_commit`.
+
+Common to (l)–(o): exploratory; admission grain unless stated; primary definition (b) and the cells A (code+/note+), B (code−/note+), C (code+/note−), D (code−/note−) as in `docs/aim1a_crosstab.md`; subject-cluster bootstrap, 500 replicates, seed 20260919, 95% percentile intervals; a stratum is reported when its denominator is at least 11. None of these changes a primary analysis.
+
+**(k) Carry-over check for v3 answers (S18).**
+- *Question:* would the dev/test units that v3 answered NO, and that were carried into the merged v4 labels without being re-asked, still be answered NO by v4?
+- *Sample:* distinct dev/test units whose stored answer is a carried-over v3 NO, in the two strata of the quantization check ("NO, fat word", "NO, other"); 1,500 per stratum, seed 20261110, excluding units already in the quantization-check sample.
+- *Run:* prompt v4, the study model at its pinned digest, the stored decoding settings.
+- *Report:* per stratum and population-weighted (Wilson bounds as in `quant_check.py`), the share whose v4 answer is not NO, and the share whose primary-label status changes. Report the quantization check's carried-over NO units separately and pooled. Estimate how many dev/test admissions would change label.
+- *What it does not change:* no stored answer, label or result.
+- *Already seen:* the quantization check's statement that over 99% of carried-over NO units kept their answer.
+
+**(l) Fibrosis index by cell (S19).**
+- *Measure:* FIB-4 = age × AST / (platelets × √ALT), approved itemids, age handled as in Table 3.
+- *Primary:* first result per admission; by cell: computable n (%), median [IQR], share below 1.3, 1.3–2.67, above 2.67.
+- *Sensitivity:* (1) lower cutoff 2.0 at age 65 and over; (2) last result per admission; (3) excluding admissions with AST or ALT above 200 U/L and admissions flagged alcohol, viral, other etiology or cirrhosis in `cmrf.parquet`; (4) most recent outpatient AST, ALT and platelets in the 365 days before admission, where all three exist.
+- *Replicate:* dev/test notes subsample with the language-model phenotype (uncoded positive against coded positive).
+- *Already seen:* Table 3 (FIB-4 by code status only).
+- *Stated limitation:* FIB-4 is validated in outpatients; acute illness raises AST and lowers platelets; computability differs by cell.
+
+**(m) Later outcomes after an uncoded mention (S20).**
+- *Grain:* subject. *Index:* the subject's earliest note-positive admission.
+- *Groups:* U, index code-negative with no earlier code-positive admission; C, index code-positive. Exclude subjects with a cirrhosis or HCC flag (`cmrf.parquet`, as already defined) at or before index, and subjects who died during the index admission.
+- *Report per group:* subjects; subjects with at least one later admission; among those, the share with a later cirrhosis flag and a later HCC flag, with median [IQR] days from index discharge. For U only: the share later coded, days to the first coded admission, and admissions before it.
+- *Intervals:* Wilson. No survival model.
+- *Already seen:* the coding-inconsistency counts in `docs/predefinition_descriptives.md` Step 5.
+- *Stated limitation:* only returns to this hospital are observed, so every figure is a floor.
+
+**(n) Coding by period (S21).**
+- *Measure:* among note-positive admissions, B/(A+B) by `anchor_year_group` and by the ICD version of the admission's diagnoses, each with the primary code set and with 571.9 removed (S7).
+- *Already seen:* the ICD-version coefficient in the exploratory adjusted model of `docs/aim1c_level1.md`.
+- *Stated limitation:* `anchor_year_group` is a three-year window assigned per patient.
+
+**(o) Documentation funnel where the liver was imaged (S22).**
+- *Population:* imaging-observed admissions (S3).
+- *Stages:* (1) imaging-observed; (2) rule-positive in at least one radiology report, inpatient-linked or in the outpatient window; (3) of those, the discharge summary is also rule-positive; (4) the coded share among stage-3 yes and among stage-3 no. Also split stage 2 by inpatient against outpatient-only source.
+- *Already seen:* the language-model documentation-pathway table in `docs/llm_review_preliminary.md`, and the note-source covariate in the exploratory adjusted model.

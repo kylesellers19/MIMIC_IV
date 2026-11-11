@@ -39,6 +39,12 @@ Written by `scripts/run1110_phase2_docs.py`; facts in `results/signoff_timeline.
 - **Saved project note.** Updated: both language-model runs are complete and locked; nothing about them is pending.
 - Tier 1: the times of the GOLD_HOLDOUT run come from file-system metadata of the sealed folder. No sealed file was opened.
 
+## Phase 3 — amendments before any new analysis
+
+- `scripts/run1110_phase3_amendments.py` added "§6 Amendments dated 2026-11-10" and registry rows S18–S22 to `docs/analysis_plan_prespecified.md`. The amendment text is copied by the script from Appendix A of the run file, word for word. No existing amendment or registry row was edited.
+- Committed and pushed before Phase 4 or Phase 5 computed anything. The commit is `phase3_commit` in `STATE.json`.
+- What this session had looked at before that commit: the frozen-artifact hashes, the integrity gate, the extractor's cap line, the aggregate diagnostic tables of Phase 1, and overlap counts for the gate. None of it is a result of analyses (k)–(o).
+
 ## Deviations
 
 - **Phase 1.2 — six files moved, not eight.** The run file says eight heading-text CSVs and names six. Six files in the folder have a `heading` field holding note headings; those were moved. The other two CSVs there are the aggregates Phase 1.3 names (one is keyed by the study's own sub-heading list, the other has no heading field).

@@ -95,6 +95,27 @@ Reference: Collins GS, Moons KGM, Dhiman P, et al. *TRIPOD+AI statement: updated
 
 ---
 
+<!-- run_2026-11-10 language-model arm: start -->
+
+## TRIPOD-LLM items for the language-model arm (added 2026-11-10)
+
+These rows are the reporting map of `docs/llm_review_protocol.md` §8. The item numbers are the ones listed there. They were gathered by literature search and **have not been checked against the published TRIPOD-LLM checklist**; verify them before submission. Statuses use the vocabulary defined at the top of this file.
+
+| Item (source) | Where it is reported | Status |
+| --- | --- | --- |
+| Model name, version, training cutoff (TRIPOD-LLM 6a) | Methods §14 "Model and pinning"; protocol §3; run manifest | satisfied |
+| Inference settings and output consistency (6c) | Methods §14 "Decoding", "Quantization check", "Carry-over check"; protocol §3 and §6; a full rerun in every pilot | satisfied |
+| Raw against parsed output, thresholds (6d, 6e) | Protocol §3 and §5; the stored reply, strict flag, stop reason and probabilities | satisfied |
+| Annotation (7d, 8a–c) | Annotation guide; `scripts/llm_annotation.py` | pending: needs two credentialed annotators and an adjudicator |
+| Prompt development data (9a, 9b; MI-CLAIM-GEN Part 2) | Methods §14 "Prompts and how they were developed", with both disclosures about TEST; protocol §4 | satisfied |
+| Compute (12) | Run manifest (hardware); compute hours in results Table 6a | partial: no compute record for the GOLD_HOLDOUT run in a tracked file |
+| Fairness (TRIPOD+AI 14, 23a; TRIPOD-LLM 19a) | Protocol §6; sentence coverage by stratum in `docs/aim1c_llm_level1.md` | partial: error rates by stratum need the annotated sentences or the adjudication |
+| Selection algorithm (RECORD 6.1, 7.1) | Methods §14 "Sentence selection"; protocol §2; `scripts/liver_sentences.py` | satisfied |
+
+---
+
+<!-- run_2026-11-10 language-model arm: end -->
+
 ## Summary of what blocks completion
 
 1. **Clinician sign-off on the adjudication criteria** (D1–D8). Blocks the entire reference standard, and with it every gold-standard row above.

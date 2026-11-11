@@ -1,0 +1,15 @@
+{
+ "script": "scripts/run1110_manuscript_llm.py",
+ "sentence_cap": 160,
+ "decoding_options": {
+  "temperature": 0,
+  "seed": 20260922,
+  "num_predict": 12
+ },
+ "top_logprobs": 10,
+ "sources": {
+  "sentence_cap": "scripts/liver_sentences.py CAP",
+  "decoding_options": "scripts/llm_sentence_review.py OPTIONS",
+  "top_logprobs": "scripts/llm_sentence_review.py TOP_LOGPROBS"
+ }
+}

@@ -1,0 +1,84 @@
+{
+ "results_files_scanned": 50,
+ "source_docs_scanned": 46,
+ "distinct_known_numeric_forms": 35992,
+ "docs": {
+  "docs/manuscript_methods_draft.md": {
+   "numeric_tokens": 1010,
+   "unattributed_distinct": 1,
+   "unattributed": {
+    "02": [
+     279,
+     279
+    ]
+   }
+  },
+  "docs/manuscript_results_skeleton.md": {
+   "numeric_tokens": 2052,
+   "unattributed_distinct": 2,
+   "unattributed": {
+    "03": [
+     439
+    ],
+    "02": [
+     439
+    ]
+   }
+  },
+  "docs/tripod_ai_checklist.md": {
+   "numeric_tokens": 164,
+   "unattributed_distinct": 2,
+   "unattributed": {
+    "03": [
+     70,
+     124
+    ],
+    "01": [
+     122
+    ]
+   }
+  },
+  "docs/preliminary_2026-11-10.md": {
+   "numeric_tokens": 522,
+   "unattributed_distinct": 0,
+   "unattributed": {}
+  },
+  "docs/adjudication/reviewer_onepager.md": {
+   "numeric_tokens": 19,
+   "unattributed_distinct": 0,
+   "unattributed": {}
+  },
+  "docs/llm_review_protocol.md": {
+   "numeric_tokens": 99,
+   "unattributed_distinct": 7,
+   "unattributed": {
+    "06": [
+     82
+    ],
+    "6338243": [
+     84
+    ],
+    "03": [
+     84
+    ],
+    "385": [
+     150
+    ],
+    "2583": [
+     155
+    ],
+    "2310.11324": [
+     159
+    ],
+    "2306.04746": [
+     160
+    ]
+   }
+  },
+  "docs/run_2026-11-10/DECISIONS_FOR_KYLE.md": {
+   "numeric_tokens": 3,
+   "unattributed_distinct": 0,
+   "unattributed": {}
+  }
+ }
+}

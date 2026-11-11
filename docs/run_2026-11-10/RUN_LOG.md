@@ -71,6 +71,18 @@ One script per analysis, each writing one results file; one document, `docs/prel
   - Tier 1: with thirty packets, a per-file count of twenty or more gives a small count by subtraction, and the largest file describes one packet; neither is published.
 - **Data inventory.** `scripts/run1110_data_inventory_addendum.py` appended a marked section to `docs/admin/data_inventory.md` (`results/data_inventory_addendum.json`). September's inventory above it is unchanged.
 
+## Phase 7 — manuscript drafts and the language-model arm
+
+Written by `scripts/run1110_manuscript_llm.py`, between markers, from the protocol and the results files.
+
+- **Methods.** New §14 on the local language-model review: selection, model and pinning, decoding, prompts with both disclosures about TEST, admission rule, lock, quantization check, carry-over check.
+- **Results skeleton.** New Table 6 (language-model arm, preliminary) and Table 7 (the four Phase 5 analyses), and two provenance rows.
+- **Checklist.** The TRIPOD-LLM items of protocol §8, with a status each. The item numbers are the protocol's and are marked as unchecked against the published checklist.
+- **Selection metric.** The methods draft said the rule was specified before the arm was run, but not when. One sentence now says the metric was fixed during the 19 September run and is not in the 7 September plan or the pre-specification commit.
+- **Number check.** `scripts/run0919_verify_doc_numbers.py --run1110` covers the new and extended documents against the results files of all three runs and writes `results/doc_number_check.json`. Without the flag the script behaves as in September. What it leaves unattributed is decision identifiers, a commit hash and citation numbers.
+- Tier 1: §14 was appended after the limitations rather than inserted, so no existing section number changes.
+- Tier 1: the carry-over paragraph and row are written as pending until Phase 4's results file exists, then filled by rerunning the script.
+
 ## Deviations
 
 - **Phase 1.2 — six files moved, not eight.** The run file says eight heading-text CSVs and names six. Six files in the folder have a `heading` field holding note headings; those were moved. The other two CSVs there are the aggregates Phase 1.3 names (one is keyed by the study's own sub-heading list, the other has no heading field).

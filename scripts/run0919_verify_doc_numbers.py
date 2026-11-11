@@ -43,9 +43,24 @@ def harvest(o, acc):
         acc |= forms(o)
 
 
+# run_2026-11-10 (Phase 7.5): the same check, extended to the documents that run added or extended, with
+# the results files of all three runs as sources. `--run1110` selects it; without the flag the script
+# behaves exactly as in September and writes September's file.
+DOCS_1110 = ["docs/manuscript_methods_draft.md", "docs/manuscript_results_skeleton.md", "docs/tripod_ai_checklist.md",
+             "docs/preliminary_2026-11-10.md", "docs/adjudication/reviewer_onepager.md", "docs/llm_review_protocol.md",
+             "docs/run_2026-11-10/DECISIONS_FOR_KYLE.md", "docs/run_2026-11-10/FINAL_REPORT.md"]
+RESULT_GLOBS = ["docs/run_2026-09-19/results/*.json"]
+OUT = "docs/run_2026-09-19/results/doc_number_check.json"
+
+
 def main():
+    global DOCS, RESULT_GLOBS, OUT
+    if "--run1110" in sys.argv:
+        DOCS = DOCS_1110
+        RESULT_GLOBS = ["docs/run_2026-09-19/results/*.json", "docs/run_2026-10-27/results/*.json", "docs/run_2026-11-10/results/*.json"]
+        OUT = "docs/run_2026-11-10/results/doc_number_check.json"
     known = set()
-    files = sorted(glob.glob("docs/run_2026-09-19/results/*.json"))
+    files = sorted(f for g in RESULT_GLOBS for f in glob.glob(g) if not f.endswith("doc_number_check.json"))
     for f in files:
         try:
             harvest(json.load(open(f)), known)
@@ -86,7 +101,7 @@ def main():
                 unattributed.setdefault(tok, []).append(i)
         report["docs"][doc] = {"numeric_tokens": total, "unattributed_distinct": len(unattributed),
                                "unattributed": {k: v[:4] for k, v in sorted(unattributed.items(), key=lambda x: -len(x[1]))[:40]}}
-    json.dump(report, open("docs/run_2026-09-19/results/doc_number_check.json", "w"), indent=1)
+    json.dump(report, open(OUT, "w"), indent=1)
     for doc, r in report["docs"].items():
         print(f"{doc:46s} {r['numeric_tokens']:6d} tokens  {r['unattributed_distinct']:4d} unattributed")
     return report

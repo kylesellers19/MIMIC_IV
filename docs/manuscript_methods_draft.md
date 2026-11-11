@@ -239,7 +239,7 @@ Variant U's top positive coefficients are the lexicon itself (`steatosis` 11.74,
 | L2 logistic regression | 0.785 | 0.251 | 0.754 (0.704–0.799) | 0.216 (0.165–0.292) | 0.058 | −0.254 | 0.511 |
 | LightGBM (**kept**) | 0.804 | 0.274 | 0.788 (0.742–0.832) | 0.246 (0.187–0.326) | 0.055 | 0.804 | 0.589 |
 
-Within code-negative TEST admissions only (n = 5,016, 239 positive): logistic regression AUROC 0.760 / AUPRC 0.171; LightGBM 0.794 / 0.179. LightGBM was kept because it had the higher DEV out-of-fold AUPRC, which is the selection rule specified before the arm was run.
+Within code-negative TEST admissions only (n = 5,016, 239 positive): logistic regression AUROC 0.760 / AUPRC 0.171; LightGBM 0.794 / 0.179. LightGBM was kept because it had the higher DEV out-of-fold AUPRC, which is the selection rule specified before the arm was run. The selection metric itself, development out-of-fold AUPRC, was fixed during the 19 September 2026 run and not in the 7 September plan: it appears neither in the hypotheses recorded on 7 September nor in the pre-specification commit (`e2a4e1e`). *(Sentence added 2026-11-10.)*
 
 **The transformer embeddings lost to TF-IDF, and the selection rule recorded that.** On the same subsample and the same variant S, the LightGBM embedding head reached DEV out-of-fold AUPRC **0.274** against TF-IDF's **0.444**, and TEST AUROC/AUPRC 0.788 / 0.246 against 0.826 / 0.407. Two reasons are visible in the run and are reported rather than explained away: (i) the embeddings cover 85% of the subsample where the TF-IDF model covers all of it, and (ii) a frozen general-purpose clinical encoder with a light head is a weaker use of 1,536 dimensions than a vocabulary fitted to this corpus. Fine-tuning, which might have closed the gap, was budgeted at zero hours and was not attempted. Because Layer 0 of the fusion stack takes the better of TF-IDF and the embedding head **by DEV out-of-fold AUPRC**, the stack therefore selected the TF-IDF model on that measured criterion, not by hand (§10.6).
 
@@ -339,6 +339,40 @@ All comparisons are descriptive. **No p-values are reported anywhere in this stu
 15. **This study is not registered with any public registry.** Its timing claims rest on the repository's git history: frozen, tagged rules before the cross-tabulation was built, and a pre-specification commit before any model was trained. Reviewers can verify that history only by inspecting the repository.
 
 ---
+
+<!-- run_2026-11-10 language-model arm: start -->
+
+## 14. Local language-model review of liver sentences (exploratory; added 2026-11-10)
+
+This arm was not in the 7 September plan. Amendments (h)–(k) of `docs/analysis_plan_prespecified.md` govern it, and `docs/llm_review_protocol.md` describes it in full. It assigns no reference-standard label. Written by `scripts/run1110_manuscript_llm.py` from the protocol and the results files named below.
+
+**Sentence selection.** `scripts/liver_sentences.py` reads discharge summaries, inpatient radiology reports, and outpatient radiology reports from 365 days before to 30 days after admission. Hard-wrapped lines are rejoined into sentences. A sentence is kept when it names the liver, when its nearest heading names the liver, when it contains one of a fixed list of disease abbreviations (NAFLD, NAFL, NASH, MASLD, MASH, MAFLD, MetALD), or when it contains a steatosis term and names no competing organ. The extractor does not import the frozen rule's trigger lexicon. At most 160 sentences are kept per admission, impression first; the cap bound <11 of 29,980 dev/test admissions (`docs/run_2026-11-10/results/extractor_cap.json`). Each sentence is stored with its note type, nearest heading and neighbouring sentences.
+
+**Model and pinning.** Gemma 4 26B (25.2B, Q4_K_M quantization), served by Ollama 0.34.2 on the study laptop; model digest `08ae7ec1744b`. The digest, model details, Ollama version and hardware are written to each run's manifest, and a run refuses to resume if any of them changes. Cloud-served models are refused; automatic updates and Ollama cloud are switched off; the server listens on the local interface only. No note text leaves the machine.
+
+**Decoding.** Temperature 0, seed 20260922, reasoning off, at most 12 output tokens, one request at a time. The reply is two words: YES, NO or UNCLEAR, then CURRENT, PAST, FAMILY or NA. It is parsed strictly. P(YES), P(NO) and P(UNCLEAR) are read from the first token's top 10 alternatives. A unit is the sentence text plus the context fields shown to the model; each distinct unit is asked once.
+
+**Prompts and how they were developed.** Four versions; the texts are in the protocol and in `scripts/llm_sentence_review.py`.
+
+- v1 and v2 were compared on a 500-sentence pilot drawn from DEV and TEST.
+- v3 gives the note type and heading, states explicit answer rules, and adds the timing word. It was developed against invented sentences and DEV only.
+- v4 is v3 plus one NO rule: alcohol-related liver disease, alcoholic hepatitis, and cirrhosis or liver fibrosis are NO unless the sentence also says the liver is fatty.
+- **Two disclosures about TEST.** First, the v1-to-v2 pilot included TEST sentences. Second, the v4 rule was decided from count-level diagnostics over DEV and TEST sentences. TEST is therefore not independent of prompt development for this arm. GOLD_HOLDOUT was never used for prompt development.
+- **How v4 was applied.** On dev/test, v3 answered all 89,928 distinct units; v4 then re-asked the 5,785 units v3 had answered YES or UNCLEAR, and v3's NO answers were carried over. On GOLD_HOLDOUT, v4 answered every unit.
+
+**Admission rule.** An admission is positive when at least one kept sentence is YES with timing CURRENT or PAST. FAMILY never counts. UNCLEAR is not positive. Sensitivity definitions: UNCLEAR counted positive; CURRENT only; anatomy-only selection. The rule text was committed before the GOLD_HOLDOUT run started (`docs/run_2026-11-10/results/signoff_timeline.json`). It was signed off on 2026-10-27 by the study lead, who is not a clinician. Clinician review of the rule is outstanding.
+
+**Lock.** Before any chart review, v4 answered all 20,200 distinct units of the 2,865 GOLD_HOLDOUT admissions (41,773 sentence rows, 0 errors). The sentence-answers file with its three probabilities, the admission labels, the extractor output and the run manifest were hashed (`docs/llm_gold_lock.md`). The lock commit carries the tag `llm-gold-lock-v1`. The per-shard answer files are not hashed. No answer distribution on GOLD_HOLDOUT has been looked at.
+
+**Quantization check.** 1,300 distinct dev/test units, stratified by stored answer, were answered on the same day by the study build and by Gemma 4's quantization-aware build. The answer differed for an estimated 0.47% of units (conservative 95% bounds 0.32–1.86%). Whether a unit counts toward the admission label differed for 0.29% (0.17–1.65%). The study keeps the Q4_K_M build. Source: `docs/run_2026-10-27/results/quant_check.json`.
+
+**Carry-over check (amendment k).** [PENDING] The check was specified in amendment (k) before it was run; its results file (`docs/run_2026-11-10/results/carryover_check.json`) did not exist when this section was written.
+
+**What the arm is used for.** A second computable note phenotype, compared with the frozen rule on the dev/test notes subsample (`docs/llm_review_preliminary.md`). It is scored against chart review only through the locked GOLD_HOLDOUT answers. Reviewers never see its output. Sentence-level validation by two credentialed annotators has not started.
+
+---
+
+<!-- run_2026-11-10 language-model arm: end -->
 
 ### Reference notes
 

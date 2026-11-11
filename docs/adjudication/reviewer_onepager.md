@@ -1,19 +1,14 @@
-# Chart review for a fatty-liver documentation study: one page for prospective reviewers
+# Chart review for a hepatic steatosis study: one page for prospective reviewers
 
 *Written by `scripts/run1110_reviewer_onepager.py` from the study's results files (`docs/run_2026-11-10/results/reviewer_onepager.json`). The hours are estimates from text length, not measured times.*
 
-> **Hold before sending to a prospective reviewer.** This page states the study question and a result. The draft review criteria (§10) say reviewers are told only that a method for finding hepatic steatosis is being validated. Which document gives way is decision N-10 in `docs/run_2026-11-10/DECISIONS_FOR_KYLE.md`. What reviewers are offered is decision N-08.
+> **Not ready to send.** What reviewers are offered is still open (decision N-08 in `docs/run_2026-11-10/DECISIONS_FOR_KYLE.md`).
 
-## The question
+## What the study is
 
-Fatty liver (hepatic steatosis; the disease is now called MASLD, formerly NAFLD) is often written in a hospital chart but left off the list of diagnosis codes. We want to know how often. That needs clinicians to read charts and say whether steatosis is documented, because a computer search of the text cannot settle it.
+We are validating a computable phenotype for hepatic steatosis: a computer method that reads hospital records and says whether steatosis is documented. To know how well it works, clinicians need to read a sample of charts and give their own answer. That is the review. The records are MIMIC-IV, de-identified records of 373,992 hospital stays at one Boston hospital.
 
-## What the computer stage shows so far
-
-- The data are MIMIC-IV: de-identified records of 373,992 hospital stays at one Boston hospital.
-- 5,740 stays carry a fatty-liver diagnosis code.
-- A fixed keyword search finds a statement of fatty liver in the notes of 27,826 stays. 81.9% of those have no code.
-- No clinician has checked any of this. The keyword search can be wrong in both directions. Your review is what turns these counts into an estimate.
+The page says no more than this about the study on purpose. Reviewers are asked to judge each chart on what it documents, without knowing what the study expects to find. Ask the study lead for the full description once your review is finished.
 
 ## What a reviewer does
 
@@ -37,13 +32,13 @@ Fatty liver (hepatic steatosis; the disease is now called MASLD, formerly NAFLD)
 
 ## Blinding
 
-- You will not see diagnosis codes, the keyword search result, any model output, or why a chart was sampled.
+- You will not see diagnosis codes, the output of any computer method, or why a chart was sampled.
 - The two reviewers work independently.
 
 ## What is already fixed
 
-- The keyword search, the sample of charts and its weights.
-- The predictions of every model the study will compare with your answers, including a locally run language model. All were recorded, with file hashes, before any chart review.
+- The sample of charts.
+- The output of every computer method that will be compared with your answers. All of it was recorded, with file hashes, before any chart review.
 - **Not yet fixed:** the review criteria. They are a draft with open clinical questions that clinicians need to settle before review starts.
 
 ## What reviewers are offered

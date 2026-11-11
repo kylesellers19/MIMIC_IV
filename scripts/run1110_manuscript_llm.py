@@ -99,7 +99,9 @@ def methods_block():
         "and v3's NO answers were carried over. On GOLD_HOLDOUT, v4 answered every unit.", "",
         "**Admission rule.** An admission is positive when at least one kept sentence is YES with timing CURRENT or PAST. FAMILY never counts. UNCLEAR is not positive. "
         "Sensitivity definitions: UNCLEAR counted positive; CURRENT only; anatomy-only selection. The rule text was committed before the GOLD_HOLDOUT run started "
-        f"(`{R11}/signoff_timeline.json`). It was signed off on 2026-10-27 by the study lead, who is not a clinician. Clinician review of the rule is outstanding.", "",
+        f"(`{R11}/signoff_timeline.json`). It was signed off on 2026-10-27 by the study lead, who is not a clinician. Clinician review of the rule is outstanding."
+        + (" The arm is evaluated as a classifier: no admission-level probability is defined for it, and no measure that needs one is reported "
+           "(amendment (p), fixed on 2026-11-11 before any adjudication result was seen)." if "## 7. Amendment dated 2026-11-11" in open("docs/analysis_plan_prespecified.md").read() else ""), "",
         f"**Lock.** Before any chart review, v4 answered all {n(rc['distinct_units'])} distinct units of the {n(rc['gold_admissions'])} GOLD_HOLDOUT admissions "
         f"({n(rc['sentence_rows'])} sentence rows, {n(rc['errors'])} errors). The sentence-answers file with its three probabilities, the admission labels, the extractor output and the run manifest were hashed "
         "(`docs/llm_gold_lock.md`). The lock commit carries the tag `llm-gold-lock-v1`. The per-shard answer files are not hashed. No answer distribution on GOLD_HOLDOUT has been looked at.", "",

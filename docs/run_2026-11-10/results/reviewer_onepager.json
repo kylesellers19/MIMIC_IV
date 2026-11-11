@@ -20,5 +20,9 @@
   "Possible",
   "Absent",
   "Insufficient information"
- ]
+ ],
+ "versions": {
+  "docs/adjudication/reviewer_onepager.md": "for prospective reviewers; states no study question, hypothesis or result (criteria \u00a710)",
+  "docs/adjudication/study_onepager.md": "for people who will not review charts; states the question and the computable-stage counts"
+ }
 }

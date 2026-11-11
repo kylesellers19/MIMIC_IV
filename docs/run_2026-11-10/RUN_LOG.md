@@ -151,3 +151,13 @@ Written by `scripts/run1110_manuscript_llm.py`, between markers, from the protoc
 - **Phase 10.2 — the criteria proposal is not linked.** The run file asks the README to link `docs/adjudication/criteria_revision_proposal.md`. The file is not in the repository (B-01), so the README says a proposal exists and where it is held, with no link.
 - **Phase 10.2 — the command shown.** The README shows `scripts/run1110_gated_push.sh`, the wrapper that runs the gate and pushes only on its exit status, in place of a bare call to the gate. This follows incident I-01.
 - **Phase 1.4 — the gate checks each unpushed commit.** Added during Phase 9: text checks run on every unpushed commit one by one as well as on the net difference, because a line added in one commit and removed in the next is still published.
+
+## After the run — 2026-11-11, with Kyle at the desk
+
+The run itself ended with Phase 11. These entries record what was done afterwards, on Kyle's instruction in session.
+
+- Kyle asked for recommendations on N-01 and N-10. They were given in session, not in the decisions file, which still makes none.
+- **N-01, decided by Kyle: classifier only.** `scripts/run1111_amendment_p.py` appended §7, amendment (p), to `docs/analysis_plan_prespecified.md`. No adjudication exists, and no GOLD_HOLDOUT answer or probability had been looked at.
+- **N-10, decided by Kyle: criteria §10 stands.** `scripts/run1110_reviewer_onepager.py` now writes two pages: one for reviewers, which states no study question, hypothesis or result, and `docs/adjudication/study_onepager.md` for people who will not review charts. The README points to both. The reviewer page still waits on N-08.
+- `scripts/run1110_decisions.py` marks both items resolved, with the date, and keeps their options as the record of what was considered.
+- `FINAL_REPORT.md` was left as written at the end of the run.

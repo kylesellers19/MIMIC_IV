@@ -127,3 +127,15 @@ Common to (l)–(o): exploratory; admission grain unless stated; primary definit
 - *Population:* imaging-observed admissions (S3).
 - *Stages:* (1) imaging-observed; (2) rule-positive in at least one radiology report, inpatient-linked or in the outpatient window; (3) of those, the discharge summary is also rule-positive; (4) the coded share among stage-3 yes and among stage-3 no. Also split stage 2 by inpatient against outpatient-only source.
 - *Already seen:* the language-model documentation-pathway table in `docs/llm_review_preliminary.md`, and the note-source covariate in the exploratory adjusted model.
+
+## 7. Amendment dated 2026-11-11
+
+> *Decided by Kyle Sellers on 2026-11-11 (decision N-01 of `docs/run_2026-11-10/DECISIONS_FOR_KYLE.md`), on the recommendation of Claude Code, which drafted this text. No adjudication exists and no GOLD_HOLDOUT answer or probability had been looked at when it was committed.*
+
+- **(p) The language-model arm is evaluated as a classifier.** The language-model arm is evaluated as a classifier under the admission rule of amendment (h). No admission-level probability is defined for it, and no metric that needs one is reported. Fixed on 2026-11-11, before any adjudication result was seen.
+  - **Reported against chart review:** the classification measures reported for the frozen keyword rule (sensitivity, specificity and predictive values, with the sampling weights).
+  - **Not reported for this arm:** AUROC, AUPRC, calibration, or any other measure that needs a score. The arm does not enter a stacked model as a probability.
+  - **Options not taken:** the maximum P(YES) over kept sentences with timing CURRENT or PAST, and a noisy-OR over those sentences.
+  - **Already seen (dev/test only):** the distribution of both candidate scores on the 29,980 admissions of the dev/test notes subsample (`docs/run_2026-11-10/results/decisions_inputs.json`). Cutting either score at 0.5 gave exactly the admission rule's labels. The rank correlation between the two scores was 0.996. Of the 2,252 positive admissions, 2,208 had a maximum above 0.99.
+  - **Reason:** the first-token probabilities are close to 0 or 1, so a score would add almost nothing to the label, and a discrimination or calibration measure on it would not be comparable with the continuous model arms.
+  - **What it does not change:** no stored answer, label, lock or result. The three probabilities remain in the locked answers file.

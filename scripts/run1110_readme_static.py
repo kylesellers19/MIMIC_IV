@@ -53,6 +53,13 @@ def main():
                       + "- **For prospective reviewers:** [docs/adjudication/reviewer_onepager.md](docs/adjudication/reviewer_onepager.md), one page on the task, the hours and the access needed. "
                         "It is held until two open decisions are made (N-08 and N-10 in `docs/run_2026-11-10/DECISIONS_FOR_KYLE.md`).\n"
                       + prop_line, 1)
+    # decision N-10, option 2 (2026-11-11): two pages, one for reviewers and one for everyone else
+    old_line = next((l for l in s.splitlines() if l.startswith("- **For prospective reviewers:**")), None)
+    new_line = ("- **For prospective reviewers:** [docs/adjudication/reviewer_onepager.md](docs/adjudication/reviewer_onepager.md), one page on the task, the hours and the access needed. "
+                "It tells reviewers only that a method for finding hepatic steatosis is being validated, as the draft criteria require; what reviewers are offered is still open (N-08). "
+                "A fuller page for people who will not review charts is [docs/adjudication/study_onepager.md](docs/adjudication/study_onepager.md).")
+    if old_line and old_line != new_line:
+        s = s.replace(old_line, new_line, 1)
     open(README, "w").write(s)
     print("README static edits applied")
 

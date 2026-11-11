@@ -78,6 +78,29 @@ def fq(d):
     return "—" if not d else " / ".join(f"{d[k]:.3f}" for k in ("p10", "p25", "p50", "p75", "p90"))
 
 
+# Decisions Kyle has made since this file was first written. Each is recorded under its item and in the table.
+RESOLVED = {
+    "N-01": ("2026-11-11", "Classifier only. Recorded as amendment (p), `docs/analysis_plan_prespecified.md` §7."),
+    "N-10": ("2026-11-11", "Criteria §10 stands. The page for reviewers (`docs/adjudication/reviewer_onepager.md`) no longer states the study question or any result; "
+                           "a fuller page for people who will not review charts is `docs/adjudication/study_onepager.md`."),
+}
+
+
+def apply_resolutions(lines):
+    """Mark resolved items: a line under the item's heading, and the at-a-glance row."""
+    out = []
+    for l in lines:
+        m = re.match(r"^## (N-\d+) · ", l)
+        out.append(l)
+        if m and m.group(1) in RESOLVED:
+            d, text = RESOLVED[m.group(1)]
+            out += ["", f"> **Resolved by Kyle on {d}.** {text} The options below are kept as the record of what was considered."]
+        g = re.match(r"^\| (N-\d+) \| (.+) \| (.+) \|$", l)
+        if g and g.group(1) in RESOLVED:
+            out[-1] = f"| {g.group(1)} | {g.group(2)} | Resolved {RESOLVED[g.group(1)][0]} |"
+    return out
+
+
 def sept_table():
     heads = re.findall(r"^## ((?:D|P6)-\d+) · (.+)$", open(SEPT).read(), re.M)
     status = {
@@ -135,7 +158,8 @@ def main():
     L = [
         "# Decisions for Kyle — run_2026-11-10", "",
         "Tier 3 items: anything that changes a definition, a population, a primary analysis, or what the paper claims. Each entry gives the question, the options, what each option changes, "
-        "what is blocked until it is decided, and draft amendment text for every option, so the chosen one can be committed as written. **No recommendation is made anywhere in this file.**", "",
+        "what is blocked until it is decided, and draft amendment text for every option, so the chosen one can be committed as written. **No recommendation is made anywhere in this file.** "
+        "Where Kyle has since decided, the item is marked resolved with the date.", "",
         f"Written by `scripts/run1110_decisions.py`. Numbers come from results files; the ones computed for this file are in `{INPUTS}`.", "",
         "## At a glance", "",
         "| Item | Decision | Blocks |", "| --- | --- | --- |",
@@ -307,7 +331,7 @@ def main():
         "## N-10 · The one-pager states the study question; the criteria say reviewers are not told it", "",
         "**Question.** The run file asked for a one-pager that gives the question and what the computable stage shows. `docs/adjudication_criteria.md` §10 says reviewers are told only that a computable phenotype for hepatic steatosis is being validated, and nothing more of the hypothesis. "
         "The one-pager as written tells a prospective reviewer that the study is about fatty liver being documented but not coded, and gives the uncoded share. Which document gives way?", "",
-        "**What is known.** The page carries a notice at its top pointing here. The repository is public and its README states the purpose, so a reviewer who looks will find it either way.", "",
+        "**What is known.** The repository is public and its README states the purpose, so a reviewer who looks will find it either way.", "",
         "**Options and what each changes.**",
         "- *Keep the one-pager; revise §10.* Reviewers know the question. Blinding then covers code status, rule output, model output and cell membership, but not the hypothesis. The manuscript must say so.",
         "- *Cut the question and the computable-stage section from the page given to reviewers.* The page says what §10 allows. The fuller page can still be used for people who will not review, such as a department lead being asked for time.",
@@ -321,6 +345,7 @@ def main():
         f"From `{SEPT}`. Full text, options and stakes are there.", ""]
     L += sept_table()
     L += ["", "**D-01 is the one that blocks the start of adjudication.** N-06 and the clinician sign-off on the criteria block it as well."]
+    L = apply_resolutions(L)
     open(OUT, "w").write("\n".join(L) + "\n")
     print("wrote", OUT, "| N-02:", "filled" if c else "[PENDING]")
     print(json.dumps(d1, indent=0)[:1800])

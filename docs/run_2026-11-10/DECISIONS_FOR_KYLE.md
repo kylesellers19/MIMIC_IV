@@ -1,6 +1,6 @@
 # Decisions for Kyle — run_2026-11-10
 
-Tier 3 items: anything that changes a definition, a population, a primary analysis, or what the paper claims. Each entry gives the question, the options, what each option changes, what is blocked until it is decided, and draft amendment text for every option, so the chosen one can be committed as written. **No recommendation is made anywhere in this file.**
+Tier 3 items: anything that changes a definition, a population, a primary analysis, or what the paper claims. Each entry gives the question, the options, what each option changes, what is blocked until it is decided, and draft amendment text for every option, so the chosen one can be committed as written. **No recommendation is made anywhere in this file.** Where Kyle has since decided, the item is marked resolved with the date.
 
 Written by `scripts/run1110_decisions.py`. Numbers come from results files; the ones computed for this file are in `docs/run_2026-11-10/results/decisions_inputs.json`.
 
@@ -8,7 +8,7 @@ Written by `scripts/run1110_decisions.py`. Numbers come from results files; the 
 
 | Item | Decision | Blocks |
 | --- | --- | --- |
-| N-01 | Admission-level probability for the language-model arm | Any probability-based metric for that arm; must be fixed before an adjudication result is seen |
+| N-01 | Admission-level probability for the language-model arm | Resolved 2026-11-11 |
 | N-02 | Prompt-version difference between dev/test and GOLD_HOLDOUT | What the manuscript says about the merged dev/test labels |
 | N-03 | Sample admissions with no kept sentence | How the language-model arm's errors are tabulated against chart review |
 | N-04 | Note axis for Aim 1a | Which computable phenotype the headline comparison uses |
@@ -17,10 +17,12 @@ Written by `scripts/run1110_decisions.py`. Numbers come from results files; the 
 | N-07 | Registration (updates D-04) | The manuscript's timing claims |
 | N-08 | What prospective reviewers are offered | Sending the one-pager |
 | N-09 | Material the push gate flags: two held-back files, and lines already public | Two files stay local; possible clean-up of public documents |
-| N-10 | The one-pager states the study question; criteria §10 says reviewers are not told it | Sending the one-pager to a prospective reviewer |
+| N-10 | The one-pager states the study question; criteria §10 says reviewers are not told it | Resolved 2026-11-11 |
 | D-01 (September) | Keep or drop ICD-9 571.9 | **The start of adjudication** |
 
 ## N-01 · Admission-level probability for the language-model arm
+
+> **Resolved by Kyle on 2026-11-11.** Classifier only. Recorded as amendment (p), `docs/analysis_plan_prespecified.md` §7. The options below are kept as the record of what was considered.
 
 **Question.** The locked answers hold three probabilities per sentence. The admission rule is a classification (at least one YES, current or past). Which admission-level probability, if any, represents this arm when it is scored against chart review? It must be fixed before any adjudication result is seen.
 
@@ -210,9 +212,11 @@ Rank correlation between the two scores: 0.996. Admissions where noisy-OR exceed
 
 ## N-10 · The one-pager states the study question; the criteria say reviewers are not told it
 
+> **Resolved by Kyle on 2026-11-11.** Criteria §10 stands. The page for reviewers (`docs/adjudication/reviewer_onepager.md`) no longer states the study question or any result; a fuller page for people who will not review charts is `docs/adjudication/study_onepager.md`. The options below are kept as the record of what was considered.
+
 **Question.** The run file asked for a one-pager that gives the question and what the computable stage shows. `docs/adjudication_criteria.md` §10 says reviewers are told only that a computable phenotype for hepatic steatosis is being validated, and nothing more of the hypothesis. The one-pager as written tells a prospective reviewer that the study is about fatty liver being documented but not coded, and gives the uncoded share. Which document gives way?
 
-**What is known.** The page carries a notice at its top pointing here. The repository is public and its README states the purpose, so a reviewer who looks will find it either way.
+**What is known.** The repository is public and its README states the purpose, so a reviewer who looks will find it either way.
 
 **Options and what each changes.**
 - *Keep the one-pager; revise §10.* Reviewers know the question. Blinding then covers code status, rule output, model output and cell membership, but not the hypothesis. The manuscript must say so.

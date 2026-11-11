@@ -1,0 +1,174 @@
+--- diagnostics/section_rule_v2/liver_sentences_baseline.py	2026-09-23 15:32:11
++++ scripts/liver_sentences.py	2026-09-23 15:06:40
+@@ -102,6 +102,40 @@
+                            key=len, reverse=True)
+ 
+ 
++# Anatomical / regional sub-headings that may appear INSIDE a findings block and continue it.
++# This is a HEADING vocabulary and is deliberately separate from the frozen rule's token-level
++# organ sets (TARGET_ORGANS, COMPETING_ORGANS), which classify words inside sentences and must not
++# be reused for section structure.
++FINDINGS_SUBHEADINGS = {
++    "LIVER", "HEPATOBILIARY", "GALLBLADDER", "BILIARY", "BILE DUCTS",
++    "PANCREAS", "SPLEEN", "KIDNEY", "KIDNEYS", "ADRENAL", "ADRENALS", "ADRENAL GLANDS",
++    "BOWEL", "STOMACH", "APPENDIX", "BLADDER", "PELVIS", "ABDOMEN", "PERITONEUM",
++    "LYMPH NODES", "VASCULATURE", "VESSELS", "AORTA",
++    "LUNG BASES", "LUNGS", "HEART", "BONES", "OSSEOUS STRUCTURES", "SOFT TISSUES",
++}
++QUALIFIER_RE = re.compile(r"^(?:RIGHT|LEFT|BILATERAL)\s+")
++HEADING_SPLIT_RE = re.compile(r"\s*/\s*|\s*,\s*|\s*&\s*|\s+AND\s+")
++
++
++def normalise_heading(label):
++    """Uppercase, drop a trailing colon, collapse internal whitespace."""
++    return " ".join(label.strip().upper().rstrip(":").split())
++
++
++def continues_findings_block(label):
++    """True when every part of a compound heading is an anatomical sub-heading.
++
++    'LIVER/GALLBLADDER' -> LIVER, GALLBLADDER (both listed, continues).
++    'RIGHT KIDNEY'      -> KIDNEY after the qualifier is stripped (continues).
++    'LIVER AND SPINE'   -> SPINE is not listed, so the block closes."""
++    lab = normalise_heading(label)
++    if not lab:
++        return False
++    parts = [QUALIFIER_RE.sub("", p).strip() for p in HEADING_SPLIT_RE.split(lab)]
++    parts = [p for p in parts if p]
++    return bool(parts) and all(p in FINDINGS_SUBHEADINGS for p in parts)
++
++
+ def is_recognised_heading(label):
+     return any(label == c or label.startswith(c) for c in BLOCK_TERMINATORS)
+ 
+@@ -109,10 +143,11 @@
+ def section_spans(text):
+     """Cover the note with (start, end, category).
+ 
+-    A findings block opens at a heading containing FINDING and closes at the next heading that is
+-    IMPRESSION/CONCLUSION or on the recognised lists, or at end of note. An unrecognised heading
+-    inside an open block inherits `findings`, because organ sub-headings such as HEPATOBILIARY or
+-    LIVER sit inside a structured findings section and are findings content, not preamble.
++    A findings block opens at a heading containing FINDING. While it is open, an unrecognised
++    heading continues it ONLY when every part of that heading is in FINDINGS_SUBHEADINGS; such a
++    heading inherits `findings`, because organ sub-headings like HEPATOBILIARY or LIVER are findings
++    content. IMPRESSION/CONCLUSION, a heading on the recognised lists, or any other unlisted heading
++    closes the block, and sentences under it are `other`.
+ 
+     Labels have internal whitespace collapsed before matching the recognised lists; this cannot
+     affect the IMPRESSION/FINDING containment tests, which are substring checks."""
+@@ -132,10 +167,10 @@
+             cat = "findings"; in_findings_block = True
+         elif is_recognised_heading(label):
+             cat = "other"; in_findings_block = False
+-        elif in_findings_block:
+-            cat = "findings"                      # inherited from the open block
++        elif in_findings_block and continues_findings_block(label):
++            cat = "findings"                      # anatomical sub-heading; block stays open
+         else:
+-            cat = "other"
++            cat = "other"; in_findings_block = False   # any other heading closes the block
+         spans.append((start, end, cat))
+     return spans
+ 
+@@ -224,44 +259,68 @@
+ ]
+ 
+ 
+-# (name, synthetic note, expected section of the probe sentence). All text invented here.
++# (name, synthetic note, [(probe marker, expected section), ...]). All text invented here; every
++# probe sentence names the liver so the extractor selects it, which is what lets us read its section.
+ SECTION_TESTS = [
+-    ("a  FINDINGS > HEPATOBILIARY > sentence",
+-     "EXAMINATION: CT abdomen.\nFINDINGS:\nHEPATOBILIARY:\nProbe sentence about the liver.\n",
+-     "findings"),
+-    ("b  FINDINGS > LIVER > IMPRESSION > sentence",
+-     "FINDINGS:\nLIVER:\nNo focal lesion.\nIMPRESSION:\nProbe sentence about the liver.\n",
+-     "impression"),
+-    ("c  FINDINGS > HEPATOBILIARY > RECOMMENDATION(S) > sentence",
+-     "FINDINGS:\nHEPATOBILIARY:\nNo focal lesion.\nRECOMMENDATION(S):\n"
+-     "Probe sentence about the liver.\n",
+-     "other"),
+-    ("d  PERTINENT RESULTS > FINDINGS > LIVER > DISCHARGE LABS > sentence",
+-     "Pertinent Results:\nFINDINGS:\nLIVER:\nNo focal lesion.\nDISCHARGE LABS:\n"
+-     "Probe sentence about the liver.\n",
+-     "other"),
+-    ("e  plain FINDINGS > sentence",
+-     "FINDINGS:\nProbe sentence about the liver.\n", "findings"),
+-    ("f  plain IMPRESSION > sentence",
+-     "IMPRESSION:\nProbe sentence about the liver.\n", "impression"),
+-    ("g  no headings at all",
+-     "Probe sentence about the liver.\n", "other"),
+-    ("h  INDICATION before any FINDINGS > sentence",
+-     "INDICATION:\nProbe sentence about the liver.\n", "other"),
++    ("a  FINDINGS > HEPATOBILIARY",
++     "EXAMINATION: CT abdomen.\nFINDINGS:\nHEPATOBILIARY:\nProbe alpha mentions the liver.\n",
++     [("alpha", "findings")]),
++    ("b  FINDINGS > LIVER > IMPRESSION",
++     "FINDINGS:\nLIVER:\nProbe alpha mentions the liver.\nIMPRESSION:\n"
++     "Probe bravo mentions the liver.\n",
++     [("alpha", "findings"), ("bravo", "impression")]),
++    ("c  FINDINGS > HEPATOBILIARY > RECOMMENDATION(S)",
++     "FINDINGS:\nHEPATOBILIARY:\nProbe alpha mentions the liver.\nRECOMMENDATION(S):\n"
++     "Probe bravo mentions the liver.\n",
++     [("alpha", "findings"), ("bravo", "other")]),
++    ("d  PERTINENT RESULTS > FINDINGS > LIVER > DISCHARGE LABS",
++     "Pertinent Results:\nFINDINGS:\nLIVER:\nProbe alpha mentions the liver.\nDISCHARGE LABS:\n"
++     "Probe bravo mentions the liver.\n",
++     [("alpha", "findings"), ("bravo", "other")]),
++    ("e  FINDINGS > LIVER > RIGHT KIDNEY > LIVER/GALLBLADDER > IMPRESSION",
++     "FINDINGS:\nLIVER:\nProbe alpha mentions the liver.\nRIGHT KIDNEY:\n"
++     "Probe bravo mentions the liver.\nLIVER/GALLBLADDER:\nProbe charlie mentions the liver.\n"
++     "IMPRESSION:\nProbe delta mentions the liver.\n",
++     [("alpha", "findings"), ("bravo", "findings"), ("charlie", "findings"), ("delta", "impression")]),
++    ("f  FINDINGS > LIVER > COMPARISON NOTE",
++     "FINDINGS:\nLIVER:\nProbe alpha mentions the liver.\nCOMPARISON NOTE:\n"
++     "Probe bravo mentions the liver.\n",
++     [("alpha", "findings"), ("bravo", "other")]),
++    # f closes via the recognised list (COMPARISON). g closes via the new rule: ADDENDUM is on no
++    # list and is not an anatomical sub-heading, so it exercises the path f does not reach.
++    ("g  FINDINGS > LIVER > ADDENDUM (unlisted, non-anatomical)",
++     "FINDINGS:\nLIVER:\nProbe alpha mentions the liver.\nADDENDUM:\n"
++     "Probe bravo mentions the liver.\n",
++     [("alpha", "findings"), ("bravo", "other")]),
++    ("h  compound heading with a non-anatomical part closes the block",
++     "FINDINGS:\nLIVER AND SPINE:\nProbe alpha mentions the liver.\n",
++     [("alpha", "other")]),
++    ("i  plain FINDINGS", "FINDINGS:\nProbe alpha mentions the liver.\n", [("alpha", "findings")]),
++    ("j  plain IMPRESSION", "IMPRESSION:\nProbe alpha mentions the liver.\n", [("alpha", "impression")]),
++    ("k  no headings at all", "Probe alpha mentions the liver.\n", [("alpha", "other")]),
++    ("l  INDICATION before any FINDINGS",
++     "INDICATION:\nProbe alpha mentions the liver.\n", [("alpha", "other")]),
++    ("m  sub-heading with no open block does not become findings",
++     "EXAMINATION: CT abdomen.\nLIVER:\nProbe alpha mentions the liver.\n", [("alpha", "other")]),
+ ]
+ 
+ 
+ def section_selftest():
+     print("\nsection-assignment fixtures (synthetic text, no MIMIC data)")
+-    bad = 0
+-    for name, doc, want in SECTION_TESTS:
+-        rows = [r for r in extract_from_note(doc, "selftest") if "probe" in r["text"].lower()]
+-        got = rows[0]["section"] if rows else "(probe sentence not selected)"
+-        flag = "ok  " if got == want else "FAIL"
+-        if got != want:
+-            bad += 1
+-        print(f"  [{flag}] {name:<52} expected {want:<11} got {got}")
+-    print(f"  {len(SECTION_TESTS) - bad}/{len(SECTION_TESTS)} as expected")
++    bad = total = 0
++    for name, doc, probes in SECTION_TESTS:
++        rows = extract_from_note(doc, "selftest")
++        results = []
++        for marker, want in probes:
++            hit = [r for r in rows if marker in r["text"].lower()]
++            got = hit[0]["section"] if hit else "(probe not selected)"
++            total += 1
++            if got != want:
++                bad += 1
++            results.append(f"{marker}:{got}{'' if got == want else f' (want {want})'}")
++        flag = "ok  " if all("want" not in r for r in results) else "FAIL"
++        print(f"  [{flag}] {name:<58} {'  '.join(results)}")
++    print(f"  {total - bad}/{total} assertions across {len(SECTION_TESTS)} fixtures")
+     return bad == 0
+ 
+ 

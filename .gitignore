@@ -18,6 +18,8 @@ test files/
 
 # Raw / derived data formats, wherever they land
 *.csv
+# Every CSV stays ignored, diagnostics included. Aggregate diagnostics are re-expressed as
+# counts-only JSON under docs/run_*/results/ (see scripts/run1110_diagnostics_json.py).
 *.csv.gz
 *.parquet
 

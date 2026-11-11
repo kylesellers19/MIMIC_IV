@@ -1,0 +1,530 @@
+{
+ "source": "diagnostics/section_rule_v2/tableB_continuing_headings.csv (git-ignored)",
+ "written_by": "scripts/run1110_diagnostics_json.py",
+ "cells_masked": 42,
+ "labels_withheld": 0,
+ "rows": [
+  {
+   "subheading": "ABDOMEN",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": 368,
+   "kept_sentences_beneath": 1021
+  },
+  {
+   "subheading": "ABDOMEN",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 410,
+   "kept_sentences_beneath": 738
+  },
+  {
+   "subheading": "ABDOMEN",
+   "note_type": "discharge",
+   "times_continued_block": 41,
+   "kept_sentences_beneath": 69
+  },
+  {
+   "subheading": "ADRENAL",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": "<11",
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "ADRENAL",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 0,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "ADRENAL",
+   "note_type": "discharge",
+   "times_continued_block": 0,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "ADRENAL GLANDS",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": 44,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "ADRENAL GLANDS",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 18,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "ADRENAL GLANDS",
+   "note_type": "discharge",
+   "times_continued_block": "<11",
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "ADRENALS",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": 60,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "ADRENALS",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 43,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "ADRENALS",
+   "note_type": "discharge",
+   "times_continued_block": "<11",
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "AORTA",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": "<11",
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "AORTA",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": "<11",
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "AORTA",
+   "note_type": "discharge",
+   "times_continued_block": "<11",
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "APPENDIX",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": "<11",
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "APPENDIX",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 0,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "APPENDIX",
+   "note_type": "discharge",
+   "times_continued_block": 0,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "BILE DUCTS",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": 1111,
+   "kept_sentences_beneath": 1094
+  },
+  {
+   "subheading": "BILE DUCTS",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 1088,
+   "kept_sentences_beneath": 1219
+  },
+  {
+   "subheading": "BILE DUCTS",
+   "note_type": "discharge",
+   "times_continued_block": 53,
+   "kept_sentences_beneath": 56
+  },
+  {
+   "subheading": "BILIARY",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": 41,
+   "kept_sentences_beneath": 47
+  },
+  {
+   "subheading": "BILIARY",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 19,
+   "kept_sentences_beneath": 20
+  },
+  {
+   "subheading": "BILIARY",
+   "note_type": "discharge",
+   "times_continued_block": "<11",
+   "kept_sentences_beneath": "<11"
+  },
+  {
+   "subheading": "BLADDER",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": "<11",
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "BLADDER",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": "<11",
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "BLADDER",
+   "note_type": "discharge",
+   "times_continued_block": "<11",
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "BONES",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": 206,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "BONES",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 199,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "BONES",
+   "note_type": "discharge",
+   "times_continued_block": "<11",
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "BOWEL",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": 21,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "BOWEL",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 16,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "BOWEL",
+   "note_type": "discharge",
+   "times_continued_block": "<11",
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "GALLBLADDER",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": 817,
+   "kept_sentences_beneath": 64
+  },
+  {
+   "subheading": "GALLBLADDER",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 823,
+   "kept_sentences_beneath": 58
+  },
+  {
+   "subheading": "GALLBLADDER",
+   "note_type": "discharge",
+   "times_continued_block": 40,
+   "kept_sentences_beneath": "<11"
+  },
+  {
+   "subheading": "HEART",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": 263,
+   "kept_sentences_beneath": "<11"
+  },
+  {
+   "subheading": "HEART",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 413,
+   "kept_sentences_beneath": "<11"
+  },
+  {
+   "subheading": "HEART",
+   "note_type": "discharge",
+   "times_continued_block": 22,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "HEPATOBILIARY",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": 12,
+   "kept_sentences_beneath": 17
+  },
+  {
+   "subheading": "HEPATOBILIARY",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 17,
+   "kept_sentences_beneath": 48
+  },
+  {
+   "subheading": "HEPATOBILIARY",
+   "note_type": "discharge",
+   "times_continued_block": "<11",
+   "kept_sentences_beneath": "<11"
+  },
+  {
+   "subheading": "KIDNEY",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": 330,
+   "kept_sentences_beneath": "<11"
+  },
+  {
+   "subheading": "KIDNEY",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 304,
+   "kept_sentences_beneath": "<11"
+  },
+  {
+   "subheading": "KIDNEY",
+   "note_type": "discharge",
+   "times_continued_block": 27,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "KIDNEYS",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": 810,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "KIDNEYS",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 672,
+   "kept_sentences_beneath": "<11"
+  },
+  {
+   "subheading": "KIDNEYS",
+   "note_type": "discharge",
+   "times_continued_block": 36,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "LIVER",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": 1255,
+   "kept_sentences_beneath": 4320
+  },
+  {
+   "subheading": "LIVER",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 1182,
+   "kept_sentences_beneath": 4338
+  },
+  {
+   "subheading": "LIVER",
+   "note_type": "discharge",
+   "times_continued_block": 59,
+   "kept_sentences_beneath": 216
+  },
+  {
+   "subheading": "LUNG BASES",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": 137,
+   "kept_sentences_beneath": "<11"
+  },
+  {
+   "subheading": "LUNG BASES",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 158,
+   "kept_sentences_beneath": "<11"
+  },
+  {
+   "subheading": "LUNG BASES",
+   "note_type": "discharge",
+   "times_continued_block": "<11",
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "LUNGS",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": 72,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "LUNGS",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 54,
+   "kept_sentences_beneath": "<11"
+  },
+  {
+   "subheading": "LUNGS",
+   "note_type": "discharge",
+   "times_continued_block": "<11",
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "LYMPH NODES",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": 32,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "LYMPH NODES",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 21,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "LYMPH NODES",
+   "note_type": "discharge",
+   "times_continued_block": "<11",
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "OSSEOUS STRUCTURES",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": 214,
+   "kept_sentences_beneath": "<11"
+  },
+  {
+   "subheading": "OSSEOUS STRUCTURES",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 214,
+   "kept_sentences_beneath": "<11"
+  },
+  {
+   "subheading": "OSSEOUS STRUCTURES",
+   "note_type": "discharge",
+   "times_continued_block": 12,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "PANCREAS",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": 898,
+   "kept_sentences_beneath": "<11"
+  },
+  {
+   "subheading": "PANCREAS",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 833,
+   "kept_sentences_beneath": "<11"
+  },
+  {
+   "subheading": "PANCREAS",
+   "note_type": "discharge",
+   "times_continued_block": 44,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "PELVIS",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": 352,
+   "kept_sentences_beneath": 15
+  },
+  {
+   "subheading": "PELVIS",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 414,
+   "kept_sentences_beneath": 13
+  },
+  {
+   "subheading": "PELVIS",
+   "note_type": "discharge",
+   "times_continued_block": 27,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "PERITONEUM",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": "<11",
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "PERITONEUM",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 0,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "PERITONEUM",
+   "note_type": "discharge",
+   "times_continued_block": 0,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "SOFT TISSUES",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": 91,
+   "kept_sentences_beneath": 25
+  },
+  {
+   "subheading": "SOFT TISSUES",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 74,
+   "kept_sentences_beneath": "<11"
+  },
+  {
+   "subheading": "SOFT TISSUES",
+   "note_type": "discharge",
+   "times_continued_block": "<11",
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "SPLEEN",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": 851,
+   "kept_sentences_beneath": 11
+  },
+  {
+   "subheading": "SPLEEN",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 763,
+   "kept_sentences_beneath": "<11"
+  },
+  {
+   "subheading": "SPLEEN",
+   "note_type": "discharge",
+   "times_continued_block": 39,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "STOMACH",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": "<11",
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "STOMACH",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": "<11",
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "STOMACH",
+   "note_type": "discharge",
+   "times_continued_block": 40,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "VASCULATURE",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": 260,
+   "kept_sentences_beneath": "<11"
+  },
+  {
+   "subheading": "VASCULATURE",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 420,
+   "kept_sentences_beneath": 15
+  },
+  {
+   "subheading": "VASCULATURE",
+   "note_type": "discharge",
+   "times_continued_block": 21,
+   "kept_sentences_beneath": 0
+  },
+  {
+   "subheading": "VESSELS",
+   "note_type": "radiology_outpatient",
+   "times_continued_block": 21,
+   "kept_sentences_beneath": "<11"
+  },
+  {
+   "subheading": "VESSELS",
+   "note_type": "radiology_inpatient",
+   "times_continued_block": 16,
+   "kept_sentences_beneath": "<11"
+  },
+  {
+   "subheading": "VESSELS",
+   "note_type": "discharge",
+   "times_continued_block": "<11",
+   "kept_sentences_beneath": 0
+  }
+ ]
+}

@@ -1,0 +1,559 @@
+{
+ "source": "diagnostics/llm_unclear_audit/unclear_audit_summary.csv (git-ignored)",
+ "written_by": "scripts/run1110_diagnostics_json.py",
+ "cells_masked": 79,
+ "cells_withheld": 47,
+ "tables": {
+  "model-assigned topic x old-prompt answer": {
+   "blood tests/enzymes": {
+    "NO": "withheld",
+    "UNCLEAR": "<11",
+    "YES": 0,
+    "All": 15,
+    "UNCLEAR %": "withheld"
+   },
+   "fat/steatosis": {
+    "NO": "<11",
+    "UNCLEAR": "<11",
+    "YES": 14,
+    "All": 17,
+    "UNCLEAR %": "withheld"
+   },
+   "hepatitis/cirrhosis/other disease": {
+    "NO": 41,
+    "UNCLEAR": "withheld",
+    "YES": "<11",
+    "All": 68,
+    "UNCLEAR %": "withheld"
+   },
+   "lesion/mass/cyst": {
+    "NO": 87,
+    "UNCLEAR": "withheld",
+    "YES": "<11",
+    "All": 117,
+    "UNCLEAR %": "withheld"
+   },
+   "normal/unremarkable": {
+    "NO": "withheld",
+    "UNCLEAR": "<11",
+    "YES": 0,
+    "All": 31,
+    "UNCLEAR %": "withheld"
+   },
+   "not fully seen": {
+    "NO": "<11",
+    "UNCLEAR": "<11",
+    "YES": 0,
+    "All": "<11",
+    "UNCLEAR %": "withheld"
+   },
+   "not the liver": {
+    "NO": "<11",
+    "UNCLEAR": 0,
+    "YES": 0,
+    "All": "<11",
+    "UNCLEAR %": "withheld"
+   },
+   "size/shape": {
+    "NO": "withheld",
+    "UNCLEAR": "<11",
+    "YES": 0,
+    "All": 16,
+    "UNCLEAR %": "withheld"
+   },
+   "something else": {
+    "NO": 70,
+    "UNCLEAR": 47,
+    "YES": 0,
+    "All": 117,
+    "UNCLEAR %": 40.2
+   },
+   "vessels/ducts": {
+    "NO": "withheld",
+    "UNCLEAR": "<11",
+    "YES": 0,
+    "All": 105,
+    "UNCLEAR %": "withheld"
+   },
+   "All": {
+    "NO": 367,
+    "UNCLEAR": 115,
+    "YES": 18,
+    "All": 500,
+    "UNCLEAR %": 23
+   }
+  },
+  "primary wording topic x old-prompt answer": {
+   "blood tests/enzymes": {
+    "NO": "<11",
+    "UNCLEAR": "<11",
+    "YES": 0,
+    "All": "<11",
+    "UNCLEAR %": "withheld"
+   },
+   "cirrhosis/fibrosis": {
+    "NO": "withheld",
+    "UNCLEAR": "<11",
+    "YES": 0,
+    "All": 24,
+    "UNCLEAR %": "withheld"
+   },
+   "echogenicity/attenuation": {
+    "NO": "<11",
+    "UNCLEAR": "<11",
+    "YES": "<11",
+    "All": 20,
+    "UNCLEAR %": "withheld"
+   },
+   "fat term": {
+    "NO": 0,
+    "UNCLEAR": 0,
+    "YES": 12,
+    "All": 12,
+    "UNCLEAR %": 0
+   },
+   "hepatitis": {
+    "NO": "withheld",
+    "UNCLEAR": "<11",
+    "YES": 0,
+    "All": 25,
+    "UNCLEAR %": "withheld"
+   },
+   "lesion/mass/cyst": {
+    "NO": 97,
+    "UNCLEAR": "withheld",
+    "YES": "<11",
+    "All": 126,
+    "UNCLEAR %": "withheld"
+   },
+   "none of these": {
+    "NO": 94,
+    "UNCLEAR": "withheld",
+    "YES": "<11",
+    "All": 145,
+    "UNCLEAR %": "withheld"
+   },
+   "normal/unremarkable": {
+    "NO": 18,
+    "UNCLEAR": 0,
+    "YES": 0,
+    "All": 18,
+    "UNCLEAR %": 0
+   },
+   "not fully seen": {
+    "NO": "<11",
+    "UNCLEAR": "<11",
+    "YES": 0,
+    "All": "<11",
+    "UNCLEAR %": "withheld"
+   },
+   "size/shape": {
+    "NO": "<11",
+    "UNCLEAR": "<11",
+    "YES": 0,
+    "All": 13,
+    "UNCLEAR %": "withheld"
+   },
+   "transplant/procedure": {
+    "NO": "withheld",
+    "UNCLEAR": "<11",
+    "YES": 0,
+    "All": 18,
+    "UNCLEAR %": "withheld"
+   },
+   "vessels/ducts": {
+    "NO": "withheld",
+    "UNCLEAR": "<11",
+    "YES": 0,
+    "All": 90,
+    "UNCLEAR %": "withheld"
+   },
+   "All": {
+    "NO": 367,
+    "UNCLEAR": 115,
+    "YES": 18,
+    "All": 500,
+    "UNCLEAR %": 23
+   }
+  },
+  "note type x old-prompt answer": {
+   "discharge": {
+    "NO": 109,
+    "UNCLEAR": "withheld",
+    "YES": "<11",
+    "All": 161,
+    "UNCLEAR %": "withheld"
+   },
+   "radiology_inpatient": {
+    "NO": 142,
+    "UNCLEAR": "withheld",
+    "YES": "<11",
+    "All": 189,
+    "UNCLEAR %": "withheld"
+   },
+   "radiology_outpatient": {
+    "NO": 116,
+    "UNCLEAR": "withheld",
+    "YES": "<11",
+    "All": 150,
+    "UNCLEAR %": "withheld"
+   },
+   "All": {
+    "NO": 367,
+    "UNCLEAR": 115,
+    "YES": 18,
+    "All": 500,
+    "UNCLEAR %": 23
+   }
+  },
+  "section x old-prompt answer": {
+   "findings": {
+    "NO": 79,
+    "UNCLEAR": "withheld",
+    "YES": "<11",
+    "All": 103,
+    "UNCLEAR %": "withheld"
+   },
+   "impression": {
+    "NO": 69,
+    "UNCLEAR": "withheld",
+    "YES": "<11",
+    "All": 86,
+    "UNCLEAR %": "withheld"
+   },
+   "other": {
+    "NO": 219,
+    "UNCLEAR": 81,
+    "YES": 11,
+    "All": 311,
+    "UNCLEAR %": 26
+   },
+   "All": {
+    "NO": 367,
+    "UNCLEAR": 115,
+    "YES": 18,
+    "All": 500,
+    "UNCLEAR %": 23
+   }
+  },
+  "sentence length (characters) x old-prompt answer": {
+   "41-80": {
+    "NO": 297,
+    "UNCLEAR": "withheld",
+    "YES": "withheld",
+    "All": 402,
+    "UNCLEAR %": "withheld"
+   },
+   "81-160": {
+    "NO": "<11",
+    "UNCLEAR": "<11",
+    "YES": 0,
+    "All": "<11",
+    "UNCLEAR %": "withheld"
+   },
+   "<=40": {
+    "NO": "withheld",
+    "UNCLEAR": "withheld",
+    "YES": "<11",
+    "All": "withheld",
+    "UNCLEAR %": "withheld"
+   },
+   "All": {
+    "NO": 367,
+    "UNCLEAR": 115,
+    "YES": 18,
+    "All": 500,
+    "UNCLEAR %": 23
+   }
+  },
+  "matched only by hepat*/liver* prefix x old-prompt answer": {
+   "False": {
+    "NO": 259,
+    "UNCLEAR": "withheld",
+    "YES": "withheld",
+    "All": 370,
+    "UNCLEAR %": "withheld"
+   },
+   "True": {
+    "NO": 108,
+    "UNCLEAR": "withheld",
+    "YES": "<11",
+    "All": 130,
+    "UNCLEAR %": "withheld"
+   },
+   "All": {
+    "NO": 367,
+    "UNCLEAR": 115,
+    "YES": 18,
+    "All": 500,
+    "UNCLEAR %": 23
+   }
+  },
+  "digits >= 10% of characters (lab-style lines) x old-prompt answer": {
+   "False": {
+    "NO": "withheld",
+    "UNCLEAR": 115,
+    "YES": 18,
+    "All": "withheld",
+    "UNCLEAR %": "withheld"
+   },
+   "True": {
+    "NO": "<11",
+    "UNCLEAR": 0,
+    "YES": 0,
+    "All": "<11",
+    "UNCLEAR %": "withheld"
+   },
+   "All": {
+    "NO": 367,
+    "UNCLEAR": 115,
+    "YES": 18,
+    "All": 500,
+    "UNCLEAR %": 23
+   }
+  },
+  "mostly upper case x old-prompt answer": {
+   "False": {
+    "NO": "withheld",
+    "UNCLEAR": "withheld",
+    "YES": 18,
+    "All": "withheld",
+    "UNCLEAR %": "withheld"
+   },
+   "True": {
+    "NO": "<11",
+    "UNCLEAR": "<11",
+    "YES": 0,
+    "All": "<11",
+    "UNCLEAR %": "withheld"
+   },
+   "All": {
+    "NO": 367,
+    "UNCLEAR": 115,
+    "YES": 18,
+    "All": 500,
+    "UNCLEAR %": 23
+   }
+  },
+  "negation word present x old-prompt answer": {
+   "False": {
+    "NO": 249,
+    "UNCLEAR": "withheld",
+    "YES": "withheld",
+    "All": 364,
+    "UNCLEAR %": "withheld"
+   },
+   "True": {
+    "NO": 118,
+    "UNCLEAR": "withheld",
+    "YES": "<11",
+    "All": 136,
+    "UNCLEAR %": "withheld"
+   },
+   "All": {
+    "NO": 367,
+    "UNCLEAR": 115,
+    "YES": 18,
+    "All": 500,
+    "UNCLEAR %": 23
+   }
+  },
+  "frozen-rule hedge phrase present x old-prompt answer": {
+   "False": {
+    "NO": "withheld",
+    "UNCLEAR": "withheld",
+    "YES": "withheld",
+    "All": "withheld",
+    "UNCLEAR %": "withheld"
+   },
+   "True": {
+    "NO": "<11",
+    "UNCLEAR": "<11",
+    "YES": "<11",
+    "All": "<11",
+    "UNCLEAR %": "withheld"
+   },
+   "All": {
+    "NO": 367,
+    "UNCLEAR": 115,
+    "YES": 18,
+    "All": 500,
+    "UNCLEAR %": 23
+   }
+  },
+  "model-assigned topic x NEW-prompt answer": {
+   "blood tests/enzymes": {
+    "NO": 15,
+    "UNCLEAR": 0,
+    "YES": 0,
+    "All": 15,
+    "UNCLEAR %": 0
+   },
+   "fat/steatosis": {
+    "NO": "<11",
+    "UNCLEAR": "<11",
+    "YES": 12,
+    "All": 17,
+    "UNCLEAR %": "withheld"
+   },
+   "hepatitis/cirrhosis/other disease": {
+    "NO": 64,
+    "UNCLEAR": "<11",
+    "YES": "<11",
+    "All": 68,
+    "UNCLEAR %": "withheld"
+   },
+   "lesion/mass/cyst": {
+    "NO": 114,
+    "UNCLEAR": "<11",
+    "YES": "<11",
+    "All": 117,
+    "UNCLEAR %": "withheld"
+   },
+   "normal/unremarkable": {
+    "NO": 31,
+    "UNCLEAR": 0,
+    "YES": 0,
+    "All": 31,
+    "UNCLEAR %": 0
+   },
+   "not fully seen": {
+    "NO": "<11",
+    "UNCLEAR": 0,
+    "YES": 0,
+    "All": "<11",
+    "UNCLEAR %": "withheld"
+   },
+   "not the liver": {
+    "NO": "<11",
+    "UNCLEAR": 0,
+    "YES": 0,
+    "All": "<11",
+    "UNCLEAR %": "withheld"
+   },
+   "size/shape": {
+    "NO": "withheld",
+    "UNCLEAR": "<11",
+    "YES": 0,
+    "All": 16,
+    "UNCLEAR %": "withheld"
+   },
+   "something else": {
+    "NO": "withheld",
+    "UNCLEAR": "<11",
+    "YES": 0,
+    "All": 117,
+    "UNCLEAR %": "withheld"
+   },
+   "vessels/ducts": {
+    "NO": 105,
+    "UNCLEAR": 0,
+    "YES": 0,
+    "All": 105,
+    "UNCLEAR %": 0
+   },
+   "All": {
+    "NO": 476,
+    "UNCLEAR": "<11",
+    "YES": 16,
+    "All": 500,
+    "UNCLEAR %": "withheld"
+   }
+  },
+  "gemma (rows) vs qwen (columns), both on the OLD prompt": {
+   "NO": {
+    "NO": 364,
+    "UNCLEAR": "<11",
+    "YES": "<11",
+    "All": 367,
+    "UNCLEAR %": "withheld"
+   },
+   "UNCLEAR": {
+    "NO": "withheld",
+    "UNCLEAR": "withheld",
+    "YES": "<11",
+    "All": 115,
+    "UNCLEAR %": "withheld"
+   },
+   "YES": {
+    "NO": "<11",
+    "UNCLEAR": "<11",
+    "YES": 14,
+    "All": 18,
+    "UNCLEAR %": "withheld"
+   },
+   "All": {
+    "NO": 458,
+    "UNCLEAR": 23,
+    "YES": 19,
+    "All": 500,
+    "UNCLEAR %": 4.6
+   }
+  },
+  "gemma old prompt (rows) vs new prompt (columns)": {
+   "NO": {
+    "NO": "withheld",
+    "UNCLEAR": 0,
+    "YES": 0,
+    "All": "withheld",
+    "UNCLEAR %": "withheld"
+   },
+   "UNCLEAR": {
+    "NO": "withheld",
+    "UNCLEAR": "<11",
+    "YES": 0,
+    "All": 115,
+    "UNCLEAR %": "withheld"
+   },
+   "YES": {
+    "NO": 0,
+    "UNCLEAR": "<11",
+    "YES": "withheld",
+    "All": "withheld",
+    "UNCLEAR %": "withheld"
+   },
+   "All": {
+    "NO": 476,
+    "UNCLEAR": "<11",
+    "YES": "withheld",
+    "All": 500,
+    "UNCLEAR %": "withheld"
+   }
+  },
+  "wording flags among old-prompt UNCLEAR": {
+   "fat term": {
+    "UNCLEAR": 0
+   },
+   "echogenicity/attenuation": {
+    "UNCLEAR": "<11"
+   },
+   "not fully seen": {
+    "UNCLEAR": "<11"
+   },
+   "lesion/mass/cyst": {
+    "UNCLEAR": 31
+   },
+   "cirrhosis/fibrosis": {
+    "UNCLEAR": "<11"
+   },
+   "hepatitis": {
+    "UNCLEAR": "<11"
+   },
+   "blood tests/enzymes": {
+    "UNCLEAR": "<11"
+   },
+   "vessels/ducts": {
+    "UNCLEAR": "<11"
+   },
+   "size/shape": {
+    "UNCLEAR": "<11"
+   },
+   "transplant/procedure": {
+    "UNCLEAR": "<11"
+   },
+   "normal/unremarkable": {
+    "UNCLEAR": 0
+   }
+  }
+ }
+}

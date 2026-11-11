@@ -1,0 +1,34 @@
+{
+ "source": "diagnostics/section_rule_v2/step5_study_headers.csv (git-ignored)",
+ "written_by": "scripts/run1110_diagnostics_json.py",
+ "cells_masked": 0,
+ "rows": [
+  {
+   "note_type": "radiology_outpatient",
+   "closes": 1557,
+   "kept_sentences_now_other": 1366,
+   "closes_followed_by_findings": 20,
+   "distinct_study_headings": 176,
+   "pct_followed": 1.28,
+   "median_selected_sentences_between": 0
+  },
+  {
+   "note_type": "radiology_inpatient",
+   "closes": 1808,
+   "kept_sentences_now_other": 987,
+   "closes_followed_by_findings": 39,
+   "distinct_study_headings": 174,
+   "pct_followed": 2.16,
+   "median_selected_sentences_between": 0
+  },
+  {
+   "note_type": "discharge",
+   "closes": 102,
+   "kept_sentences_now_other": 54,
+   "closes_followed_by_findings": 42,
+   "distinct_study_headings": 52,
+   "pct_followed": 41.18,
+   "median_selected_sentences_between": 0
+  }
+ ]
+}

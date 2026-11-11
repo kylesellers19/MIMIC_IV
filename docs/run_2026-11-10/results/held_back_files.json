@@ -1,0 +1,51 @@
+{
+ "script": "scripts/run1110_exposure_audit.py --held",
+ "base": "ac58d5743541acec0220a99d3ca1378735a17f0b",
+ "rule": "the push gate's checks (c) and (d), as the gate applies them (already-public text exempt)",
+ "text_files_scanned": 2,
+ "lines_scanned": 551,
+ "d1_deid_marks": {
+  "lines_flagged": 0,
+  "by_file": {}
+ },
+ "d2_report_headers": {
+  "lines_flagged": 0,
+  "by_file": {}
+ },
+ "d3_sentence_windows": {
+  "lines_flagged": 28,
+  "by_file": {
+   "docs/adjudication/criteria_revision_proposal.md": 4,
+   "scripts/llm_timing_test.py": 24
+  },
+  "per_file": {
+   "docs/adjudication/criteria_revision_proposal.md": {
+    "lines_flagged": 4,
+    "longest_overlap_chars": 38,
+    "overlap_in_one_extractor_string": 2,
+    "overlap_in_2_to_10": 2,
+    "overlap_in_11_or_more": 0,
+    "one_string_and_40_or_more_chars": 0,
+    "whole_quoted_string_is_an_extractor_string": 0
+   },
+   "scripts/llm_timing_test.py": {
+    "lines_flagged": 24,
+    "longest_overlap_chars": 49,
+    "overlap_in_one_extractor_string": 14,
+    "overlap_in_2_to_10": 9,
+    "overlap_in_11_or_more": 1,
+    "one_string_and_40_or_more_chars": 2,
+    "whole_quoted_string_is_an_extractor_string": 2
+   }
+  }
+ },
+ "d4_private_headings": {
+  "lines_flagged": 0,
+  "by_file": {}
+ },
+ "identifiers": {
+  "lines_flagged": 0,
+  "eight_digit_tokens": 1,
+  "equal_to_an_id_but_exempt": 0
+ }
+}

@@ -363,6 +363,8 @@ def check_note_text(changes, corpus, headings, public, terms=TERMINOLOGY, lexico
 
 # ----------------------------------------------------------------------------- (e)
 def count_like_key(key):
+    if "/" in key or re.search(r"\.[a-z0-9]{1,5}$", key.lower()):
+        return False                     # a file path used as a key: its value counts lines or files, not people
     toks = set(re.split(r"[^a-z0-9]+", key.lower()))
     return bool(toks & COUNT_KEY_TOKENS) and not (toks & NOT_PATIENT_TOKENS)
 

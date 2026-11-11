@@ -92,6 +92,12 @@ Written by `scripts/run1110_manuscript_llm.py`, between markers, from the protoc
 - Tier 1: the protocol gives descriptions, not titles, so no new entry carries a title and none was accepted on one.
 - Tier 1: the year recorded for R10 in September was left as it was; the API record agreed with it.
 
+## Incident I-01 — a push without a passing gate (during Phase 8)
+
+- The Phase 8 push was chained to the exit status of `tail`, not of the gate, and went out while the gate was failing on a false positive. Nothing sensitive was published. Full account: `BLOCKERS.md`, I-01.
+- Fixes: `scripts/run1110_gated_push.sh` is now the only way this run pushes; the gate no longer reads a file path used as a JSON key as a patient count (with a test); `scripts/run1110_exposure_audit.py` now always audits the remote head as it was at the start of the run, so F-01's file does not drift as the run pushes.
+- The gate was rerun over the whole range of the run so far and exits 0.
+
 ## Deviations
 
 - **Phase 1.2 — six files moved, not eight.** The run file says eight heading-text CSVs and names six. Six files in the folder have a `heading` field holding note headings; those were moved. The other two CSVs there are the aggregates Phase 1.3 names (one is keyed by the study's own sub-heading list, the other has no heading field).

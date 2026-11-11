@@ -135,6 +135,12 @@ def test_e_small_count_in_a_count_like_json_key_fails_and_non_patient_keys_pass(
     assert [(b["line"], b["key"]) for b in bad] == [(2, "n_admissions")]
 
 
+def test_e_a_file_path_used_as_a_json_key_is_not_a_patient_count():
+    js = "\n".join(['{', ' "diagnostics/liver_sentences_cap.py": 8,', ' "docs/notes/admissions.md": 3,', ' "sentences": 8', '}'])
+    bad = G.check_small_counts("docs/r.json", js, set(range(1, 6)))
+    assert [(b["line"], b["key"]) for b in bad] == [(4, "sentences")]
+
+
 # ----------------------------------------------------------------------------- (f) (g)
 def test_f_config_deletion_fails_and_pure_addition_passes():
     assert G.check_config(changes("scripts/masld_config.py", ["NEW = 1"], status="M")) == []

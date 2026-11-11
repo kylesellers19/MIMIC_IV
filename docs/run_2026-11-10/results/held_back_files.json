@@ -1,6 +1,6 @@
 {
  "script": "scripts/run1110_exposure_audit.py --held",
- "base": "05ee62843cdd4c42e0510c0e4fd3c895e882ee62",
+ "base": "ac58d5743541acec0220a99d3ca1378735a17f0b",
  "rule": "the push gate's checks (c) and (d), as the gate applies them (already-public text exempt)",
  "text_files_scanned": 2,
  "lines_scanned": 551,

@@ -65,7 +65,9 @@ def main():
     ap.add_argument("--held", nargs="*", default=[])
     a = ap.parse_args()
     corpus, headings, ids = G.load_corpus(), G.load_private_headings(), G.load_ids()
-    base = subprocess.run(["git", "rev-parse", G.REMOTE], capture_output=True, text=True).stdout.strip()
+    # the base is the remote head at the START of this run (preflight), so the audit keeps describing what
+    # was public before the run and does not drift as the run pushes
+    base = json.load(open(f"{RES}/preflight.json"))["origin_head"]
     raw = subprocess.run(["git", "archive", "--format=tar", base], capture_output=True).stdout
     files = {}
     with tarfile.open(fileobj=io.BytesIO(raw)) as tar:

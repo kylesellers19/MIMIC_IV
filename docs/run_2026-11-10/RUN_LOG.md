@@ -28,8 +28,20 @@ What was done and why, one phase at a time. Numbers live in `results/`, written 
 - **What the gate found on first use.** Two of the files listed for commit fail check (d3) and were held back (BLOCKERS B-01). An audit of the already-public base with the same rule is BLOCKERS F-01.
 - **Tag.** Annotated tag `llm-gold-lock-v1` on the lock commit `41b155f`, pushed.
 
+## Phase 2 — the record corrected (documents only)
+
+Written by `scripts/run1110_phase2_docs.py`; facts in `results/signoff_timeline.json` and `results/extractor_cap.json`.
+
+- **Sign-off.** Protocol §5 now names who signed off and gives the order of events from git and file times. A dated clarification was appended to `docs/run_2026-10-27/RUN_LOG.md`; its existing lines are unchanged.
+- **Lock coverage.** Protocol §6 lists what the lock binds and states that the shards are not hashed.
+- **Section labels.** Protocol §2 states where the labels come from, their one use, how many dev/test admissions the cap bound, and that the alternative closing rule was not adopted (N-05).
+- **"Pre-registered" wording.** The three lines of `docs/reference_standard.md` now say the criteria are frozen in the repository before review, identifiable by commit. A dated note at the end of that document records the correction.
+- **Saved project note.** Updated: both language-model runs are complete and locked; nothing about them is pending.
+- Tier 1: the times of the GOLD_HOLDOUT run come from file-system metadata of the sealed folder. No sealed file was opened.
+
 ## Deviations
 
 - **Phase 1.2 — six files moved, not eight.** The run file says eight heading-text CSVs and names six. Six files in the folder have a `heading` field holding note headings; those were moved. The other two CSVs there are the aggregates Phase 1.3 names (one is keyed by the study's own sub-heading list, the other has no heading field).
 - **Phase 1.4 — three stated exemptions in gate check (d).** The run file lists none. A 30-character rule with no exemption fails on published disease names and on text the repository already shows. The exemptions are: text already at the remote base, lines marked as test fixtures, and matches lying inside a listed published disease name. This follows the September audit, which exempted the study's own instrument text. Anything else that is flagged is reworded.
 - **Phase 1.6 — two listed files not committed.** `scripts/llm_timing_test.py` and `docs/adjudication/criteria_revision_proposal.md` fail the gate (B-01).
+- **Phase 2.1 — the sign-off commit did not change documents only.** The run file says commit `16033d9` changed documents only. Git shows two documents and one new diagnostic script. The protocol and the appended clarification say what git shows.

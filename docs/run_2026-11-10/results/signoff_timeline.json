@@ -1,0 +1,92 @@
+{
+ "script": "scripts/run1110_phase2_docs.py",
+ "signoff_name": "Kyle Sellers (study lead; not a clinician)",
+ "commits": {
+  "rule_text": {
+   "hash": "6338243",
+   "committed_utc": "2026-10-27T17:03:31Z",
+   "files": [
+    {
+     "status": "M",
+     "path": "docs/analysis_plan_prespecified.md"
+    }
+   ]
+  },
+  "lock_script": {
+   "hash": "27618b1",
+   "committed_utc": "2026-10-27T22:10:59Z",
+   "files": [
+    {
+     "status": "M",
+     "path": "docs/llm_review_protocol.md"
+    },
+    {
+     "status": "A",
+     "path": "scripts/llm_gold_lock.py"
+    },
+    {
+     "status": "M",
+     "path": "scripts/llm_phenotype.py"
+    }
+   ]
+  },
+  "lock": {
+   "hash": "41b155f",
+   "committed_utc": "2026-10-27T22:11:25Z",
+   "files": [
+    {
+     "status": "A",
+     "path": "docs/llm_gold_lock.md"
+    },
+    {
+     "status": "M",
+     "path": "docs/run_2026-10-27/RUN_LOG.md"
+    },
+    {
+     "status": "A",
+     "path": "docs/run_2026-10-27/results/llm_gold_lock.json"
+    }
+   ]
+  },
+  "signoff": {
+   "hash": "16033d9",
+   "committed_utc": "2026-10-27T23:47:54Z",
+   "files": [
+    {
+     "status": "A",
+     "path": "diagnostics/llm_review_audit/quant_check.py"
+    },
+    {
+     "status": "M",
+     "path": "docs/llm_review_protocol.md"
+    },
+    {
+     "status": "M",
+     "path": "docs/run_2026-10-27/RUN_LOG.md"
+    }
+   ]
+  }
+ },
+ "gold_run": {
+  "folder_created_utc": "2026-10-27T17:16:21Z",
+  "manifest_created_utc": "2026-10-27T17:17:03Z",
+  "answers_file_written_utc": "2026-10-27T22:10:04Z",
+  "source": "file-system creation and modification times (os.stat); the files were not opened"
+ },
+ "lock_written_utc": "2026-10-27T22:11:04Z",
+ "rule_text_committed_before_gold_run_started": true,
+ "minutes_between_rule_commit_and_gold_run_start": 13,
+ "lock_committed_after_lock_written": true,
+ "signoff_commit": {
+  "documents": [
+   "docs/llm_review_protocol.md",
+   "docs/run_2026-10-27/RUN_LOG.md"
+  ],
+  "other_files": [
+   "diagnostics/llm_review_audit/quant_check.py"
+  ],
+  "documents_only": false,
+  "touches_scripts_dir": false
+ },
+ "label_or_prompt_code_changed_since_lock": false
+}

@@ -1,0 +1,7 @@
+{
+ "script": "scripts/run1110_phase2_docs.py",
+ "source": "data/processed/llm_review/extract_v3.log (git-ignored; counts only)",
+ "cap": 160,
+ "admissions_cap_bound": "<11",
+ "admissions_dev_test_subsample": 29980
+}

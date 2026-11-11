@@ -28,7 +28,7 @@ Only an independent gold standard breaks both circularities and lets 1a measure 
 
 ---
 
-## 2. Pre-registered adjudication criteria
+## 2. Adjudication criteria, frozen in the repository before review
 
 > **🚧 DRAFT 1 — drafted, NOT yet locked. Requires clinician sign-off before any
 > chart review begins.** Full criteria in
@@ -91,7 +91,7 @@ Counts are **adjustable**, but the **recovery zone stays largest**. ~400 sits wi
 
 1. **Blinding** — reviewers are blinded to **both** code status and note-trigger status, so cell membership cannot bias adjudication.
 2. **Double review + kappa** — two reviewers independently adjudicate an overlapping **~20–30%** subset, with **Cohen's kappa** reported; the remainder is single-reviewed; a **third adjudicator** resolves disagreements.
-3. **Pre-registration** — adjudication criteria (§2) are **finalized and pre-registered before review starts**.
+3. **Criteria frozen before review** — adjudication criteria (§2) are **finalized and frozen in this repository before review starts**, and the freeze is identifiable by its commit. No registry is claimed.
 
 ---
 
@@ -123,4 +123,6 @@ Sampling is **disproportionate** (cells deliberately over/under-sampled), so cel
 
 ## Status
 
-This specification **resolves the reference-standard blocker at the design level.** The remaining gate before review can begin is **finalization and pre-registration of the adjudication criteria (§2).**
+This specification **resolves the reference-standard blocker at the design level.** The remaining gate before review can begin is **finalization of the adjudication criteria (§2) and their freeze in this repository, identifiable by commit.** No registry is claimed.
+
+*Wording corrected 2026-11-10 (decision D-05, option 1): three lines of this document said the criteria are "pre-registered". No registration exists. They now say what is true: the criteria are frozen in the repository before review starts, identifiable by commit.*

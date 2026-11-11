@@ -9,6 +9,19 @@
    "status": "done",
    "start": "2026-11-11T03:00:16Z",
    "end": "2026-11-11T03:03:20Z"
+  },
+  "1": {
+   "name": "exposure risk closed + push gate",
+   "status": "done",
+   "start": "2026-11-11T03:17:37Z",
+   "end": "2026-11-11T03:17:37Z",
+   "commit": "1791757357e3639f2c567f81d6c6c26e5effc954",
+   "note": "two listed files held back by the gate (B-01); tag llm-gold-lock-v1 pushed"
+  },
+  "2": {
+   "name": "record corrected (documents)",
+   "status": "running",
+   "start": "2026-11-11T03:17:52Z"
   }
  }
 }

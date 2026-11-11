@@ -16,3 +16,12 @@ What was done and why. Numbers live in `results/`, written by the scripts named 
 **Open decisions:**
 - The annotation guide's open questions. (The admission rule, protocol §5, was signed off on 2026-10-27.)
 - Who the two annotators are.
+
+## Clarification appended 2026-11-10 (run_2026-11-10, Phase 2)
+
+The lines above are unchanged. This section adds what they left out.
+
+- **Who signed off the admission rule (item 8):** Kyle Sellers (study lead; not a clinician). Clinician review of the rule is outstanding.
+- **Order of events, from git and file times:** rule text committed in `6338243`; the GOLD_HOLDOUT run started 13 minutes later; lock committed in `41b155f`; sign-off recorded in `16033d9`. Times: `docs/run_2026-11-10/results/signoff_timeline.json`.
+- **What the sign-off commit changed:** two documents (the protocol and this log) and one new diagnostic script (`diagnostics/llm_review_audit/quant_check.py`). No prompt, label definition, file under `scripts/` or locked file.
+- **What the lock binds:** protocol §6 now lists it. The per-shard answer files are not hashed.

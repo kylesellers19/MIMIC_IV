@@ -23,6 +23,11 @@
 
   `--anatomy-only` reproduces the original selection, for sensitivity analyses. Counts: `diagnostics/llm_review_audit/filter_misses.py`.
 - **Per-admission cap:** 160 sentences, impression first.
+- **Section labels, as run (added 2026-11-10):** each kept sentence carries a section label: impression, findings or other.
+  - A findings block opens at a heading containing FINDING. It continues under a later heading only when every part of that heading is on the organ sub-heading list `FINDINGS_SUBHEADINGS` in `scripts/liver_sentences.py`. Any other heading closes it.
+  - The label has one use: it sets priority under the cap (impression, then findings, then other). It is not shown to the model, and the admission rule (§5) does not use it.
+  - The cap bound <11 of the 29,980 dev/test admissions in the notes subsample, by the extractor's own report (`docs/run_2026-11-10/results/extractor_cap.json`). For every other admission the section label changed nothing.
+  - An alternative rule for closing a findings block was examined on 23–26 September 2026 (`diagnostics/section_rule_v2/`) and not adopted. Whether to run it as a dev/test-only sensitivity analysis is decision N-05 in `docs/run_2026-11-10/DECISIONS_FOR_KYLE.md`.
 - **Context recorded per sentence:** note type, nearest heading, previous and next sentence (up to 300 characters each).
 
 ## 3. Model and inference (`scripts/llm_sentence_review.py`)
@@ -74,6 +79,12 @@ Paraphrase B's first wording broke the reply format on the invented test set. It
 ## 5. Admission-level label (signed off 2026-10-27)
 
 Signed off on 2026-10-27, before any GOLD_HOLDOUT answer distribution or adjudication was seen. The primary definition is the one in amendment (h) of `docs/analysis_plan_prespecified.md` and the one `scripts/llm_gold_lock.py` locked.
+- **Who signed off (added 2026-11-10):** Kyle Sellers (study lead; not a clinician). No clinician has reviewed the admission rule. That review is outstanding (decision N-06 in `docs/run_2026-11-10/DECISIONS_FOR_KYLE.md`).
+- **Timeline, from git and file times** (`docs/run_2026-11-10/results/signoff_timeline.json`, written by `scripts/run1110_phase2_docs.py`):
+  - the rule text, amendment (h), was committed in `6338243` at 2026-10-27 17:03 UTC;
+  - the GOLD_HOLDOUT run started at 2026-10-27 17:16 UTC, 13 minutes after that commit;
+  - the lock was written at 2026-10-27 22:11 UTC and committed in `41b155f`;
+  - the sign-off commit `16033d9` (2026-10-27 23:47 UTC) changed this protocol and the run log, and added one diagnostic script (`diagnostics/llm_review_audit/quant_check.py`). It changed no prompt, no label definition, no file under `scripts/` and no locked file.
 - **Primary:** an admission is positive when at least one kept sentence is YES with timing CURRENT or PAST. FAMILY never counts. UNCLEAR is not positive.
 - **Sensitivity analyses, all reported:**
   - UNCLEAR counted positive
@@ -95,6 +106,13 @@ Signed off on 2026-10-27, before any GOLD_HOLDOUT answer distribution or adjudic
   - a random sample of NO answers;
   - inverse-probability weights to restore the population. Balanced 50/50 designs are avoided because they inflate PPV at low prevalence.
 - **Against the 400-chart gold standard (decided 2026-10-27):** the LLM scores every GOLD_HOLDOUT admission with prompt v4 (all units, not a re-ask). Its sentence answers and admission labels are hashed and locked by `scripts/llm_gold_lock.py` (`docs/llm_gold_lock.md`) before adjudication begins, as was done for the other model arms (`docs/aim1b_locked_predictions.md`). No answer distribution on GOLD_HOLDOUT is looked at before the adjudication exists.
+- **What the lock binds (added 2026-11-10):** `docs/llm_gold_lock.md` records the SHA-256 of four files and three identifiers.
+  - The sentence-answers file: answer, timing and the three probabilities, P(YES), P(NO) and P(UNCLEAR), for every sentence row.
+  - The admission labels.
+  - The extractor output for GOLD_HOLDOUT.
+  - The run manifest, which holds the prompt text and the decoding settings.
+  - The model digest, the Ollama version and the commit of the code.
+  - **Not hashed:** the per-shard answer files under `run/shards/`. The assembled sentence-answers file is the record.
 - **Blinding:** reviewers never see LLM answers, LLM-based ordering, codes or note-rule results (TRIPOD+AI 8c; STARD 13b). If the LLM is used to rank charts, that ranking is never shown to gold reviewers.
 - **Fairness:** report sentence coverage and LLM error rates by race, insurance, sex, language and age, with intervals.
 - **Downstream use:** if LLM labels feed prevalence estimates or train a model, correct them with design-based methods using the known sampling weights (design-based supervised learning; prediction-powered inference). Never evaluate a model against LLM labels.

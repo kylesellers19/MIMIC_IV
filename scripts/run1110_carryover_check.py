@@ -134,7 +134,8 @@ def admissions_changing(rows_c):
     """Expected number of dev/test admissions (notes subsample) whose primary label would change if every
     carried-over NO unit were re-asked with v4. A change can only be negative -> positive. Each currently
     negative admission with k_s carried-over NO sentences in stratum s changes with probability
-    1 - prod_s (1 - p_s)^k_s, sentences treated as independent. p_s: the pooled per-stratum share whose status changes."""
+    1 - prod_s (1 - p_s)^k_s, sentences treated as independent. p_s: the per-stratum share whose status changes,
+    from this run's sample."""
     from scripts.llm_phenotype import load
     adm = load()
     neg = set(adm.hadm_id[~adm.llm]) if "hadm_id" in adm.columns else set(adm.index[~adm.llm])
@@ -184,6 +185,18 @@ def summary():
     both = pd.concat([m[["key", "stratum", "a", "t"]], q[["key", "stratum", "a", "t"]]]).drop_duplicates("key")
     both["population_all"] = both.stratum.map(pop_all)
     pooled, rows_pooled = block(both, "population_all")
+    # pooled minus new = the quantization check's count. Where that count is 1-10 (masked) and the new count is
+    # exact, the pooled figure is withheld, or the masked count could be recovered by subtraction.
+    for metric in ("v4_answer_not_no", "primary_label_status_changes"):
+        leak = False
+        for s_ in STRATA:
+            qx, nx = quant["per_stratum"][s_][metric].get("x"), new["per_stratum"][s_][metric].get("x")
+            if qx == "<11" and isinstance(nx, int):
+                pooled["per_stratum"][s_][metric] = {"n": pooled["per_stratum"][s_][metric]["n"], "x": "withheld", "pct": "withheld",
+                                                     "why": "would reveal the quantization check's count of 1-10 by subtraction"}
+                leak = True
+        if leak:
+            pooled["population_weighted"][metric] = {"pct": "withheld", "why": "a stratum is withheld"}
 
     out = {"script": "scripts/run1110_carryover_check.py", "amendment": "k (S18)", "prompt": "v4", "seed": SEED_CARRYOVER,
            "model": {"name": man["model"], "digest": man["model_digest"], "ollama_version": man["ollama_version"], "options": man["options"]},
@@ -193,7 +206,7 @@ def summary():
                       "not_two_word": int((a.strict == False).sum()),
                       "speed_per_s": round(1 / a.seconds.iloc[10:].mean(), 2) if len(a) > 20 else None},
            "new_sample": new, "quantization_check_carried_over_no": quant, "pooled": pooled,
-           "admissions": admissions_changing(rows_pooled),
+           "admissions": dict(admissions_changing(rows_new), rates_from="the new sample (this run)"),
            "changes_nothing": "no stored answer, label or result is modified"}
     for k in ("errors", "unparsed", "not_two_word"):                 # small-cell rule applies to these counts too
         if 0 < out["sample"][k] < FLOOR:

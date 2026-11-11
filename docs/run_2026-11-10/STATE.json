@@ -39,8 +39,20 @@
   },
   "5": {
    "name": "exploratory analyses (l)-(o)",
+   "status": "done",
+   "start": "2026-11-11T03:22:17Z",
+   "end": "2026-11-11T03:32:44Z",
+   "commit": "1e314d8d40a55721eca1395e080b73a001d0f5b4"
+  },
+  "6": {
+   "name": "materials for prospective reviewers",
    "status": "running",
-   "start": "2026-11-11T03:22:17Z"
+   "start": "2026-11-11T03:32:54Z"
+  },
+  "7": {
+   "name": "manuscript drafts: language-model arm",
+   "status": "running",
+   "start": "2026-11-11T03:35:29Z"
   }
  },
  "phase3_commit": "2b32fdee1ef57c8240fc2c6a88b22dbb6af59a48"

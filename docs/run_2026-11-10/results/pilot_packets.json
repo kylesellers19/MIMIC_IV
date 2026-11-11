@@ -1,0 +1,88 @@
+{
+ "script": "scripts/run1110_pilot_packets.py",
+ "label": "STUDY-TEAM TIMED PILOT. NOT ADJUDICATION. Nothing recorded here is a reference-standard label.",
+ "seed": 20261111,
+ "partition": "DEV",
+ "allocation_design": {
+  "B": 11,
+  "A": 6,
+  "C": 5,
+  "D": 8
+ },
+ "packets_written": 30,
+ "exceptions_by_class": {},
+ "form_columns": [
+  "review_id",
+  "primary_response",
+  "temporality",
+  "q6a_cardiometabolic",
+  "q6b_alcohol",
+  "q6c_other_cause",
+  "q6c_specify",
+  "rationale",
+  "negation_override",
+  "minutes_spent",
+  "reviewer_initials"
+ ],
+ "form_has_minutes_spent": true,
+ "gold_holdout_subjects_drawn": 0,
+ "packet_chars_mean": 28817,
+ "packet_chars_median": 18966,
+ "predicted_reading_minutes_per_packet": [
+  24.2,
+  29.0
+ ],
+ "prediction_assumptions": {
+  "chars_per_word": 6.0,
+  "words_per_minute": [
+   200,
+   250
+  ],
+  "fixed_overhead_min_per_chart": 5.0,
+  "source": "docs/run_2026-09-19/results/reviewer_brief.json"
+ },
+ "leak_checks": {
+  "counts": {
+   "i_icd10_like_structured": "<11",
+   "i_icd10_like_structured_excl_value_columns": "<11",
+   "i_icd9_like_structured": 322,
+   "i_icd9_like_structured_excl_value_columns": 266,
+   "i_icd9_like_structured_excl_values_and_day_offsets": 0,
+   "ii_long_title_narrative": "<11",
+   "ii_long_title_structured": 0,
+   "iii_demographic_label_structured": 0,
+   "iv_8digit_narrative": 0,
+   "iv_8digit_structured": 0,
+   "v_cell_label_narrative": "<11",
+   "v_cell_label_structured": 0,
+   "v_recovery_word_narrative_only": "<11",
+   "vi_markup_narrative": "<11",
+   "vi_markup_structured": 0,
+   "vii_own_identifier_narrative": 0,
+   "vii_own_identifier_structured": 0
+  },
+  "files_with_any_hit": {
+   "i_icd10_like_structured": "<11",
+   "i_icd10_like_structured_excl_value_columns": "<11",
+   "i_icd9_like_structured": "withheld",
+   "i_icd9_like_structured_excl_value_columns": "withheld",
+   "ii_long_title_narrative": "<11",
+   "v_cell_label_narrative": "<11",
+   "v_recovery_word_narrative_only": "<11",
+   "vi_markup_narrative": "<11"
+  },
+  "matched_tokens_structured_excl_values": {
+   "icd10-shaped: B32 (section 5)": "<11",
+   "icd10-shaped: B22 (section 5)": "<11"
+  },
+  "small_count_rule": "counts of 1-10 are written as <11",
+  "n_files": 30,
+  "file_bytes_median": 18966.0,
+  "file_bytes_total": 864549
+ },
+ "folder": "data/processed/pilot_packets_2026-11-10",
+ "key": "data/processed/run_2026-11-10_private/pilot_key.parquet (apart from the packets)",
+ "timings_s": {
+  "total": 160.1
+ }
+}

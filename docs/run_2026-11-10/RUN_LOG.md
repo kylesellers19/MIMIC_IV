@@ -62,6 +62,15 @@ One script per analysis, each writing one results file; one document, `docs/prel
 - Tier 1: the bootstrap draws subject weights exactly as `scripts/run0919_aim1c_level1.py` does.
 - Tier 1: a count that sits 1–10 away from another published count for the same admissions is withheld, and its share is kept.
 
+## Phase 6 — materials for prospective reviewers
+
+- **One-pager.** `scripts/run1110_reviewer_onepager.py` wrote `docs/adjudication/reviewer_onepager.md` from September's results files; the numbers it used are in `results/reviewer_onepager.json`. What reviewers are offered is left for Kyle (N-08).
+- **Timed pilot set (study team, not adjudication).** `scripts/run1110_pilot_packets.py` drew the DEV admissions, built the packets with the functions of `scripts/make_reviewer_packets.py`, and wrote a blank form with `minutes_spent`. Counts only: `results/pilot_packets.json`. Packets, form and key are untracked.
+  - Tier 1: the key from pilot IDs to admissions is stored apart from the packets.
+  - Tier 1: no pilot subject is in GOLD_HOLDOUT (asserted in the script).
+  - Tier 1: with thirty packets, a per-file count of twenty or more gives a small count by subtraction, and the largest file describes one packet; neither is published.
+- **Data inventory.** `scripts/run1110_data_inventory_addendum.py` appended a marked section to `docs/admin/data_inventory.md` (`results/data_inventory_addendum.json`). September's inventory above it is unchanged.
+
 ## Deviations
 
 - **Phase 1.2 — six files moved, not eight.** The run file says eight heading-text CSVs and names six. Six files in the folder have a `heading` field holding note headings; those were moved. The other two CSVs there are the aggregates Phase 1.3 names (one is keyed by the study's own sub-heading list, the other has no heading field).
@@ -72,3 +81,4 @@ One script per analysis, each writing one results file; one document, `docs/prel
 - **Phase 5 (m), details the amendment leaves open.** A later admission is one that begins after the index admission began. Days run from the index discharge to the start of the first later admission with the event. "Admissions before it" counts admissions after the index and before the first coded one. Subjects whose index is uncoded but who were coded earlier are in neither group and are counted in the flow. Death during the index admission is the hospital-expiry flag of that admission.
 - **Phase 5 (n).** Two strata have no note-positive admission and are shown as not reported.
 - **Phase 5 (o).** Stage 2 counts a rule-positive radiology report among imaging-observed admissions. "Outpatient-only" means no report linked to the admission is rule-positive.
+- **Phase 6.2 — the draw.** The run file gives the seed and the allocation only. The draw follows the training draw of `scripts/run0919_phase2_splits.py`: a seeded draw within each cell from all DEV admissions, with no requirement that a note exists, then a seeded shuffle before the IDs are assigned. `make_reviewer_packets.py` itself is fixed to the sample and training keys, so its functions were called from a new script and the file was not edited.

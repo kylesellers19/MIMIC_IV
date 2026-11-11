@@ -1,0 +1,71 @@
+{
+ "script": "scripts/run1110_data_inventory_addendum.py",
+ "generated_utc": "2026-11-11T03:39:35Z",
+ "locations": [
+  {
+   "location": "data/processed/pilot_packets_2026-11-10",
+   "classification": "credentialed derivative",
+   "what": "STUDY-TEAM TIMED PILOT, NOT ADJUDICATION: 30 blinded DEV packets (P001\u2013P030), a blank form with `minutes_spent`, a README",
+   "n_files": 32,
+   "bytes": 873092,
+   "size": "852.6 KB",
+   "tracked_files": 0
+  },
+  {
+   "location": "data/processed/run_2026-11-10_private",
+   "classification": "credentialed derivative",
+   "what": "key from pilot IDs to admissions and cells, kept apart from the packets",
+   "n_files": 1,
+   "bytes": 3324,
+   "size": "3.2 KB",
+   "tracked_files": 0
+  },
+  {
+   "location": "data/processed/section_rule_v2_private",
+   "classification": "credentialed derivative",
+   "what": "six diagnostic tables whose `heading` field holds text from notes; moved out of `diagnostics/section_rule_v2/` on 2026-11-10",
+   "n_files": 6,
+   "bytes": 1098699,
+   "size": "1.0 MB",
+   "tracked_files": 0
+  },
+  {
+   "location": "data/processed/llm_review/carryover_check",
+   "classification": "credentialed derivative",
+   "what": "carry-over check (amendment k): sample input, strata, model answers, run log",
+   "n_files": 5,
+   "bytes": 752410,
+   "size": "734.8 KB",
+   "tracked_files": 0
+  },
+  {
+   "location": "data/processed/run_2026-11-10_outpt_fib4.parquet",
+   "classification": "credentialed derivative",
+   "what": "most recent outpatient AST, ALT and platelets in the 365 days before each admission (amendment l, sensitivity 4)",
+   "n_files": 1,
+   "bytes": 2786649,
+   "size": "2.7 MB",
+   "tracked_files": 0
+  },
+  {
+   "location": "data/processed/run_2026-11-10_scratch",
+   "classification": "credentialed derivative",
+   "what": "push-gate cache of normalised dev/test extractor text; safe to delete",
+   "n_files": 1,
+   "bytes": 17504423,
+   "size": "16.7 MB",
+   "tracked_files": 0
+  },
+  {
+   "location": "logs/run_2026-11-10",
+   "classification": "credentialed derivative (policy)",
+   "what": "this run's logs: counts and timings only",
+   "n_files": 3,
+   "bytes": 2305,
+   "size": "2.3 KB",
+   "tracked_files": 0
+  }
+ ],
+ "total_bytes": 23020902,
+ "total_size": "22.0 MB"
+}

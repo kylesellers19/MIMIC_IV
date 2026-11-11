@@ -305,3 +305,23 @@ aggregate result tables; .md tracked, .csv git-ignored by the *.csv pattern; sma
 ## `.venv`
 
 Python environment, 1.7 GB. Not data.
+
+<!-- run_2026-11-10 addendum: start -->
+
+## Added by run_2026-11-10
+
+Generated 2026-11-11T03:39:35Z by `scripts/run1110_data_inventory_addendum.py` (JSON: `docs/run_2026-11-10/results/data_inventory_addendum.json`). The sections above are September's inventory, unchanged. Everything below is untracked and git-ignored.
+
+| Location | Classification | What it is | Files | Size | Tracked files |
+| --- | --- | --- | --: | --: | --: |
+| `data/processed/pilot_packets_2026-11-10` | credentialed derivative | STUDY-TEAM TIMED PILOT, NOT ADJUDICATION: 30 blinded DEV packets (P001–P030), a blank form with `minutes_spent`, a README | 32 | 852.6 KB | 0 |
+| `data/processed/run_2026-11-10_private` | credentialed derivative | key from pilot IDs to admissions and cells, kept apart from the packets | 1 | 3.2 KB | 0 |
+| `data/processed/section_rule_v2_private` | credentialed derivative | six diagnostic tables whose `heading` field holds text from notes; moved out of `diagnostics/section_rule_v2/` on 2026-11-10 | 6 | 1.0 MB | 0 |
+| `data/processed/llm_review/carryover_check` | credentialed derivative | carry-over check (amendment k): sample input, strata, model answers, run log | 5 | 734.8 KB | 0 |
+| `data/processed/run_2026-11-10_outpt_fib4.parquet` | credentialed derivative | most recent outpatient AST, ALT and platelets in the 365 days before each admission (amendment l, sensitivity 4) | 1 | 2.7 MB | 0 |
+| `data/processed/run_2026-11-10_scratch` | credentialed derivative | push-gate cache of normalised dev/test extractor text; safe to delete | 1 | 16.7 MB | 0 |
+| `logs/run_2026-11-10` | credentialed derivative (policy) | this run's logs: counts and timings only | 3 | 2.3 KB | 0 |
+
+Total added: 22.0 MB.
+
+<!-- run_2026-11-10 addendum: end -->

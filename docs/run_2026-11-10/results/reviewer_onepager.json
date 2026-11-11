@@ -1,0 +1,24 @@
+{
+ "script": "scripts/run1110_reviewer_onepager.py",
+ "hospital_stays": 373992,
+ "stays_with_code": 5740,
+ "stays_with_note_statement": 27826,
+ "pct_of_those_without_code": 81.9,
+ "charts_in_sample": 400,
+ "reviewers": 2,
+ "charts_read_by_both": 100,
+ "charts_per_reviewer": 250,
+ "practice_charts": 20,
+ "minutes_per_chart": "18\u201321",
+ "hours_main_set": "74\u201387",
+ "hours_practice_set": "6\u20137",
+ "hours_main_set_focused_read": "58\u201367",
+ "reading_speed_words_per_minute": "200\u2013250",
+ "answer_options": [
+  "Definite",
+  "Probable",
+  "Possible",
+  "Absent",
+  "Insufficient information"
+ ]
+}

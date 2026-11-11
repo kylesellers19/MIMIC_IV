@@ -100,6 +100,13 @@ Written by `scripts/run1110_manuscript_llm.py`, between markers, from the protoc
 - Tier 1: the protocol gives descriptions, not titles, so no new entry carries a title and none was accepted on one.
 - Tier 1: the year recorded for R10 in September was left as it was; the API record agreed with it.
 
+## Phase 10 — README, push and the check on GitHub
+
+- `scripts/readme_preliminary.py` now also reads this run's results files and writes the sub-block "Exploratory, added 10 November 2026" inside the same markers. The not-validated banner stays first.
+- `scripts/run1110_readme_static.py` made the static edits: pipeline row 16; "What is tracked" states that the repository is public and shows the gated push command in place of the `grep` check; "Reference standard" links the one-pager and names the tag.
+- The aim status lines were left alone: this run changed no fact they state.
+- The check on GitHub is recorded below under "Phase 10.4".
+
 ## Incident I-01 — a push without a passing gate (during Phase 8)
 
 - The Phase 8 push was chained to the exit status of `tail`, not of the gate, and went out while the gate was failing on a false positive. Nothing sensitive was published. Full account: `BLOCKERS.md`, I-01.
@@ -129,3 +136,6 @@ Written by `scripts/run1110_manuscript_llm.py`, between markers, from the protoc
 - **Phase 8 — a gate exemption was refined after the gate failed.** The gate failed the Phase 8 commit on one line of `docs/references/verified_references.md`: an article title copied from PubMed, where the matching window was a published disease name preceded by the word "with". The disease-name exemption had required the window to lie wholly inside the name. It now applies when fewer than ten of the window's thirty characters lie outside a listed name, with a test for both sides of that line. No term was added to the list. This is a change to a safety check made by the run that the check constrains, so it is listed among the things to read first in the final report. The two held-back files of B-01 still fail under the refined rule.
 - **Phase 6.1 and criteria §10.** The one-pager was written as the run file specifies, with the study question and the computable-stage share. The draft adjudication criteria say reviewers are told neither. The page was kept as specified, a hold notice was added to it, and the conflict is decision N-10.
 - **Phase 9 — two items beyond Appendix B.** N-09 and N-10 were added. Nothing in them is decided.
+- **Phase 10.2 — the criteria proposal is not linked.** The run file asks the README to link `docs/adjudication/criteria_revision_proposal.md`. The file is not in the repository (B-01), so the README says a proposal exists and where it is held, with no link.
+- **Phase 10.2 — the command shown.** The README shows `scripts/run1110_gated_push.sh`, the wrapper that runs the gate and pushes only on its exit status, in place of a bare call to the gate. This follows incident I-01.
+- **Phase 1.4 — the gate checks each unpushed commit.** Added during Phase 9: text checks run on every unpushed commit one by one as well as on the net difference, because a line added in one commit and removed in the next is still published.

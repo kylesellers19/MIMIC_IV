@@ -3,7 +3,9 @@
 
 Sources: docs/run_2026-09-19/results/{integrity_gate,aim1b_structured,aim1c_level1}.json (the frozen-rule 2x2 on
 the full population, the structured models on TEST, equity level 1) and docs/run_2026-10-27/results/
-{llm_review_preliminary,aim1c_llm_level1,aim1b_llm_label,llm_gold_lock,quant_check}.json. Replaces
+{llm_review_preliminary,aim1c_llm_level1,aim1b_llm_label,llm_gold_lock,quant_check}.json, and, for the sub-block
+"Exploratory, added 10 November 2026", docs/run_2026-11-10/results/{fib4_by_cell,later_outcomes,icd_era,
+imaging_funnel,carryover_check}.json. Replaces
 the text between the README markers <!-- preliminary-results:start --> and <!-- preliminary-results:end -->.
 USAGE: scripts/run0919_env.sh scripts/readme_preliminary.py
 """
@@ -25,6 +27,58 @@ def auc(m):
 def rec(rows, name):
     r = next(r for r in rows if r["stratum"] == name)
     return f"{r['recovery_share_pct']}% [{r['rec_ci'][0]}–{r['rec_ci'][1]}]"
+
+
+R11 = "docs/run_2026-11-10/results"
+
+
+def november_block():
+    """Sub-block "Exploratory, added 10 November 2026", from docs/run_2026-11-10/results/*.json (amendments k-o).
+    Same rules as the rest of the block: script-written, small cells already masked in the results files."""
+    import os
+    load = lambda f: json.load(open(f"{R11}/{f}.json")) if os.path.exists(f"{R11}/{f}.json") else None
+    fib, out, era, fun, car = load("fib4_by_cell"), load("later_outcomes"), load("icd_era"), load("imaging_funnel"), load("carryover_check")
+    if not all((fib, out, era, fun)):
+        return []
+    pc = lambda s: f"{s['pct']}%" if isinstance(s.get("pct"), (int, float)) else str(s.get("pct", "not reported"))
+    pci = lambda s: f"{s['pct']}% [{s['ci95'][0]}–{s['ci95'][1]}]" if isinstance(s.get("pct"), (int, float)) and s.get("ci95") else pc(s)
+    p1, p4 = fib["analyses"]["primary_first_result"], fib["analyses"]["sens4_outpatient_365_days_before_admission"]
+    U, C = out["groups"]["U"], out["groups"]["C"]
+    yr = [r for r in era["by_anchor_year_group"] if r["primary_code_set"].get("reported")]
+    icd = {r["stratum"]: r for r in era["by_icd_version"]}
+    s4 = fun["stage4_coded_share"]
+    L = ["**Exploratory, added 10 November 2026.** Four analyses on the frozen keyword rule and one check of the language model's labels. "
+         "Their definitions (amendments k–o) were committed before any of them was computed. None is validated against chart review; "
+         "tables and limitations are in `docs/preliminary_2026-11-10.md`.", "",
+         f"- **Fibrosis index by cell.** FIB-4 can be computed for {pc(p1['B']['computable'])} of uncoded note-positive admissions and "
+         f"{pc(p1['A']['computable'])} of coded note-positive ones, against {pc(p1['D']['computable'])} where neither codes nor notes are positive. "
+         f"Among those, the share above 2.67 is {pci(p1['B']['above_2_67'])} uncoded, {pci(p1['A']['above_2_67'])} coded and "
+         f"{pci(p1['D']['above_2_67'])} where neither is positive. Inpatient values overstate fibrosis risk: with the most recent outpatient "
+         f"values the three shares are {pc(p4['B']['above_2_67'])}, {pc(p4['A']['above_2_67'])} and {pc(p4['D']['above_2_67'])} "
+         f"(`{R11}/fib4_by_cell.json`).",
+         f"- **Later outcomes.** {U['subjects']:,} patients had a first note-positive admission with no code and no earlier code. "
+         f"{pc(U['with_a_later_admission'])} returned to this hospital. Of those, {pci(U['later_cirrhosis_flag'])} later carried a cirrhosis code "
+         f"and {pci(U['later_coded'])} were later given a MASLD code, a median of {U['later_coded']['days_from_index_discharge']['median']:,.0f} days "
+         f"after discharge. Among patients coded at that first admission who returned, {pci(C['later_cirrhosis_flag'])} later carried a cirrhosis code. "
+         f"Only returns to this hospital are seen, so each figure is a floor (`{R11}/later_outcomes.json`).",
+         f"- **Coding by period.** The share of note-positive admissions with no code is {pci(icd['ICD-9 only']['primary_code_set'])} in admissions coded in "
+         f"ICD-9 and {pci(icd['ICD-10 only']['primary_code_set'])} in ICD-10. By the patient's anchor year group it runs from "
+         f"{pci(yr[0]['primary_code_set'])} ({yr[0]['stratum'].replace(' - ', '–')}) to {pci(yr[-1]['primary_code_set'])} ({yr[-1]['stratum'].replace(' - ', '–')}) "
+         f"(`{R11}/icd_era.json`).",
+         f"- **Where the liver was imaged.** Of {fun['stage1_imaging_observed']['x']:,} admissions with liver imaging, a radiology report is "
+         f"rule-positive in {pci(fun['stage2_radiology_report_rule_positive'])}. The discharge summary is also rule-positive in "
+         f"{pci(fun['stage3_discharge_summary_also_rule_positive'])} of those. When it is, {pci(s4['discharge_summary_rule_positive'])} are coded; "
+         f"when it is not, {pci(s4['discharge_summary_not_rule_positive'])} (`{R11}/imaging_funnel.json`)."]
+    if car:
+        w, a = car["new_sample"]["population_weighted"], car["admissions"]
+        f = lambda s: (f"{s['pct']}% (95% upper bound {s['wilson_hi_pct']}%)" if isinstance(s["pct"], str) else f"{s['pct']}% [{s['wilson_lo_pct']}–{s['wilson_hi_pct']}]")
+        L.append(f"- **Carry-over check.** On dev/test, sentences the earlier prompt answered NO were not asked again with the final prompt. "
+                 f"A stratified sample of {car['sample']['units_answered']:,} of them was asked: the answer was no longer NO for {f(w['v4_answer_not_no'])}, "
+                 f"population-weighted. The expected number of admissions that would change label is {a['expected_admissions_changing_label']} of "
+                 f"{a['admissions_dev_test_subsample']:,} (95% upper bound {a['upper_bound_wilson']}). No stored label was changed (`{R11}/carryover_check.json`).")
+    else:
+        L.append(f"- **Carry-over check.** Specified in amendment (k); its results file (`{R11}/carryover_check.json`) did not exist when this block was written.")
+    return L + [""]
 
 
 def main():
@@ -115,7 +169,7 @@ def main():
          f"{f['anatomy_only']['admissions_strong_term_only_dropped']:,} to {f['current']['admissions_strong_term_only_dropped']:,}. "
          f"Prompt rewordings agree with the main prompt at Cohen's kappa {p['pilot_dev']['kappa_v3_paraphrase_a']}–"
          f"{p['pilot_dev']['kappa_v3_context']} on a 500-sentence development pilot "
-         "(`docs/llm_review_protocol.md`).", "", END]
+         "(`docs/llm_review_protocol.md`).", ""] + november_block() + [END]
     text = open("README.md").read()
     block = "\n".join(L)
     if START in text:

@@ -35,8 +35,11 @@
   },
   "4": {
    "name": "carry-over check (background)",
-   "status": "running",
-   "start": "2026-11-11T03:21:56Z"
+   "status": "done",
+   "start": "2026-11-11T03:21:56Z",
+   "end": "2026-11-11T05:03:22Z",
+   "commit": "a865907b398f4dcb3bfe520938d710f13a160dcb",
+   "note": "3,000 units, 0 errors, inside the 2-hour budget"
   },
   "5": {
    "name": "exploratory analyses (l)-(o)",

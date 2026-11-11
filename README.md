@@ -111,6 +111,14 @@ The hypotheses, sensitivity analyses and every later amendment are in [docs/anal
 
 **Method notes.** The sentence filter was widened to admit NAFLD-type abbreviations, unnamed steatosis and sentences under liver headings. That cut the admissions whose steatosis statement never reached the model from 367 to 0. Prompt rewordings agree with the main prompt at Cohen's kappa 0.808–0.895 on a 500-sentence development pilot (`docs/llm_review_protocol.md`).
 
+**Exploratory, added 10 November 2026.** Four analyses on the frozen keyword rule and one check of the language model's labels. Their definitions (amendments k–o) were committed before any of them was computed. None is validated against chart review; tables and limitations are in `docs/preliminary_2026-11-10.md`.
+
+- **Fibrosis index by cell.** FIB-4 can be computed for 61.5% of uncoded note-positive admissions and 64.2% of coded note-positive ones, against 37.5% where neither codes nor notes are positive. Among those, the share above 2.67 is 45.4% [44.3–46.6] uncoded, 54.9% [52.3–57.7] coded and 32.4% [32.0–32.8] where neither is positive. Inpatient values overstate fibrosis risk: with the most recent outpatient values the three shares are 32.8%, 42.5% and 23.5% (`docs/run_2026-11-10/results/fib4_by_cell.json`).
+- **Later outcomes.** 10,727 patients had a first note-positive admission with no code and no earlier code. 55.2% returned to this hospital. Of those, 8.4% [7.7–9.1] later carried a cirrhosis code and 11.6% [10.8–12.4] were later given a MASLD code, a median of 480 days after discharge. Among patients coded at that first admission who returned, 8.3% [6.7–10.3] later carried a cirrhosis code. Only returns to this hospital are seen, so each figure is a floor (`docs/run_2026-11-10/results/later_outcomes.json`).
+- **Coding by period.** The share of note-positive admissions with no code is 84.3% [83.4–85.2] in admissions coded in ICD-9 and 79.2% [78.1–80.2] in ICD-10. By the patient's anchor year group it runs from 84.5% [83.4–85.5] (2008–2010) to 79.0% [77.1–80.5] (2017–2019) (`docs/run_2026-11-10/results/icd_era.json`).
+- **Where the liver was imaged.** Of 138,603 admissions with liver imaging, a radiology report is rule-positive in 14.7% [14.3–15.1]. The discharge summary is also rule-positive in 39.7% [38.7–40.7] of those. When it is, 31.7% [30.4–33.1] are coded; when it is not, 2.8% [2.5–3.2] (`docs/run_2026-11-10/results/imaging_funnel.json`).
+- **Carry-over check.** On dev/test, sentences the earlier prompt answered NO were not asked again with the final prompt. A stratified sample of 3,000 of them was asked: the answer was no longer NO for at most 0.67% (95% upper bound 1.23%), population-weighted. The expected number of admissions that would change label is at most 37 of 29,980 (95% upper bound 346). No stored label was changed (`docs/run_2026-11-10/results/carryover_check.json`).
+
 <!-- preliminary-results:end -->
 
 ## Obtaining and verifying the data
@@ -169,6 +177,7 @@ Stages in order, with the document each writes. See [run_pipeline.sh](run_pipeli
 | 13 | Models: structured, notes, fusion | `run0919_features.py`, `run0919_aim1b_structured.py`, `run0919_notes_tfidf.py`, `run0919_notes_embed_arm.py`, `run0919_fusion_lock.py` | `docs/aim1b_structured.md`, `docs/aim1b_notes.md`, `docs/aim1b_fusion.md`, `docs/aim1b_locked_predictions.md` |
 | 14 | Gold-standard evaluation (after adjudication) | `aim1b_evaluate_gold.py`, `aim1b_gold_cv.py` | pending the chart review |
 | 15 | Local-LLM sentence review (exploratory, amendments h–j) | `liver_sentences.py`, `llm_sentence_review.py`, `llm_phenotype.py`, `llm_annotation.py`, `llm_review_results.py`, `aim1c_llm_level1.py`, `aim1b_llm_label.py`, `llm_gold_lock.py`, `readme_preliminary.py` | `docs/llm_review_protocol.md`, `docs/llm_review_preliminary.md`, `docs/aim1c_llm_level1.md`, `docs/aim1b_llm_label.md`, `docs/llm_gold_lock.md` |
+| 16 | Exploratory analyses, record corrections and the push gate (run of 10 November 2026; amendments k–o) | `run1110_push_gate.py`, `run1110_gated_push.sh`, `run1110_carryover_check.py`, `run1110_fib4_by_cell.py`, `run1110_later_outcomes.py`, `run1110_icd_era.py`, `run1110_imaging_funnel.py`, `run1110_preliminary_doc.py`, `run1110_reviewer_onepager.py`, `run1110_pilot_packets.py`, `run1110_manuscript_llm.py`, `run1110_decisions.py`, `run1110_final_report.py` | `docs/preliminary_2026-11-10.md`, `docs/adjudication/reviewer_onepager.md`, `docs/run_2026-11-10/` (run log, decisions, blockers, final report) |
 
 Runs are journalled under `docs/run_<date>/`: `RUN_LOG.md` (what was done and why), `STATE.json`, `DECISIONS_FOR_KYLE.md` (open protocol questions), `BLOCKERS.md`, `FINAL_REPORT.md`.
 
@@ -178,10 +187,12 @@ Runs are journalled under `docs/run_<date>/`: `RUN_LOG.md` (what was done and wh
 
 **Never tracked** (all git-ignored): anything under `data/` (raw MIMIC files, cleaned population, per-note index, assembled note text, embeddings, predictions, adjudication keys and reviewer forms), `models/` (fitted models are credentialed derivatives), `logs/`, and `*.csv` / `*.parquet` anywhere.
 
-Confirm before any commit:
+**This repository is public.** Every push passes `scripts/run1110_push_gate.py`. It checks each unpushed commit, one by one, for: paths under `data/`, `models/` or `logs/`; tabular or binary files; real patient or admission identifiers; note text; counts from 1 to 10; changed lines in `scripts/masld_config.py`; and any change to a frozen or locked file.
+
+Push only this way:
 
 ```bash
-git status --short | grep -E "data/|models/|logs/"   # must print nothing
+zsh scripts/run1110_gated_push.sh   # runs scripts/run1110_push_gate.py and pushes only if the gate exits 0
 ```
 
 ## Reference standard
@@ -190,5 +201,8 @@ The 400-chart adjudication has **not** been performed, and clinician reviewers j
 
 - **Ready:** the blank instrument and reviewer assignment exist, and the packet generator has been dry-run and its output deleted. Every model arm's predictions on the held-out charts (`docs/aim1b_locked_predictions.md`) and the local language model's answers (`docs/llm_gold_lock.md`) are hashed and locked, so it can be shown that nothing was tuned against the review.
 - **Still needed:** clinician sign-off on the criteria (`docs/adjudication_criteria.md`; every `[CLINICIAN]` flag is an open question) and the reviewers themselves.
+- **Lock tag:** the commit that locked the language model's answers carries the annotated tag `llm-gold-lock-v1`.
+- **For prospective reviewers:** [docs/adjudication/reviewer_onepager.md](docs/adjudication/reviewer_onepager.md), one page on the task, the hours and the access needed. It is held until two open decisions are made (N-08 and N-10 in `docs/run_2026-11-10/DECISIONS_FOR_KYLE.md`).
+- **Proposed revision of the criteria:** a proposal exists but is not in this repository yet. The push gate holds it back (`docs/run_2026-11-10/BLOCKERS.md`, B-01; decision N-09).
 
 No performance number anywhere in this repository is validated against human adjudication. Each is either a comparison of two computable phenotypes or a silver-label development diagnostic.

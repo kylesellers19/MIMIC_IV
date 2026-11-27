@@ -64,11 +64,14 @@ This study estimates how large that uncounted group is. It then tests whether in
 - **Question:** can models predict documented steatosis from structured data, from note text, and from both?
 - **Approach:**
   - **Structured data:** gradient-boosted trees, with clinical-only and availability-only feature sets to show which inputs the prediction rests on.
-  - **Notes and both:** text models, and a stacked combination of the two.
+  - **Notes and both:** text models, and two ways of combining them with the structured model:
+    - **stacked:** a single logistic regression on the two models' predictions, the version of record;
+    - **hierarchical Bayesian:** the same combination with weights allowed to differ across eight strata of what was recorded (discharge summary, liver imaging, FIB-4 labs), partially pooled. It was added by amendment (q) on 27 November 2026, before it was fitted.
   - **Process:** trained on a development partition, checked once on a test partition, then evaluated against the chart review on a held-out set no model was fitted on.
 - **Hypothesis:** against the chart review, adding notes discriminates better than structured data alone among uncoded admissions.
 - **Status:**
   - Development is complete against keyword labels.
+  - The hierarchical combination was checked once on the test partition against the keyword label (`docs/aim1b_hier_fusion.md`). It is a development diagnostic and is not scored on the held-out charts.
   - Predictions on the held-out charts are hashed and locked.
   - Evaluation awaits the chart review.
 
@@ -191,9 +194,9 @@ Stages in order, with the document each writes. See [run_pipeline.sh](run_pipeli
 
 Runs are journalled under `docs/run_<date>/`: `RUN_LOG.md` (what was done and why), `STATE.json`, `DECISIONS_FOR_KYLE.md` (open protocol questions), `BLOCKERS.md`, `FINAL_REPORT.md`.
 
-## PySpark pipeline (in progress)
+## PySpark pipeline
 
-A PySpark reimplementation of the data preparation is being built one step at a time and checked for parity against the pipeline above, which stays the version of record. It runs in Spark local mode on one machine and is meant to run on a Spark cluster with only a change of config.
+A PySpark reimplementation of the data preparation, built one step at a time and checked for parity against the pipeline above, which stays the version of record. Every step has run on MIMIC in Spark local mode on one machine. The same jobs run on a Spark cluster with only a change of config; that path has been tested on invented data only.
 
 - **Where it writes:** nothing goes into `data/processed/`. Parquet output goes to `data/spark/`, run logs to `runs/<name>/`; both are git-ignored.
 - **Definitions:** frozen definitions are imported from the repository, or copied with tests that pin the copy to its source. None is re-decided.
@@ -275,13 +278,28 @@ make spark-parity
 make spark-scale
 ```
 
-Parity does not re-run the current pipeline, because its writers overwrite frozen files. It compares against the files that pipeline stored, made from the same checksummed raw files; the frozen ones are compared only after their SHA-256 matches. The comparison runs in DuckDB and reports, per table, the keys found on only one side and the differences in each column. Differences at same-time lab ties are counted as explained. Details are in [masld_spark/parity.py](masld_spark/parity.py) and [masld_spark/scale.py](masld_spark/scale.py). The cluster configuration (`conf/spark_cluster.yaml`) and its setup guide are in [docs/spark_cluster.md](docs/spark_cluster.md).
+Parity does not re-run the current pipeline, because its writers overwrite frozen files. It compares against the files that pipeline stored, made from the same checksummed raw files; the frozen ones are compared only after their SHA-256 matches. The comparison runs in DuckDB and reports, per table, the keys found on only one side and the differences in each column. Differences at same-time lab ties are counted as explained. Details are in [masld_spark/parity.py](masld_spark/parity.py) and [masld_spark/scale.py](masld_spark/scale.py). 
+**On a cluster.** `conf/spark_standalone.yaml` points the same jobs at a Spark standalone cluster. Its master and workers start without the repository on their path, so each job's code reaches the executors only in the zip that `scripts/spark_job.py` ships. To repeat the end-to-end test on invented data, which reads no MIMIC file:
+
+```bash
+make spark-standalone-start
+```
+
+```bash
+make spark-cluster-smoke
+```
+
+```bash
+make spark-standalone-stop
+```
+
+The smoke test runs every step as a separate cluster job and checks that each ran on the cluster's master. Running the MIMIC steps on a cluster also needs storage that every worker can read. The Databricks configuration (`conf/spark_cluster.yaml`) has never been run. Both options, and what to check first, are in [docs/spark_cluster.md](docs/spark_cluster.md).
 
 ## What is tracked, and what never is
 
 **Tracked:** code, SQL, tests, and aggregate documents under `docs/`. Every number in a document is written by a script into a results file under `docs/**/results/`, and the document names the script and file that produced it. Counts below 11 appear as `<11`.
 
-**Never tracked** (all git-ignored): anything under `data/` (raw MIMIC files, cleaned population, per-note index, assembled note text, embeddings, predictions, adjudication keys and reviewer forms), `models/` (fitted models are credentialed derivatives), `logs/`, and `*.csv` / `*.parquet` anywhere.
+**Never tracked** (all git-ignored): anything under `data/` (raw MIMIC files, cleaned population, per-note index, assembled note text, embeddings, predictions, adjudication keys and reviewer forms), `models/` (fitted models are credentialed derivatives), `logs/`, `runs/` (Spark run logs; their `private/` folders can quote a record), and `*.csv` / `*.parquet` anywhere.
 
 **This repository is public.** Every push passes `scripts/run1110_push_gate.py`. It checks each unpushed commit, one by one, for: paths under `data/`, `models/` or `logs/`; tabular or binary files; real patient or admission identifiers; note text; counts from 1 to 10; changed lines in `scripts/masld_config.py`; and any change to a frozen or locked file.
 

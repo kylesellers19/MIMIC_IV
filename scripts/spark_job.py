@@ -1,17 +1,21 @@
 #!/usr/bin/env python3
-"""Cluster entry point for the PySpark pipeline: one step per job task, on the cluster's existing Spark session.
+"""Cluster entry point for the PySpark pipeline: one step per invocation (one job task on Databricks).
 
-    python scripts/spark_job.py <step> --config conf/spark_cluster.local.yaml [step options]
+    python scripts/spark_job.py <step> --config <yaml> [step options]
     steps: ingest, ingest-verify, cohort, splits, notes, gates, scale   (parity runs locally; see docs/spark_cluster.md)
 
-It puts the repository root on sys.path, ships masld_spark/ and scripts/*.py to the executors as one zip (the note
-step's Python workers import the frozen rule and the text functions from there), then calls the step's main() with
-the existing session, which it never stops. Locally, use the Makefile targets instead.
+Session: when the config names a master (spark.master, e.g. spark://host:7077 for a standalone cluster), the session
+is built from the config, with the JVM log in runs/_job-<time>/private/; when spark.master is null (Databricks), the
+cluster's existing session is used. Either way it ships masld_spark/ and scripts/*.py to the executors as one zip (the
+note step's Python workers import the frozen rule and the text functions from there) and calls the step's main()
+with that session. It stops only a session it built. Locally, use the Makefile targets instead.
 """
+import argparse
 import importlib
 import sys
 import tempfile
 import zipfile
+from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -47,6 +51,21 @@ def ship(spark, z):
         return "addArtifacts"
 
 
+def session(rest):
+    """-> (session, built_here)"""
+    from pyspark.sql import SparkSession
+    from masld_spark import config as C
+    from masld_spark.session import build
+    ap = argparse.ArgumentParser(add_help=False)
+    ap.add_argument("--config", default="conf/spark_local.yaml")
+    a, _ = ap.parse_known_args(rest)
+    cfg = C.load(a.config)
+    if cfg["spark"]["master"]:
+        private = C.paths(cfg)["runs_root"] / f"_job-{datetime.now():%Y%m%d-%H%M%S}" / "private"
+        return build(cfg, private), True
+    return SparkSession.builder.getOrCreate(), False
+
+
 def main(argv=None):
     argv = list(sys.argv[1:] if argv is None else argv)
     if not argv or argv[0] not in STEPS:
@@ -57,11 +76,15 @@ def main(argv=None):
     mod = importlib.import_module(module)
     if extra is None:
         return mod.main(rest)
-    from pyspark.sql import SparkSession
-    spark = SparkSession.builder.getOrCreate()
-    how = ship(spark, bundle(tempfile.mkdtemp(prefix="masld_spark_")))
-    print(f"[job] {step}: code shipped to the executors ({how})", flush=True)
-    return mod.main(rest + extra, spark=spark)
+    spark, built = session(rest)
+    try:
+        how = ship(spark, bundle(tempfile.mkdtemp(prefix="masld_spark_")))
+        print(f"[job] {step}: master {spark.sparkContext.master if built else 'cluster session'}; "
+              f"code shipped to the executors ({how})", flush=True)
+        return mod.main(rest + extra, spark=spark)
+    finally:
+        if built:
+            spark.stop()
 
 
 if __name__ == "__main__":

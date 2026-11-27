@@ -11,7 +11,9 @@ The one exception, GGT's itemid, is an item assignment in make_tables.py; tests/
 checks that copy against the source line.
 """
 import ast
+import os
 import re
+import zipfile
 from pathlib import Path
 
 from scripts.masld_config import LAB_ITEMIDS, MASLD_PREDICATE  # noqa: F401 — re-exported
@@ -19,9 +21,23 @@ from scripts.masld_config import LAB_ITEMIDS, MASLD_PREDICATE  # noqa: F401 — 
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def repo_text(relpath):
+    """A repository file's text: from the checkout, or, on a cluster executor that imported this package from the
+    zip that scripts/spark_job.py ships, from the same path inside that zip."""
+    p = ROOT / relpath
+    if p.exists():
+        return p.read_text()
+    here = str(Path(__file__))
+    i = here.find(".zip" + os.sep)
+    if i < 0:
+        raise FileNotFoundError(relpath)
+    with zipfile.ZipFile(here[:i + 4]) as z:
+        return z.read(relpath).decode("utf-8")
+
+
 def literal_from(relpath, name):
     """The literal value assigned to `name` at the top level of a repository file (also `A, B = 1, 2` forms)."""
-    tree = ast.parse((ROOT / relpath).read_text())
+    tree = ast.parse(repo_text(relpath))
     for node in tree.body:
         if not isinstance(node, ast.Assign):
             continue
@@ -64,7 +80,7 @@ MED_FLAGS = ("insulin", "metformin", "oral_ad", "bb", "htn_qual", "htn_excl", "l
 
 def cmrf_code_flags_select():
     """The select list of cmrf.py's code-flag query (`max(...) ow_code, ...`), translated to Spark SQL."""
-    src = (ROOT / "scripts/cmrf.py").read_text()
+    src = repo_text("scripts/cmrf.py")
     m = re.search(r"SELECT hadm_id,\n(.*?)\n\s*FROM d GROUP BY hadm_id", src, re.S)
     if not m:
         raise ValueError("code-flag query not found in scripts/cmrf.py")
@@ -77,7 +93,7 @@ def cmrf_code_flags_select():
 
 def cmrf_match():
     """cmrf.py's drug lists and match(d), executed from its source (the slice run0919_features.py executes)."""
-    src = (ROOT / "scripts/cmrf.py").read_text()
+    src = repo_text("scripts/cmrf.py")
     i0 = src.index("INSULIN = ")
     i1 = src.index("def match")
     i2 = src.index("\n\n", i1)

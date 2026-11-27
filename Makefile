@@ -12,6 +12,8 @@
 #   make spark-gates-restore QRUN=<gates run name>   move quarantined stages back after review
 #   make spark-parity           Step 6a: parity with the current pipeline's stored files (DuckDB, counts only)
 #   make spark-scale            Step 6b: time per stage, peak memory, rows, notes and tokens per second
+#   make spark-standalone-start / spark-standalone-stop   a Spark standalone cluster (master + 2 workers) on 127.0.0.1
+#   make spark-cluster-smoke    every step as a cluster job on invented data, against that cluster; reads no MIMIC file
 #
 # Extra arguments: make spark-ingest ARGS="--tables admissions,patients"
 
@@ -21,7 +23,8 @@ QRUN ?=
 RUN  := zsh scripts/spark_env.sh
 
 .PHONY: spark-setup spark-test spark-ingest spark-ingest-verify spark-cohort spark-splits spark-notes \
-        spark-gates spark-gates-restore spark-parity spark-scale
+        spark-gates spark-gates-restore spark-parity spark-scale \
+        spark-standalone-start spark-standalone-stop spark-cluster-smoke
 
 spark-setup:
 	uv venv --allow-existing .venv-spark --python /opt/homebrew/opt/python@3.12/bin/python3.12
@@ -57,3 +60,12 @@ spark-parity:
 
 spark-scale:
 	$(RUN) -m masld_spark.scale --config $(CONF) $(ARGS)
+
+spark-standalone-start:
+	zsh scripts/spark_standalone.sh start 2 2 3g
+
+spark-standalone-stop:
+	zsh scripts/spark_standalone.sh stop
+
+spark-cluster-smoke:
+	$(RUN) scripts/spark_cluster_smoke.py

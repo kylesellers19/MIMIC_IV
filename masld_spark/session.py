@@ -5,6 +5,8 @@ CSV record or value that failed, and only aggregates may be printed. On a cluste
 (spark.master: null), getOrCreate() returns it and only runtime-settable options apply.
 """
 import logging
+import os
+import sys
 
 from masld_spark.config import paths
 
@@ -27,6 +29,13 @@ def build(cfg, private_dir=None):
     p["local_dir"].mkdir(parents=True, exist_ok=True)
     conf = {k: (str(v).lower() if isinstance(v, bool) else str(v)) for k, v in (cfg["spark"]["conf"] or {}).items()}
     conf.setdefault("spark.local.dir", str(p["local_dir"]))   # shuffle/spill files hold patient data: keep them under data/
+    master = cfg["spark"]["master"] or ""
+    if master and not master.startswith("local"):
+        # Executors start their Python workers with the driver's interpreter (same path on every node). PySpark takes
+        # it from PYSPARK_PYTHON when the context starts, not from spark.pyspark.python, so both are set.
+        os.environ.setdefault("PYSPARK_PYTHON", sys.executable)
+        conf.setdefault("spark.pyspark.python", sys.executable)
+        conf.setdefault("spark.executorEnv.HF_HUB_OFFLINE", "1")
     if private_dir is not None:
         private_dir.mkdir(parents=True, exist_ok=True)
         props = private_dir / "log4j2.properties"

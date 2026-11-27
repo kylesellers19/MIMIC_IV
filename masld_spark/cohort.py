@@ -420,7 +420,9 @@ def run_cohort(spark, cfg, log, force=False):
     checks = [(k, got[k], ref[k]) for k in REFERENCE_KEYS]
     npop = got["population_admissions"]
     checks += [("population hadm_id unique", locked.select("hadm_id").distinct().count(), npop),
-               ("population_clean rows (clean_population.N_EXPECT)", clean.count(), D.CLEAN_N_EXPECT),
+               ("population_clean rows (clean_population.N_EXPECT)", clean.count(),
+                # cohort.clean_rows_expected exists only for synthetic smoke tests; real runs use the frozen value
+                int((cfg.get("cohort") or {}).get("clean_rows_expected", D.CLEAN_N_EXPECT))),
                ("cmrf rows", cm.count(), npop), ("fib4 rows", fb.count(), npop),
                ("patients_flags rows", pf.count(), got["population_subjects"])]
     results = []

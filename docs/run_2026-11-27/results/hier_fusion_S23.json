@@ -1,0 +1,446 @@
+{
+ "header": "DEVELOPMENT DIAGNOSTIC \u2014 silver label; the notes input shares a source with the label. Amendment (q), sensitivity S23 (FS-A structured input).",
+ "seed": 20261127,
+ "inputs": {
+  "structured": "cat|FS-A|unweighted",
+  "notes": "tfidf|S|unweighted",
+  "notes_source": "tfidf"
+ },
+ "standardisation": {
+  "mean": {
+   "p_structured": -3.539657802514564,
+   "p_notes": -3.1185555123010866
+  },
+  "sd": {
+   "p_structured": 1.5848553044114049,
+   "p_notes": 1.0744682011468758
+  }
+ },
+ "priors": {
+  "mu_sd": [
+   5.0,
+   2.5,
+   2.5
+  ],
+  "tau_prior": "gamma",
+  "tau_scale": [
+   0.5,
+   0.5,
+   0.5
+  ]
+ },
+ "form": "marginal",
+ "convergence": {
+  "criteria": {
+   "rhat_max": 1.01,
+   "ess_min": 400.0,
+   "divergences": 0
+  },
+  "attempts": [
+   {
+    "form": "marginal",
+    "target_accept": 0.9,
+    "warmup": 1000,
+    "rhat_max": 1.004790444043225,
+    "ess_min": 654.7815367461376,
+    "divergences": 0
+   }
+  ],
+  "converged": true,
+  "chains": [
+   {
+    "step_size": 0.3379440030390144,
+    "accept_mean": 0.8779697983266745,
+    "divergences": 0,
+    "leapfrog_mean": 4.416
+   },
+   {
+    "step_size": 0.29268691865682644,
+    "accept_mean": 0.9218551622539866,
+    "divergences": 0,
+    "leapfrog_mean": 5.158
+   },
+   {
+    "step_size": 0.31518615844216064,
+    "accept_mean": 0.8861439250123548,
+    "divergences": 0,
+    "leapfrog_mean": 4.78
+   },
+   {
+    "step_size": 0.27870106406582934,
+    "accept_mean": 0.9320303542762925,
+    "divergences": 0,
+    "leapfrog_mean": 5.398
+   }
+  ]
+ },
+ "posterior": {
+  "mu": {
+   "intercept": {
+    "mean": -3.7365258256086595,
+    "sd": 0.2634523837111778,
+    "q2.5": -4.259835632202675,
+    "q97.5": -3.214742736304693
+   },
+   "w_structured": {
+    "mean": 1.191464972612149,
+    "sd": 0.14881395375833859,
+    "q2.5": 0.9403617014302534,
+    "q97.5": 1.5263611154369612
+   },
+   "w_notes": {
+    "mean": 1.1289906101326554,
+    "sd": 0.13739051841195501,
+    "q2.5": 0.8575773080278355,
+    "q97.5": 1.4100314900726054
+   }
+  },
+  "tau": {
+   "intercept": {
+    "mean": 0.6335365324508198,
+    "sd": 0.2344213190218367,
+    "q2.5": 0.31132456379688833,
+    "q97.5": 1.2075554495256384
+   },
+   "w_structured": {
+    "mean": 0.2653814040518383,
+    "sd": 0.16409895075557246,
+    "q2.5": 0.0721089283909456,
+    "q97.5": 0.6664419900640096
+   },
+   "w_notes": {
+    "mean": 0.3048372266041865,
+    "sd": 0.14009996587531756,
+    "q2.5": 0.12065315689135898,
+    "q97.5": 0.6491748223551811
+   }
+  },
+  "strata": [
+   {
+    "stratum": "discharge summary no \u00b7 liver imaging no \u00b7 FIB-4 inputs no",
+    "dev_admissions": 1971,
+    "dev_positives": 14,
+    "intercept": {
+     "mean": -3.3638706954159905,
+     "sd": 0.3018221290312272,
+     "q2.5": -3.9500875313133803,
+     "q97.5": -2.7701241788248416
+    },
+    "w_structured": {
+     "mean": 1.3064026617725386,
+     "sd": 0.2949701245022517,
+     "q2.5": 0.8192852895384074,
+     "q97.5": 2.000364341420784
+    },
+    "w_notes": {
+     "mean": 1.2763748694552306,
+     "sd": 0.1908160347008665,
+     "q2.5": 0.924976374446074,
+     "q97.5": 1.6676812151261604
+    }
+   },
+   {
+    "stratum": "discharge summary no \u00b7 liver imaging no \u00b7 FIB-4 inputs yes",
+    "dev_admissions": 96,
+    "dev_positives": "<11",
+    "intercept": {
+     "mean": -3.4507532039220488,
+     "sd": 0.5512590640816589,
+     "q2.5": -4.520502617711374,
+     "q97.5": -2.3250664584902245
+    },
+    "w_structured": {
+     "mean": 1.2669643972053104,
+     "sd": 0.356834408804101,
+     "q2.5": 0.7015357407517446,
+     "q97.5": 2.136217782562572
+    },
+    "w_notes": {
+     "mean": 1.2418549116965254,
+     "sd": 0.2959503276616388,
+     "q2.5": 0.7226038603836625,
+     "q97.5": 1.916190609889356
+    }
+   },
+   {
+    "stratum": "discharge summary no \u00b7 liver imaging yes \u00b7 FIB-4 inputs no",
+    "dev_admissions": 493,
+    "dev_positives": 67,
+    "intercept": {
+     "mean": -4.305092545885123,
+     "sd": 0.3122766570971476,
+     "q2.5": -4.973761725404924,
+     "q97.5": -3.7537946582235033
+    },
+    "w_structured": {
+     "mean": 1.2879684584626403,
+     "sd": 0.20828903557311756,
+     "q2.5": 0.9282178061339483,
+     "q97.5": 1.737992817413465
+    },
+    "w_notes": {
+     "mean": 0.886952287729705,
+     "sd": 0.12894991133408326,
+     "q2.5": 0.6360531458269983,
+     "q97.5": 1.1372254593137523
+    }
+   },
+   {
+    "stratum": "discharge summary no \u00b7 liver imaging yes \u00b7 FIB-4 inputs yes",
+    "dev_admissions": 91,
+    "dev_positives": "withheld",
+    "intercept": {
+     "mean": -4.172239592697948,
+     "sd": 0.4374992880309063,
+     "q2.5": -5.109905387153045,
+     "q97.5": -3.3981533315211623
+    },
+    "w_structured": {
+     "mean": 1.1617243726429294,
+     "sd": 0.2496213923572411,
+     "q2.5": 0.6603910069417831,
+     "q97.5": 1.7104750293768705
+    },
+    "w_notes": {
+     "mean": 0.9900850081897271,
+     "sd": 0.22903567124564803,
+     "q2.5": 0.5192744904400737,
+     "q97.5": 1.4395204968966988
+    }
+   },
+   {
+    "stratum": "discharge summary yes \u00b7 liver imaging no \u00b7 FIB-4 inputs no",
+    "dev_admissions": 8858,
+    "dev_positives": 191,
+    "intercept": {
+     "mean": -3.099188291905927,
+     "sd": 0.07750952971654984,
+     "q2.5": -3.2485679636816225,
+     "q97.5": -2.94628534887436
+    },
+    "w_structured": {
+     "mean": 1.2879880494442664,
+     "sd": 0.12359523954737998,
+     "q2.5": 1.0501913655682327,
+     "q97.5": 1.54218766099571
+    },
+    "w_notes": {
+     "mean": 1.2778165804278483,
+     "sd": 0.13055994306353108,
+     "q2.5": 1.0340513961687177,
+     "q97.5": 1.5420065872347077
+    }
+   },
+   {
+    "stratum": "discharge summary yes \u00b7 liver imaging no \u00b7 FIB-4 inputs yes",
+    "dev_admissions": 4408,
+    "dev_positives": 155,
+    "intercept": {
+     "mean": -3.3758176584882174,
+     "sd": 0.09877796458430073,
+     "q2.5": -3.578103855953565,
+     "q97.5": -3.1858348110635917
+    },
+    "w_structured": {
+     "mean": 1.1737865051003271,
+     "sd": 0.1150720561295428,
+     "q2.5": 0.949246065271928,
+     "q97.5": 1.4023564191409204
+    },
+    "w_notes": {
+     "mean": 1.3761158001918055,
+     "sd": 0.14954334974109557,
+     "q2.5": 1.0950898632072694,
+     "q97.5": 1.6803574138755888
+    }
+   },
+   {
+    "stratum": "discharge summary yes \u00b7 liver imaging yes \u00b7 FIB-4 inputs no",
+    "dev_admissions": 3098,
+    "dev_positives": 393,
+    "intercept": {
+     "mean": -4.025349644510255,
+     "sd": 0.13456131814169445,
+     "q2.5": -4.306330392283926,
+     "q97.5": -3.770854644116613
+    },
+    "w_structured": {
+     "mean": 1.0487013077113143,
+     "sd": 0.1043548892055911,
+     "q2.5": 0.8434037193865622,
+     "q97.5": 1.2524509737211462
+    },
+    "w_notes": {
+     "mean": 1.0855598497747754,
+     "sd": 0.07933812722565929,
+     "q2.5": 0.9372364502577705,
+     "q97.5": 1.2444839043352198
+    }
+   },
+   {
+    "stratum": "discharge summary yes \u00b7 liver imaging yes \u00b7 FIB-4 inputs yes",
+    "dev_admissions": 4801,
+    "dev_positives": 885,
+    "intercept": {
+     "mean": -4.154520991650916,
+     "sd": 0.11804017087782509,
+     "q2.5": -4.3827671531248855,
+     "q97.5": -3.924719731466831
+    },
+    "w_structured": {
+     "mean": 1.0169717029123275,
+     "sd": 0.07671852562811775,
+     "q2.5": 0.8626267681333162,
+     "q97.5": 1.167769608824315
+    },
+    "w_notes": {
+     "mean": 0.915533604331541,
+     "sd": 0.053497701034723226,
+     "q2.5": 0.8123053803582945,
+     "q97.5": 1.0218112877203138
+    }
+   }
+  ]
+ },
+ "test": {
+  "hierarchical": {
+   "all": {
+    "n": 6164,
+    "positives": 383,
+    "auroc": 0.8663403072006388,
+    "auprc": 0.48137435359071556,
+    "brier": 0.04334130203325846,
+    "log_loss": 0.16311300232335763,
+    "cal_intercept": -0.2171525999976204,
+    "cal_slope": 0.9669699976289662
+   },
+   "code_negative_only": {
+    "n": 6057,
+    "positives": 286,
+    "auroc": 0.8581198735418109,
+    "auprc": 0.3941529863047232,
+    "brier": 0.037000618704262106,
+    "log_loss": 0.14304075354102191,
+    "cal_intercept": -0.46605248863042437,
+    "cal_slope": 0.9462534796254825
+   }
+  },
+  "stacked_refit": {
+   "all": {
+    "n": 6164,
+    "positives": 383,
+    "auroc": 0.8603293493631565,
+    "auprc": 0.46424586369624343,
+    "brier": 0.044401804308889334,
+    "log_loss": 0.16745447600504515,
+    "cal_intercept": -0.2173152115744509,
+    "cal_slope": 0.9606151638390921
+   },
+   "code_negative_only": {
+    "n": 6057,
+    "positives": 286,
+    "auroc": 0.857551562975233,
+    "auprc": 0.3839474352491706,
+    "brier": 0.03753058460323229,
+    "log_loss": 0.1449636826174357,
+    "cal_intercept": -0.47585724907313465,
+    "cal_slope": 0.9567650856548008
+   },
+   "coefficients": {
+    "intercept": 0.7604398234515093,
+    "w_structured": 0.5331386243641375,
+    "w_notes": 0.7928000196840205
+   }
+  },
+  "paired_differences_hierarchical_minus_stacked": {
+   "auroc": {
+    "mean": 0.005752663227753452,
+    "ci95": [
+     -0.0012436307200501511,
+     0.013517913396297484
+    ]
+   },
+   "auprc": {
+    "mean": 0.01663249322626779,
+    "ci95": [
+     -0.0003362818195397474,
+     0.033378477022434225
+    ]
+   },
+   "brier": {
+    "mean": -0.0010443615495754365,
+    "ci95": [
+     -0.0020007998593649053,
+     -0.0001989518090355596
+    ]
+   }
+  },
+  "calibration_in_the_large_by_stratum": [
+   {
+    "stratum": "discharge summary no \u00b7 liver imaging no \u00b7 FIB-4 inputs no",
+    "admissions": 482,
+    "positives": "<11",
+    "observed_rate": null,
+    "mean_predicted_hierarchical": null,
+    "mean_predicted_stacked": null
+   },
+   {
+    "stratum": "discharge summary no \u00b7 liver imaging no \u00b7 FIB-4 inputs yes",
+    "admissions": 28,
+    "positives": "<11",
+    "observed_rate": null,
+    "mean_predicted_hierarchical": null,
+    "mean_predicted_stacked": null
+   },
+   {
+    "stratum": "discharge summary no \u00b7 liver imaging yes \u00b7 FIB-4 inputs no",
+    "admissions": 143,
+    "positives": "withheld",
+    "observed_rate": null,
+    "mean_predicted_hierarchical": null,
+    "mean_predicted_stacked": null
+   },
+   {
+    "stratum": "discharge summary no \u00b7 liver imaging yes \u00b7 FIB-4 inputs yes",
+    "admissions": 24,
+    "positives": "<11",
+    "observed_rate": null,
+    "mean_predicted_hierarchical": null,
+    "mean_predicted_stacked": null
+   },
+   {
+    "stratum": "discharge summary yes \u00b7 liver imaging no \u00b7 FIB-4 inputs no",
+    "admissions": 2260,
+    "positives": 48,
+    "observed_rate": 0.0212,
+    "mean_predicted_hierarchical": 0.0214,
+    "mean_predicted_stacked": 0.0144
+   },
+   {
+    "stratum": "discharge summary yes \u00b7 liver imaging no \u00b7 FIB-4 inputs yes",
+    "admissions": 1147,
+    "positives": 35,
+    "observed_rate": 0.0305,
+    "mean_predicted_hierarchical": 0.0311,
+    "mean_predicted_stacked": 0.0226
+   },
+   {
+    "stratum": "discharge summary yes \u00b7 liver imaging yes \u00b7 FIB-4 inputs no",
+    "admissions": 822,
+    "positives": 93,
+    "observed_rate": 0.1131,
+    "mean_predicted_hierarchical": 0.1352,
+    "mean_predicted_stacked": 0.1272
+   },
+   {
+    "stratum": "discharge summary yes \u00b7 liver imaging yes \u00b7 FIB-4 inputs yes",
+    "admissions": 1258,
+    "positives": 184,
+    "observed_rate": 0.1463,
+    "mean_predicted_hierarchical": 0.1755,
+    "mean_predicted_stacked": 0.201
+   }
+  ]
+ },
+ "runtime_s": 250
+}

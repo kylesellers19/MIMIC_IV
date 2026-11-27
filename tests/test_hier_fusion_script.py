@@ -92,3 +92,12 @@ def test_synthetic_end_to_end(tmp_path):
     assert "Weights by stratum" in (tmp_path / "out" / "doc.md").read_text()
     with pytest.raises(SystemExit, match="scored once"):
         HF.main(args + ["--quick"])
+
+
+def test_second_cell_withheld_when_the_total_gives_small_ones_back():
+    counts = {"a": {"admissions": 480, "positives": 4}, "b": {"admissions": 30, "positives": 3},
+              "c": {"admissions": 140, "positives": 16}, "d": {"admissions": 2000, "positives": 50}}
+    out = HF.public_strata(counts)
+    assert out["a"][1] == "<11" and out["b"][1] == "<11" and out["a"][2] and out["b"][2]
+    assert out["c"] == (140, "withheld", True)
+    assert out["d"] == (2000, 50, False)

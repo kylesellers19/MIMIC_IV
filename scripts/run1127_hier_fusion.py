@@ -39,7 +39,7 @@ import pandas as pd
 
 sys.path.insert(0, os.getcwd())
 from scripts import hier_bayes as HB  # noqa: E402
-from scripts.public_counts import SMALL, is_small  # noqa: E402
+from scripts.public_counts import SMALL, is_small, shown, suppress_table  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PLAN = "docs/analysis_plan_prespecified.md"
@@ -190,11 +190,10 @@ def run(a):
             m = test.stratum.to_numpy() == g
             n_g, pos = int(m.sum()), int(y[m].sum())
             raw["test_strata"][STRATUM_LABELS[g]] = {"admissions": n_g, "positives": pos}
-            hide = is_small(n_g) or is_small(pos) or is_small(n_g - pos)
-            per.append({"stratum": STRATUM_LABELS[g], "admissions": public(n_g), "positives": public(pos),
-                        "observed_rate": None if hide or not n_g else round(pos / n_g, 4),
-                        "mean_predicted_hierarchical": None if hide or not n_g else round(float(p_h[m].mean()), 4),
-                        "mean_predicted_stacked": None if hide or not n_g else round(float(p_l[m].mean()), 4)})
+            per.append({"stratum": STRATUM_LABELS[g], "admissions": n_g, "positives": pos,      # suppressed below
+                        "observed_rate": None if not n_g else round(pos / n_g, 4),
+                        "mean_predicted_hierarchical": None if not n_g else round(float(p_h[m].mean()), 4),
+                        "mean_predicted_stacked": None if not n_g else round(float(p_l[m].mean()), 4)})
         res["test"]["calibration_in_the_large_by_stratum"] = per
         pd.DataFrame({"hadm_id": test.hadm_id, "stratum": test.stratum, "p_hierarchical": p_h, "p_stacked_refit": p_l}) \
           .to_parquet(os.path.join(a.processed, f"run_2026-11-27_hier_fusion{a.tag}_test.parquet"), index=False)
@@ -212,12 +211,47 @@ def run(a):
     np.savez_compressed(os.path.join(a.processed, f"run_2026-11-27_hier_fusion{a.tag}_draws.npz"),
                         draws=fit["draws"], mu=fit["mu"])
     res["runtime_s"] = round(time.time() - t0)
+    apply_suppression(res, raw)
     os.makedirs(os.path.dirname(a.results), exist_ok=True)
     json.dump(res, open(a.results, "w"), indent=1)
     os.makedirs(os.path.join(a.processed, "results_raw"), exist_ok=True)
     json.dump(raw, open(os.path.join(a.processed, "results_raw", f"hier_fusion{a.tag}_raw.json"), "w"), indent=1)
     write_doc(a.doc, res, a.results, a.tag)
     return 0 if ok else 1
+
+
+def public_strata(counts):
+    """counts {stratum: {"admissions", "positives"}} -> {stratum: (admissions, positives, hide)} as published.
+    Counts 1-10 appear as <11, and a second cell is withheld wherever a published total (the stratum's admissions, or
+    the total positives and negatives) would give one back by subtraction (scripts/public_counts.suppress_table)."""
+    rows = [{"stratum": k, "positives": c["positives"], "negatives": c["admissions"] - c["positives"]} for k, c in counts.items()]
+    mask = suppress_table(rows, ("positives", "negatives"))
+    return {k: (public(c["admissions"]), shown(c["positives"], mask[k].get("positives")),
+                bool(mask[k]) or is_small(c["admissions"])) for k, c in counts.items()}
+
+
+def apply_suppression(res, raw):
+    """Puts the published form of every per-stratum count into res; shares from a hidden cell are withheld too."""
+    dev = public_strata(raw["dev_strata"])
+    for s in res["posterior"]["strata"]:
+        s["dev_admissions"], s["dev_positives"], _ = dev[s["stratum"]]
+    if isinstance(res.get("test"), dict):
+        test = public_strata(raw["test_strata"])
+        for s in res["test"]["calibration_in_the_large_by_stratum"]:
+            s["admissions"], s["positives"], hide = test[s["stratum"]]
+            if hide:
+                s["observed_rate"] = s["mean_predicted_hierarchical"] = s["mean_predicted_stacked"] = None
+    return res
+
+
+def republish(a):
+    """Rewrites the public JSON and page from the stored results and counts, without refitting or rescoring."""
+    raw_path = os.path.join(a.processed, "results_raw", f"hier_fusion{a.tag}_raw.json")
+    res = apply_suppression(json.load(open(a.results)), json.load(open(raw_path)))
+    json.dump(res, open(a.results, "w"), indent=1)
+    write_doc(a.doc, res, a.results, a.tag)
+    print(f"[hier] republished {a.results} and {a.doc}", flush=True)
+    return 0
 
 
 def write_doc(path, res, results_path, tag=""):
@@ -253,6 +287,16 @@ def write_doc(path, res, results_path, tag=""):
         L += ["", "Paired subject-cluster bootstrap, hierarchical minus stacked (500 replicates): " + "; ".join(
             f"{k} {v['mean']:+.4f} ({v['ci95'][0]:+.4f}, {v['ci95'][1]:+.4f})"
             for k, v in res["test"]["paired_differences_hierarchical_minus_stacked"].items()) + ".\n"]
+        L += ["## Calibration in the large by stratum (TEST)\n",
+              "Observed rate against mean predicted probability. A stratum's rates are withheld where a count is "
+              "suppressed.\n", "| stratum | admissions | positives | observed | hierarchical | stacked |",
+              "| --- | --: | --: | --: | --: | --: |"]
+        r = lambda v: "—" if v is None else f"{v:.3f}"
+        c = lambda v: v if isinstance(v, str) else format(v, ",")
+        for s in res["test"]["calibration_in_the_large_by_stratum"]:
+            L.append(f"| {s['stratum']} | {c(s['admissions'])} | {c(s['positives'])} | {r(s['observed_rate'])} | "
+                     f"{r(s['mean_predicted_hierarchical'])} | {r(s['mean_predicted_stacked'])} |")
+        L.append("")
     else:
         L.append(f"## TEST\n\n{res['test']}.\n")
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
@@ -267,6 +311,7 @@ def main(argv=None):
     ap.add_argument("--draws", type=int, default=1000)
     ap.add_argument("--quick", action="store_true", help="synthetic tests only: the policy with shorter warm-up")
     ap.add_argument("--force", action="store_true", help="score TEST again (it is meant to be scored once)")
+    ap.add_argument("--republish", action="store_true", help="rewrite the public JSON and page from stored results")
     a = ap.parse_args(argv)
     a.tag = "" if a.structured == "FS-B" else "_S23"
     for k in ("results", "doc"):                     # S23 writes beside the primary, never over it
@@ -279,6 +324,8 @@ def main(argv=None):
         if not amendment_committed():
             sys.exit(f"REFUSING: amendment (q) is not in the committed {PLAN}. The analysis plan must record it "
                      "before this model touches the data (see docs/run_2026-11-27/AMENDMENT_q_DRAFT.md).")
+    if a.republish:
+        return republish(a)
     if os.path.exists(a.results) and not a.force:
         sys.exit(f"REFUSING: {a.results} exists; TEST is scored once. Pass --force only to redo a failed run.")
     return run(a)

@@ -46,6 +46,7 @@
 | S20 | Later outcomes after an uncoded mention (amendment m) | 2026-11-10 | exploratory; not run when this row was committed → `docs/preliminary_2026-11-10.md` |
 | S21 | Coding by period (amendment n) | 2026-11-10 | exploratory; not run when this row was committed → `docs/preliminary_2026-11-10.md` |
 | S22 | Documentation funnel where the liver was imaged (amendment o) | 2026-11-10 | exploratory; not run when this row was committed → `docs/preliminary_2026-11-10.md` |
+| S23 | Hierarchical Bayesian fusion with FS-A as the structured input (amendment q) | 2026-11-27 | exploratory; not run when this row was committed → `docs/aim1b_hier_fusion_S23.md` |
 
 ## 3. Amendments dated 2026-09-19
 
@@ -139,3 +140,44 @@ Common to (l)–(o): exploratory; admission grain unless stated; primary definit
   - **Already seen (dev/test only):** the distribution of both candidate scores on the 29,980 admissions of the dev/test notes subsample (`docs/run_2026-11-10/results/decisions_inputs.json`). Cutting either score at 0.5 gave exactly the admission rule's labels. The rank correlation between the two scores was 0.996. Of the 2,252 positive admissions, 2,208 had a maximum above 0.99.
   - **Reason:** the first-token probabilities are close to 0 or 1, so a score would add almost nothing to the label, and a discrimination or calibration measure on it would not be comparable with the continuous model arms.
   - **What it does not change:** no stored answer, label, lock or result. The three probabilities remain in the locked answers file.
+
+## 8. Amendment dated 2026-11-27
+
+> *Approved by Kyle Sellers on 2026-11-27 as drafted by Claude Code (`docs/run_2026-11-27/AMENDMENT_q_DRAFT.md`). Committed before the hierarchical model was fitted on MIMIC. Already seen: the stacked fusion's published DEV and TEST results (`docs/aim1b_fusion.md`); the hierarchical model had been run only on simulated data, and no result for any stratum defined below had been computed on MIMIC. No hypothesis is recorded.*
+
+- **(q) Hierarchical Bayesian fusion (S23 for its FS-A sensitivity).**
+  - **Why.** The working paper describes the fusion as a hierarchical Bayesian combination of the gradient-boosted (structured) and text (notes) models. The repository's fusion (Phase 9.1, `scripts/run0919_fusion_lock.py`) is a single stacked logistic regression. This amendment adds the hierarchical model beside it. The stacked fusion, its results and its locked GOLD_HOLDOUT predictions are unchanged.
+  - **Inputs.** The same layer-0 predictions as the stacked fusion, read from `docs/run_2026-09-19/results/aim1b_fusion.json`: structured `cat|FS-B|unweighted` and notes `tfidf|S|unweighted`. The model is fit on their DEV out-of-fold predictions in the notes subsample and evaluated on TEST. Each logit is standardised with the DEV mean and standard deviation.
+  - **Strata.** Eight strata from three binary data-availability flags, all known at discharge (`data/processed/run_2026-09-19_features.parquet`):
+    1. a discharge summary is linked (`n_notes_dc > 0`);
+    2. the liver was imaged in the stay or in the 365 days before it (`liver_imaging_any_pre`);
+    3. AST, ALT and platelets were all measured in the stay (the FIB-4 inputs).
+
+    The strata follow H1b-i's finding that what was measured carries much of the signal, so the model is allowed to weigh the notes and structured predictions differently where the record differs.
+  - **Never inputs.** Code status, race, insurance, language, sex and age. They are equity strata (Aim 1c) and must not shape the weights.
+  - **Model.** For admission i in stratum g: y_i ~ Bernoulli(sigmoid(α_g + β_s,g z_s,i + β_n,g z_n,i)). Each stratum's (α, β_s, β_n) ~ Normal(μ, τ), component by component. μ ~ Normal(0, 5) for the intercept and Normal(0, 2.5) for each weight. τ ~ Gamma(2, rate 2), that is mode 0.5 and mean 1, a prior that keeps τ off zero with only eight strata (Chung et al. 2013). Two parameterizations of this one model are used: the *marginal* form, in which μ is integrated out analytically and drawn afterwards from its exact conditional, and the *non-centred* form. They target the same posterior and differ only in how well the sampler moves through it. The convergence policy below chooses between them; the choice does not change what is estimated.
+  - **Fitting.** `scripts/hier_bayes.py`, Hamiltonian Monte Carlo written for this study in NumPy; no probabilistic-programming library was installed. Validation is in `tests/test_hier_bayes.py`:
+    - analytic gradients against finite differences;
+    - recovery of known parameters;
+    - the maximum-likelihood answer when there is one stratum;
+    - partial pooling of a small stratum;
+    - the R̂ and effective-sample-size estimators on chains with known behaviour.
+
+    Settings: 4 chains of 1,000 draws, seed 20261127.
+  - **Convergence (fixed here).** Every sampled parameter and μ must have split R̂ ≤ 1.01 and effective sample size ≥ 400, with no divergent transition. Up to four attempts are made, in this order, stopping at the first that meets every criterion (`hier_bayes.ATTEMPTS`):
+    1. marginal form, target acceptance 0.9, 1,000 warm-up iterations;
+    2. non-centred form, 0.9, 1,000;
+    3. marginal form, 0.99, 2,000;
+    4. non-centred form, 0.99, 2,000.
+
+    If none meets them, the fit is reported as not converged and TEST is not touched. On simulated data like the study's, one of the four always met them: the marginal form where every stratum is large, the non-centred form where some weights do not vary between strata.
+  - **Evaluation, once, on TEST.**
+    - **Comparator:** the stacked fusion, refit on the same DEV rows.
+    - **Measures:** AUROC, AUPRC, Brier score, log loss, and calibration intercept and slope, for all admissions and for code-negative admissions only.
+    - **Differences:** hierarchical minus stacked, with paired subject-cluster bootstrap intervals (500 replicates).
+    - **Per stratum:** calibration in the large.
+    - **Strata seen in TEST but not in DEV** draw a new stratum from the population distribution.
+  - **Sensitivity S23.** FS-A (`cat|FS-A|unweighted`) as the structured input, as S14 did for the stacked fusion.
+  - **Labels.** Silver labels: definition (b), the frozen keyword rule. The notes input shares a source with the label, so every result is a development diagnostic, not an accuracy estimate.
+  - **What it does not change:** no stored label, prediction, lock or result.
+  - **GOLD_HOLDOUT is not scored under this amendment.** The model is a TEST-only development diagnostic; scoring the held-out charts would need a further amendment, committed before any adjudication exists.

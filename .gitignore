@@ -39,3 +39,11 @@ __pycache__/
 # Run logs and fitted models (credentialed derivatives) — never commit
 logs/
 models/
+
+# PySpark pipeline: run logs (runs/<name>/private/ can quote record values), its environment and Spark's local files
+runs/
+.venv-spark/
+conf/*.local.yaml
+spark-warehouse/
+metastore_db/
+derby.log

@@ -1,0 +1,117 @@
+# PySpark pipeline — local mode on this Mac (Apple M1 Max, 10 cores, 32 GB).
+# The cluster config (conf/spark_cluster.yaml, Step 6) differs only in paths, spark.master and spark.conf.
+# Relative paths resolve against the repository root. Everything under data/ and runs/ is git-ignored.
+
+run_name_prefix: local
+
+paths:
+  raw_root: data/raw            # hosp/*.csv.gz, note/*.csv.gz and the PhysioNet SHA256SUMS*.txt manifests
+  out_root: data/spark          # Parquet output: ingest/, _staging/, _quarantine/
+  runs_root: runs               # runs/<name>/run.json (aggregates) and runs/<name>/private/ (local only)
+  local_dir: data/spark/_tmp    # Spark shuffle and spill files hold patient data, so they stay under data/
+
+spark:
+  master: local[*]              # null on a cluster that already provides a session
+  app_name: masld-spark
+  conf:
+    spark.driver.memory: 16g
+    spark.driver.maxResultSize: 2g
+    spark.sql.session.timeZone: UTC
+    spark.sql.shuffle.partitions: 64
+    spark.sql.adaptive.enabled: true
+    spark.sql.parquet.compression.codec: zstd
+    spark.ui.enabled: false
+    spark.ui.showConsoleProgress: false
+    spark.eventLog.enabled: false
+    spark.driver.bindAddress: 127.0.0.1
+    spark.driver.host: localhost
+
+ingest:
+  tolerance_pct: 0.0            # percent of the expected count; 0 = exact (the inputs are checksummed)
+  require_manifest_match: true  # a file missing from every SHA256SUMS manifest fails
+  partitions:                   # output files per table (range-partitioned on subject_id when > 1)
+    admissions: 1
+    patients: 1
+    diagnoses_icd: 4
+    d_icd_diagnoses: 1
+    labevents: 64
+    d_labitems: 1
+    omr: 4
+    prescriptions: 16
+    discharge: 16
+    discharge_detail: 2
+    radiology: 32
+    radiology_detail: 8
+  expected_rows:                # MIMIC-IV v3.1 / MIMIC-IV-Note v2.2 rows per file. Set 2026-11-26: Spark and DuckDB
+                                # (scripts/spark_duckdb_counts.py) agreed on all 12, with every file matching its
+                                # PhysioNet checksum; admissions, patients, discharge and radiology also match docs/.
+    admissions: 546028
+    patients: 364627
+    diagnoses_icd: 6364488
+    d_icd_diagnoses: 112107
+    labevents: 158374764
+    d_labitems: 1650
+    omr: 7753027
+    prescriptions: 20292611
+    discharge: 331793
+    discharge_detail: 186138
+    radiology: 2321355
+    radiology_detail: 6046121
+
+cohort:
+  partitions:                   # output files per table; tables not listed are one file
+    note_links: 8
+  reference:                    # documented values; Step 2 exits 1 if any differs
+    analysis_admissions: 545497                     # scripts/masld_config.py docstring; sql/analysis_population.sql
+    analysis_code_positive: 9143                    # sql/analysis_population.sql
+    population_admissions: 373992                   # docs/analysis_population.md
+    population_subjects: 161119                     # docs/analysis_population.md
+    population_code_positive: 5740                  # docs/analysis_population.md
+    population_discharge_only_admissions: 331604    # docs/analysis_population.md (sensitivity, discharge-only)
+    population_discharge_only_subjects: 145817      # docs/analysis_population.md
+    population_discharge_only_code_positive: 5552   # docs/analysis_population.md
+
+splits:                         # Step 4 copies the frozen split file after checking its recorded SHA-256
+  source: data/processed/splits_v1.parquet
+  frozen_hashes: docs/run_2026-11-10/results/frozen_hashes_end.json
+  frozen_key: data/processed/splits_v1.parquet
+  reference: docs/run_2026-09-19/results/phase2_splits.json
+
+notes:
+  arrow_batch_rows: 256         # notes per pandas batch in the Python workers
+  variants: [U, M, S]           # unmasked, lexicon matches masked, sentences with a match deleted
+  max_chunks: null              # no cap per note (the September embedding capped each admission at 12 chunks)
+  files:                        # output files per table (each split further into partition=<...>/ directories)
+    notes: 32
+    token_counts: 16
+    chunks_bio_clinicalbert: 128
+  tokenizers:                   # loaded offline from the local Hugging Face cache at these revisions
+    bio_clinicalbert:
+      name: emilyalsentzer/Bio_ClinicalBERT
+      revision: d5892b39a4adaed74b92212a44081509db72f87b
+      chunk: {window: 512, stride: 64}   # run0919_embed.py: 512-token chunks, stride 64
+    clinical_longformer:
+      name: yikuan8/Clinical-Longformer
+      revision: 5e2ebe8f6e98d4751eaf71a8514e0edbe73989a2
+      chunk: null               # token counts only; give a window and stride to also write chunks_clinical_longformer
+  reference:
+    splits: docs/run_2026-09-19/results/phase2_splits.json   # note-positive admissions per partition and DEV fold
+    cells: docs/run_2026-11-10/results/fib4_by_cell.json     # admissions per code x note cell (definition b)
+
+gates:
+  max_orphan_pct: 0.1           # notes, diagnoses or admissions whose key finds no parent, as a percent of the table
+
+parity:                         # the current pipeline's stored files (read only; the frozen ones are hash-checked)
+  stored:
+    locked_population: data/processed/analysis_population.parquet
+    clean_population: data/processed/analysis_population_clean.parquet
+    cmrf: data/processed/cmrf.parquet
+    lab_features: data/processed/run_2026-09-19_lab_features.parquet
+    outpatient_fib4_inputs: data/processed/run_2026-11-10_outpt_fib4.parquet
+    frame: data/processed/aim1a_frame.parquet
+    splits: data/processed/splits_v1.parquet
+    notes_index:
+      - data/processed/run_2026-09-19_notes_index/discharge.parquet
+      - data/processed/run_2026-09-19_notes_index/radiology.parquet
+  frozen_hashes: docs/run_2026-11-10/results/frozen_hashes_end.json
+  float_tolerance: 1.0e-9

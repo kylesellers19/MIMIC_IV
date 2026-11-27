@@ -1,0 +1,49 @@
+# PySpark pipeline — cluster config (Databricks, classic compute in single-user access mode).
+# The code is the same as locally; this file lists only what differs from conf/spark_local.yaml (merged key by key;
+# spark.conf is taken whole from here). Expected row counts, population references and tokenizer revisions are
+# inherited, so a cluster run is checked against the same numbers as the local one.
+#
+# Do not fill the <...> placeholders in this tracked file. Copy it to conf/spark_cluster.local.yaml (git-ignored),
+# set `extends: conf/spark_cluster.yaml` there, and override the paths. See docs/spark_cluster.md.
+
+extends: conf/spark_local.yaml
+extends_replace: [spark.conf]
+run_name_prefix: cluster
+
+paths:
+  raw_root: /Volumes/<catalog>/<schema>/<volume>/mimic/raw     # hosp/, note/ and the SHA256SUMS*.txt manifests
+  out_root: /Volumes/<catalog>/<schema>/<volume>/mimic/spark
+  runs_root: /Volumes/<catalog>/<schema>/<volume>/mimic/runs
+  local_dir: /local_disk0/tmp   # not used on Databricks (the cluster manages spill); kept for the config check
+
+spark:
+  master: null                  # use the cluster's existing session
+  conf:                         # runtime SQL settings only; memory and cores come from the cluster definition
+    spark.sql.session.timeZone: UTC
+    spark.sql.shuffle.partitions: 256
+    spark.sql.adaptive.enabled: true
+    spark.sql.parquet.compression.codec: zstd
+
+ingest:
+  partitions:                   # more output files, so later stages read with more parallel tasks
+    labevents: 128
+    prescriptions: 32
+    discharge: 32
+    radiology: 64
+
+splits:
+  source: /Volumes/<catalog>/<schema>/<volume>/mimic/frozen/splits_v1.parquet   # uploaded copy; SHA-256 checked
+
+notes:
+  arrow_batch_rows: 256
+  files:
+    notes: 64
+    token_counts: 32
+    chunks_bio_clinicalbert: 256
+  tokenizers:                   # folders holding only the tokenizer files (no model weights), uploaded to the volume
+    bio_clinicalbert:
+      name: /Volumes/<catalog>/<schema>/<volume>/mimic/tokenizers/Bio_ClinicalBERT-d5892b39
+      revision: null
+    clinical_longformer:
+      name: /Volumes/<catalog>/<schema>/<volume>/mimic/tokenizers/Clinical-Longformer-5e2ebe8f
+      revision: null

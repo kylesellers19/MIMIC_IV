@@ -190,6 +190,92 @@ Stages in order, with the document each writes. See [run_pipeline.sh](run_pipeli
 
 Runs are journalled under `docs/run_<date>/`: `RUN_LOG.md` (what was done and why), `STATE.json`, `DECISIONS_FOR_KYLE.md` (open protocol questions), `BLOCKERS.md`, `FINAL_REPORT.md`.
 
+## PySpark pipeline (in progress)
+
+A PySpark reimplementation of the data preparation is being built one step at a time and checked for parity against the pipeline above, which stays the version of record. It runs in Spark local mode on one machine and is meant to run on a Spark cluster with only a change of config.
+
+- **Where it writes:** nothing goes into `data/processed/`. Parquet output goes to `data/spark/`, run logs to `runs/<name>/`; both are git-ignored.
+- **Definitions:** frozen definitions are imported from the repository, or copied with tests that pin the copy to its source. None is re-decided.
+- **Console output:** aggregates only, with counts from 1 to 10 shown as `<11`.
+- **What may be shared:** the console output and `runs/<name>/run.json`. Never share `runs/<name>/private/`: it holds the Spark JVM log and Python tracebacks, which can quote a record.
+
+| Step | What | Status | Command |
+| --- | --- | --- | --- |
+| setup | `.venv-spark` (Python 3.12, PySpark 4.1.4, JDK 21) | done | `make spark-setup` |
+| tests | synthetic fixtures only; no MIMIC file is read | passing | `make spark-test` |
+| 1 | ingest: SHA-256 against the PhysioNet manifests, header check, explicit schemas, Parquet, row-count gate | done 2026-11-26: all 12 files match their checksums, and Spark and DuckDB agree on every row count | `make spark-ingest`, then `make spark-ingest-verify` |
+| 2 | cohort and linkage: analysis admissions, the locked and cleaned population, CMRF and etiology flags, lab features, FIB-4, note-to-admission links, patient-level flags; population counts checked against `docs/analysis_population.md` | done 2026-11-26: every documented population count matches, and so do the CMRF share and the FIB-4 totals of the run of 10 November | `make spark-cohort` |
+| 4 | splits: the frozen `splits_v1` (never redrawn), its SHA-256 checked against the frozen record, coverage and partition counts checked against `phase2_splits.json`; run before Step 3 | done 2026-11-26: the checksum matches, and coverage and every partition and fold count agree | `make spark-splits` |
+| 3 | note preparation: every note with the frozen rule's flags, sections and liver-imaging flag; rule labels a, b, c per admission; token counts (Bio_ClinicalBERT, Clinical-Longformer) and 512-token chunks for the unmasked, masked and sentence-deleted text; tables split by partition | done 2026-11-27: the rule labels reproduce every recorded note-positive count per partition and fold and all four 2×2 cells | `make spark-notes` |
+| 5 | validation gates over every stage: counts, checksums unchanged, key nulls, duplicate ids, orphan notes, the recorded cohort size, GOLD_HOLDOUT isolation, chunk integrity; a failure quarantines the failing stage and every later one | done 2026-11-27: every gate passes | `make spark-gates` |
+| 6 | parity with the current pipeline's stored files, column by column, with same-time lab ties accounted for; scale report (time per stage, peak memory, rows, notes, tokens per second); cluster config | done locally 2026-11-27: all eight tables agree with the stored files, and every difference falls on a same-time lab tie; the whole pipeline ran in about an hour on 10 cores; the cluster config has never run on a cluster | `make spark-parity`, `make spark-scale`; cluster: [docs/spark_cluster.md](docs/spark_cluster.md) |
+
+Requires Homebrew `openjdk@21` and `python@3.12`, plus `uv`. `scripts/spark_env.sh` runs a command in `.venv-spark` with `JAVA_HOME`, `PYSPARK_PYTHON` and `PYTHONPATH` set. The September `.venv` is not touched. Configuration: `conf/spark_local.yaml`.
+
+Commands, in order:
+
+```bash
+make spark-test
+```
+
+```bash
+make spark-ingest
+```
+
+The ingest exits 3 while expected row counts are unset. Count the same files with DuckDB, the reader of the pipeline above, so the expected counts do not come from Spark alone:
+
+```bash
+scripts/run0919_env.sh scripts/spark_duckdb_counts.py
+```
+
+Where the two readers agree, enter the counts under `ingest.expected_rows` in `conf/spark_local.yaml`, then:
+
+```bash
+make spark-ingest-verify
+```
+
+Exit codes: 0 every table verified; 1 a table failed (a failed count moves the table to `data/spark/_quarantine/<run>/`); 3 counts not yet set. Details are in [masld_spark/ingest.py](masld_spark/ingest.py).
+
+Step 2 reads only tables the ingest verified:
+
+```bash
+make spark-cohort
+```
+
+It exits 0 only if the population counts equal the documented values in `cohort.reference` (`conf/spark_local.yaml`). Every definition is read from the script that defines it ([masld_spark/definitions.py](masld_spark/definitions.py)). Details are in [masld_spark/cohort.py](masld_spark/cohort.py).
+
+Steps 4 and 3, in that order:
+
+```bash
+make spark-splits
+```
+
+```bash
+caffeinate -i make spark-notes
+```
+
+Step 4 reads `data/processed/splits_v1.parquet` only after its SHA-256 matches the frozen record, and writes nothing to `data/processed/`. Step 3 loads its tokenizers offline, at the revisions pinned in the config. Its tables are split into `partition=DEV|TEST|GOLD_HOLDOUT|NONE/` directories, so a training job can be pointed at DEV and TEST only. It exits 0 only if the rule labels reproduce the note-positive counts per partition and fold and the code × note 2×2 recorded earlier. Details are in [masld_spark/splits.py](masld_spark/splits.py) and [masld_spark/notes.py](masld_spark/notes.py).
+
+Step 5 gates every stage before anything downstream reads it:
+
+```bash
+make spark-gates
+```
+
+When a gate fails, the run exits 1, moves the failing stage and every later stage to `data/spark/_quarantine/<run>/`, and prints the command that moves them back after review. Details are in [masld_spark/gates.py](masld_spark/gates.py).
+
+Step 6 compares the Spark outputs with the current pipeline's stored files, then reports time and scale:
+
+```bash
+make spark-parity
+```
+
+```bash
+make spark-scale
+```
+
+Parity does not re-run the current pipeline, because its writers overwrite frozen files. It compares against the files that pipeline stored, made from the same checksummed raw files; the frozen ones are compared only after their SHA-256 matches. The comparison runs in DuckDB and reports, per table, the keys found on only one side and the differences in each column. Differences at same-time lab ties are counted as explained. Details are in [masld_spark/parity.py](masld_spark/parity.py) and [masld_spark/scale.py](masld_spark/scale.py). The cluster configuration (`conf/spark_cluster.yaml`) and its setup guide are in [docs/spark_cluster.md](docs/spark_cluster.md).
+
 ## What is tracked, and what never is
 
 **Tracked:** code, SQL, tests, and aggregate documents under `docs/`. Every number in a document is written by a script into a results file under `docs/**/results/`, and the document names the script and file that produced it. Counts below 11 appear as `<11`.
